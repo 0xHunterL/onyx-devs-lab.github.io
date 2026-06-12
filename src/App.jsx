@@ -1,5 +1,5 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { ArrowRight, ChevronRight, Globe, Menu, X, Bot, Database, Cpu, Target, Users, Sparkles } from 'lucide-react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
+import { ArrowRight, ChevronLeft, ChevronRight, Globe, Menu, X, Bot, Database, Cpu, Target, Users, Sparkles } from 'lucide-react';
 
 // ─── Translations ────────────────────────────────────────────────────────────
 
@@ -45,6 +45,7 @@ const translations = {
     work: {
       label: 'Case Studies',
       title: ['Selected ', 'Work'],
+      viewDetails: 'View Details',
       items: [
         {
           title: 'AI-Powered ERP for Accounting Firms',
@@ -77,6 +78,50 @@ const translations = {
             'Fuses proprietary data with live open-source financial feeds',
             'Produces institutional-grade credit risk reports',
             'Designed for speed and accuracy in high-stakes portfolio evaluation',
+          ],
+        },
+        {
+          title: 'AI Trading Agent Platform',
+          description: 'A Web3 trading platform with an embedded AI agent — real-time market data, on-chain execution, and conversational trade commands.',
+          tags: ['Web3', 'AI Agent', 'Solana', 'Real-Time'],
+          highlights: [
+            'AI agent executes trades via natural language commands',
+            'Real-time token price charts with TradingView integration',
+            'On-chain swap execution on Solana DEX protocols',
+            'MCP-powered data pipeline for live market intelligence',
+          ],
+        },
+        {
+          title: 'AI Talent Marketplace',
+          description: 'A B2B2C platform connecting enterprises with domain experts for AI model evaluation, data curation, and post-training tasks.',
+          tags: ['Marketplace', 'Full-Stack', 'Matching', 'AI'],
+          highlights: [
+            'Three-role system: customers post needs, experts get matched, admins oversee',
+            'AI-powered expert matching based on domain tags, trust tiers, and availability',
+            'Full negotiation workflow with shortlisting, interviews, and contract management',
+            '52 REST APIs covering the complete platform lifecycle',
+          ],
+        },
+        {
+          title: 'AI Character Story Engine',
+          description: 'An interactive AI storytelling platform where users converse with AI characters across customizable narrative worlds.',
+          tags: ['Conversational AI', 'Creative', 'LLM', 'Full-Stack'],
+          highlights: [
+            'Rich character creation with personality, backstory, and scenario configuration',
+            'Multi-turn immersive dialogue with persistent memory',
+            'Story traversal mode — jump between narrative branches and timelines',
+            'Custom world-building tools for scenario designers',
+          ],
+        },
+        {
+          title: 'AI Roleplay Chat Platform',
+          description: 'A SaaS-ready AI character chat platform with streaming responses, credit-based monetization, and marketplace.',
+          tags: ['SaaS', 'AI Chat', 'Streaming', 'Marketplace'],
+          highlights: [
+            'Real-time streaming AI responses with multi-model support',
+            'Character marketplace with community-created templates',
+            'Credit system with usage-based billing and subscription tiers',
+            'SillyTavern-compatible prompting for power users',
           ],
         },
       ],
@@ -144,6 +189,7 @@ const translations = {
     work: {
       label: '项目案例',
       title: ['精选', '案例'],
+      viewDetails: '查看详情',
       items: [
         {
           title: '代理记账AI ERP系统',
@@ -176,6 +222,50 @@ const translations = {
             '融合内部数据与实时公开金融信息源',
             '输出符合机构标准的信用风险报告',
             '专为高风险债券组合评估设计',
+          ],
+        },
+        {
+          title: 'AI交易Agent平台',
+          description: 'Web3交易平台，内置AI Agent——实时行情、链上执行、对话式交易指令。',
+          tags: ['Web3', 'AI Agent', 'Solana', '实时数据'],
+          highlights: [
+            'AI Agent通过自然语言指令执行交易',
+            'TradingView集成的实时Token价格图表',
+            'Solana DEX协议链上Swap执行',
+            'MCP数据管线驱动的实时市场情报',
+          ],
+        },
+        {
+          title: 'AI人才市场平台',
+          description: 'B2B2C平台，连接企业与领域专家，用于AI模型评估、数据标注和后训练任务。',
+          tags: ['平台', '全栈', '智能匹配', 'AI'],
+          highlights: [
+            '三角色体系：客户发布需求、专家匹配接单、管理员监管',
+            'AI智能匹配：基于领域标签、信任等级和可用性',
+            '完整谈判流程：短名单筛选、面试安排、合同管理',
+            '52个REST API覆盖平台全生命周期',
+          ],
+        },
+        {
+          title: 'AI角色故事引擎',
+          description: '交互式AI叙事平台，用户与AI角色在可定制的故事世界中展开对话。',
+          tags: ['对话AI', '创意', 'LLM', '全栈'],
+          highlights: [
+            '丰富的角色创建：性格、背景故事、场景配置',
+            '多轮沉浸式对话，持久记忆',
+            '故事穿越模式——在叙事分支和时间线间跳转',
+            '场景设计师专属的世界构建工具',
+          ],
+        },
+        {
+          title: 'AI角色聊天平台',
+          description: 'SaaS级AI角色聊天平台，流式响应、积分制付费和角色市场。',
+          tags: ['SaaS', 'AI聊天', '流式传输', '市场'],
+          highlights: [
+            '实时流式AI响应，多模型支持',
+            '社区创建模板的角色市场',
+            '积分系统，按用量计费和订阅套餐',
+            '支持SillyTavern格式的高级提示词',
           ],
         },
       ],
@@ -243,6 +333,7 @@ const translations = {
     work: {
       label: 'Casi Studio',
       title: ['Lavori ', 'Selezionati'],
+      viewDetails: 'Dettagli',
       items: [
         {
           title: 'ERP con AI per Studi Contabili',
@@ -275,6 +366,50 @@ const translations = {
             'Fusione dati proprietari con feed finanziari live',
             'Report creditizi conformi agli standard istituzionali',
             'Velocità e precisione per portafogli ad alto rischio',
+          ],
+        },
+        {
+          title: 'Piattaforma AI Trading Agent',
+          description: 'Piattaforma trading Web3 con agente AI integrato — dati di mercato in tempo reale ed esecuzione on-chain.',
+          tags: ['Web3', 'AI Agent', 'Solana', 'Real-Time'],
+          highlights: [
+            "L'agente AI esegue operazioni tramite comandi in linguaggio naturale",
+            'Grafici prezzi token in tempo reale con integrazione TradingView',
+            'Esecuzione swap on-chain su protocolli DEX Solana',
+            'Pipeline dati MCP per intelligence di mercato live',
+          ],
+        },
+        {
+          title: 'Marketplace Talenti AI',
+          description: 'Piattaforma B2B2C che collega aziende con esperti di dominio per valutazione modelli AI e post-training.',
+          tags: ['Marketplace', 'Full-Stack', 'Matching', 'AI'],
+          highlights: [
+            'Sistema a tre ruoli: clienti, esperti e amministratori',
+            'Matching AI basato su tag di dominio, livelli di fiducia e disponibilità',
+            'Flusso completo di negoziazione con shortlist, colloqui e gestione contratti',
+            "52 API REST per l'intero ciclo di vita della piattaforma",
+          ],
+        },
+        {
+          title: 'Motore di Storie AI',
+          description: 'Piattaforma narrativa interattiva dove gli utenti dialogano con personaggi AI in mondi personalizzabili.',
+          tags: ['AI Conversazionale', 'Creativo', 'LLM', 'Full-Stack'],
+          highlights: [
+            'Creazione ricca di personaggi con personalità, backstory e configurazione scenari',
+            'Dialogo immersivo multi-turno con memoria persistente',
+            'Modalità traversal — salto tra rami narrativi e linee temporali',
+            'Strumenti di world-building per designer di scenari',
+          ],
+        },
+        {
+          title: 'Piattaforma Chat AI Roleplay',
+          description: 'Piattaforma chat AI SaaS-ready con risposte in streaming, monetizzazione a crediti e marketplace.',
+          tags: ['SaaS', 'AI Chat', 'Streaming', 'Marketplace'],
+          highlights: [
+            'Risposte AI in streaming real-time con supporto multi-modello',
+            'Marketplace personaggi con template creati dalla community',
+            'Sistema crediti con fatturazione a consumo e livelli di abbonamento',
+            'Prompting compatibile SillyTavern per utenti avanzati',
           ],
         },
       ],
@@ -324,7 +459,15 @@ const credentialOrgs = [
   'Sinochem',
 ];
 
-const projectImages = [null, null, null];
+const projectsData = [
+  { id: 'finance-erp', images: ['/projects/finance-erp/dashboard.png', '/projects/finance-erp/agent.png', '/projects/finance-erp/billing.png'] },
+  { id: 'jinhui-erp', images: ['/projects/jinhui-erp/cover.png', '/projects/jinhui-erp/miniapp.png'] },
+  { id: 'squirrel', images: ['/projects/squirrel/report.png', '/projects/squirrel/agent-chart.jpg'] },
+  { id: 'aiusd', images: ['/projects/aiusd/cover.png', '/projects/aiusd/chat.png'] },
+  { id: 'maybole', images: ['/projects/maybole/entrance.png', '/projects/maybole/customer.png', '/projects/maybole/expert.png'] },
+  { id: 'manbo', images: ['/projects/manbo/main.png', '/projects/manbo/config.png'] },
+  { id: 'mimitavern', images: ['/projects/mimitavern/chat.png'] },
+];
 
 const serviceIcons = [Bot, Database, Cpu];
 const philosophyIcons = [Target, Users, Sparkles];
@@ -431,43 +574,36 @@ const ServiceCard = ({ icon: Icon, title, description, features }) => (
   </div>
 );
 
-const CaseStudyCard = ({ title, description, tags, highlights, image }) => (
-  <div className="glass rounded-2xl overflow-hidden transition-all duration-300 group hover:-translate-y-1">
+const CaseStudyCard = ({ title, description, tags, image, onClick, viewLabel }) => (
+  <div className="glass rounded-2xl overflow-hidden transition-all duration-300 group hover:-translate-y-1 cursor-pointer" onClick={onClick}>
     <div className="relative h-48 overflow-hidden">
       {image ? (
-        <img src={image} alt={title} className="w-full h-full object-cover" />
+        <img src={image} alt={title} className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500" />
       ) : (
         <div className="w-full h-full bg-gradient-to-br from-[#0c1222] to-[#1a1040] relative">
           <div className="absolute inset-0 opacity-[0.06]" style={{
             backgroundImage: 'linear-gradient(rgba(255,255,255,.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.1) 1px, transparent 1px)',
             backgroundSize: '24px 24px',
           }} />
-          <div className="absolute top-6 left-6 right-6 h-4 bg-white/[0.04] rounded-full" />
-          <div className="absolute top-14 left-6 w-24 h-24 bg-blue-500/[0.08] rounded-xl" />
-          <div className="absolute top-14 left-[8.5rem] right-6 h-24 bg-purple-500/[0.05] rounded-xl" />
-          <div className="absolute bottom-6 left-6 right-6 h-10 bg-white/[0.03] rounded-lg" />
         </div>
       )}
+      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center pb-4">
+        <span className="text-white text-sm font-medium px-4 py-1.5 rounded-full bg-white/20 backdrop-blur-sm border border-white/20">
+          {viewLabel}
+        </span>
+      </div>
     </div>
     <div className="h-1 bg-gradient-to-r from-blue-500 via-purple-500 to-cyan-500" />
-    <div className="p-8">
-      <div className="mb-4 flex flex-wrap gap-2">
+    <div className="p-6">
+      <div className="mb-3 flex flex-wrap gap-2">
         {tags.map((tag, index) => (
-          <span key={index} className="px-3 py-1 rounded-full text-xs font-medium bg-blue-500/10 text-blue-300 border border-blue-500/10">
+          <span key={index} className="px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-500/10 text-blue-300 border border-blue-500/10">
             {tag}
           </span>
         ))}
       </div>
-      <h3 className="text-lg font-bold mb-3 group-hover:text-blue-300 transition-colors">{title}</h3>
-      <p className="text-gray-400 mb-5 text-sm leading-relaxed">{description}</p>
-      <ul className="space-y-2.5">
-        {highlights.map((item, index) => (
-          <li key={index} className="flex items-start gap-2.5 text-gray-500 text-sm">
-            <ChevronRight size={14} className="text-purple-400/60 mt-0.5 shrink-0" />
-            <span>{item}</span>
-          </li>
-        ))}
-      </ul>
+      <h3 className="text-lg font-bold mb-2 group-hover:text-blue-300 transition-colors">{title}</h3>
+      <p className="text-gray-400 text-sm leading-relaxed line-clamp-2">{description}</p>
     </div>
   </div>
 );
@@ -496,12 +632,104 @@ const TeamMemberCard = ({ name, role, avatar, bio, isFounder, credentials }) => 
   </div>
 );
 
+// ─── Project Modal ──────────────────────────────────────────────────────────
+
+const ProjectModal = ({ project, images, onClose }) => {
+  const [currentImage, setCurrentImage] = useState(0);
+
+  const handleKeyDown = useCallback((e) => {
+    if (e.key === 'Escape') onClose();
+    if (e.key === 'ArrowLeft') setCurrentImage((prev) => (prev > 0 ? prev - 1 : images.length - 1));
+    if (e.key === 'ArrowRight') setCurrentImage((prev) => (prev < images.length - 1 ? prev + 1 : 0));
+  }, [onClose, images.length]);
+
+  useEffect(() => {
+    document.addEventListener('keydown', handleKeyDown);
+    document.body.style.overflow = 'hidden';
+    return () => {
+      document.removeEventListener('keydown', handleKeyDown);
+      document.body.style.overflow = '';
+    };
+  }, [handleKeyDown]);
+
+  return (
+    <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 md:p-8" onClick={onClose}>
+      <div className="absolute inset-0 bg-black/80 backdrop-blur-sm" />
+      <div
+        className="relative w-full max-w-5xl max-h-[90vh] bg-[#0d1117] border border-white/10 rounded-2xl overflow-hidden flex flex-col animate-modal-in"
+        onClick={(e) => e.stopPropagation()}
+      >
+        {/* Close button */}
+        <button onClick={onClose} className="absolute top-4 right-4 z-10 w-8 h-8 rounded-full bg-black/50 backdrop-blur-sm border border-white/10 flex items-center justify-center text-gray-400 hover:text-white transition-colors">
+          <X size={16} />
+        </button>
+
+        {/* Image carousel */}
+        <div className="relative w-full aspect-[16/9] bg-black/50 shrink-0">
+          <img
+            src={images[currentImage]}
+            alt={`Screenshot ${currentImage + 1}`}
+            className="w-full h-full object-contain"
+          />
+          {images.length > 1 && (
+            <>
+              <button
+                onClick={() => setCurrentImage((prev) => (prev > 0 ? prev - 1 : images.length - 1))}
+                className="absolute left-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-black/50 backdrop-blur-sm border border-white/10 flex items-center justify-center text-white hover:bg-white/20 transition-colors"
+              >
+                <ChevronLeft size={20} />
+              </button>
+              <button
+                onClick={() => setCurrentImage((prev) => (prev < images.length - 1 ? prev + 1 : 0))}
+                className="absolute right-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-black/50 backdrop-blur-sm border border-white/10 flex items-center justify-center text-white hover:bg-white/20 transition-colors"
+              >
+                <ChevronRight size={20} />
+              </button>
+              <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-2">
+                {images.map((_, i) => (
+                  <button
+                    key={i}
+                    onClick={() => setCurrentImage(i)}
+                    className={`w-2 h-2 rounded-full transition-all ${i === currentImage ? 'bg-white w-6' : 'bg-white/40 hover:bg-white/60'}`}
+                  />
+                ))}
+              </div>
+            </>
+          )}
+        </div>
+
+        {/* Content */}
+        <div className="p-6 md:p-8 overflow-y-auto">
+          <div className="mb-4 flex flex-wrap gap-2">
+            {project.tags.map((tag, index) => (
+              <span key={index} className="px-3 py-1 rounded-full text-xs font-medium bg-blue-500/10 text-blue-300 border border-blue-500/10">
+                {tag}
+              </span>
+            ))}
+          </div>
+          <h2 className="text-2xl font-bold mb-3">{project.title}</h2>
+          <p className="text-gray-400 mb-6 leading-relaxed">{project.description}</p>
+          <ul className="space-y-3">
+            {project.highlights.map((item, index) => (
+              <li key={index} className="flex items-start gap-3 text-gray-400 text-sm">
+                <ChevronRight size={14} className="text-purple-400/60 mt-0.5 shrink-0" />
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </div>
+  );
+};
+
 // ─── Main Page ───────────────────────────────────────────────────────────────
 
 const LandingPage = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [lang, setLang] = useState('en');
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [activeProject, setActiveProject] = useState(null);
   const pageRef = useScrollReveal();
   const t = translations[lang];
 
@@ -590,7 +818,6 @@ const LandingPage = () => {
       {/* ── Credentials & Philosophy ── */}
       <section className="py-20 relative">
         <div className="container mx-auto px-6">
-          {/* Credential strip */}
           <div className="section-reveal text-center mb-16">
             <p className="text-sm text-gray-500 tracking-[0.2em] uppercase mb-8">{t.credentials.label}</p>
             <div className="flex flex-wrap justify-center items-center gap-x-8 md:gap-x-12 gap-y-4">
@@ -601,8 +828,6 @@ const LandingPage = () => {
               ))}
             </div>
           </div>
-
-          {/* Philosophy differentiators */}
           <div className="grid md:grid-cols-3 gap-5 max-w-4xl mx-auto">
             {t.philosophy.items.map((item, index) => {
               const Icon = philosophyIcons[index];
@@ -661,13 +886,29 @@ const LandingPage = () => {
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {t.work.items.map((study, index) => (
-              <div key={index} className="section-reveal" style={{ transitionDelay: `${index * 150}ms` }}>
-                <CaseStudyCard {...study} image={projectImages[index]} />
+              <div key={index} className="section-reveal" style={{ transitionDelay: `${index * 100}ms` }}>
+                <CaseStudyCard
+                  title={study.title}
+                  description={study.description}
+                  tags={study.tags}
+                  image={projectsData[index]?.images[0]}
+                  viewLabel={t.work.viewDetails}
+                  onClick={() => setActiveProject(index)}
+                />
               </div>
             ))}
           </div>
         </div>
       </section>
+
+      {/* ── Project Modal ── */}
+      {activeProject !== null && (
+        <ProjectModal
+          project={t.work.items[activeProject]}
+          images={projectsData[activeProject]?.images || []}
+          onClose={() => setActiveProject(null)}
+        />
+      )}
 
       {/* ── Team ── */}
       <section id="team" className="py-28 relative">
