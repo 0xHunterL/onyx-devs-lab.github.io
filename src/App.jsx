@@ -1,163 +1,181 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { ArrowRight, Code, Cpu, Database, ChevronRight, Globe } from 'lucide-react';
+import { ArrowRight, ChevronRight, Globe, Menu, X, Bot, Database, Cpu, Target, Users, Sparkles } from 'lucide-react';
+
+// ─── Translations ────────────────────────────────────────────────────────────
 
 const translations = {
   en: {
-    nav: { solutions: 'Solutions', work: 'Our Work', team: 'Team', contact: 'Contact Us' },
+    nav: { capabilities: 'Capabilities', work: 'Case Studies', team: 'Team', contact: 'Get in Touch' },
     hero: {
-      badge: 'AI-Powered Enterprise Solutions',
-      title: ['We Build', 'Software That Scales', 'With Your Ambition'],
-      subtitle: 'Elite engineering team specialized in AI-native enterprise systems. We turn legacy workflows into intelligent, automated platforms.',
-      cta: 'Schedule Consultation',
-      secondary: 'View Our Work',
+      badge: 'AI-Exclusive Engineering',
+      title: ['We Only', 'Build AI'],
+      subtitle: "A handpicked team from Stanford, Amazon, and Huawei. We don't do everything — we do AI, and we do it at the highest level.",
+      cta: 'Start a Conversation',
+      secondary: 'See Our Work',
+    },
+    credentials: { label: 'Our team comes from' },
+    philosophy: {
+      items: [
+        { title: 'AI-Only Focus', desc: "Every project has AI at its core. This isn't a side offering — it's all we do." },
+        { title: 'Direct Access', desc: 'No middlemen. You work directly with the engineers building your system.' },
+        { title: 'Elite Pedigree', desc: 'Stanford, Amazon, Huawei, Coinbase alumni on every engagement.' },
+      ],
     },
     services: {
-      label: 'What We Do',
-      title: ['Our ', 'Expertise'],
+      label: 'What We Build',
+      title: ['AI ', 'Capabilities'],
       items: [
         {
-          title: 'Cloud Architecture & DevOps',
-          description: 'Build and optimize scalable cloud infrastructure that grows with your business.',
-          features: ['Kubernetes & Container Orchestration', 'CI/CD Pipeline Development', 'Cloud Cost Optimization', 'High-Availability Systems'],
+          title: 'AI Agents & Automation',
+          description: 'Autonomous agents for customer service, internal Q&A, research, and decision support — replacing manual workflows with intelligent systems.',
+          features: ['Multi-Agent Orchestration', 'Conversational AI', 'Task Automation', 'Human-in-the-Loop'],
         },
         {
-          title: 'Full-Stack Development',
-          description: 'End-to-end development of robust, scalable applications.',
-          features: ['Modern Frontend Frameworks', 'API Development', 'Database Design', 'Real-time Systems'],
+          title: 'NL2SQL & Data Intelligence',
+          description: 'Natural language access to your entire database. Decades of business data, one question away.',
+          features: ['Natural Language Querying', 'Real-Time Analytics', 'Semantic Search & RAG', 'Data Pipeline Integration'],
         },
         {
-          title: 'AI & Machine Learning',
-          description: 'Integrate cutting-edge AI solutions into your products.',
-          features: ['Custom ML Models', 'Natural Language Processing', 'Computer Vision', 'MLOps & Model Deployment'],
+          title: 'AI-Native Enterprise Systems',
+          description: 'Full-stack platforms — ERP, CRM, operations — designed AI-first from day one, not bolted on as an afterthought.',
+          features: ['Custom ERP & CRM', 'IoT Integration', 'Workflow Automation', 'Legacy Modernization'],
         },
       ],
     },
     work: {
-      label: 'Our Projects',
+      label: 'Case Studies',
       title: ['Selected ', 'Work'],
       items: [
         {
           title: 'AI-Powered ERP for Accounting Firms',
-          description: 'A full-cycle ERP platform for bookkeeping agencies, replacing fragmented workflows with an AI-native system that handles everything from client acquisition to tax filing.',
+          description: 'A full-cycle ERP platform replacing fragmented workflows with an AI-native system — from client acquisition to tax filing.',
           tags: ['AI Agent', 'NL2SQL', 'ERP', 'Full-Stack'],
           highlights: [
             'AI-driven telemarketing and customer service for automated client acquisition',
-            'Internal agent with full command of 20 years of business data via advanced NL2SQL',
-            'End-to-end workflow: order intake, task routing, document processing, and compliance filing',
-            'Deep integration with business registration and tax reporting systems',
+            'Internal agent with command of 20 years of business data via NL2SQL',
+            'End-to-end workflow: intake, routing, document processing, compliance filing',
+            'Deep integration with tax reporting and business registration systems',
           ],
         },
         {
           title: 'Unified ERP for Mining Operations',
-          description: 'A consolidated enterprise platform for a mining company in Northwest China, replacing a patchwork of standalone tools with one integrated system — and bringing legacy industrial hardware online.',
+          description: 'An integrated platform for a mining company in Northwest China — unifying fragmented tools and bringing legacy industrial hardware online.',
           tags: ['IoT', 'ERP', 'Siemens PLC', 'AI Agent'],
           highlights: [
-            'Unified attendance, weighbridge, fleet tracking, inventory, payroll, and scheduling into a single platform',
-            'Connected Siemens PLC controllers to a real-time dashboard — furnace temps visible on mobile',
-            'Built-in AI agent for internal Q&A across all operational data',
-            'Dramatically reduced management overhead for small-scale industrial operations',
+            'Unified attendance, weighbridge, fleet, inventory, payroll, and scheduling',
+            'Siemens PLC controllers connected to real-time dashboard — furnace temps on mobile',
+            'Built-in AI agent for natural language Q&A across all operational data',
+            'Dramatically reduced management overhead for industrial operations',
           ],
         },
         {
           title: 'Wall Street Credit Analysis AI',
-          description: 'An agentic AI system built for Wall Street, combining proprietary datasets with real-time public financial intelligence to assess credit asset risk and generate institutional-grade reports.',
+          description: 'An agentic AI system combining proprietary datasets with real-time financial intelligence for institutional credit risk assessment.',
           tags: ['Agentic AI', 'Finance', 'RAG', 'Real-Time Data'],
           highlights: [
             'Multi-agent architecture for autonomous research, analysis, and report generation',
-            'Fuses internal proprietary data with live open-source financial feeds',
-            'Produces comprehensive credit risk reports aligned with institutional standards',
-            'Designed for speed and accuracy in high-stakes debt portfolio evaluation',
+            'Fuses proprietary data with live open-source financial feeds',
+            'Produces institutional-grade credit risk reports',
+            'Designed for speed and accuracy in high-stakes portfolio evaluation',
           ],
         },
       ],
     },
     team: {
       label: 'Who We Are',
-      title: ['Meet Our ', 'Team'],
-      subtitle: 'A tight-knit crew of engineers who love building things that matter.',
+      title: ['Meet the ', 'Team'],
+      subtitle: 'Four engineers. No layers. Every project gets our full attention.',
       members: [
-        { role: 'Founder & Team Lead', bio: 'Former Humboldt Scholar with postdoc research at Stanford/SLAC. Now leads the AI Platform at Sinochem, delivering national-level AI projects from zero to production.' },
-        { role: 'Software Developer', bio: 'University of Toronto graduate with nine years of development experience. Former CTO at a crypto startup, driving technical strategy and leading engineering teams through rapid growth cycles.' },
-        { role: 'Software Developer', bio: 'University of Toronto graduate with nine years of full-stack development experience. Core contributor to Huawei\'s AI product line, building intelligent systems from the ground up.' },
-        { role: 'Software Developer', bio: 'University of Waterloo graduate with nine years of hands-on engineering experience. Built and scaled backend systems at Amazon and Coinbase, specializing in distributed high-availability architectures.' },
+        { role: 'Founder & Lead', bio: 'Former Humboldt Scholar. Postdoc at Stanford/SLAC. Now leads the AI Platform at Sinochem, delivering national-level AI projects from zero to production.' },
+        { role: 'Software Engineer', bio: 'UofT graduate, 9 years of experience. Former CTO at a crypto startup, driving technical strategy through rapid growth.' },
+        { role: 'Software Engineer', bio: 'UofT graduate, 9 years of full-stack experience. Core contributor to Huawei\'s AI product line.' },
+        { role: 'Software Engineer', bio: 'UWaterloo graduate, 9 years of experience. Built and scaled backend systems at Amazon and Coinbase.' },
       ],
     },
     cta: {
       title: ['Ready to Build Something ', 'Great'],
-      subtitle: "We're always excited to partner with ambitious teams pushing the boundaries of what's possible.",
+      subtitle: 'We take on a limited number of projects to ensure every client gets our best work.',
       button: 'Start a Conversation',
     },
     footer: {
-      description: 'Engineering excellence delivered through careful attention to detail, robust architecture, and a deep understanding of your business needs.',
+      description: 'AI-exclusive engineering. Elite team. Deep expertise.',
       contactTitle: 'Contact',
       rights: 'All rights reserved.',
     },
   },
   zh: {
-    nav: { solutions: '解决方案', work: '项目案例', team: '团队', contact: '联系我们' },
+    nav: { capabilities: '能力', work: '案例', team: '团队', contact: '联系我们' },
     hero: {
-      badge: 'AI驱动的企业级解决方案',
-      title: ['我们构建', '可扩展的智能系统', '助力您的雄心'],
-      subtitle: '专注于AI原生企业系统的精英工程团队。我们将传统工作流转化为智能自动化平台。',
-      cta: '预约咨询',
-      secondary: '查看项目',
+      badge: '只做AI',
+      title: ['我们只做', 'AI'],
+      subtitle: '来自斯坦福、亚马逊、华为的精英团队。不求广，只求精——AI领域，值得我们出手。',
+      cta: '开始对话',
+      secondary: '查看案例',
+    },
+    credentials: { label: '团队背景' },
+    philosophy: {
+      items: [
+        { title: '只做AI', desc: '每一个项目都以AI为核心。这不是附加服务——这是我们唯一做的事。' },
+        { title: '直接沟通', desc: '没有销售，没有中间人。你直接和写代码的工程师对话。' },
+        { title: '精英背景', desc: '斯坦福、亚马逊、华为、Coinbase校友，每个项目全力投入。' },
+      ],
     },
     services: {
       label: '我们的能力',
-      title: ['核心', '技术'],
+      title: ['AI ', '能力'],
       items: [
         {
-          title: '云架构与DevOps',
-          description: '构建并优化可随业务增长而扩展的云基础设施。',
-          features: ['Kubernetes容器编排', 'CI/CD流水线开发', '云成本优化', '高可用系统'],
+          title: 'AI智能体与自动化',
+          description: '自主AI代理，覆盖客户服务、内部问答、调研分析与决策支持——用智能系统替代手动流程。',
+          features: ['多Agent协同', '对话式AI', '任务自动化', '人机协同'],
         },
         {
-          title: '全栈开发',
-          description: '端到端开发稳健、可扩展的应用程序。',
-          features: ['现代前端框架', 'API开发', '数据库设计', '实时系统'],
+          title: 'NL2SQL与数据智能',
+          description: '用自然语言查询整个数据库。二十年业务数据，一句话触达。',
+          features: ['自然语言查询', '实时数据分析', '语义搜索与RAG', '数据管线集成'],
         },
         {
-          title: 'AI与机器学习',
-          description: '将前沿AI解决方案集成到您的产品中。',
-          features: ['定制ML模型', '自然语言处理', '计算机视觉', 'MLOps与模型部署'],
+          title: 'AI原生企业系统',
+          description: '从第一行代码就为AI设计的全栈企业平台——ERP、CRM、运营，不是在旧系统上打补丁。',
+          features: ['定制ERP/CRM', 'IoT集成', '工作流自动化', '遗留系统改造'],
         },
       ],
     },
     work: {
       label: '项目案例',
-      title: ['精选', '作品'],
+      title: ['精选', '案例'],
       items: [
         {
-          title: '代理记账公司AI ERP系统',
-          description: '为代理记账企业打造的全流程ERP平台，以AI原生系统替代碎片化工作流，覆盖从获客到报税的完整业务链。',
+          title: '代理记账AI ERP系统',
+          description: '以AI原生系统替代碎片化工作流，覆盖从获客到报税的完整业务链。',
           tags: ['AI Agent', 'NL2SQL', 'ERP', '全栈'],
           highlights: [
             'AI电话营销与智能客服，实现自动化获客',
-            '内部Agent完全掌握20年业务数据，支持高级NL2SQL查询',
+            '内部Agent完全掌握20年业务数据，支持NL2SQL查询',
             '全链路工作流：接单、工单流转、资料整理、合规申报',
             '深度对接工商登记与税务申报系统',
           ],
         },
         {
           title: '矿业企业统一ERP平台',
-          description: '为西北矿业公司打造的一体化企业平台，整合多个分散的独立软件系统，并将传统工业硬件接入数字化管理。',
+          description: '整合分散的独立系统，将传统工业硬件接入数字化管理。',
           tags: ['IoT', 'ERP', '西门子PLC', 'AI Agent'],
           highlights: [
-            '统一考勤、司磅、车队管理、库存、薪资计算和排班功能',
-            '打通西门子PLC控制器，实时仪表盘——手机查看炉温',
-            '内置AI Agent，支持全业务数据的智能问答',
-            '大幅降低中小型工业企业的管理成本',
+            '统一考勤、司磅、车队管理、库存、薪资计算和排班',
+            '打通西门子PLC，实时仪表盘——手机查看炉温',
+            '内置AI Agent，全业务数据智能问答',
+            '大幅降低中小型工业企业管理成本',
           ],
         },
         {
           title: '华尔街债权分析AI系统',
-          description: '面向华尔街的Agentic AI系统，融合内部数据集与实时公开金融信息，评估信贷资产风险并生成机构级分析报告。',
+          description: '融合内部数据与实时公开金融信息，评估信贷资产风险并生成机构级报告。',
           tags: ['Agentic AI', '金融', 'RAG', '实时数据'],
           highlights: [
             '多Agent架构，自主完成调研、分析与报告生成',
-            '融合内部专有数据与实时公开金融信息源',
-            '输出符合机构标准的完整信用风险报告',
-            '专为高风险债券组合评估设计，兼顾速度与准确性',
+            '融合内部数据与实时公开金融信息源',
+            '输出符合机构标准的信用风险报告',
+            '专为高风险债券组合评估设计',
           ],
         },
       ],
@@ -165,90 +183,98 @@ const translations = {
     team: {
       label: '关于我们',
       title: ['认识', '团队'],
-      subtitle: '一支热爱创造、紧密协作的工程师团队。',
+      subtitle: '四名工程师，零层级，每个项目全力以赴。',
       members: [
-        { role: '创始人 & 技术负责人', bio: '前洪堡学者，曾在斯坦福大学/SLAC国家加速器实验室从事博士后研究。现任中化学长三角科创中心AI平台负责人，主导国家级AI项目从零到一的完整落地。' },
-        { role: '软件开发工程师', bio: '多伦多大学毕业，九年开发经验。曾任Crypto公司CTO，主导技术战略并带领工程团队经历快速增长。' },
-        { role: '软件开发工程师', bio: '多伦多大学毕业，九年全栈开发经验。华为AI产品线核心贡献者，参与从零开始构建智能系统。' },
-        { role: '软件开发工程师', bio: '滑铁卢大学毕业，九年工程实战经验。曾在亚马逊和Coinbase构建并扩展后端系统，专长于分布式高可用架构。' },
+        { role: '创始人 & 技术负责人', bio: '前洪堡学者，斯坦福/SLAC博士后。现任中化AI平台负责人，主导国家级AI项目从零到一落地。' },
+        { role: '软件工程师', bio: '多伦多大学毕业，九年经验。曾任Crypto公司CTO，主导技术战略。' },
+        { role: '软件工程师', bio: '多伦多大学毕业，九年全栈经验。华为AI产品线核心贡献者。' },
+        { role: '软件工程师', bio: '滑铁卢大学毕业，九年经验。曾在亚马逊和Coinbase构建后端系统。' },
       ],
     },
     cta: {
       title: ['准备好构建', '伟大的产品'],
-      subtitle: '我们始终期待与有雄心的团队合作，共同突破技术边界。',
+      subtitle: '我们只接有限的项目，确保每个客户都能获得全力投入。',
       button: '开始对话',
     },
     footer: {
-      description: '以匠心精神交付卓越工程——严谨的架构设计、细致的技术实现、深刻的业务理解。',
+      description: '只做AI。精英团队。深度专注。',
       contactTitle: '联系方式',
       rights: '保留所有权利。',
     },
   },
   it: {
-    nav: { solutions: 'Soluzioni', work: 'Progetti', team: 'Team', contact: 'Contattaci' },
+    nav: { capabilities: 'Competenze', work: 'Progetti', team: 'Team', contact: 'Contattaci' },
     hero: {
-      badge: 'Soluzioni Aziendali basate su AI',
-      title: ['Costruiamo', 'Software Scalabile', 'Per le Tue Ambizioni'],
-      subtitle: "Team di ingegneri d'élite specializzato in sistemi aziendali AI-nativi. Trasformiamo i flussi di lavoro tradizionali in piattaforme intelligenti e automatizzate.",
-      cta: 'Prenota una Consulenza',
-      secondary: 'Scopri i Progetti',
+      badge: 'Ingegneria Esclusivamente AI',
+      title: ['Costruiamo Solo', 'AI'],
+      subtitle: "Un team selezionato da Stanford, Amazon e Huawei. Non inseguiamo ogni progetto — andiamo in profondità sull'AI e consegniamo sistemi che trasformano il business.",
+      cta: 'Inizia una Conversazione',
+      secondary: 'Vedi i Progetti',
+    },
+    credentials: { label: 'Il nostro team viene da' },
+    philosophy: {
+      items: [
+        { title: 'Solo AI', desc: "Ogni progetto ha l'AI al centro. Non è un extra — è tutto ciò che facciamo." },
+        { title: 'Accesso Diretto', desc: 'Nessun intermediario. Lavori con gli ingegneri che costruiscono il tuo sistema.' },
+        { title: "Pedigree d'Élite", desc: 'Alumni di Stanford, Amazon, Huawei e Coinbase su ogni progetto.' },
+      ],
     },
     services: {
-      label: 'Cosa Facciamo',
-      title: ['Le Nostre ', 'Competenze'],
+      label: 'Cosa Costruiamo',
+      title: ['Competenze ', 'AI'],
       items: [
         {
-          title: 'Architettura Cloud & DevOps',
-          description: "Progettiamo e ottimizziamo infrastrutture cloud scalabili che crescono con il tuo business.",
-          features: ['Kubernetes e Orchestrazione Container', 'Pipeline CI/CD', 'Ottimizzazione Costi Cloud', 'Sistemi ad Alta Disponibilità'],
+          title: 'AI Agent e Automazione',
+          description: 'Agenti autonomi per servizio clienti, Q&A interno, ricerca e supporto decisionale.',
+          features: ['Orchestrazione Multi-Agent', 'AI Conversazionale', 'Automazione Task', 'Sistemi Human-in-the-Loop'],
         },
         {
-          title: 'Sviluppo Full-Stack',
-          description: 'Sviluppo end-to-end di applicazioni robuste e scalabili.',
-          features: ['Framework Frontend Moderni', 'Sviluppo API', 'Progettazione Database', 'Sistemi Real-time'],
+          title: 'NL2SQL e Data Intelligence',
+          description: 'Accesso in linguaggio naturale a tutto il database. Decenni di dati, una domanda.',
+          features: ['Query in Linguaggio Naturale', 'Analytics Real-Time', 'Ricerca Semantica e RAG', 'Pipeline Dati'],
         },
         {
-          title: 'AI & Machine Learning',
-          description: 'Integriamo soluzioni AI all\'avanguardia nei tuoi prodotti.',
-          features: ['Modelli ML Personalizzati', 'Elaborazione del Linguaggio Naturale', 'Computer Vision', 'MLOps e Deploy Modelli'],
+          title: 'Sistemi Enterprise AI-Nativi',
+          description: "Piattaforme full-stack — ERP, CRM, operations — progettate AI-first dal primo giorno.",
+          features: ['ERP e CRM Custom', 'Integrazione IoT', 'Automazione Workflow', 'Modernizzazione Legacy'],
         },
       ],
     },
     work: {
-      label: 'I Nostri Progetti',
+      label: 'Casi Studio',
       title: ['Lavori ', 'Selezionati'],
       items: [
         {
           title: 'ERP con AI per Studi Contabili',
-          description: "Piattaforma ERP completa per agenzie di contabilità, che sostituisce flussi di lavoro frammentati con un sistema AI-nativo che gestisce dall'acquisizione clienti alla dichiarazione fiscale.",
+          description: "Piattaforma ERP AI-nativa — dall'acquisizione clienti alla dichiarazione fiscale.",
           tags: ['AI Agent', 'NL2SQL', 'ERP', 'Full-Stack'],
           highlights: [
-            'Telemarketing e servizio clienti basati su AI per acquisizione automatica',
-            'Agente interno con pieno controllo su 20 anni di dati aziendali tramite NL2SQL avanzato',
-            'Flusso end-to-end: acquisizione ordini, instradamento task, elaborazione documenti e adempimenti fiscali',
-            'Integrazione profonda con sistemi di registrazione aziendale e dichiarazione fiscale',
+            'Telemarketing e servizio clienti AI per acquisizione automatica',
+            'Agente interno con controllo su 20 anni di dati aziendali tramite NL2SQL',
+            'Flusso end-to-end: ordini, routing, documenti, adempimenti fiscali',
+            'Integrazione profonda con sistemi fiscali e di registrazione',
           ],
         },
         {
           title: 'ERP Unificato per Operazioni Minerarie',
-          description: "Piattaforma aziendale consolidata per una società mineraria nella Cina nord-occidentale, che unifica diversi strumenti indipendenti in un unico sistema integrato — portando online anche l'hardware industriale legacy.",
+          description: "Piattaforma integrata che unifica strumenti e porta online l'hardware industriale legacy.",
           tags: ['IoT', 'ERP', 'Siemens PLC', 'AI Agent'],
           highlights: [
-            'Presenze, pesa, gestione flotta, inventario, buste paga e turni unificati in una piattaforma',
-            'Controller Siemens PLC connessi a una dashboard in tempo reale — temperature dei forni visibili da mobile',
-            'Agente AI integrato per Q&A su tutti i dati operativi',
-            'Riduzione drastica dei costi di gestione per operazioni industriali di piccola scala',
+            'Presenze, pesa, flotta, inventario, buste paga unificati',
+            'Controller Siemens PLC connessi a dashboard real-time — temperature da mobile',
+            'Agente AI per Q&A su tutti i dati operativi',
+            'Riduzione drastica dei costi di gestione industriale',
           ],
         },
         {
           title: 'AI per Analisi Creditizia — Wall Street',
-          description: "Sistema AI agentico costruito per Wall Street, che combina dataset proprietari con intelligence finanziaria pubblica in tempo reale per valutare il rischio degli asset creditizi e generare report di livello istituzionale.",
+          description: 'Sistema AI agentico con dataset proprietari e intelligence finanziaria in tempo reale.',
           tags: ['Agentic AI', 'Finanza', 'RAG', 'Dati Real-Time'],
           highlights: [
-            'Architettura multi-agente per ricerca, analisi e generazione report autonome',
-            'Fusione di dati proprietari interni con feed finanziari open-source in tempo reale',
-            'Report completi sul rischio creditizio conformi agli standard istituzionali',
-            'Progettato per velocità e precisione nella valutazione di portafogli obbligazionari ad alto rischio',
+            'Architettura multi-agente per ricerca, analisi e report autonomi',
+            'Fusione dati proprietari con feed finanziari live',
+            'Report creditizi conformi agli standard istituzionali',
+            'Velocità e precisione per portafogli ad alto rischio',
           ],
         },
       ],
@@ -256,37 +282,55 @@ const translations = {
     team: {
       label: 'Chi Siamo',
       title: ['Il Nostro ', 'Team'],
-      subtitle: 'Un team affiatato di ingegneri appassionati di costruire soluzioni che contano.',
+      subtitle: 'Quattro ingegneri. Zero livelli. Ogni progetto ha la nostra piena attenzione.',
       members: [
-        { role: 'Fondatore & Team Lead', bio: "Ex borsista Humboldt con ricerca post-dottorale a Stanford/SLAC. Attualmente dirige la Piattaforma AI presso Sinochem, realizzando progetti AI di livello nazionale da zero alla produzione." },
-        { role: 'Sviluppatore Software', bio: "Laureato all'Università di Toronto con nove anni di esperienza. Ex CTO in una startup crypto, ha guidato la strategia tecnica e i team di sviluppo attraverso cicli di crescita rapida." },
-        { role: 'Sviluppatore Software', bio: "Laureato all'Università di Toronto con nove anni di esperienza full-stack. Contributore chiave nella linea prodotti AI di Huawei, costruendo sistemi intelligenti da zero." },
-        { role: 'Sviluppatore Software', bio: "Laureato all'Università di Waterloo con nove anni di esperienza ingegneristica. Ha costruito e scalato sistemi backend in Amazon e Coinbase, specializzato in architetture distribuite ad alta disponibilità." },
+        { role: 'Fondatore & Lead', bio: 'Ex borsista Humboldt. Post-doc a Stanford/SLAC. Dirige la Piattaforma AI presso Sinochem.' },
+        { role: 'Ingegnere Software', bio: "Laureato UofT, 9 anni di esperienza. Ex CTO in startup crypto." },
+        { role: 'Ingegnere Software', bio: 'Laureato UofT, 9 anni full-stack. Contributore chiave AI in Huawei.' },
+        { role: 'Ingegnere Software', bio: 'Laureato UWaterloo, 9 anni. Backend in Amazon e Coinbase.' },
       ],
     },
     cta: {
       title: ['Pronti a Costruire Qualcosa di ', 'Grande'],
-      subtitle: 'Siamo sempre entusiasti di collaborare con team ambiziosi che spingono i confini del possibile.',
-      button: 'Iniziamo a Parlare',
+      subtitle: 'Accettiamo un numero limitato di progetti per garantire il massimo impegno.',
+      button: 'Inizia a Parlare',
     },
     footer: {
-      description: "Eccellenza ingegneristica attraverso attenzione ai dettagli, architettura robusta e profonda comprensione delle esigenze del tuo business.",
+      description: "Solo AI. Team d'élite. Expertise profonda.",
       contactTitle: 'Contatti',
       rights: 'Tutti i diritti riservati.',
     },
   },
 };
 
+// ─── Data ────────────────────────────────────────────────────────────────────
+
 const teamMeta = [
-  { name: 'Weiying He', avatar: '/avatars/weiying.svg', isFounder: true },
-  { name: 'Lucas Shen', avatar: '/avatars/lucas.svg', isFounder: false },
-  { name: 'Mi', avatar: '/avatars/mi.svg', isFounder: false },
-  { name: 'Hunter Li', avatar: '/avatars/hunter.svg', isFounder: false },
+  { name: 'Weiying He', avatar: '/avatars/weiying.svg', isFounder: true, credentials: ['Stanford', 'SLAC', 'Humboldt'] },
+  { name: 'Lucas Shen', avatar: '/avatars/lucas.svg', isFounder: false, credentials: ['UofT'] },
+  { name: 'Mi', avatar: '/avatars/mi.svg', isFounder: false, credentials: ['UofT', 'Huawei'] },
+  { name: 'Hunter Li', avatar: '/avatars/hunter.svg', isFounder: false, credentials: ['Waterloo', 'Amazon', 'Coinbase'] },
 ];
 
-const serviceIcons = [Database, Code, Cpu];
+const credentialOrgs = [
+  'Stanford University',
+  'SLAC National Lab',
+  'Humboldt Foundation',
+  'University of Toronto',
+  'University of Waterloo',
+  'Amazon',
+  'Coinbase',
+  'Huawei',
+  'Sinochem',
+];
 
+const projectImages = [null, null, null];
+
+const serviceIcons = [Bot, Database, Cpu];
+const philosophyIcons = [Target, Users, Sparkles];
 const langLabels = { en: 'EN', zh: '中文', it: 'IT' };
+
+// ─── Hooks ───────────────────────────────────────────────────────────────────
 
 const useScrollReveal = () => {
   const ref = useRef(null);
@@ -305,6 +349,8 @@ const useScrollReveal = () => {
   }, []);
   return ref;
 };
+
+// ─── Small Components ────────────────────────────────────────────────────────
 
 const LanguageSwitcher = ({ lang, setLang }) => {
   const [open, setOpen] = useState(false);
@@ -339,9 +385,123 @@ const LanguageSwitcher = ({ lang, setLang }) => {
   );
 };
 
+const MobileMenu = ({ isOpen, onClose, t, lang, setLang }) => {
+  if (!isOpen) return null;
+  return (
+    <div className="fixed inset-0 z-50 md:hidden">
+      <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" onClick={onClose} />
+      <div className="absolute right-0 top-0 bottom-0 w-72 bg-[#0a0e1a] border-l border-white/10 p-6 flex flex-col">
+        <button onClick={onClose} className="self-end mb-8 text-gray-400 hover:text-white">
+          <X size={24} />
+        </button>
+        <nav className="flex flex-col gap-6">
+          <a href="#capabilities" onClick={onClose} className="text-gray-300 hover:text-white transition-colors">{t.nav.capabilities}</a>
+          <a href="#work" onClick={onClose} className="text-gray-300 hover:text-white transition-colors">{t.nav.work}</a>
+          <a href="#team" onClick={onClose} className="text-gray-300 hover:text-white transition-colors">{t.nav.team}</a>
+          <a href="mailto:info@onyxdevslab.com" onClick={onClose}
+            className="inline-flex items-center justify-center px-5 py-2.5 rounded-full text-sm bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-400 hover:to-purple-400 transition-all">
+            {t.nav.contact}
+          </a>
+        </nav>
+        <div className="mt-auto">
+          <LanguageSwitcher lang={lang} setLang={setLang} />
+        </div>
+      </div>
+    </div>
+  );
+};
+
+// ─── Card Components ─────────────────────────────────────────────────────────
+
+const ServiceCard = ({ icon: Icon, title, description, features }) => (
+  <div className="glass rounded-2xl p-8 transition-all duration-300 group hover:-translate-y-1">
+    <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-500/20 to-purple-500/20 flex items-center justify-center mb-6 group-hover:from-blue-500/30 group-hover:to-purple-500/30 transition-colors">
+      <Icon size={22} className="text-blue-400" />
+    </div>
+    <h3 className="text-xl font-bold mb-3">{title}</h3>
+    <p className="text-gray-400 mb-6 text-sm leading-relaxed">{description}</p>
+    <ul className="space-y-2.5">
+      {features.map((feature, index) => (
+        <li key={index} className="flex items-center gap-2.5 text-gray-500 text-sm">
+          <ChevronRight size={14} className="text-blue-400/60" />
+          {feature}
+        </li>
+      ))}
+    </ul>
+  </div>
+);
+
+const CaseStudyCard = ({ title, description, tags, highlights, image }) => (
+  <div className="glass rounded-2xl overflow-hidden transition-all duration-300 group hover:-translate-y-1">
+    <div className="relative h-48 overflow-hidden">
+      {image ? (
+        <img src={image} alt={title} className="w-full h-full object-cover" />
+      ) : (
+        <div className="w-full h-full bg-gradient-to-br from-[#0c1222] to-[#1a1040] relative">
+          <div className="absolute inset-0 opacity-[0.06]" style={{
+            backgroundImage: 'linear-gradient(rgba(255,255,255,.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.1) 1px, transparent 1px)',
+            backgroundSize: '24px 24px',
+          }} />
+          <div className="absolute top-6 left-6 right-6 h-4 bg-white/[0.04] rounded-full" />
+          <div className="absolute top-14 left-6 w-24 h-24 bg-blue-500/[0.08] rounded-xl" />
+          <div className="absolute top-14 left-[8.5rem] right-6 h-24 bg-purple-500/[0.05] rounded-xl" />
+          <div className="absolute bottom-6 left-6 right-6 h-10 bg-white/[0.03] rounded-lg" />
+        </div>
+      )}
+    </div>
+    <div className="h-1 bg-gradient-to-r from-blue-500 via-purple-500 to-cyan-500" />
+    <div className="p-8">
+      <div className="mb-4 flex flex-wrap gap-2">
+        {tags.map((tag, index) => (
+          <span key={index} className="px-3 py-1 rounded-full text-xs font-medium bg-blue-500/10 text-blue-300 border border-blue-500/10">
+            {tag}
+          </span>
+        ))}
+      </div>
+      <h3 className="text-lg font-bold mb-3 group-hover:text-blue-300 transition-colors">{title}</h3>
+      <p className="text-gray-400 mb-5 text-sm leading-relaxed">{description}</p>
+      <ul className="space-y-2.5">
+        {highlights.map((item, index) => (
+          <li key={index} className="flex items-start gap-2.5 text-gray-500 text-sm">
+            <ChevronRight size={14} className="text-purple-400/60 mt-0.5 shrink-0" />
+            <span>{item}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </div>
+);
+
+const TeamMemberCard = ({ name, role, avatar, bio, isFounder, credentials }) => (
+  <div className="glass rounded-2xl p-8 text-center transition-all duration-300 group hover:-translate-y-1">
+    <div className="relative inline-block mb-5">
+      <div className="absolute -inset-1 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full opacity-0 group-hover:opacity-50 blur transition-opacity duration-300" />
+      <img src={avatar} alt={name} className="relative w-24 h-24 rounded-full border-2 border-white/10 group-hover:border-white/20 transition-colors" />
+    </div>
+    <h3 className="text-lg font-bold mb-1">{name}</h3>
+    {isFounder && (
+      <span className="inline-block px-3 py-1 rounded-full text-xs font-medium mb-3 bg-purple-500/15 text-purple-300 border border-purple-500/20">
+        {role}
+      </span>
+    )}
+    {!isFounder && <div className="mb-3" />}
+    <div className="flex flex-wrap justify-center gap-1.5 mb-4">
+      {credentials.map((cred) => (
+        <span key={cred} className="px-2.5 py-0.5 rounded text-[11px] font-medium text-amber-300/80 bg-amber-500/10 border border-amber-500/10">
+          {cred}
+        </span>
+      ))}
+    </div>
+    <p className="text-gray-500 text-sm leading-relaxed">{bio}</p>
+  </div>
+);
+
+// ─── Main Page ───────────────────────────────────────────────────────────────
+
 const LandingPage = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [lang, setLang] = useState('en');
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const pageRef = useScrollReveal();
   const t = translations[lang];
 
@@ -354,7 +514,7 @@ const LandingPage = () => {
   return (
     <div ref={pageRef} className="min-h-screen bg-[#0a0e1a] text-white overflow-hidden">
 
-      {/* Navigation */}
+      {/* ── Navigation ── */}
       <nav className={`fixed w-full z-50 transition-all duration-500 ${
         isScrolled
           ? 'bg-[#0a0e1a]/80 backdrop-blur-xl shadow-lg shadow-blue-500/5 border-b border-white/5'
@@ -366,7 +526,7 @@ const LandingPage = () => {
             <span className="text-white/90"> Devs Lab</span>
           </div>
           <div className="hidden md:flex items-center space-x-8">
-            <a href="#solutions" className="nav-link text-gray-300 hover:text-white transition-colors text-sm tracking-wide">{t.nav.solutions}</a>
+            <a href="#capabilities" className="nav-link text-gray-300 hover:text-white transition-colors text-sm tracking-wide">{t.nav.capabilities}</a>
             <a href="#work" className="nav-link text-gray-300 hover:text-white transition-colors text-sm tracking-wide">{t.nav.work}</a>
             <a href="#team" className="nav-link text-gray-300 hover:text-white transition-colors text-sm tracking-wide">{t.nav.team}</a>
             <a href="mailto:info@onyxdevslab.com"
@@ -375,16 +535,20 @@ const LandingPage = () => {
             </a>
             <LanguageSwitcher lang={lang} setLang={setLang} />
           </div>
+          <button className="md:hidden text-gray-300 hover:text-white" onClick={() => setMobileMenuOpen(true)}>
+            <Menu size={24} />
+          </button>
         </div>
       </nav>
+      <MobileMenu isOpen={mobileMenuOpen} onClose={() => setMobileMenuOpen(false)} t={t} lang={lang} setLang={setLang} />
 
-      {/* Hero Section */}
+      {/* ── Hero ── */}
       <header className="relative min-h-screen flex items-center px-6 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-blue-600/20 via-purple-600/10 to-cyan-600/20 animate-gradient" />
         <div className="absolute inset-0 opacity-[0.03]"
           style={{
             backgroundImage: 'linear-gradient(rgba(255,255,255,.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.1) 1px, transparent 1px)',
-            backgroundSize: '60px 60px'
+            backgroundSize: '60px 60px',
           }}
         />
         <div className="absolute top-1/4 left-1/4 w-72 h-72 bg-blue-500/20 rounded-full blur-[100px] animate-float" />
@@ -397,14 +561,12 @@ const LandingPage = () => {
               <span className="w-2 h-2 bg-blue-400 rounded-full mr-3 animate-pulse-glow" />
               {t.hero.badge}
             </div>
-            <h1 className="text-5xl md:text-7xl font-bold mb-8 leading-[1.1] tracking-tight">
+            <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold mb-8 leading-[1.1] tracking-tight">
               {t.hero.title[0]}
               <br />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-400 to-cyan-400">
                 {t.hero.title[1]}
               </span>
-              <br />
-              {t.hero.title[2]}
             </h1>
             <p className="text-lg md:text-xl text-gray-400 mb-10 leading-relaxed max-w-2xl">
               {t.hero.subtitle}
@@ -425,8 +587,43 @@ const LandingPage = () => {
         <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-[#0a0e1a] to-transparent" />
       </header>
 
-      {/* Services Section */}
-      <section id="solutions" className="py-28 relative">
+      {/* ── Credentials & Philosophy ── */}
+      <section className="py-20 relative">
+        <div className="container mx-auto px-6">
+          {/* Credential strip */}
+          <div className="section-reveal text-center mb-16">
+            <p className="text-sm text-gray-500 tracking-[0.2em] uppercase mb-8">{t.credentials.label}</p>
+            <div className="flex flex-wrap justify-center items-center gap-x-8 md:gap-x-12 gap-y-4">
+              {credentialOrgs.map((org) => (
+                <span key={org} className="text-sm md:text-base font-semibold text-gray-400/50 hover:text-gray-300 transition-colors duration-300 cursor-default tracking-wide">
+                  {org}
+                </span>
+              ))}
+            </div>
+          </div>
+
+          {/* Philosophy differentiators */}
+          <div className="grid md:grid-cols-3 gap-5 max-w-4xl mx-auto">
+            {t.philosophy.items.map((item, index) => {
+              const Icon = philosophyIcons[index];
+              return (
+                <div key={index} className="section-reveal flex items-start gap-4 p-6 rounded-xl bg-white/[0.02] border border-white/5 hover:border-white/10 transition-colors" style={{ transitionDelay: `${index * 100}ms` }}>
+                  <div className="w-10 h-10 rounded-lg bg-blue-500/10 flex items-center justify-center shrink-0">
+                    <Icon size={18} className="text-blue-400" />
+                  </div>
+                  <div>
+                    <h3 className="font-semibold text-white mb-1 text-sm">{item.title}</h3>
+                    <p className="text-xs text-gray-500 leading-relaxed">{item.desc}</p>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* ── AI Capabilities ── */}
+      <section id="capabilities" className="py-28 relative">
         <div className="container mx-auto px-6">
           <div className="section-reveal text-center mb-20">
             <span className="text-blue-400 text-sm font-medium tracking-[0.2em] uppercase">{t.services.label}</span>
@@ -448,7 +645,7 @@ const LandingPage = () => {
         </div>
       </section>
 
-      {/* Case Studies Section */}
+      {/* ── Case Studies ── */}
       <section id="work" className="py-28 relative">
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-blue-500/[0.02] to-transparent" />
         <div className="container mx-auto px-6 relative">
@@ -465,14 +662,14 @@ const LandingPage = () => {
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {t.work.items.map((study, index) => (
               <div key={index} className="section-reveal" style={{ transitionDelay: `${index * 150}ms` }}>
-                <CaseStudyCard {...study} />
+                <CaseStudyCard {...study} image={projectImages[index]} />
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Team Section */}
+      {/* ── Team ── */}
       <section id="team" className="py-28 relative">
         <div className="container mx-auto px-6">
           <div className="section-reveal text-center mb-20">
@@ -493,6 +690,7 @@ const LandingPage = () => {
                   name={member.name}
                   avatar={member.avatar}
                   isFounder={member.isFounder}
+                  credentials={member.credentials}
                   role={t.team.members[index].role}
                   bio={t.team.members[index].bio}
                 />
@@ -502,7 +700,7 @@ const LandingPage = () => {
         </div>
       </section>
 
-      {/* CTA Section */}
+      {/* ── CTA ── */}
       <section className="py-28 relative">
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-purple-500/[0.03] to-transparent" />
         <div className="absolute top-1/2 left-1/4 w-64 h-64 bg-blue-500/10 rounded-full blur-[100px] animate-float" />
@@ -526,7 +724,7 @@ const LandingPage = () => {
         </div>
       </section>
 
-      {/* Footer */}
+      {/* ── Footer ── */}
       <footer className="py-16 border-t border-white/5 relative">
         <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-blue-500/30 to-transparent" />
         <div className="container mx-auto px-6">
@@ -555,66 +753,5 @@ const LandingPage = () => {
     </div>
   );
 };
-
-const ServiceCard = ({ icon: Icon, title, description, features }) => (
-  <div className="glass rounded-2xl p-8 transition-all duration-300 group hover:-translate-y-1">
-    <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-500/20 to-purple-500/20 flex items-center justify-center mb-6 group-hover:from-blue-500/30 group-hover:to-purple-500/30 transition-colors">
-      <Icon size={22} className="text-blue-400" />
-    </div>
-    <h3 className="text-xl font-bold mb-3">{title}</h3>
-    <p className="text-gray-400 mb-6 text-sm leading-relaxed">{description}</p>
-    <ul className="space-y-2.5">
-      {features.map((feature, index) => (
-        <li key={index} className="flex items-center gap-2.5 text-gray-500 text-sm">
-          <ChevronRight size={14} className="text-blue-400/60" />
-          {feature}
-        </li>
-      ))}
-    </ul>
-  </div>
-);
-
-const CaseStudyCard = ({ title, description, tags, highlights }) => (
-  <div className="glass rounded-2xl overflow-hidden transition-all duration-300 group hover:-translate-y-1">
-    <div className="h-1 bg-gradient-to-r from-blue-500 via-purple-500 to-cyan-500" />
-    <div className="p-8">
-      <div className="mb-5 flex flex-wrap gap-2">
-        {tags.map((tag, index) => (
-          <span key={index} className="px-3 py-1 rounded-full text-xs font-medium bg-blue-500/10 text-blue-300 border border-blue-500/10">
-            {tag}
-          </span>
-        ))}
-      </div>
-      <h3 className="text-lg font-bold mb-3 group-hover:text-blue-300 transition-colors">{title}</h3>
-      <p className="text-gray-400 mb-5 text-sm leading-relaxed">{description}</p>
-      <ul className="space-y-2.5">
-        {highlights.map((item, index) => (
-          <li key={index} className="flex items-start gap-2.5 text-gray-500 text-sm">
-            <ChevronRight size={14} className="text-purple-400/60 mt-0.5 shrink-0" />
-            <span>{item}</span>
-          </li>
-        ))}
-      </ul>
-    </div>
-  </div>
-);
-
-const TeamMemberCard = ({ name, role, avatar, bio, isFounder }) => (
-  <div className="glass rounded-2xl p-8 text-center transition-all duration-300 group hover:-translate-y-1">
-    <div className="relative inline-block mb-6">
-      <div className="absolute -inset-1 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full opacity-0 group-hover:opacity-50 blur transition-opacity duration-300" />
-      <img src={avatar} alt={name} className="relative w-28 h-28 rounded-full border-2 border-white/10 group-hover:border-white/20 transition-colors" />
-    </div>
-    <h3 className="text-lg font-bold mb-1">{name}</h3>
-    <span className={`inline-block px-3 py-1 rounded-full text-xs font-medium mb-4 ${
-      isFounder
-        ? 'bg-purple-500/15 text-purple-300 border border-purple-500/20'
-        : 'bg-blue-500/10 text-blue-300 border border-blue-500/10'
-    }`}>
-      {role}
-    </span>
-    <p className="text-gray-500 text-sm leading-relaxed">{bio}</p>
-  </div>
-);
 
 export default LandingPage;
