@@ -5,40 +5,40 @@ import { ArrowRight, ChevronLeft, ChevronRight, Globe, Menu, X, Bot, Database, C
 
 const translations = {
   en: {
-    nav: { capabilities: 'Capabilities', work: 'Case Studies', team: 'Team', contact: 'Get in Touch' },
+    nav: { capabilities: 'Capabilities', work: 'Case Studies', team: 'Team', contact: 'Contact Us' },
     hero: {
-      badge: 'AI-Exclusive Engineering',
-      title: ['We Only', 'Build AI'],
-      subtitle: "A handpicked team from Stanford, Amazon, and Huawei. We don't do everything — we do AI, and we do it at the highest level.",
-      cta: 'Start a Conversation',
+      badge: 'AI Strategy & Consulting',
+      title: ['We Advise on', 'AI'],
+      subtitle: "Stanford, Amazon, Huawei, PBOC alumni. We don't take every project — we provide senior-level AI consulting and selectively deliver systems that matter.",
+      cta: 'Get in Touch',
       secondary: 'See Our Work',
     },
     credentials: { label: 'Our team comes from' },
     philosophy: {
       items: [
-        { title: 'AI-Only Focus', desc: "Every project has AI at its core. This isn't a side offering — it's all we do." },
-        { title: 'Direct Access', desc: 'No middlemen. You work directly with the engineers building your system.' },
-        { title: 'Elite Pedigree', desc: 'Stanford, Amazon, Huawei, Coinbase alumni on every engagement.' },
+        { title: 'Strategic Advisory', desc: "We diagnose before we prescribe. Every engagement starts with understanding your business — then designing the right AI approach." },
+        { title: 'Senior-Only Team', desc: 'No junior staff, no handoffs. Every conversation is with someone who has shipped production AI systems.' },
+        { title: 'Selective Engagements', desc: "We take on a handful of projects at a time. When we commit, you get our undivided expertise." },
       ],
     },
     services: {
-      label: 'What We Build',
-      title: ['AI ', 'Capabilities'],
+      label: 'How We Help',
+      title: ['Our ', 'Services'],
       items: [
         {
-          title: 'AI Agents & Automation',
-          description: 'Autonomous agents for customer service, internal Q&A, research, and decision support — replacing manual workflows with intelligent systems.',
-          features: ['Multi-Agent Orchestration', 'Conversational AI', 'Task Automation', 'Human-in-the-Loop'],
+          title: 'AI Strategy & Architecture',
+          description: 'We assess your business landscape and design AI roadmaps that deliver measurable ROI — from model selection and data governance to deployment strategy.',
+          features: ['Feasibility Assessment', 'Architecture Design', 'Technology Selection', 'Implementation Roadmap'],
         },
         {
-          title: 'NL2SQL & Data Intelligence',
-          description: 'Natural language access to your entire database. Decades of business data, one question away.',
-          features: ['Natural Language Querying', 'Real-Time Analytics', 'Semantic Search & RAG', 'Data Pipeline Integration'],
+          title: 'Intelligent Agents & Data Advisory',
+          description: 'We design and advise on AI agent systems, NL2SQL engines, and data intelligence pipelines — turning decades of business data into actionable insight.',
+          features: ['Agent Architecture Design', 'NL2SQL & RAG Strategy', 'Data Pipeline Consulting', 'Semantic Search Solutions'],
         },
         {
-          title: 'AI-Native Enterprise Systems',
-          description: 'Full-stack platforms — ERP, CRM, operations — designed AI-first from day one, not bolted on as an afterthought.',
-          features: ['Custom ERP & CRM', 'IoT Integration', 'Workflow Automation', 'Legacy Modernization'],
+          title: 'AI Transformation Consulting',
+          description: 'We help enterprises go AI-native — rethinking workflows, modernizing legacy systems, and embedding intelligence where it matters most.',
+          features: ['Enterprise AI Integration', 'Workflow Redesign', 'Legacy Modernization', 'Change Management'],
         },
       ],
     },
@@ -129,21 +129,27 @@ const translations = {
     team: {
       label: 'Who We Are',
       title: ['Meet the ', 'Team'],
-      subtitle: 'Four engineers. No layers. Every project gets our full attention.',
+      subtitle: 'Five senior engineers and researchers. No layers, no handoffs — you work directly with the people solving your problem.',
       members: [
-        { role: 'Founder & Lead', bio: 'Former Humboldt Scholar. Postdoc at Stanford/SLAC. Now leads the AI Platform at Sinochem, delivering national-level AI projects from zero to production.' },
-        { role: 'Software Engineer', bio: 'UofT graduate, 9 years of experience. Former CTO at a crypto startup, driving technical strategy through rapid growth.' },
-        { role: 'Software Engineer', bio: 'UofT graduate, 9 years of full-stack experience. Core contributor to Huawei\'s AI product line.' },
-        { role: 'Software Engineer', bio: 'UWaterloo graduate, 9 years of experience. Built and scaled backend systems at Amazon and Coinbase.' },
+        { role: 'Founder & Lead', bio: 'Nationally recognized high-level overseas talent and AI + industry expert. PhD in Physical Inorganic Chemistry, Humboldt Scholar, with postdoctoral research at the Max Planck Institute for Chemical Energy Conversion, University of Göttingen, and Stanford/SLAC National Accelerator Laboratory. Now heads the AI Platform at Sinochem Yangtze River Delta Innovation Center and serves as Deputy Director of its Advanced Polyolefin Research Division.', highlights: [
+            'Oversees enterprise AI infrastructure — model selection, data governance, compute deployment, and business scenario implementation',
+            'Led a national-level AI initiative end-to-end, from requirements definition and model development to full industrial demonstration deployment',
+            'Designed and deployed a "data → AI prediction → automated screening" intelligent workflow, a methodology directly transferable to client-facing operations',
+            'Brings unique advantages in cross-national team management, multi-institutional collaboration, and cutting-edge technology tracking',
+          ] },
+        { role: 'Senior Engineer & Project Lead', bio: 'Former core contributor to Huawei\'s AI product line, where he helped ship production AI systems at enterprise scale. Since leaving Huawei, has led the end-to-end architecture and delivery of multiple AI-powered enterprise platforms — including ERP systems with embedded intelligent agents, NL2SQL engines, and fully automated business pipelines. Specializes in translating complex business workflows into AI-native solutions, with a track record of taking projects from initial scoping through production deployment.' },
+        { role: 'Senior Engineer', bio: 'Served as CTO at a crypto startup, where he built the entire technical organization and led strategy through rapid scaling. Now at the forefront of integrating cutting-edge AI with Web3 and blockchain ecosystems — designing intelligent trading agents, on-chain automation systems, and AI-driven financial tooling. His unique combination of deep infrastructure experience and crypto-native thinking enables novel solutions at the intersection of decentralized finance and artificial intelligence.' },
+        { role: 'Senior Engineer', bio: 'Extensive backend engineering experience at Amazon and Coinbase, where he designed and scaled high-availability distributed systems serving millions of users. Subsequently founded an AI-powered marketing startup, gaining firsthand experience in productizing AI for real-world business applications and growth automation. Brings a rare blend of big-tech systems rigor and startup agility — equally comfortable architecting cloud infrastructure at scale and rapidly prototyping AI-driven products from zero to market.' },
+        { role: 'Senior Engineer', bio: 'Core software developer at a research institute under the People\'s Bank of China (PBOC), where he builds mission-critical systems at the intersection of national financial infrastructure and emerging technology. Brings deep expertise in AI Agent architectures, autonomous workflow orchestration, and enterprise data security — a combination that is essential for deploying AI in highly regulated environments. His experience navigating the strictest compliance and security requirements in China\'s financial sector makes him uniquely qualified to advise on AI adoption in sensitive industries.' },
       ],
     },
     cta: {
-      title: ['Ready to Build Something ', 'Great'],
-      subtitle: 'We take on a limited number of projects to ensure every client gets our best work.',
-      button: 'Start a Conversation',
+      title: ['Ready to Rethink Your ', 'AI Strategy'],
+      subtitle: 'Reach out via email or phone — we respond within 24 hours.',
+      contactLine: 'info@onyxdevslab.com  ·  +1 (416) 565-5366',
     },
     footer: {
-      description: 'AI-exclusive engineering. Elite team. Deep expertise.',
+      description: 'Senior AI consulting. Elite team. Strategic depth.',
       contactTitle: 'Contact',
       rights: 'All rights reserved.',
     },
@@ -151,38 +157,38 @@ const translations = {
   zh: {
     nav: { capabilities: '能力', work: '案例', team: '团队', contact: '联系我们' },
     hero: {
-      badge: '只做AI',
-      title: ['我们只做', 'AI'],
-      subtitle: '来自斯坦福、亚马逊、华为的精英团队。不求广，只求精——AI领域，值得我们出手。',
-      cta: '开始对话',
+      badge: 'AI战略咨询',
+      title: ['AI领域', '高端顾问'],
+      subtitle: '斯坦福、亚马逊、华为、央行背景的资深团队。我们不承接所有项目——专注提供高端AI咨询与解决方案，精选值得投入的合作。',
+      cta: '联系我们',
       secondary: '查看案例',
     },
     credentials: { label: '团队背景' },
     philosophy: {
       items: [
-        { title: '只做AI', desc: '每一个项目都以AI为核心。这不是附加服务——这是我们唯一做的事。' },
-        { title: '直接沟通', desc: '没有销售，没有中间人。你直接和写代码的工程师对话。' },
-        { title: '精英背景', desc: '斯坦福、亚马逊、华为、Coinbase校友，每个项目全力投入。' },
+        { title: '战略先行', desc: '先诊断，再开方。每次合作都从深入理解你的业务开始，再设计最合适的AI方案。' },
+        { title: '全员资深', desc: '没有初级员工，没有交接。每一次沟通，都是与交付过生产级AI系统的人直接对话。' },
+        { title: '精选合作', desc: '我们同时只承接少量项目。一旦承诺，你将获得我们全部的专注与专业。' },
       ],
     },
     services: {
-      label: '我们的能力',
-      title: ['AI ', '能力'],
+      label: '服务内容',
+      title: ['我们的', '服务'],
       items: [
         {
-          title: 'AI智能体与自动化',
-          description: '自主AI代理，覆盖客户服务、内部问答、调研分析与决策支持——用智能系统替代手动流程。',
-          features: ['多Agent协同', '对话式AI', '任务自动化', '人机协同'],
+          title: 'AI战略与架构设计',
+          description: '评估业务全景，设计可量化回报的AI路线图——从模型选型、数据治理到部署策略，提供完整的顶层规划。',
+          features: ['可行性评估', '架构设计', '技术选型', '实施路径规划'],
         },
         {
-          title: 'NL2SQL与数据智能',
-          description: '用自然语言查询整个数据库。二十年业务数据，一句话触达。',
-          features: ['自然语言查询', '实时数据分析', '语义搜索与RAG', '数据管线集成'],
+          title: '智能Agent与数据咨询',
+          description: '为客户设计AI Agent系统、NL2SQL引擎和数据智能管线方案——将沉淀多年的业务数据转化为可行动的洞察。',
+          features: ['Agent架构设计', 'NL2SQL与RAG策略', '数据管线咨询', '语义搜索方案'],
         },
         {
-          title: 'AI原生企业系统',
-          description: '从第一行代码就为AI设计的全栈企业平台——ERP、CRM、运营，不是在旧系统上打补丁。',
-          features: ['定制ERP/CRM', 'IoT集成', '工作流自动化', '遗留系统改造'],
+          title: 'AI转型咨询',
+          description: '帮助企业走向AI原生——重塑工作流、改造遗留系统，在关键节点嵌入智能能力。',
+          features: ['企业AI集成', '工作流重构', '遗留系统改造', '变革管理'],
         },
       ],
     },
@@ -273,21 +279,27 @@ const translations = {
     team: {
       label: '关于我们',
       title: ['认识', '团队'],
-      subtitle: '四名工程师，零层级，每个项目全力以赴。',
+      subtitle: '五位资深工程师与研究员。零层级、零中间人——你直接与解决问题的人对话。',
       members: [
-        { role: '创始人 & 技术负责人', bio: '前洪堡学者，斯坦福/SLAC博士后。现任中化AI平台负责人，主导国家级AI项目从零到一落地。' },
-        { role: '软件工程师', bio: '多伦多大学毕业，九年经验。曾任Crypto公司CTO，主导技术战略。' },
-        { role: '软件工程师', bio: '多伦多大学毕业，九年全栈经验。华为AI产品线核心贡献者。' },
-        { role: '软件工程师', bio: '滑铁卢大学毕业，九年经验。曾在亚马逊和Coinbase构建后端系统。' },
+        { role: '创始人 & 技术负责人', bio: '海外高层次引进人才，AI+产业复合型专家。博士毕业于加拿大英属哥伦比亚大学物理无机化学专业，曾获德国洪堡学者奖，先后在德国马克斯·普朗克化学能量转换研究所、哥廷根大学及美国SLAC国家加速器实验室/斯坦福大学从事博士后研究。现任中化学长三角科创中心AI平台负责人、中化学科学技术有限公司高端聚烯烃所副主任研究员。', highlights: [
+            '负责企业级AI基础设施的规划与建设，涵盖模型选型、数据治理、算力部署及业务场景落地，具备从0到1搭建可扩展AI服务平台的能力',
+            '曾担任国家级"揭榜挂帅"人工智能项目负责人，带领团队完成从需求定义、AI模型开发到产业示范应用的全流程交付',
+            '设计并落地"数据→AI模型预测→自动化筛选"智能工作流，方法论可天然迁移至各类客户服务与运营场景',
+            '拥有跨国团队管理、多机构协作及前沿技术跟踪的独特优势',
+          ] },
+        { role: '高级工程师 & 项目负责人', bio: '前华为AI产品线核心贡献者，参与了多个生产级AI系统的企业规模化交付。离开华为后，主导了多个AI驱动的企业级平台从架构设计到上线落地的全过程——涵盖内嵌智能Agent的ERP系统、NL2SQL引擎以及全自动化业务流水线。擅长将复杂业务流程转化为AI原生解决方案，从项目初期需求定义到最终生产部署均有完整交付经验。' },
+        { role: '高级工程师', bio: '曾任Crypto公司CTO，从零搭建技术团队并在公司快速扩张期全面主导技术战略与架构决策。现专注于将前沿AI能力与Web3及区块链生态深度融合——设计智能交易Agent、链上自动化执行系统及AI驱动的金融工具平台。凭借深厚的基础设施经验与Crypto原生思维，在去中心化金融与人工智能的交叉领域持续开拓创新解决方案。' },
+        { role: '高级工程师', bio: '曾在亚马逊和Coinbase深耕多年，设计并扩展了服务数百万用户的高可用分布式后端系统。此后创立AI营销初创公司，拥有将AI技术从零到一产品化并应用于真实商业场景与增长自动化的一线实战经验。兼具大厂级系统工程的严谨性与创业公司的敏捷性——既能从容架构大规模云基础设施，也能快速将AI驱动的产品从构想推向市场。' },
+        { role: '高级工程师', bio: '中国人民银行某研究所核心软件开发者，长期在国家级金融基础设施与前沿技术的交汇处构建关键业务系统。在AI Agent架构、自主工作流编排及企业级数据安全方面有深厚积累——这一组合对在高度监管环境中部署AI至关重要。多年在中国金融行业最严格的合规与安全要求下实战磨练，使其在敏感行业的AI落地咨询方面具有独特优势。' },
       ],
     },
     cta: {
-      title: ['准备好构建', '伟大的产品'],
-      subtitle: '我们只接有限的项目，确保每个客户都能获得全力投入。',
-      button: '开始对话',
+      title: ['准备好重新审视你的', 'AI战略'],
+      subtitle: '通过邮件或电话联系我们——24小时内回复。',
+      contactLine: 'info@onyxdevslab.com  ·  +1 (416) 565-5366',
     },
     footer: {
-      description: '只做AI。精英团队。深度专注。',
+      description: '高端AI咨询。资深团队。战略深度。',
       contactTitle: '联系方式',
       rights: '保留所有权利。',
     },
@@ -295,38 +307,38 @@ const translations = {
   it: {
     nav: { capabilities: 'Competenze', work: 'Progetti', team: 'Team', contact: 'Contattaci' },
     hero: {
-      badge: 'Ingegneria Esclusivamente AI',
-      title: ['Costruiamo Solo', 'AI'],
-      subtitle: "Un team selezionato da Stanford, Amazon e Huawei. Non inseguiamo ogni progetto — andiamo in profondità sull'AI e consegniamo sistemi che trasformano il business.",
-      cta: 'Inizia una Conversazione',
+      badge: 'Strategia & Consulenza AI',
+      title: ['Consulenti', 'AI'],
+      subtitle: "Alumni di Stanford, Amazon, Huawei e PBOC. Non accettiamo ogni progetto — offriamo consulenza AI senior e realizziamo selettivamente sistemi ad alto impatto.",
+      cta: 'Contattaci',
       secondary: 'Vedi i Progetti',
     },
     credentials: { label: 'Il nostro team viene da' },
     philosophy: {
       items: [
-        { title: 'Solo AI', desc: "Ogni progetto ha l'AI al centro. Non è un extra — è tutto ciò che facciamo." },
-        { title: 'Accesso Diretto', desc: 'Nessun intermediario. Lavori con gli ingegneri che costruiscono il tuo sistema.' },
-        { title: "Pedigree d'Élite", desc: 'Alumni di Stanford, Amazon, Huawei e Coinbase su ogni progetto.' },
+        { title: 'Strategia Prima', desc: "Prima diagnostichiamo, poi prescriviamo. Ogni engagement inizia dalla comprensione del tuo business — poi progettiamo l'approccio AI giusto." },
+        { title: 'Solo Senior', desc: 'Nessuno staff junior, nessun passaggio di consegne. Ogni conversazione è con chi ha già rilasciato sistemi AI in produzione.' },
+        { title: 'Engagement Selettivi', desc: "Accettiamo pochi progetti alla volta. Quando ci impegniamo, ricevi tutta la nostra competenza." },
       ],
     },
     services: {
-      label: 'Cosa Costruiamo',
-      title: ['Competenze ', 'AI'],
+      label: 'Come Aiutiamo',
+      title: ['I Nostri ', 'Servizi'],
       items: [
         {
-          title: 'AI Agent e Automazione',
-          description: 'Agenti autonomi per servizio clienti, Q&A interno, ricerca e supporto decisionale.',
-          features: ['Orchestrazione Multi-Agent', 'AI Conversazionale', 'Automazione Task', 'Sistemi Human-in-the-Loop'],
+          title: 'Strategia & Architettura AI',
+          description: 'Valutiamo il panorama aziendale e progettiamo roadmap AI con ROI misurabile — dalla selezione dei modelli alla strategia di deployment.',
+          features: ['Valutazione Fattibilità', 'Design Architetturale', 'Selezione Tecnologica', 'Roadmap Implementativa'],
         },
         {
-          title: 'NL2SQL e Data Intelligence',
-          description: 'Accesso in linguaggio naturale a tutto il database. Decenni di dati, una domanda.',
-          features: ['Query in Linguaggio Naturale', 'Analytics Real-Time', 'Ricerca Semantica e RAG', 'Pipeline Dati'],
+          title: 'Agent Intelligenti & Data Advisory',
+          description: 'Progettiamo e consultiamo su sistemi AI Agent, motori NL2SQL e pipeline di data intelligence — trasformando anni di dati in insight azionabili.',
+          features: ['Design Architettura Agent', 'Strategia NL2SQL & RAG', 'Consulenza Data Pipeline', 'Soluzioni Ricerca Semantica'],
         },
         {
-          title: 'Sistemi Enterprise AI-Nativi',
-          description: "Piattaforme full-stack — ERP, CRM, operations — progettate AI-first dal primo giorno.",
-          features: ['ERP e CRM Custom', 'Integrazione IoT', 'Automazione Workflow', 'Modernizzazione Legacy'],
+          title: 'Consulenza Trasformazione AI',
+          description: "Aiutiamo le aziende a diventare AI-native — ripensando i workflow, modernizzando i sistemi legacy e integrando l'intelligenza dove conta di più.",
+          features: ['Integrazione AI Enterprise', 'Redesign Workflow', 'Modernizzazione Legacy', 'Change Management'],
         },
       ],
     },
@@ -417,21 +429,27 @@ const translations = {
     team: {
       label: 'Chi Siamo',
       title: ['Il Nostro ', 'Team'],
-      subtitle: 'Quattro ingegneri. Zero livelli. Ogni progetto ha la nostra piena attenzione.',
+      subtitle: 'Cinque ingegneri e ricercatori senior. Zero livelli, zero intermediari — lavori direttamente con chi risolve il problema.',
       members: [
-        { role: 'Fondatore & Lead', bio: 'Ex borsista Humboldt. Post-doc a Stanford/SLAC. Dirige la Piattaforma AI presso Sinochem.' },
-        { role: 'Ingegnere Software', bio: "Laureato UofT, 9 anni di esperienza. Ex CTO in startup crypto." },
-        { role: 'Ingegnere Software', bio: 'Laureato UofT, 9 anni full-stack. Contributore chiave AI in Huawei.' },
-        { role: 'Ingegnere Software', bio: 'Laureato UWaterloo, 9 anni. Backend in Amazon e Coinbase.' },
+        { role: 'Fondatore & Lead', bio: 'Talento d\'alto livello riconosciuto a livello nazionale, esperto AI + industria. PhD in Chimica Inorganica Fisica, borsista Humboldt, con ricerca post-dottorale al Max Planck Institute for Chemical Energy Conversion, Università di Göttingen e Stanford/SLAC National Accelerator Laboratory. Dirige la Piattaforma AI presso il Centro Innovazione Sinochem e guida la divisione ricerca poliolefine avanzate.', highlights: [
+            'Supervisiona l\'infrastruttura AI enterprise — selezione modelli, data governance, deployment computazionale e implementazione scenari di business',
+            'Ha condotto un\'iniziativa AI nazionale end-to-end, dalla definizione dei requisiti allo sviluppo dei modelli fino al deployment industriale dimostrativo completo',
+            'Ha progettato e implementato un workflow intelligente "dati → predizione AI → screening automatizzato", una metodologia direttamente trasferibile alle operazioni client-facing',
+            'Vantaggi unici nella gestione di team internazionali, collaborazione multi-istituzionale e tracking tecnologico d\'avanguardia',
+          ] },
+        { role: 'Ingegnere Senior & Project Lead', bio: 'Ex contributore chiave della linea prodotti AI di Huawei, dove ha partecipato al rilascio di sistemi AI in produzione su scala enterprise. Dopo Huawei, ha guidato l\'architettura e la delivery end-to-end di molteplici piattaforme enterprise AI-powered — tra cui sistemi ERP con agenti intelligenti integrati, motori NL2SQL e pipeline di automazione completa. Specializzato nel tradurre workflow aziendali complessi in soluzioni AI-native, con un track record dalla definizione dei requisiti al deployment in produzione.' },
+        { role: 'Ingegnere Senior', bio: 'Ha servito come CTO in una startup crypto, costruendo l\'intera organizzazione tecnica e guidando la strategia durante la crescita rapida. Oggi in prima linea nell\'integrazione di AI avanzata con gli ecosistemi Web3 e blockchain — progettando agenti di trading intelligenti, sistemi di automazione on-chain e strumenti finanziari AI-driven. La sua combinazione unica di esperienza infrastrutturale profonda e pensiero crypto-nativo abilita soluzioni innovative all\'intersezione tra finanza decentralizzata e intelligenza artificiale.' },
+        { role: 'Ingegnere Senior', bio: 'Vasta esperienza di backend engineering in Amazon e Coinbase, dove ha progettato e scalato sistemi distribuiti ad alta disponibilità per milioni di utenti. Ha successivamente fondato una startup di AI marketing, acquisendo esperienza diretta nella produttizzazione dell\'AI per applicazioni business reali e growth automation. Porta una rara combinazione di rigore sistemistico big-tech e agilità startup — altrettanto a suo agio nell\'architettare infrastrutture cloud su scala e nel prototipare rapidamente prodotti AI-driven da zero a mercato.' },
+        { role: 'Ingegnere Senior', bio: 'Sviluppatore software core presso un istituto di ricerca della Banca Popolare Cinese (PBOC), dove costruisce sistemi mission-critical all\'intersezione tra infrastruttura finanziaria nazionale e tecnologia emergente. Profonda competenza in architetture AI Agent, orchestrazione autonoma dei workflow e sicurezza dati enterprise — una combinazione essenziale per il deployment dell\'AI in ambienti altamente regolamentati. La sua esperienza nel navigare i requisiti di compliance e sicurezza più stringenti del settore finanziario cinese lo rende particolarmente qualificato per la consulenza sull\'adozione AI in settori sensibili.' },
       ],
     },
     cta: {
-      title: ['Pronti a Costruire Qualcosa di ', 'Grande'],
-      subtitle: 'Accettiamo un numero limitato di progetti per garantire il massimo impegno.',
-      button: 'Inizia a Parlare',
+      title: ['Pronti a Ripensare la Vostra ', 'Strategia AI'],
+      subtitle: 'Contattateci via email o telefono — rispondiamo entro 24 ore.',
+      contactLine: 'info@onyxdevslab.com  ·  +1 (416) 565-5366',
     },
     footer: {
-      description: "Solo AI. Team d'élite. Expertise profonda.",
+      description: "Consulenza AI senior. Team d'élite. Profondità strategica.",
       contactTitle: 'Contatti',
       rights: 'Tutti i diritti riservati.',
     },
@@ -441,10 +459,11 @@ const translations = {
 // ─── Data ────────────────────────────────────────────────────────────────────
 
 const teamMeta = [
-  { name: 'Weiying He', avatar: '/avatars/weiying.svg', isFounder: true, credentials: ['Stanford', 'SLAC', 'Humboldt'] },
-  { name: 'Lucas Shen', avatar: '/avatars/lucas.svg', isFounder: false, credentials: ['UofT'] },
-  { name: 'Mi', avatar: '/avatars/mi.svg', isFounder: false, credentials: ['UofT', 'Huawei'] },
-  { name: 'Hunter Li', avatar: '/avatars/hunter.svg', isFounder: false, credentials: ['Waterloo', 'Amazon', 'Coinbase'] },
+  { name: 'Weiying He', avatar: '/avatars/weiying.png', isFounder: true, credentials: ['Stanford', 'SLAC', 'Humboldt', 'Max Planck'] },
+  { name: 'Mi', avatar: '/avatars/mi.png', isFounder: false, credentials: ['Huawei'] },
+  { name: 'Lucas', avatar: '/avatars/lucas.png', isFounder: false, credentials: [] },
+  { name: 'Hunter', avatar: '/avatars/hunter.png', isFounder: false, credentials: ['Amazon', 'Coinbase'] },
+  { name: 'Jake', avatar: '/avatars/jake.png', isFounder: false, credentials: ['PBOC'] },
 ];
 
 const credentialOrgs = [
@@ -541,7 +560,7 @@ const MobileMenu = ({ isOpen, onClose, t, lang, setLang }) => {
           <a href="#capabilities" onClick={onClose} className="text-gray-300 hover:text-white transition-colors">{t.nav.capabilities}</a>
           <a href="#work" onClick={onClose} className="text-gray-300 hover:text-white transition-colors">{t.nav.work}</a>
           <a href="#team" onClick={onClose} className="text-gray-300 hover:text-white transition-colors">{t.nav.team}</a>
-          <a href="mailto:info@onyxdevslab.com" onClick={onClose}
+          <a href="#contact" onClick={onClose}
             className="inline-flex items-center justify-center px-5 py-2.5 rounded-full text-sm bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-400 hover:to-purple-400 transition-all">
             {t.nav.contact}
           </a>
@@ -608,29 +627,115 @@ const CaseStudyCard = ({ title, description, tags, image, onClick, viewLabel }) 
   </div>
 );
 
-const TeamMemberCard = ({ name, role, avatar, bio, isFounder, credentials }) => (
-  <div className="glass rounded-2xl p-8 text-center transition-all duration-300 group hover:-translate-y-1">
-    <div className="relative inline-block mb-5">
-      <div className="absolute -inset-1 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full opacity-0 group-hover:opacity-50 blur transition-opacity duration-300" />
-      <img src={avatar} alt={name} className="relative w-24 h-24 rounded-full border-2 border-white/10 group-hover:border-white/20 transition-colors" />
-    </div>
-    <h3 className="text-lg font-bold mb-1">{name}</h3>
-    {isFounder && (
-      <span className="inline-block px-3 py-1 rounded-full text-xs font-medium mb-3 bg-purple-500/15 text-purple-300 border border-purple-500/20">
-        {role}
-      </span>
-    )}
-    {!isFounder && <div className="mb-3" />}
-    <div className="flex flex-wrap justify-center gap-1.5 mb-4">
-      {credentials.map((cred) => (
-        <span key={cred} className="px-2.5 py-0.5 rounded text-[11px] font-medium text-amber-300/80 bg-amber-500/10 border border-amber-500/10">
-          {cred}
+const FounderCard = ({ name, role, avatar, bio, highlights, credentials }) => (
+  <div className="glass rounded-2xl p-8 md:p-10 transition-all duration-300 group hover:-translate-y-1">
+    <div className="flex flex-col md:flex-row gap-8 items-start">
+      <div className="flex flex-col items-center shrink-0">
+        <div className="relative">
+          <div className="absolute -inset-1.5 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full opacity-30 group-hover:opacity-60 blur transition-opacity duration-300" />
+          <img src={avatar} alt={name} className="relative w-32 h-32 rounded-full border-2 border-white/20 group-hover:border-white/30 transition-colors object-cover" />
+        </div>
+        <h3 className="text-xl font-bold mt-4">{name}</h3>
+        <span className="inline-block px-4 py-1 rounded-full text-xs font-medium mt-2 bg-gradient-to-r from-blue-500/20 to-purple-500/20 text-blue-200 border border-blue-500/20">
+          {role}
         </span>
-      ))}
+        <div className="flex flex-wrap justify-center gap-1.5 mt-3">
+          {credentials.map((cred) => (
+            <span key={cred} className="px-2.5 py-0.5 rounded text-[11px] font-medium text-amber-300/80 bg-amber-500/10 border border-amber-500/10">
+              {cred}
+            </span>
+          ))}
+        </div>
+      </div>
+      <div className="flex-1">
+        <p className="text-gray-400 text-sm leading-relaxed">{bio}</p>
+        {highlights && (
+          <ul className="mt-5 grid sm:grid-cols-2 gap-3">
+            {highlights.map((item, i) => (
+              <li key={i} className="flex items-start gap-2.5 text-gray-500 text-sm">
+                <ChevronRight size={14} className="text-blue-400/60 mt-0.5 shrink-0" />
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
+        )}
+      </div>
     </div>
-    <p className="text-gray-500 text-sm leading-relaxed">{bio}</p>
   </div>
 );
+
+const TeamMemberCard = ({ name, role, avatar, bio, credentials }) => (
+  <div className="glass rounded-2xl p-6 md:p-8 transition-all duration-300 group hover:-translate-y-1 h-full">
+    <div className="flex gap-5 items-start">
+      <div className="flex flex-col items-center shrink-0">
+        <div className="relative">
+          <div className="absolute -inset-1 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full opacity-0 group-hover:opacity-40 blur transition-opacity duration-300" />
+          <img src={avatar} alt={name} className="relative w-20 h-20 rounded-full border-2 border-white/10 group-hover:border-white/20 transition-colors object-cover" />
+        </div>
+      </div>
+      <div className="flex-1 min-w-0">
+        <h3 className="text-lg font-bold">{name}</h3>
+        <span className="inline-block px-3 py-0.5 rounded-full text-xs font-medium mt-1 mb-2 bg-purple-500/15 text-purple-300 border border-purple-500/20">
+          {role}
+        </span>
+        <div className="flex flex-wrap gap-1.5 mb-3">
+          {credentials.map((cred) => (
+            <span key={cred} className="px-2.5 py-0.5 rounded text-[11px] font-medium text-amber-300/80 bg-amber-500/10 border border-amber-500/10">
+              {cred}
+            </span>
+          ))}
+        </div>
+        <p className="text-gray-500 text-sm leading-relaxed">{bio}</p>
+      </div>
+    </div>
+  </div>
+);
+
+// ─── Case Study Carousel ────────────────────────────────────────────────────
+
+const CaseStudyCarousel = ({ items, projectsData, viewLabel, onSelect }) => {
+  const scrollRef = useRef(null);
+
+  const scroll = (direction) => {
+    if (!scrollRef.current) return;
+    const cardWidth = scrollRef.current.querySelector('.carousel-card')?.offsetWidth || 400;
+    scrollRef.current.scrollBy({ left: direction * (cardWidth + 24), behavior: 'smooth' });
+  };
+
+  return (
+    <div className="relative section-reveal">
+      <button
+        onClick={() => scroll(-1)}
+        className="absolute -left-4 md:-left-6 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full bg-black/50 backdrop-blur-sm border border-white/10 flex items-center justify-center text-white hover:bg-white/20 transition-colors"
+      >
+        <ChevronLeft size={20} />
+      </button>
+      <button
+        onClick={() => scroll(1)}
+        className="absolute -right-4 md:-right-6 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full bg-black/50 backdrop-blur-sm border border-white/10 flex items-center justify-center text-white hover:bg-white/20 transition-colors"
+      >
+        <ChevronRight size={20} />
+      </button>
+      <div
+        ref={scrollRef}
+        className="flex gap-6 overflow-x-auto scroll-smooth snap-x snap-mandatory hide-scrollbar pb-4"
+      >
+        {items.map((study, index) => (
+          <div key={index} className="carousel-card flex-shrink-0 w-[85vw] sm:w-[60vw] md:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] snap-start">
+            <CaseStudyCard
+              title={study.title}
+              description={study.description}
+              tags={study.tags}
+              image={projectsData[index]?.images[0]}
+              viewLabel={viewLabel}
+              onClick={() => onSelect(index)}
+            />
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+};
 
 // ─── Project Modal ──────────────────────────────────────────────────────────
 
@@ -757,7 +862,7 @@ const LandingPage = () => {
             <a href="#capabilities" className="nav-link text-gray-300 hover:text-white transition-colors text-sm tracking-wide">{t.nav.capabilities}</a>
             <a href="#work" className="nav-link text-gray-300 hover:text-white transition-colors text-sm tracking-wide">{t.nav.work}</a>
             <a href="#team" className="nav-link text-gray-300 hover:text-white transition-colors text-sm tracking-wide">{t.nav.team}</a>
-            <a href="mailto:info@onyxdevslab.com"
+            <a href="#contact"
               className="px-5 py-2 rounded-full text-sm bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-400 hover:to-purple-400 transition-all hover:shadow-lg hover:shadow-blue-500/25">
               {t.nav.contact}
             </a>
@@ -800,7 +905,7 @@ const LandingPage = () => {
               {t.hero.subtitle}
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
-              <a href="mailto:info@onyxdevslab.com"
+              <a href="#contact"
                 className="group inline-flex items-center justify-center gap-3 px-8 py-4 rounded-xl bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-400 hover:to-purple-400 transition-all duration-300 hover:shadow-xl hover:shadow-blue-500/25 text-base font-medium">
                 {t.hero.cta}
                 <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
@@ -884,20 +989,12 @@ const LandingPage = () => {
             </h2>
             <div className="w-16 h-1 bg-gradient-to-r from-purple-500 to-cyan-500 mx-auto rounded-full" />
           </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {t.work.items.map((study, index) => (
-              <div key={index} className="section-reveal" style={{ transitionDelay: `${index * 100}ms` }}>
-                <CaseStudyCard
-                  title={study.title}
-                  description={study.description}
-                  tags={study.tags}
-                  image={projectsData[index]?.images[0]}
-                  viewLabel={t.work.viewDetails}
-                  onClick={() => setActiveProject(index)}
-                />
-              </div>
-            ))}
-          </div>
+          <CaseStudyCarousel
+            items={t.work.items}
+            projectsData={projectsData}
+            viewLabel={t.work.viewDetails}
+            onSelect={setActiveProject}
+          />
         </div>
       </section>
 
@@ -924,16 +1021,25 @@ const LandingPage = () => {
             <div className="w-16 h-1 bg-gradient-to-r from-cyan-500 to-blue-500 mx-auto rounded-full" />
             <p className="text-gray-400 mt-6 max-w-2xl mx-auto">{t.team.subtitle}</p>
           </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {teamMeta.map((member, index) => (
-              <div key={index} className="section-reveal" style={{ transitionDelay: `${index * 150}ms` }}>
+          <div className="section-reveal mb-8">
+            <FounderCard
+              name={teamMeta[0].name}
+              avatar={teamMeta[0].avatar}
+              credentials={teamMeta[0].credentials}
+              role={t.team.members[0].role}
+              bio={t.team.members[0].bio}
+              highlights={t.team.members[0].highlights}
+            />
+          </div>
+          <div className="grid md:grid-cols-2 gap-6">
+            {teamMeta.slice(1).map((member, index) => (
+              <div key={index} className="section-reveal" style={{ transitionDelay: `${(index + 1) * 150}ms` }}>
                 <TeamMemberCard
                   name={member.name}
                   avatar={member.avatar}
-                  isFounder={member.isFounder}
                   credentials={member.credentials}
-                  role={t.team.members[index].role}
-                  bio={t.team.members[index].bio}
+                  role={t.team.members[index + 1].role}
+                  bio={t.team.members[index + 1].bio}
                 />
               </div>
             ))}
@@ -942,7 +1048,7 @@ const LandingPage = () => {
       </section>
 
       {/* ── CTA ── */}
-      <section className="py-28 relative">
+      <section id="contact" className="py-28 relative">
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-purple-500/[0.03] to-transparent" />
         <div className="absolute top-1/2 left-1/4 w-64 h-64 bg-blue-500/10 rounded-full blur-[100px] animate-float" />
         <div className="absolute top-1/2 right-1/4 w-48 h-48 bg-purple-500/10 rounded-full blur-[80px] animate-float-delayed" />
@@ -955,12 +1061,8 @@ const LandingPage = () => {
               </span>
               ?
             </h2>
-            <p className="text-lg text-gray-400 mb-10 max-w-xl mx-auto">{t.cta.subtitle}</p>
-            <a href="mailto:info@onyxdevslab.com"
-              className="group inline-flex items-center gap-3 px-8 py-4 rounded-xl bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-400 hover:to-purple-400 transition-all duration-300 hover:shadow-xl hover:shadow-blue-500/25 text-base font-medium">
-              {t.cta.button}
-              <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
-            </a>
+            <p className="text-lg text-gray-400 mb-6 max-w-xl mx-auto">{t.cta.subtitle}</p>
+            <p className="text-base text-gray-300 font-medium tracking-wide">{t.cta.contactLine}</p>
           </div>
         </div>
       </section>
@@ -980,9 +1082,10 @@ const LandingPage = () => {
             <div className="md:text-right">
               <h3 className="text-xl font-bold mb-4">{t.footer.contactTitle}</h3>
               <p className="text-gray-500 leading-relaxed">
-                hello@onyxdevslab.com<br />
-                22 Sin Ming Lane #06-76 Midview City<br />
-                Singapore 573969
+                info@onyxdevslab.com<br />
+                +1 (416) 565-5366<br />
+                8 Lai Ying Street, Grand Victoria III<br />
+                Cheung Sha Wan, Kowloon, HK
               </p>
             </div>
           </div>

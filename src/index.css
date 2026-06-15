@@ -145,3 +145,12 @@ body {
 .animate-modal-in {
   animation: modal-in 0.25s ease-out;
 }
+
+.hide-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
