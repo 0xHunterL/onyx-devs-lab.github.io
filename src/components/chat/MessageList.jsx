@@ -61,7 +61,13 @@ const MessageList = ({ messages, welcomeMessage = "Hi! I'm Onyx AI. Ask me anyth
               {msg.toolStatuses && msg.toolStatuses.length > 0 && (
                 <ToolStatusIndicator statuses={msg.toolStatuses} />
               )}
-              {msg.content && (
+              {msg.role === 'assistant' && msg.isStreaming && !msg.content ? (
+                <div className="flex items-center gap-1.5 py-1">
+                  <span className="chat-thinking-dot" style={{ animationDelay: '0ms' }} />
+                  <span className="chat-thinking-dot" style={{ animationDelay: '150ms' }} />
+                  <span className="chat-thinking-dot" style={{ animationDelay: '300ms' }} />
+                </div>
+              ) : msg.content && (
                 msg.role === 'assistant' ? (
                   <div className="chat-markdown">
                     <Markdown remarkPlugins={[remarkGfm]}>{cleanCJKSpacing(msg.content)}</Markdown>
