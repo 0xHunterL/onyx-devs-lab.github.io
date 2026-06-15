@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { ArrowRight, ChevronLeft, ChevronRight, Globe, Menu, X, Bot, Database, Cpu, Target, Users, Sparkles } from 'lucide-react';
+import ChatWidget from './components/chat/ChatWidget';
 
 // ─── Translations ────────────────────────────────────────────────────────────
 
@@ -1094,6 +1095,8 @@ const LandingPage = () => {
           </div>
         </div>
       </footer>
+
+      <ChatWidget />
     </div>
   );
 };
