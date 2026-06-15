@@ -12,7 +12,7 @@ class RelaySettings(BaseSettings):
     CLAUDE_MODEL: str = "claude-sonnet-4-6"
     API_KEY: str = "onyx-R6RASZDJHcwI3-IgQIGQV8TrXrt3uSNsR1jz670lCMM"
     RATE_LIMIT_PER_MINUTE: int = 10
-    CORS_ORIGINS: str = "https://onyx-devs-lab.github.io"
+    CORS_ORIGINS: str = "https://onyxdevslab.com,http://onyxdevslab.com,https://onyx-devs-lab.github.io"
     MAX_TOKENS: int = 4096
     TEMPERATURE: float = 0.7
 
