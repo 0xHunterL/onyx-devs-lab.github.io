@@ -833,7 +833,10 @@ const ProjectModal = ({ project, images, onClose }) => {
 
 const LandingPage = () => {
   const [isScrolled, setIsScrolled] = useState(false);
-  const [lang, setLang] = useState('en');
+  const [lang, setLang] = useState(() => {
+    const isHK = window.location.hostname === 'hk.onyxdevslab.com';
+    return isHK ? 'zh' : 'en';
+  });
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeProject, setActiveProject] = useState(null);
   const pageRef = useScrollReveal();
