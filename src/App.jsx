@@ -49,6 +49,17 @@ const translations = {
       viewDetails: 'View Details',
       items: [
         {
+          title: 'Turning Every Data Point Into a Retail Decision',
+          description: 'A non-invasive data platform layered on top of an existing SaaS ERP, giving an Italian-Chinese supermarket chain AI-driven inventory, staffing, and merchandising decisions.',
+          tags: ['Data Platform', 'Retail', 'Machine Learning', 'Market Basket Analysis'],
+          highlights: [
+            'Non-invasive integration pulls transaction data from the existing ERP and adds missing HR and inventory-loss modules into one unified analytics layer',
+            'Machine learning forecasts inventory needs from historical sales and auto-recommends restocking, reducing both stockouts and overstock',
+            'Market basket analysis uncovers cross-category opportunities — patterns like "milk paired with diapers" that aren\'t obvious on their own',
+            'Real-time tracking of local market trends drives AI-recommended new product selection',
+          ],
+        },
+        {
           title: 'AI-Powered ERP for Accounting Firms',
           description: 'A full-cycle ERP platform replacing fragmented workflows with an AI-native system — from client acquisition to tax filing.',
           tags: ['AI Agent', 'NL2SQL', 'ERP', 'Full-Stack'],
@@ -132,16 +143,11 @@ const translations = {
       title: ['Meet the ', 'Team'],
       subtitle: 'Five senior engineers and researchers. No layers, no handoffs — you work directly with the people solving your problem.',
       members: [
-        { role: 'Founder & Lead', bio: 'Nationally recognized high-level overseas talent and AI + industry expert. PhD in Physical Inorganic Chemistry, Humboldt Scholar, with postdoctoral research at the Max Planck Institute for Chemical Energy Conversion, University of Göttingen, and Stanford/SLAC National Accelerator Laboratory. Now heads the AI Platform at Sinochem Yangtze River Delta Innovation Center and serves as Deputy Director of its Advanced Polyolefin Research Division.', highlights: [
-            'Oversees enterprise AI infrastructure — model selection, data governance, compute deployment, and business scenario implementation',
-            'Led a national-level AI initiative end-to-end, from requirements definition and model development to full industrial demonstration deployment',
-            'Designed and deployed a "data → AI prediction → automated screening" intelligent workflow, a methodology directly transferable to client-facing operations',
-            'Brings unique advantages in cross-national team management, multi-institutional collaboration, and cutting-edge technology tracking',
-          ] },
         { role: 'Senior Engineer & Project Lead', bio: 'Former core contributor to Huawei\'s AI product line, where he helped ship production AI systems at enterprise scale. Since leaving Huawei, has led the end-to-end architecture and delivery of multiple AI-powered enterprise platforms — including ERP systems with embedded intelligent agents, NL2SQL engines, and fully automated business pipelines. Specializes in translating complex business workflows into AI-native solutions, with a track record of taking projects from initial scoping through production deployment.' },
         { role: 'Senior Engineer', bio: 'Served as CTO at a crypto startup, where he built the entire technical organization and led strategy through rapid scaling. Now at the forefront of integrating cutting-edge AI with Web3 and blockchain ecosystems — designing intelligent trading agents, on-chain automation systems, and AI-driven financial tooling. His unique combination of deep infrastructure experience and crypto-native thinking enables novel solutions at the intersection of decentralized finance and artificial intelligence.' },
         { role: 'Senior Engineer', bio: 'Extensive backend engineering experience at Amazon and Coinbase, where he designed and scaled high-availability distributed systems serving millions of users. Subsequently founded an AI-powered marketing startup, gaining firsthand experience in productizing AI for real-world business applications and growth automation. Brings a rare blend of big-tech systems rigor and startup agility — equally comfortable architecting cloud infrastructure at scale and rapidly prototyping AI-driven products from zero to market.' },
         { role: 'Senior Engineer', bio: 'Core software developer at a research institute under the People\'s Bank of China (PBOC), where he builds mission-critical systems at the intersection of national financial infrastructure and emerging technology. Brings deep expertise in AI Agent architectures, autonomous workflow orchestration, and enterprise data security — a combination that is essential for deploying AI in highly regulated environments. His experience navigating the strictest compliance and security requirements in China\'s financial sector makes him uniquely qualified to advise on AI adoption in sensitive industries.' },
+        { role: 'Business Development & Product Insights Lead', bio: 'UBC Computer Science graduate with three years as a Data Scientist at Siemens and Canadian Tire, where she led cross-functional data modeling, user behavior analysis, and growth strategy work — translating complex datasets into decisive business action. Now leads business development, product analytics, and market insight for the team, serving as the critical bridge between technical capability and client value.' },
       ],
     },
     cta: {
@@ -158,9 +164,9 @@ const translations = {
   zh: {
     nav: { capabilities: '能力', work: '案例', team: '团队', contact: '联系我们' },
     hero: {
-      badge: 'AI战略咨询',
-      title: ['AI领域', '高端顾问'],
-      subtitle: '斯坦福、亚马逊、华为、央行背景的资深团队。我们不承接所有项目——专注提供高端AI咨询与解决方案，精选值得投入的合作。',
+      badge: '中加技术团队 | 10年+软件与数据实战 | 企业流程优化 × 场景AI落地',
+      title: ['让AI，成为', '企业的新基建。'],
+      subtitle: '数据是原油，AI是炼油厂。但大多数企业——有油，没厂。我们就是那座厂。从财务到供应链，从市场到销售，从内容生产到赛事计分——我们只做一件事：把AI变成企业账本上看得见的增长。',
       cta: '联系我们',
       secondary: '查看案例',
     },
@@ -198,6 +204,17 @@ const translations = {
       title: ['精选', '案例'],
       viewDetails: '查看详情',
       items: [
+        {
+          title: '连锁超市智能数据中台',
+          description: '在已有SaaS版ERP之上搭建非侵入式数据中台，用AI驱动库存、人事与选品决策。',
+          tags: ['数据中台', '零售', '机器学习', '关联分析'],
+          highlights: [
+            '非侵入式对接原有ERP，补齐人事考勤、库存损耗等数据模块，构建统一分析架构',
+            '机器学习分析历史销售，精准预测库存需求，自动推荐补货策略',
+            '关联分析挖掘跨品类销量关系，发现"牛奶与纸尿裤"式隐藏交叉销售机会',
+            'AI实时追踪本地市场热点，为新品引进提供数据驱动的决策依据',
+          ],
+        },
         {
           title: '代理记账AI ERP系统',
           description: '以AI原生系统替代碎片化工作流，覆盖从获客到报税的完整业务链。',
@@ -282,22 +299,17 @@ const translations = {
       title: ['认识', '团队'],
       subtitle: '五位资深工程师与研究员。零层级、零中间人——你直接与解决问题的人对话。',
       members: [
-        { role: '创始人 & 技术负责人', bio: '海外高层次引进人才，AI+产业复合型专家。博士毕业于加拿大英属哥伦比亚大学物理无机化学专业，曾获德国洪堡学者奖，先后在德国马克斯·普朗克化学能量转换研究所、哥廷根大学及美国SLAC国家加速器实验室/斯坦福大学从事博士后研究。现任中化学长三角科创中心AI平台负责人、中化学科学技术有限公司高端聚烯烃所副主任研究员。', highlights: [
-            '负责企业级AI基础设施的规划与建设，涵盖模型选型、数据治理、算力部署及业务场景落地，具备从0到1搭建可扩展AI服务平台的能力',
-            '曾担任国家级"揭榜挂帅"人工智能项目负责人，带领团队完成从需求定义、AI模型开发到产业示范应用的全流程交付',
-            '设计并落地"数据→AI模型预测→自动化筛选"智能工作流，方法论可天然迁移至各类客户服务与运营场景',
-            '拥有跨国团队管理、多机构协作及前沿技术跟踪的独特优势',
-          ] },
         { role: '高级工程师 & 项目负责人', bio: '前华为AI产品线核心贡献者，参与了多个生产级AI系统的企业规模化交付。离开华为后，主导了多个AI驱动的企业级平台从架构设计到上线落地的全过程——涵盖内嵌智能Agent的ERP系统、NL2SQL引擎以及全自动化业务流水线。擅长将复杂业务流程转化为AI原生解决方案，从项目初期需求定义到最终生产部署均有完整交付经验。' },
         { role: '高级工程师', bio: '曾任Crypto公司CTO，从零搭建技术团队并在公司快速扩张期全面主导技术战略与架构决策。现专注于将前沿AI能力与Web3及区块链生态深度融合——设计智能交易Agent、链上自动化执行系统及AI驱动的金融工具平台。凭借深厚的基础设施经验与Crypto原生思维，在去中心化金融与人工智能的交叉领域持续开拓创新解决方案。' },
         { role: '高级工程师', bio: '曾在亚马逊和Coinbase深耕多年，设计并扩展了服务数百万用户的高可用分布式后端系统。此后创立AI营销初创公司，拥有将AI技术从零到一产品化并应用于真实商业场景与增长自动化的一线实战经验。兼具大厂级系统工程的严谨性与创业公司的敏捷性——既能从容架构大规模云基础设施，也能快速将AI驱动的产品从构想推向市场。' },
         { role: '高级工程师', bio: '中国人民银行某研究所核心软件开发者，长期在国家级金融基础设施与前沿技术的交汇处构建关键业务系统。在AI Agent架构、自主工作流编排及企业级数据安全方面有深厚积累——这一组合对在高度监管环境中部署AI至关重要。多年在中国金融行业最严格的合规与安全要求下实战磨练，使其在敏感行业的AI落地咨询方面具有独特优势。' },
+        { role: '商务拓展 & 产品洞察负责人', bio: '毕业于加拿大英属哥伦比亚大学（UBC）计算机科学专业，曾在西门子（Siemens）与加拿大轮胎公司（Canadian Tire）担任数据科学家三年，主导跨部门数据建模、用户行为洞察与增长策略分析，将复杂数据转化为可执行的商业决策。现负责团队的商务对接、产品数据分析与市场洞察，是连接技术能力与客户价值的关键纽带，擅长在工程团队与业务方之间架起精准高效的沟通桥梁。' },
       ],
     },
     cta: {
       title: ['准备好重新审视你的', 'AI战略'],
       subtitle: '通过邮件或电话联系我们——24小时内回复。',
-      contactLine: 'info@onyxdevslab.com  ·  +1 (416) 565-5366',
+      contactLine: 'info@onyxdevslab.com  ·  +86 18923743756',
     },
     footer: {
       description: '高端AI咨询。资深团队。战略深度。',
@@ -348,6 +360,17 @@ const translations = {
       title: ['Lavori ', 'Selezionati'],
       viewDetails: 'Dettagli',
       items: [
+        {
+          title: 'Trasformare Ogni Dato in una Decisione Retail',
+          description: "Una piattaforma dati non invasiva sopra un ERP SaaS esistente, per dare a una catena di supermercati cinese in Italia decisioni di inventario, personale e merchandising guidate dall'AI.",
+          tags: ['Piattaforma Dati', 'Retail', 'Machine Learning', 'Analisi delle Correlazioni'],
+          highlights: [
+            "Integrazione non invasiva che estrae i dati delle transazioni dall'ERP esistente e aggiunge i moduli mancanti di HR e perdite di inventario in un unico livello di analisi",
+            'Il machine learning prevede il fabbisogno di inventario dalle vendite storiche e raccomanda automaticamente il riassortimento, riducendo rotture di stock e sovrascorte',
+            "L'analisi delle correlazioni scopre opportunità cross-categoria — pattern come \"latte abbinato ai pannolini\" non ovvi da soli",
+            'Il monitoraggio in tempo reale delle tendenze di mercato locali guida raccomandazioni AI per la selezione di nuovi prodotti',
+          ],
+        },
         {
           title: 'ERP con AI per Studi Contabili',
           description: "Piattaforma ERP AI-nativa — dall'acquisizione clienti alla dichiarazione fiscale.",
@@ -432,16 +455,11 @@ const translations = {
       title: ['Il Nostro ', 'Team'],
       subtitle: 'Cinque ingegneri e ricercatori senior. Zero livelli, zero intermediari — lavori direttamente con chi risolve il problema.',
       members: [
-        { role: 'Fondatore & Lead', bio: 'Talento d\'alto livello riconosciuto a livello nazionale, esperto AI + industria. PhD in Chimica Inorganica Fisica, borsista Humboldt, con ricerca post-dottorale al Max Planck Institute for Chemical Energy Conversion, Università di Göttingen e Stanford/SLAC National Accelerator Laboratory. Dirige la Piattaforma AI presso il Centro Innovazione Sinochem e guida la divisione ricerca poliolefine avanzate.', highlights: [
-            'Supervisiona l\'infrastruttura AI enterprise — selezione modelli, data governance, deployment computazionale e implementazione scenari di business',
-            'Ha condotto un\'iniziativa AI nazionale end-to-end, dalla definizione dei requisiti allo sviluppo dei modelli fino al deployment industriale dimostrativo completo',
-            'Ha progettato e implementato un workflow intelligente "dati → predizione AI → screening automatizzato", una metodologia direttamente trasferibile alle operazioni client-facing',
-            'Vantaggi unici nella gestione di team internazionali, collaborazione multi-istituzionale e tracking tecnologico d\'avanguardia',
-          ] },
         { role: 'Ingegnere Senior & Project Lead', bio: 'Ex contributore chiave della linea prodotti AI di Huawei, dove ha partecipato al rilascio di sistemi AI in produzione su scala enterprise. Dopo Huawei, ha guidato l\'architettura e la delivery end-to-end di molteplici piattaforme enterprise AI-powered — tra cui sistemi ERP con agenti intelligenti integrati, motori NL2SQL e pipeline di automazione completa. Specializzato nel tradurre workflow aziendali complessi in soluzioni AI-native, con un track record dalla definizione dei requisiti al deployment in produzione.' },
         { role: 'Ingegnere Senior', bio: 'Ha servito come CTO in una startup crypto, costruendo l\'intera organizzazione tecnica e guidando la strategia durante la crescita rapida. Oggi in prima linea nell\'integrazione di AI avanzata con gli ecosistemi Web3 e blockchain — progettando agenti di trading intelligenti, sistemi di automazione on-chain e strumenti finanziari AI-driven. La sua combinazione unica di esperienza infrastrutturale profonda e pensiero crypto-nativo abilita soluzioni innovative all\'intersezione tra finanza decentralizzata e intelligenza artificiale.' },
         { role: 'Ingegnere Senior', bio: 'Vasta esperienza di backend engineering in Amazon e Coinbase, dove ha progettato e scalato sistemi distribuiti ad alta disponibilità per milioni di utenti. Ha successivamente fondato una startup di AI marketing, acquisendo esperienza diretta nella produttizzazione dell\'AI per applicazioni business reali e growth automation. Porta una rara combinazione di rigore sistemistico big-tech e agilità startup — altrettanto a suo agio nell\'architettare infrastrutture cloud su scala e nel prototipare rapidamente prodotti AI-driven da zero a mercato.' },
         { role: 'Ingegnere Senior', bio: 'Sviluppatore software core presso un istituto di ricerca della Banca Popolare Cinese (PBOC), dove costruisce sistemi mission-critical all\'intersezione tra infrastruttura finanziaria nazionale e tecnologia emergente. Profonda competenza in architetture AI Agent, orchestrazione autonoma dei workflow e sicurezza dati enterprise — una combinazione essenziale per il deployment dell\'AI in ambienti altamente regolamentati. La sua esperienza nel navigare i requisiti di compliance e sicurezza più stringenti del settore finanziario cinese lo rende particolarmente qualificato per la consulenza sull\'adozione AI in settori sensibili.' },
+        { role: 'Business Development & Product Insights', bio: 'Laureata in Informatica presso la University of British Columbia (UBC), con tre anni di esperienza come Data Scientist in Siemens e Canadian Tire, dove ha guidato modellazione dati cross-funzionale, analisi del comportamento utente e strategie di crescita — traducendo dataset complessi in decisioni di business concrete. Ora guida lo sviluppo commerciale, l\'analisi di prodotto e l\'insight di mercato del team, fungendo da ponte essenziale tra capacità tecnica e valore per il cliente.' },
       ],
     },
     cta: {
@@ -460,26 +478,25 @@ const translations = {
 // ─── Data ────────────────────────────────────────────────────────────────────
 
 const teamMeta = [
-  { name: 'Weiying He', avatar: '/avatars/weiying.png', isFounder: true, credentials: ['Stanford', 'SLAC', 'Humboldt', 'Max Planck'] },
   { name: 'Mi', avatar: '/avatars/mi.png', isFounder: false, credentials: ['Huawei'] },
   { name: 'Lucas', avatar: '/avatars/lucas.png', isFounder: false, credentials: [] },
   { name: 'Hunter', avatar: '/avatars/hunter.png', isFounder: false, credentials: ['Amazon', 'Coinbase'] },
   { name: 'Jake', avatar: '/avatars/jake.png', isFounder: false, credentials: ['PBOC'] },
+  { name: 'Olivia', avatar: '/avatars/olivia.png', isFounder: false, credentials: ['UBC', 'Siemens', 'Canadian Tire'] },
 ];
 
 const credentialOrgs = [
-  'Stanford University',
-  'SLAC National Lab',
-  'Humboldt Foundation',
   'University of Toronto',
   'University of Waterloo',
+  'University of British Columbia',
   'Amazon',
   'Coinbase',
   'Huawei',
-  'Sinochem',
+  'Siemens',
 ];
 
 const projectsData = [
+  { id: 'supermarket-datahub', images: ['/projects/supermarket-datahub/dashboard.png', '/projects/supermarket-datahub/sales-analytics.png'] },
   { id: 'finance-erp', images: ['/projects/finance-erp/dashboard.png', '/projects/finance-erp/agent.png', '/projects/finance-erp/billing.png'] },
   { id: 'jinhui-erp', images: ['/projects/jinhui-erp/cover.png', '/projects/jinhui-erp/miniapp.png'] },
   { id: 'squirrel', images: ['/projects/squirrel/report.png', '/projects/squirrel/agent-chart.jpg'] },
@@ -624,43 +641,6 @@ const CaseStudyCard = ({ title, description, tags, image, onClick, viewLabel }) 
       </div>
       <h3 className="text-lg font-bold mb-2 group-hover:text-blue-300 transition-colors">{title}</h3>
       <p className="text-gray-400 text-sm leading-relaxed line-clamp-2">{description}</p>
-    </div>
-  </div>
-);
-
-const FounderCard = ({ name, role, avatar, bio, highlights, credentials }) => (
-  <div className="glass rounded-2xl p-8 md:p-10 transition-all duration-300 group hover:-translate-y-1">
-    <div className="flex flex-col md:flex-row gap-8 items-start">
-      <div className="flex flex-col items-center shrink-0">
-        <div className="relative">
-          <div className="absolute -inset-1.5 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full opacity-30 group-hover:opacity-60 blur transition-opacity duration-300" />
-          <img src={avatar} alt={name} className="relative w-32 h-32 rounded-full border-2 border-white/20 group-hover:border-white/30 transition-colors object-cover" />
-        </div>
-        <h3 className="text-xl font-bold mt-4">{name}</h3>
-        <span className="inline-block px-4 py-1 rounded-full text-xs font-medium mt-2 bg-gradient-to-r from-blue-500/20 to-purple-500/20 text-blue-200 border border-blue-500/20">
-          {role}
-        </span>
-        <div className="flex flex-wrap justify-center gap-1.5 mt-3">
-          {credentials.map((cred) => (
-            <span key={cred} className="px-2.5 py-0.5 rounded text-[11px] font-medium text-amber-300/80 bg-amber-500/10 border border-amber-500/10">
-              {cred}
-            </span>
-          ))}
-        </div>
-      </div>
-      <div className="flex-1">
-        <p className="text-gray-400 text-sm leading-relaxed">{bio}</p>
-        {highlights && (
-          <ul className="mt-5 grid sm:grid-cols-2 gap-3">
-            {highlights.map((item, i) => (
-              <li key={i} className="flex items-start gap-2.5 text-gray-500 text-sm">
-                <ChevronRight size={14} className="text-blue-400/60 mt-0.5 shrink-0" />
-                <span>{item}</span>
-              </li>
-            ))}
-          </ul>
-        )}
-      </div>
     </div>
   </div>
 );
@@ -1025,25 +1005,15 @@ const LandingPage = () => {
             <div className="w-16 h-1 bg-gradient-to-r from-cyan-500 to-blue-500 mx-auto rounded-full" />
             <p className="text-gray-400 mt-6 max-w-2xl mx-auto">{t.team.subtitle}</p>
           </div>
-          <div className="section-reveal mb-8">
-            <FounderCard
-              name={teamMeta[0].name}
-              avatar={teamMeta[0].avatar}
-              credentials={teamMeta[0].credentials}
-              role={t.team.members[0].role}
-              bio={t.team.members[0].bio}
-              highlights={t.team.members[0].highlights}
-            />
-          </div>
           <div className="grid md:grid-cols-2 gap-6">
-            {teamMeta.slice(1).map((member, index) => (
-              <div key={index} className="section-reveal" style={{ transitionDelay: `${(index + 1) * 150}ms` }}>
+            {teamMeta.map((member, index) => (
+              <div key={index} className="section-reveal" style={{ transitionDelay: `${index * 150}ms` }}>
                 <TeamMemberCard
                   name={member.name}
                   avatar={member.avatar}
                   credentials={member.credentials}
-                  role={t.team.members[index + 1].role}
-                  bio={t.team.members[index + 1].bio}
+                  role={t.team.members[index].role}
+                  bio={t.team.members[index].bio}
                 />
               </div>
             ))}
@@ -1087,7 +1057,7 @@ const LandingPage = () => {
               <h3 className="text-xl font-bold mb-4">{t.footer.contactTitle}</h3>
               <p className="text-gray-500 leading-relaxed">
                 info@onyxdevslab.com<br />
-                +1 (416) 565-5366<br />
+                {lang === 'zh' ? '+86 18923743756' : '+1 (416) 565-5366'}<br />
                 8 Lai Ying Street, Grand Victoria III<br />
                 Cheung Sha Wan, Kowloon, HK
               </p>
