@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
-import { ArrowRight, ChevronLeft, ChevronRight, Globe, Menu, X, Bot, Database, Cpu, Target, Users, Sparkles } from 'lucide-react';
+import { ArrowRight, ChevronLeft, ChevronRight, Globe, Menu, X, Bot, Database, Cpu, Target, Users, Sparkles, MessageCircle } from 'lucide-react';
 import ChatWidget from './components/chat/ChatWidget';
 
 // ─── Translations ────────────────────────────────────────────────────────────
@@ -10,7 +10,7 @@ const translations = {
     hero: {
       badge: 'AI Strategy & Consulting',
       title: ['We Advise on', 'AI'],
-      subtitle: "Stanford, Amazon, Huawei, PBOC alumni. We don't take every project — we provide senior-level AI consulting and selectively deliver systems that matter.",
+      subtitle: "Amazon, Huawei, PBOC alumni. We don't take every project — we provide senior-level AI consulting and selectively deliver systems that matter.",
       cta: 'Get in Touch',
       secondary: 'See Our Work',
     },
@@ -147,7 +147,7 @@ const translations = {
         { role: 'Senior Engineer', bio: 'Served as CTO at a crypto startup, where he built the entire technical organization and led strategy through rapid scaling. Now at the forefront of integrating cutting-edge AI with Web3 and blockchain ecosystems — designing intelligent trading agents, on-chain automation systems, and AI-driven financial tooling. His unique combination of deep infrastructure experience and crypto-native thinking enables novel solutions at the intersection of decentralized finance and artificial intelligence.' },
         { role: 'Senior Engineer', bio: 'Extensive backend engineering experience at Amazon and Coinbase, where he designed and scaled high-availability distributed systems serving millions of users. Subsequently founded an AI-powered marketing startup, gaining firsthand experience in productizing AI for real-world business applications and growth automation. Brings a rare blend of big-tech systems rigor and startup agility — equally comfortable architecting cloud infrastructure at scale and rapidly prototyping AI-driven products from zero to market.' },
         { role: 'Senior Engineer', bio: 'Core software developer at a research institute under the People\'s Bank of China (PBOC), where he builds mission-critical systems at the intersection of national financial infrastructure and emerging technology. Brings deep expertise in AI Agent architectures, autonomous workflow orchestration, and enterprise data security — a combination that is essential for deploying AI in highly regulated environments. His experience navigating the strictest compliance and security requirements in China\'s financial sector makes him uniquely qualified to advise on AI adoption in sensitive industries.' },
-        { role: 'Business Development & Product Insights Lead', bio: 'UBC Computer Science graduate with three years as a Data Scientist at Siemens and Canadian Tire, where she led cross-functional data modeling, user behavior analysis, and growth strategy work — translating complex datasets into decisive business action. Now leads business development, product analytics, and market insight for the team, serving as the critical bridge between technical capability and client value.' },
+        { role: 'Strategy & Operations Lead', bio: 'Brings a cross-disciplinary background spanning computer science, mathematics, and business, with senior experience across multinational enterprises in Europe and Canada. She has a sharp eye for the gaps and inefficiencies hidden inside systems and processes, and has led data teams in designing digital transformation initiatives — delivering business recommendations and directional strategy that help companies grow revenue and cut costs.' },
       ],
     },
     cta: {
@@ -178,24 +178,34 @@ const translations = {
         { title: '精选合作', desc: '我们同时只承接少量项目。一旦承诺，你将获得我们全部的专注与专业。' },
       ],
     },
+    painpoints: {
+      label: '先看看这些烦恼',
+      title: ['你的这些烦恼，', 'AI现在能解决了'],
+      items: [
+        { pain: '客服/电销招人难、流失快', solution: 'AI客服电销7×24小时在线', benefit: '省下一大笔人力成本', linkId: 'finance-erp' },
+        { pain: '报表靠Excel人肉汇总', solution: '一句话问出所有数据', benefit: '老板随时随地实时看数', linkId: 'jinhui-erp' },
+        { pain: '补货凭感觉，压货又缺货', solution: 'AI销量预测自动补货', benefit: '库存两头都省', linkId: 'supermarket-datahub' },
+        { pain: '老师傅经验没法传承', solution: '沉淀成业务知识问答库', benefit: '新人一周就能上手', linkId: null },
+      ],
+    },
     services: {
       label: '服务内容',
       title: ['我们的', '服务'],
       items: [
         {
-          title: 'AI战略与架构设计',
-          description: '评估业务全景，设计可量化回报的AI路线图——从模型选型、数据治理到部署策略，提供完整的顶层规划。',
-          features: ['可行性评估', '架构设计', '技术选型', '实施路径规划'],
+          title: '先诊断，再动手',
+          description: '花一周搞清楚你的业务里哪个环节最值得上AI，给出投入、周期和预期回报，再决定做不做。',
+          features: ['可行性评估', '方案设计', '选型建议', '分阶段实施'],
         },
         {
-          title: '智能Agent与数据咨询',
-          description: '为客户设计AI Agent系统、NL2SQL引擎和数据智能管线方案——将沉淀多年的业务数据转化为可行动的洞察。',
-          features: ['Agent架构设计', 'NL2SQL与RAG策略', '数据管线咨询', '语义搜索方案'],
+          title: '让老板一句话问出所有数据',
+          description: '不用等财务出报表，"上个月哪个门店毛利最低？"直接问，直接答。',
+          features: ['业务问题梳理', '数据问答引擎搭建', '现有数据打通', '智能检索方案'],
         },
         {
-          title: 'AI转型咨询',
-          description: '帮助企业走向AI原生——重塑工作流、改造遗留系统，在关键节点嵌入智能能力。',
-          features: ['企业AI集成', '工作流重构', '遗留系统改造', '变革管理'],
+          title: '旧系统不换也能变聪明',
+          description: '不推倒重来，在现有ERP/Excel流程上加一层AI，业务不停摆。',
+          features: ['系统对接', '流程重新设计', '老系统升级', '团队上手辅导'],
         },
       ],
     },
@@ -209,7 +219,7 @@ const translations = {
           description: '在已有SaaS版ERP之上搭建非侵入式数据中台，用AI驱动库存、人事与选品决策。',
           tags: ['数据中台', '零售', '机器学习', '关联分析'],
           highlights: [
-            '非侵入式对接原有ERP，补齐人事考勤、库存损耗等数据模块，构建统一分析架构',
+            '过去补货全靠人工经验，常常"旺季缺货、淡季压库"；现在AI根据历史销售自动预测补货，两头都省',
             '机器学习分析历史销售，精准预测库存需求，自动推荐补货策略',
             '关联分析挖掘跨品类销量关系，发现"牛奶与纸尿裤"式隐藏交叉销售机会',
             'AI实时追踪本地市场热点，为新品引进提供数据驱动的决策依据',
@@ -220,7 +230,7 @@ const translations = {
           description: '以AI原生系统替代碎片化工作流，覆盖从获客到报税的完整业务链。',
           tags: ['AI Agent', 'NL2SQL', 'ERP', '全栈'],
           highlights: [
-            'AI电话营销与智能客服，实现自动化获客',
+            '过去每个客户要专人跟进对账报税；现在AI客服与Agent自动处理大部分流程，同样人力能服务更多客户',
             '内部Agent完全掌握20年业务数据，支持NL2SQL查询',
             '全链路工作流：接单、工单流转、资料整理、合规申报',
             '深度对接工商登记与税务申报系统',
@@ -231,7 +241,7 @@ const translations = {
           description: '整合分散的独立系统，将传统工业硬件接入数字化管理。',
           tags: ['IoT', 'ERP', '西门子PLC', 'AI Agent'],
           highlights: [
-            '统一考勤、司磅、车队管理、库存、薪资计算和排班',
+            '过去查一次跨部门报表要等几天汇总；现在管理层手机上实时看数据，巡检和记录人力明显减少',
             '打通西门子PLC，实时仪表盘——手机查看炉温',
             '内置AI Agent，全业务数据智能问答',
             '大幅降低中小型工业企业管理成本',
@@ -242,7 +252,7 @@ const translations = {
           description: '融合内部数据与实时公开金融信息，评估信贷资产风险并生成机构级报告。',
           tags: ['Agentic AI', '金融', 'RAG', '实时数据'],
           highlights: [
-            '多Agent架构，自主完成调研、分析与报告生成',
+            '过去分析师要花数天手工整理债权尽调报告；现在AI一次性产出机构级报告，交付周期大幅压缩',
             '融合内部数据与实时公开金融信息源',
             '输出符合机构标准的信用风险报告',
             '专为高风险债券组合评估设计',
@@ -264,7 +274,7 @@ const translations = {
           description: 'B2B2C平台，连接企业与领域专家，用于AI模型评估、数据标注和后训练任务。',
           tags: ['平台', '全栈', '智能匹配', 'AI'],
           highlights: [
-            '三角色体系：客户发布需求、专家匹配接单、管理员监管',
+            '过去找靠谱专家全靠人工筛选和熟人推荐；现在AI按标签和信任等级自动匹配，当天就能对上人',
             'AI智能匹配：基于领域标签、信任等级和可用性',
             '完整谈判流程：短名单筛选、面试安排、合同管理',
             '52个REST API覆盖平台全生命周期',
@@ -299,22 +309,30 @@ const translations = {
       title: ['认识', '团队'],
       subtitle: '五位资深工程师与研究员。零层级、零中间人——你直接与解决问题的人对话。',
       members: [
-        { role: '高级工程师 & 项目负责人', bio: '前华为AI产品线核心贡献者，参与了多个生产级AI系统的企业规模化交付。离开华为后，主导了多个AI驱动的企业级平台从架构设计到上线落地的全过程——涵盖内嵌智能Agent的ERP系统、NL2SQL引擎以及全自动化业务流水线。擅长将复杂业务流程转化为AI原生解决方案，从项目初期需求定义到最终生产部署均有完整交付经验。' },
-        { role: '高级工程师', bio: '曾任Crypto公司CTO，从零搭建技术团队并在公司快速扩张期全面主导技术战略与架构决策。现专注于将前沿AI能力与Web3及区块链生态深度融合——设计智能交易Agent、链上自动化执行系统及AI驱动的金融工具平台。凭借深厚的基础设施经验与Crypto原生思维，在去中心化金融与人工智能的交叉领域持续开拓创新解决方案。' },
-        { role: '高级工程师', bio: '曾在亚马逊和Coinbase深耕多年，设计并扩展了服务数百万用户的高可用分布式后端系统。此后创立AI营销初创公司，拥有将AI技术从零到一产品化并应用于真实商业场景与增长自动化的一线实战经验。兼具大厂级系统工程的严谨性与创业公司的敏捷性——既能从容架构大规模云基础设施，也能快速将AI驱动的产品从构想推向市场。' },
-        { role: '高级工程师', bio: '中国人民银行某研究所核心软件开发者，长期在国家级金融基础设施与前沿技术的交汇处构建关键业务系统。在AI Agent架构、自主工作流编排及企业级数据安全方面有深厚积累——这一组合对在高度监管环境中部署AI至关重要。多年在中国金融行业最严格的合规与安全要求下实战磨练，使其在敏感行业的AI落地咨询方面具有独特优势。' },
-        { role: '商务拓展 & 产品洞察负责人', bio: '毕业于加拿大英属哥伦比亚大学（UBC）计算机科学专业，曾在西门子（Siemens）与加拿大轮胎公司（Canadian Tire）担任数据科学家三年，主导跨部门数据建模、用户行为洞察与增长策略分析，将复杂数据转化为可执行的商业决策。现负责团队的商务对接、产品数据分析与市场洞察，是连接技术能力与客户价值的关键纽带，擅长在工程团队与业务方之间架起精准高效的沟通桥梁。' },
+        { role: '高级工程师 & 项目负责人', bio: '前华为AI产品线核心贡献者。离开华为后主导多个AI企业平台从架构到上线的完整交付，包括内嵌智能Agent的ERP系统、NL2SQL引擎。擅长把复杂业务流程转化为能落地生产的AI方案。' },
+        { role: '高级工程师', bio: '曾任Crypto公司CTO，从零搭建技术团队并主导快速扩张期的技术战略。现专注AI与Web3结合，设计智能交易Agent、链上自动化系统与AI驱动的金融工具。' },
+        { role: '高级工程师', bio: '曾在亚马逊、美国头部加密交易所设计并扩展服务数百万用户的高可用分布式系统。此后创立AI营销公司，有AI产品从0到1落地并用于真实业务增长的一线经验。' },
+        { role: '高级工程师', bio: '中国人民银行某研究所核心软件开发者，长期构建国家级金融基础设施相关的关键系统。深耕AI Agent架构与企业数据安全，熟悉最严格合规环境下的AI落地要求。' },
+        { role: '战略运营负责人', bio: '拥有计算机、数学与商业的复合背景，曾在欧洲、加拿大等多家跨国企业任职，资深且敬业。擅长洞察系统与流程中的痛点与漏洞，曾带领数据团队设计数字化转型方案，提供商业建议与方向性战略，助力企业开源节流、降本增效。' },
       ],
     },
     cta: {
-      title: ['准备好重新审视你的', 'AI战略'],
-      subtitle: '通过邮件或电话联系我们——24小时内回复。',
+      title: ['加微信，', '免费聊30分钟'],
+      subtitle: '不确定AI能帮你什么？我们告诉你哪个环节最先值得做，不合适也直说。',
+      wechatNote: '扫码加微信，免费聊聊你的业务',
+      wechatIdLabel: '微信号',
+      wechatId: '待补充',
+      secondaryLabel: '也可以邮件或电话联系我们',
       contactLine: 'info@onyxdevslab.com  ·  +86 18923743756',
     },
     footer: {
       description: '高端AI咨询。资深团队。战略深度。',
       contactTitle: '联系方式',
       rights: '保留所有权利。',
+      wechatLabel: '微信',
+      wechatId: '待补充',
+      addressLines: ['九龙长沙湾丽盈街8号'],
+      serviceNote: '远程交付为主，可视项目安排驻场',
     },
   },
   it: {
@@ -459,7 +477,7 @@ const translations = {
         { role: 'Ingegnere Senior', bio: 'Ha servito come CTO in una startup crypto, costruendo l\'intera organizzazione tecnica e guidando la strategia durante la crescita rapida. Oggi in prima linea nell\'integrazione di AI avanzata con gli ecosistemi Web3 e blockchain — progettando agenti di trading intelligenti, sistemi di automazione on-chain e strumenti finanziari AI-driven. La sua combinazione unica di esperienza infrastrutturale profonda e pensiero crypto-nativo abilita soluzioni innovative all\'intersezione tra finanza decentralizzata e intelligenza artificiale.' },
         { role: 'Ingegnere Senior', bio: 'Vasta esperienza di backend engineering in Amazon e Coinbase, dove ha progettato e scalato sistemi distribuiti ad alta disponibilità per milioni di utenti. Ha successivamente fondato una startup di AI marketing, acquisendo esperienza diretta nella produttizzazione dell\'AI per applicazioni business reali e growth automation. Porta una rara combinazione di rigore sistemistico big-tech e agilità startup — altrettanto a suo agio nell\'architettare infrastrutture cloud su scala e nel prototipare rapidamente prodotti AI-driven da zero a mercato.' },
         { role: 'Ingegnere Senior', bio: 'Sviluppatore software core presso un istituto di ricerca della Banca Popolare Cinese (PBOC), dove costruisce sistemi mission-critical all\'intersezione tra infrastruttura finanziaria nazionale e tecnologia emergente. Profonda competenza in architetture AI Agent, orchestrazione autonoma dei workflow e sicurezza dati enterprise — una combinazione essenziale per il deployment dell\'AI in ambienti altamente regolamentati. La sua esperienza nel navigare i requisiti di compliance e sicurezza più stringenti del settore finanziario cinese lo rende particolarmente qualificato per la consulenza sull\'adozione AI in settori sensibili.' },
-        { role: 'Business Development & Product Insights', bio: 'Laureata in Informatica presso la University of British Columbia (UBC), con tre anni di esperienza come Data Scientist in Siemens e Canadian Tire, dove ha guidato modellazione dati cross-funzionale, analisi del comportamento utente e strategie di crescita — traducendo dataset complessi in decisioni di business concrete. Ora guida lo sviluppo commerciale, l\'analisi di prodotto e l\'insight di mercato del team, fungendo da ponte essenziale tra capacità tecnica e valore per il cliente.' },
+        { role: 'Responsabile Strategia & Operations', bio: 'Vanta un background interdisciplinare tra informatica, matematica e business, con una solida esperienza in aziende multinazionali in Europa e Canada. Ha un occhio attento alle lacune e alle inefficienze nascoste in sistemi e processi e ha guidato team di dati nella progettazione di iniziative di trasformazione digitale, offrendo raccomandazioni commerciali e strategie direzionali che aiutano le aziende a incrementare i ricavi e ridurre i costi.' },
       ],
     },
     cta: {
@@ -478,22 +496,26 @@ const translations = {
 // ─── Data ────────────────────────────────────────────────────────────────────
 
 const teamMeta = [
-  { name: 'Mi', avatar: '/avatars/mi.png', isFounder: false, credentials: ['Huawei'] },
-  { name: 'Lucas', avatar: '/avatars/lucas.png', isFounder: false, credentials: [] },
-  { name: 'Hunter', avatar: '/avatars/hunter.png', isFounder: false, credentials: ['Amazon', 'Coinbase'] },
-  { name: 'Jake', avatar: '/avatars/jake.png', isFounder: false, credentials: ['PBOC'] },
-  { name: 'Olivia', avatar: '/avatars/olivia.png', isFounder: false, credentials: ['UBC', 'Siemens', 'Canadian Tire'] },
+  { name: 'Mi', avatar: '/avatars/mi.png', isFounder: false, credentials: ['UofT', 'Huawei'] },
+  { name: 'Lucas', avatar: '/avatars/lucas.png', isFounder: false, credentials: ['UofT'] },
+  { name: 'Hunter', avatar: '/avatars/hunter.png', isFounder: false, credentials: ['UWaterloo', 'Amazon', 'Coinbase'] },
+  { name: 'Jake', avatar: '/avatars/jake.png', isFounder: false, credentials: ['UofT', 'PBOC'] },
+  { name: 'Olivia', avatar: '/avatars/olivia.png', isFounder: false, credentials: ['UBC', 'Siemens'] },
 ];
 
-const credentialOrgs = [
-  'University of Toronto',
-  'University of Waterloo',
-  'University of British Columbia',
-  'Amazon',
-  'Coinbase',
-  'Huawei',
-  'Siemens',
-];
+// Chinese labels for credential/org chips — domestic audiences don't recognize the Latin abbreviations.
+const credLabelsZh = {
+  'UofT': '多伦多大学',
+  'UWaterloo': '滑铁卢大学',
+  'UBC': '英属哥伦比亚大学',
+  'University of British Columbia': '英属哥伦比亚大学',
+  'Huawei': '华为',
+  'Amazon': '亚马逊',
+  'Coinbase': '美国加密交易所',
+  'PBOC': '中国人民银行',
+  'Siemens': '西门子',
+};
+const localizeCred = (cred, lang) => (lang === 'zh' ? credLabelsZh[cred] || cred : cred);
 
 const projectsData = [
   { id: 'supermarket-datahub', images: ['/projects/supermarket-datahub/dashboard.png', '/projects/supermarket-datahub/sales-analytics.png'] },
@@ -506,13 +528,36 @@ const projectsData = [
   { id: 'mimitavern', images: ['/projects/mimitavern/chat.png'] },
 ];
 
+// visibleIn controls which languages show a case; zhOrder controls zh-specific sort order.
+const workMeta = [
+  { id: 'supermarket-datahub', visibleIn: ['en', 'zh', 'it'] },
+  { id: 'finance-erp', visibleIn: ['en', 'zh', 'it'] },
+  { id: 'jinhui-erp', visibleIn: ['en', 'zh', 'it'] },
+  { id: 'squirrel', visibleIn: ['en', 'zh', 'it'] },
+  { id: 'aiusd', visibleIn: ['en', 'it'] },
+  { id: 'maybole', visibleIn: ['en', 'zh', 'it'] },
+  { id: 'manbo', visibleIn: ['en', 'it'] },
+  { id: 'mimitavern', visibleIn: ['en', 'it'] },
+];
+
+const zhWorkOrder = ['supermarket-datahub', 'jinhui-erp', 'finance-erp', 'squirrel', 'maybole'];
+
+const getVisibleWorkItems = (lang, items) => {
+  const merged = items.map((item, index) => ({ ...item, ...workMeta[index] }));
+  const filtered = merged.filter((item) => item.visibleIn.includes(lang));
+  if (lang === 'zh') {
+    filtered.sort((a, b) => zhWorkOrder.indexOf(a.id) - zhWorkOrder.indexOf(b.id));
+  }
+  return filtered;
+};
+
 const serviceIcons = [Bot, Database, Cpu];
 const philosophyIcons = [Target, Users, Sparkles];
 const langLabels = { en: 'EN', zh: '中文', it: 'IT' };
 
 // ─── Hooks ───────────────────────────────────────────────────────────────────
 
-const useScrollReveal = () => {
+const useScrollReveal = (deps = []) => {
   const ref = useRef(null);
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -523,10 +568,13 @@ const useScrollReveal = () => {
       },
       { threshold: 0.1 }
     );
-    const elements = ref.current?.querySelectorAll('.section-reveal');
+    // Re-observe on every dep change (e.g. language switch mounts new sections),
+    // otherwise reveal elements added after mount stay stuck at opacity 0.
+    const elements = ref.current?.querySelectorAll('.section-reveal:not(.visible)');
     elements?.forEach((el) => observer.observe(el));
     return () => observer.disconnect();
-  }, []);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, deps);
   return ref;
 };
 
@@ -608,6 +656,23 @@ const ServiceCard = ({ icon: Icon, title, description, features }) => (
         </li>
       ))}
     </ul>
+  </div>
+);
+
+const PainPointCard = ({ pain, solution, benefit, onClick }) => (
+  <div
+    className={`glass rounded-2xl p-6 transition-all duration-300 ${onClick ? 'cursor-pointer hover:-translate-y-1' : ''}`}
+    onClick={onClick}
+  >
+    <p className="text-gray-500 text-sm mb-3">
+      <span className="text-red-400/70">痛点</span> · {pain}
+    </p>
+    <p className="text-white font-semibold mb-3">
+      <span className="text-blue-400">AI方案</span> · {solution}
+    </p>
+    <p className="text-green-300/90 text-sm font-medium">
+      <span className="text-green-400">收益</span> · {benefit}
+    </p>
   </div>
 );
 
@@ -701,15 +766,15 @@ const CaseStudyCarousel = ({ items, projectsData, viewLabel, onSelect }) => {
         ref={scrollRef}
         className="flex gap-6 overflow-x-auto scroll-smooth snap-x snap-mandatory hide-scrollbar pb-4"
       >
-        {items.map((study, index) => (
-          <div key={index} className="carousel-card flex-shrink-0 w-[85vw] sm:w-[60vw] md:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] snap-start">
+        {items.map((study) => (
+          <div key={study.id} className="carousel-card flex-shrink-0 w-[85vw] sm:w-[60vw] md:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] snap-start">
             <CaseStudyCard
               title={study.title}
               description={study.description}
               tags={study.tags}
-              image={projectsData[index]?.images[0]}
+              image={projectsData.find((p) => p.id === study.id)?.images[0]}
               viewLabel={viewLabel}
-              onClick={() => onSelect(index)}
+              onClick={() => onSelect(study.id)}
             />
           </div>
         ))}
@@ -819,8 +884,9 @@ const LandingPage = () => {
   });
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeProject, setActiveProject] = useState(null);
-  const pageRef = useScrollReveal();
+  const pageRef = useScrollReveal([lang]);
   const t = translations[lang];
+  const visibleWorkItems = getVisibleWorkItems(lang, t.work.items);
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 50);
@@ -904,19 +970,9 @@ const LandingPage = () => {
         <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-[#0a0e1a] to-transparent" />
       </header>
 
-      {/* ── Credentials & Philosophy ── */}
+      {/* ── Philosophy ── */}
       <section className="py-20 relative">
         <div className="container mx-auto px-6">
-          <div className="section-reveal text-center mb-16">
-            <p className="text-sm text-gray-500 tracking-[0.2em] uppercase mb-8">{t.credentials.label}</p>
-            <div className="flex flex-wrap justify-center items-center gap-x-8 md:gap-x-12 gap-y-4">
-              {credentialOrgs.map((org) => (
-                <span key={org} className="text-sm md:text-base font-semibold text-gray-400/50 hover:text-gray-300 transition-colors duration-300 cursor-default tracking-wide">
-                  {org}
-                </span>
-              ))}
-            </div>
-          </div>
           <div className="grid md:grid-cols-3 gap-5 max-w-4xl mx-auto">
             {t.philosophy.items.map((item, index) => {
               const Icon = philosophyIcons[index];
@@ -959,6 +1015,36 @@ const LandingPage = () => {
         </div>
       </section>
 
+      {/* ── Pain Points (zh only) ── */}
+      {lang === 'zh' && (
+        <section className="py-20 relative">
+          <div className="container mx-auto px-6">
+            <div className="section-reveal text-center mb-16">
+              <span className="text-red-400 text-sm font-medium tracking-[0.2em] uppercase">{t.painpoints.label}</span>
+              <h2 className="text-3xl md:text-4xl font-bold mt-4 mb-6">
+                {t.painpoints.title[0]}
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400">
+                  {t.painpoints.title[1]}
+                </span>
+              </h2>
+              <div className="w-16 h-1 bg-gradient-to-r from-red-400 to-blue-500 mx-auto rounded-full" />
+            </div>
+            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+              {t.painpoints.items.map((item, index) => (
+                <div key={index} className="section-reveal" style={{ transitionDelay: `${index * 100}ms` }}>
+                  <PainPointCard
+                    pain={item.pain}
+                    solution={item.solution}
+                    benefit={item.benefit}
+                    onClick={item.linkId ? () => setActiveProject(item.linkId) : undefined}
+                  />
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
       {/* ── Case Studies ── */}
       <section id="work" className="py-28 relative">
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-blue-500/[0.02] to-transparent" />
@@ -974,7 +1060,7 @@ const LandingPage = () => {
             <div className="w-16 h-1 bg-gradient-to-r from-purple-500 to-cyan-500 mx-auto rounded-full" />
           </div>
           <CaseStudyCarousel
-            items={t.work.items}
+            items={visibleWorkItems.slice(0, 3)}
             projectsData={projectsData}
             viewLabel={t.work.viewDetails}
             onSelect={setActiveProject}
@@ -985,8 +1071,8 @@ const LandingPage = () => {
       {/* ── Project Modal ── */}
       {activeProject !== null && (
         <ProjectModal
-          project={t.work.items[activeProject]}
-          images={projectsData[activeProject]?.images || []}
+          project={visibleWorkItems.find((w) => w.id === activeProject)}
+          images={projectsData.find((p) => p.id === activeProject)?.images || []}
           onClose={() => setActiveProject(null)}
         />
       )}
@@ -1011,7 +1097,7 @@ const LandingPage = () => {
                 <TeamMemberCard
                   name={member.name}
                   avatar={member.avatar}
-                  credentials={member.credentials}
+                  credentials={member.credentials.map((c) => localizeCred(c, lang))}
                   role={t.team.members[index].role}
                   bio={t.team.members[index].bio}
                 />
@@ -1028,15 +1114,42 @@ const LandingPage = () => {
         <div className="absolute top-1/2 right-1/4 w-48 h-48 bg-purple-500/10 rounded-full blur-[80px] animate-float-delayed" />
         <div className="container mx-auto px-6 relative">
           <div className="section-reveal max-w-3xl mx-auto text-center glass rounded-3xl p-12 md:p-16">
-            <h2 className="text-3xl md:text-5xl font-bold mb-6">
-              {t.cta.title[0]}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400">
-                {t.cta.title[1]}
-              </span>
-              ?
-            </h2>
-            <p className="text-lg text-gray-400 mb-6 max-w-xl mx-auto">{t.cta.subtitle}</p>
-            <p className="text-base text-gray-300 font-medium tracking-wide">{t.cta.contactLine}</p>
+            {lang === 'zh' ? (
+              <>
+                <h2 className="text-3xl md:text-5xl font-bold mb-6">
+                  {t.cta.title[0]}
+                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400">
+                    {t.cta.title[1]}
+                  </span>
+                </h2>
+                <p className="text-lg text-gray-400 mb-8 max-w-xl mx-auto">{t.cta.subtitle}</p>
+                <div className="flex flex-col items-center gap-3 mb-8">
+                  <div className="w-40 h-40 rounded-2xl overflow-hidden bg-white p-2 flex items-center justify-center">
+                    <img src="/wechat-qr.png" alt={t.cta.wechatNote} className="w-full h-full object-contain" />
+                  </div>
+                  <p className="text-white font-medium flex items-center gap-2">
+                    <MessageCircle size={16} className="text-green-400" />
+                    {t.cta.wechatNote}
+                  </p>
+                  <p className="text-sm text-gray-400">{t.cta.wechatIdLabel}：{t.cta.wechatId}</p>
+                </div>
+                <p className="text-sm text-gray-500">
+                  {t.cta.secondaryLabel}：{t.cta.contactLine}
+                </p>
+              </>
+            ) : (
+              <>
+                <h2 className="text-3xl md:text-5xl font-bold mb-6">
+                  {t.cta.title[0]}
+                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400">
+                    {t.cta.title[1]}
+                  </span>
+                  ?
+                </h2>
+                <p className="text-lg text-gray-400 mb-6 max-w-xl mx-auto">{t.cta.subtitle}</p>
+                <p className="text-base text-gray-300 font-medium tracking-wide">{t.cta.contactLine}</p>
+              </>
+            )}
           </div>
         </div>
       </section>
@@ -1057,9 +1170,20 @@ const LandingPage = () => {
               <h3 className="text-xl font-bold mb-4">{t.footer.contactTitle}</h3>
               <p className="text-gray-500 leading-relaxed">
                 info@onyxdevslab.com<br />
-                {lang === 'zh' ? '+86 18923743756' : '+1 (416) 565-5366'}<br />
-                8 Lai Ying Street, Grand Victoria III<br />
-                Cheung Sha Wan, Kowloon, HK
+                {lang === 'zh' ? (
+                  <>
+                    +86 18923743756<br />
+                    {t.footer.wechatLabel}：{t.footer.wechatId}<br />
+                    {t.footer.addressLines.map((line) => (<React.Fragment key={line}>{line}<br /></React.Fragment>))}
+                    <span className="text-gray-600 text-sm">{t.footer.serviceNote}</span>
+                  </>
+                ) : (
+                  <>
+                    +1 (416) 565-5366<br />
+                    8 Lai Ying Street, Grand Victoria III<br />
+                    Cheung Sha Wan, Kowloon, HK
+                  </>
+                )}
               </p>
             </div>
           </div>
