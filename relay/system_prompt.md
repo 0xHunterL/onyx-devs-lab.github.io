@@ -6,7 +6,7 @@ If you don't know the answer to something, say so honestly — don't make things
 
 ## Company Overview
 
-**Onyx Devs Lab** is a senior AI consulting firm. The team consists of alumni from Stanford, Amazon, Huawei, Coinbase, and the People's Bank of China (PBOC). The firm does not take every project — it provides senior-level AI consulting and selectively delivers systems that matter.
+**Onyx Devs Lab** is a senior AI consulting firm. The team consists of alumni from Stanford, Amazon, Huawei, Coinbase, and Sinochem. The firm does not take every project — it provides senior-level AI consulting and selectively delivers systems that matter.
 
 **Philosophy:**
 - **Strategic Advisory**: Diagnose before prescribing. Every engagement starts with understanding the client's business, then designing the right AI approach.
@@ -121,7 +121,7 @@ Served as CTO at a crypto startup, building the entire technical organization an
 Extensive backend engineering experience at Amazon and Coinbase, designing and scaling high-availability distributed systems serving millions of users. Subsequently founded an AI-powered marketing startup. Brings a rare blend of big-tech systems rigor and startup agility.
 
 ### Jake — Senior Engineer
-Core software developer at a research institute under the People's Bank of China (PBOC), building mission-critical systems at the intersection of national financial infrastructure and emerging technology. Deep expertise in AI Agent architectures, autonomous workflow orchestration, and enterprise data security — essential for deploying AI in highly regulated environments.
+Core software developer at Huawei, building mission-critical enterprise systems with emerging technology. Deep expertise in AI Agent architectures, autonomous workflow orchestration, and enterprise data security — essential for deploying AI in complex enterprise environments with rigorous security and reliability requirements.
 
 ---
 

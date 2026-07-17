@@ -10,7 +10,7 @@ const translations = {
     hero: {
       badge: 'AI Strategy & Consulting',
       title: ['We Advise on', 'AI'],
-      subtitle: "Amazon, Huawei, PBOC alumni. We don't take every project — we provide senior-level AI consulting and selectively deliver systems that matter.",
+      subtitle: "Amazon and Huawei alumni. We don't take every project — we provide senior-level AI consulting and selectively deliver systems that matter.",
       cta: 'Get in Touch',
       secondary: 'See Our Work',
     },
@@ -146,7 +146,7 @@ const translations = {
         { role: 'Senior Engineer & Project Lead', bio: 'Former core contributor to Huawei\'s AI product line, where he helped ship production AI systems at enterprise scale. Since leaving Huawei, has led the end-to-end architecture and delivery of multiple AI-powered enterprise platforms — including ERP systems with embedded intelligent agents, NL2SQL engines, and fully automated business pipelines. Specializes in translating complex business workflows into AI-native solutions, with a track record of taking projects from initial scoping through production deployment.' },
         { role: 'Senior Engineer', bio: 'Served as CTO at a crypto startup, where he built the entire technical organization and led strategy through rapid scaling. Now at the forefront of integrating cutting-edge AI with Web3 and blockchain ecosystems — designing intelligent trading agents, on-chain automation systems, and AI-driven financial tooling. His unique combination of deep infrastructure experience and crypto-native thinking enables novel solutions at the intersection of decentralized finance and artificial intelligence.' },
         { role: 'Senior Engineer', bio: 'Extensive backend engineering experience at Amazon and Coinbase, where he designed and scaled high-availability distributed systems serving millions of users. Subsequently founded an AI-powered marketing startup, gaining firsthand experience in productizing AI for real-world business applications and growth automation. Brings a rare blend of big-tech systems rigor and startup agility — equally comfortable architecting cloud infrastructure at scale and rapidly prototyping AI-driven products from zero to market.' },
-        { role: 'Senior Engineer', bio: 'Core software developer at a research institute under the People\'s Bank of China (PBOC), where he builds mission-critical systems at the intersection of national financial infrastructure and emerging technology. Brings deep expertise in AI Agent architectures, autonomous workflow orchestration, and enterprise data security — a combination that is essential for deploying AI in highly regulated environments. His experience navigating the strictest compliance and security requirements in China\'s financial sector makes him uniquely qualified to advise on AI adoption in sensitive industries.' },
+        { role: 'Senior Engineer', bio: 'Core software developer at Huawei, where he builds mission-critical enterprise systems with emerging technology. Brings deep expertise in AI Agent architectures, autonomous workflow orchestration, and enterprise data security — a combination that is essential for deploying AI in complex enterprise environments. His experience delivering systems to rigorous security and reliability standards makes him uniquely qualified to advise on enterprise AI adoption.' },
         { role: 'Strategy & Operations Lead', bio: 'Brings a cross-disciplinary background spanning computer science, mathematics, and business, with senior experience across multinational enterprises in Europe and Canada. She has a sharp eye for the gaps and inefficiencies hidden inside systems and processes, and has led data teams in designing digital transformation initiatives — delivering business recommendations and directional strategy that help companies grow revenue and cut costs.' },
       ],
     },
@@ -312,7 +312,7 @@ const translations = {
         { role: '高级工程师 & 项目负责人', bio: '前华为AI产品线核心贡献者。离开华为后主导多个AI企业平台从架构到上线的完整交付，包括内嵌智能Agent的ERP系统、NL2SQL引擎。擅长把复杂业务流程转化为能落地生产的AI方案。' },
         { role: '高级工程师', bio: '曾任Crypto公司CTO，从零搭建技术团队并主导快速扩张期的技术战略。现专注AI与Web3结合，设计智能交易Agent、链上自动化系统与AI驱动的金融工具。' },
         { role: '高级工程师', bio: '曾在亚马逊、美国头部加密交易所设计并扩展服务数百万用户的高可用分布式系统。此后创立AI营销公司，有AI产品从0到1落地并用于真实业务增长的一线经验。' },
-        { role: '高级工程师', bio: '中国人民银行某研究所核心软件开发者，长期构建国家级金融基础设施相关的关键系统。深耕AI Agent架构与企业数据安全，熟悉最严格合规环境下的AI落地要求。' },
+        { role: '高级工程师', bio: '华为核心软件开发者，长期参与企业级关键系统建设。深耕AI Agent架构、自主工作流编排与企业数据安全，熟悉高安全、高可靠要求下的AI落地。' },
         { role: '战略运营负责人', bio: '拥有计算机、数学与商业的复合背景，曾在欧洲、加拿大等多家跨国企业任职，资深且敬业。擅长洞察系统与流程中的痛点与漏洞，曾带领数据团队设计数字化转型方案，提供商业建议与方向性战略，助力企业开源节流、降本增效。' },
       ],
     },
@@ -340,7 +340,7 @@ const translations = {
     hero: {
       badge: 'Strategia & Consulenza AI',
       title: ['Consulenti', 'AI'],
-      subtitle: "Alumni di Stanford, Amazon, Huawei e PBOC. Non accettiamo ogni progetto — offriamo consulenza AI senior e realizziamo selettivamente sistemi ad alto impatto.",
+      subtitle: "Alumni di Stanford, Amazon e Huawei. Non accettiamo ogni progetto — offriamo consulenza AI senior e realizziamo selettivamente sistemi ad alto impatto.",
       cta: 'Contattaci',
       secondary: 'Vedi i Progetti',
     },
@@ -476,7 +476,7 @@ const translations = {
         { role: 'Ingegnere Senior & Project Lead', bio: 'Ex contributore chiave della linea prodotti AI di Huawei, dove ha partecipato al rilascio di sistemi AI in produzione su scala enterprise. Dopo Huawei, ha guidato l\'architettura e la delivery end-to-end di molteplici piattaforme enterprise AI-powered — tra cui sistemi ERP con agenti intelligenti integrati, motori NL2SQL e pipeline di automazione completa. Specializzato nel tradurre workflow aziendali complessi in soluzioni AI-native, con un track record dalla definizione dei requisiti al deployment in produzione.' },
         { role: 'Ingegnere Senior', bio: 'Ha servito come CTO in una startup crypto, costruendo l\'intera organizzazione tecnica e guidando la strategia durante la crescita rapida. Oggi in prima linea nell\'integrazione di AI avanzata con gli ecosistemi Web3 e blockchain — progettando agenti di trading intelligenti, sistemi di automazione on-chain e strumenti finanziari AI-driven. La sua combinazione unica di esperienza infrastrutturale profonda e pensiero crypto-nativo abilita soluzioni innovative all\'intersezione tra finanza decentralizzata e intelligenza artificiale.' },
         { role: 'Ingegnere Senior', bio: 'Vasta esperienza di backend engineering in Amazon e Coinbase, dove ha progettato e scalato sistemi distribuiti ad alta disponibilità per milioni di utenti. Ha successivamente fondato una startup di AI marketing, acquisendo esperienza diretta nella produttizzazione dell\'AI per applicazioni business reali e growth automation. Porta una rara combinazione di rigore sistemistico big-tech e agilità startup — altrettanto a suo agio nell\'architettare infrastrutture cloud su scala e nel prototipare rapidamente prodotti AI-driven da zero a mercato.' },
-        { role: 'Ingegnere Senior', bio: 'Sviluppatore software core presso un istituto di ricerca della Banca Popolare Cinese (PBOC), dove costruisce sistemi mission-critical all\'intersezione tra infrastruttura finanziaria nazionale e tecnologia emergente. Profonda competenza in architetture AI Agent, orchestrazione autonoma dei workflow e sicurezza dati enterprise — una combinazione essenziale per il deployment dell\'AI in ambienti altamente regolamentati. La sua esperienza nel navigare i requisiti di compliance e sicurezza più stringenti del settore finanziario cinese lo rende particolarmente qualificato per la consulenza sull\'adozione AI in settori sensibili.' },
+        { role: 'Ingegnere Senior', bio: 'Sviluppatore software core presso Huawei, dove realizza sistemi enterprise mission-critical con tecnologie emergenti. Ha una profonda competenza in architetture AI Agent, orchestrazione autonoma dei workflow e sicurezza dei dati enterprise — una combinazione essenziale per il deployment dell\'AI in ambienti aziendali complessi. La sua esperienza nella realizzazione di sistemi secondo rigorosi standard di sicurezza e affidabilità lo rende particolarmente qualificato per la consulenza sull\'adozione dell\'AI enterprise.' },
         { role: 'Responsabile Strategia & Operations', bio: 'Vanta un background interdisciplinare tra informatica, matematica e business, con una solida esperienza in aziende multinazionali in Europa e Canada. Ha un occhio attento alle lacune e alle inefficienze nascoste in sistemi e processi e ha guidato team di dati nella progettazione di iniziative di trasformazione digitale, offrendo raccomandazioni commerciali e strategie direzionali che aiutano le aziende a incrementare i ricavi e ridurre i costi.' },
       ],
     },
@@ -499,7 +499,7 @@ const teamMeta = [
   { name: 'Mi', avatar: '/avatars/mi.png', isFounder: false, credentials: ['UofT', 'Huawei'] },
   { name: 'Lucas', avatar: '/avatars/lucas.png', isFounder: false, credentials: ['UofT'] },
   { name: 'Hunter', avatar: '/avatars/hunter.png', isFounder: false, credentials: ['UWaterloo', 'Amazon', 'Coinbase'] },
-  { name: 'Jake', avatar: '/avatars/jake.png', isFounder: false, credentials: ['UofT', 'PBOC'] },
+  { name: 'Jake', avatar: '/avatars/jake.png', isFounder: false, credentials: ['UofT', 'Huawei'] },
   { name: 'Olivia', avatar: '/avatars/olivia.png', isFounder: false, credentials: ['UBC', 'Siemens'] },
 ];
 
@@ -512,7 +512,6 @@ const credLabelsZh = {
   'Huawei': '华为',
   'Amazon': '亚马逊',
   'Coinbase': '美国加密交易所',
-  'PBOC': '中国人民银行',
   'Siemens': '西门子',
 };
 const localizeCred = (cred, lang) => (lang === 'zh' ? credLabelsZh[cred] || cred : cred);
