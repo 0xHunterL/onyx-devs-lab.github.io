@@ -561,20 +561,20 @@ const projectsData = [
   { id: 'meng', images: ['/projects/meng/meng_main_page_top.png', '/projects/meng/main_page_down.png', '/projects/meng/monitor_and_shit.png', '/projects/meng/chatbot.png'] },
 ];
 
-// visibleIn controls which languages show a case; zhOrder controls zh-specific sort order.
+// Keep the complete portfolio visible in every language; zhOrder controls zh-specific sort order.
 const workMeta = [
   { id: 'supermarket-datahub', visibleIn: ['en', 'zh', 'it'] },
   { id: 'finance-erp', visibleIn: ['en', 'zh', 'it'] },
   { id: 'jinhui-erp', visibleIn: ['en', 'zh', 'it'] },
   { id: 'squirrel', visibleIn: ['en', 'zh', 'it'] },
-  { id: 'aiusd', visibleIn: ['en', 'it'] },
+  { id: 'aiusd', visibleIn: ['en', 'zh', 'it'] },
   { id: 'maybole', visibleIn: ['en', 'zh', 'it'] },
-  { id: 'manbo', visibleIn: ['en', 'it'] },
-  { id: 'mimitavern', visibleIn: ['en', 'it'] },
+  { id: 'manbo', visibleIn: ['en', 'zh', 'it'] },
+  { id: 'mimitavern', visibleIn: ['en', 'zh', 'it'] },
   { id: 'meng', visibleIn: ['en', 'zh', 'it'] },
 ];
 
-const zhWorkOrder = ['meng', 'supermarket-datahub', 'jinhui-erp', 'finance-erp', 'squirrel', 'maybole'];
+const zhWorkOrder = ['meng', 'supermarket-datahub', 'jinhui-erp', 'finance-erp', 'squirrel', 'maybole', 'aiusd', 'manbo', 'mimitavern'];
 
 const getVisibleWorkItems = (lang, items) => {
   const merged = items.map((item, index) => ({ ...item, ...workMeta[index] }));
@@ -775,53 +775,38 @@ const TeamMemberCard = ({ name, role, avatar, bio, credentials }) => (
 
 const CaseStudyCarousel = ({ items, projectsData, viewLabel, onSelect }) => {
   const scrollRef = useRef(null);
-  const currentIndexRef = useRef(0);
 
   const scroll = (direction) => {
     const container = scrollRef.current;
     if (!container) return;
 
-    const cards = Array.from(container.querySelectorAll('.carousel-card'));
-    if (!cards.length) return;
+    const cardWidth = container.querySelector('.carousel-card')?.offsetWidth || 400;
+    const step = cardWidth + 24;
+    const maxScrollLeft = container.scrollWidth - container.clientWidth;
+    const atStart = container.scrollLeft <= 1;
+    const atEnd = container.scrollLeft >= maxScrollLeft - 1;
 
-    const nextIndex = Math.min(
-      Math.max(currentIndexRef.current + direction, 0),
-      cards.length - 1,
-    );
-    const containerRect = container.getBoundingClientRect();
-    const cardRect = cards[nextIndex].getBoundingClientRect();
-    const targetLeft = container.scrollLeft + cardRect.left - containerRect.left;
+    if (direction > 0 && atEnd) {
+      container.scrollTo({ left: 0, behavior: 'smooth' });
+      return;
+    }
+    if (direction < 0 && atStart) {
+      container.scrollTo({ left: maxScrollLeft, behavior: 'smooth' });
+      return;
+    }
 
-    currentIndexRef.current = nextIndex;
-    container.scrollTo({ left: targetLeft, behavior: 'smooth' });
-  };
-
-  const syncCurrentIndex = () => {
-    const container = scrollRef.current;
-    if (!container) return;
-
-    const cards = Array.from(container.querySelectorAll('.carousel-card'));
-    if (!cards.length) return;
-
-    const containerLeft = container.getBoundingClientRect().left;
-    currentIndexRef.current = cards.reduce((closestIndex, card, index) => {
-      const distance = Math.abs(card.getBoundingClientRect().left - containerLeft);
-      const closestDistance = Math.abs(cards[closestIndex].getBoundingClientRect().left - containerLeft);
-      return distance < closestDistance ? index : closestIndex;
-    }, 0);
+    container.scrollBy({ left: direction * step, behavior: 'smooth' });
   };
 
   return (
     <div className="relative section-reveal">
       <button
-        type="button"
         onClick={() => scroll(-1)}
         className="absolute -left-4 md:-left-6 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full bg-black/50 backdrop-blur-sm border border-white/10 flex items-center justify-center text-white hover:bg-white/20 transition-colors"
       >
         <ChevronLeft size={20} />
       </button>
       <button
-        type="button"
         onClick={() => scroll(1)}
         className="absolute -right-4 md:-right-6 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full bg-black/50 backdrop-blur-sm border border-white/10 flex items-center justify-center text-white hover:bg-white/20 transition-colors"
       >
@@ -829,7 +814,6 @@ const CaseStudyCarousel = ({ items, projectsData, viewLabel, onSelect }) => {
       </button>
       <div
         ref={scrollRef}
-        onScroll={syncCurrentIndex}
         className="flex gap-6 overflow-x-auto scroll-smooth snap-x snap-mandatory hide-scrollbar pb-4"
       >
         {items.map((study) => (
@@ -1126,7 +1110,7 @@ const LandingPage = () => {
             <div className="w-16 h-1 bg-gradient-to-r from-purple-500 to-cyan-500 mx-auto rounded-full" />
           </div>
           <CaseStudyCarousel
-            items={visibleWorkItems.slice(0, 3)}
+            items={visibleWorkItems}
             projectsData={projectsData}
             viewLabel={t.work.viewDetails}
             onSelect={setActiveProject}
