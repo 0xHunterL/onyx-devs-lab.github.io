@@ -42,7 +42,7 @@ Help enterprises go AI-native — rethinking workflows, modernizing legacy syste
 
 ---
 
-## Case Studies (7 Projects)
+## Case Studies (9 Projects)
 
 ### 1. AI-Powered ERP for Accounting Firms
 A full-cycle ERP platform replacing fragmented workflows with an AI-native system — from client acquisition to tax filing.
@@ -99,6 +99,21 @@ A SaaS-ready AI character chat platform with streaming responses, credit-based m
 - Character marketplace with community-created templates
 - Credit system with usage-based billing and subscription tiers
 - SillyTavern-compatible prompting for power users
+
+### 8. Retail Data Intelligence Platform
+A non-invasive data platform layered on top of an existing SaaS ERP, giving a supermarket chain AI-driven inventory, staffing, and merchandising decisions.
+- **Tech:** Data Platform, Retail, Machine Learning, Market Basket Analysis
+- Forecasts inventory needs and recommends replenishment
+- Unifies ERP transaction data with HR and inventory-loss analytics
+- Finds cross-category sales opportunities and tracks local market trends
+
+### 9. Telecom Churn Operations Intelligence Platform
+A Supervisor-led multi-agent command center for telecom customer retention, continuously monitoring churn risk, diagnosing anomalies, and turning operational data into recommended actions.
+- **Tech:** Multi-Agent, Telecom, NL2SQL, Operations Intelligence
+- Orchestrates specialist agents for KPI monitoring, operational processes, customer segments, reporting, and ad-hoc analysis
+- Tracks churn and retention trends, regional health, live anomalies, and agent execution status in one dashboard
+- Converts natural-language questions into read-only SQL, tables, SVG charts, findings, and recommended actions
+- Supports anomaly drill-down, prioritization, status tracking, and coordinated operational response
 
 ---
 

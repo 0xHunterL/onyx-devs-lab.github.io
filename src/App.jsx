@@ -136,6 +136,17 @@ const translations = {
             'SillyTavern-compatible prompting for power users',
           ],
         },
+        {
+          title: 'Telecom Churn Operations Intelligence Platform',
+          description: 'A Supervisor-led multi-agent command center for telecom customer retention — continuously monitoring churn risk, diagnosing anomalies, and turning operational data into recommended actions.',
+          tags: ['Multi-Agent', 'Telecom', 'NL2SQL', 'Operations Intelligence'],
+          highlights: [
+            'Supervisor orchestrates specialist agents for KPI monitoring, operational processes, customer segments, reporting, and ad-hoc analysis',
+            'A unified command center tracks churn and retention trends, regional health, live anomalies, and agent execution status',
+            'Natural-language questions are translated into read-only SQL, with automatic tables, SVG charts, findings, and recommended actions',
+            'Anomaly workflows support drill-down, prioritization, status tracking, and coordinated response across operational teams',
+          ],
+        },
       ],
     },
     team: {
@@ -302,6 +313,17 @@ const translations = {
             '支持SillyTavern格式的高级提示词',
           ],
         },
+        {
+          title: '通信运营商离网治理智能平台',
+          description: '以Supervisor为核心的多Agent运营驾驶舱，持续监控存量用户离网风险，自动诊断异常，并把业务数据转化为可执行的运营建议。',
+          tags: ['Multi-Agent', '通信运营', 'NL2SQL', '智能分析'],
+          highlights: [
+            '过去运营人员每天要跨多个系统拉报表、找异常、催派单；现在由Supervisor统一调度指标、过程、客群、简报和数据分析Agent',
+            '一个驾驶舱集中呈现离网与留存趋势、区域健康度、实时异常和各Agent运行状态',
+            '业务人员可直接用自然语言提问，系统自动生成只读SQL，并输出数据表、SVG图表、分析结论和运营建议',
+            '异常从发现、下钻、优先级判断到处置状态跟踪形成闭环，帮助团队更快定位高风险区域和客群',
+          ],
+        },
       ],
     },
     team: {
@@ -466,6 +488,17 @@ const translations = {
             'Prompting compatibile SillyTavern per utenti avanzati',
           ],
         },
+        {
+          title: 'Piattaforma Intelligente per la Retention Telco',
+          description: 'Una cabina di regia multi-agente guidata da un Supervisor per monitorare il rischio di abbandono, diagnosticare anomalie e trasformare i dati operativi in azioni consigliate.',
+          tags: ['Multi-Agent', 'Telecom', 'NL2SQL', 'Operations Intelligence'],
+          highlights: [
+            'Il Supervisor orchestra agenti specializzati per KPI, processi operativi, segmenti cliente, reportistica e analisi ad hoc',
+            'Una dashboard unificata mostra trend di churn e retention, salute regionale, anomalie live e stato degli agenti',
+            'Le domande in linguaggio naturale diventano query SQL in sola lettura, tabelle, grafici SVG, conclusioni e azioni consigliate',
+            'Il workflow delle anomalie copre drill-down, priorità, avanzamento e risposta coordinata dei team operativi',
+          ],
+        },
       ],
     },
     team: {
@@ -525,6 +558,7 @@ const projectsData = [
   { id: 'maybole', images: ['/projects/maybole/entrance.png', '/projects/maybole/customer.png', '/projects/maybole/expert.png'] },
   { id: 'manbo', images: ['/projects/manbo/main.png', '/projects/manbo/config.png'] },
   { id: 'mimitavern', images: ['/projects/mimitavern/chat.png'] },
+  { id: 'meng', images: ['/projects/meng/meng_main_page_top.png', '/projects/meng/main_page_down.png', '/projects/meng/monitor_and_shit.png', '/projects/meng/chatbot.png'] },
 ];
 
 // visibleIn controls which languages show a case; zhOrder controls zh-specific sort order.
@@ -537,9 +571,10 @@ const workMeta = [
   { id: 'maybole', visibleIn: ['en', 'zh', 'it'] },
   { id: 'manbo', visibleIn: ['en', 'it'] },
   { id: 'mimitavern', visibleIn: ['en', 'it'] },
+  { id: 'meng', visibleIn: ['en', 'zh', 'it'] },
 ];
 
-const zhWorkOrder = ['supermarket-datahub', 'jinhui-erp', 'finance-erp', 'squirrel', 'maybole'];
+const zhWorkOrder = ['meng', 'supermarket-datahub', 'jinhui-erp', 'finance-erp', 'squirrel', 'maybole'];
 
 const getVisibleWorkItems = (lang, items) => {
   const merged = items.map((item, index) => ({ ...item, ...workMeta[index] }));
@@ -740,22 +775,53 @@ const TeamMemberCard = ({ name, role, avatar, bio, credentials }) => (
 
 const CaseStudyCarousel = ({ items, projectsData, viewLabel, onSelect }) => {
   const scrollRef = useRef(null);
+  const currentIndexRef = useRef(0);
 
   const scroll = (direction) => {
-    if (!scrollRef.current) return;
-    const cardWidth = scrollRef.current.querySelector('.carousel-card')?.offsetWidth || 400;
-    scrollRef.current.scrollBy({ left: direction * (cardWidth + 24), behavior: 'smooth' });
+    const container = scrollRef.current;
+    if (!container) return;
+
+    const cards = Array.from(container.querySelectorAll('.carousel-card'));
+    if (!cards.length) return;
+
+    const nextIndex = Math.min(
+      Math.max(currentIndexRef.current + direction, 0),
+      cards.length - 1,
+    );
+    const containerRect = container.getBoundingClientRect();
+    const cardRect = cards[nextIndex].getBoundingClientRect();
+    const targetLeft = container.scrollLeft + cardRect.left - containerRect.left;
+
+    currentIndexRef.current = nextIndex;
+    container.scrollTo({ left: targetLeft, behavior: 'smooth' });
+  };
+
+  const syncCurrentIndex = () => {
+    const container = scrollRef.current;
+    if (!container) return;
+
+    const cards = Array.from(container.querySelectorAll('.carousel-card'));
+    if (!cards.length) return;
+
+    const containerLeft = container.getBoundingClientRect().left;
+    currentIndexRef.current = cards.reduce((closestIndex, card, index) => {
+      const distance = Math.abs(card.getBoundingClientRect().left - containerLeft);
+      const closestDistance = Math.abs(cards[closestIndex].getBoundingClientRect().left - containerLeft);
+      return distance < closestDistance ? index : closestIndex;
+    }, 0);
   };
 
   return (
     <div className="relative section-reveal">
       <button
+        type="button"
         onClick={() => scroll(-1)}
         className="absolute -left-4 md:-left-6 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full bg-black/50 backdrop-blur-sm border border-white/10 flex items-center justify-center text-white hover:bg-white/20 transition-colors"
       >
         <ChevronLeft size={20} />
       </button>
       <button
+        type="button"
         onClick={() => scroll(1)}
         className="absolute -right-4 md:-right-6 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full bg-black/50 backdrop-blur-sm border border-white/10 flex items-center justify-center text-white hover:bg-white/20 transition-colors"
       >
@@ -763,6 +829,7 @@ const CaseStudyCarousel = ({ items, projectsData, viewLabel, onSelect }) => {
       </button>
       <div
         ref={scrollRef}
+        onScroll={syncCurrentIndex}
         className="flex gap-6 overflow-x-auto scroll-smooth snap-x snap-mandatory hide-scrollbar pb-4"
       >
         {items.map((study) => (
