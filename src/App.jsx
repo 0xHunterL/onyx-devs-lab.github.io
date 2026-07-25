@@ -147,6 +147,19 @@ const translations = {
             'Anomaly workflows support drill-down, prioritization, status tracking, and coordinated response across operational teams',
           ],
         },
+        {
+          title: 'Ghosty — AI Video Production System',
+          description: 'A cinematic AI production workspace that turns an original story into characters, shots, narration, a rendered video, and a human-reviewed YouTube release.',
+          tags: ['AI Video', 'Generative AI', 'Production Automation', 'YouTube'],
+          url: 'https://video.mimimiai.com',
+          linkLabel: 'Visit Live Product',
+          highlights: [
+            'One production line connects story adaptation, character design, shot planning, voice, subtitles, rendering, and publishing',
+            'Character references and generation records keep visual continuity controllable across a full episode',
+            'Durable production states, retryable tasks, and per-shot review replace one-off generation with an operational workflow',
+            'YouTube releases default to private upload and remain under explicit human review before publication',
+          ],
+        },
       ],
     },
     team: {
@@ -324,6 +337,19 @@ const translations = {
             '异常从发现、下钻、优先级判断到处置状态跟踪形成闭环，帮助团队更快定位高风险区域和客群',
           ],
         },
+        {
+          title: 'Ghosty — AI视频生产系统',
+          description: '面向原创叙事创作者的电影化AI生产工作台，把一个故事转化为角色、分镜、旁白、成片和经过人工复核的YouTube发布。',
+          tags: ['AI视频', '生成式AI', '生产自动化', 'YouTube'],
+          url: 'https://video.mimimiai.com',
+          linkLabel: '访问在线产品',
+          highlights: [
+            '一条生产线贯通故事改编、角色设定、分镜、配音、字幕、渲染与发布',
+            '角色参考图和逐镜头生成记录，让整集影片的视觉连续性可控',
+            '任务状态、失败重试和逐镜头复核，把一次性生成升级为可运营的生产流程',
+            'YouTube默认私密上传，公开发布前保留明确的人工确认节点',
+          ],
+        },
       ],
     },
     team: {
@@ -499,6 +525,19 @@ const translations = {
             'Il workflow delle anomalie copre drill-down, priorità, avanzamento e risposta coordinata dei team operativi',
           ],
         },
+        {
+          title: 'Ghosty — Sistema di Produzione Video AI',
+          description: 'Un workspace cinematografico che trasforma una storia originale in personaggi, scene, narrazione, video renderizzato e pubblicazione YouTube con revisione umana.',
+          tags: ['Video AI', 'AI Generativa', 'Automazione', 'YouTube'],
+          url: 'https://video.mimimiai.com',
+          linkLabel: 'Visita il prodotto',
+          highlights: [
+            'Un unico flusso collega adattamento, character design, storyboard, voce, sottotitoli, rendering e pubblicazione',
+            'Riferimenti dei personaggi e log per scena mantengono controllabile la continuità visiva',
+            'Stati persistenti, retry dei task e revisione puntuale trasformano la generazione in un processo operativo',
+            'I video YouTube vengono caricati come privati e richiedono una conferma umana prima della pubblicazione',
+          ],
+        },
       ],
     },
     team: {
@@ -550,6 +589,7 @@ const credLabelsZh = {
 const localizeCred = (cred, lang) => (lang === 'zh' ? credLabelsZh[cred] || cred : cred);
 
 const projectsData = [
+  { id: 'ghosty', images: ['/projects/ghosty/home.png', '/projects/ghosty/studio.png'] },
   { id: 'supermarket-datahub', images: ['/projects/supermarket-datahub/dashboard.png', '/projects/supermarket-datahub/sales-analytics.png'] },
   { id: 'finance-erp', images: ['/projects/finance-erp/dashboard.png', '/projects/finance-erp/agent.png', '/projects/finance-erp/billing.png'] },
   { id: 'jinhui-erp', images: ['/projects/jinhui-erp/cover.png', '/projects/jinhui-erp/miniapp.png'] },
@@ -572,15 +612,18 @@ const workMeta = [
   { id: 'manbo', visibleIn: ['en', 'zh', 'it'] },
   { id: 'mimitavern', visibleIn: ['en', 'zh', 'it'] },
   { id: 'meng', visibleIn: ['en', 'zh', 'it'] },
+  { id: 'ghosty', visibleIn: ['en', 'zh', 'it'] },
 ];
 
-const zhWorkOrder = ['meng', 'supermarket-datahub', 'jinhui-erp', 'finance-erp', 'squirrel', 'maybole', 'aiusd', 'manbo', 'mimitavern'];
+const zhWorkOrder = ['ghosty', 'meng', 'supermarket-datahub', 'jinhui-erp', 'finance-erp', 'squirrel', 'maybole', 'aiusd', 'manbo', 'mimitavern'];
 
 const getVisibleWorkItems = (lang, items) => {
   const merged = items.map((item, index) => ({ ...item, ...workMeta[index] }));
   const filtered = merged.filter((item) => item.visibleIn.includes(lang));
   if (lang === 'zh') {
     filtered.sort((a, b) => zhWorkOrder.indexOf(a.id) - zhWorkOrder.indexOf(b.id));
+  } else {
+    filtered.sort((a, b) => Number(b.id === 'ghosty') - Number(a.id === 'ghosty'));
   }
   return filtered;
 };
@@ -910,6 +953,17 @@ const ProjectModal = ({ project, images, onClose }) => {
           </div>
           <h2 className="text-2xl font-bold mb-3">{project.title}</h2>
           <p className="text-gray-400 mb-6 leading-relaxed">{project.description}</p>
+          {project.url && (
+            <a
+              href={project.url}
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center gap-2 px-4 py-2 mb-6 rounded-lg bg-lime-300/10 text-lime-200 border border-lime-300/30 hover:bg-lime-300/20 transition-colors text-sm font-medium"
+            >
+              {project.linkLabel}
+              <ArrowRight size={15} />
+            </a>
+          )}
           <ul className="space-y-3">
             {project.highlights.map((item, index) => (
               <li key={index} className="flex items-start gap-3 text-gray-400 text-sm">
