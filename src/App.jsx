@@ -631,6 +631,23 @@ const getVisibleWorkItems = (lang, items) => {
 const serviceIcons = [Bot, Database, Cpu];
 const philosophyIcons = [Target, Users, Sparkles];
 const langLabels = { en: 'EN', zh: '中文', it: 'IT' };
+const portfolioCopy = {
+  en: {
+    wallLabel: 'Portfolio Atlas',
+    wallTitle: 'Built deep inside real businesses',
+    wallSubtitle: 'Explore a selection of systems spanning operations, data, finance, industry, and generative AI.',
+  },
+  zh: {
+    wallLabel: '项目图谱',
+    wallTitle: '深入真实业务现场',
+    wallSubtitle: '从运营、数据、金融和工业系统，到生成式 AI 产品。点击任意项目，查看我们如何解决复杂问题。',
+  },
+  it: {
+    wallLabel: 'Atlante dei Progetti',
+    wallTitle: 'Nel cuore delle aziende reali',
+    wallSubtitle: 'Esplora una selezione di sistemi tra operations, dati, finanza, industria e AI generativa.',
+  },
+};
 
 // ─── Hooks ───────────────────────────────────────────────────────────────────
 
@@ -753,40 +770,6 @@ const PainPointCard = ({ pain, solution, benefit, onClick }) => (
   </div>
 );
 
-const CaseStudyCard = ({ title, description, tags, image, onClick, viewLabel }) => (
-  <div className="glass rounded-2xl overflow-hidden transition-all duration-300 group hover:-translate-y-1 cursor-pointer" onClick={onClick}>
-    <div className="relative h-48 overflow-hidden">
-      {image ? (
-        <img src={image} alt={title} className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500" />
-      ) : (
-        <div className="w-full h-full bg-gradient-to-br from-[#0c1222] to-[#1a1040] relative">
-          <div className="absolute inset-0 opacity-[0.06]" style={{
-            backgroundImage: 'linear-gradient(rgba(255,255,255,.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.1) 1px, transparent 1px)',
-            backgroundSize: '24px 24px',
-          }} />
-        </div>
-      )}
-      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center pb-4">
-        <span className="text-white text-sm font-medium px-4 py-1.5 rounded-full bg-white/20 backdrop-blur-sm border border-white/20">
-          {viewLabel}
-        </span>
-      </div>
-    </div>
-    <div className="h-1 bg-gradient-to-r from-blue-500 via-purple-500 to-cyan-500" />
-    <div className="p-6">
-      <div className="mb-3 flex flex-wrap gap-2">
-        {tags.map((tag, index) => (
-          <span key={index} className="px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-500/10 text-blue-300 border border-blue-500/10">
-            {tag}
-          </span>
-        ))}
-      </div>
-      <h3 className="text-lg font-bold mb-2 group-hover:text-blue-300 transition-colors">{title}</h3>
-      <p className="text-gray-400 text-sm leading-relaxed line-clamp-2">{description}</p>
-    </div>
-  </div>
-);
-
 const TeamMemberCard = ({ name, role, avatar, bio, credentials }) => (
   <div className="glass rounded-2xl p-6 md:p-8 transition-all duration-300 group hover:-translate-y-1 h-full">
     <div className="flex gap-5 items-start">
@@ -814,67 +797,58 @@ const TeamMemberCard = ({ name, role, avatar, bio, credentials }) => (
   </div>
 );
 
-// ─── Case Study Carousel ────────────────────────────────────────────────────
+// ─── Portfolio Wall ─────────────────────────────────────────────────────────
 
-const CaseStudyCarousel = ({ items, projectsData, viewLabel, onSelect }) => {
-  const scrollRef = useRef(null);
-
-  const scroll = (direction) => {
-    const container = scrollRef.current;
-    if (!container) return;
-
-    const cardWidth = container.querySelector('.carousel-card')?.offsetWidth || 400;
-    const step = cardWidth + 24;
-    const maxScrollLeft = container.scrollWidth - container.clientWidth;
-    const atStart = container.scrollLeft <= 1;
-    const atEnd = container.scrollLeft >= maxScrollLeft - 1;
-
-    if (direction > 0 && atEnd) {
-      container.scrollTo({ left: 0, behavior: 'smooth' });
-      return;
-    }
-    if (direction < 0 && atStart) {
-      container.scrollTo({ left: maxScrollLeft, behavior: 'smooth' });
-      return;
-    }
-
-    container.scrollBy({ left: direction * step, behavior: 'smooth' });
-  };
-
-  return (
-    <div className="relative section-reveal">
-      <button
-        onClick={() => scroll(-1)}
-        className="absolute -left-4 md:-left-6 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full bg-black/50 backdrop-blur-sm border border-white/10 flex items-center justify-center text-white hover:bg-white/20 transition-colors"
-      >
-        <ChevronLeft size={20} />
-      </button>
-      <button
-        onClick={() => scroll(1)}
-        className="absolute -right-4 md:-right-6 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full bg-black/50 backdrop-blur-sm border border-white/10 flex items-center justify-center text-white hover:bg-white/20 transition-colors"
-      >
-        <ChevronRight size={20} />
-      </button>
-      <div
-        ref={scrollRef}
-        className="flex gap-6 overflow-x-auto scroll-smooth snap-x snap-mandatory hide-scrollbar pb-4"
-      >
-        {items.map((study) => (
-          <div key={study.id} className="carousel-card flex-shrink-0 w-[85vw] sm:w-[60vw] md:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] snap-start">
-            <CaseStudyCard
-              title={study.title}
-              description={study.description}
-              tags={study.tags}
-              image={projectsData.find((p) => p.id === study.id)?.images[0]}
-              viewLabel={viewLabel}
-              onClick={() => onSelect(study.id)}
-            />
-          </div>
-        ))}
-      </div>
+const ProjectWall = ({ items, projectsData, copy, viewLabel, onSelect }) => (
+  <div className="section-reveal">
+    <div className="mb-9 max-w-2xl">
+      <span className="text-xs font-semibold uppercase tracking-[0.24em] text-cyan-300/80">{copy.wallLabel}</span>
+      <h3 className="mt-3 text-2xl font-bold md:text-3xl">{copy.wallTitle}</h3>
+      <p className="mt-3 text-sm leading-relaxed text-gray-400 md:text-base">{copy.wallSubtitle}</p>
     </div>
-  );
-};
+
+    <div className="portfolio-wall grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      {items.map((study) => {
+        const image = projectsData.find((project) => project.id === study.id)?.images[0];
+        return (
+          <button
+            key={study.id}
+            type="button"
+            onClick={() => onSelect(study.id)}
+            className="portfolio-tile group relative aspect-[4/3] overflow-hidden rounded-2xl border border-white/10 bg-[#101625] text-left"
+            aria-label={`${viewLabel}: ${study.title}`}
+          >
+            {image && (
+              <img
+                src={image}
+                alt=""
+                className="portfolio-tile-image absolute inset-0 h-full w-full object-cover object-top transition duration-700 ease-out group-hover:scale-[1.045]"
+              />
+            )}
+            <div className="portfolio-tile-wash absolute inset-0" />
+            <div className="portfolio-tile-gradient absolute inset-0" />
+            <div className="absolute inset-x-0 top-0 flex items-start justify-between p-4">
+              <span className="rounded-full border border-white/10 bg-[#090d16]/75 px-3 py-1.5 text-[10px] font-medium uppercase tracking-[0.12em] text-cyan-100/80 backdrop-blur-xl">
+                {study.tags[0]}
+              </span>
+              <span className="flex h-9 w-9 translate-y-1 items-center justify-center rounded-full border border-white/10 bg-[#090d16]/70 text-white/70 opacity-0 backdrop-blur-xl transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100">
+                <ArrowRight size={15} />
+              </span>
+            </div>
+            <div className="absolute inset-x-0 bottom-0 p-5 md:p-6">
+              <h4 className="text-lg font-semibold leading-snug text-white md:text-xl">
+                {study.title}
+              </h4>
+              <p className="mt-2 line-clamp-2 text-sm leading-relaxed text-gray-400 transition-colors duration-300 group-hover:text-gray-200">
+                {study.description}
+              </p>
+            </div>
+          </button>
+        );
+      })}
+    </div>
+  </div>
+);
 
 // ─── Project Modal ──────────────────────────────────────────────────────────
 
@@ -1004,7 +978,7 @@ const LandingPage = () => {
       {/* ── Navigation ── */}
       <nav className={`fixed w-full z-50 transition-all duration-500 ${
         isScrolled
-          ? 'bg-[#0a0e1a]/80 backdrop-blur-xl shadow-lg shadow-blue-500/5 border-b border-white/5'
+          ? 'bg-[#0a0e1a]'
           : 'bg-transparent'
       }`}>
         <div className="container mx-auto px-6 py-5 flex justify-between items-center">
@@ -1163,9 +1137,10 @@ const LandingPage = () => {
             </h2>
             <div className="w-16 h-1 bg-gradient-to-r from-purple-500 to-cyan-500 mx-auto rounded-full" />
           </div>
-          <CaseStudyCarousel
+          <ProjectWall
             items={visibleWorkItems}
             projectsData={projectsData}
+            copy={portfolioCopy[lang]}
             viewLabel={t.work.viewDetails}
             onSelect={setActiveProject}
           />
