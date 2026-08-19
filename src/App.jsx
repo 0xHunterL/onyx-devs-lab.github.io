@@ -622,7 +622,7 @@ const credLabelsZh = {
 const localizeCred = (cred, lang) => (lang === 'zh' ? credLabelsZh[cred] || cred : cred);
 
 const projectsData = [
-  { id: 'lexflow', images: ['/projects/lexflow/dashboard-v2.jpg', '/projects/lexflow/dossier.jpg'] },
+  { id: 'lexflow', images: ['/projects/lexflow/dashboard-v2.jpg?v=fd941dc', '/projects/lexflow/dossier.jpg'] },
   { id: 'ghosty', images: ['/projects/ghosty/home.png', '/projects/ghosty/studio.png'] },
   { id: 'supermarket-datahub', images: ['/projects/supermarket-datahub/dashboard.png', '/projects/supermarket-datahub/sales-analytics.png'] },
   { id: 'finance-erp', images: ['/projects/finance-erp/dashboard.png', '/projects/finance-erp/agent.png', '/projects/finance-erp/billing.png'] },
