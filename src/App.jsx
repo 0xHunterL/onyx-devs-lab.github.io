@@ -164,6 +164,13 @@ const translations = {
           title: 'AI-Native Law Firm Operations & Case File Intelligence',
           description: 'A unified workspace for law firm operations and large-scale criminal case file analysis — connecting client pipelines, legal delivery, knowledge management, and citation-grounded AI review.',
           tags: ['Legal AI', 'RAG', 'Workflow', 'Document Intelligence'],
+          imageCaptions: [
+            'Unified law-firm command center for matters, revenue, risk, deadlines, and AI-generated daily briefs.',
+            'Large-dossier workspace with page-level coverage, anomaly counts, and explicit human-review gates.',
+            'Client and project lifecycle management, from market lead and engagement approval through delivery and collection.',
+            'Live operating dashboard combining sales pipeline, team capacity, priority work, and AI business insights.',
+            'Citation-grounded analysis links every conclusion to source pages, quoted evidence, confidence, and review status.',
+          ],
           highlights: [
             'One operational workspace connects marketing, sales, legal delivery, administration, client tracking, case milestones, and knowledge management',
             'Large criminal case files are processed through page-level tracking, overlapping chunks, persistent jobs, and explicit coverage checks instead of a single oversized prompt',
@@ -365,6 +372,13 @@ const translations = {
           title: '律所智能运营与刑事卷宗分析平台',
           description: '面向成长型律师事务所的一体化运营与卷宗智能平台，贯通获客、客户、案件交付、知识沉淀，并用可追溯AI分析超大刑事卷宗。',
           tags: ['法律AI', '智能卷宗', 'RAG', '流程管理'],
+          imageCaptions: [
+            '律所统一经营驾驶舱：集中呈现案件、回款、风险、期限和 AI 每日简报。',
+            '超大卷宗分析工作区：逐页统计解析覆盖率、异常页，并设置明确的人工复核门禁。',
+            '客户与项目全生命周期管理：从市场线索、委托审批到案件交付与回款跟踪。',
+            '经营工作台同时呈现销售管线、团队负载、今日重点和 AI 经营洞察。',
+            '可核验证据链：每条结论绑定卷宗页码、原文引用、置信度与人工复核状态。',
+          ],
           highlights: [
             '统一连接市场、销售、律师交付和行政部门，集中管理客户、项目、案件节点、任务、回款与知识库',
             '面对数百万字刑事卷宗，以逐页状态、重叠分片、持久任务和覆盖率门禁替代一次性超长提示词，主动暴露遗漏风险',
@@ -564,6 +578,13 @@ const translations = {
           title: 'Piattaforma AI per Studi Legali e Analisi dei Fascicoli',
           description: 'Un workspace unificato per le operazioni dello studio legale e l’analisi di grandi fascicoli penali, con workflow, knowledge base e risposte AI verificabili.',
           tags: ['Legal AI', 'RAG', 'Workflow', 'Document Intelligence'],
+          imageCaptions: [
+            'Cockpit operativo unificato per pratiche, incassi, rischi, scadenze e briefing AI.',
+            'Analisi di grandi fascicoli con copertura pagina per pagina, anomalie e revisione umana esplicita.',
+            'Gestione del ciclo cliente-progetto, dal lead e mandato fino alla consegna e all’incasso.',
+            'Dashboard operativa con pipeline commerciale, carico del team, priorità e insight AI.',
+            'Ogni conclusione è collegata a pagina, citazione, confidenza e stato di verifica.',
+          ],
           highlights: [
             'Marketing, vendite, delivery legale, amministrazione, clienti e scadenze dei casi sono riuniti in un unico workspace operativo',
             'I fascicoli di grandi dimensioni vengono elaborati con tracciamento pagina per pagina, chunk sovrapposti, job persistenti e controlli di copertura',
@@ -622,7 +643,7 @@ const credLabelsZh = {
 const localizeCred = (cred, lang) => (lang === 'zh' ? credLabelsZh[cred] || cred : cred);
 
 const projectsData = [
-  { id: 'lexflow', images: ['/projects/lexflow/dashboard-v2.jpg?v=fd941dc', '/projects/lexflow/dossier.jpg'] },
+  { id: 'lexflow', images: ['/projects/lexflow/dashboard-v2.jpg?v=fd941dc', '/projects/lexflow/dossier.jpg', '/projects/lexflow/client-projects.jpg?v=law-gallery-2', '/projects/lexflow/operations-dashboard.jpg?v=law-gallery-2', '/projects/lexflow/evidence-citations.jpg?v=law-gallery-2'] },
   { id: 'ghosty', images: ['/projects/ghosty/home.png', '/projects/ghosty/studio.png'] },
   { id: 'supermarket-datahub', images: ['/projects/supermarket-datahub/dashboard.png', '/projects/supermarket-datahub/sales-analytics.png'] },
   { id: 'finance-erp', images: ['/projects/finance-erp/dashboard.png', '/projects/finance-erp/agent.png', '/projects/finance-erp/billing.png'] },
@@ -955,6 +976,15 @@ const ProjectModal = ({ project, images, onClose }) => {
             </>
           )}
         </div>
+
+        {project.imageCaptions?.[currentImage] && (
+          <div className="flex shrink-0 items-start gap-3 border-b border-white/10 bg-[#0a0e16] px-6 py-3 text-sm text-gray-300 md:px-8">
+            <span className="shrink-0 font-mono text-xs text-cyan-300/70">
+              {String(currentImage + 1).padStart(2, '0')} / {String(images.length).padStart(2, '0')}
+            </span>
+            <p className="leading-relaxed">{project.imageCaptions[currentImage]}</p>
+          </div>
+        )}
 
         {/* Content */}
         <div className="p-6 md:p-8 overflow-y-auto">
