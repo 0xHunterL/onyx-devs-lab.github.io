@@ -160,6 +160,17 @@ const translations = {
             'YouTube releases default to private upload and remain under explicit human review before publication',
           ],
         },
+        {
+          title: 'AI-Native Law Firm Operations & Case File Intelligence',
+          description: 'A unified workspace for law firm operations and large-scale criminal case file analysis — connecting client pipelines, legal delivery, knowledge management, and citation-grounded AI review.',
+          tags: ['Legal AI', 'RAG', 'Workflow', 'Document Intelligence'],
+          highlights: [
+            'One operational workspace connects marketing, sales, legal delivery, administration, client tracking, case milestones, and knowledge management',
+            'Large criminal case files are processed through page-level tracking, overlapping chunks, persistent jobs, and explicit coverage checks instead of a single oversized prompt',
+            'Hybrid retrieval returns conclusions with source document, quoted text, chunk identity, and confidence signals for lawyer verification',
+            'A working development application validates uploads, PDF parsing, access control, audit logs, duplicate detection, and retrieval against public court and procuratorate materials',
+          ],
+        },
       ],
     },
     team: {
@@ -350,6 +361,17 @@ const translations = {
             'YouTube默认私密上传，公开发布前保留明确的人工确认节点',
           ],
         },
+        {
+          title: '律所智能运营与刑事卷宗分析平台',
+          description: '面向成长型律师事务所的一体化运营与卷宗智能平台，贯通获客、客户、案件交付、知识沉淀，并用可追溯AI分析超大刑事卷宗。',
+          tags: ['法律AI', '智能卷宗', 'RAG', '流程管理'],
+          highlights: [
+            '统一连接市场、销售、律师交付和行政部门，集中管理客户、项目、案件节点、任务、回款与知识库',
+            '面对数百万字刑事卷宗，以逐页状态、重叠分片、持久任务和覆盖率门禁替代一次性超长提示词，主动暴露遗漏风险',
+            '混合检索结果逐条绑定原始文件、引用片段、分块标识与置信度，方便律师核验而非盲信AI结论',
+            '可运行开发版本已使用公开司法材料验证上传、PDF解析、案件权限、审计日志、文件去重和引用检索链路',
+          ],
+        },
       ],
     },
     team: {
@@ -538,6 +560,17 @@ const translations = {
             'I video YouTube vengono caricati come privati e richiedono una conferma umana prima della pubblicazione',
           ],
         },
+        {
+          title: 'Piattaforma AI per Studi Legali e Analisi dei Fascicoli',
+          description: 'Un workspace unificato per le operazioni dello studio legale e l’analisi di grandi fascicoli penali, con workflow, knowledge base e risposte AI verificabili.',
+          tags: ['Legal AI', 'RAG', 'Workflow', 'Document Intelligence'],
+          highlights: [
+            'Marketing, vendite, delivery legale, amministrazione, clienti e scadenze dei casi sono riuniti in un unico workspace operativo',
+            'I fascicoli di grandi dimensioni vengono elaborati con tracciamento pagina per pagina, chunk sovrapposti, job persistenti e controlli di copertura',
+            'La ricerca ibrida collega ogni conclusione al documento originale, alla citazione e all’identità del chunk per la verifica dell’avvocato',
+            'L’applicazione di sviluppo valida upload, parsing PDF, controllo accessi, audit, deduplicazione e retrieval su materiali giudiziari pubblici',
+          ],
+        },
       ],
     },
     team: {
@@ -589,6 +622,7 @@ const credLabelsZh = {
 const localizeCred = (cred, lang) => (lang === 'zh' ? credLabelsZh[cred] || cred : cred);
 
 const projectsData = [
+  { id: 'lexflow', images: ['/projects/lexflow/dashboard.jpg', '/projects/lexflow/dossier.jpg'] },
   { id: 'ghosty', images: ['/projects/ghosty/home.png', '/projects/ghosty/studio.png'] },
   { id: 'supermarket-datahub', images: ['/projects/supermarket-datahub/dashboard.png', '/projects/supermarket-datahub/sales-analytics.png'] },
   { id: 'finance-erp', images: ['/projects/finance-erp/dashboard.png', '/projects/finance-erp/agent.png', '/projects/finance-erp/billing.png'] },
@@ -613,9 +647,10 @@ const workMeta = [
   { id: 'mimitavern', visibleIn: ['en', 'zh', 'it'] },
   { id: 'meng', visibleIn: ['en', 'zh', 'it'] },
   { id: 'ghosty', visibleIn: ['en', 'zh', 'it'] },
+  { id: 'lexflow', visibleIn: ['en', 'zh', 'it'] },
 ];
 
-const zhWorkOrder = ['ghosty', 'meng', 'supermarket-datahub', 'jinhui-erp', 'finance-erp', 'squirrel', 'maybole', 'aiusd', 'manbo', 'mimitavern'];
+const zhWorkOrder = ['lexflow', 'ghosty', 'meng', 'supermarket-datahub', 'jinhui-erp', 'finance-erp', 'squirrel', 'maybole', 'aiusd', 'manbo', 'mimitavern'];
 
 const getVisibleWorkItems = (lang, items) => {
   const merged = items.map((item, index) => ({ ...item, ...workMeta[index] }));
@@ -623,7 +658,12 @@ const getVisibleWorkItems = (lang, items) => {
   if (lang === 'zh') {
     filtered.sort((a, b) => zhWorkOrder.indexOf(a.id) - zhWorkOrder.indexOf(b.id));
   } else {
-    filtered.sort((a, b) => Number(b.id === 'ghosty') - Number(a.id === 'ghosty'));
+    const featured = ['lexflow', 'ghosty'];
+    const rank = (id) => {
+      const index = featured.indexOf(id);
+      return index === -1 ? featured.length : index;
+    };
+    filtered.sort((a, b) => rank(a.id) - rank(b.id));
   }
   return filtered;
 };
