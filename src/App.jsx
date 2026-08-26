@@ -178,6 +178,23 @@ const translations = {
             'A working development application validates uploads, PDF parsing, access control, audit logs, duplicate detection, and retrieval against public court and procuratorate materials',
           ],
         },
+        {
+          title: 'Onyx Hire — AI Recruiting Operating System',
+          description: 'A recruiter-side AI workspace that synchronizes candidate conversations, builds evidence-grounded profiles, and keeps human review in control of every consequential action.',
+          tags: ['AI Agent', 'Recruiting', 'Workflow Automation', 'Human-in-the-Loop'],
+          imageCaptions: [
+            'A unified candidate queue with live synchronization, processing status, match scores, and human-review priorities.',
+            'Full conversation context, state controls, AI-assisted drafting, and recruiter approval coexist in one workspace.',
+            'Evidence-grounded candidate profiles combine fit score, confidence, strengths, risks, missing information, and recommended next action.',
+            'The recruiting operations dashboard tracks funnel stages, talent quality, connector health, model readiness, and background processing.',
+          ],
+          highlights: [
+            'A local connector reuses the recruiter’s authenticated BOSS session while the product UI remains independent from browser automation and background AI work',
+            'Conversation history is continuously backfilled and new context automatically refreshes structured candidate analysis without requiring manual per-candidate processing',
+            'Every profile separates facts from inference and exposes evidence, confidence, missing information, risk flags, and the recommended next action',
+            'Manual, Copilot, and controlled Autopilot modes preserve human takeover, idempotent sending, and post-send verification; the current build is a working development preview, not a hosted production SaaS',
+          ],
+        },
       ],
     },
     team: {
@@ -386,6 +403,23 @@ const translations = {
             '可运行开发版本已使用公开司法材料验证上传、PDF解析、案件权限、审计日志、文件去重和引用检索链路',
           ],
         },
+        {
+          title: 'Onyx Hire — AI智能招聘操作系统',
+          description: '面向招聘方的一体化AI工作台，持续同步候选人对话，生成可追溯画像，并让每个关键招聘动作保留人工控制。',
+          tags: ['AI Agent', '智能招聘', '流程自动化', '人工复核'],
+          imageCaptions: [
+            '统一候选人队列：集中呈现实时同步、处理状态、岗位匹配度和待人工优先级。',
+            '完整聊天上下文、招聘阶段、AI协作草稿和人工确认在同一工作区自然共存。',
+            '可追溯候选人画像：匹配度、置信度、优势、风险、缺失信息和下一步建议均绑定事实依据。',
+            '招聘运营看板：统一查看人才漏斗、人才质量、Connector健康度、模型状态与后台任务进度。',
+          ],
+          highlights: [
+            '本地Connector复用招聘方已有BOSS登录态，产品界面与浏览器自动化、后台AI任务相互独立，不抢夺日常操作焦点',
+            '系统持续补齐候选人的真实聊天记录；上下文变化后自动刷新结构化画像，无需HR逐人手动触发分析',
+            '候选人画像明确分离事实与推断，展示证据、置信度、缺失信息、风险标志和推荐下一步',
+            '人工、Copilot和受控Autopilot三种模式支持随时接管、幂等发送和发送后回读；当前版本是可运行开发预览，而非已托管生产SaaS',
+          ],
+        },
       ],
     },
     team: {
@@ -592,6 +626,23 @@ const translations = {
             'L’applicazione di sviluppo valida upload, parsing PDF, controllo accessi, audit, deduplicazione e retrieval su materiali giudiziari pubblici',
           ],
         },
+        {
+          title: 'Onyx Hire — Sistema Operativo AI per il Recruiting',
+          description: 'Un workspace AI per recruiter che sincronizza le conversazioni, crea profili verificabili e mantiene la revisione umana su ogni decisione importante.',
+          tags: ['AI Agent', 'Recruiting', 'Workflow', 'Human-in-the-Loop'],
+          imageCaptions: [
+            'Coda candidati unificata con sincronizzazione, stato, punteggio di aderenza e priorità di revisione.',
+            'Conversazioni complete, stato del processo, bozze AI e approvazione del recruiter nello stesso workspace.',
+            'Profilo verificabile con punteggio, confidenza, punti di forza, rischi, informazioni mancanti e prossima azione.',
+            'Dashboard operativa con funnel, qualità dei candidati, stato del connector, modello AI e processi in background.',
+          ],
+          highlights: [
+            'Un connector locale riutilizza la sessione BOSS autenticata mentre interfaccia, automazione browser e processi AI restano separati',
+            'Lo storico delle chat viene completato in background e ogni nuovo contesto aggiorna automaticamente l’analisi strutturata',
+            'Ogni profilo distingue fatti e inferenze, mostrando prove, confidenza, dati mancanti, rischi e prossima azione consigliata',
+            'Le modalità Manuale, Copilot e Autopilot controllato mantengono presa in carico umana, invio idempotente e verifica; la build attuale è una preview funzionante, non un SaaS di produzione',
+          ],
+        },
       ],
     },
     team: {
@@ -643,6 +694,7 @@ const credLabelsZh = {
 const localizeCred = (cred, lang) => (lang === 'zh' ? credLabelsZh[cred] || cred : cred);
 
 const projectsData = [
+  { id: 'onyx-hire', images: ['/projects/onyx-hire/overview.png', '/projects/onyx-hire/conversation.png', '/projects/onyx-hire/profile.png', '/projects/onyx-hire/dashboard.png'] },
   { id: 'lexflow', images: ['/projects/lexflow/dashboard-v2.jpg?v=fd941dc', '/projects/lexflow/dossier.jpg', '/projects/lexflow/client-projects.jpg?v=law-gallery-2', '/projects/lexflow/operations-dashboard.jpg?v=law-gallery-2', '/projects/lexflow/evidence-citations.jpg?v=law-gallery-2'] },
   { id: 'ghosty', images: ['/projects/ghosty/home.png', '/projects/ghosty/studio.png'] },
   { id: 'supermarket-datahub', images: ['/projects/supermarket-datahub/dashboard.png', '/projects/supermarket-datahub/sales-analytics.png'] },
@@ -669,9 +721,10 @@ const workMeta = [
   { id: 'meng', visibleIn: ['en', 'zh', 'it'] },
   { id: 'ghosty', visibleIn: ['en', 'zh', 'it'] },
   { id: 'lexflow', visibleIn: ['en', 'zh', 'it'] },
+  { id: 'onyx-hire', visibleIn: ['en', 'zh', 'it'] },
 ];
 
-const zhWorkOrder = ['lexflow', 'ghosty', 'meng', 'supermarket-datahub', 'jinhui-erp', 'finance-erp', 'squirrel', 'maybole', 'aiusd', 'manbo', 'mimitavern'];
+const zhWorkOrder = ['onyx-hire', 'lexflow', 'ghosty', 'meng', 'supermarket-datahub', 'jinhui-erp', 'finance-erp', 'squirrel', 'maybole', 'aiusd', 'manbo', 'mimitavern'];
 
 const getVisibleWorkItems = (lang, items) => {
   const merged = items.map((item, index) => ({ ...item, ...workMeta[index] }));
@@ -679,7 +732,7 @@ const getVisibleWorkItems = (lang, items) => {
   if (lang === 'zh') {
     filtered.sort((a, b) => zhWorkOrder.indexOf(a.id) - zhWorkOrder.indexOf(b.id));
   } else {
-    const featured = ['lexflow', 'ghosty'];
+    const featured = ['onyx-hire', 'lexflow', 'ghosty'];
     const rank = (id) => {
       const index = featured.indexOf(id);
       return index === -1 ? featured.length : index;
