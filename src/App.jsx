@@ -71,6 +71,35 @@ const translations = {
           ],
         },
         {
+          title: 'AI-Native Accounting Production Platform',
+          description: 'A multi-agent production system for accounting firms. It turns each client portfolio into a continuously updated operating context, then orchestrates invoice collection, bookkeeping, review, tax preparation, compliance checks, exception handling, and human handoff across one auditable workspace.',
+          tags: ['Multi-Agent', 'Accounting Automation', 'Human-in-the-Loop', 'Compliance'],
+          metrics: ['12 business domains', '52 mapped screens', '9 production workspaces', 'End-to-end audit trail'],
+          architecture: [
+            { title: 'Client Portfolio', text: 'Persistent company context, historical ledgers, tax attributes, documents, policies, and operating memory.' },
+            { title: 'Agent Production Line', text: 'Specialized agents execute collection, recognition, posting, review, filing preparation, and follow-up tasks.' },
+            { title: 'Control & Exceptions', text: 'Rules, confidence thresholds, evidence chains, retries, escalation, and explicit human takeover.' },
+            { title: 'Official Submission', text: 'Prepared outputs enter a controlled final-submission path, with manual government-platform operation supported where APIs are unavailable.' },
+          ],
+          highlights: [
+            'Reframes accounting from staff operating page by page into agents advancing a client portfolio through a production pipeline',
+            'Batch orchestration across clients with queues, priorities, status tracking, retries, and human intervention for exceptions',
+            'Separates deterministic accounting rules from AI judgment and retains evidence for review, compliance, and audit',
+            'Clean-room product exploration built from observed workflows and feature archaeology, independent of proprietary source code',
+          ],
+          imageCaptions: [
+            'Cross-client production dashboard: agent completion rates, customer progress, live queues, and exception takeover.',
+            'Zero-filing client workspace with tax attributes, monthly status, ownership, and batch operations.',
+            'Intelligent invoice collection through tax digital accounts, scheduled tasks, credential readiness, and state tracking.',
+            'Bookkeeping workbench for voucher generation, posting progress, review states, and batch production.',
+            'Tax-filing center that prepares and tracks filing tasks while preserving a controlled final-submission step.',
+            'Compliance control tower combining invoice, accounting, tax, and evidence-chain risks.',
+            'Corporate-services project workspace for registration, change, cancellation, and deadline-driven delivery.',
+            'Contract and billing operations covering service terms, receivables, renewals, and collection status.',
+            'Permission and governance settings for roles, data scope, operational authority, and traceability.',
+          ],
+        },
+        {
           title: 'Unified ERP for Mining Operations',
           description: 'An integrated platform for a mining company in Northwest China — unifying fragmented tools and bringing legacy industrial hardware online.',
           tags: ['IoT', 'ERP', 'Siemens PLC', 'AI Agent'],
@@ -293,6 +322,35 @@ const translations = {
             '内部Agent完全掌握20年业务数据，支持NL2SQL查询',
             '全链路工作流：接单、工单流转、资料整理、合规申报',
             '深度对接工商登记与税务申报系统',
+          ],
+        },
+        {
+          title: 'AI原生代理记账自动化平台',
+          description: '面向代理记账团队的多智能体生产系统。它把每家客户视为持续演进的业务 Portfolio，由专业 Agent 协同完成取票、记账、审核、报税准备、合规检查、异常处置与人工接管，并让全过程可追踪、可复核。',
+          tags: ['多智能体', '代理记账自动化', '人机协同', '合规审计'],
+          metrics: ['12 个业务域', '52 个页面映射', '9 类生产工作台', '全流程审计轨迹'],
+          architecture: [
+            { title: '客户 Portfolio', text: '持续积累企业档案、历史账套、税务属性、原始凭证、政策规则与业务记忆。' },
+            { title: 'Agent 生产线', text: '取票、识别、入账、复核、报税准备和客户跟进等专业 Agent 分工协作。' },
+            { title: '控制与异常层', text: '规则校验、置信度阈值、证据链、自动重试、升级处理和人工接管形成安全边界。' },
+            { title: '官方提交层', text: '系统完成资料与申报结果准备；缺少稳定 API 时，保留受控的政府平台人工提交路径。' },
+          ],
+          highlights: [
+            '把“会计逐页操作软件”重构为“Agent 推动客户 Portfolio 沿生产流水线持续前进”',
+            '跨客户批量调度任务，统一管理队列、优先级、执行状态、自动重试和异常人工介入',
+            '将确定性会计规则与 AI 判断分层，每一步保留依据、结果和操作轨迹，便于复核与审计',
+            '通过业务流程观察和功能考古进行 Clean-room 产品探索，不依赖竞品专有源代码',
+          ],
+          imageCaptions: [
+            '跨客户生产总览：Agent 完成率、客户进度、实时任务队列和异常人工接管。',
+            '零申报客户工作台：统一维护税务属性、账期状态、负责人及批量操作。',
+            '智能取票：连接税务数字账户，管理预约任务、账密完备度与取票状态。',
+            '智能记账工作台：覆盖凭证生成、入账进度、审核状态和批量生产。',
+            '报税中心：自动准备并跟踪申报任务，同时保留受控的最终提交环节。',
+            '合规控制塔：集中管理发票、财务、税务遵从和证据链风险。',
+            '工商项目工作台：管理注册、变更、注销等项目流程与交付时限。',
+            '合同与收费运营：覆盖服务周期、应收、续费与回款状态。',
+            '权限治理：按角色、数据范围和操作权限控制 Agent 与人员的业务边界。',
           ],
         },
         {
@@ -519,6 +577,35 @@ const translations = {
           ],
         },
         {
+          title: 'Piattaforma AI-Native per la Produzione Contabile',
+          description: 'Un sistema di produzione multi-agente per studi contabili. Ogni cliente diventa un portfolio operativo in continua evoluzione; agenti specializzati coordinano acquisizione fatture, contabilità, revisione, preparazione fiscale, conformità, gestione eccezioni e passaggio controllato all’operatore.',
+          tags: ['Multi-Agent', 'Automazione Contabile', 'Human-in-the-Loop', 'Compliance'],
+          metrics: ['12 domini operativi', '52 schermate mappate', '9 workspace produttivi', 'Audit trail end-to-end'],
+          architecture: [
+            { title: 'Portfolio Cliente', text: 'Contesto persistente con anagrafiche, storico contabile, attributi fiscali, documenti, regole e memoria operativa.' },
+            { title: 'Linea di Produzione Agentica', text: 'Agenti specializzati eseguono raccolta, riconoscimento, registrazione, revisione e preparazione degli adempimenti.' },
+            { title: 'Controlli ed Eccezioni', text: 'Regole, soglie di confidenza, evidenze, retry, escalation e presa in carico umana esplicita.' },
+            { title: 'Invio Ufficiale', text: 'Output pronti per un percorso di invio controllato, anche manuale quando le piattaforme pubbliche non offrono API stabili.' },
+          ],
+          highlights: [
+            'Trasforma il lavoro da navigazione manuale pagina per pagina a una pipeline in cui gli agenti avanzano il portfolio del cliente',
+            'Orchestrazione batch multi-cliente con code, priorità, stati, retry e intervento umano sulle eccezioni',
+            'Separa regole contabili deterministiche dal giudizio AI e conserva le evidenze per revisione e audit',
+            'Esplorazione clean-room basata sui workflow osservati e sull’archeologia funzionale, senza codice proprietario',
+          ],
+          imageCaptions: [
+            'Dashboard produttiva multi-cliente con avanzamento agenti, code live ed eccezioni.',
+            'Workspace per clienti a dichiarazione zero con attributi fiscali e operazioni batch.',
+            'Raccolta intelligente delle fatture, pianificazione e controllo credenziali.',
+            'Workbench contabile per registrazioni, avanzamento e revisione automatizzata.',
+            'Centro fiscale per preparazione e tracciamento degli adempimenti.',
+            'Control tower di conformità per rischi fiscali, contabili e catena delle evidenze.',
+            'Workspace per pratiche societarie, scadenze e consegne.',
+            'Operazioni contrattuali, fatturazione, rinnovi e incassi.',
+            'Governance di ruoli, dati, autorizzazioni operative e tracciabilità.',
+          ],
+        },
+        {
           title: 'ERP Unificato per Operazioni Minerarie',
           description: "Piattaforma integrata che unifica strumenti e porta online l'hardware industriale legacy.",
           tags: ['IoT', 'ERP', 'Siemens PLC', 'AI Agent'],
@@ -699,6 +786,7 @@ const projectsData = [
   { id: 'ghosty', images: ['/projects/ghosty/home.png', '/projects/ghosty/studio.png'] },
   { id: 'supermarket-datahub', images: ['/projects/supermarket-datahub/dashboard.png', '/projects/supermarket-datahub/sales-analytics.png'] },
   { id: 'finance-erp', images: ['/projects/finance-erp/dashboard.png', '/projects/finance-erp/agent.png', '/projects/finance-erp/billing.png'] },
+  { id: 'finance-ai-automation', images: ['/projects/finance-erp-ai/01-production-dashboard.png', '/projects/finance-erp-ai/02-zero-filing-clients.png', '/projects/finance-erp-ai/03-intelligent-invoice-collection.png', '/projects/finance-erp-ai/04-ledger-workbench.png', '/projects/finance-erp-ai/05-tax-filing-center.png', '/projects/finance-erp-ai/06-compliance-control.png', '/projects/finance-erp-ai/07-corporate-services.png', '/projects/finance-erp-ai/08-contract-billing.png', '/projects/finance-erp-ai/09-permission-settings.png'] },
   { id: 'jinhui-erp', images: ['/projects/jinhui-erp/cover.png', '/projects/jinhui-erp/miniapp.png'] },
   { id: 'squirrel', images: ['/projects/squirrel/report.png', '/projects/squirrel/agent-chart.jpg'] },
   { id: 'aiusd', images: ['/projects/aiusd/cover.png', '/projects/aiusd/chat.png'] },
@@ -712,6 +800,7 @@ const projectsData = [
 const workMeta = [
   { id: 'supermarket-datahub', visibleIn: ['en', 'zh', 'it'] },
   { id: 'finance-erp', visibleIn: ['en', 'zh', 'it'] },
+  { id: 'finance-ai-automation', visibleIn: ['en', 'zh', 'it'] },
   { id: 'jinhui-erp', visibleIn: ['en', 'zh', 'it'] },
   { id: 'squirrel', visibleIn: ['en', 'zh', 'it'] },
   { id: 'aiusd', visibleIn: ['en', 'zh', 'it'] },
@@ -724,7 +813,7 @@ const workMeta = [
   { id: 'onyx-hire', visibleIn: ['en', 'zh', 'it'] },
 ];
 
-const zhWorkOrder = ['onyx-hire', 'lexflow', 'ghosty', 'meng', 'supermarket-datahub', 'jinhui-erp', 'finance-erp', 'squirrel', 'maybole', 'aiusd', 'manbo', 'mimitavern'];
+const zhWorkOrder = ['onyx-hire', 'lexflow', 'ghosty', 'meng', 'finance-ai-automation', 'supermarket-datahub', 'jinhui-erp', 'finance-erp', 'squirrel', 'maybole', 'aiusd', 'manbo', 'mimitavern'];
 
 const getVisibleWorkItems = (lang, items) => {
   const merged = items.map((item, index) => ({ ...item, ...workMeta[index] }));
@@ -1050,6 +1139,25 @@ const ProjectModal = ({ project, images, onClose }) => {
           </div>
           <h2 className="text-2xl font-bold mb-3">{project.title}</h2>
           <p className="text-gray-400 mb-6 leading-relaxed">{project.description}</p>
+          {project.metrics && (
+            <div className="mb-7 grid grid-cols-2 gap-3 md:grid-cols-4">
+              {project.metrics.map((metric, index) => (
+                <div key={index} className="rounded-xl border border-cyan-400/15 bg-cyan-400/[0.04] px-4 py-3 text-sm font-medium text-cyan-100">
+                  {metric}
+                </div>
+              ))}
+            </div>
+          )}
+          {project.architecture && (
+            <div className="mb-7 grid gap-3 md:grid-cols-2">
+              {project.architecture.map((layer, index) => (
+                <div key={index} className="rounded-xl border border-white/10 bg-white/[0.025] p-4">
+                  <div className="mb-1 text-sm font-semibold text-purple-200">{String(index + 1).padStart(2, '0')} · {layer.title}</div>
+                  <p className="text-sm leading-relaxed text-gray-400">{layer.text}</p>
+                </div>
+              ))}
+            </div>
+          )}
           {project.url && (
             <a
               href={project.url}
