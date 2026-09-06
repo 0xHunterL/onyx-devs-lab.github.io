@@ -1,4 +1,5 @@
-import React, { useEffect, useRef } from 'react'
+import { useEffect, useRef } from 'react'
+import PropTypes from 'prop-types'
 import Markdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
 import { Bot } from 'lucide-react'
@@ -23,6 +24,13 @@ const ToolStatusIndicator = ({ statuses }) => (
     ))}
   </div>
 )
+
+ToolStatusIndicator.propTypes = {
+  statuses: PropTypes.arrayOf(PropTypes.shape({
+    name: PropTypes.string,
+    status: PropTypes.string.isRequired,
+  })).isRequired,
+}
 
 const MessageList = ({ messages, welcomeMessage = "Hi! I'm Onyx AI. Ask me anything about our services." }) => {
   const endRef = useRef(null)
@@ -95,6 +103,17 @@ const MessageList = ({ messages, welcomeMessage = "Hi! I'm Onyx AI. Ask me anyth
       <div ref={endRef} />
     </div>
   )
+}
+
+MessageList.propTypes = {
+  messages: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    role: PropTypes.oneOf(['user', 'assistant']).isRequired,
+    content: PropTypes.string,
+    isStreaming: PropTypes.bool,
+    toolStatuses: PropTypes.arrayOf(PropTypes.object),
+  })).isRequired,
+  welcomeMessage: PropTypes.string,
 }
 
 export default MessageList

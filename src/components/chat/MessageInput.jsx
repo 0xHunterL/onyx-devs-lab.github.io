@@ -1,4 +1,5 @@
-import React, { useRef, useCallback } from 'react'
+import { useRef, useCallback } from 'react'
+import PropTypes from 'prop-types'
 import { Send, Square } from 'lucide-react'
 
 const MessageInput = ({ onSend, isLoading, onStop, placeholder = 'Ask anything...' }) => {
@@ -62,6 +63,13 @@ const MessageInput = ({ onSend, isLoading, onStop, placeholder = 'Ask anything..
       </div>
     </div>
   )
+}
+
+MessageInput.propTypes = {
+  onSend: PropTypes.func.isRequired,
+  isLoading: PropTypes.bool.isRequired,
+  onStop: PropTypes.func.isRequired,
+  placeholder: PropTypes.string,
 }
 
 export default MessageInput

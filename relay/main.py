@@ -1,117 +1,171 @@
+import asyncio
+import logging
 import os
 import time
 from collections import defaultdict
+from datetime import date
+from typing import Literal
 
 import anthropic
 from anthropic import AsyncAnthropicVertex
-from fastapi import FastAPI, Request
+from fastapi import FastAPI, HTTPException, Request
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.responses import JSONResponse
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 from sse_starlette.sse import EventSourceResponse
 
+from assistant_registry import AssistantRegistry
 from config import RelaySettings
 
 settings = RelaySettings()
+logger = logging.getLogger("assistant-gateway")
 
 if settings.GOOGLE_APPLICATION_CREDENTIALS:
     os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = settings.GOOGLE_APPLICATION_CREDENTIALS
 
-app = FastAPI(title="Onyx Chat Relay")
+registry = AssistantRegistry(settings.ASSISTANTS_DIR)
+app = FastAPI(title="Mimimi AI Assistant Gateway", version="1.0.0")
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=[o.strip() for o in settings.CORS_ORIGINS.split(",")],
-    allow_origin_regex=r"^http://localhost:\d+$",
-    allow_methods=["POST", "OPTIONS"],
-    allow_headers=["Content-Type", "X-API-Key"],
+    allow_origins=[origin.strip() for origin in settings.CORS_ORIGINS.split(",") if origin.strip()],
+    allow_origin_regex=r"^http://(localhost|127\.0\.0\.1):\d+$",
+    allow_methods=["GET", "POST", "OPTIONS"],
+    allow_headers=["Content-Type", "Authorization", "X-Session-ID"],
+    max_age=3600,
 )
-
-# --- Rate limiting (in-memory, per IP) ---
-_rate_buckets: dict[str, list[float]] = defaultdict(list)
-
-
-def _check_rate_limit(ip: str) -> bool:
-    now = time.time()
-    window = 60.0
-    bucket = _rate_buckets[ip]
-    _rate_buckets[ip] = [t for t in bucket if now - t < window]
-    if len(_rate_buckets[ip]) >= settings.RATE_LIMIT_PER_MINUTE:
-        return False
-    _rate_buckets[ip].append(now)
-    return True
-
-
-@app.middleware("http")
-async def auth_and_rate_limit(request: Request, call_next):
-    if request.url.path == "/health" or request.method == "OPTIONS":
-        return await call_next(request)
-
-    api_key = request.headers.get("X-API-Key", "")
-    if api_key != settings.API_KEY:
-        return JSONResponse(status_code= 401, content={"error": "Invalid API key"})
-
-    client_ip = request.headers.get("X-Real-IP") or request.client.host
-    if not _check_rate_limit(client_ip):
-        return JSONResponse(status_code=429, content={"error": "Rate limit exceeded"})
-
-    return await call_next(request)
-
 
 client = AsyncAnthropicVertex(
     project_id=settings.VERTEX_PROJECT_ID,
     region=settings.VERTEX_REGION,
+    max_retries=0,
 )
 
-TOOL_DEFINITIONS = []
+
+class ChatMessage(BaseModel):
+    role: Literal["user", "assistant"]
+    content: str = Field(min_length=1, max_length=settings.MAX_MESSAGE_CHARS)
 
 
 class ChatRequest(BaseModel):
-    messages: list[dict]
+    session_id: str = Field(min_length=8, max_length=128, pattern=r"^[A-Za-z0-9_-]+$")
+    messages: list[ChatMessage] = Field(min_length=1, max_length=settings.MAX_MESSAGES)
 
 
-def merge_consecutive_roles(messages):
-    merged = []
-    for m in messages:
-        if merged and merged[-1]["role"] == m["role"]:
-            merged[-1]["content"] += "\n" + m["content"]
+_minute_buckets: dict[tuple[str, str], list[float]] = defaultdict(list)
+_hour_buckets: dict[tuple[str, str], list[float]] = defaultdict(list)
+_global_day = date.today()
+_global_requests = 0
+_rate_lock = asyncio.Lock()
+
+
+def _client_ip(request: Request) -> str:
+    # This service only listens on loopback. Nginx replaces any incoming value
+    # with the resolved visitor address before proxying the request here.
+    return request.headers.get("X-Real-IP") or request.client.host
+
+
+async def _check_limits(assistant_id: str, ip: str) -> None:
+    global _global_day, _global_requests
+    now = time.time()
+    key = (assistant_id, ip)
+
+    async with _rate_lock:
+        minute = [stamp for stamp in _minute_buckets[key] if now - stamp < 60]
+        hour = [stamp for stamp in _hour_buckets[key] if now - stamp < 3600]
+        today = date.today()
+        if today != _global_day:
+            _global_day = today
+            _global_requests = 0
+
+        if len(minute) >= settings.RATE_LIMIT_PER_MINUTE:
+            raise HTTPException(status_code=429, detail="Too many requests. Please wait a minute and try again.")
+        if len(hour) >= settings.RATE_LIMIT_PER_HOUR:
+            raise HTTPException(status_code=429, detail="Hourly chat limit reached. Please try again later.")
+        if _global_requests >= settings.GLOBAL_DAILY_REQUEST_LIMIT:
+            raise HTTPException(status_code=503, detail="The assistant has reached its daily capacity.")
+
+        minute.append(now)
+        hour.append(now)
+        _minute_buckets[key] = minute
+        _hour_buckets[key] = hour
+        _global_requests += 1
+
+
+def _merge_consecutive_roles(messages: list[ChatMessage]) -> list[dict[str, str]]:
+    merged: list[dict[str, str]] = []
+    for message in messages:
+        item = {"role": message.role, "content": message.content.strip()}
+        if merged and merged[-1]["role"] == item["role"]:
+            merged[-1]["content"] += "\n" + item["content"]
         else:
-            merged.append(dict(m))
+            merged.append(item)
     return merged
 
 
-@app.post("/chat")
-async def chat(req: ChatRequest):
-    raw = [{"role": m["role"], "content": m["content"]} for m in req.messages]
-    api_messages = merge_consecutive_roles(raw)
-
-    async def event_stream():
-        try:
-            kwargs = {
-                "model": settings.CLAUDE_MODEL,
-                "max_tokens": settings.MAX_TOKENS,
-                "temperature": settings.TEMPERATURE,
-                "system": settings.system_prompt,
-                "messages": api_messages,
-            }
-            if TOOL_DEFINITIONS:
-                kwargs["tools"] = TOOL_DEFINITIONS
-
-            async with client.messages.stream(**kwargs) as stream:
-                async for event in stream:
-                    if event.type == "content_block_delta":
-                        if event.delta.type == "text_delta":
-                            yield {"event": "text", "data": event.delta.text}
-                    elif event.type == "message_stop":
-                        yield {"event": "done", "data": ""}
-        except anthropic.APIError as e:
-            yield {"event": "error", "data": str(e)}
-        except Exception as e:
-            yield {"event": "error", "data": f"Internal error: {type(e).__name__}"}
-
-    return EventSourceResponse(event_stream())
+def _model_candidates(assistant) -> list[str]:
+    configured = [assistant.model or settings.CLAUDE_MODEL]
+    configured.extend(model.strip() for model in settings.CLAUDE_FALLBACK_MODELS.split(","))
+    return list(dict.fromkeys(model for model in configured if model))
 
 
 @app.get("/health")
 async def health():
-    return {"status": "ok", "service": "onyx-chat-relay"}
+    return {
+        "status": "ok",
+        "service": "ai-assistant-gateway",
+        "assistants": registry.ids,
+    }
+
+
+@app.post("/v1/assistants/{assistant_id}/chat")
+async def chat(assistant_id: str, payload: ChatRequest, request: Request):
+    assistant = registry.get(assistant_id)
+    if assistant is None:
+        raise HTTPException(status_code=404, detail="Unknown assistant")
+
+    total_chars = sum(len(message.content) for message in payload.messages)
+    if total_chars > settings.MAX_TOTAL_INPUT_CHARS:
+        raise HTTPException(status_code=413, detail="Conversation is too long. Please start a new chat.")
+
+    await _check_limits(assistant_id, _client_ip(request))
+    api_messages = _merge_consecutive_roles(payload.messages)
+
+    async def event_stream():
+        candidates = _model_candidates(assistant)
+        for index, model in enumerate(candidates):
+            emitted_text = False
+            try:
+                async with client.messages.stream(
+                    model=model,
+                    max_tokens=assistant.max_tokens or settings.MAX_TOKENS,
+                    system=assistant.system_prompt,
+                    messages=api_messages,
+                ) as stream:
+                    async for text in stream.text_stream:
+                        emitted_text = True
+                        yield {"event": "text", "data": text}
+                yield {"event": "done", "data": ""}
+                return
+            except anthropic.RateLimitError:
+                if not emitted_text and index + 1 < len(candidates):
+                    logger.warning("Model capacity unavailable; using fallback for %s", assistant_id)
+                    continue
+                logger.exception("Assistant provider capacity exhausted for %s", assistant_id)
+                yield {"event": "error", "data": "The assistant service is temporarily unavailable."}
+                return
+            except anthropic.APIError:
+                logger.exception("Assistant provider request failed for %s", assistant_id)
+                yield {"event": "error", "data": "The assistant service is temporarily unavailable."}
+                return
+            except Exception:
+                logger.exception("Unexpected assistant error for %s", assistant_id)
+                yield {"event": "error", "data": "The assistant could not complete this request."}
+                return
+
+    return EventSourceResponse(
+        event_stream(),
+        headers={
+            "Cache-Control": "no-cache, no-transform",
+            "X-Accel-Buffering": "no",
+        },
+    )

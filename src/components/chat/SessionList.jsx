@@ -1,4 +1,4 @@
-import React from 'react'
+import PropTypes from 'prop-types'
 import { Plus, X, Trash2 } from 'lucide-react'
 
 const SessionList = ({ sessions, currentSessionId, onSelect, onDelete, onNewChat, onClose }) => {
@@ -55,6 +55,18 @@ const SessionList = ({ sessions, currentSessionId, onSelect, onDelete, onNewChat
       </div>
     </div>
   )
+}
+
+SessionList.propTypes = {
+  sessions: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+  })).isRequired,
+  currentSessionId: PropTypes.string,
+  onSelect: PropTypes.func.isRequired,
+  onDelete: PropTypes.func.isRequired,
+  onNewChat: PropTypes.func.isRequired,
+  onClose: PropTypes.func.isRequired,
 }
 
 export default SessionList

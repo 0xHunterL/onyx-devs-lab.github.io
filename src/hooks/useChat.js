@@ -1,6 +1,6 @@
 import { useState, useCallback, useRef } from 'react'
 
-export function useChat({ relayUrl, apiKey, sessionId, sessionOps }) {
+export function useChat({ chatApiUrl, sessionId, sessionOps }) {
   const [messages, setMessages] = useState([])
   const [isLoading, setIsLoading] = useState(false)
   const abortRef = useRef(null)
@@ -43,14 +43,24 @@ export function useChat({ relayUrl, apiKey, sessionId, sessionOps }) {
         .filter(m => m.role === 'user' || m.role === 'assistant')
         .map(m => ({ role: m.role, content: m.content }))
 
-      const response = await fetch(`${relayUrl}/chat`, {
+      const response = await fetch(chatApiUrl, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json', 'X-API-Key': apiKey },
-        body: JSON.stringify({ messages: apiMessages }),
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'text/event-stream',
+        },
+        body: JSON.stringify({ session_id: activeSessionId, messages: apiMessages }),
         signal: abortRef.current.signal,
       })
 
-      if (!response.ok) throw new Error(`HTTP ${response.status}`)
+      if (!response.ok) {
+        let detail = ''
+        try {
+          const body = await response.json()
+          detail = body.detail ? `: ${body.detail}` : ''
+        } catch { /* use the status below */ }
+        throw new Error(`HTTP ${response.status}${detail}`)
+      }
 
       const reader = response.body?.getReader()
       if (!reader) throw new Error('No response body')
@@ -171,7 +181,7 @@ export function useChat({ relayUrl, apiKey, sessionId, sessionOps }) {
       sendingRef.current = false
       abortRef.current = null
     }
-  }, [relayUrl, sessionId, sessionOps])
+  }, [chatApiUrl, sessionId, sessionOps])
 
   const stopGeneration = useCallback(() => {
     abortRef.current?.abort()

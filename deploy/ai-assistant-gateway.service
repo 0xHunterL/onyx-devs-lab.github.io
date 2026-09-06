@@ -1,0 +1,23 @@
+[Unit]
+Description=Mimimi AI Assistant Gateway
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/opt/ai-assistant-gateway
+EnvironmentFile=/opt/ai-assistant-gateway/.env
+Environment=CORS_ORIGINS=https://onyxdevslab.com,https://www.onyxdevslab.com,https://hk.onyxdevslab.com,https://onyx-devs-lab.github.io
+Environment=RATE_LIMIT_PER_MINUTE=6
+Environment=RATE_LIMIT_PER_HOUR=60
+Environment=GLOBAL_DAILY_REQUEST_LIMIT=1000
+Environment=CLAUDE_FALLBACK_MODELS=claude-haiku-4-5@20251001
+ExecStart=/opt/ai-assistant-gateway/.venv/bin/uvicorn main:app --host 127.0.0.1 --port 8101
+Restart=always
+RestartSec=5
+NoNewPrivileges=true
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target

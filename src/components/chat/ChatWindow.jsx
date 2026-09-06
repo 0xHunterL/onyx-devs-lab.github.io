@@ -1,11 +1,12 @@
-import React, { useState, useCallback } from 'react'
+import { useState, useCallback } from 'react'
+import PropTypes from 'prop-types'
 import { Menu, Plus, Minus } from 'lucide-react'
 import { useChat } from '../../hooks/useChat'
 import MessageList from './MessageList'
 import MessageInput from './MessageInput'
 import SessionList from './SessionList'
 
-const ChatWindow = ({ relayUrl, apiKey, sessionOps, onClose }) => {
+const ChatWindow = ({ chatApiUrl, sessionOps, onClose }) => {
   const [showSessions, setShowSessions] = useState(false)
 
   const {
@@ -24,8 +25,7 @@ const ChatWindow = ({ relayUrl, apiKey, sessionOps, onClose }) => {
     loadSession,
     clearMessages,
   } = useChat({
-    relayUrl,
-    apiKey,
+    chatApiUrl,
     sessionId: currentSessionId,
     sessionOps,
   })
@@ -107,6 +107,21 @@ const ChatWindow = ({ relayUrl, apiKey, sessionOps, onClose }) => {
       )}
     </div>
   )
+}
+
+ChatWindow.propTypes = {
+  chatApiUrl: PropTypes.string.isRequired,
+  sessionOps: PropTypes.shape({
+    sessions: PropTypes.arrayOf(PropTypes.object).isRequired,
+    currentSessionId: PropTypes.string,
+    setCurrentSessionId: PropTypes.func.isRequired,
+    deleteSession: PropTypes.func.isRequired,
+    startNewSession: PropTypes.func.isRequired,
+    createSession: PropTypes.func.isRequired,
+    getMessages: PropTypes.func.isRequired,
+    addMessage: PropTypes.func.isRequired,
+  }).isRequired,
+  onClose: PropTypes.func.isRequired,
 }
 
 export default ChatWindow

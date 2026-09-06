@@ -3,8 +3,8 @@ import { MessageCircle } from 'lucide-react'
 import { useLocalSessions } from '../../hooks/useLocalSessions'
 import ChatWindow from './ChatWindow'
 
-const RELAY_URL = import.meta.env.VITE_RELAY_URL || 'https://brother.mimimiai.com'
-const API_KEY = import.meta.env.VITE_RELAY_API_KEY || 'onyx-R6RASZDJHcwI3-IgQIGQV8TrXrt3uSNsR1jz670lCMM'
+const CHAT_API_URL = import.meta.env.VITE_CHAT_API_URL
+  || 'https://chat.mimimiai.com/v1/assistants/onyx/chat'
 
 const ChatWidget = () => {
   const [isOpen, setIsOpen] = useState(false)
@@ -28,8 +28,7 @@ const ChatWidget = () => {
       {isOpen && (
         <div className="fixed z-[9999] bottom-0 right-0 w-full h-full md:bottom-6 md:right-6 md:w-[420px] md:h-[600px] md:max-h-[calc(100vh-48px)] md:rounded-xl border-0 md:border border-white/[0.08] bg-[#0a0e1a]/[0.97] md:bg-[#0a0e1a]/95 backdrop-blur-xl shadow-2xl shadow-black/40 overflow-hidden animate-chat-slide-up">
           <ChatWindow
-            relayUrl={RELAY_URL}
-            apiKey={API_KEY}
+            chatApiUrl={CHAT_API_URL}
             sessionOps={sessionOps}
             onClose={() => setIsOpen(false)}
           />

@@ -1,4 +1,4 @@
-// Extended consulting narrative for the 13 public FDE cases.
+// Extended consulting narrative for the public case portfolio.
 
 export const caseNarrativesZh = {
   "supermarket-datahub": {

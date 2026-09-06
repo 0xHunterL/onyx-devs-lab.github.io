@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import React, { useState, useEffect, useRef, useCallback } from 'react';
-import { ArrowRight, ChevronLeft, ChevronRight, Globe, Menu, X, Bot, Database, Cpu, Target, Users, Sparkles, MessageCircle } from 'lucide-react';
+import { ArrowRight, ChevronLeft, ChevronRight, Globe, Menu, X, Compass, Code2, Workflow, Target, Users, Sparkles, MessageCircle, CheckCircle2 } from 'lucide-react';
 import ChatWidget from './components/chat/ChatWidget';
 import MethodologySection from './components/cases/MethodologySection';
 import CaseDetail from './components/cases/CaseDetail';
@@ -14,15 +14,19 @@ import MetricPanel from './components/cases/MetricPanel';
 
 const translations = {
   en: {
-    nav: { capabilities: 'Capabilities', methodology: 'Our Method', work: 'Case Studies', team: 'Team', contact: 'Contact Us' },
+    nav: { capabilities: 'Ways to Work', methodology: 'FDE Method', work: 'Case Studies', team: 'Team', contact: 'Start a Conversation' },
     hero: {
-      badge: 'AI Strategy & Consulting',
-      title: ['We Advise on', 'AI'],
-      subtitle: "Amazon and Huawei alumni. We don't take every project — we provide senior-level AI consulting and selectively deliver systems that matter.",
-      cta: 'Get in Touch',
-      secondary: 'See Our Work',
+      badge: 'Senior AI advisory and delivery team',
+      title: ['From business problem', 'to working AI system.'],
+      subtitle: 'Onyx is a compact, senior team spanning strategy, AI engineering, data, and product delivery. Engage us for a focused advisory decision, a defined custom build, or an FDE transformation from field diagnosis through implementation and validation.',
+      modes: ['AI Advisory', 'Custom Development', 'FDE Transformation'],
+      cta: 'Book a project assessment',
+      secondary: 'Explore engagement models',
     },
-    credentials: { label: 'Our team comes from' },
+    credentials: {
+      label: 'Delivery confidence',
+      stats: [['Senior', 'core team delivery'], ['10+', 'years in software & data'], ['AI Build + FDE', 'systems and field delivery'], ['10+', 'projects in the portfolio']],
+    },
     philosophy: {
       items: [
         { title: 'Strategic Advisory', desc: "We diagnose before we prescribe. Every engagement starts with understanding your business — then designing the right AI approach." },
@@ -31,29 +35,38 @@ const translations = {
       ],
     },
     services: {
-      label: 'How We Help',
-      title: ['Our ', 'Services'],
+      label: 'Ways to work with Onyx',
+      title: ['Start where your ', 'problem actually is'],
+      intro: 'You do not need to buy a full transformation to work with us. Each mode has a clear decision, delivery, and success boundary — and deepens only when the evidence supports it.',
+      bridge: 'Engage one mode independently, or move from advisory to build and into an FDE loop as the problem becomes clearer.',
+      deliverablesLabel: 'Deliverables',
       items: [
         {
-          title: 'AI Strategy & Architecture',
-          description: 'We assess your business landscape and design AI roadmaps that deliver measurable ROI — from model selection and data governance to deployment strategy.',
-          features: ['Feasibility Assessment', 'Architecture Design', 'Technology Selection', 'Implementation Roadmap'],
+          kicker: 'Answer what to do',
+          title: 'AI Advisory',
+          description: 'For teams that see AI opportunity but need to identify the right problem, sequence, and investment boundary.',
+          features: ['Business and workflow diagnosis', 'Data and technical feasibility', 'Opportunity prioritization', 'Implementation roadmap'],
+          deliverable: 'Decision memo · opportunity map · phased roadmap',
         },
         {
-          title: 'Intelligent Agents & Data Advisory',
-          description: 'We design and advise on AI agent systems, NL2SQL engines, and data intelligence pipelines — turning decades of business data into actionable insight.',
-          features: ['Agent Architecture Design', 'NL2SQL & RAG Strategy', 'Data Pipeline Consulting', 'Semantic Search Solutions'],
+          kicker: 'Turn a defined need into a system',
+          title: 'Custom Development',
+          description: 'For teams with a clear product or workflow objective that need senior engineers to design, build, integrate, and launch it.',
+          features: ['AI product and system design', 'Agents, RAG, data and automation', 'Legacy and API integration', 'Production launch and handover'],
+          deliverable: 'Working product · integrated system · operating handover',
         },
         {
-          title: 'AI Transformation Consulting',
-          description: 'We help enterprises go AI-native — rethinking workflows, modernizing legacy systems, and embedding intelligence where it matters most.',
-          features: ['Enterprise AI Integration', 'Workflow Redesign', 'Legacy Modernization', 'Change Management'],
+          kicker: 'Own the loop from diagnosis to proof',
+          title: 'FDE Transformation',
+          description: 'For complex operating problems that cannot be specified upfront and require field evidence, implementation, and validation in one team.',
+          features: ['Field discovery and baseline', 'Constraint and root-cause diagnosis', 'Workflow and system intervention', 'Pilot validation and iteration'],
+          deliverable: 'Diagnosis · intervention · deployed workflow · evidence loop',
         },
       ],
     },
     work: {
       label: 'Case Studies',
-      title: ['Selected ', 'Work'],
+      title: ['Engagement ', 'Evidence'],
       viewDetails: 'View Details',
       items: [
         {
@@ -237,7 +250,9 @@ const translations = {
     team: {
       label: 'Who We Are',
       title: ['Meet the ', 'Team'],
-      subtitle: 'Five senior engineers and researchers. No layers, no handoffs — you work directly with the people solving your problem.',
+      subtitle: 'A compact team of senior engineers and researchers. No layers, no handoffs — you work directly with the people solving your problem.',
+      whyLabel: 'Why a small senior team',
+      whyTitle: 'The people who diagnose the problem also build the answer.',
       members: [
         { role: 'Senior Engineer & Project Lead', bio: 'Former core contributor to Huawei\'s AI product line, where he helped ship production AI systems at enterprise scale. Since leaving Huawei, has led the end-to-end architecture and delivery of multiple AI-powered enterprise platforms — including ERP systems with embedded intelligent agents, NL2SQL engines, and fully automated business pipelines. Specializes in translating complex business workflows into AI-native solutions, with a track record of taking projects from initial scoping through production deployment.' },
         { role: 'Senior Engineer', bio: 'Served as CTO at a crypto startup, where he built the entire technical organization and led strategy through rapid scaling. Now at the forefront of integrating cutting-edge AI with Web3 and blockchain ecosystems — designing intelligent trading agents, on-chain automation systems, and AI-driven financial tooling. His unique combination of deep infrastructure experience and crypto-native thinking enables novel solutions at the intersection of decentralized finance and artificial intelligence.' },
@@ -247,26 +262,30 @@ const translations = {
       ],
     },
     cta: {
-      title: ['Ready to Rethink Your ', 'AI Strategy'],
-      subtitle: 'Reach out via email or phone — we respond within 24 hours.',
+      title: ['Start with a ', 'project assessment'],
+      subtitle: 'In one focused conversation, we clarify the objective, constraints, and evidence — then recommend advisory, custom development, FDE, or no project at all.',
       contactLine: 'info@onyxdevslab.com  ·  +1 (416) 565-5366',
     },
     footer: {
-      description: 'Senior AI consulting. Elite team. Strategic depth.',
+      description: 'AI advisory, custom development, and FDE transformation — delivered directly by a senior team.',
       contactTitle: 'Contact',
       rights: 'All rights reserved.',
     },
   },
   zh: {
-    nav: { capabilities: '能力', methodology: '方法体系', work: '案例', team: '团队', contact: '联系我们' },
+    nav: { capabilities: '合作方式', methodology: 'FDE 方法', work: '案例', team: '团队', contact: '发起项目讨论' },
     hero: {
-      badge: '中加技术团队 | 10年+软件与数据实战 | 企业流程优化 × 场景AI落地',
-      title: ['让AI，成为', '企业的新基建。'],
-      subtitle: '数据是原油，AI是炼油厂。但大多数企业——有油，没厂。我们就是那座厂。从财务到供应链，从市场到销售，从内容生产到赛事计分——我们只做一件事：把AI变成企业账本上看得见的增长。',
-      cta: '联系我们',
-      secondary: '查看案例',
+      badge: '资深 AI 咨询与交付团队',
+      title: ['从业务问题，', '到 AI 系统落地。'],
+      subtitle: 'Onyx 是一支规模精简、全员资深的 AI 团队。我们提供 AI 咨询、定制开发与 FDE 转型交付：可以只帮你判断方向，也可以把明确需求做成系统；面对复杂问题，我们会进入现场，从诊断、实施一直负责到验证。',
+      modes: ['AI 咨询', '定制开发', 'FDE 咨询与实施'],
+      cta: '预约一次项目判断',
+      secondary: '按合作方式查看案例',
     },
-    credentials: { label: '团队背景' },
+    credentials: {
+      label: '交付可信度',
+      stats: [['全员资深', '核心成员直接交付'], ['10+', '年软件与数据实战'], ['AI 定开 + FDE', '系统开发与一线实施'], ['10+', '个项目案例']],
+    },
     philosophy: {
       items: [
         { title: '战略先行', desc: '先诊断，再开方。每次合作都从深入理解你的业务开始，再设计最合适的AI方案。' },
@@ -285,29 +304,38 @@ const translations = {
       ],
     },
     services: {
-      label: '服务内容',
-      title: ['我们的', '服务'],
+      label: '与 Onyx 合作',
+      title: ['从你真正所在的', '阶段开始'],
+      intro: '你不需要为了合作而购买一整套转型。每种方式都有明确的判断目标、交付边界和成功标准；只有证据支持时，合作才继续深入。',
+      bridge: '三种方式可以独立委托，也可以逐步深入：从咨询判断开始，进入定制实施；或直接采用 FDE，完成从问题发现到结果验证的完整闭环。',
+      deliverablesLabel: '形成交付',
       items: [
         {
-          title: '先诊断，再动手',
-          description: '花一周搞清楚你的业务里哪个环节最值得上AI，给出投入、周期和预期回报，再决定做不做。',
-          features: ['可行性评估', '方案设计', '选型建议', '分阶段实施'],
+          kicker: '回答“应该做什么”',
+          title: 'AI 咨询',
+          description: '适合已经看到 AI 机会，但需要判断先解决什么、投入边界在哪里、技术与数据是否支持的团队。',
+          features: ['业务与流程诊断', '数据及技术可行性评估', 'AI 机会优先级排序', '分阶段实施路线'],
+          deliverable: '决策建议 · 机会地图 · 实施路线',
         },
         {
-          title: '让老板一句话问出所有数据',
-          description: '不用等财务出报表，"上个月哪个门店毛利最低？"直接问，直接答。',
-          features: ['业务问题梳理', '数据问答引擎搭建', '现有数据打通', '智能检索方案'],
+          kicker: '把明确需求做成系统',
+          title: '定制开发',
+          description: '适合目标和核心流程已经相对明确，需要资深团队完成产品设计、技术实现、系统集成与上线的项目。',
+          features: ['AI 产品与系统设计', 'Agent、RAG 与数据工程', '现有系统及 API 集成', '生产上线与团队交接'],
+          deliverable: '可运行产品 · 集成系统 · 运营交接',
         },
         {
-          title: '旧系统不换也能变聪明',
-          description: '不推倒重来，在现有ERP/Excel流程上加一层AI，业务不停摆。',
-          features: ['系统对接', '流程重新设计', '老系统升级', '团队上手辅导'],
+          kicker: '从诊断一直负责到验证',
+          title: 'FDE 咨询与实施',
+          description: '适合需求无法预先写清的复杂业务问题，需要同一团队深入现场、定位约束、实施干预并验证真实效果。',
+          features: ['现场发现与业务基线', '约束定位与根因分析', '流程重构与系统实施', '试点验证与持续迭代'],
+          deliverable: '诊断结论 · 实施干预 · 运行流程 · 验证闭环',
         },
       ],
     },
     work: {
-      label: '项目案例',
-      title: ['精选', '案例'],
+      label: '我们如何交付',
+      title: ['合作', '案例'],
       viewDetails: '查看详情',
       items: [
         {
@@ -491,7 +519,9 @@ const translations = {
     team: {
       label: '关于我们',
       title: ['认识', '团队'],
-      subtitle: '五位资深工程师与研究员。零层级、零中间人——你直接与解决问题的人对话。',
+      subtitle: '规模精简、全员资深。零层级、零中间人——你直接与解决问题的人对话。',
+      whyLabel: '为什么选择小型资深团队',
+      whyTitle: '诊断问题的人，也亲手把答案做出来。',
       members: [
         { role: '高级工程师 & 项目负责人', bio: '前华为AI产品线核心贡献者。离开华为后主导多个AI企业平台从架构到上线的完整交付，包括内嵌智能Agent的ERP系统、NL2SQL引擎。擅长把复杂业务流程转化为能落地生产的AI方案。' },
         { role: '高级工程师', bio: '曾任Crypto公司CTO，从零搭建技术团队并主导快速扩张期的技术战略。现专注AI与Web3结合，设计智能交易Agent、链上自动化系统与AI驱动的金融工具。' },
@@ -501,16 +531,16 @@ const translations = {
       ],
     },
     cta: {
-      title: ['加微信，', '免费聊30分钟'],
-      subtitle: '不确定AI能帮你什么？我们告诉你哪个环节最先值得做，不合适也直说。',
-      wechatNote: '扫码加微信，免费聊聊你的业务',
+      title: ['先做一次', '项目判断'],
+      subtitle: '用 30 分钟梳理业务目标、现有条件和主要约束。我们会判断它更适合 AI 咨询、定制开发还是 FDE；如果当前不值得做，也会直接说明。',
+      wechatNote: '扫码预约 30 分钟项目判断',
       wechatIdLabel: '微信号',
       wechatId: 'm453301909',
       secondaryLabel: '也可以邮件或电话联系我们',
       contactLine: 'info@onyxdevslab.com  ·  +86 18923743756',
     },
     footer: {
-      description: '高端AI咨询。资深团队。战略深度。',
+      description: 'AI 咨询、定制开发与 FDE 转型交付，由资深团队直接负责。',
       contactTitle: '联系方式',
       rights: '保留所有权利。',
       wechatLabel: '微信',
@@ -520,15 +550,19 @@ const translations = {
     },
   },
   it: {
-    nav: { capabilities: 'Competenze', methodology: 'Metodo', work: 'Progetti', team: 'Team', contact: 'Contattaci' },
+    nav: { capabilities: 'Come collaborare', methodology: 'Metodo FDE', work: 'Progetti', team: 'Team', contact: 'Parliamo del progetto' },
     hero: {
-      badge: 'Strategia & Consulenza AI',
-      title: ['Consulenti', 'AI'],
-      subtitle: "Alumni di Stanford, Amazon e Huawei. Non accettiamo ogni progetto — offriamo consulenza AI senior e realizziamo selettivamente sistemi ad alto impatto.",
-      cta: 'Contattaci',
-      secondary: 'Vedi i Progetti',
+      badge: 'Team senior di consulenza e delivery AI',
+      title: ['Dal problema aziendale', 'a un sistema AI operativo.'],
+      subtitle: 'Onyx è un team compatto e senior tra strategia, ingegneria AI, dati e prodotto. Possiamo offrire una decisione consulenziale, sviluppare un sistema definito o guidare una trasformazione FDE dalla diagnosi sul campo alla verifica.',
+      modes: ['Consulenza AI', 'Sviluppo su misura', 'Trasformazione FDE'],
+      cta: 'Prenota una valutazione',
+      secondary: 'Scopri le modalità',
     },
-    credentials: { label: 'Il nostro team viene da' },
+    credentials: {
+      label: 'Affidabilità della delivery',
+      stats: [['Senior', 'delivery del team core'], ['10+', 'anni in software e dati'], ['AI Build + FDE', 'sistemi e delivery sul campo'], ['10+', 'progetti nel portfolio']],
+    },
     philosophy: {
       items: [
         { title: 'Strategia Prima', desc: "Prima diagnostichiamo, poi prescriviamo. Ogni engagement inizia dalla comprensione del tuo business — poi progettiamo l'approccio AI giusto." },
@@ -537,29 +571,38 @@ const translations = {
       ],
     },
     services: {
-      label: 'Come Aiutiamo',
-      title: ['I Nostri ', 'Servizi'],
+      label: 'Come lavorare con Onyx',
+      title: ['Partiamo dal punto in cui si trova ', 'davvero il problema'],
+      intro: 'Ogni modalità ha un obiettivo decisionale, un perimetro di delivery e un criterio di successo chiari. Il lavoro si approfondisce solo quando le evidenze lo giustificano.',
+      bridge: 'Le tre modalità possono essere indipendenti oppure evolvere dalla consulenza allo sviluppo e, quando serve, a un ciclo FDE completo.',
+      deliverablesLabel: 'Risultati consegnati',
       items: [
         {
-          title: 'Strategia & Architettura AI',
-          description: 'Valutiamo il panorama aziendale e progettiamo roadmap AI con ROI misurabile — dalla selezione dei modelli alla strategia di deployment.',
-          features: ['Valutazione Fattibilità', 'Design Architetturale', 'Selezione Tecnologica', 'Roadmap Implementativa'],
+          kicker: 'Definire cosa fare',
+          title: 'Consulenza AI',
+          description: 'Per chi vede opportunità nell’AI ma deve scegliere il problema giusto, le priorità e il perimetro di investimento.',
+          features: ['Diagnosi di business e processi', 'Fattibilità dati e tecnologia', 'Priorità delle opportunità', 'Roadmap di implementazione'],
+          deliverable: 'Decisione · mappa opportunità · roadmap',
         },
         {
-          title: 'Agent Intelligenti & Data Advisory',
-          description: 'Progettiamo e consultiamo su sistemi AI Agent, motori NL2SQL e pipeline di data intelligence — trasformando anni di dati in insight azionabili.',
-          features: ['Design Architettura Agent', 'Strategia NL2SQL & RAG', 'Consulenza Data Pipeline', 'Soluzioni Ricerca Semantica'],
+          kicker: 'Trasformare un obiettivo in sistema',
+          title: 'Sviluppo su misura',
+          description: 'Per obiettivi già definiti che richiedono progettazione, sviluppo, integrazione e lancio guidati da ingegneri senior.',
+          features: ['Prodotti e sistemi AI', 'Agent, RAG, dati e automazione', 'Integrazione legacy e API', 'Lancio e passaggio operativo'],
+          deliverable: 'Prodotto operativo · sistema integrato · handover',
         },
         {
-          title: 'Consulenza Trasformazione AI',
-          description: "Aiutiamo le aziende a diventare AI-native — ripensando i workflow, modernizzando i sistemi legacy e integrando l'intelligenza dove conta di più.",
-          features: ['Integrazione AI Enterprise', 'Redesign Workflow', 'Modernizzazione Legacy', 'Change Management'],
+          kicker: 'Dalla diagnosi alla prova',
+          title: 'Trasformazione FDE',
+          description: 'Per problemi operativi complessi che richiedono evidenze sul campo, implementazione e validazione affidate allo stesso team.',
+          features: ['Discovery e baseline', 'Diagnosi di vincoli e cause', 'Intervento su workflow e sistemi', 'Pilota, verifica e iterazione'],
+          deliverable: 'Diagnosi · intervento · workflow operativo · evidenze',
         },
       ],
     },
     work: {
       label: 'Casi Studio',
-      title: ['Lavori ', 'Selezionati'],
+      title: ['Evidenze di ', 'Delivery'],
       viewDetails: 'Dettagli',
       items: [
         {
@@ -743,7 +786,9 @@ const translations = {
     team: {
       label: 'Chi Siamo',
       title: ['Il Nostro ', 'Team'],
-      subtitle: 'Cinque ingegneri e ricercatori senior. Zero livelli, zero intermediari — lavori direttamente con chi risolve il problema.',
+      subtitle: 'Un team compatto di ingegneri e ricercatori senior. Zero livelli, zero intermediari — lavori direttamente con chi risolve il problema.',
+      whyLabel: 'Perché un piccolo team senior',
+      whyTitle: 'Chi diagnostica il problema costruisce anche la risposta.',
       members: [
         { role: 'Ingegnere Senior & Project Lead', bio: 'Ex contributore chiave della linea prodotti AI di Huawei, dove ha partecipato al rilascio di sistemi AI in produzione su scala enterprise. Dopo Huawei, ha guidato l\'architettura e la delivery end-to-end di molteplici piattaforme enterprise AI-powered — tra cui sistemi ERP con agenti intelligenti integrati, motori NL2SQL e pipeline di automazione completa. Specializzato nel tradurre workflow aziendali complessi in soluzioni AI-native, con un track record dalla definizione dei requisiti al deployment in produzione.' },
         { role: 'Ingegnere Senior', bio: 'Ha servito come CTO in una startup crypto, costruendo l\'intera organizzazione tecnica e guidando la strategia durante la crescita rapida. Oggi in prima linea nell\'integrazione di AI avanzata con gli ecosistemi Web3 e blockchain — progettando agenti di trading intelligenti, sistemi di automazione on-chain e strumenti finanziari AI-driven. La sua combinazione unica di esperienza infrastrutturale profonda e pensiero crypto-nativo abilita soluzioni innovative all\'intersezione tra finanza decentralizzata e intelligenza artificiale.' },
@@ -753,12 +798,12 @@ const translations = {
       ],
     },
     cta: {
-      title: ['Pronti a Ripensare la Vostra ', 'Strategia AI'],
-      subtitle: 'Contattateci via email o telefono — rispondiamo entro 24 ore.',
+      title: ['Iniziamo con una ', 'valutazione del progetto'],
+      subtitle: 'In un confronto mirato chiariremo obiettivo, vincoli ed evidenze, quindi consiglieremo consulenza, sviluppo su misura, FDE oppure nessun progetto.',
       contactLine: 'info@onyxdevslab.com  ·  +1 (416) 565-5366',
     },
     footer: {
-      description: "Consulenza AI senior. Team d'élite. Profondità strategica.",
+      description: 'Consulenza AI, sviluppo su misura e trasformazione FDE, con delivery diretta da parte di un team senior.',
       contactTitle: 'Contatti',
       rights: 'Tutti i diritti riservati.',
     },
@@ -835,36 +880,48 @@ const getVisibleWorkItems = (lang, items) => {
   return filtered;
 };
 
-const serviceIcons = [Bot, Database, Cpu];
+const serviceIcons = [Compass, Code2, Workflow];
 const philosophyIcons = [Target, Users, Sparkles];
 const langLabels = { en: 'EN', zh: '中文', it: 'IT' };
 const portfolioCopy = {
   en: {
-    wallLabel: 'Portfolio Atlas',
-    wallTitle: 'Built deep inside real businesses',
-    wallSubtitle: 'Explore a selection of systems spanning operations, data, finance, industry, and generative AI.',
+    wallLabel: 'Engagement evidence',
+    wallTitle: 'See what each way of working produces',
+    wallSubtitle: 'Cases are presented by engagement type, so you can distinguish field-led transformation from defined product engineering.',
     fdeTitle: 'FDE engagements',
+    fdeKicker: 'Consulting + implementation',
+    fdeBadge: 'FDE delivery',
     fdeSubtitle: 'Field-led transformation work, ranked by professional depth, delivery completeness, and fit with the FDE model.',
-    productTitle: 'AI products & platforms',
-    productSubtitle: 'Complete product engineering work shown on its own terms, without forcing an FDE narrative.',
+    productTitle: 'Custom development & AI products',
+    productKicker: 'Defined-scope engineering',
+    productBadge: 'Product engineering',
+    productSubtitle: 'Defined products and platforms assessed on engineering depth, working flows, and delivery completeness — without forcing an FDE narrative.',
   },
   zh: {
-    wallLabel: '项目图谱',
-    wallTitle: '深入真实业务现场',
-    wallSubtitle: '从运营、数据、金融和工业系统，到生成式 AI 产品。点击任意项目，查看我们如何解决复杂问题。',
+    wallLabel: '合作结果',
+    wallTitle: '不同合作方式，产生不同类型的价值',
+    wallSubtitle: '案例按照主要合作方式展示，让你清楚区分深入业务现场的 FDE，与目标明确的定制开发和产品工程。',
     fdeTitle: 'FDE 交付案例',
+    fdeKicker: '咨询诊断 + 一线实施',
+    fdeBadge: 'FDE 交付',
     fdeSubtitle: '按照专业深度、交付完整度和 FDE 契合度排序：从业务现场出发，并已完成系统或试点闭环。',
-    productTitle: 'AI 产品与平台',
-    productSubtitle: '这些项目具备独立的产品与工程价值，因此按产品完整度展示，不强行套用 FDE 叙事。',
+    productTitle: '定制开发与 AI 产品',
+    productKicker: '目标明确的产品工程',
+    productBadge: '产品工程',
+    productSubtitle: '目标明确的产品与平台，按照工程深度、可运行流程和交付完整度展示，不强行套用 FDE 叙事。',
   },
   it: {
-    wallLabel: 'Atlante dei Progetti',
-    wallTitle: 'Nel cuore delle aziende reali',
-    wallSubtitle: 'Esplora una selezione di sistemi tra operations, dati, finanza, industria e AI generativa.',
+    wallLabel: 'Evidenze di delivery',
+    wallTitle: 'Il valore prodotto da ogni modalità di collaborazione',
+    wallSubtitle: 'I casi distinguono la trasformazione guidata sul campo dallo sviluppo di prodotti con obiettivi già definiti.',
     fdeTitle: 'Progetti FDE',
+    fdeKicker: 'Consulenza + implementazione',
+    fdeBadge: 'Delivery FDE',
     fdeSubtitle: 'Trasformazioni sul campo ordinate per profondità professionale, completezza e aderenza al modello FDE.',
-    productTitle: 'Prodotti e piattaforme AI',
-    productSubtitle: 'Prodotti completi presentati per il loro valore, senza forzare una narrativa FDE.',
+    productTitle: 'Sviluppo su misura e prodotti AI',
+    productKicker: 'Ingegneria a perimetro definito',
+    productBadge: 'Product engineering',
+    productSubtitle: 'Prodotti e piattaforme valutati per profondità tecnica, workflow operativi e completezza, senza forzare una narrativa FDE.',
   },
 };
 
@@ -937,8 +994,8 @@ const MobileMenu = ({ isOpen, onClose, t, lang, setLang }) => {
         </button>
         <nav className="flex flex-col gap-2">
           <a href="#capabilities" onClick={onClose} className="flex min-h-12 items-center rounded-xl px-4 text-gray-300 transition-colors hover:bg-white/5 hover:text-white">{t.nav.capabilities}</a>
-          <a href="#methodology" onClick={onClose} className="flex min-h-12 items-center rounded-xl px-4 text-gray-300 transition-colors hover:bg-white/5 hover:text-white">{t.nav.methodology}</a>
           <a href="#work" onClick={onClose} className="flex min-h-12 items-center rounded-xl px-4 text-gray-300 transition-colors hover:bg-white/5 hover:text-white">{t.nav.work}</a>
+          <a href="#methodology" onClick={onClose} className="flex min-h-12 items-center rounded-xl px-4 text-gray-300 transition-colors hover:bg-white/5 hover:text-white">{t.nav.methodology}</a>
           <a href="#team" onClick={onClose} className="flex min-h-12 items-center rounded-xl px-4 text-gray-300 transition-colors hover:bg-white/5 hover:text-white">{t.nav.team}</a>
           <a href="#contact" onClick={onClose}
             className="inline-flex min-h-12 items-center justify-center rounded-full bg-gradient-to-r from-blue-500 to-purple-500 px-5 text-sm transition-all hover:from-blue-400 hover:to-purple-400">
@@ -955,39 +1012,30 @@ const MobileMenu = ({ isOpen, onClose, t, lang, setLang }) => {
 
 // ─── Card Components ─────────────────────────────────────────────────────────
 
-const ServiceCard = ({ icon: Icon, title, description, features }) => (
-  <div className="glass rounded-2xl p-8 transition-all duration-300 group hover:-translate-y-1">
-    <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-500/20 to-purple-500/20 flex items-center justify-center mb-6 group-hover:from-blue-500/30 group-hover:to-purple-500/30 transition-colors">
-      <Icon size={22} className="text-blue-400" />
+const ServiceCard = ({ icon: Icon, index, kicker, title, description, features, deliverable, deliverablesLabel }) => (
+  <article className="group flex h-full flex-col rounded-3xl border border-white/10 bg-white/[0.025] p-6 transition-all duration-300 hover:-translate-y-1 hover:border-cyan-300/20 hover:bg-white/[0.04] md:p-8">
+    <div className="mb-7 flex items-center justify-between">
+      <div className="flex h-12 w-12 items-center justify-center rounded-2xl border border-blue-400/15 bg-gradient-to-br from-blue-500/20 to-purple-500/15 transition-colors group-hover:from-blue-500/30 group-hover:to-purple-500/25">
+        <Icon size={22} className="text-blue-300" />
+      </div>
+      <span className="font-mono text-xs text-white/25">0{index + 1}</span>
     </div>
-    <h3 className="text-xl font-bold mb-3">{title}</h3>
-    <p className="text-gray-400 mb-6 text-sm leading-relaxed">{description}</p>
-    <ul className="space-y-2.5">
+    <p className="mb-2 text-xs font-medium uppercase tracking-[0.14em] text-cyan-300/70">{kicker}</p>
+    <h3 className="mb-4 text-2xl font-bold">{title}</h3>
+    <p className="mb-7 min-h-[4.75rem] text-sm leading-7 text-gray-400">{description}</p>
+    <ul className="mb-7 space-y-3">
       {features.map((feature, index) => (
-        <li key={index} className="flex items-center gap-2.5 text-gray-500 text-sm">
-          <ChevronRight size={14} className="text-blue-400/60" />
+        <li key={index} className="flex items-start gap-2.5 text-sm text-gray-400">
+          <CheckCircle2 size={14} className="mt-0.5 shrink-0 text-blue-400/70" />
           {feature}
         </li>
       ))}
     </ul>
-  </div>
-);
-
-const PainPointCard = ({ pain, solution, benefit, onClick }) => (
-  <div
-    className={`glass rounded-2xl p-6 transition-all duration-300 ${onClick ? 'cursor-pointer hover:-translate-y-1' : ''}`}
-    onClick={onClick}
-  >
-    <p className="text-gray-500 text-sm mb-3">
-      <span className="text-red-400/70">痛点</span> · {pain}
-    </p>
-    <p className="text-white font-semibold mb-3">
-      <span className="text-blue-400">AI方案</span> · {solution}
-    </p>
-    <p className="text-green-300/90 text-sm font-medium">
-      <span className="text-green-400">收益</span> · {benefit}
-    </p>
-  </div>
+    <div className="mt-auto border-t border-white/10 pt-5">
+      <p className="text-[10px] font-semibold uppercase tracking-[0.16em] text-white/35">{deliverablesLabel}</p>
+      <p className="mt-2 text-xs leading-6 text-white/65">{deliverable}</p>
+    </div>
+  </article>
 );
 
 const TeamMemberCard = ({ name, role, avatar, bio, credentials }) => (
@@ -1041,7 +1089,7 @@ const ProjectWall = ({ items, projectsData, copy, viewLabel, onSelect, analysisB
               <div className="mb-8 flex flex-col justify-between gap-4 border-b border-white/10 pb-6 md:flex-row md:items-end">
                 <div>
                   <div className={`mb-2 text-[10px] font-semibold uppercase tracking-[0.18em] ${group.key === 'fde' ? 'text-cyan-300/70' : 'text-purple-300/70'}`}>
-                    {group.key === 'fde' ? 'Field Delivery' : 'Product Engineering'} · {groupItems.length}
+                    {group.key === 'fde' ? copy.fdeKicker : copy.productKicker}
                   </div>
                   <h4 id={`${group.key}-portfolio-title`} className="text-2xl font-semibold text-white md:text-3xl">{group.title}</h4>
                 </div>
@@ -1049,7 +1097,7 @@ const ProjectWall = ({ items, projectsData, copy, viewLabel, onSelect, analysisB
               </div>
 
               <div className="portfolio-wall mobile-card-rail flex gap-4 sm:mx-0 sm:grid sm:grid-cols-2 sm:overflow-visible sm:px-0 sm:pb-0 lg:grid-cols-3">
-                {groupItems.map((study, rank) => {
+                {groupItems.map((study) => {
                   const image = projectsData.find((project) => project.id === study.id)?.images[0];
                   const isFde = group.key === 'fde';
                   const analysis = isFde ? analysisById[study.id] : null;
@@ -1068,7 +1116,7 @@ const ProjectWall = ({ items, projectsData, copy, viewLabel, onSelect, analysisB
                       <div className="absolute inset-x-0 top-0 flex items-start justify-between p-4">
                         <div className="flex items-center gap-2">
                           <span className="rounded-full border border-white/10 bg-[#090d16]/75 px-3 py-1.5 text-[10px] font-medium uppercase tracking-[0.12em] text-cyan-100/80 backdrop-blur-xl">{study.tags[0]}</span>
-                          {isFde && <span className="rounded-full border border-cyan-300/20 bg-[#090d16]/75 px-2.5 py-1.5 text-[10px] font-medium text-cyan-200/80 backdrop-blur-xl">{lang === 'zh' ? '现场交付' : `FDE ${rank + 1}`}</span>}
+                          <span className={`rounded-full bg-[#090d16]/75 px-2.5 py-1.5 text-[10px] font-medium backdrop-blur-xl ${isFde ? 'border border-cyan-300/20 text-cyan-200/80' : 'border border-purple-300/20 text-purple-200/80'}`}>{isFde ? copy.fdeBadge : copy.productBadge}</span>
                         </div>
                         <span className="flex h-9 w-9 translate-y-1 items-center justify-center rounded-full border border-white/10 bg-[#090d16]/70 text-white/70 opacity-0 backdrop-blur-xl transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100"><ArrowRight size={15} /></span>
                       </div>
@@ -1305,8 +1353,8 @@ const LandingPage = () => {
   useEffect(() => {
     document.documentElement.lang = lang === 'zh' ? 'zh-CN' : lang;
     document.title = selectedProject
-      ? `${selectedProject.title} — Onyx FDE Case`
-      : 'Onyx Devs Lab — AI Consulting & FDE Delivery';
+      ? `${selectedProject.title} — Onyx Case Study`
+      : 'Onyx Devs Lab — AI Advisory, Custom Development & FDE';
   }, [lang, selectedProject]);
 
   useEffect(() => {
@@ -1334,8 +1382,8 @@ const LandingPage = () => {
           </div>
           <div className="hidden md:flex items-center space-x-8">
             <a href="#capabilities" className="nav-link text-gray-300 hover:text-white transition-colors text-sm tracking-wide">{t.nav.capabilities}</a>
-            <a href="#methodology" className="nav-link text-gray-300 hover:text-white transition-colors text-sm tracking-wide">{t.nav.methodology}</a>
             <a href="#work" className="nav-link text-gray-300 hover:text-white transition-colors text-sm tracking-wide">{t.nav.work}</a>
+            <a href="#methodology" className="nav-link text-gray-300 hover:text-white transition-colors text-sm tracking-wide">{t.nav.methodology}</a>
             <a href="#team" className="nav-link text-gray-300 hover:text-white transition-colors text-sm tracking-wide">{t.nav.team}</a>
             <a href="#contact"
               className="px-5 py-2 rounded-full text-sm bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-400 hover:to-purple-400 transition-all hover:shadow-lg hover:shadow-blue-500/25">
@@ -1364,21 +1412,29 @@ const LandingPage = () => {
         <div className="absolute top-1/2 right-1/3 w-48 h-48 bg-cyan-500/10 rounded-full blur-[80px] animate-float" style={{ animationDelay: '2s' }} />
 
         <div className="container mx-auto relative z-10">
-          <div className="max-w-4xl">
+          <div className="max-w-6xl">
             <div className="inline-flex items-center px-4 py-2 rounded-full border border-blue-500/20 bg-blue-500/5 text-blue-300 text-sm mb-8 backdrop-blur-sm">
               <span className="w-2 h-2 bg-blue-400 rounded-full mr-3 animate-pulse-glow" />
               {t.hero.badge}
             </div>
-            <h1 className="mb-8 text-[2.65rem] font-bold leading-[1.1] tracking-tight min-[390px]:text-5xl md:text-7xl lg:text-8xl">
+            <h1 className="mb-7 text-[2.35rem] font-bold leading-[1.08] tracking-tight min-[390px]:text-[2.75rem] md:text-6xl lg:text-7xl xl:text-8xl">
               {t.hero.title[0]}
               <br />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-400 to-cyan-400">
                 {t.hero.title[1]}
               </span>
             </h1>
-            <p className="text-lg md:text-xl text-gray-400 mb-10 leading-relaxed max-w-2xl">
+            <p className="mb-6 max-w-3xl text-base leading-8 text-gray-300 md:text-xl md:leading-9">
               {t.hero.subtitle}
             </p>
+            <div className="mb-9 flex flex-wrap gap-2.5">
+              {t.hero.modes.map((mode, index) => (
+                <span key={mode} className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.04] px-3.5 py-2 text-xs font-medium text-white/75 backdrop-blur-sm md:text-sm">
+                  <span className={`h-1.5 w-1.5 rounded-full ${index === 2 ? 'bg-cyan-300' : index === 1 ? 'bg-purple-300' : 'bg-blue-300'}`} />
+                  {mode}
+                </span>
+              ))}
+            </div>
             <div className="flex flex-col sm:flex-row gap-4">
               <a href="#contact"
                 className="group inline-flex items-center justify-center gap-3 px-8 py-4 rounded-xl bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-400 hover:to-purple-400 transition-all duration-300 hover:shadow-xl hover:shadow-blue-500/25 text-base font-medium">
@@ -1395,24 +1451,21 @@ const LandingPage = () => {
         <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-[#0a0e1a] to-transparent" />
       </header>
 
-      {/* ── Philosophy ── */}
-      <section className="py-20 relative">
+      {/* ── Delivery confidence ── */}
+      <section className="relative -mt-2 pb-16 md:pb-20" aria-label={t.credentials.label}>
         <div className="container mx-auto px-6">
-          <div className="grid md:grid-cols-3 gap-5 max-w-4xl mx-auto">
-            {t.philosophy.items.map((item, index) => {
-              const Icon = philosophyIcons[index];
-              return (
-                <div key={index} className="section-reveal flex items-start gap-4 p-6 rounded-xl bg-white/[0.02] border border-white/5 hover:border-white/10 transition-colors" style={{ transitionDelay: `${index * 100}ms` }}>
-                  <div className="w-10 h-10 rounded-lg bg-blue-500/10 flex items-center justify-center shrink-0">
-                    <Icon size={18} className="text-blue-400" />
-                  </div>
-                  <div>
-                    <h3 className="font-semibold text-white mb-1 text-sm">{item.title}</h3>
-                    <p className="text-xs text-gray-500 leading-relaxed">{item.desc}</p>
-                  </div>
+          <div className="section-reveal overflow-hidden rounded-2xl border border-white/10 bg-white/[0.025]">
+            <div className="border-b border-white/10 px-5 py-3 text-[10px] font-semibold uppercase tracking-[0.2em] text-white/40 md:px-7">
+              {t.credentials.label}
+            </div>
+            <dl className="grid grid-cols-2 lg:grid-cols-4">
+              {t.credentials.stats.map(([value, label], index) => (
+                <div key={label} className={`px-5 py-6 md:px-7 ${index % 2 === 0 ? 'border-r border-white/10' : ''} ${index < 2 ? 'border-b border-white/10 lg:border-b-0' : ''} lg:border-r lg:last:border-r-0`}>
+                  <dt className="font-mono text-2xl font-semibold text-white md:text-3xl">{value}</dt>
+                  <dd className="mt-1 text-xs leading-5 text-gray-500 md:text-sm">{label}</dd>
                 </div>
-              );
-            })}
+              ))}
+            </dl>
           </div>
         </div>
       </section>
@@ -1420,64 +1473,35 @@ const LandingPage = () => {
       {/* ── AI Capabilities ── */}
       <section id="capabilities" className="relative scroll-mt-20 py-20 md:py-28">
         <div className="container mx-auto px-6">
-          <div className="section-reveal text-center mb-20">
+          <div className="section-reveal mb-12 max-w-3xl md:mb-16">
             <span className="text-blue-400 text-sm font-medium tracking-[0.2em] uppercase">{t.services.label}</span>
-            <h2 className="text-4xl md:text-5xl font-bold mt-4 mb-6">
+            <h2 className="mt-4 text-4xl font-bold leading-tight md:text-5xl">
               {t.services.title[0]}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400">
                 {t.services.title[1]}
               </span>
             </h2>
-            <div className="w-16 h-1 bg-gradient-to-r from-blue-500 to-purple-500 mx-auto rounded-full" />
+            <p className="mt-6 max-w-2xl text-base leading-8 text-gray-400">{t.services.intro}</p>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {t.services.items.map((service, index) => (
               <div key={index} className="section-reveal" style={{ transitionDelay: `${index * 150}ms` }}>
-                <ServiceCard icon={serviceIcons[index]} {...service} />
+                <ServiceCard icon={serviceIcons[index]} index={index} deliverablesLabel={t.services.deliverablesLabel} {...service} />
               </div>
             ))}
           </div>
+          <div className="section-reveal mt-8 flex items-start gap-3 rounded-2xl border border-cyan-300/10 bg-cyan-300/[0.035] px-5 py-4 text-sm leading-7 text-cyan-50/70 md:px-6">
+            <ArrowRight size={17} className="mt-1 shrink-0 text-cyan-300/70" />
+            <p>{t.services.bridge}</p>
+          </div>
         </div>
       </section>
-
-      {/* ── Pain Points (zh only) ── */}
-      {lang === 'zh' && (
-        <section className="py-20 relative">
-          <div className="container mx-auto px-6">
-            <div className="section-reveal text-center mb-16">
-              <span className="text-red-400 text-sm font-medium tracking-[0.2em] uppercase">{t.painpoints.label}</span>
-              <h2 className="text-3xl md:text-4xl font-bold mt-4 mb-6">
-                {t.painpoints.title[0]}
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400">
-                  {t.painpoints.title[1]}
-                </span>
-              </h2>
-              <div className="w-16 h-1 bg-gradient-to-r from-red-400 to-blue-500 mx-auto rounded-full" />
-            </div>
-            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
-              {t.painpoints.items.map((item, index) => (
-                <div key={index} className="section-reveal" style={{ transitionDelay: `${index * 100}ms` }}>
-                  <PainPointCard
-                    pain={item.pain}
-                    solution={item.solution}
-                    benefit={item.benefit}
-                    onClick={item.linkId ? () => openProject(item.linkId) : undefined}
-                  />
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-      )}
-
-      {/* ── FDE Methodology ── */}
-      <MethodologySection lang={lang} />
 
       {/* ── Case Studies ── */}
       <section id="work" className="relative scroll-mt-20 py-20 md:py-28">
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-blue-500/[0.02] to-transparent" />
         <div className="container mx-auto px-6 relative">
-          <div className="section-reveal text-center mb-20">
+          <div className="section-reveal mb-12 text-center md:mb-16">
             <span className="text-purple-400 text-sm font-medium tracking-[0.2em] uppercase">{t.work.label}</span>
             <h2 className="text-4xl md:text-5xl font-bold mt-4 mb-6">
               {t.work.title[0]}
@@ -1499,6 +1523,9 @@ const LandingPage = () => {
           />
         </div>
       </section>
+
+      {/* ── FDE Methodology ── */}
+      <MethodologySection lang={lang} />
 
       {/* ── Shareable Case Detail ── */}
       {activeProject !== null && selectedProject && (
@@ -1527,6 +1554,24 @@ const LandingPage = () => {
             </h2>
             <div className="w-16 h-1 bg-gradient-to-r from-cyan-500 to-blue-500 mx-auto rounded-full" />
             <p className="text-gray-400 mt-6 max-w-2xl mx-auto">{t.team.subtitle}</p>
+          </div>
+          <div className="section-reveal mb-12 grid overflow-hidden rounded-3xl border border-white/10 bg-white/[0.025] lg:grid-cols-[0.8fr_1.2fr]">
+            <div className="border-b border-white/10 p-6 md:p-8 lg:border-b-0 lg:border-r">
+              <span className="text-xs font-semibold uppercase tracking-[0.2em] text-cyan-300/70">{t.team.whyLabel}</span>
+              <h3 className="mt-4 text-2xl font-semibold leading-snug text-white md:text-3xl">{t.team.whyTitle}</h3>
+            </div>
+            <div className="grid md:grid-cols-3">
+              {t.philosophy.items.map((item, index) => {
+                const Icon = philosophyIcons[index];
+                return (
+                  <div key={item.title} className="border-b border-white/10 p-6 last:border-b-0 md:border-b-0 md:border-r md:last:border-r-0 md:p-7">
+                    <Icon size={19} className="mb-5 text-blue-300" />
+                    <h4 className="text-sm font-semibold text-white">{item.title}</h4>
+                    <p className="mt-2 text-xs leading-6 text-gray-500">{item.desc}</p>
+                  </div>
+                );
+              })}
+            </div>
           </div>
           <div className="grid md:grid-cols-2 gap-6">
             {teamMeta.map((member, index) => (
