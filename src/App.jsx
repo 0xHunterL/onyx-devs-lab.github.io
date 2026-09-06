@@ -1,12 +1,20 @@
+/* eslint-disable react/prop-types */
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { ArrowRight, ChevronLeft, ChevronRight, Globe, Menu, X, Bot, Database, Cpu, Target, Users, Sparkles, MessageCircle } from 'lucide-react';
 import ChatWidget from './components/chat/ChatWidget';
+import MethodologySection from './components/cases/MethodologySection';
+import CaseDetail from './components/cases/CaseDetail';
+import { caseAnalysisZh, localizeMethodName } from './data/caseAnalysis';
+import { caseNarrativesZh } from './data/caseNarratives';
+import { caseOutcomesZh } from './data/caseOutcomes';
+import { caseMetricsZh } from './data/caseMetrics';
+import MetricPanel from './components/cases/MetricPanel';
 
 // ─── Translations ────────────────────────────────────────────────────────────
 
 const translations = {
   en: {
-    nav: { capabilities: 'Capabilities', work: 'Case Studies', team: 'Team', contact: 'Contact Us' },
+    nav: { capabilities: 'Capabilities', methodology: 'Our Method', work: 'Case Studies', team: 'Team', contact: 'Contact Us' },
     hero: {
       badge: 'AI Strategy & Consulting',
       title: ['We Advise on', 'AI'],
@@ -250,7 +258,7 @@ const translations = {
     },
   },
   zh: {
-    nav: { capabilities: '能力', work: '案例', team: '团队', contact: '联系我们' },
+    nav: { capabilities: '能力', methodology: '方法体系', work: '案例', team: '团队', contact: '联系我们' },
     hero: {
       badge: '中加技术团队 | 10年+软件与数据实战 | 企业流程优化 × 场景AI落地',
       title: ['让AI，成为', '企业的新基建。'],
@@ -512,7 +520,7 @@ const translations = {
     },
   },
   it: {
-    nav: { capabilities: 'Competenze', work: 'Progetti', team: 'Team', contact: 'Contattaci' },
+    nav: { capabilities: 'Competenze', methodology: 'Metodo', work: 'Progetti', team: 'Team', contact: 'Contattaci' },
     hero: {
       badge: 'Strategia & Consulenza AI',
       title: ['Consulenti', 'AI'],
@@ -813,21 +821,17 @@ const workMeta = [
   { id: 'onyx-hire', visibleIn: ['en', 'zh', 'it'] },
 ];
 
-const zhWorkOrder = ['onyx-hire', 'lexflow', 'ghosty', 'meng', 'finance-ai-automation', 'supermarket-datahub', 'jinhui-erp', 'finance-erp', 'squirrel', 'maybole', 'aiusd', 'manbo', 'mimitavern'];
+// Portfolio taxonomy: FDE engagements require field discovery, real operating constraints,
+// and a delivered or piloted workflow loop. Product engineering is ranked separately.
+const fdeWorkOrder = ['lexflow', 'onyx-hire', 'supermarket-datahub', 'jinhui-erp', 'finance-erp', 'finance-ai-automation', 'meng', 'squirrel'];
+const productWorkOrder = ['ghosty', 'aiusd', 'maybole', 'mimitavern', 'manbo'];
+const portfolioOrder = [...fdeWorkOrder, ...productWorkOrder];
+const fdeProjectIds = new Set(fdeWorkOrder);
 
 const getVisibleWorkItems = (lang, items) => {
   const merged = items.map((item, index) => ({ ...item, ...workMeta[index] }));
   const filtered = merged.filter((item) => item.visibleIn.includes(lang));
-  if (lang === 'zh') {
-    filtered.sort((a, b) => zhWorkOrder.indexOf(a.id) - zhWorkOrder.indexOf(b.id));
-  } else {
-    const featured = ['onyx-hire', 'lexflow', 'ghosty'];
-    const rank = (id) => {
-      const index = featured.indexOf(id);
-      return index === -1 ? featured.length : index;
-    };
-    filtered.sort((a, b) => rank(a.id) - rank(b.id));
-  }
+  filtered.sort((a, b) => portfolioOrder.indexOf(a.id) - portfolioOrder.indexOf(b.id));
   return filtered;
 };
 
@@ -839,16 +843,28 @@ const portfolioCopy = {
     wallLabel: 'Portfolio Atlas',
     wallTitle: 'Built deep inside real businesses',
     wallSubtitle: 'Explore a selection of systems spanning operations, data, finance, industry, and generative AI.',
+    fdeTitle: 'FDE engagements',
+    fdeSubtitle: 'Field-led transformation work, ranked by professional depth, delivery completeness, and fit with the FDE model.',
+    productTitle: 'AI products & platforms',
+    productSubtitle: 'Complete product engineering work shown on its own terms, without forcing an FDE narrative.',
   },
   zh: {
     wallLabel: '项目图谱',
     wallTitle: '深入真实业务现场',
     wallSubtitle: '从运营、数据、金融和工业系统，到生成式 AI 产品。点击任意项目，查看我们如何解决复杂问题。',
+    fdeTitle: 'FDE 交付案例',
+    fdeSubtitle: '按照专业深度、交付完整度和 FDE 契合度排序：从业务现场出发，并已完成系统或试点闭环。',
+    productTitle: 'AI 产品与平台',
+    productSubtitle: '这些项目具备独立的产品与工程价值，因此按产品完整度展示，不强行套用 FDE 叙事。',
   },
   it: {
     wallLabel: 'Atlante dei Progetti',
     wallTitle: 'Nel cuore delle aziende reali',
     wallSubtitle: 'Esplora una selezione di sistemi tra operations, dati, finanza, industria e AI generativa.',
+    fdeTitle: 'Progetti FDE',
+    fdeSubtitle: 'Trasformazioni sul campo ordinate per profondità professionale, completezza e aderenza al modello FDE.',
+    productTitle: 'Prodotti e piattaforme AI',
+    productSubtitle: 'Prodotti completi presentati per il loro valore, senza forzare una narrativa FDE.',
   },
 };
 
@@ -921,6 +937,7 @@ const MobileMenu = ({ isOpen, onClose, t, lang, setLang }) => {
         </button>
         <nav className="flex flex-col gap-6">
           <a href="#capabilities" onClick={onClose} className="text-gray-300 hover:text-white transition-colors">{t.nav.capabilities}</a>
+          <a href="#methodology" onClick={onClose} className="text-gray-300 hover:text-white transition-colors">{t.nav.methodology}</a>
           <a href="#work" onClick={onClose} className="text-gray-300 hover:text-white transition-colors">{t.nav.work}</a>
           <a href="#team" onClick={onClose} className="text-gray-300 hover:text-white transition-colors">{t.nav.team}</a>
           <a href="#contact" onClick={onClose}
@@ -1002,60 +1019,92 @@ const TeamMemberCard = ({ name, role, avatar, bio, credentials }) => (
 
 // ─── Portfolio Wall ─────────────────────────────────────────────────────────
 
-const ProjectWall = ({ items, projectsData, copy, viewLabel, onSelect }) => (
-  <div className="section-reveal">
-    <div className="mb-9 max-w-2xl">
-      <span className="text-xs font-semibold uppercase tracking-[0.24em] text-cyan-300/80">{copy.wallLabel}</span>
-      <h3 className="mt-3 text-2xl font-bold md:text-3xl">{copy.wallTitle}</h3>
-      <p className="mt-3 text-sm leading-relaxed text-gray-400 md:text-base">{copy.wallSubtitle}</p>
-    </div>
+const ProjectWall = ({ items, projectsData, copy, viewLabel, onSelect, analysisById, outcomesById, lang }) => {
+  const groups = [
+    { key: 'fde', title: copy.fdeTitle, subtitle: copy.fdeSubtitle, ids: fdeWorkOrder },
+    { key: 'product', title: copy.productTitle, subtitle: copy.productSubtitle, ids: productWorkOrder },
+  ];
 
-    <div className="portfolio-wall grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-      {items.map((study) => {
-        const image = projectsData.find((project) => project.id === study.id)?.images[0];
-        return (
-          <button
-            key={study.id}
-            type="button"
-            onClick={() => onSelect(study.id)}
-            className="portfolio-tile group relative aspect-[4/3] overflow-hidden rounded-2xl border border-white/10 bg-[#101625] text-left"
-            aria-label={`${viewLabel}: ${study.title}`}
-          >
-            {image && (
-              <img
-                src={image}
-                alt=""
-                className="portfolio-tile-image absolute inset-0 h-full w-full object-cover object-top transition duration-700 ease-out group-hover:scale-[1.045]"
-              />
-            )}
-            <div className="portfolio-tile-wash absolute inset-0" />
-            <div className="portfolio-tile-gradient absolute inset-0" />
-            <div className="absolute inset-x-0 top-0 flex items-start justify-between p-4">
-              <span className="rounded-full border border-white/10 bg-[#090d16]/75 px-3 py-1.5 text-[10px] font-medium uppercase tracking-[0.12em] text-cyan-100/80 backdrop-blur-xl">
-                {study.tags[0]}
-              </span>
-              <span className="flex h-9 w-9 translate-y-1 items-center justify-center rounded-full border border-white/10 bg-[#090d16]/70 text-white/70 opacity-0 backdrop-blur-xl transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100">
-                <ArrowRight size={15} />
-              </span>
-            </div>
-            <div className="absolute inset-x-0 bottom-0 p-5 md:p-6">
-              <h4 className="text-lg font-semibold leading-snug text-white md:text-xl">
-                {study.title}
-              </h4>
-              <p className="mt-2 line-clamp-2 text-sm leading-relaxed text-gray-400 transition-colors duration-300 group-hover:text-gray-200">
-                {study.description}
-              </p>
-            </div>
-          </button>
-        );
-      })}
+  return (
+    <div className="section-reveal">
+      <div className="mb-14 max-w-2xl">
+        <span className="text-xs font-semibold uppercase tracking-[0.24em] text-cyan-300/80">{copy.wallLabel}</span>
+        <h3 className="mt-3 text-2xl font-bold md:text-3xl">{copy.wallTitle}</h3>
+        <p className="mt-3 text-sm leading-relaxed text-gray-400 md:text-base">{copy.wallSubtitle}</p>
+      </div>
+
+      <div className="space-y-24">
+        {groups.map((group) => {
+          const groupItems = group.ids.map((id) => items.find((item) => item.id === id)).filter(Boolean);
+          return (
+            <section key={group.key} aria-labelledby={`${group.key}-portfolio-title`}>
+              <div className="mb-8 flex flex-col justify-between gap-4 border-b border-white/10 pb-6 md:flex-row md:items-end">
+                <div>
+                  <div className={`mb-2 text-[10px] font-semibold uppercase tracking-[0.18em] ${group.key === 'fde' ? 'text-cyan-300/70' : 'text-purple-300/70'}`}>
+                    {group.key === 'fde' ? 'Field Delivery' : 'Product Engineering'} · {groupItems.length}
+                  </div>
+                  <h4 id={`${group.key}-portfolio-title`} className="text-2xl font-semibold text-white md:text-3xl">{group.title}</h4>
+                </div>
+                <p className="max-w-2xl text-sm leading-7 text-gray-500">{group.subtitle}</p>
+              </div>
+
+              <div className="portfolio-wall grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                {groupItems.map((study, rank) => {
+                  const image = projectsData.find((project) => project.id === study.id)?.images[0];
+                  const isFde = group.key === 'fde';
+                  const analysis = isFde ? analysisById[study.id] : null;
+                  const outcome = isFde ? outcomesById[study.id] : null;
+                  return (
+                    <button
+                      key={study.id}
+                      type="button"
+                      onClick={() => onSelect(study.id)}
+                      className="portfolio-tile group relative min-h-[420px] overflow-hidden rounded-2xl border border-white/10 bg-[#101625] text-left"
+                      aria-label={`${viewLabel}: ${study.title}`}
+                    >
+                      {image && <img src={image} alt="" className="portfolio-tile-image absolute inset-0 h-full w-full object-cover object-top transition duration-700 ease-out group-hover:scale-[1.045]" />}
+                      <div className="portfolio-tile-wash absolute inset-0" />
+                      <div className="portfolio-tile-gradient absolute inset-0" />
+                      <div className="absolute inset-x-0 top-0 flex items-start justify-between p-4">
+                        <div className="flex items-center gap-2">
+                          <span className="rounded-full border border-white/10 bg-[#090d16]/75 px-3 py-1.5 text-[10px] font-medium uppercase tracking-[0.12em] text-cyan-100/80 backdrop-blur-xl">{study.tags[0]}</span>
+                          {isFde && <span className="rounded-full border border-cyan-300/20 bg-[#090d16]/75 px-2.5 py-1.5 text-[10px] font-medium text-cyan-200/80 backdrop-blur-xl">FDE · {String(rank + 1).padStart(2, '0')}</span>}
+                        </div>
+                        <span className="flex h-9 w-9 translate-y-1 items-center justify-center rounded-full border border-white/10 bg-[#090d16]/70 text-white/70 opacity-0 backdrop-blur-xl transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100"><ArrowRight size={15} /></span>
+                      </div>
+                      <div className="absolute inset-x-0 bottom-0 p-5 md:p-6">
+                        <h5 className="text-lg font-semibold leading-snug text-white md:text-xl">{study.title}</h5>
+                        <p className="mt-2 line-clamp-2 text-sm leading-relaxed text-gray-400 transition-colors duration-300 group-hover:text-gray-200">{lang === 'zh' && outcome ? outcome.summary : study.description}</p>
+                        {isFde && analysis ? (
+                          <div className="mt-4 border-t border-white/10 pt-4">
+                            {lang === 'zh' && outcome && <div className="mb-3 text-[10px] font-medium text-lime-200/75">● {outcome.scope} · 已完成并跑通</div>}
+                            <div className="mb-3 flex flex-wrap gap-1.5">
+                              {analysis.methods.slice(0, 2).map((method) => <span key={method.name} className="rounded-full border border-cyan-300/15 bg-cyan-300/[0.06] px-2.5 py-1 text-[10px] text-cyan-100/75">{localizeMethodName(method.name, lang)}</span>)}
+                            </div>
+                            <div className="flex items-center justify-between text-[10px] text-white/45"><span>{lang === 'zh' ? '问题 → 证据 → 方法 → 验证' : 'Evidence-led case route'}</span><span className="text-cyan-200/70">{viewLabel}</span></div>
+                          </div>
+                        ) : (
+                          <div className="mt-4 flex items-center justify-between border-t border-white/10 pt-4">
+                            <div className="flex flex-wrap gap-1.5">{study.tags.slice(1, 3).map((tag) => <span key={tag} className="rounded-full border border-purple-300/15 bg-purple-300/[0.06] px-2.5 py-1 text-[10px] text-purple-100/75">{tag}</span>)}</div>
+                            <span className="text-[10px] text-purple-200/70">{viewLabel}</span>
+                          </div>
+                        )}
+                      </div>
+                    </button>
+                  );
+                })}
+              </div>
+            </section>
+          );
+        })}
+      </div>
     </div>
-  </div>
-);
+  );
+};
 
 // ─── Project Modal ──────────────────────────────────────────────────────────
 
-const ProjectModal = ({ project, images, onClose }) => {
+const ProjectModal = ({ project, images, metrics, lang, onClose }) => {
   const [currentImage, setCurrentImage] = useState(0);
 
   const handleKeyDown = useCallback((e) => {
@@ -1077,16 +1126,19 @@ const ProjectModal = ({ project, images, onClose }) => {
     <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 md:p-8" onClick={onClose}>
       <div className="absolute inset-0 bg-black/80 backdrop-blur-sm" />
       <div
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="product-case-title"
         className="relative w-full max-w-5xl max-h-[90vh] bg-[#0d1117] border border-white/10 rounded-2xl overflow-hidden flex flex-col animate-modal-in"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Close button */}
-        <button onClick={onClose} className="absolute top-4 right-4 z-10 w-8 h-8 rounded-full bg-black/50 backdrop-blur-sm border border-white/10 flex items-center justify-center text-gray-400 hover:text-white transition-colors">
+        <button onClick={onClose} aria-label="Close project" className="absolute top-4 right-4 z-10 w-8 h-8 rounded-full bg-black/50 backdrop-blur-sm border border-white/10 flex items-center justify-center text-gray-400 hover:text-white transition-colors">
           <X size={16} />
         </button>
 
         {/* Image carousel */}
-        <div className="relative w-full aspect-[16/9] bg-black/50 shrink-0">
+        <div className="relative h-[34vh] min-h-56 w-full shrink-0 bg-black/50 md:h-[42vh] md:max-h-[360px]">
           <img
             src={images[currentImage]}
             alt={`Screenshot ${currentImage + 1}`}
@@ -1096,12 +1148,14 @@ const ProjectModal = ({ project, images, onClose }) => {
             <>
               <button
                 onClick={() => setCurrentImage((prev) => (prev > 0 ? prev - 1 : images.length - 1))}
+                aria-label="Previous image"
                 className="absolute left-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-black/50 backdrop-blur-sm border border-white/10 flex items-center justify-center text-white hover:bg-white/20 transition-colors"
               >
                 <ChevronLeft size={20} />
               </button>
               <button
                 onClick={() => setCurrentImage((prev) => (prev < images.length - 1 ? prev + 1 : 0))}
+                aria-label="Next image"
                 className="absolute right-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-black/50 backdrop-blur-sm border border-white/10 flex items-center justify-center text-white hover:bg-white/20 transition-colors"
               >
                 <ChevronRight size={20} />
@@ -1111,6 +1165,7 @@ const ProjectModal = ({ project, images, onClose }) => {
                   <button
                     key={i}
                     onClick={() => setCurrentImage(i)}
+                    aria-label={`View image ${i + 1}`}
                     className={`w-2 h-2 rounded-full transition-all ${i === currentImage ? 'bg-white w-6' : 'bg-white/40 hover:bg-white/60'}`}
                   />
                 ))}
@@ -1137,8 +1192,17 @@ const ProjectModal = ({ project, images, onClose }) => {
               </span>
             ))}
           </div>
-          <h2 className="text-2xl font-bold mb-3">{project.title}</h2>
+          <h2 id="product-case-title" className="text-2xl font-bold mb-3">{project.title}</h2>
           <p className="text-gray-400 mb-6 leading-relaxed">{project.description}</p>
+          {lang === 'zh' && metrics && (
+            <div className="mb-8">
+              <div className="mb-4 flex items-center gap-3">
+                <h3 className="text-lg font-semibold text-white">关键数据与试点基准</h3>
+                <div className="h-px flex-1 bg-gradient-to-r from-white/10 to-transparent" />
+              </div>
+              <MetricPanel metrics={metrics} compact />
+            </div>
+          )}
           {project.metrics && (
             <div className="mb-7 grid grid-cols-2 gap-3 md:grid-cols-4">
               {project.metrics.map((metric, index) => (
@@ -1187,20 +1251,69 @@ const ProjectModal = ({ project, images, onClose }) => {
 
 const LandingPage = () => {
   const [isScrolled, setIsScrolled] = useState(false);
-  const [lang, setLang] = useState(() => {
+  const [lang, setLangState] = useState(() => {
+    const requested = new URLSearchParams(window.location.search).get('lang');
+    if (['en', 'zh', 'it'].includes(requested)) return requested;
     const isHK = window.location.hostname === 'hk.onyxdevslab.com';
     return isHK ? 'zh' : 'en';
   });
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [activeProject, setActiveProject] = useState(null);
+  const [activeProject, setActiveProject] = useState(() => {
+    const requested = new URLSearchParams(window.location.search).get('case');
+    return requested && projectsData.some((project) => project.id === requested) ? requested : null;
+  });
   const pageRef = useScrollReveal([lang]);
   const t = translations[lang];
   const visibleWorkItems = getVisibleWorkItems(lang, t.work.items);
+  const selectedProject = visibleWorkItems.find((item) => item.id === activeProject);
+  const ActiveCaseView = activeProject && fdeProjectIds.has(activeProject) ? CaseDetail : ProjectModal;
+
+  const setLang = useCallback((nextLang) => {
+    setLangState(nextLang);
+    const url = new URL(window.location.href);
+    url.searchParams.set('lang', nextLang);
+    window.history.replaceState(window.history.state, '', url);
+  }, []);
+
+  const openProject = useCallback((projectId) => {
+    const url = new URL(window.location.href);
+    url.searchParams.set('case', projectId);
+    url.searchParams.set('lang', lang);
+    window.history.pushState({ caseOverlay: true, projectId }, '', url);
+    setActiveProject(projectId);
+  }, [lang]);
+
+  const closeProject = useCallback(() => {
+    if (window.history.state?.caseOverlay) {
+      window.history.back();
+      return;
+    }
+    const url = new URL(window.location.href);
+    url.searchParams.delete('case');
+    window.history.replaceState(window.history.state, '', url);
+    setActiveProject(null);
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 50);
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  useEffect(() => {
+    document.documentElement.lang = lang === 'zh' ? 'zh-CN' : lang;
+    document.title = selectedProject
+      ? `${selectedProject.title} — Onyx FDE Case`
+      : 'Onyx Devs Lab — AI Consulting & FDE Delivery';
+  }, [lang, selectedProject]);
+
+  useEffect(() => {
+    const syncProjectFromUrl = () => {
+      const requested = new URLSearchParams(window.location.search).get('case');
+      setActiveProject(requested && projectsData.some((project) => project.id === requested) ? requested : null);
+    };
+    window.addEventListener('popstate', syncProjectFromUrl);
+    return () => window.removeEventListener('popstate', syncProjectFromUrl);
   }, []);
 
   return (
@@ -1219,6 +1332,7 @@ const LandingPage = () => {
           </div>
           <div className="hidden md:flex items-center space-x-8">
             <a href="#capabilities" className="nav-link text-gray-300 hover:text-white transition-colors text-sm tracking-wide">{t.nav.capabilities}</a>
+            <a href="#methodology" className="nav-link text-gray-300 hover:text-white transition-colors text-sm tracking-wide">{t.nav.methodology}</a>
             <a href="#work" className="nav-link text-gray-300 hover:text-white transition-colors text-sm tracking-wide">{t.nav.work}</a>
             <a href="#team" className="nav-link text-gray-300 hover:text-white transition-colors text-sm tracking-wide">{t.nav.team}</a>
             <a href="#contact"
@@ -1345,7 +1459,7 @@ const LandingPage = () => {
                     pain={item.pain}
                     solution={item.solution}
                     benefit={item.benefit}
-                    onClick={item.linkId ? () => setActiveProject(item.linkId) : undefined}
+                    onClick={item.linkId ? () => openProject(item.linkId) : undefined}
                   />
                 </div>
               ))}
@@ -1353,6 +1467,9 @@ const LandingPage = () => {
           </div>
         </section>
       )}
+
+      {/* ── FDE Methodology ── */}
+      <MethodologySection lang={lang} />
 
       {/* ── Case Studies ── */}
       <section id="work" className="py-28 relative">
@@ -1373,17 +1490,25 @@ const LandingPage = () => {
             projectsData={projectsData}
             copy={portfolioCopy[lang]}
             viewLabel={t.work.viewDetails}
-            onSelect={setActiveProject}
+            onSelect={openProject}
+            analysisById={caseAnalysisZh}
+            outcomesById={caseOutcomesZh}
+            lang={lang}
           />
         </div>
       </section>
 
-      {/* ── Project Modal ── */}
-      {activeProject !== null && (
-        <ProjectModal
-          project={visibleWorkItems.find((w) => w.id === activeProject)}
+      {/* ── Shareable Case Detail ── */}
+      {activeProject !== null && selectedProject && (
+        <ActiveCaseView
+          project={selectedProject}
           images={projectsData.find((p) => p.id === activeProject)?.images || []}
-          onClose={() => setActiveProject(null)}
+          analysis={caseAnalysisZh[activeProject]}
+          narrative={caseNarrativesZh[activeProject]}
+          outcome={caseOutcomesZh[activeProject]}
+          metrics={caseMetricsZh[activeProject]}
+          lang={lang}
+          onClose={closeProject}
         />
       )}
 
@@ -1503,7 +1628,7 @@ const LandingPage = () => {
         </div>
       </footer>
 
-      <ChatWidget />
+      {!activeProject && <ChatWidget />}
     </div>
   );
 };
