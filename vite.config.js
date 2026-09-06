@@ -11,6 +11,9 @@ export default defineConfig({
   build: {
     outDir: "dist",
     assetsDir: "assets",
+    // Keep the previous content-hashed bundle during in-place VPS deploys.
+    // Clients holding an older HTML shell can still load its referenced files.
+    emptyOutDir: false,
     rollupOptions: {
       output: {
         manualChunks: undefined,
