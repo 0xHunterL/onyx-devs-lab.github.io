@@ -26,6 +26,7 @@ async def deliver_notifications(
         payload = json.loads(raw_payload) if isinstance(raw_payload, str) else dict(raw_payload)
         body = json.dumps(payload, ensure_ascii=False, separators=(",", ":")).encode("utf-8")
         timestamp = str(int(time.time()))
+        event_id = f"{notification['event_type']}:{notification['aggregate_id']}"
         signature = hmac.new(
             webhook_secret.encode("utf-8"),
             timestamp.encode("utf-8") + b"." + body,
@@ -38,8 +39,10 @@ async def deliver_notifications(
                 headers={
                     "Content-Type": "application/json",
                     "X-Assistant-Event": notification["event_type"],
+                    "X-Assistant-Event-ID": event_id,
                     "X-Assistant-Timestamp": timestamp,
                     "X-Assistant-Signature": f"sha256={signature}",
+                    "Idempotency-Key": event_id,
                 },
                 timeout=15.0,
             )

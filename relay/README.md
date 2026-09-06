@@ -54,21 +54,32 @@ the visitor's latest question and injects them as internal factual reference.
 This keeps detailed project material out of the permanent system prompt while
 making answers more specific.
 
-## Lead and appointment roadmap
+## Lead and appointment workflow
 
-The current release answers questions and directs interested visitors to the
-published WeChat/contact channels. It does not claim to have booked an
-appointment or stored a lead.
+The assistant answers questions and emits a structured contact action when a
+visitor asks to contact the team, add WeChat or arrange a meeting. The website
+then displays the published WeChat QR code and a short lead form. A lead is only
+stored after the visitor explicitly consents. Appointment submissions are
+recorded as pending requests; the assistant never claims that a calendar slot
+has been confirmed.
 
-The next capability should add consent-aware, server-side tools rather than
-asking the model to simulate them:
+Each accepted submission atomically creates the lead and a notification event:
 
-- `capture_lead`: store contact details, need, budget/timeline and source with
-  explicit visitor consent.
-- `request_appointment`: offer real availability, create a pending booking and
-  return a confirmation identifier.
-- team notification: send a signed webhook to the team's chosen CRM or chat
-  channel, with retry and an audit trail.
+- Contact, requirement summary, preferred time and source are persisted in
+  PostgreSQL with the recorded consent time.
+- The transactional outbox delivers a signed `lead.created` webhook to the
+  configured team endpoint.
+- Delivery uses exponential retry, a reclaimable ten-minute worker lease and a
+  stable `X-Assistant-Event-ID` / `Idempotency-Key`, so restarts cannot silently
+  strand an event and receivers can safely deduplicate retries.
+- Admin routes expose leads, delivery state and follow-up status without making
+  the admin token available to the public website.
+
+Set `LEAD_WEBHOOK_URL` and a random `LEAD_WEBHOOK_SECRET` of at least 32
+characters to activate delivery. The receiver should verify
+`HMAC-SHA256(secret, timestamp + "." + raw_request_body)`, reject stale
+timestamps and deduplicate the event ID. If no endpoint is configured, events
+remain queued until one is added.
 
 Visitor records belong in a managed database or existing system of record, not
 in browser storage or the GitHub Pages repository.

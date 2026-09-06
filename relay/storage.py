@@ -308,7 +308,11 @@ class Database:
                     """
                     SELECT id, event_type, aggregate_id, payload, attempts
                     FROM assistant_notification_outbox
-                    WHERE status IN ('pending', 'retry') AND next_attempt_at <= now()
+                    WHERE (
+                        status IN ('pending', 'retry') AND next_attempt_at <= now()
+                    ) OR (
+                        status = 'sending' AND locked_at < now() - INTERVAL '10 minutes'
+                    )
                     ORDER BY id
                     LIMIT $1
                     FOR UPDATE SKIP LOCKED
@@ -317,7 +321,11 @@ class Database:
                 )
                 if rows:
                     await connection.execute(
-                        "UPDATE assistant_notification_outbox SET status = 'sending' WHERE id = ANY($1::bigint[])",
+                        """
+                        UPDATE assistant_notification_outbox
+                        SET status = 'sending', locked_at = now()
+                        WHERE id = ANY($1::bigint[])
+                        """,
                         [row["id"] for row in rows],
                     )
                 return rows
@@ -360,7 +368,8 @@ class Database:
                 await connection.execute(
                     """
                     UPDATE assistant_notification_outbox
-                    SET status = 'delivered', delivered_at = now(), last_error = NULL
+                    SET status = 'delivered', delivered_at = now(), locked_at = NULL,
+                        last_error = NULL
                     WHERE id = $1
                     """,
                     notification_id,
@@ -376,7 +385,7 @@ class Database:
         await self.pool.execute(
             """
             UPDATE assistant_notification_outbox
-            SET status = 'retry', attempts = attempts + 1,
+            SET status = 'retry', attempts = attempts + 1, locked_at = NULL,
                 next_attempt_at = now() + ($2 * INTERVAL '1 minute'), last_error = $3
             WHERE id = $1
             """,
