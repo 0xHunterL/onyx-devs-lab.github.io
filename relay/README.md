@@ -9,6 +9,12 @@ prompt. The first assistant, `onyx`, serves the Onyx Devs Lab website.
 ```text
 GET  /health
 POST /v1/assistants/{assistant_id}/chat
+GET  /v1/assistants/{assistant_id}/sessions
+GET  /v1/assistants/{assistant_id}/sessions/{session_id}
+DELETE /v1/assistants/{assistant_id}/sessions/{session_id}
+POST /v1/assistants/{assistant_id}/leads
+GET  /v1/admin/leads
+PATCH /v1/admin/leads/{lead_id}
 ```
 
 The chat request body contains a browser-generated `session_id` and a bounded
@@ -19,6 +25,11 @@ The endpoint is intentionally public: browser bundles must never contain a
 shared secret. Abuse control is enforced at Nginx and application layers using
 per-IP connection/request limits, bounded inputs and a global daily ceiling.
 Only approved website origins receive CORS permission.
+
+Session read/delete calls require the browser's pseudonymous `X-Visitor-ID`.
+Lead creation requires an explicit `consent: true` submission. Admin lead routes
+require a server-side bearer token. When `LEAD_WEBHOOK_URL` is configured, each
+lead is delivered with timestamped HMAC-SHA256 headers and durable retry state.
 
 ## Adding another assistant
 
@@ -61,3 +72,22 @@ asking the model to simulate them:
 
 Visitor records belong in a managed database or existing system of record, not
 in browser storage or the GitHub Pages repository.
+
+## Persistence and retention
+
+Production uses a dedicated PostgreSQL database. Anonymous sessions roll forward
+for 30 days after activity with a 90-day absolute ceiling. Leads are only created
+after explicit form consent and expire after 365 days. The maintenance worker
+deletes expired records every five minutes and retries signed webhook deliveries
+from a transactional outbox. A systemd timer creates daily PostgreSQL custom-format
+backups under `/var/backups/assistant-gateway` and removes backups older than 14 days.
+
+Migrations run automatically before the service starts. Matching rollback SQL is
+kept under `migrations/down/`; take a fresh backup before applying a rollback.
+
+To restore into an empty database:
+
+```bash
+sudo -u postgres pg_restore --clean --if-exists --dbname=assistant_gateway \
+  /var/backups/assistant-gateway/assistant-gateway-YYYYMMDDTHHMMSSZ.dump
+```

@@ -1,7 +1,6 @@
 /* eslint-disable react/prop-types */
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { ArrowRight, ChevronLeft, ChevronRight, Globe, Menu, X, Compass, Code2, Workflow, Target, Users, Sparkles, MessageCircle, CheckCircle2 } from 'lucide-react';
-import ChatWidget from './components/chat/ChatWidget';
 import MethodologySection from './components/cases/MethodologySection';
 import CaseDetail from './components/cases/CaseDetail';
 import { caseAnalysisZh, localizeMethodName } from './data/caseAnalysis';
@@ -9,6 +8,8 @@ import { caseNarrativesZh } from './data/caseNarratives';
 import { caseOutcomesZh } from './data/caseOutcomes';
 import { caseMetricsZh } from './data/caseMetrics';
 import MetricPanel from './components/cases/MetricPanel';
+
+const ChatWidget = React.lazy(() => import('./components/chat/ChatWidget'));
 
 // ─── Translations ────────────────────────────────────────────────────────────
 
@@ -1675,7 +1676,11 @@ const LandingPage = () => {
         </div>
       </footer>
 
-      {!activeProject && <ChatWidget />}
+      {!activeProject && (
+        <React.Suspense fallback={null}>
+          <ChatWidget />
+        </React.Suspense>
+      )}
     </div>
   );
 };

@@ -1,0 +1,10 @@
+[Unit]
+Description=Back up the assistant gateway PostgreSQL database
+After=postgresql.service
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/sbin/backup-assistant-gateway
+Nice=10
+IOSchedulingClass=best-effort
+IOSchedulingPriority=7

@@ -1,51 +1,115 @@
 import asyncio
 import hashlib
+import hmac
 import json
 import logging
+import re
 import time
+import uuid
 from collections import defaultdict
+from contextlib import asynccontextmanager
 from datetime import date
 from typing import Literal
 
 import httpx
-from fastapi import FastAPI, HTTPException, Request
+from fastapi import FastAPI, Header, HTTPException, Request
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel, Field
 from sse_starlette.sse import EventSourceResponse
 
 from assistant_registry import AssistantRegistry
 from config import RelaySettings
+from notifier import deliver_notifications
 from retrieval import retrieve
+from storage import Database, SessionOwnershipError
 
 settings = RelaySettings()
 logger = logging.getLogger("assistant-gateway")
 
 registry = AssistantRegistry(settings.ASSISTANTS_DIR)
-app = FastAPI(title="Mimimi AI Assistant Gateway", version="1.0.0")
+client = httpx.AsyncClient(
+    timeout=httpx.Timeout(120.0, connect=10.0),
+    limits=httpx.Limits(max_connections=20, max_keepalive_connections=10),
+)
+database = Database(
+    settings.DATABASE_URL,
+    settings.VISITOR_HASH_SECRET,
+    settings.ANONYMOUS_RETENTION_DAYS,
+    settings.ANONYMOUS_ABSOLUTE_RETENTION_DAYS,
+    settings.LEAD_RETENTION_DAYS,
+)
+
+
+async def _maintenance_loop() -> None:
+    while True:
+        try:
+            await database.cleanup_expired()
+            await deliver_notifications(
+                database,
+                client,
+                settings.LEAD_WEBHOOK_URL,
+                settings.LEAD_WEBHOOK_SECRET,
+            )
+        except Exception:
+            logger.exception("Assistant maintenance cycle failed")
+        await asyncio.sleep(300)
+
+
+@asynccontextmanager
+async def lifespan(_app: FastAPI):
+    if len(settings.VISITOR_HASH_SECRET) < 32 or len(settings.ADMIN_API_TOKEN) < 32:
+        raise RuntimeError("Visitor hash and admin secrets must each contain at least 32 characters")
+    if settings.LEAD_WEBHOOK_URL and len(settings.LEAD_WEBHOOK_SECRET) < 32:
+        raise RuntimeError("LEAD_WEBHOOK_SECRET must contain at least 32 characters")
+    await database.connect()
+    await database.cleanup_expired()
+    maintenance_task = asyncio.create_task(_maintenance_loop())
+    try:
+        yield
+    finally:
+        maintenance_task.cancel()
+        await database.close()
+        await client.aclose()
+
+
+app = FastAPI(title="Mimimi AI Assistant Gateway", version="2.0.0", lifespan=lifespan)
 
 app.add_middleware(
     CORSMiddleware,
     allow_origins=[origin.strip() for origin in settings.CORS_ORIGINS.split(",") if origin.strip()],
     allow_origin_regex=r"^http://(localhost|127\.0\.0\.1):\d+$",
-    allow_methods=["GET", "POST", "OPTIONS"],
-    allow_headers=["Content-Type", "Authorization", "X-Session-ID"],
+    allow_methods=["GET", "POST", "PATCH", "DELETE", "OPTIONS"],
+    allow_headers=["Content-Type", "X-Visitor-ID", "Authorization"],
     max_age=3600,
-)
-
-client = httpx.AsyncClient(
-    timeout=httpx.Timeout(120.0, connect=10.0),
-    limits=httpx.Limits(max_connections=20, max_keepalive_connections=10),
 )
 
 
 class ChatMessage(BaseModel):
+    id: str | None = Field(default=None, max_length=128, pattern=r"^[A-Za-z0-9_-]+$")
     role: Literal["user", "assistant"]
     content: str = Field(min_length=1, max_length=settings.MAX_MESSAGE_CHARS)
 
 
 class ChatRequest(BaseModel):
     session_id: str = Field(min_length=8, max_length=128, pattern=r"^[A-Za-z0-9_-]+$")
+    visitor_id: str | None = Field(default=None, min_length=8, max_length=128, pattern=r"^[A-Za-z0-9_-]+$")
+    response_message_id: str | None = Field(default=None, max_length=128, pattern=r"^[A-Za-z0-9_-]+$")
     messages: list[ChatMessage] = Field(min_length=1, max_length=settings.MAX_MESSAGES)
+
+
+class LeadRequest(BaseModel):
+    session_id: str = Field(min_length=8, max_length=128, pattern=r"^[A-Za-z0-9_-]+$")
+    visitor_id: str = Field(min_length=8, max_length=128, pattern=r"^[A-Za-z0-9_-]+$")
+    contact: str = Field(min_length=2, max_length=200)
+    requirement_summary: str = Field(min_length=5, max_length=4000)
+    appointment_requested: bool = False
+    preferred_time: str | None = Field(default=None, max_length=200)
+    timezone: str | None = Field(default=None, max_length=100)
+    consent: bool
+
+
+class LeadStatusRequest(BaseModel):
+    status: Literal["new", "contacted", "qualified", "closed", "spam"]
 
 
 _minute_buckets: dict[tuple[str, str], list[float]] = defaultdict(list)
@@ -106,7 +170,11 @@ def _messages_digest(messages: list[dict[str, str]]) -> str:
     return hashlib.sha256(serialized.encode("utf-8")).hexdigest()
 
 
-async def _compact_history(session_id: str, messages: list[dict[str, str]]) -> tuple[list[dict[str, str]], str | None]:
+async def _compact_history(
+    assistant_id: str,
+    session_id: str,
+    messages: list[dict[str, str]],
+) -> tuple[list[dict[str, str]], str | None]:
     total_chars = sum(len(message["content"]) for message in messages)
     keep_count = settings.RECENT_MESSAGES_TO_KEEP
     if total_chars <= settings.CONTEXT_COMPACTION_THRESHOLD_CHARS or len(messages) <= keep_count:
@@ -115,9 +183,19 @@ async def _compact_history(session_id: str, messages: list[dict[str, str]]) -> t
     cutoff = len(messages) - keep_count
     older = messages[:cutoff]
     recent = messages[cutoff:]
+    cache_key = f"{assistant_id}:{session_id}"
 
     async with _summary_lock:
-        cached = _summary_cache.get(session_id)
+        cached = _summary_cache.get(cache_key)
+        if not cached:
+            persisted = await database.get_memory(assistant_id, session_id)
+            if persisted:
+                cached = {
+                    "count": persisted["covered_message_count"],
+                    "digest": persisted["source_digest"],
+                    "summary": persisted["summary"],
+                    "updated_at": time.time(),
+                }
         source_messages = older
         previous_summary = ""
         if cached:
@@ -162,12 +240,14 @@ async def _compact_history(session_id: str, messages: list[dict[str, str]]) -> t
             logger.exception("Conversation compaction failed; retaining full context")
             return messages, None
 
-        _summary_cache[session_id] = {
+        digest = _messages_digest(older)
+        _summary_cache[cache_key] = {
             "count": cutoff,
-            "digest": _messages_digest(older),
+            "digest": digest,
             "summary": summary,
             "updated_at": time.time(),
         }
+        await database.save_memory(assistant_id, session_id, cutoff, digest, summary)
         logger.info("Compacted %s earlier messages for assistant session", cutoff)
         if len(_summary_cache) > 500:
             oldest_session = min(_summary_cache, key=lambda key: float(_summary_cache[key]["updated_at"]))
@@ -195,13 +275,152 @@ def _build_system_prompt(assistant, question: str, conversation_summary: str | N
     return "\n\n".join(sections)
 
 
+def _suggest_actions(question: str) -> list[dict]:
+    contact_pattern = re.compile(
+        r"预约|约.{0,4}(聊|时间|会议)|联系|微信|二维码|加你|沟通|appointment|book|contact|wechat|meeting",
+        re.IGNORECASE,
+    )
+    if not contact_pattern.search(question):
+        return []
+    appointment_requested = bool(re.search(r"预约|约.{0,4}(聊|时间|会议)|appointment|book|meeting", question, re.I))
+    return [{
+        "type": "contact_card",
+        "wechat_id": "m453301909",
+        "qr_path": "/wechat-qr.png",
+        "appointment_requested": appointment_requested,
+        "suggested_summary": question[:500],
+    }]
+
+
+async def _save_assistant_response(
+    assistant_id: str,
+    session_id: str,
+    client_message_id: str | None,
+    content: str,
+    actions: list[dict],
+) -> None:
+    try:
+        await database.add_assistant_message(
+            assistant_id,
+            session_id,
+            client_message_id,
+            content,
+            {"actions": actions, "model": settings.DEEPSEEK_MODEL},
+        )
+    except Exception:
+        logger.exception("Failed to persist assistant response")
+
+
 @app.get("/health")
 async def health():
     return {
         "status": "ok",
         "service": "ai-assistant-gateway",
         "assistants": registry.ids,
+        "storage": "ok" if await database.healthy() else "unavailable",
     }
+
+
+@app.get("/v1/assistants/{assistant_id}/sessions")
+async def list_sessions(assistant_id: str, x_visitor_id: str = Header(alias="X-Visitor-ID")):
+    if registry.get(assistant_id) is None:
+        raise HTTPException(status_code=404, detail="Unknown assistant")
+    return {"sessions": await database.list_sessions(assistant_id, x_visitor_id)}
+
+
+@app.get("/v1/assistants/{assistant_id}/sessions/{session_id}")
+async def get_session(
+    assistant_id: str,
+    session_id: str,
+    x_visitor_id: str = Header(alias="X-Visitor-ID"),
+):
+    try:
+        messages = await database.get_messages(assistant_id, session_id, x_visitor_id)
+    except SessionOwnershipError as error:
+        raise HTTPException(status_code=404, detail=str(error)) from error
+    return {"session_id": session_id, "messages": messages}
+
+
+@app.delete("/v1/assistants/{assistant_id}/sessions/{session_id}")
+async def delete_session(
+    assistant_id: str,
+    session_id: str,
+    x_visitor_id: str = Header(alias="X-Visitor-ID"),
+):
+    deleted = await database.delete_session(assistant_id, session_id, x_visitor_id)
+    return {"deleted": deleted}
+
+
+@app.post("/v1/assistants/{assistant_id}/leads", status_code=201)
+async def create_lead(assistant_id: str, payload: LeadRequest, request: Request):
+    if registry.get(assistant_id) is None:
+        raise HTTPException(status_code=404, detail="Unknown assistant")
+    if not payload.consent:
+        raise HTTPException(status_code=400, detail="Explicit consent is required")
+
+    await _check_limits(f"{assistant_id}:lead", _client_ip(request))
+    try:
+        visitor_hash = await database.ensure_session(
+            assistant_id,
+            payload.session_id,
+            payload.visitor_id,
+            request.headers.get("Origin"),
+            request.headers.get("User-Agent"),
+        )
+    except SessionOwnershipError as error:
+        raise HTTPException(status_code=403, detail=str(error)) from error
+
+    lead_id = await database.create_lead(
+        assistant_id,
+        payload.session_id,
+        visitor_hash,
+        payload.contact.strip(),
+        payload.requirement_summary.strip(),
+        payload.appointment_requested,
+        payload.preferred_time.strip() if payload.preferred_time else None,
+        payload.timezone,
+        "Visitor explicitly agreed to save the submitted contact and requirement for team follow-up.",
+        request.headers.get("Origin"),
+    )
+    await deliver_notifications(
+        database,
+        client,
+        settings.LEAD_WEBHOOK_URL,
+        settings.LEAD_WEBHOOK_SECRET,
+    )
+    return {
+        "lead_id": str(lead_id),
+        "status": "recorded",
+        "notification": "queued" if not settings.LEAD_WEBHOOK_URL else "processing",
+    }
+
+
+def _require_admin(authorization: str | None) -> None:
+    expected = f"Bearer {settings.ADMIN_API_TOKEN}"
+    if not settings.ADMIN_API_TOKEN or not authorization or not hmac.compare_digest(authorization, expected):
+        raise HTTPException(status_code=401, detail="Unauthorized")
+
+
+@app.get("/v1/admin/leads")
+async def admin_list_leads(
+    authorization: str | None = Header(default=None, alias="Authorization"),
+    limit: int = 100,
+):
+    _require_admin(authorization)
+    return {"leads": await database.list_leads(min(max(limit, 1), 500))}
+
+
+@app.patch("/v1/admin/leads/{lead_id}")
+async def admin_update_lead(
+    lead_id: uuid.UUID,
+    payload: LeadStatusRequest,
+    authorization: str | None = Header(default=None, alias="Authorization"),
+):
+    _require_admin(authorization)
+    updated = await database.update_lead_status(lead_id, payload.status)
+    if not updated:
+        raise HTTPException(status_code=404, detail="Unknown lead")
+    return {"updated": True, "status": payload.status}
 
 
 @app.post("/v1/assistants/{assistant_id}/chat")
@@ -215,20 +434,37 @@ async def chat(assistant_id: str, payload: ChatRequest, request: Request):
         raise HTTPException(status_code=413, detail="Conversation is too long. Please start a new chat.")
 
     await _check_limits(assistant_id, _client_ip(request))
+    visitor_id = payload.visitor_id or payload.session_id
+    try:
+        await database.ensure_session(
+            assistant_id,
+            payload.session_id,
+            visitor_id,
+            request.headers.get("Origin"),
+            request.headers.get("User-Agent"),
+        )
+        await database.sync_messages(assistant_id, payload.session_id, payload.messages)
+    except SessionOwnershipError as error:
+        raise HTTPException(status_code=403, detail=str(error)) from error
+
     api_messages = _merge_consecutive_roles(payload.messages)
     if not settings.DEEPSEEK_API_KEY:
         logger.error("DeepSeek API key is not configured")
         raise HTTPException(status_code=503, detail="The assistant service is temporarily unavailable.")
 
-    api_messages, conversation_summary = await _compact_history(payload.session_id, api_messages)
+    api_messages, conversation_summary = await _compact_history(
+        assistant_id, payload.session_id, api_messages
+    )
     last_question = next(
         (message["content"] for message in reversed(api_messages) if message["role"] == "user"),
         "",
     )
     system_prompt = _build_system_prompt(assistant, last_question, conversation_summary)
+    actions = _suggest_actions(last_question)
 
     async def event_stream():
         provider_messages = [{"role": "system", "content": system_prompt}, *api_messages]
+        response_parts: list[str] = []
         try:
             async with client.stream(
                 "POST",
@@ -257,6 +493,15 @@ async def chat(assistant_id: str, payload: ChatRequest, request: Request):
                         continue
                     data = line[5:].strip()
                     if data == "[DONE]":
+                        for action in actions:
+                            yield {"event": "action", "data": json.dumps(action, ensure_ascii=False)}
+                        await _save_assistant_response(
+                            assistant_id,
+                            payload.session_id,
+                            payload.response_message_id,
+                            "".join(response_parts),
+                            actions,
+                        )
                         yield {"event": "done", "data": ""}
                         return
                     if not data:
@@ -265,8 +510,18 @@ async def chat(assistant_id: str, payload: ChatRequest, request: Request):
                     choices = chunk.get("choices") or []
                     content = choices[0].get("delta", {}).get("content") if choices else None
                     if content:
+                        response_parts.append(content)
                         yield {"event": "text", "data": content}
 
+                for action in actions:
+                    yield {"event": "action", "data": json.dumps(action, ensure_ascii=False)}
+                await _save_assistant_response(
+                    assistant_id,
+                    payload.session_id,
+                    payload.response_message_id,
+                    "".join(response_parts),
+                    actions,
+                )
                 yield {"event": "done", "data": ""}
         except (httpx.HTTPError, json.JSONDecodeError):
             logger.exception("DeepSeek transport or stream error for %s", assistant_id)

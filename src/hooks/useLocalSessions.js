@@ -2,6 +2,15 @@ import { useState, useCallback } from 'react'
 
 const SESSIONS_KEY = 'onyx-chat-sessions'
 const MSGS_PREFIX = 'onyx-chat-msgs-'
+const VISITOR_KEY = 'onyx-chat-visitor-id'
+
+function getOrCreateVisitorId() {
+  const existing = localStorage.getItem(VISITOR_KEY)
+  if (existing) return existing
+  const visitorId = crypto.randomUUID()
+  localStorage.setItem(VISITOR_KEY, visitorId)
+  return visitorId
+}
 
 function readJSON(key, fallback = []) {
   try {
@@ -16,7 +25,8 @@ function writeJSON(key, value) {
   localStorage.setItem(key, JSON.stringify(value))
 }
 
-export function useLocalSessions() {
+export function useLocalSessions(chatApiUrl) {
+  const [visitorId] = useState(getOrCreateVisitorId)
   const [sessions, setSessions] = useState(() => readJSON(SESSIONS_KEY))
   const [currentSessionId, setCurrentSessionId] = useState(null)
 
@@ -36,12 +46,19 @@ export function useLocalSessions() {
     return id
   }, [persistSessions])
 
-  const deleteSession = useCallback((id) => {
+  const deleteSession = useCallback(async (id) => {
+    if (chatApiUrl) {
+      const response = await fetch(
+        chatApiUrl.replace(/\/chat$/, `/sessions/${encodeURIComponent(id)}`),
+        { method: 'DELETE', headers: { 'X-Visitor-ID': visitorId } },
+      )
+      if (!response.ok) throw new Error(`Unable to delete server conversation (HTTP ${response.status})`)
+    }
     const next = readJSON(SESSIONS_KEY).filter(s => s.id !== id)
     persistSessions(next)
     localStorage.removeItem(MSGS_PREFIX + id)
     if (currentSessionId === id) setCurrentSessionId(null)
-  }, [currentSessionId, persistSessions])
+  }, [chatApiUrl, currentSessionId, persistSessions, visitorId])
 
   const getMessages = useCallback((sessionId) => {
     return readJSON(MSGS_PREFIX + sessionId)
@@ -75,6 +92,7 @@ export function useLocalSessions() {
   }, [])
 
   return {
+    visitorId,
     sessions,
     currentSessionId,
     setCurrentSessionId,

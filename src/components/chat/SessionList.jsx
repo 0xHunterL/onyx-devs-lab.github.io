@@ -1,21 +1,21 @@
 import PropTypes from 'prop-types'
 import { Plus, X, Trash2 } from 'lucide-react'
 
-const SessionList = ({ sessions, currentSessionId, onSelect, onDelete, onNewChat, onClose }) => {
+const SessionList = ({ sessions, currentSessionId, onSelect, onDelete, onNewChat, onClose, error }) => {
   return (
     <div className="absolute inset-0 z-10 flex flex-col bg-[#0a0e1a] animate-chat-slide-right">
       <div className="flex items-center justify-between px-4 py-3 border-b border-white/[0.08]">
         <span className="text-white/80 text-sm font-medium">History</span>
         <div className="flex gap-1">
           <button
-            className="w-7 h-7 rounded-lg flex items-center justify-center text-white/50 hover:text-white/80 hover:bg-white/[0.06] transition-colors"
+            className="w-11 h-11 rounded-lg flex items-center justify-center text-white/50 hover:text-white/80 hover:bg-white/[0.06] transition-colors"
             onClick={onNewChat}
             title="New chat"
           >
             <Plus size={16} />
           </button>
           <button
-            className="w-7 h-7 rounded-lg flex items-center justify-center text-white/50 hover:text-white/80 hover:bg-white/[0.06] transition-colors"
+            className="w-11 h-11 rounded-lg flex items-center justify-center text-white/50 hover:text-white/80 hover:bg-white/[0.06] transition-colors"
             onClick={onClose}
             title="Close"
           >
@@ -23,6 +23,7 @@ const SessionList = ({ sessions, currentSessionId, onSelect, onDelete, onNewChat
           </button>
         </div>
       </div>
+      {error && <p className="mx-3 mt-3 text-xs text-red-300" role="alert">{error}</p>}
       <div className="flex-1 overflow-y-auto p-2 chat-scrollbar">
         {sessions.map(s => (
           <div
@@ -36,7 +37,7 @@ const SessionList = ({ sessions, currentSessionId, onSelect, onDelete, onNewChat
           >
             <span className="text-white/70 text-sm truncate flex-1 mr-2">{s.title}</span>
             <button
-              className="opacity-0 group-hover:opacity-100 w-6 h-6 rounded flex items-center justify-center text-white/30 hover:text-red-400 hover:bg-white/[0.06] transition-all flex-shrink-0"
+              className="opacity-100 md:opacity-0 md:group-hover:opacity-100 w-11 h-11 rounded-lg flex items-center justify-center text-white/40 hover:text-red-400 hover:bg-white/[0.06] transition-all flex-shrink-0"
               onClick={e => {
                 e.stopPropagation()
                 onDelete(s.id)
@@ -67,6 +68,7 @@ SessionList.propTypes = {
   onDelete: PropTypes.func.isRequired,
   onNewChat: PropTypes.func.isRequired,
   onClose: PropTypes.func.isRequired,
+  error: PropTypes.string,
 }
 
 export default SessionList

@@ -8,6 +8,8 @@ import SessionList from './SessionList'
 
 const ChatWindow = ({ chatApiUrl, sessionOps, onClose }) => {
   const [showSessions, setShowSessions] = useState(false)
+  const [sessionError, setSessionError] = useState('')
+  const isChinese = new URLSearchParams(window.location.search).get('lang') === 'zh'
 
   const {
     sessions,
@@ -42,10 +44,15 @@ const ChatWindow = ({ chatApiUrl, sessionOps, onClose }) => {
     setShowSessions(false)
   }, [startNewSession, clearMessages])
 
-  const handleDeleteSession = useCallback((id) => {
-    deleteSession(id)
-    if (currentSessionId === id) {
-      clearMessages()
+  const handleDeleteSession = useCallback(async (id) => {
+    setSessionError('')
+    try {
+      await deleteSession(id)
+      if (currentSessionId === id) {
+        clearMessages()
+      }
+    } catch {
+      setSessionError('暂时无法从服务器删除，请稍后重试。')
     }
   }, [deleteSession, currentSessionId, clearMessages])
 
@@ -61,21 +68,21 @@ const ChatWindow = ({ chatApiUrl, sessionOps, onClose }) => {
         </div>
         <div className="flex gap-0.5">
           <button
-            className="w-7 h-7 rounded-lg flex items-center justify-center text-white/40 hover:text-white/70 hover:bg-white/[0.06] transition-colors"
+            className="w-11 h-11 rounded-lg flex items-center justify-center text-white/40 hover:text-white/70 hover:bg-white/[0.06] transition-colors"
             onClick={() => setShowSessions(!showSessions)}
             title="History"
           >
             <Menu size={16} />
           </button>
           <button
-            className="w-7 h-7 rounded-lg flex items-center justify-center text-white/40 hover:text-white/70 hover:bg-white/[0.06] transition-colors"
+            className="w-11 h-11 rounded-lg flex items-center justify-center text-white/40 hover:text-white/70 hover:bg-white/[0.06] transition-colors"
             onClick={handleNewChat}
             title="New chat"
           >
             <Plus size={16} />
           </button>
           <button
-            className="w-7 h-7 rounded-lg flex items-center justify-center text-white/40 hover:text-white/70 hover:bg-white/[0.06] transition-colors"
+            className="w-11 h-11 rounded-lg flex items-center justify-center text-white/40 hover:text-white/70 hover:bg-white/[0.06] transition-colors"
             onClick={onClose}
             title="Minimize"
           >
@@ -85,13 +92,24 @@ const ChatWindow = ({ chatApiUrl, sessionOps, onClose }) => {
       </div>
 
       {/* Messages */}
-      <MessageList messages={messages} />
+      <MessageList
+        messages={messages}
+        chatApiUrl={chatApiUrl}
+        visitorId={sessionOps.visitorId}
+        welcomeMessage={isChinese
+          ? '你好，我是 Onyx AI。可以问我项目经验、合作方式，或直接描述你想解决的业务问题。'
+          : 'Hi, I’m Onyx AI. Ask about our work, engagement models, or describe the business problem you want to solve.'}
+      />
 
       {/* Input */}
       <MessageInput
         onSend={sendMessage}
         isLoading={isLoading}
         onStop={stopGeneration}
+        privacyText={isChinese
+          ? '匿名对话保存 30 天以保持连续服务，可在历史中删除。'
+          : 'Anonymous chats are retained for 30 days and can be deleted from History.'}
+        privacyLinkLabel={isChinese ? '隐私说明' : 'Privacy'}
       />
 
       {/* Session sidebar */}
@@ -103,6 +121,7 @@ const ChatWindow = ({ chatApiUrl, sessionOps, onClose }) => {
           onDelete={handleDeleteSession}
           onNewChat={handleNewChat}
           onClose={() => setShowSessions(false)}
+          error={sessionError}
         />
       )}
     </div>
@@ -113,6 +132,7 @@ ChatWindow.propTypes = {
   chatApiUrl: PropTypes.string.isRequired,
   sessionOps: PropTypes.shape({
     sessions: PropTypes.arrayOf(PropTypes.object).isRequired,
+    visitorId: PropTypes.string.isRequired,
     currentSessionId: PropTypes.string,
     setCurrentSessionId: PropTypes.func.isRequired,
     deleteSession: PropTypes.func.isRequired,

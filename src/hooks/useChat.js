@@ -11,7 +11,7 @@ function buildApiMessages(messages) {
       && typeof message.content === 'string'
       && message.content.trim()
     ))
-    .map(message => ({ role: message.role, content: message.content.trim() }))
+    .map(message => ({ id: message.id, role: message.role, content: message.content.trim() }))
 
   const selected = []
   let totalChars = 0
@@ -70,6 +70,7 @@ export function useChat({ chatApiUrl, sessionId, sessionOps }) {
       content: '',
       createdAt: new Date().toISOString(),
       isStreaming: true,
+      sessionId: activeSessionId,
     }
 
     sessionOps.addMessage(activeSessionId, userMessage)
@@ -88,7 +89,12 @@ export function useChat({ chatApiUrl, sessionId, sessionOps }) {
           'Content-Type': 'application/json',
           Accept: 'text/event-stream',
         },
-        body: JSON.stringify({ session_id: activeSessionId, messages: apiMessages }),
+        body: JSON.stringify({
+          session_id: activeSessionId,
+          visitor_id: sessionOps.visitorId,
+          response_message_id: assistantMessage.id,
+          messages: apiMessages,
+        }),
         signal: abortRef.current.signal,
       })
 
@@ -151,6 +157,21 @@ export function useChat({ chatApiUrl, sessionId, sessionOps }) {
               return updated
             })
           } catch { /* ignore */ }
+        } else if (currentEvent === 'action') {
+          try {
+            const action = JSON.parse(data)
+            setMessages(prev => {
+              const updated = [...prev]
+              const last = updated[updated.length - 1]
+              if (last && last.role === 'assistant' && last.isStreaming) {
+                updated[updated.length - 1] = {
+                  ...last,
+                  actions: [...(last.actions || []), action],
+                }
+              }
+              return updated
+            })
+          } catch { /* ignore malformed actions */ }
         } else if (currentEvent === 'error') {
           setMessages(prev => {
             const updated = [...prev]
@@ -201,6 +222,8 @@ export function useChat({ chatApiUrl, sessionId, sessionOps }) {
             role: 'assistant',
             content: finalMsg.content,
             createdAt: finalMsg.createdAt,
+            actions: finalMsg.actions,
+            sessionId: activeSessionId,
           })
           updated[updated.length - 1] = finalMsg
         }

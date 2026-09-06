@@ -8,7 +8,7 @@ const CHAT_API_URL = import.meta.env.VITE_CHAT_API_URL
 
 const ChatWidget = () => {
   const [isOpen, setIsOpen] = useState(false)
-  const sessionOps = useLocalSessions()
+  const sessionOps = useLocalSessions(CHAT_API_URL)
 
   return (
     <>

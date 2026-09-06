@@ -2,7 +2,7 @@ import { useRef, useCallback } from 'react'
 import PropTypes from 'prop-types'
 import { Send, Square } from 'lucide-react'
 
-const MessageInput = ({ onSend, isLoading, onStop, placeholder = 'Ask anything...' }) => {
+const MessageInput = ({ onSend, isLoading, onStop, privacyText, privacyLinkLabel, placeholder = 'Ask anything...' }) => {
   const textareaRef = useRef(null)
 
   const handleSubmit = useCallback(() => {
@@ -46,7 +46,7 @@ const MessageInput = ({ onSend, isLoading, onStop, placeholder = 'Ask anything..
         />
         {isLoading ? (
           <button
-            className="w-8 h-8 rounded-lg bg-white/10 text-white/60 flex items-center justify-center hover:bg-white/20 transition-colors flex-shrink-0"
+            className="w-11 h-11 rounded-lg bg-white/10 text-white/60 flex items-center justify-center hover:bg-white/20 transition-colors flex-shrink-0"
             onClick={onStop}
             title="Stop"
           >
@@ -54,7 +54,7 @@ const MessageInput = ({ onSend, isLoading, onStop, placeholder = 'Ask anything..
           </button>
         ) : (
           <button
-            className="w-8 h-8 rounded-lg bg-gradient-to-r from-blue-500 to-purple-500 text-white flex items-center justify-center hover:from-blue-400 hover:to-purple-400 transition-all flex-shrink-0"
+            className="w-11 h-11 rounded-lg bg-gradient-to-r from-blue-500 to-purple-500 text-white flex items-center justify-center hover:from-blue-400 hover:to-purple-400 transition-all flex-shrink-0"
             onClick={handleSubmit}
             title="Send"
           >
@@ -62,6 +62,17 @@ const MessageInput = ({ onSend, isLoading, onStop, placeholder = 'Ask anything..
           </button>
         )}
       </div>
+      <p className="mt-1.5 px-1 text-[11px] leading-relaxed text-white/40">
+        {privacyText}{' '}
+        <a
+          href="/privacy.html"
+          target="_blank"
+          rel="noreferrer"
+          className="text-blue-300/80 underline decoration-blue-300/30 underline-offset-2 hover:text-blue-200"
+        >
+          {privacyLinkLabel}
+        </a>
+      </p>
     </div>
   )
 }
@@ -71,6 +82,8 @@ MessageInput.propTypes = {
   isLoading: PropTypes.bool.isRequired,
   onStop: PropTypes.func.isRequired,
   placeholder: PropTypes.string,
+  privacyText: PropTypes.string.isRequired,
+  privacyLinkLabel: PropTypes.string.isRequired,
 }
 
 export default MessageInput

@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import Markdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
 import { Bot } from 'lucide-react'
+import ContactActionCard from './ContactActionCard'
 
 function cleanCJKSpacing(text) {
   text = text.replace(/([一-鿿])\s+([一-鿿])/g, '$1$2')
@@ -32,7 +33,12 @@ ToolStatusIndicator.propTypes = {
   })).isRequired,
 }
 
-const MessageList = ({ messages, welcomeMessage = "Hi! I'm Onyx AI. Ask me anything about our services." }) => {
+const MessageList = ({
+  messages,
+  chatApiUrl,
+  visitorId,
+  welcomeMessage = "Hi! I'm Onyx AI. Ask me anything about our services.",
+}) => {
   const endRef = useRef(null)
 
   useEffect(() => {
@@ -97,6 +103,17 @@ const MessageList = ({ messages, welcomeMessage = "Hi! I'm Onyx AI. Ask me anyth
                   msg.content
                 )
               )}
+              {msg.actions?.map((action, index) => (
+                action.type === 'contact_card' ? (
+                  <ContactActionCard
+                    key={`${msg.id}-action-${index}`}
+                    action={action}
+                    chatApiUrl={chatApiUrl}
+                    sessionId={msg.sessionId || ''}
+                    visitorId={visitorId}
+                  />
+                ) : null
+              ))}
             </div>
           </div>
         ))}
@@ -112,7 +129,11 @@ MessageList.propTypes = {
     content: PropTypes.string,
     isStreaming: PropTypes.bool,
     toolStatuses: PropTypes.arrayOf(PropTypes.object),
+    actions: PropTypes.arrayOf(PropTypes.object),
+    sessionId: PropTypes.string,
   })).isRequired,
+  chatApiUrl: PropTypes.string.isRequired,
+  visitorId: PropTypes.string.isRequired,
   welcomeMessage: PropTypes.string,
 }
 
