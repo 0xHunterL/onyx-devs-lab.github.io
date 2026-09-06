@@ -2,6 +2,8 @@ import json
 from dataclasses import dataclass
 from pathlib import Path
 
+from retrieval import KnowledgeChunk, split_markdown
+
 
 @dataclass(frozen=True)
 class AssistantDefinition:
@@ -10,6 +12,7 @@ class AssistantDefinition:
     model: str | None
     max_tokens: int | None
     system_prompt: str
+    knowledge_chunks: tuple[KnowledgeChunk, ...]
 
 
 class AssistantRegistry:
@@ -28,12 +31,18 @@ class AssistantRegistry:
             data = json.loads(config_path.read_text(encoding="utf-8"))
             assistant_id = data["id"]
             prompt_path = config_path.parent / data.get("prompt", "prompt.md")
+            knowledge_chunks: list[KnowledgeChunk] = []
+            knowledge_dir = config_path.parent / data.get("knowledge", "knowledge")
+            if knowledge_dir.exists():
+                for knowledge_path in sorted(knowledge_dir.glob("*.md")):
+                    knowledge_chunks.extend(split_markdown(knowledge_path.read_text(encoding="utf-8")))
             assistants[assistant_id] = AssistantDefinition(
                 assistant_id=assistant_id,
                 name=data.get("name", assistant_id),
                 model=data.get("model"),
                 max_tokens=data.get("max_tokens"),
                 system_prompt=prompt_path.read_text(encoding="utf-8"),
+                knowledge_chunks=tuple(knowledge_chunks),
             )
         return assistants
 

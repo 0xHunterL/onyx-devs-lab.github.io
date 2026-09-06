@@ -2,5 +2,6 @@
   "id": "onyx",
   "name": "Onyx Website Assistant",
   "prompt": "prompt.md",
+  "knowledge": "knowledge",
   "max_tokens": 1200
 }

@@ -38,6 +38,7 @@ const MessageInput = ({ onSend, isLoading, onStop, placeholder = 'Ask anything..
           className="flex-1 bg-transparent border-none outline-none text-white/90 placeholder-white/30 text-sm resize-none min-h-[24px] max-h-[120px] leading-relaxed"
           style={{ fontFamily: "'Outfit', system-ui, sans-serif" }}
           placeholder={placeholder}
+          maxLength={12000}
           rows={1}
           onKeyDown={handleKeyDown}
           onInput={handleInput}

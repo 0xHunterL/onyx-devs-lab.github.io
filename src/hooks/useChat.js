@@ -1,5 +1,46 @@
 import { useState, useCallback, useRef } from 'react'
 
+const MAX_API_MESSAGES = 120
+const MAX_MESSAGE_CHARS = 12000
+const MAX_TOTAL_CHARS = 400000
+
+function buildApiMessages(messages) {
+  const normalized = messages
+    .filter(message => (
+      (message.role === 'user' || message.role === 'assistant')
+      && typeof message.content === 'string'
+      && message.content.trim()
+    ))
+    .map(message => ({ role: message.role, content: message.content.trim() }))
+
+  const selected = []
+  let totalChars = 0
+
+  for (let index = normalized.length - 1; index >= 0 && selected.length < MAX_API_MESSAGES; index -= 1) {
+    const remaining = MAX_TOTAL_CHARS - totalChars
+    if (remaining <= 0) break
+
+    const message = normalized[index]
+    const content = message.content.slice(0, Math.min(MAX_MESSAGE_CHARS, remaining))
+    if (!content) continue
+    selected.push({ ...message, content })
+    totalChars += content.length
+  }
+
+  return selected.reverse()
+}
+
+function readableErrorDetail(detail) {
+  if (typeof detail === 'string') return detail
+  if (Array.isArray(detail)) {
+    return detail
+      .map(issue => issue?.msg || issue?.message)
+      .filter(Boolean)
+      .join('; ')
+  }
+  return ''
+}
+
 export function useChat({ chatApiUrl, sessionId, sessionOps }) {
   const [messages, setMessages] = useState([])
   const [isLoading, setIsLoading] = useState(false)
@@ -39,9 +80,7 @@ export function useChat({ chatApiUrl, sessionId, sessionOps }) {
 
     try {
       const allMessages = [...sessionOps.getMessages(activeSessionId)]
-      const apiMessages = allMessages
-        .filter(m => m.role === 'user' || m.role === 'assistant')
-        .map(m => ({ role: m.role, content: m.content }))
+      const apiMessages = buildApiMessages(allMessages)
 
       const response = await fetch(chatApiUrl, {
         method: 'POST',
@@ -57,7 +96,8 @@ export function useChat({ chatApiUrl, sessionId, sessionOps }) {
         let detail = ''
         try {
           const body = await response.json()
-          detail = body.detail ? `: ${body.detail}` : ''
+          const readableDetail = readableErrorDetail(body.detail)
+          detail = readableDetail ? `: ${readableDetail}` : ''
         } catch { /* use the status below */ }
         throw new Error(`HTTP ${response.status}${detail}`)
       }

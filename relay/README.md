@@ -28,6 +28,21 @@ separate while reusing the gateway, deployment and security controls.
 All model calls go through the DeepSeek Chat Completions API. Its API key is
 loaded only from a server-side environment file and is never sent to a browser.
 
+## Context and retrieval
+
+The browser may send up to 120 messages / 400,000 characters. The gateway keeps
+recent turns verbatim and, only after the configured context threshold, compacts
+older turns into structured conversation memory. The memory retains goals,
+constraints, decisions, contact intent and unresolved questions. If compaction
+fails, the full history is retained because the model context window is large
+enough for the gateway's accepted request ceiling.
+
+Each assistant can also provide Markdown files under its `knowledge/` directory.
+The gateway chunks these by section, retrieves the most relevant passages for
+the visitor's latest question and injects them as internal factual reference.
+This keeps detailed project material out of the permanent system prompt while
+making answers more specific.
+
 ## Lead and appointment roadmap
 
 The current release answers questions and directs interested visitors to the
