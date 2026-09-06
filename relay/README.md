@@ -25,8 +25,8 @@ Only approved website origins receive CORS permission.
 Create `assistants/<id>/config.json` and the referenced prompt file, then call
 `/v1/assistants/<id>/chat`. This keeps prompts, models and output budgets
 separate while reusing the gateway, deployment and security controls.
-The gateway can also use a comma-separated `CLAUDE_FALLBACK_MODELS` chain when
-the primary model's provider quota is temporarily exhausted.
+All model calls go through the DeepSeek Chat Completions API. Its API key is
+loaded only from a server-side environment file and is never sent to a browser.
 
 ## Lead and appointment roadmap
 

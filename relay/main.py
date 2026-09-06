@@ -1,13 +1,12 @@
 import asyncio
+import json
 import logging
-import os
 import time
 from collections import defaultdict
 from datetime import date
 from typing import Literal
 
-import anthropic
-from anthropic import AsyncAnthropicVertex
+import httpx
 from fastapi import FastAPI, HTTPException, Request
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel, Field
@@ -18,9 +17,6 @@ from config import RelaySettings
 
 settings = RelaySettings()
 logger = logging.getLogger("assistant-gateway")
-
-if settings.GOOGLE_APPLICATION_CREDENTIALS:
-    os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = settings.GOOGLE_APPLICATION_CREDENTIALS
 
 registry = AssistantRegistry(settings.ASSISTANTS_DIR)
 app = FastAPI(title="Mimimi AI Assistant Gateway", version="1.0.0")
@@ -34,10 +30,9 @@ app.add_middleware(
     max_age=3600,
 )
 
-client = AsyncAnthropicVertex(
-    project_id=settings.VERTEX_PROJECT_ID,
-    region=settings.VERTEX_REGION,
-    max_retries=0,
+client = httpx.AsyncClient(
+    timeout=httpx.Timeout(120.0, connect=10.0),
+    limits=httpx.Limits(max_connections=20, max_keepalive_connections=10),
 )
 
 
@@ -102,12 +97,6 @@ def _merge_consecutive_roles(messages: list[ChatMessage]) -> list[dict[str, str]
     return merged
 
 
-def _model_candidates(assistant) -> list[str]:
-    configured = [assistant.model or settings.CLAUDE_MODEL]
-    configured.extend(model.strip() for model in settings.CLAUDE_FALLBACK_MODELS.split(","))
-    return list(dict.fromkeys(model for model in configured if model))
-
-
 @app.get("/health")
 async def health():
     return {
@@ -131,36 +120,56 @@ async def chat(assistant_id: str, payload: ChatRequest, request: Request):
     api_messages = _merge_consecutive_roles(payload.messages)
 
     async def event_stream():
-        candidates = _model_candidates(assistant)
-        for index, model in enumerate(candidates):
-            emitted_text = False
-            try:
-                async with client.messages.stream(
-                    model=model,
-                    max_tokens=assistant.max_tokens or settings.MAX_TOKENS,
-                    system=assistant.system_prompt,
-                    messages=api_messages,
-                ) as stream:
-                    async for text in stream.text_stream:
-                        emitted_text = True
-                        yield {"event": "text", "data": text}
+        if not settings.DEEPSEEK_API_KEY:
+            logger.error("DeepSeek API key is not configured")
+            yield {"event": "error", "data": "The assistant service is temporarily unavailable."}
+            return
+
+        provider_messages = [{"role": "system", "content": assistant.system_prompt}, *api_messages]
+        try:
+            async with client.stream(
+                "POST",
+                f"{settings.DEEPSEEK_BASE_URL.rstrip('/')}/chat/completions",
+                headers={
+                    "Authorization": f"Bearer {settings.DEEPSEEK_API_KEY}",
+                    "Content-Type": "application/json",
+                },
+                json={
+                    "model": assistant.model or settings.DEEPSEEK_MODEL,
+                    "messages": provider_messages,
+                    "max_tokens": assistant.max_tokens or settings.MAX_TOKENS,
+                    "temperature": 0.5,
+                    "stream": True,
+                },
+            ) as response:
+                if response.status_code >= 400:
+                    await response.aread()
+                    logger.error("DeepSeek request failed with HTTP %s", response.status_code)
+                    yield {"event": "error", "data": "The assistant service is temporarily unavailable."}
+                    return
+
+                async for line in response.aiter_lines():
+                    if not line.startswith("data:"):
+                        continue
+                    data = line[5:].strip()
+                    if data == "[DONE]":
+                        yield {"event": "done", "data": ""}
+                        return
+                    if not data:
+                        continue
+                    chunk = json.loads(data)
+                    choices = chunk.get("choices") or []
+                    content = choices[0].get("delta", {}).get("content") if choices else None
+                    if content:
+                        yield {"event": "text", "data": content}
+
                 yield {"event": "done", "data": ""}
-                return
-            except anthropic.RateLimitError:
-                if not emitted_text and index + 1 < len(candidates):
-                    logger.warning("Model capacity unavailable; using fallback for %s", assistant_id)
-                    continue
-                logger.exception("Assistant provider capacity exhausted for %s", assistant_id)
-                yield {"event": "error", "data": "The assistant service is temporarily unavailable."}
-                return
-            except anthropic.APIError:
-                logger.exception("Assistant provider request failed for %s", assistant_id)
-                yield {"event": "error", "data": "The assistant service is temporarily unavailable."}
-                return
-            except Exception:
-                logger.exception("Unexpected assistant error for %s", assistant_id)
-                yield {"event": "error", "data": "The assistant could not complete this request."}
-                return
+        except (httpx.HTTPError, json.JSONDecodeError):
+            logger.exception("DeepSeek transport or stream error for %s", assistant_id)
+            yield {"event": "error", "data": "The assistant service is temporarily unavailable."}
+        except Exception:
+            logger.exception("Unexpected assistant error for %s", assistant_id)
+            yield {"event": "error", "data": "The assistant could not complete this request."}
 
     return EventSourceResponse(
         event_stream(),
