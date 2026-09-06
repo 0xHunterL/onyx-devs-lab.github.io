@@ -9,6 +9,7 @@ class RelaySettings(BaseSettings):
     DATABASE_URL: str = ""
     VISITOR_HASH_SECRET: str = ""
     LEAD_WEBHOOK_URL: str = ""
+    LEAD_WEBHOOK_FORMAT: str = "generic"
     LEAD_WEBHOOK_SECRET: str = ""
     ADMIN_API_TOKEN: str = ""
     RATE_LIMIT_PER_MINUTE: int = 6

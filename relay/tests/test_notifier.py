@@ -9,7 +9,7 @@ import httpx
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
-from notifier import deliver_notifications
+from notifier import _delivery_payload, deliver_notifications
 
 
 class FakeDatabase:
@@ -50,6 +50,26 @@ def notification():
 
 
 class NotificationDeliveryTests(unittest.IsolatedAsyncioTestCase):
+    def test_team_chat_payload_formats(self):
+        payload = notification()["payload"]
+        expected_text = "Onyx 官网新线索"
+
+        self.assertIn(expected_text, _delivery_payload(payload, "wecom")["text"]["content"])
+        self.assertIn(expected_text, _delivery_payload(payload, "feishu")["content"]["text"])
+        self.assertIn(expected_text, _delivery_payload(payload, "dingtalk")["markdown"]["text"])
+        self.assertIn(expected_text, _delivery_payload(payload, "slack")["text"])
+
+    def test_chat_payload_neutralizes_mass_mentions(self):
+        payload = notification()["payload"] | {
+            "requirement_summary": "notify <!channel> @all <@U123> <at user_id=all>",
+        }
+        text = _delivery_payload(payload, "slack")["text"]
+
+        self.assertNotIn("<!channel>", text)
+        self.assertNotIn("@all", text)
+        self.assertNotIn("<@", text)
+        self.assertNotIn("<at", text)
+
     async def test_disabled_webhook_does_not_claim_records(self):
         database = FakeDatabase([notification()])
         client = FakeClient()

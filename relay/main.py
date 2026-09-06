@@ -49,6 +49,7 @@ async def _maintenance_loop() -> None:
                 client,
                 settings.LEAD_WEBHOOK_URL,
                 settings.LEAD_WEBHOOK_SECRET,
+                settings.LEAD_WEBHOOK_FORMAT,
             )
         except Exception:
             logger.exception("Assistant maintenance cycle failed")
@@ -59,7 +60,13 @@ async def _maintenance_loop() -> None:
 async def lifespan(_app: FastAPI):
     if len(settings.VISITOR_HASH_SECRET) < 32 or len(settings.ADMIN_API_TOKEN) < 32:
         raise RuntimeError("Visitor hash and admin secrets must each contain at least 32 characters")
-    if settings.LEAD_WEBHOOK_URL and len(settings.LEAD_WEBHOOK_SECRET) < 32:
+    if settings.LEAD_WEBHOOK_FORMAT not in {"generic", "wecom", "feishu", "dingtalk", "slack"}:
+        raise RuntimeError("Unsupported LEAD_WEBHOOK_FORMAT")
+    if (
+        settings.LEAD_WEBHOOK_URL
+        and settings.LEAD_WEBHOOK_FORMAT == "generic"
+        and len(settings.LEAD_WEBHOOK_SECRET) < 32
+    ):
         raise RuntimeError("LEAD_WEBHOOK_SECRET must contain at least 32 characters")
     await database.connect()
     await database.cleanup_expired()
@@ -387,6 +394,7 @@ async def create_lead(assistant_id: str, payload: LeadRequest, request: Request)
         client,
         settings.LEAD_WEBHOOK_URL,
         settings.LEAD_WEBHOOK_SECRET,
+        settings.LEAD_WEBHOOK_FORMAT,
     )
     return {
         "lead_id": str(lead_id),

@@ -75,8 +75,10 @@ Each accepted submission atomically creates the lead and a notification event:
 - Admin routes expose leads, delivery state and follow-up status without making
   the admin token available to the public website.
 
-Set `LEAD_WEBHOOK_URL` and a random `LEAD_WEBHOOK_SECRET` of at least 32
-characters to activate delivery. The receiver should verify
+Set `LEAD_WEBHOOK_URL` to activate delivery. `LEAD_WEBHOOK_FORMAT` accepts
+`generic`, `wecom`, `feishu`, `dingtalk`, or `slack`; the four chat formats can
+point directly at an incoming-bot URL. Generic delivery additionally requires a
+random `LEAD_WEBHOOK_SECRET` of at least 32 characters. Its receiver should verify
 `HMAC-SHA256(secret, timestamp + "." + raw_request_body)`, reject stale
 timestamps and deduplicate the event ID. If no endpoint is configured, events
 remain queued until one is added.
