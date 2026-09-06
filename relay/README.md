@@ -97,6 +97,9 @@ backups under `/var/backups/assistant-gateway` and removes backups older than 14
 
 Migrations run automatically before the service starts. Matching rollback SQL is
 kept under `migrations/down/`; take a fresh backup before applying a rollback.
+The API process runs as the unprivileged `assistant-gateway` system account with
+a read-only systemd filesystem sandbox; database backups run in a separate
+root-owned one-shot service.
 
 To restore into an empty database:
 
