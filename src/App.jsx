@@ -899,7 +899,7 @@ const LanguageSwitcher = ({ lang, setLang }) => {
     <div className="relative">
       <button
         onClick={() => setOpen(!open)}
-        className="flex items-center gap-2 px-3 py-1.5 rounded-full border border-white/10 bg-white/5 hover:bg-white/10 text-gray-300 hover:text-white transition-all text-sm backdrop-blur-sm"
+        className="flex h-11 items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 text-sm text-gray-300 backdrop-blur-sm transition-all hover:bg-white/10 hover:text-white"
       >
         <Globe size={14} />
         {langLabels[lang]}
@@ -929,19 +929,19 @@ const LanguageSwitcher = ({ lang, setLang }) => {
 const MobileMenu = ({ isOpen, onClose, t, lang, setLang }) => {
   if (!isOpen) return null;
   return (
-    <div className="fixed inset-0 z-50 md:hidden">
+    <div className="fixed inset-0 z-[100] md:hidden">
       <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" onClick={onClose} />
-      <div className="absolute right-0 top-0 bottom-0 w-72 bg-[#0a0e1a] border-l border-white/10 p-6 flex flex-col">
-        <button onClick={onClose} className="self-end mb-8 text-gray-400 hover:text-white">
+      <div className="absolute bottom-0 right-0 top-0 flex w-[86vw] max-w-80 flex-col border-l border-white/10 bg-[#0a0e1a] p-5 pt-[max(1.25rem,env(safe-area-inset-top))]">
+        <button onClick={onClose} aria-label="关闭菜单" className="mb-6 flex h-11 w-11 self-end items-center justify-center rounded-full border border-white/10 text-gray-400 hover:text-white">
           <X size={24} />
         </button>
-        <nav className="flex flex-col gap-6">
-          <a href="#capabilities" onClick={onClose} className="text-gray-300 hover:text-white transition-colors">{t.nav.capabilities}</a>
-          <a href="#methodology" onClick={onClose} className="text-gray-300 hover:text-white transition-colors">{t.nav.methodology}</a>
-          <a href="#work" onClick={onClose} className="text-gray-300 hover:text-white transition-colors">{t.nav.work}</a>
-          <a href="#team" onClick={onClose} className="text-gray-300 hover:text-white transition-colors">{t.nav.team}</a>
+        <nav className="flex flex-col gap-2">
+          <a href="#capabilities" onClick={onClose} className="flex min-h-12 items-center rounded-xl px-4 text-gray-300 transition-colors hover:bg-white/5 hover:text-white">{t.nav.capabilities}</a>
+          <a href="#methodology" onClick={onClose} className="flex min-h-12 items-center rounded-xl px-4 text-gray-300 transition-colors hover:bg-white/5 hover:text-white">{t.nav.methodology}</a>
+          <a href="#work" onClick={onClose} className="flex min-h-12 items-center rounded-xl px-4 text-gray-300 transition-colors hover:bg-white/5 hover:text-white">{t.nav.work}</a>
+          <a href="#team" onClick={onClose} className="flex min-h-12 items-center rounded-xl px-4 text-gray-300 transition-colors hover:bg-white/5 hover:text-white">{t.nav.team}</a>
           <a href="#contact" onClick={onClose}
-            className="inline-flex items-center justify-center px-5 py-2.5 rounded-full text-sm bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-400 hover:to-purple-400 transition-all">
+            className="inline-flex min-h-12 items-center justify-center rounded-full bg-gradient-to-r from-blue-500 to-purple-500 px-5 text-sm transition-all hover:from-blue-400 hover:to-purple-400">
             {t.nav.contact}
           </a>
         </nav>
@@ -1048,7 +1048,7 @@ const ProjectWall = ({ items, projectsData, copy, viewLabel, onSelect, analysisB
                 <p className="max-w-2xl text-sm leading-7 text-gray-500">{group.subtitle}</p>
               </div>
 
-              <div className="portfolio-wall grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              <div className="portfolio-wall mobile-card-rail flex gap-4 sm:mx-0 sm:grid sm:grid-cols-2 sm:overflow-visible sm:px-0 sm:pb-0 lg:grid-cols-3">
                 {groupItems.map((study, rank) => {
                   const image = projectsData.find((project) => project.id === study.id)?.images[0];
                   const isFde = group.key === 'fde';
@@ -1059,7 +1059,7 @@ const ProjectWall = ({ items, projectsData, copy, viewLabel, onSelect, analysisB
                       key={study.id}
                       type="button"
                       onClick={() => onSelect(study.id)}
-                      className="portfolio-tile group relative min-h-[420px] overflow-hidden rounded-2xl border border-white/10 bg-[#101625] text-left"
+                      className="portfolio-tile group relative min-h-[360px] w-[84vw] max-w-[328px] shrink-0 snap-start overflow-hidden rounded-2xl border border-white/10 bg-[#101625] text-left sm:min-h-[420px] sm:w-auto sm:max-w-none"
                       aria-label={`${viewLabel}: ${study.title}`}
                     >
                       {image && <img src={image} alt="" className="portfolio-tile-image absolute inset-0 h-full w-full object-cover object-top transition duration-700 ease-out group-hover:scale-[1.045]" />}
@@ -1068,7 +1068,7 @@ const ProjectWall = ({ items, projectsData, copy, viewLabel, onSelect, analysisB
                       <div className="absolute inset-x-0 top-0 flex items-start justify-between p-4">
                         <div className="flex items-center gap-2">
                           <span className="rounded-full border border-white/10 bg-[#090d16]/75 px-3 py-1.5 text-[10px] font-medium uppercase tracking-[0.12em] text-cyan-100/80 backdrop-blur-xl">{study.tags[0]}</span>
-                          {isFde && <span className="rounded-full border border-cyan-300/20 bg-[#090d16]/75 px-2.5 py-1.5 text-[10px] font-medium text-cyan-200/80 backdrop-blur-xl">FDE · {String(rank + 1).padStart(2, '0')}</span>}
+                          {isFde && <span className="rounded-full border border-cyan-300/20 bg-[#090d16]/75 px-2.5 py-1.5 text-[10px] font-medium text-cyan-200/80 backdrop-blur-xl">{lang === 'zh' ? '现场交付' : `FDE ${rank + 1}`}</span>}
                         </div>
                         <span className="flex h-9 w-9 translate-y-1 items-center justify-center rounded-full border border-white/10 bg-[#090d16]/70 text-white/70 opacity-0 backdrop-blur-xl transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100"><ArrowRight size={15} /></span>
                       </div>
@@ -1129,16 +1129,16 @@ const ProjectModal = ({ project, images, metrics, lang, onClose }) => {
         role="dialog"
         aria-modal="true"
         aria-labelledby="product-case-title"
-        className="relative w-full max-w-5xl max-h-[90vh] bg-[#0d1117] border border-white/10 rounded-2xl overflow-hidden flex flex-col animate-modal-in"
+        className="relative flex h-[calc(100dvh-2rem)] w-full max-w-5xl flex-col overflow-hidden rounded-2xl border border-white/10 bg-[#0d1117] animate-modal-in md:h-auto md:max-h-[90vh]"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Close button */}
-        <button onClick={onClose} aria-label="Close project" className="absolute top-4 right-4 z-10 w-8 h-8 rounded-full bg-black/50 backdrop-blur-sm border border-white/10 flex items-center justify-center text-gray-400 hover:text-white transition-colors">
+        <button onClick={onClose} aria-label="Close project" className="absolute right-3 top-3 z-10 flex h-11 w-11 items-center justify-center rounded-full border border-white/15 bg-black/60 text-gray-300 backdrop-blur-sm transition-colors hover:text-white md:right-4 md:top-4">
           <X size={16} />
         </button>
 
         {/* Image carousel */}
-        <div className="relative h-[34vh] min-h-56 w-full shrink-0 bg-black/50 md:h-[42vh] md:max-h-[360px]">
+        <div className="relative h-[24vh] min-h-44 max-h-56 w-full shrink-0 bg-black/50 md:h-[42vh] md:max-h-[360px]">
           <img
             src={images[currentImage]}
             alt={`Screenshot ${currentImage + 1}`}
@@ -1149,25 +1149,27 @@ const ProjectModal = ({ project, images, metrics, lang, onClose }) => {
               <button
                 onClick={() => setCurrentImage((prev) => (prev > 0 ? prev - 1 : images.length - 1))}
                 aria-label="Previous image"
-                className="absolute left-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-black/50 backdrop-blur-sm border border-white/10 flex items-center justify-center text-white hover:bg-white/20 transition-colors"
+                className="absolute left-2 top-1/2 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full border border-white/10 bg-black/50 text-white backdrop-blur-sm transition-colors hover:bg-white/20 md:left-3"
               >
                 <ChevronLeft size={20} />
               </button>
               <button
                 onClick={() => setCurrentImage((prev) => (prev < images.length - 1 ? prev + 1 : 0))}
                 aria-label="Next image"
-                className="absolute right-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-black/50 backdrop-blur-sm border border-white/10 flex items-center justify-center text-white hover:bg-white/20 transition-colors"
+                className="absolute right-2 top-1/2 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full border border-white/10 bg-black/50 text-white backdrop-blur-sm transition-colors hover:bg-white/20 md:right-3"
               >
                 <ChevronRight size={20} />
               </button>
-              <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-2">
+              <div className="absolute bottom-0 left-1/2 flex -translate-x-1/2">
                 {images.map((_, i) => (
                   <button
                     key={i}
                     onClick={() => setCurrentImage(i)}
                     aria-label={`View image ${i + 1}`}
-                    className={`w-2 h-2 rounded-full transition-all ${i === currentImage ? 'bg-white w-6' : 'bg-white/40 hover:bg-white/60'}`}
-                  />
+                    className="group flex h-11 w-11 items-center justify-center"
+                  >
+                    <span className={`h-2 rounded-full transition-all ${i === currentImage ? 'w-6 bg-white' : 'w-2 bg-white/40 group-hover:bg-white/60'}`} />
+                  </button>
                 ))}
               </div>
             </>
@@ -1184,7 +1186,7 @@ const ProjectModal = ({ project, images, metrics, lang, onClose }) => {
         )}
 
         {/* Content */}
-        <div className="p-6 md:p-8 overflow-y-auto">
+        <div className="overflow-y-auto p-5 pb-[max(1.25rem,env(safe-area-inset-bottom))] md:p-8">
           <div className="mb-4 flex flex-wrap gap-2">
             {project.tags.map((tag, index) => (
               <span key={index} className="px-3 py-1 rounded-full text-xs font-medium bg-blue-500/10 text-blue-300 border border-blue-500/10">
@@ -1192,7 +1194,7 @@ const ProjectModal = ({ project, images, metrics, lang, onClose }) => {
               </span>
             ))}
           </div>
-          <h2 id="product-case-title" className="text-2xl font-bold mb-3">{project.title}</h2>
+          <h2 id="product-case-title" className="mb-3 text-2xl font-bold leading-tight">{project.title}</h2>
           <p className="text-gray-400 mb-6 leading-relaxed">{project.description}</p>
           {lang === 'zh' && metrics && (
             <div className="mb-8">
@@ -1341,7 +1343,7 @@ const LandingPage = () => {
             </a>
             <LanguageSwitcher lang={lang} setLang={setLang} />
           </div>
-          <button className="md:hidden text-gray-300 hover:text-white" onClick={() => setMobileMenuOpen(true)}>
+          <button aria-label="打开菜单" className="flex h-11 w-11 items-center justify-center rounded-full text-gray-300 hover:bg-white/5 hover:text-white md:hidden" onClick={() => setMobileMenuOpen(true)}>
             <Menu size={24} />
           </button>
         </div>
@@ -1367,7 +1369,7 @@ const LandingPage = () => {
               <span className="w-2 h-2 bg-blue-400 rounded-full mr-3 animate-pulse-glow" />
               {t.hero.badge}
             </div>
-            <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold mb-8 leading-[1.1] tracking-tight">
+            <h1 className="mb-8 text-[2.65rem] font-bold leading-[1.1] tracking-tight min-[390px]:text-5xl md:text-7xl lg:text-8xl">
               {t.hero.title[0]}
               <br />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-400 to-cyan-400">
@@ -1416,7 +1418,7 @@ const LandingPage = () => {
       </section>
 
       {/* ── AI Capabilities ── */}
-      <section id="capabilities" className="py-28 relative">
+      <section id="capabilities" className="relative scroll-mt-20 py-20 md:py-28">
         <div className="container mx-auto px-6">
           <div className="section-reveal text-center mb-20">
             <span className="text-blue-400 text-sm font-medium tracking-[0.2em] uppercase">{t.services.label}</span>
@@ -1472,7 +1474,7 @@ const LandingPage = () => {
       <MethodologySection lang={lang} />
 
       {/* ── Case Studies ── */}
-      <section id="work" className="py-28 relative">
+      <section id="work" className="relative scroll-mt-20 py-20 md:py-28">
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-blue-500/[0.02] to-transparent" />
         <div className="container mx-auto px-6 relative">
           <div className="section-reveal text-center mb-20">
@@ -1513,7 +1515,7 @@ const LandingPage = () => {
       )}
 
       {/* ── Team ── */}
-      <section id="team" className="py-28 relative">
+      <section id="team" className="relative scroll-mt-20 py-20 md:py-28">
         <div className="container mx-auto px-6">
           <div className="section-reveal text-center mb-20">
             <span className="text-cyan-400 text-sm font-medium tracking-[0.2em] uppercase">{t.team.label}</span>
@@ -1543,12 +1545,12 @@ const LandingPage = () => {
       </section>
 
       {/* ── CTA ── */}
-      <section id="contact" className="py-28 relative">
+      <section id="contact" className="relative scroll-mt-20 py-20 md:py-28">
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-purple-500/[0.03] to-transparent" />
         <div className="absolute top-1/2 left-1/4 w-64 h-64 bg-blue-500/10 rounded-full blur-[100px] animate-float" />
         <div className="absolute top-1/2 right-1/4 w-48 h-48 bg-purple-500/10 rounded-full blur-[80px] animate-float-delayed" />
         <div className="container mx-auto px-6 relative">
-          <div className="section-reveal max-w-3xl mx-auto text-center glass rounded-3xl p-12 md:p-16">
+          <div className="section-reveal mx-auto max-w-3xl rounded-3xl p-7 text-center glass md:p-16">
             {lang === 'zh' ? (
               <>
                 <h2 className="text-3xl md:text-5xl font-bold mb-6">

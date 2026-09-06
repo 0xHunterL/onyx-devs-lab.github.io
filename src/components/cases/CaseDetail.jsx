@@ -59,8 +59,8 @@ const CaseDetail = ({ project, images, analysis, narrative, outcome, metrics, la
       <div className="pointer-events-none fixed inset-0 bg-[radial-gradient(circle_at_18%_12%,rgba(59,130,246,.12),transparent_34%),radial-gradient(circle_at_85%_28%,rgba(168,85,247,.09),transparent_28%)]" />
 
       <header className="sticky top-0 z-30 border-b border-white/10 bg-[#080c16]/90 backdrop-blur-xl">
-        <div className="container mx-auto flex items-center justify-between gap-4 px-5 py-4 md:px-6">
-          <button ref={closeButtonRef} onClick={onClose} className="group inline-flex items-center gap-2 text-sm text-gray-400 transition-colors hover:text-white">
+        <div className="container mx-auto flex items-center justify-between gap-2 px-3 py-3 md:gap-4 md:px-6 md:py-4">
+          <button ref={closeButtonRef} onClick={onClose} aria-label={t.back} className="group inline-flex h-11 w-11 shrink-0 items-center justify-center gap-2 rounded-full border border-white/10 text-sm text-gray-400 transition-colors hover:text-white sm:w-auto sm:justify-start sm:border-0 sm:px-2">
             <ArrowLeft size={17} className="transition-transform group-hover:-translate-x-1" />
             <span className="hidden sm:inline">{t.back}</span>
           </button>
@@ -69,21 +69,21 @@ const CaseDetail = ({ project, images, analysis, narrative, outcome, metrics, la
             <span className="h-3 w-px bg-white/15" />
             <span className="truncate text-xs text-gray-400">{project.title}</span>
           </div>
-          <button onClick={onClose} aria-label={t.close} className="flex h-9 w-9 items-center justify-center rounded-full border border-white/10 text-gray-400 transition-colors hover:border-white/25 hover:text-white">
+          <button onClick={onClose} aria-label={t.close} className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-white/10 text-gray-400 transition-colors hover:border-white/25 hover:text-white">
             <X size={16} />
           </button>
         </div>
       </header>
 
       <main className="relative">
-        <section className="container mx-auto grid min-h-[72vh] items-center gap-10 px-6 py-14 lg:grid-cols-[.9fr_1.1fr] lg:py-20">
+        <section className="container mx-auto grid items-center gap-8 px-6 py-10 md:min-h-[72vh] md:gap-10 md:py-14 lg:grid-cols-[.9fr_1.1fr] lg:py-20">
           <div>
             <div className="mb-5 flex flex-wrap gap-2">
               <span className="rounded-full border border-cyan-400/20 bg-cyan-400/[0.06] px-3 py-1 font-mono text-[10px] uppercase tracking-[0.16em] text-cyan-200">{analysis.type}</span>
               {project.tags.slice(0, 3).map((tag) => <span key={tag} className="rounded-full border border-white/10 bg-white/[0.03] px-3 py-1 text-[10px] text-gray-400">{tag}</span>)}
             </div>
             <p className="mb-4 font-mono text-xs uppercase tracking-[0.18em] text-purple-300/70">{t.route}</p>
-            <h1 id="case-title" className="text-4xl font-bold leading-tight text-white md:text-5xl lg:text-6xl">{project.title}</h1>
+            <h1 id="case-title" className="text-[2.15rem] font-bold leading-[1.16] text-white sm:text-4xl md:text-5xl lg:text-6xl">{project.title}</h1>
             <div className="mt-8 border-l-2 border-cyan-400/50 pl-5">
               <p className="text-xs font-semibold uppercase tracking-[0.14em] text-cyan-200/70">{t.question}</p>
               <p className="mt-3 text-base leading-8 text-gray-300 md:text-lg">{isChinese ? analysis.question : project.description}</p>
@@ -119,7 +119,7 @@ const CaseDetail = ({ project, images, analysis, narrative, outcome, metrics, la
           </div>
         </div>
 
-        <div className="container mx-auto space-y-28 px-6 py-24">
+        <div className="container mx-auto space-y-16 px-6 py-16 md:space-y-28 md:py-24">
           {isChinese && narrative && (
             <section>
               <SectionHeading index={1}>项目背景与 FDE 判断</SectionHeading>
@@ -164,9 +164,9 @@ const CaseDetail = ({ project, images, analysis, narrative, outcome, metrics, la
 
           <section>
             <SectionHeading index={isChinese ? 3 : 1}>{t.field}</SectionHeading>
-            <div className="grid gap-px overflow-hidden rounded-2xl border border-white/10 bg-white/10 sm:grid-cols-2 lg:grid-cols-3">
+            <div className="mobile-card-rail flex sm:mx-0 sm:grid sm:grid-cols-2 sm:gap-px sm:overflow-hidden sm:rounded-2xl sm:border sm:border-white/10 sm:bg-white/10 sm:px-0 sm:pb-0 lg:grid-cols-3">
               {evidence.map((item, index) => (
-                <div key={index} className="min-h-32 bg-[#0b101c] p-6">
+                <div key={index} className="min-h-32 w-[78vw] max-w-[300px] shrink-0 snap-start rounded-2xl border border-white/10 bg-[#0b101c] p-6 sm:w-auto sm:max-w-none sm:rounded-none sm:border-0">
                   <div className="flex h-7 w-7 items-center justify-center rounded-full bg-blue-500/10 text-blue-300"><Check size={14} /></div>
                   <p className="mt-4 text-sm leading-7 text-gray-300">{item}</p>
                 </div>
@@ -176,9 +176,9 @@ const CaseDetail = ({ project, images, analysis, narrative, outcome, metrics, la
 
           <section>
             <SectionHeading index={isChinese ? 4 : 2}>{t.methods}</SectionHeading>
-            <div className="grid gap-4 lg:grid-cols-5">
+            <div className="case-card-rail flex gap-4 lg:mx-0 lg:grid lg:grid-cols-5 lg:overflow-visible lg:px-0 lg:pb-0">
               {analysis.methods.map((method) => (
-                <article key={method.name} className="rounded-2xl border border-white/10 bg-white/[0.025] p-5 transition-colors hover:border-blue-400/25 hover:bg-blue-400/[0.035]">
+                <article key={method.name} className="w-[78vw] max-w-[300px] shrink-0 snap-start rounded-2xl border border-white/10 bg-white/[0.025] p-5 transition-colors hover:border-blue-400/25 hover:bg-blue-400/[0.035] lg:w-auto lg:max-w-none">
                   <h3 className="min-h-12 text-sm font-semibold leading-6 text-white">{localizeMethodName(method.name, lang)}</h3>
                   {isChinese && <p className="mt-3 text-xs leading-6 text-gray-500">{method.use}</p>}
                   <div className="mt-5 border-t border-white/10 pt-4">
@@ -237,9 +237,9 @@ const CaseDetail = ({ project, images, analysis, narrative, outcome, metrics, la
           {isChinese && narrative && (
             <section>
               <SectionHeading index={8}>关键交付物</SectionHeading>
-              <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-5">
+              <div className="mobile-card-rail flex gap-4 md:mx-0 md:grid md:grid-cols-2 md:overflow-visible md:px-0 md:pb-0 lg:grid-cols-5">
                 {narrative.deliverables.map((item) => (
-                  <article key={item} className="rounded-2xl border border-white/10 bg-white/[0.025] p-5">
+                  <article key={item} className="w-[76vw] max-w-[290px] shrink-0 snap-start rounded-2xl border border-white/10 bg-white/[0.025] p-5 md:w-auto md:max-w-none">
                     <div className="flex h-7 w-7 items-center justify-center rounded-full bg-blue-500/10 text-blue-300"><Check size={14} /></div>
                     <p className="mt-4 text-sm leading-7 text-gray-300">{item}</p>
                   </article>
@@ -251,10 +251,10 @@ const CaseDetail = ({ project, images, analysis, narrative, outcome, metrics, la
           {isChinese && narrative && (
             <section>
               <SectionHeading index={9}>实施路线与阶段门禁</SectionHeading>
-              <div className="relative grid gap-4 md:grid-cols-4">
+              <div className="mobile-card-rail relative flex gap-4 md:mx-0 md:grid md:grid-cols-4 md:overflow-visible md:px-0 md:pb-0">
                 <div className="absolute left-[12.5%] right-[12.5%] top-7 hidden h-px bg-gradient-to-r from-blue-400/30 via-purple-400/30 to-cyan-400/30 md:block" />
                 {narrative.phases.map((phase, index) => (
-                  <div key={phase} className="relative rounded-2xl border border-white/10 bg-[#0b101c] p-5 pt-4">
+                  <div key={phase} className="relative w-[76vw] max-w-[290px] shrink-0 snap-start rounded-2xl border border-white/10 bg-[#0b101c] p-5 pt-4 md:w-auto md:max-w-none">
                     <div className="relative z-10 flex h-7 w-7 items-center justify-center rounded-full border border-purple-300/30 bg-[#111827] font-mono text-[10px] text-purple-200">{index + 1}</div>
                     <p className="mt-5 text-sm leading-7 text-gray-300">{phase}</p>
                     <p className="mt-4 border-t border-white/5 pt-3 text-[10px] tracking-[0.12em] text-gray-600">第{['一', '二', '三', '四'][index]}阶段</p>
@@ -289,8 +289,8 @@ const CaseDetail = ({ project, images, analysis, narrative, outcome, metrics, la
                 <img src={safeImages[currentImage]} alt={`${project.title} screenshot ${currentImage + 1}`} className="h-full w-full object-contain" />
                 {safeImages.length > 1 && (
                   <>
-                    <button onClick={previousImage} aria-label={t.previous} className="absolute left-3 top-1/2 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full border border-white/15 bg-black/60 text-white backdrop-blur transition-colors hover:bg-white/20"><ChevronLeft size={20} /></button>
-                    <button onClick={nextImage} aria-label={t.next} className="absolute right-3 top-1/2 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full border border-white/15 bg-black/60 text-white backdrop-blur transition-colors hover:bg-white/20"><ChevronRight size={20} /></button>
+                    <button onClick={previousImage} aria-label={t.previous} className="absolute left-2 top-1/2 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full border border-white/15 bg-black/60 text-white backdrop-blur transition-colors hover:bg-white/20 md:left-3"><ChevronLeft size={20} /></button>
+                    <button onClick={nextImage} aria-label={t.next} className="absolute right-2 top-1/2 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full border border-white/15 bg-black/60 text-white backdrop-blur transition-colors hover:bg-white/20 md:right-3"><ChevronRight size={20} /></button>
                   </>
                 )}
               </div>

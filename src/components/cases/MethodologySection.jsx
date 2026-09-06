@@ -62,14 +62,14 @@ const MethodologySection = ({ lang }) => {
   const t = copy[lang] || copy.en;
 
   return (
-    <section id="methodology" className="relative overflow-hidden py-28">
+    <section id="methodology" className="relative scroll-mt-20 overflow-hidden py-20 md:py-28">
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-cyan-500/[0.035] to-transparent" />
       <div className="absolute left-1/2 top-24 h-80 w-80 -translate-x-1/2 rounded-full bg-blue-500/[0.08] blur-[120px]" />
       <div className="container relative mx-auto px-6">
-        <div className="section-reveal grid gap-12 border-b border-white/10 pb-16 lg:grid-cols-[1.35fr_.65fr] lg:items-end">
+        <div className="section-reveal grid gap-9 border-b border-white/10 pb-12 md:gap-12 md:pb-16 lg:grid-cols-[1.35fr_.65fr] lg:items-end">
           <div>
             <span className="text-xs font-semibold uppercase tracking-[0.24em] text-cyan-300/80">{t.eyebrow}</span>
-            <h2 className="mt-5 max-w-4xl text-4xl font-bold leading-tight md:text-5xl lg:text-6xl">
+            <h2 className="mt-5 max-w-4xl text-3xl font-bold leading-tight sm:text-4xl md:text-5xl lg:text-6xl">
               {t.title}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 via-blue-400 to-purple-400">{t.accent}</span>
             </h2>
@@ -85,22 +85,22 @@ const MethodologySection = ({ lang }) => {
           </div>
         </div>
 
-        <div className="section-reveal mt-14">
+        <div className="section-reveal mt-10 md:mt-14">
           <div className="mb-7 flex flex-col justify-between gap-3 md:flex-row md:items-end">
             <h3 className="text-xl font-semibold text-white md:text-2xl">{t.route}</h3>
             <p className="max-w-xl text-sm leading-relaxed text-gray-500">{t.proof}</p>
           </div>
-          <ol className="grid overflow-hidden rounded-2xl border border-white/10 bg-white/[0.025] md:grid-cols-2 xl:grid-cols-6">
+          <ol className="methodology-mobile-rail flex md:grid md:overflow-hidden md:rounded-2xl md:border md:border-white/10 md:bg-white/[0.025] md:grid-cols-2 xl:grid-cols-6">
             {methodologyGroups.map((group, index) => {
               const text = stageText(group, lang);
               return (
-                <li key={group.id} className="group relative border-b border-white/10 p-5 last:border-b-0 md:border-r md:[&:nth-child(even)]:border-r-0 xl:border-b-0 xl:[&:nth-child(even)]:border-r xl:last:border-r-0">
-                  <div className="mb-8 flex items-center justify-between">
+                <li key={group.id} className="group relative w-[82vw] max-w-[320px] shrink-0 snap-start rounded-2xl border border-white/10 bg-white/[0.025] p-5 md:w-auto md:max-w-none md:rounded-none md:border-0 md:border-b md:border-r md:[&:nth-child(even)]:border-r-0 xl:border-b-0 xl:[&:nth-child(even)]:border-r xl:last:border-r-0">
+                  <div className="mb-6 flex items-center justify-between md:mb-8">
                     <span className="font-mono text-xs text-cyan-300/70">{group.index}</span>
                     {index < methodologyGroups.length - 1 && <ArrowDownRight size={16} className="text-white/20 transition-colors group-hover:text-cyan-300/70" />}
                   </div>
                   <h4 className="text-base font-semibold text-white">{text.title}</h4>
-                  <p className="mt-3 min-h-[4.5rem] text-xs leading-6 text-gray-500">{text.description}</p>
+                  <p className="mt-3 text-xs leading-6 text-gray-400 md:min-h-[4.5rem] md:text-gray-500">{text.description}</p>
                   <div className="mt-5 space-y-2 border-t border-white/5 pt-4">
                     {group.methods.map((method) => (
                       <div key={method} className="flex items-start gap-2 text-[11px] leading-5 text-gray-400">

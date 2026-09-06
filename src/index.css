@@ -18,6 +18,11 @@ body {
   overflow-x: hidden;
 }
 
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
+}
+
 #root {
   width: 100%;
   overflow-x: hidden;
@@ -172,6 +177,72 @@ body {
   filter: grayscale(0.72) saturate(0.45) contrast(0.95) brightness(0.72);
 }
 
+@media (max-width: 639px) {
+  .mobile-card-rail {
+    gap: 1rem;
+    margin-left: -1.5rem;
+    margin-right: -1.5rem;
+    overflow-x: auto;
+    padding: 0 1.5rem 0.75rem;
+    scroll-padding-left: 1.5rem;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    overscroll-behavior-inline: contain;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .mobile-card-rail::-webkit-scrollbar {
+    display: none;
+  }
+
+  .portfolio-tile-image {
+    opacity: 0.72;
+    filter: grayscale(0.35) saturate(0.72) contrast(1) brightness(0.86);
+  }
+
+  .portfolio-tile-gradient {
+    background: linear-gradient(to top, rgba(7, 10, 18, 0.98) 0%, rgba(7, 10, 18, 0.62) 54%, rgba(7, 10, 18, 0.08) 100%);
+  }
+}
+
+@media (max-width: 767px) {
+  .methodology-mobile-rail {
+    gap: 1rem;
+    margin-left: -1.5rem;
+    margin-right: -1.5rem;
+    overflow-x: auto;
+    padding: 0 1.5rem 0.75rem;
+    scroll-padding-left: 1.5rem;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    overscroll-behavior-inline: contain;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .methodology-mobile-rail::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+@media (max-width: 1023px) {
+  .case-card-rail {
+    gap: 1rem;
+    margin-left: -1.5rem;
+    margin-right: -1.5rem;
+    overflow-x: auto;
+    padding: 0 1.5rem 0.75rem;
+    scroll-padding-left: 1.5rem;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    overscroll-behavior-inline: contain;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .case-card-rail::-webkit-scrollbar {
+    display: none;
+  }
+}
+
 .portfolio-tile-wash {
   background: rgba(7, 10, 18, 0.3);
   transition: background 500ms ease;
@@ -203,6 +274,9 @@ body {
 }
 
 @media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
   .portfolio-tile,
   .portfolio-tile img {
     transition: none;

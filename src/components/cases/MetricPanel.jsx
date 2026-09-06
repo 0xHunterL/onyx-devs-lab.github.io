@@ -6,14 +6,14 @@ const MetricPanel = ({ metrics, compact = false }) => {
 
   return (
     <div>
-      <div className={`grid gap-3 ${compact ? 'sm:grid-cols-2 lg:grid-cols-3' : 'sm:grid-cols-2 lg:grid-cols-3'}`}>
+      <div className={`mobile-card-rail flex gap-3 sm:mx-0 sm:grid sm:grid-cols-2 sm:overflow-visible sm:px-0 sm:pb-0 lg:grid-cols-3 ${compact ? '' : ''}`}>
         {metrics.items.map((item) => {
           const isScope = item.kind === 'scope';
           const Icon = isScope ? CheckCircle2 : Gauge;
           return (
             <article
               key={`${item.value}-${item.label}`}
-              className={`relative overflow-hidden rounded-2xl border p-5 ${isScope ? 'border-cyan-300/20 bg-cyan-300/[0.035]' : 'border-lime-300/20 bg-lime-300/[0.035]'}`}
+              className={`relative w-[78vw] max-w-[300px] shrink-0 snap-start overflow-hidden rounded-2xl border p-5 sm:w-auto sm:max-w-none ${isScope ? 'border-cyan-300/20 bg-cyan-300/[0.035]' : 'border-lime-300/20 bg-lime-300/[0.035]'}`}
             >
               <div className={`absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent ${isScope ? 'via-cyan-300/60' : 'via-lime-300/60'} to-transparent`} />
               <div className="flex items-center justify-between gap-3">

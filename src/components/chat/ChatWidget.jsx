@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { MessageCircle } from 'lucide-react'
 import { useLocalSessions } from '../../hooks/useLocalSessions'
 import ChatWindow from './ChatWindow'
@@ -14,13 +14,14 @@ const ChatWidget = () => {
     <>
       {/* Floating trigger button */}
       <button
-        className={`fixed bottom-6 right-6 w-14 h-14 rounded-full bg-gradient-to-r from-blue-500 to-purple-500 text-white flex items-center justify-center shadow-lg shadow-blue-500/25 hover:shadow-blue-500/40 hover:scale-110 transition-all duration-300 z-[9998] cursor-pointer ${
+        className={`fixed bottom-[calc(1rem+env(safe-area-inset-bottom))] right-4 flex h-12 w-12 items-center justify-center rounded-full border border-white/15 bg-gradient-to-r from-blue-500/95 to-purple-500/95 text-white shadow-lg shadow-blue-500/25 backdrop-blur hover:shadow-blue-500/40 active:scale-95 md:bottom-6 md:right-6 md:h-14 md:w-14 md:hover:scale-110 transition-all duration-300 z-[90] cursor-pointer ${
           isOpen ? 'scale-0 pointer-events-none' : 'scale-100'
         }`}
         onClick={() => setIsOpen(true)}
         title="Chat with Onyx AI"
+        aria-label="打开 Onyx AI 对话"
       >
-        <MessageCircle size={24} />
+        <MessageCircle size={22} />
       </button>
 
       {/* Chat window */}
