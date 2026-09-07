@@ -1185,7 +1185,7 @@ const ProblemFitSection = ({ copy, onSelect }) => (
   </section>
 );
 
-const ServiceCard = ({ icon: Icon, kicker, title, description, features, deliverable, deliverablesLabel }) => (
+const ServiceCard = ({ icon: Icon, kicker, title, description, features, deliverable, deliverablesLabel, href, linkLabel }) => (
   <article className="group flex h-full flex-col rounded-3xl border border-white/10 bg-white/[0.025] p-6 transition-all duration-300 hover:-translate-y-1 hover:border-cyan-300/20 hover:bg-white/[0.04] md:p-8">
     <div className="mb-7 flex items-center justify-between">
       <div className="flex h-12 w-12 items-center justify-center rounded-2xl border border-blue-400/15 bg-gradient-to-br from-blue-500/20 to-purple-500/15 transition-colors group-hover:from-blue-500/30 group-hover:to-purple-500/25">
@@ -1206,6 +1206,9 @@ const ServiceCard = ({ icon: Icon, kicker, title, description, features, deliver
     <div className="mt-auto border-t border-white/10 pt-5">
       <p className="text-[10px] font-semibold uppercase tracking-[0.16em] text-white/35">{deliverablesLabel}</p>
       <p className="mt-2 text-xs leading-6 text-white/65">{deliverable}</p>
+      <a href={href} className="mt-4 inline-flex min-h-11 items-center gap-2 text-sm font-semibold text-cyan-200 transition-colors hover:text-white focus-visible:rounded focus-visible:outline focus-visible:outline-2 focus-visible:outline-cyan-300">
+        {linkLabel}<ArrowRight size={15} aria-hidden="true" />
+      </a>
     </div>
   </article>
 );
@@ -1687,11 +1690,22 @@ const LandingPage = () => {
             <p className="mt-6 max-w-2xl text-base leading-8 text-gray-400">{t.services.intro}</p>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {t.services.items.map((service, index) => (
+            {t.services.items.map((service, index) => {
+              const servicePaths = lang === 'zh'
+                ? ['/zh-hk/ai-consulting/', '/zh-hk/custom-ai-development/', '/zh-hk/forward-deployed-engineering/']
+                : ['/en/ai-consulting-hong-kong/', '/en/custom-ai-development-hong-kong/', '/en/forward-deployed-engineering/'];
+              return (
               <div key={index} className="section-reveal" style={{ transitionDelay: `${index * 150}ms` }}>
-                <ServiceCard icon={serviceIcons[index]} deliverablesLabel={t.services.deliverablesLabel} {...service} />
+                <ServiceCard
+                  icon={serviceIcons[index]}
+                  deliverablesLabel={t.services.deliverablesLabel}
+                  href={servicePaths[index]}
+                  linkLabel={lang === 'zh' ? '查看服務詳情' : 'Explore this service'}
+                  {...service}
+                />
               </div>
-            ))}
+              );
+            })}
           </div>
           <div className="section-reveal mt-8 flex items-start gap-3 rounded-2xl border border-cyan-300/10 bg-cyan-300/[0.035] px-5 py-4 text-sm leading-7 text-cyan-50/70 md:px-6">
             <ArrowRight size={17} className="mt-1 shrink-0 text-cyan-300/70" />
