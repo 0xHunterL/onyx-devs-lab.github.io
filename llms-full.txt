@@ -1,0 +1,656 @@
+# Onyx Devs Lab — Full public knowledge file
+
+Canonical website: https://hk.onyxdevslab.com/
+Legal entity: ONYX DEVS LAB LIMITED
+Hong Kong business registration number: 79051925
+Legal Entity Identifier (LEI): 254900Z30CLK7HKE9H46
+Services: enterprise AI advisory, custom AI development, and Forward Deployed Engineering (FDE).
+Markets: Hong Kong, Greater China, cross-border, and global engagements.
+Contact: info@onyxdevslab.com
+
+## Enterprise AI Services Hong Kong | Onyx Devs Lab
+https://hk.onyxdevslab.com/en/
+AI advisory, custom AI development, and Forward Deployed Engineering for Hong Kong and cross-border enterprises.
+Choose a focused advisory decision, a defined custom build, or an FDE engagement that owns the loop from diagnosis to validated change.
+
+## 香港企業 AI 服務｜Onyx Devs Lab
+https://hk.onyxdevslab.com/zh-hk/
+面向香港及跨境企業的 AI 顧問、AI 定制開發與前線部署工程（FDE）服務。
+按需要選擇聚焦決策的 AI 顧問、邊界清晰的定制開發，或從診斷負責到成果驗證的 FDE 項目。
+
+## 香港企业 AI 咨询、定制开发与 FDE｜Onyx Devs Lab
+https://hk.onyxdevslab.com/zh-cn/
+面向香港及跨境企业的 AI 咨询、AI 定制开发、企业 Agent、ERP 集成与 FDE 服务。
+根据问题状态选择 AI 咨询、边界明确的定制开发，或从现场诊断负责到结果验证的 FDE 项目。
+
+## About Onyx Devs Lab | Senior AI Delivery Team
+https://hk.onyxdevslab.com/en/about/
+Meet the senior Onyx Devs Lab team delivering AI advisory, custom development, and Forward Deployed Engineering for enterprise operations.
+Onyx Devs Lab is a compact senior team spanning strategy, AI engineering, data, systems, and product delivery. Clients work directly with the people accountable for the design and implementation.
+
+## 關於 Onyx Devs Lab｜資深企業 AI 交付團隊
+https://hk.onyxdevslab.com/zh-hk/about/
+認識直接交付 AI 顧問、定制開發及前線部署工程項目的 Onyx Devs Lab 資深團隊。
+Onyx Devs Lab 是一支涵蓋策略、AI 工程、數據、系統及產品交付的精簡資深團隊。客戶直接與對設計和實施負責的人合作。
+
+## 关于 Onyx Devs Lab｜企业 AI 交付团队
+https://hk.onyxdevslab.com/zh-cn/about/
+了解直接交付 AI 咨询、定制开发和 FDE 项目的 Onyx Devs Lab 核心团队。
+Onyx Devs Lab 是一支覆盖策略、AI 工程、数据、系统和产品交付的精简资深团队。客户直接与对设计和实施负责的人合作。
+
+## AI Consulting Hong Kong | Strategy to Production | Onyx Devs Lab
+https://hk.onyxdevslab.com/en/ai-consulting-hong-kong/
+Senior AI consulting for Hong Kong enterprises: workflow diagnosis, feasibility, governance, roadmap, and a measurable route from opportunity to production.
+Onyx helps leadership, operations, and technology teams identify where AI can create measurable value, what data and controls it requires, and how to move from decision to a production system.
+What the engagement answers: An AI advisory engagement should end in decisions, not a collection of trends.
+- Opportunity diagnosis: Map workflows, constraints, users, and decision points before selecting a model or platform.
+- Feasibility and risk: Assess data readiness, integration limits, privacy, permissions, failure modes, and human review.
+- Delivery roadmap: Prioritise use cases by value, evidence, implementation effort, and operational risk.
+Typical deliverables: The scope is adapted to the decision you need to make.
+- Decision memo: A concise recommendation, assumptions, rejected options, and investment boundary.
+- Opportunity map: A ranked portfolio of workflows with owners, dependencies, and measurable outcomes.
+- 90-day roadmap: A phased plan covering prototype, pilot, production controls, adoption, and validation.
+Q: What is the difference between AI consulting and AI development?
+A: Consulting determines what should be built, why, and within which constraints. Development turns a defined need into an operating system. Onyx can deliver either independently or connect both phases.
+Q: Can you assess an existing AI project?
+A: Yes. We can review architecture, model quality, data access, operational controls, adoption, cost, and whether the project has a credible production path.
+Q: Do you only work with Hong Kong companies?
+A: No. The Hong Kong site is designed for Hong Kong and cross-border engagements; delivery can support distributed teams and international operations.
+
+## Custom AI Development Hong Kong | Onyx Devs Lab
+https://hk.onyxdevslab.com/en/custom-ai-development-hong-kong/
+Custom AI agents, RAG, workflow automation, enterprise data systems, and ERP integration designed and delivered by a senior engineering team.
+We design, build, integrate, and launch production AI software for teams whose needs cannot be met by an off-the-shelf chatbot.
+What we build: Custom development is appropriate when AI must operate inside a specific workflow or data boundary.
+- AI agents: Tool-using agents with explicit permissions, evidence, escalation, and human approval.
+- Knowledge systems: RAG and document intelligence with retrieval evaluation, citations, and access control.
+- Operational automation: Reliable workflows that combine deterministic rules, AI judgement, queues, retries, and audit trails.
+Production requirements: A demonstration is not a production system.
+- Evaluation: Representative test sets, accuracy criteria, regression checks, and failure analysis.
+- Security and control: Least-privilege access, tenant boundaries, sensitive-data handling, and action confirmation.
+- Operations: Monitoring, cost visibility, fallbacks, documentation, training, and accountable ownership.
+Q: How much does custom AI development cost?
+A: Cost depends on integration depth, data condition, risk controls, evaluation needs, and operating requirements. We scope the system after diagnosis rather than price only by screen count or model calls.
+Q: Do you build on a specific model provider?
+A: No. We select models and infrastructure based on quality, latency, privacy, availability, and cost requirements.
+Q: Can AI integrate with an ERP that has limited APIs?
+A: Often yes. Options include supported APIs, database replicas, scheduled exports, event streams, or controlled interface automation. The safest route depends on the ERP and permitted access.
+
+## Forward Deployed Engineering (FDE) | Onyx Devs Lab
+https://hk.onyxdevslab.com/en/forward-deployed-engineering/
+Forward Deployed Engineering for complex AI transformation: field diagnosis, embedded implementation, deployment, and measurable validation in one delivery loop.
+Forward Deployed Engineering (FDE) combines discovery, software engineering, deployment, and outcome validation. It is designed for important operating problems that cannot be specified accurately from outside the workflow.
+When FDE fits: FDE is useful when the problem changes as the team learns from real operations.
+- Ambiguous requirements: Users can describe pain, but the correct intervention is not yet known.
+- Complex environment: Data, policy, legacy systems, and human decisions interact in ways a brief cannot capture.
+- Outcome ownership: Success must be demonstrated in an operating metric, not only in software delivery.
+How FDE differs: FDE closes gaps that appear between advice, specification, engineering, and adoption.
+- Versus consulting: The same team that diagnoses the problem also implements and tests the intervention.
+- Versus outsourcing: The unit of success is an operating outcome, not conformance to a frozen feature list.
+- Versus staff augmentation: The team owns a defined problem and evidence loop rather than supplying generic capacity.
+Q: What does FDE stand for?
+A: In this context, FDE means Forward Deployed Engineering: engineers work close to the customer’s real operating environment and connect discovery, implementation, and validation.
+Q: Is FDE only for large enterprises?
+A: No. It fits any organisation facing a valuable but underspecified operational problem, provided decision-makers and operators can participate in the evidence loop.
+Q: How long is an FDE engagement?
+A: Length depends on the workflow and validation window. A first cycle commonly includes diagnosis, a bounded intervention, and enough operating time to evaluate agreed metrics.
+
+## 香港 AI 顧問服務｜從策略到生產系統｜Onyx Devs Lab
+https://hk.onyxdevslab.com/zh-hk/ai-consulting/
+面向香港及跨境企業的資深 AI 顧問服務：流程診斷、技術可行性、治理、投資邊界與 90 日落地路線。
+Onyx 協助管理、營運與技術團隊找出真正值得使用 AI 的流程，確認數據與風險邊界，並形成可進入生產環境的實施路線。
+顧問項目需要回答甚麼: 交付結果應是可執行的決策，而不是一份 AI 趨勢簡報。
+- 機會診斷: 梳理流程、限制、使用者與決策點，再選擇模型或平台。
+- 可行性與風險: 評估數據、整合、私隱、權限、失敗模式及人工覆核。
+- 實施路線: 按照價值、證據、交付成本及營運風險排列優先次序。
+典型交付物: 範圍會按企業需要作出的決策而調整。
+- 決策備忘錄: 清楚記錄建議、假設、未採用方案及投資邊界。
+- AI 機會地圖: 列出優先流程、負責人、依賴條件及可量度成果。
+- 90 日路線圖: 涵蓋原型、試點、生產控制、採用及驗證。
+Q: AI 顧問與 AI 開發有甚麼分別？
+A: AI 顧問決定應該建設甚麼、原因及限制；AI 開發則把已定義的需要變成可運行系統。Onyx 可以獨立提供其中一項，亦可銜接兩個階段。
+Q: 可以評估已經進行中的 AI 項目嗎？
+A: 可以。我們可檢視架構、模型質量、數據權限、營運控制、使用情況、成本及是否具備可信的生產路線。
+Q: 只服務香港公司嗎？
+A: 不是。香港站主要服務香港及跨境項目，也可支援分佈式團隊與國際營運。
+
+## 香港 AI 定制開發｜Agent、RAG 與企業整合｜Onyx Devs Lab
+https://hk.onyxdevslab.com/zh-hk/custom-ai-development/
+由資深工程團隊交付 AI Agent、RAG、流程自動化、企業數據系統及 ERP 整合。
+當現成聊天機器人不足以處理專屬流程、數據或權限要求時，我們負責設計、開發、整合及上線生產級 AI 軟件。
+我們建設甚麼: 當 AI 必須進入特定工作流程或數據邊界，定制開發通常更合適。
+- AI Agent: 具備工具權限、證據鏈、升級處理及人工批准的智能體。
+- 知識系統: 具備檢索評估、引用及存取控制的 RAG 與文件智能。
+- 營運自動化: 結合確定性規則、AI 判斷、任務隊列、重試及審計記錄。
+生產級要求: 可以展示的原型，不等於可以承擔業務責任的系統。
+- 評估: 代表性測試集、準確度標準、回歸測試及失敗分析。
+- 安全與控制: 最小權限、租戶隔離、敏感資料處理及高風險操作確認。
+- 營運: 監控、成本、降級方案、文件、培訓及明確責任人。
+Q: AI 定制開發需要多少預算？
+A: 費用取決於整合深度、數據狀況、風險控制、評估及營運要求。我們會先診斷系統邊界，而不是只按頁面數或模型調用報價。
+Q: 是否綁定指定模型供應商？
+A: 不會。我們會按質量、延遲、私隱、可用性及成本選擇模型與基礎設施。
+Q: 沒有完整 API 的 ERP 可以接入 AI 嗎？
+A: 很多情況可以。方法包括官方 API、只讀數據副本、定時匯出、事件流或受控界面自動化，需按 ERP 與允許權限選擇。
+
+## 前線部署工程 FDE｜企業 AI 落地｜Onyx Devs Lab
+https://hk.onyxdevslab.com/zh-hk/forward-deployed-engineering/
+Forward Deployed Engineering 前線部署工程：把現場診斷、嵌入式開發、部署及量化驗證放在同一交付循環。
+前線部署工程（Forward Deployed Engineering，FDE）把需求發現、軟件工程、部署及成果驗證放在同一循環，適合無法在項目開始前完整定義的複雜營運問題。
+甚麼情況適合 FDE: 當團隊需要從實際營運中學習，問題本身會隨證據而改變。
+- 需求仍然模糊: 使用者能描述痛點，但仍未知道正確的系統干預。
+- 環境複雜: 數據、政策、舊系統與人工決策互相影響，無法只靠需求文件表達。
+- 需要成果責任: 成功必須反映在營運指標，而不只是完成軟件功能。
+FDE 有何不同: FDE 用同一個證據循環連接顧問、規格、工程與採用。
+- 相對顧問: 診斷問題的團隊同時實施並測試干預。
+- 相對外包: 成功單位是營運成果，而不是完成一份凍結的功能清單。
+- 相對人力增援: 團隊負責具體問題與驗證循環，而不是提供通用人力。
+Q: FDE 是甚麼？
+A: 在這裡，FDE 指 Forward Deployed Engineering，即工程師深入客戶的真實營運環境，把需求發現、實施及驗證連接起來。
+Q: FDE 是否只適合大型企業？
+A: 不是。只要問題具備足夠價值但仍難以預先定義，而且決策者和操作人員可以參與證據循環，便可能適合。
+Q: FDE 項目通常需時多久？
+A: 時間取決於流程及成果的驗證週期。首個循環通常包括診斷、有邊界的干預，以及足以評估議定指標的營運時間。
+
+## What Is Forward Deployed Engineering (FDE)? | Onyx Devs Lab
+https://hk.onyxdevslab.com/en/insights/what-is-forward-deployed-engineering/
+A practical definition of Forward Deployed Engineering, how FDE differs from consulting and outsourcing, and when the model fits an enterprise AI project.
+Forward Deployed Engineering (FDE) is a delivery model in which engineers work close to a customer’s real operating environment and connect problem discovery, software implementation, deployment, and outcome validation in one continuous loop.
+The core idea: Traditional delivery often separates diagnosis, specification, implementation, and adoption across different teams. FDE keeps those activities close enough that field evidence can change the solution.
+- Discover in context: Engineers observe how work is actually performed, including exceptions and informal handoffs.
+- Build with operators: Domain experts and engineers test assumptions against real cases rather than a frozen brief.
+- Validate the change: The team compares the agreed baseline with post-intervention evidence and inspects unintended effects.
+When not to use FDE: FDE is not automatically better for every software project.
+- Stable commodity need: A standard product is usually preferable when requirements and workflows are already well understood.
+- No access to operators: FDE cannot work well when the team cannot observe the process or receive timely evidence.
+- No measurable boundary: The engagement needs an agreed problem, responsible owner, and a way to judge whether the intervention helped.
+Q: Is FDE the same as embedded engineering?
+A: They overlap, but FDE usually adds explicit ownership of discovery, implementation, and validation around a customer problem.
+Q: Is FDE the same as professional services?
+A: FDE may be delivered as a professional service, but its defining feature is the tight field evidence and engineering loop, not the commercial contract type.
+Q: Why is FDE relevant to enterprise AI?
+A: AI requirements often depend on real data, exceptions, permissions, user judgement, and model failure modes. These are difficult to specify accurately without testing inside the operating context.
+
+## AI Advisory vs Custom Development vs FDE | Onyx Devs Lab
+https://hk.onyxdevslab.com/en/guides/ai-advisory-vs-custom-development-vs-fde/
+A decision guide for choosing AI advisory, custom development, or Forward Deployed Engineering based on problem clarity, evidence, and delivery ownership.
+Choose the engagement model by the uncertainty you need to resolve—not by which service label sounds most advanced.
+The decision boundary: The three models solve different kinds of uncertainty.
+- Choose advisory: Use it when leadership needs to prioritise opportunities, test feasibility, or set an investment and governance boundary.
+- Choose custom development: Use it when users, workflow, integrations, and acceptance criteria can be defined before implementation.
+- Choose FDE: Use it when the valuable problem is known but the correct intervention must be learned from real operations.
+Signals you chose the wrong model: A mismatch appears early if the engagement is measured against the wrong unit of success.
+- Advice without a decision: A strategy project is incomplete if nobody owns the resulting choice and next gate.
+- Build without a stable boundary: A fixed specification fails when core requirements change as operators see working software.
+- FDE without field access: Embedded delivery cannot work without operator participation, evidence access, and an accountable outcome owner.
+Q: Can an engagement move between models?
+A: Yes. Advisory can produce a defined custom build, while a build can become an FDE loop if field evidence reveals that the original boundary was wrong.
+Q: Is FDE always more expensive?
+A: Not necessarily. It involves broader ownership, but can avoid the cost of building against an inaccurate specification. Commercial scope still depends on duration, access, and delivery risk.
+Q: Can we start with a short assessment?
+A: Yes. A bounded assessment can clarify whether the next step should be advice, a build, an FDE intervention, or no project.
+
+## AI 顧問、定制開發與 FDE 如何選擇｜Onyx Devs Lab
+https://hk.onyxdevslab.com/zh-hk/guides/ai-consulting-vs-development-vs-fde/
+按問題清晰度、證據與交付責任，選擇 AI 顧問、AI 定制開發或前線部署工程 FDE。
+不要按哪個服務名稱聽起來最先進來選擇，而應看項目需要解決哪一種不確定性。
+三者的決策邊界: 三種模式處理不同類型的不確定性。
+- 選擇 AI 顧問: 當管理層需要排列機會、驗證可行性，或設定投資及治理邊界。
+- 選擇定制開發: 當使用者、流程、整合及驗收標準可在開發前清楚定義。
+- 選擇 FDE: 當問題具有價值，但正確干預必須從真實營運中學習。
+選錯模式的訊號: 當成功單位與交付模式不一致，問題通常很早便會出現。
+- 有建議但沒有決策: 如果沒有人負責作出選擇及進入下一個關口，策略項目仍未完成。
+- 邊界未穩定便開發: 當操作人員看到軟件後核心要求持續改變，固定規格會快速失效。
+- 無現場條件卻採用 FDE: 缺少操作人員參與、證據存取及成果責任人，嵌入式交付無法運作。
+Q: 項目可以在三種模式之間轉換嗎？
+A: 可以。顧問項目可形成定義清楚的定制開發；如果現場證據顯示原有邊界錯誤，開發亦可轉入 FDE 循環。
+Q: FDE 是否一定更昂貴？
+A: 不一定。FDE 承擔更廣責任，但亦可能避免按錯誤規格開發的成本；實際範圍仍取決於週期、存取條件及交付風險。
+Q: 可以先做短期評估嗎？
+A: 可以。一次有邊界的評估可判斷下一步應該是顧問、開發、FDE，或暫時不做項目。
+
+## Custom AI Development Cost in Hong Kong | Scope Guide
+https://hk.onyxdevslab.com/en/guides/custom-ai-development-cost-hong-kong/
+Understand what drives custom AI development cost in Hong Kong, what a credible estimate includes, and how to reduce risk before committing to a build.
+A credible estimate is driven less by the number of screens than by integration depth, data condition, evaluation, permissions, and the operating responsibility the system must carry.
+The main cost drivers: Two interfaces that look similar can have very different production requirements.
+- Integration depth: Supported APIs are different from legacy exports, browser-mediated systems, identity integration, and bidirectional actions.
+- Evidence and evaluation: High-trust work requires representative test sets, citations, error analysis, regression checks, and human-review rules.
+- Operational controls: Queues, retries, permissions, audit logs, monitoring, fallbacks, and support often determine whether a prototype can go live.
+What a useful estimate contains: A single headline price without assumptions cannot support a procurement decision.
+- Defined workflow: Named users, inputs, outputs, exceptions, integrations, and consequential actions.
+- Delivery stages: Separate discovery, prototype, pilot, production hardening, training, and ongoing operation.
+- Acceptance and change rules: State measurable acceptance criteria, excluded scope, dependencies, and how new evidence changes the plan.
+Q: Can you provide a fixed price?
+A: A fixed price can be responsible after the workflow, dependencies, and acceptance criteria are bounded. Earlier work is usually better structured as a defined assessment or validation stage.
+Q: Why is an AI prototype cheaper than production deployment?
+A: A prototype demonstrates a capability. Production deployment must manage real permissions, failures, edge cases, observability, data handling, and accountable human intervention.
+Q: How can a buyer reduce cost risk?
+A: Start with one measurable workflow, give early access to representative data and operators, and agree on stop or redesign conditions before full implementation.
+
+## 香港 AI 定制開發費用如何估算｜Onyx Devs Lab
+https://hk.onyxdevslab.com/zh-hk/guides/ai-custom-development-cost/
+了解香港 AI 定制開發的主要成本因素、可信報價應包含甚麼，以及如何在全面開發前降低風險。
+可信估算主要不是由界面數量決定，而是由整合深度、數據狀況、評估、權限及系統需要承擔的營運責任決定。
+主要成本因素: 外觀相近的兩個界面，可能有完全不同的生產要求。
+- 整合深度: 官方 API 與舊系統匯出、瀏覽器操作、身份整合及雙向行動的成本不同。
+- 證據與評估: 高信任工作需要代表性測試集、引用、錯誤分析、回歸測試及人工覆核規則。
+- 營運控制: 隊列、重試、權限、審計、監控、降級及支援往往決定原型能否上線。
+有效報價應包含甚麼: 沒有假設條件的單一總價，無法支援採購決策。
+- 明確工作流程: 列出使用者、輸入、輸出、異常、整合及高影響操作。
+- 交付階段: 分開診斷、原型、試點、生產強化、培訓及持續營運。
+- 驗收與變更規則: 寫明可量度標準、排除範圍、依賴條件，以及新證據如何改變計劃。
+Q: 可以固定總價嗎？
+A: 當流程、依賴及驗收標準已有清楚邊界，固定總價可以合理；較早階段通常應採用明確的評估或驗證項目。
+Q: 為甚麼 AI 原型比生產部署便宜？
+A: 原型只證明能力；生產系統還要處理真實權限、失敗、邊界案例、監控、數據及可問責的人工介入。
+Q: 客戶如何降低成本風險？
+A: 從一條可量度流程開始，及早提供代表性數據和操作人員參與，並在全面實施前議定停止或重設條件。
+
+## Enterprise AI Agent and ERP Integration Guide | Onyx Devs Lab
+https://hk.onyxdevslab.com/en/guides/enterprise-ai-agent-erp-integration/
+A practical architecture and control guide for connecting enterprise AI agents to ERP data and actions without replacing the system of record.
+The safe pattern is to preserve the ERP as the system of record, give the agent the smallest necessary data and tool surface, and separate read, recommendation, draft, and confirmed-write authority.
+Choose the integration surface: The connector should match available interfaces and business risk.
+- Supported API: Prefer documented endpoints with scoped service identities, stable contracts, and auditable responses.
+- Read replica or export: Use controlled copies for analytics when operational load or vendor access makes direct reads unsuitable.
+- Controlled interface automation: Treat browser or desktop mediation as a constrained last-mile adapter with explicit monitoring and takeover.
+Design the authority model: A useful agent is not automatically entitled to act.
+- Read-only analysis: Natural-language questions can produce evidence-linked answers without creating business mutations.
+- Draft and recommend: The agent prepares a transaction or decision for a named operator to review.
+- Confirmed write: Consequential actions require validation, idempotency, permission checks, confirmation, and post-action verification.
+Q: Does ERP integration require replacing the ERP?
+A: No. A separate AI and data layer can add retrieval, recommendations, and workflows while the ERP remains authoritative.
+Q: What if the ERP has no usable API?
+A: Possible alternatives include approved exports, read replicas, event feeds, or controlled interface automation. Each has different freshness, reliability, and governance trade-offs.
+Q: Should an AI agent write directly to production records?
+A: Only narrowly defined actions should gain write authority, with server-side permission checks, validation, idempotency, explicit confirmation where needed, and outcome verification.
+
+## 企業 AI Agent 與 ERP 整合指南｜Onyx Devs Lab
+https://hk.onyxdevslab.com/zh-hk/guides/enterprise-ai-agent-erp-integration/
+在不更換記錄系統的情況下，把企業 AI Agent 安全連接至 ERP 數據與操作的架構及控制方法。
+安全做法是保留 ERP 作為記錄系統，只給 Agent 最小必要的數據及工具接口，並分開讀取、建議、草擬與確認寫入權限。
+選擇整合接口: Connector 應按可用接口及業務風險選擇。
+- 官方 API: 優先使用有文件、身份範圍清楚、合約穩定及回應可審計的接口。
+- 只讀副本或匯出: 當營運負載或供應商限制不適合直接讀取時，以受控副本作分析。
+- 受控界面自動化: 把瀏覽器或桌面操作視為受限制的末端適配器，必須具備監控及人工接管。
+設計權限模型: Agent 有能力完成操作，不代表它應該獲得操作權。
+- 只讀分析: 自然語言問題可返回附帶證據的答案，而不產生業務寫入。
+- 草擬及建議: Agent 準備交易或決策，由指定操作人員覆核。
+- 確認寫入: 高影響操作需要驗證、冪等、權限檢查、確認及操作後回讀。
+Q: ERP 整合是否需要更換 ERP？
+A: 不需要。獨立 AI 及數據層可增加檢索、建議和流程，而 ERP 繼續保持權威記錄。
+Q: 如果 ERP 沒有可用 API 怎麼辦？
+A: 可考慮獲批准的匯出、只讀副本、事件流或受控界面自動化；各自具有不同的時效、可靠性及治理取捨。
+Q: Agent 應否直接寫入生產記錄？
+A: 只有邊界非常清楚的操作才應獲得寫入權，並需要服務端權限、輸入驗證、冪等、必要確認及結果回讀。
+
+## Enterprise AI Evaluation Framework | Onyx Devs Lab
+https://hk.onyxdevslab.com/en/methodology/enterprise-ai-evaluation/
+A practical enterprise AI evaluation framework covering retrieval, outputs, tool use, operational reliability, human review, and business outcomes.
+A model benchmark is not an acceptance test. Production readiness must be evaluated across evidence retrieval, output quality, tool behaviour, workflow reliability, human control, and operating outcomes.
+Six evaluation layers: Each layer answers a different production question.
+- Retrieval and evidence: Measure relevant evidence recall, citation correctness, permission filtering, and response to missing sources.
+- Output and decisions: Use domain rubrics for factuality, completeness, policy compliance, calibration, and appropriate refusal.
+- Tools and operations: Test argument construction, authorisation, idempotency, retries, post-action verification, latency, and cost.
+From test set to operating evidence: Offline scores are necessary but insufficient.
+- Representative cases: Build sets from common work, high-impact edge cases, historical failures, and adversarial inputs.
+- Release gates: Define thresholds by risk tier and prevent averages from hiding severe failures.
+- Production feedback: Capture corrections, escalation, abandonment, overrides, and downstream outcomes without treating every user action as ground truth.
+Q: Is model accuracy enough?
+A: No. A model can score well while retrieval misses protected evidence, tools perform the wrong action, or the workflow fails to provide human control.
+Q: How large should an evaluation set be?
+A: It should cover the decision and risk space rather than chase an arbitrary count. Begin with high-frequency and high-consequence cases, then expand from observed failures.
+Q: Can user feedback replace expert evaluation?
+A: No. User feedback is useful operational evidence, but many users cannot verify hidden factual, policy, permission, or downstream errors.
+
+## 企業 AI 評估框架｜從模型到營運成果｜Onyx Devs Lab
+https://hk.onyxdevslab.com/zh-hk/methodology/enterprise-ai-evaluation/
+企業 AI 評估框架，涵蓋檢索、輸出、工具操作、流程可靠性、人工覆核及業務成果。
+模型基準不是驗收測試。生產準備度必須同時評估證據檢索、輸出質量、工具行為、流程可靠性、人工控制及營運成果。
+六層評估範圍: 每一層回答不同的生產問題。
+- 檢索與證據: 量度相關證據召回、引用正確、權限過濾及缺少來源時的行為。
+- 輸出與決策: 以領域標準評估事實、完整性、政策遵循、置信表達及適當拒絕。
+- 工具與營運: 測試參數、授權、冪等、重試、操作後驗證、延遲及成本。
+從測試集到營運證據: 離線分數必要，但並不足夠。
+- 代表性案例: 包括常見工作、高影響邊界、歷史失敗及對抗輸入。
+- 發布關口: 按風險層級定義標準，避免平均分掩蓋嚴重失敗。
+- 生產反饋: 記錄修正、升級、放棄、人工覆蓋及下游結果，不把每個使用者動作直接視為真相。
+Q: 模型準確度足夠嗎？
+A: 不足夠。模型分數可以很好，但檢索可能遺漏受權限控制的證據、工具可能執行錯誤操作，或流程沒有提供人工控制。
+Q: 評估集需要多大？
+A: 應覆蓋決策與風險空間，而不是追求任意數量。先包括高頻及高影響案例，再從真實失敗持續擴展。
+Q: 使用者反饋可以取代專家評估嗎？
+A: 不可以。使用者反饋是有用的營運證據，但很多使用者無法識別隱藏的事實、政策、權限或下游錯誤。
+
+## 香港企业 AI 咨询服务｜Onyx Devs Lab
+https://hk.onyxdevslab.com/zh-cn/ai-consulting/
+面向香港及跨境企业的 AI 咨询：业务流程诊断、可行性评估、治理边界、投资决策和落地路线。
+Onyx 帮助管理层、业务团队和技术团队识别高价值流程，核实数据与风险条件，并形成能够进入生产环境的实施路线。
+AI 咨询解决什么问题: 咨询结果应该是一组可执行的业务与技术决策，而不是趋势报告。
+- 机会诊断: 先梳理流程、用户、异常和决策点，再选择模型或平台。
+- 可行性与风险: 评估数据质量、系统接口、隐私、权限、失败模式和人工复核。
+- 落地路线: 按价值、证据、交付成本和运营风险排列优先级。
+典型交付物: 范围围绕企业真正需要作出的决策确定。
+- 决策备忘录: 记录建议、关键假设、未采用方案、投资边界与责任人。
+- AI 机会地图: 列出优先流程、依赖条件、数据责任和可量化成果。
+- 90 天路线图: 覆盖验证、原型、试点、生产控制、采用和复盘。
+Q: AI 咨询和 AI 定制开发有什么区别？
+A: AI 咨询决定应该建设什么、为什么建设以及边界在哪里；定制开发把已经定义的需求变成可运行系统。
+Q: 可以评估已经在做的 AI 项目吗？
+A: 可以。我们会检查架构、模型质量、数据权限、运营控制、采用情况、成本和生产路径。
+Q: 只服务香港公司吗？
+A: 不是。我们服务香港及跨境企业，也可以支持分布式团队和国际业务。
+
+## 香港 AI 定制开发｜Agent、RAG 与 ERP 集成｜Onyx Devs Lab
+https://hk.onyxdevslab.com/zh-cn/custom-ai-development/
+为香港及跨境企业开发 AI Agent、RAG、流程自动化、数据平台与 ERP 集成系统。
+当通用聊天机器人无法满足专属流程、数据、权限或集成要求时，Onyx 负责设计、开发、上线和交接生产级 AI 软件。
+我们建设什么: 定制开发适合 AI 必须进入特定工作流程或数据边界的场景。
+- AI Agent: 具备工具权限、证据链、升级处理和人工确认的智能体。
+- 企业知识系统: 带有检索评估、引用和访问控制的 RAG 与文档智能。
+- 运营自动化: 结合确定性规则、AI 判断、队列、重试和审计记录。
+生产环境需要什么: 能演示的原型，不等于能够承担业务责任的系统。
+- 评估: 使用代表性测试集、准确度标准、回归检查和失败分析。
+- 安全与控制: 最小权限、租户隔离、敏感数据处理和高风险操作确认。
+- 持续运营: 监控、成本、降级、文档、培训和明确责任人。
+Q: AI 定制开发费用如何确定？
+A: 主要取决于系统集成深度、数据状况、风险控制、评估要求和运营责任，而不只是页面数量。
+Q: 是否绑定某个模型供应商？
+A: 不绑定。我们按质量、延迟、隐私、可用性和成本选择模型与基础设施。
+Q: 没有完整 API 的 ERP 可以接入 AI 吗？
+A: 很多情况下可以，可选择官方接口、只读副本、定时导出、事件流或受控界面自动化。
+
+## FDE 前线部署工程｜企业 AI 落地｜Onyx Devs Lab
+https://hk.onyxdevslab.com/zh-cn/forward-deployed-engineering/
+FDE 前线部署工程把现场诊断、嵌入式开发、部署与量化验证放进同一交付循环。
+FDE（前线部署工程）把需求发现、软件工程、部署和效果验证连接起来，适合无法在项目开始前完整定义的复杂企业 AI 问题。
+什么场景适合 FDE: 当正确方案必须从真实业务运行中学习时，FDE 比冻结需求更合适。
+- 需求仍然模糊: 团队知道痛点，但还无法准确描述正确的系统干预。
+- 环境复杂: 数据、政策、旧系统和人工判断相互影响。
+- 需要结果责任: 成功必须反映在运营指标，而不只是软件功能完成。
+FDE 与其他模式的区别: FDE 缩短咨询、规格、工程和采用之间的反馈距离。
+- 不同于传统咨询: 诊断问题的团队同时实施并验证干预。
+- 不同于项目外包: 成功单位是可验证的运营变化，而非冻结功能清单。
+- 不同于人力外派: 团队负责一个有边界的问题和证据闭环。
+Q: FDE 是什么意思？
+A: FDE 是 Forward Deployed Engineering，工程师贴近客户的真实运营环境，把发现、实施和验证连接起来。
+Q: FDE 只适合大型企业吗？
+A: 不是。只要问题价值高、难以预先定义，并且业务人员可以参与证据闭环，就可能适合。
+Q: FDE 项目通常需要多久？
+A: 取决于业务流程和结果验证周期，首个周期通常包括诊断、有限干预和足够的运营观察时间。
+
+## AI 咨询、定制开发与 FDE 怎么选｜Onyx Devs Lab
+https://hk.onyxdevslab.com/zh-cn/guides/ai-consulting-vs-development-vs-fde/
+根据问题清晰度、数据证据与交付责任，选择 AI 咨询、AI 定制开发或 FDE。
+判断标准不是哪个服务名称听起来更先进，而是项目需要解决哪一种不确定性。
+三种模式的边界: 它们分别适合不同的问题状态。
+- 选择 AI 咨询: 管理层需要确定机会、可行性、投入和治理边界。
+- 选择定制开发: 用户、流程、接口和验收标准可以在实施前定义。
+- 选择 FDE: 问题有价值，但正确方案需要从真实运营中学习。
+选错模式的典型信号: 成功标准和交付方式不匹配时，问题会很快出现。
+- 只有建议，没有决策: 没人负责选择与下一阶段，咨询就没有闭环。
+- 边界不稳就开始开发: 操作人员看到软件后核心需求持续变化，固定规格会失效。
+- 没有现场条件却做 FDE: 缺少业务人员参与、数据访问和结果负责人，嵌入式交付无法运行。
+Q: 项目可以在三种模式之间转换吗？
+A: 可以。咨询可以形成定制开发范围；如果现场证据推翻原边界，开发也可以进入 FDE 循环。
+Q: FDE 一定更贵吗？
+A: 不一定。FDE 责任更广，但可能避免按照错误需求建设系统的浪费。
+Q: 可以先做短期评估吗？
+A: 可以。有限评估可以判断下一步应是咨询、开发、FDE，或暂时不做项目。
+
+## 香港 AI 定制开发费用怎么估算｜Onyx Devs Lab
+https://hk.onyxdevslab.com/zh-cn/guides/custom-ai-development-cost/
+了解香港 AI 定制开发的成本因素、可靠报价应包含什么，以及如何降低项目风险。
+可靠估算主要由集成深度、数据状况、评估、权限和系统承担的运营责任决定，而不是简单按页面或模型调用计价。
+主要成本因素: 外观相似的系统可能具有完全不同的生产要求。
+- 集成深度: 标准 API 与旧系统导出、浏览器操作、身份系统和双向写入的成本不同。
+- 证据与评估: 高可信任务需要测试集、引用、错误分析、回归测试和人工复核规则。
+- 运营控制: 队列、重试、权限、审计、监控、降级和支持决定原型能否上线。
+可靠报价应该包含什么: 没有假设条件的单一总价不能支持采购决策。
+- 明确工作流: 列出用户、输入、输出、异常、集成和高影响操作。
+- 分阶段交付: 区分诊断、原型、试点、生产强化、培训和持续运营。
+- 验收与变更规则: 说明指标、排除范围、依赖条件和新增证据如何改变计划。
+Q: 可以提供固定总价吗？
+A: 当流程、依赖和验收标准已经明确时，可以合理固定价格；更早阶段适合先做有限评估。
+Q: 为什么生产系统比 AI 原型贵？
+A: 生产系统必须处理真实权限、失败、边界案例、监控、敏感数据和人工介入。
+Q: 企业如何降低成本风险？
+A: 从一条可量化流程开始，尽早提供代表性数据与操作人员，并预先约定停止或重设条件。
+
+## 企业 AI Agent 与 ERP 集成指南｜Onyx Devs Lab
+https://hk.onyxdevslab.com/zh-cn/guides/enterprise-ai-agent-erp-integration/
+在保留 ERP 作为记录系统的前提下，把企业 AI Agent 安全连接到数据与业务操作。
+安全模式是保留 ERP 作为权威记录系统，只向 Agent 开放最小必要的数据和工具，并区分读取、建议、草拟和确认写入权限。
+选择集成方式: 连接器应匹配现有接口条件和业务风险。
+- 官方 API: 优先使用有文档、身份范围明确、协议稳定且可审计的接口。
+- 只读副本或导出: 当直接读取影响运营负载或受供应商限制时，使用受控数据副本。
+- 受控界面自动化: 将浏览器或桌面操作作为末端适配器，并提供监控和人工接管。
+设计 Agent 权限: Agent 能完成操作，不代表它应该获得操作权。
+- 只读分析: 以自然语言查询并返回带证据答案，不产生业务写入。
+- 草拟与建议: Agent 准备交易或决策，由指定人员审核。
+- 确认写入: 高影响操作需要验证、幂等、权限检查、确认和操作后回读。
+Q: 接入 AI 是否必须更换 ERP？
+A: 不需要。独立的 AI 与数据层可以增加检索、建议和流程，ERP 继续保持权威记录。
+Q: ERP 没有可用 API 怎么办？
+A: 可以评估受控导出、只读副本、事件流或界面自动化，各自具有不同的时效、可靠性和治理成本。
+Q: Agent 可以直接写生产数据吗？
+A: 只有边界清楚的操作才应获得写权限，并需要服务端权限、输入验证、幂等、必要确认和结果回读。
+
+## 企业 AI 系统评估框架｜Onyx Devs Lab
+https://hk.onyxdevslab.com/zh-cn/methodology/enterprise-ai-evaluation/
+从检索证据、输出、工具调用、运营可靠性、人工复核和业务结果判断企业 AI 能否上线。
+模型基准分数不是验收测试。生产准备度必须同时评估证据检索、输出质量、工具行为、流程可靠性、人工控制和运营结果。
+六层评估范围: 每一层回答不同的生产问题。
+- 检索与证据: 测量相关证据召回、引用正确、权限过滤和缺少来源时的行为。
+- 输出与决策: 按领域标准评估事实、完整性、规则遵循、置信表达和适当拒绝。
+- 工具与运营: 测试参数、授权、幂等、重试、操作后验证、延迟和成本。
+从测试集到运营证据: 离线分数必要，但并不充分。
+- 代表性案例: 覆盖高频工作、高影响边界、历史失败和对抗输入。
+- 发布门槛: 按风险等级设置标准，避免平均分掩盖严重失败。
+- 生产反馈: 记录修正、升级、放弃、人工覆盖和下游结果。
+Q: 只看模型准确率够吗？
+A: 不够。检索、权限、工具操作和人工控制都可能在模型回答之外失败。
+Q: 评估集需要多大？
+A: 应覆盖决策与风险空间，而不是追求任意数量；先覆盖高频和高影响案例。
+Q: 用户反馈能代替专家评估吗？
+A: 不能。用户反馈有价值，但用户未必能发现隐藏的事实、政策、权限或下游错误。
+
+## Retail AI Decision Platform Case Study | Onyx Devs Lab
+https://hk.onyxdevslab.com/en/case-studies/retail-ai-decision-platform/
+How a non-invasive data layer over an existing ERP can support inventory, staffing, and merchandising decisions.
+A non-invasive analytics and AI layer designed around an existing SaaS ERP for an Italian-Chinese supermarket operation.
+Operating challenge: Transaction data existed, but inventory, workforce, and loss signals were fragmented. The business needed better decisions without replacing the operational ERP.
+- Connected existing transaction data through a separate analytics layer.
+- Designed missing workforce and inventory-loss data modules.
+- Applied inventory forecasting and market-basket analysis to operational decisions.
+- Kept recommendations reviewable by operators rather than automating high-impact decisions invisibly.
+Evidence boundary: This public case describes delivered scope and architecture. Commercially sensitive baselines and outcome values are not published; they should not be inferred from the description.
+
+## AI Accounting Production Platform Case Study | Onyx Devs Lab
+https://hk.onyxdevslab.com/en/case-studies/accounting-ai-production-platform/
+A multi-agent accounting production system with workflow orchestration, evidence, exception handling, and human control.
+A multi-agent workspace that treats each client portfolio as a persistent operating context and moves work through controlled production stages.
+Operating challenge: Accounting work was split across client files, collection, bookkeeping, review, tax preparation, and exception handling. AI needed to assist the full workflow without obscuring evidence or professional accountability.
+- Mapped 12 business domains, 52 screens, and 9 production workspaces.
+- Separated deterministic accounting rules from AI judgement.
+- Designed queues, retries, status tracking, evidence chains, and explicit human takeover.
+- Kept final official submissions in a controlled path where direct APIs were unavailable.
+Evidence boundary: The published figures describe mapped product scope, not claimed productivity or financial outcomes. Regulated decisions and official submissions remain subject to qualified human review.
+
+## 零售 AI 決策平台案例｜Onyx Devs Lab
+https://hk.onyxdevslab.com/zh-hk/case-studies/retail-ai-decision-platform/
+在不更換既有 ERP 的前提下，建立支援庫存、人力及商品組合決策的數據與 AI 層。
+為意大利華人超市業務設計的非侵入式分析與 AI 層，保留既有 SaaS ERP 作為營運系統。
+Operating challenge: 企業已有交易數據，但庫存、人力及損耗訊號分散。項目需要改善決策，同時避免高風險的核心 ERP 替換。
+- 透過獨立分析層連接既有交易數據。
+- 設計原系統缺少的人力及庫存損耗數據模組。
+- 把庫存預測及購物籃分析連接至營運決策。
+- 讓操作人員可以覆核建議，避免不透明地自動執行高影響決策。
+Evidence boundary: 本公開案例描述已交付的範圍及架構。商業敏感的基線與成果數值未有公開，不應從案例描述推斷。
+
+## AI 原生會計生產平台案例｜Onyx Devs Lab
+https://hk.onyxdevslab.com/zh-hk/case-studies/accounting-ai-production-platform/
+具備流程編排、證據鏈、異常處理及人工控制的多 Agent 會計生產系統。
+以每個客戶組合作為持續營運上下文，透過受控生產階段推進工作的多 Agent 平台。
+Operating challenge: 會計工作分散在客戶文件、資料收集、記帳、覆核、稅務準備及異常處理之間。AI 需要協助完整流程，同時保留證據及專業責任。
+- 梳理 12 個業務領域、52 個界面及 9 個生產工作區。
+- 把確定性會計規則與 AI 判斷分開處理。
+- 設計任務隊列、重試、狀態追蹤、證據鏈及明確人工接管。
+- 在缺少直接 API 時，把最終官方提交保留在受控流程。
+Evidence boundary: 公開數字描述已梳理的產品範圍，並非生產力或財務成果聲明。受監管決策及官方提交仍由合資格人員覆核。
+
+## 零售 AI 决策平台案例｜Onyx Devs Lab
+https://hk.onyxdevslab.com/zh-cn/case-studies/retail-ai-decision-platform/
+在不更换现有 ERP 的前提下，建立支持库存、人力和商品组合决策的数据与 AI 层。
+为意大利华人超市业务设计的非侵入式分析与 AI 层，保留原有 SaaS ERP 作为运营系统。
+Operating challenge: 企业已有交易数据，但库存、人力和损耗信号分散。项目需要改善决策，同时避免高风险的核心 ERP 替换。
+- 通过独立分析层连接原有交易数据。
+- 设计原系统缺少的人力和库存损耗数据模块。
+- 把库存预测与购物篮分析连接到运营决策。
+- 让操作人员能够复核建议，避免不透明地自动执行高影响决策。
+Evidence boundary: 本公开案例展示已交付范围、架构与试点验证口径。量化指标来自项目记录，但不应外推为其他企业的预期结果。
+
+## AI 原生会计生产平台案例｜Onyx Devs Lab
+https://hk.onyxdevslab.com/zh-cn/case-studies/accounting-ai-production-platform/
+具有流程编排、证据链、异常处理和人工控制的多 Agent 会计生产系统。
+以每个客户组合作为持续运营上下文，通过受控生产阶段推进工作的多 Agent 平台。
+Operating challenge: 会计工作分散在客户文件、资料收集、记账、复核、税务准备和异常处理之间。AI 需要协助完整流程，同时保留证据与专业责任。
+- 梳理 12 个业务领域、52 个界面和 9 个生产工作区。
+- 把确定性会计规则与 AI 判断分开处理。
+- 设计任务队列、重试、状态追踪、证据链和明确的人工接管。
+- 在缺少直接 API 时，将最终官方提交保留在受控流程。
+Evidence boundary: 公开数字同时区分产品范围与试点验证结果。受监管决策和官方提交仍由具备相应资格的人员复核。
+
+## Legal AI Evidence Workflow Case Study | Onyx Devs Lab
+https://hk.onyxdevslab.com/en/case-studies/legal-ai-evidence-workflow/
+A legal AI workflow that connects law-firm operations with large-dossier retrieval, page-level citations, permissions, and lawyer review.
+A legal operations and dossier-analysis system designed around document coverage, page-level citations, matter permissions, and accountable lawyer review.
+Operating challenge: Law-firm operations and large case files created two different information problems: fragmented business status and high-risk evidence retrieval across very large dossiers. A fluent answer was not enough; lawyers needed coverage, provenance, and explicit review.
+- Connected leads, clients, matters, milestones, tasks, contracts, and receivables in one operating model.
+- Tracked ingestion by file, page, and text chunk so missing or failed material remained visible.
+- Combined keyword and vector retrieval with file, page, source text, and confidence coordinates.
+- Applied matter-level access, audit trails, exception queues, and lawyer approval before formal output.
+Evidence boundary: The validation figures come from a controlled project sample and lawyer-labelled reference set. They demonstrate the tested workflow, not legal accuracy for every jurisdiction or matter.
+
+## 法律 AI 證據鏈工作流案例｜Onyx Devs Lab
+https://hk.onyxdevslab.com/zh-hk/case-studies/legal-ai-evidence-workflow/
+把律所營運、大型卷宗檢索、逐頁引用、案件權限及律師覆核連接起來的法律 AI 工作流。
+圍繞文件覆蓋、逐頁引用、案件權限及律師責任設計的律所營運與大型卷宗分析系統。
+Operating challenge: 律所營運與大型卷宗形成兩種不同的信息問題：業務狀態分散，以及在龐大材料中高風險檢索證據。流暢回答並不足夠，律師還需要覆蓋率、來源及明確覆核。
+- 連接線索、客戶、案件、節點、任務、合同及回款。
+- 按文件、頁面及文本塊追蹤處理狀態，持續暴露缺失及失敗材料。
+- 結合關鍵詞與向量檢索，返回文件、頁碼、原文及置信度。
+- 正式輸出前執行案件級權限、審計、異常隊列及律師批准。
+Evidence boundary: 驗證數字來自受控項目樣本及律師標註參考集，只證明已測試工作流，不代表所有司法管轄區或案件的法律準確度。
+
+## 法律 AI 证据链工作流案例｜Onyx Devs Lab
+https://hk.onyxdevslab.com/zh-cn/case-studies/legal-ai-evidence-workflow/
+把律所运营、大型卷宗检索、逐页引用、案件权限和律师复核连接起来的法律 AI 工作流。
+围绕文件覆盖、逐页引用、案件权限和律师责任设计的律所运营与大型卷宗分析系统。
+Operating challenge: 律所运营与大型卷宗形成两种不同的信息问题：业务状态分散，以及在庞大材料中高风险检索证据。流畅回答并不够，律师还需要覆盖率、来源和明确复核。
+- 连接线索、客户、案件、节点、任务、合同和回款。
+- 按文件、页面和文本块追踪处理状态，持续暴露缺失与失败材料。
+- 结合关键词与向量检索，返回文件、页码、原文和置信度。
+- 正式输出前执行案件级权限、审计、异常队列和律师批准。
+Evidence boundary: 验证数字来自受控项目样本和律师标注参考集，只证明已测试工作流，不代表所有司法管辖区或案件的法律准确度。
+
+## Recruiting AI Agent Workflow Case Study | Onyx Devs Lab
+https://hk.onyxdevslab.com/en/case-studies/recruiting-ai-agent-workflow/
+A controlled recruiting agent workflow for candidate sync, evidence-linked profiles, reply drafting, idempotent sending, and human takeover.
+A recruiting workspace that synchronises candidate conversations, refreshes evidence-linked profiles, and separates manual, copilot, and controlled-autopilot authority.
+Operating challenge: Fast reply generation did not solve incomplete conversation context, stale candidate profiles, duplicate sends, or uncertain delivery. Automation needed to coexist with recruiters rather than take over their working interface.
+- Used a local connector to reuse the authorised recruiter session and synchronise visible candidate history.
+- Refreshed structured profiles when context changed, separating facts, inferences, confidence, and missing information.
+- Supported manual, copilot, and controlled-autopilot modes per candidate.
+- Serialised sends, enforced idempotency, and reread the sent message to verify completion.
+Evidence boundary: The published validation covers synchronisation, send verification, and workflow time in a controlled pilot. It does not claim improved hiring outcomes without a longer recruiting cohort.
+
+## 香港招聘 AI Agent 工作流案例｜Onyx Devs Lab
+https://hk.onyxdevslab.com/zh-hk/case-studies/recruiting-ai-agent-workflow/
+涵蓋候選人同步、證據化畫像、回覆草擬、冪等發送及人工接管的受控招聘 Agent 工作流。
+持續同步候選人對話、更新證據化畫像，並分開人工、Copilot 及受控 Autopilot 權限的招聘工作台。
+Operating challenge: 快速生成回覆不能解決對話不完整、候選人畫像過期、重複發送或發送狀態不確定。自動化需要與招聘顧問共同工作，而不是搶佔日常界面。
+- 以本地 Connector 復用已授權招聘登入狀態並同步可見歷史。
+- 上下文變化時刷新結構化畫像，區分事實、推斷、置信度及缺失信息。
+- 按候選人提供人工、Copilot 及受控 Autopilot 模式。
+- 發送任務串行且冪等，並回讀已發消息確認完成。
+Evidence boundary: 公開驗證涵蓋受控試點中的同步、發送確認及工作流時間；在缺少更長招聘群組前，不主張改善最終招聘結果。
+
+## 招聘 AI Agent 工作流案例｜Onyx Devs Lab
+https://hk.onyxdevslab.com/zh-cn/case-studies/recruiting-ai-agent-workflow/
+覆盖候选人同步、证据化画像、回复草拟、幂等发送和人工接管的受控招聘 Agent 工作流。
+持续同步候选人对话、更新证据化画像，并分离人工、Copilot 和受控 Autopilot 权限的招聘工作台。
+Operating challenge: 快速生成回复不能解决对话不完整、候选人画像过期、重复发送或发送状态不确定。自动化需要与招聘顾问共同工作，而不是抢占日常界面。
+- 通过本地 Connector 复用已授权招聘登录状态并同步可见历史。
+- 上下文变化时刷新结构化画像，区分事实、推断、置信度和缺失信息。
+- 按候选人提供人工、Copilot 和受控 Autopilot 模式。
+- 发送任务串行且幂等，并回读已发消息确认完成。
+Evidence boundary: 公开验证覆盖受控试点中的同步、发送确认和工作流时间；在缺少更长招聘群组前，不主张改善最终招聘结果。
+
+## Industrial ERP and AI Data Platform Case Study | Onyx Devs Lab
+https://hk.onyxdevslab.com/en/case-studies/industrial-erp-ai-data-platform/
+An industrial data platform connecting weighbridge, laboratory, vehicle, energy, ERP, and PLC information without handing safety control to AI.
+An ERP and AI information layer connecting weighbridge, laboratory, vehicle, energy, and PLC data while keeping operational technology control separate.
+Operating challenge: Production information was fragmented across equipment, paper records, and isolated systems. Management received delayed summaries, but connecting the data could not compromise safety-related industrial control.
+- Mapped material movement, weighing, quality testing, vehicle energy, and production records to accountable business objects.
+- Established a controlled data interface between PLC information and management systems.
+- Unified operational dashboards, mobile access, permissions, validation, and audit records.
+- Added business questions and exception explanation above the trusted data layer, not direct AI control of production.
+Evidence boundary: Validation covers data-record completeness, collection timeliness, and operator acknowledgement in the delivered project scope. Safety-related actions remain under authorised site personnel.
+
+## 工業 ERP 與 AI 數據平台案例｜Onyx Devs Lab
+https://hk.onyxdevslab.com/zh-hk/case-studies/industrial-erp-ai-data-platform/
+連接司磅、化驗、車輛、能耗、ERP 與 PLC 信息，同時不把安全控制交給 AI 的工業數據平台。
+連接司磅、化驗、車輛、能耗及 PLC 數據，同時保持營運技術控制隔離的 ERP 與 AI 信息層。
+Operating challenge: 生產信息分散在設備、紙面記錄及獨立系統，管理層只能看到滯後匯總；但連接數據不能影響安全相關工業控制。
+- 把物料流轉、稱重、質檢、車輛能耗及生產記錄映射至具責任的業務對象。
+- 在 PLC 信息與管理系統之間建立受控數據接口。
+- 統一營運看板、移動存取、權限、校驗及審計記錄。
+- 在可信數據層上提供業務問答及異常解釋，不讓 AI 直接控制生產。
+Evidence boundary: 驗證涵蓋交付範圍內的記錄完整、採集及時及操作人員確認；安全相關操作仍由獲授權現場人員負責。
+
+## 工业 ERP 与 AI 数据平台案例｜Onyx Devs Lab
+https://hk.onyxdevslab.com/zh-cn/case-studies/industrial-erp-ai-data-platform/
+连接司磅、化验、车辆、能耗、ERP 与 PLC 信息，同时不把安全控制交给 AI 的工业数据平台。
+连接司磅、化验、车辆、能耗与 PLC 数据，同时保持运营技术控制隔离的 ERP 和 AI 信息层。
+Operating challenge: 生产信息分散在设备、纸面记录和独立系统，管理层只能看到滞后汇总；但连接数据不能影响安全相关工业控制。
+- 把物料流转、称重、质检、车辆能耗和生产记录映射到有责任人的业务对象。
+- 在 PLC 信息与管理系统之间建立受控数据接口。
+- 统一运营看板、移动访问、权限、校验和审计记录。
+- 在可信数据层上提供业务问答和异常解释，不让 AI 直接控制生产。
+Evidence boundary: 验证覆盖交付范围内的记录完整、采集及时和操作人员确认；安全相关操作仍由授权现场人员负责。
+
+## Credit Research AI Agent Case Study | Onyx Devs Lab
+https://hk.onyxdevslab.com/en/case-studies/credit-research-ai-agent/
+A credit-research agent workflow combining internal material, current public information, source-linked conclusions, and analyst review.
+An agentic research workflow that connects internal materials and public financial information, exposes conflicts and missing evidence, and keeps investment judgement with the analyst.
+Operating challenge: Analysts repeatedly collected, reconciled, and reformatted information across internal files and public sources. Faster drafting was useful only if material facts, conflicts, freshness, and provenance remained visible.
+- Modelled the research task, evidence levels, report structure, and analyst approval boundary.
+- Connected internal materials with current public financial information through a deduplicated retrieval pipeline.
+- Separated facts, inference, and risk judgement while attaching sources to material conclusions.
+- Recorded analyst edits and missing evidence as evaluation data for future releases.
+Evidence boundary: The validation sample measures fact recall, citation coverage, and first-draft time. The system does not replace credit, investment, or trading decisions.
+
+## 債權研究 AI Agent 案例｜Onyx Devs Lab
+https://hk.onyxdevslab.com/zh-hk/case-studies/credit-research-ai-agent/
+融合內部材料、最新公開信息、可回查結論與分析師覆核的債權研究 Agent 工作流。
+連接內部材料與公開金融信息、暴露衝突及證據缺口，並把投資判斷保留給分析師的 Agent 研究工作流。
+Operating challenge: 分析師需要在內部文件及公開來源之間重複搜集、核對及重排資料。只有在重要事實、衝突、時效及來源仍然可見時，更快的初稿才有價值。
+- 建立研究任務、證據等級、報告結構及分析師批准邊界。
+- 以去重檢索管線連接內部材料與最新公開金融信息。
+- 分開事實、推斷及風險判斷，並為重要結論附上來源。
+- 把分析師修改及缺失證據記錄為後續版本的評估數據。
+Evidence boundary: 驗證樣本量度事實召回、引用覆蓋及初稿時間；系統不替代授信、投資或交易決策。
+
+## 债权研究 AI Agent 案例｜Onyx Devs Lab
+https://hk.onyxdevslab.com/zh-cn/case-studies/credit-research-ai-agent/
+融合内部材料、最新公开信息、可回查结论与分析师复核的债权研究 Agent 工作流。
+连接内部材料与公开金融信息、暴露冲突与证据缺口，并把投资判断保留给分析师的 Agent 研究工作流。
+Operating challenge: 分析师需要在内部文件和公开来源之间重复搜集、核对和重排资料。只有在重要事实、冲突、时效和来源仍然可见时，更快的初稿才有价值。
+- 建立研究任务、证据等级、报告结构和分析师批准边界。
+- 通过去重检索管线连接内部材料与最新公开金融信息。
+- 分离事实、推断和风险判断，并为重要结论附上来源。
+- 把分析师修改和缺失证据记录为后续版本的评估数据。
+Evidence boundary: 验证样本测量事实召回、引用覆盖和初稿时间；系统不替代授信、投资或交易决策。
+
