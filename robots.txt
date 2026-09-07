@@ -7,4 +7,13 @@ Allow: /
 User-agent: GPTBot
 Allow: /
 
+User-agent: Bytespider
+Allow: /
+
+User-agent: Baiduspider
+Allow: /
+
+User-agent: bingbot
+Allow: /
+
 Sitemap: https://hk.onyxdevslab.com/sitemap.xml
