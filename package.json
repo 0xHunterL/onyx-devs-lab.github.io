@@ -8,6 +8,7 @@
     "dev": "vite",
     "build": "vite build && node scripts/generate-geo-pages.mjs",
     "geo:check": "node scripts/check-geo.mjs",
+    "geo:check-live": "node scripts/check-live-geo.mjs",
     "lint": "eslint .",
     "preview": "vite preview",
     "predeploy": "npm run build",

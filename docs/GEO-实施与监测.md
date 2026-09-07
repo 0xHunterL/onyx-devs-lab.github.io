@@ -28,6 +28,22 @@ FDE 首次出现时必须同时写出全称。中文页面采用“前线部署�
 5. 在 Google Search Console 和 Bing Webmaster Tools 验证站点并提交 sitemap。
 6. 对优先页面请求重新抓取，不将提交 sitemap 视为收录保证。
 
+本地发布产物可以用以下方式模拟线上抓取：
+
+```bash
+npm run build
+python3 -m http.server 4175 --directory dist
+npm run geo:check-live -- http://127.0.0.1:4175
+```
+
+正式发布后执行：
+
+```bash
+npm run geo:check-live -- https://hk.onyxdevslab.com
+```
+
+该检查会实际请求 robots、llms、sitemap 及 sitemap 中的所有页面，并验证状态码、内容类型、服务器响应 HTML 中的 H1、canonical 和 JSON-LD。
+
 ## GEO 问题集
 
 首批问题按购买意图划分，每月在主要 AI 搜索产品中人工抽样验证：
