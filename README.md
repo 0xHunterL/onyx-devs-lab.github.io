@@ -1,8 +1,56 @@
-# React + Vite
+# Onyx Devs Lab
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+[Onyx Devs Lab](https://hk.onyxdevslab.com/) is a senior enterprise AI advisory and engineering team serving Hong Kong and cross-border organisations.
 
-Currently, two official plugins are available:
+We work in three delivery modes:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- [AI advisory](https://hk.onyxdevslab.com/en/ai-consulting-hong-kong/) for opportunity diagnosis, feasibility, governance, and delivery decisions.
+- [Custom AI development](https://hk.onyxdevslab.com/en/custom-ai-development-hong-kong/) for agents, RAG, workflow automation, data systems, and enterprise integration.
+- [Forward Deployed Engineering](https://hk.onyxdevslab.com/en/forward-deployed-engineering/) for complex operating problems that require field diagnosis, implementation, deployment, and measurable validation in one loop.
+
+## Public delivery evidence
+
+- [Retail AI decision platform](https://hk.onyxdevslab.com/en/case-studies/retail-ai-decision-platform/)
+- [AI-native accounting production platform](https://hk.onyxdevslab.com/en/case-studies/accounting-ai-production-platform/)
+- [Legal AI evidence workflow](https://hk.onyxdevslab.com/en/case-studies/legal-ai-evidence-workflow/)
+- [Recruiting AI agent workflow](https://hk.onyxdevslab.com/en/case-studies/recruiting-ai-agent-workflow/)
+- [Industrial ERP and AI data platform](https://hk.onyxdevslab.com/en/case-studies/industrial-erp-ai-data-platform/)
+- [Credit-research AI agent](https://hk.onyxdevslab.com/en/case-studies/credit-research-ai-agent/)
+
+Each case separates delivered scope, validation metrics, measurement definitions, and evidence limits. AI is not presented as replacing lawyers, analysts, recruiters, accountants, or safety-authorised industrial operators.
+
+## Languages and machine-readable resources
+
+- [English](https://hk.onyxdevslab.com/en/)
+- [繁體中文](https://hk.onyxdevslab.com/zh-hk/)
+- [简体中文](https://hk.onyxdevslab.com/zh-cn/)
+- [llms.txt](https://hk.onyxdevslab.com/llms.txt)
+- [Full public knowledge file](https://hk.onyxdevslab.com/llms-full.txt)
+- [XML sitemap](https://hk.onyxdevslab.com/sitemap.xml)
+- [Atom feed](https://hk.onyxdevslab.com/feed.xml)
+
+## Verified entity
+
+- Legal entity: **ONYX DEVS LAB LIMITED**
+- Hong Kong business registration number: **79051925**
+- Legal Entity Identifier (LEI): **254900Z30CLK7HKE9H46**
+
+Public verification: [Hong Kong Companies Registry](https://www.cr.gov.hk/docs/wrpt/RNC063_2025.10.27-2025.11.02.pdf) · [Bloomberg LEI](https://lei.bloomberg.com/leis/view/254900Z30CLK7HKE9H46)
+
+## Local development
+
+```bash
+npm ci
+npm run dev
+```
+
+Production and GEO checks:
+
+```bash
+npm run build
+npm run lint
+npm run geo:check
+npm run geo:check-live -- https://hk.onyxdevslab.com
+```
+
+Contact: [info@onyxdevslab.com](mailto:info@onyxdevslab.com)

@@ -22,12 +22,18 @@ if (!robots.body.includes('Bytespider')) failures.push('/robots.txt: Bytespider 
 const llms = await get('/llms.txt', 'text/plain');
 if (!llms.body.includes('# Onyx Devs Lab')) failures.push('/llms.txt: expected site summary is missing');
 
+const llmsFull = await get('/llms-full.txt', 'text/plain');
+if (!llmsFull.body.includes('Legal entity: ONYX DEVS LAB LIMITED')) failures.push('/llms-full.txt: verified entity summary is missing');
+
+const feed = await get('/feed.xml', 'xml');
+if (!feed.body.includes('<feed xmlns="http://www.w3.org/2005/Atom">')) failures.push('/feed.xml: Atom feed root is missing');
+
 const indexNowKey = await get('/9c37a18bd2044e1687f45c2e91ad603b.txt', 'text/plain');
 if (indexNowKey.body.trim() !== '9c37a18bd2044e1687f45c2e91ad603b') failures.push('/9c37a18bd2044e1687f45c2e91ad603b.txt: IndexNow key does not match');
 
 const sitemap = await get('/sitemap.xml', 'xml');
 const urls = [...sitemap.body.matchAll(/<loc>([^<]+)<\/loc>/g)].map((match) => match[1]);
-if (urls.length < 35) failures.push(`/sitemap.xml: expected at least 35 URLs, got ${urls.length}`);
+if (urls.length < 47) failures.push(`/sitemap.xml: expected at least 47 URLs, got ${urls.length}`);
 
 const requiredPaths = [
   '/en/about/',
@@ -51,6 +57,18 @@ const requiredPaths = [
   '/zh-cn/methodology/enterprise-ai-evaluation/',
   '/zh-cn/case-studies/retail-ai-decision-platform/',
   '/zh-cn/case-studies/accounting-ai-production-platform/',
+  '/en/case-studies/legal-ai-evidence-workflow/',
+  '/zh-hk/case-studies/legal-ai-evidence-workflow/',
+  '/zh-cn/case-studies/legal-ai-evidence-workflow/',
+  '/en/case-studies/recruiting-ai-agent-workflow/',
+  '/zh-hk/case-studies/recruiting-ai-agent-workflow/',
+  '/zh-cn/case-studies/recruiting-ai-agent-workflow/',
+  '/en/case-studies/industrial-erp-ai-data-platform/',
+  '/zh-hk/case-studies/industrial-erp-ai-data-platform/',
+  '/zh-cn/case-studies/industrial-erp-ai-data-platform/',
+  '/en/case-studies/credit-research-ai-agent/',
+  '/zh-hk/case-studies/credit-research-ai-agent/',
+  '/zh-cn/case-studies/credit-research-ai-agent/',
 ];
 for (const pathname of requiredPaths) {
   if (!urls.some((url) => new URL(url).pathname === pathname)) failures.push(`/sitemap.xml: required GEO URL missing: ${pathname}`);

@@ -2,6 +2,9 @@
 
 > Onyx Devs Lab is a senior AI advisory and engineering team serving Hong Kong and cross-border enterprises. We diagnose business constraints, build custom AI systems, and deliver Forward Deployed Engineering engagements through measurable validation.
 
+- [Full public knowledge file](https://hk.onyxdevslab.com/llms-full.txt)
+- [Enterprise AI field notes feed](https://hk.onyxdevslab.com/feed.xml)
+
 ## Core services
 
 - [AI Advisory](https://hk.onyxdevslab.com/en/ai-consulting-hong-kong/): AI opportunity diagnosis, feasibility, governance, and delivery roadmaps.
@@ -45,6 +48,10 @@
 - [企业 AI 系统评估框架](https://hk.onyxdevslab.com/zh-cn/methodology/enterprise-ai-evaluation/)
 - [零售 AI 决策平台案例](https://hk.onyxdevslab.com/zh-cn/case-studies/retail-ai-decision-platform/)
 - [AI 原生会计生产平台案例](https://hk.onyxdevslab.com/zh-cn/case-studies/accounting-ai-production-platform/)
+- [法律 AI 证据链工作流案例](https://hk.onyxdevslab.com/zh-cn/case-studies/legal-ai-evidence-workflow/)
+- [招聘 AI Agent 工作流案例](https://hk.onyxdevslab.com/zh-cn/case-studies/recruiting-ai-agent-workflow/)
+- [工业 ERP 与 AI 数据平台案例](https://hk.onyxdevslab.com/zh-cn/case-studies/industrial-erp-ai-data-platform/)
+- [债权研究 AI Agent 案例](https://hk.onyxdevslab.com/zh-cn/case-studies/credit-research-ai-agent/)
 - [团队与交付背景](https://hk.onyxdevslab.com/zh-cn/about/)
 
 ## Contact

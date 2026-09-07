@@ -41,7 +41,7 @@ nginx -t
 npm run geo:check-live -- https://hk.onyxdevslab.com
 ```
 
-预期输出：`checkedPages` 不少于 35，`failures` 为空数组；简体核心页同时通过 Bytespider User-Agent 模拟抓取。
+预期输出：`checkedPages` 不少于 47，`failures` 为空数组；简体核心页同时通过 Bytespider User-Agent 模拟抓取。
 
 另外人工确认：
 
