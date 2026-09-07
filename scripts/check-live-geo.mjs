@@ -2,9 +2,9 @@ const origin = (process.argv[2] || 'https://hk.onyxdevslab.com').replace(/\/$/, 
 const canonicalOrigin = (process.argv[3] || 'https://hk.onyxdevslab.com').replace(/\/$/, '');
 const failures = [];
 
-async function get(pathname, expectedType) {
+async function get(pathname, expectedType, userAgent = 'Onyx-GEO-Release-Check/1.0') {
   const response = await fetch(`${origin}${pathname}`, {
-    headers: { 'user-agent': 'Onyx-GEO-Release-Check/1.0' },
+    headers: { 'user-agent': userAgent },
     redirect: 'follow',
   });
   const body = await response.text();
@@ -17,13 +17,17 @@ async function get(pathname, expectedType) {
 const robots = await get('/robots.txt', 'text/plain');
 if (!robots.body.includes(`Sitemap: ${canonicalOrigin}/sitemap.xml`)) failures.push('/robots.txt: sitemap declaration is missing or points to the wrong canonical origin');
 if (!robots.body.includes('OAI-SearchBot')) failures.push('/robots.txt: OAI-SearchBot policy is missing');
+if (!robots.body.includes('Bytespider')) failures.push('/robots.txt: Bytespider policy is missing');
 
 const llms = await get('/llms.txt', 'text/plain');
 if (!llms.body.includes('# Onyx Devs Lab')) failures.push('/llms.txt: expected site summary is missing');
 
+const indexNowKey = await get('/9c37a18bd2044e1687f45c2e91ad603b.txt', 'text/plain');
+if (indexNowKey.body.trim() !== '9c37a18bd2044e1687f45c2e91ad603b') failures.push('/9c37a18bd2044e1687f45c2e91ad603b.txt: IndexNow key does not match');
+
 const sitemap = await get('/sitemap.xml', 'xml');
 const urls = [...sitemap.body.matchAll(/<loc>([^<]+)<\/loc>/g)].map((match) => match[1]);
-if (urls.length < 24) failures.push(`/sitemap.xml: expected at least 24 URLs, got ${urls.length}`);
+if (urls.length < 35) failures.push(`/sitemap.xml: expected at least 35 URLs, got ${urls.length}`);
 
 const requiredPaths = [
   '/en/about/',
@@ -36,9 +40,28 @@ const requiredPaths = [
   '/zh-hk/guides/enterprise-ai-agent-erp-integration/',
   '/en/methodology/enterprise-ai-evaluation/',
   '/zh-hk/methodology/enterprise-ai-evaluation/',
+  '/zh-cn/',
+  '/zh-cn/about/',
+  '/zh-cn/ai-consulting/',
+  '/zh-cn/custom-ai-development/',
+  '/zh-cn/forward-deployed-engineering/',
+  '/zh-cn/guides/ai-consulting-vs-development-vs-fde/',
+  '/zh-cn/guides/custom-ai-development-cost/',
+  '/zh-cn/guides/enterprise-ai-agent-erp-integration/',
+  '/zh-cn/methodology/enterprise-ai-evaluation/',
+  '/zh-cn/case-studies/retail-ai-decision-platform/',
+  '/zh-cn/case-studies/accounting-ai-production-platform/',
 ];
 for (const pathname of requiredPaths) {
   if (!urls.some((url) => new URL(url).pathname === pathname)) failures.push(`/sitemap.xml: required GEO URL missing: ${pathname}`);
+}
+
+
+const bytespiderAgent = 'Mozilla/5.0 (compatible; Bytespider; +https://zhanzhang.toutiao.com/)';
+for (const pathname of requiredPaths.filter((path) => path.startsWith('/zh-cn/'))) {
+  const page = await get(pathname, 'text/html', bytespiderAgent);
+  if (!page.body.includes('<html lang="zh-CN">')) failures.push(`${pathname}: Bytespider response is not the simplified Chinese HTML page`);
+  if (!page.body.includes('application/ld+json')) failures.push(`${pathname}: Bytespider response is missing JSON-LD`);
 }
 
 for (const absoluteUrl of urls) {

@@ -33,6 +33,20 @@
 - [企業 AI Agent 與 ERP 整合](https://hk.onyxdevslab.com/zh-hk/guides/enterprise-ai-agent-erp-integration/)
 - [企業 AI 評估框架](https://hk.onyxdevslab.com/zh-hk/methodology/enterprise-ai-evaluation/)
 
+## 简体中文
+
+- [香港企业 AI 服务](https://hk.onyxdevslab.com/zh-cn/)
+- [企业 AI 咨询](https://hk.onyxdevslab.com/zh-cn/ai-consulting/)
+- [AI 定制开发](https://hk.onyxdevslab.com/zh-cn/custom-ai-development/)
+- [FDE 前线部署工程](https://hk.onyxdevslab.com/zh-cn/forward-deployed-engineering/)
+- [AI 咨询、定制开发与 FDE 怎么选](https://hk.onyxdevslab.com/zh-cn/guides/ai-consulting-vs-development-vs-fde/)
+- [香港 AI 定制开发费用指南](https://hk.onyxdevslab.com/zh-cn/guides/custom-ai-development-cost/)
+- [企业 AI Agent 与 ERP 集成](https://hk.onyxdevslab.com/zh-cn/guides/enterprise-ai-agent-erp-integration/)
+- [企业 AI 系统评估框架](https://hk.onyxdevslab.com/zh-cn/methodology/enterprise-ai-evaluation/)
+- [零售 AI 决策平台案例](https://hk.onyxdevslab.com/zh-cn/case-studies/retail-ai-decision-platform/)
+- [AI 原生会计生产平台案例](https://hk.onyxdevslab.com/zh-cn/case-studies/accounting-ai-production-platform/)
+- [团队与交付背景](https://hk.onyxdevslab.com/zh-cn/about/)
+
 ## Contact
 
 - [Team and delivery credentials](https://hk.onyxdevslab.com/en/about/)

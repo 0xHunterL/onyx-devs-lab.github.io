@@ -39,10 +39,18 @@ for (const [canonical, files] of canonicals) if (files.length > 1) failures.push
 
 for (const file of htmlFiles) {
   const html = fs.readFileSync(file, 'utf8');
-  for (const match of html.matchAll(/href="(\/(?:en|zh-hk)\/[^"?#]*)"/g)) {
+  for (const match of html.matchAll(/href="(\/(?:en|zh-hk|zh-cn)\/[^"?#]*)"/g)) {
     const pathname = match[1];
     const target = pathname.endsWith('/') ? path.join(dist, pathname, 'index.html') : path.join(dist, pathname);
     if (!fs.existsSync(target)) failures.push(`${path.relative(dist, file)}: broken internal link ${pathname}`);
+  }
+}
+
+for (const file of htmlFiles.filter((candidate) => candidate.includes(`${path.sep}zh-cn${path.sep}`))) {
+  const html = fs.readFileSync(file, 'utf8');
+  if (!html.includes('<html lang="zh-CN">')) failures.push(`${path.relative(dist, file)}: expected zh-CN document language`);
+  for (const language of ['en', 'zh-Hant-HK', 'zh-CN', 'x-default']) {
+    if (!html.includes(`hreflang="${language}"`)) failures.push(`${path.relative(dist, file)}: missing ${language} alternate`);
   }
 }
 
