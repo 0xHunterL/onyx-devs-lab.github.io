@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { MessageCircle } from 'lucide-react'
 import { useLocalSessions } from '../../hooks/useLocalSessions'
 import ChatWindow from './ChatWindow'
@@ -9,6 +9,12 @@ const CHAT_API_URL = import.meta.env.VITE_CHAT_API_URL
 const ChatWidget = () => {
   const [isOpen, setIsOpen] = useState(false)
   const sessionOps = useLocalSessions(CHAT_API_URL)
+
+  useEffect(() => {
+    const openChat = () => setIsOpen(true)
+    window.addEventListener('onyx:open-chat', openChat)
+    return () => window.removeEventListener('onyx:open-chat', openChat)
+  }, [])
 
   return (
     <>

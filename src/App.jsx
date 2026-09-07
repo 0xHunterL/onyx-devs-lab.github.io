@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import React, { useState, useEffect, useRef, useCallback } from 'react';
-import { ArrowRight, ChevronLeft, ChevronRight, Globe, Menu, X, Compass, Code2, Workflow, Target, Users, Sparkles, MessageCircle, CheckCircle2 } from 'lucide-react';
+import { ArrowRight, ChevronDown, ChevronLeft, ChevronRight, Globe, Menu, X, Compass, Code2, Workflow, Target, Users, Sparkles, MessageCircle, CheckCircle2, ScanSearch, Database, Gauge, ShieldCheck } from 'lucide-react';
 import MethodologySection from './components/cases/MethodologySection';
 import CaseDetail from './components/cases/CaseDetail';
 import { caseAnalysisZh, localizeMethodName } from './data/caseAnalysis';
@@ -926,6 +926,99 @@ const portfolioCopy = {
   },
 };
 
+const experienceCopy = {
+  en: {
+    fdeDefinition: 'FDE = advisory, field implementation, and measurable validation by the same senior team.',
+    proofLabel: 'A typical FDE loop',
+    proofStatus: 'Pilot running',
+    proofTitle: 'Turn an operating signal into a verified intervention',
+    proofSteps: [
+      ['Signal', 'Critical work is slow, fragmented, or dependent on individual experience'],
+      ['Diagnosis', 'Reconstruct the workflow with interviews, system traces, and baseline data'],
+      ['Intervention', 'Change the process and deploy the smallest system that can alter the outcome'],
+      ['Validation', 'Compare adoption, quality, cycle time, and exceptions inside a defined window'],
+    ],
+    proofFooter: 'The people who diagnose the problem also build and validate the answer.',
+    primaryCta: 'Let AI assess my project',
+    secondaryCta: 'See delivery evidence',
+    fitLabel: 'Find your starting point',
+    fitTitle: 'Which situation sounds most like yours?',
+    fitIntro: 'You do not need to choose a service first. Start with the constraint you can already see; we will determine whether the right next step is advisory, a defined build, or FDE.',
+    fitAction: 'See the relevant route',
+    fitItems: [
+      ['The opportunity is visible, but the first AI investment is unclear', 'AI advisory', 'We map value, feasibility, risk, and sequencing before any build.', 'capabilities'],
+      ['The need is clear and a senior team is needed to ship it', 'Custom development', 'We design, integrate, launch, and hand over a working system.', 'capabilities'],
+      ['An AI demo exists, but it cannot enter the real workflow', 'FDE transformation', 'We find the operational constraint and own the pilot loop through validation.', 'lexflow'],
+      ['Data and systems exist, but management still cannot act on them', 'Data + FDE', 'We unify definitions, decision signals, and accountable operating actions.', 'supermarket-datahub'],
+      ['The process depends on manual coordination and expert memory', 'Workflow + agents', 'We make state, evidence, exceptions, and human takeover explicit.', 'onyx-hire'],
+    ],
+    featuredNote: 'A focused selection is shown first. Expand the full portfolio when you need broader technical evidence.',
+    showAll: 'View all case studies',
+    showLess: 'Return to featured cases',
+    privacy: 'AI assistant privacy',
+  },
+  zh: {
+    fdeDefinition: 'FDE = 由同一支资深团队完成咨询诊断、一线实施和可衡量的效果验证。',
+    proofLabel: '一条典型的 FDE 闭环',
+    proofStatus: '试点运行中',
+    proofTitle: '把现场信号，变成经过验证的业务干预',
+    proofSteps: [
+      ['现场信号', '关键工作缓慢、割裂，或过度依赖个人经验'],
+      ['问题诊断', '结合访谈、系统轨迹与基线数据，还原真实工作流'],
+      ['实施干预', '调整流程，并部署足以改变结果的最小系统'],
+      ['效果验证', '在明确窗口内对照采纳率、质量、周期与异常'],
+    ],
+    proofFooter: '诊断问题的人，也亲手实施并验证答案。',
+    primaryCta: '让 AI 帮我判断项目',
+    secondaryCta: '查看交付证据',
+    fitLabel: '先找到你的起点',
+    fitTitle: '哪一种情况，更接近你现在的问题？',
+    fitIntro: '不必先判断该买哪种服务。先从已经看见的约束出发，我们再判断下一步应该是咨询、定制开发，还是 FDE。',
+    fitAction: '查看对应路线',
+    fitItems: [
+      ['看到了 AI 机会，但不知道第一笔投入该放在哪里', 'AI 咨询', '先梳理价值、可行性、风险和实施顺序，再决定是否开发。', 'capabilities'],
+      ['目标已经明确，需要资深团队直接把系统做出来', '定制开发', '从产品与架构设计，到集成、上线和运营交接。', 'capabilities'],
+      ['已经做过 AI Demo，但始终进不了真实工作流', 'FDE 转型', '定位现场约束，实施试点，并负责到验证闭环。', 'lexflow'],
+      ['系统和数据不少，但管理者仍然无法据此行动', '数据 + FDE', '统一数据口径、决策信号和可追责的运营动作。', 'supermarket-datahub'],
+      ['流程依赖人工协调，老师傅经验无法规模化', '流程 + Agent', '把状态、证据、异常和人工接管变成可运行系统。', 'onyx-hire'],
+    ],
+    featuredNote: '首页优先展示最能代表交付深度的案例；需要更广泛的技术证据时，可展开完整项目库。',
+    showAll: '展开全部案例',
+    showLess: '收起至旗舰案例',
+    privacy: 'AI 助手隐私说明',
+  },
+  it: {
+    fdeDefinition: 'FDE = consulenza, implementazione sul campo e validazione misurabile affidate allo stesso team senior.',
+    proofLabel: 'Un tipico ciclo FDE',
+    proofStatus: 'Pilota attivo',
+    proofTitle: 'Da un segnale operativo a un intervento verificato',
+    proofSteps: [
+      ['Segnale', 'Il lavoro critico è lento, frammentato o dipende dall’esperienza individuale'],
+      ['Diagnosi', 'Ricostruiamo il workflow con interviste, tracce di sistema e dati di baseline'],
+      ['Intervento', 'Cambiamo il processo e rilasciamo il sistema minimo capace di incidere sul risultato'],
+      ['Validazione', 'Confrontiamo adozione, qualità, tempi ed eccezioni in una finestra definita'],
+    ],
+    proofFooter: 'Chi diagnostica il problema costruisce e valida anche la risposta.',
+    primaryCta: 'Valuta il progetto con l’AI',
+    secondaryCta: 'Vedi le evidenze di delivery',
+    fitLabel: 'Trova il punto di partenza',
+    fitTitle: 'Quale situazione descrive meglio la tua?',
+    fitIntro: 'Non devi scegliere prima un servizio. Partiamo dal vincolo visibile e definiamo se serve consulenza, sviluppo o FDE.',
+    fitAction: 'Vedi il percorso',
+    fitItems: [
+      ['L’opportunità AI è chiara, ma non il primo investimento', 'Consulenza AI', 'Mappiamo valore, fattibilità, rischio e sequenza prima di sviluppare.', 'capabilities'],
+      ['L’obiettivo è definito e serve un team senior per consegnarlo', 'Sviluppo su misura', 'Progettiamo, integriamo, rilasciamo e trasferiamo un sistema operativo.', 'capabilities'],
+      ['Esiste una demo AI, ma non entra nel workflow reale', 'Trasformazione FDE', 'Troviamo il vincolo operativo e gestiamo il pilota fino alla validazione.', 'lexflow'],
+      ['Dati e sistemi esistono, ma non guidano le decisioni', 'Dati + FDE', 'Uniamo definizioni, segnali decisionali e azioni operative.', 'supermarket-datahub'],
+      ['Il processo dipende da coordinamento manuale e memoria esperta', 'Workflow + agenti', 'Rendiamo espliciti stato, evidenze, eccezioni e presa in carico umana.', 'onyx-hire'],
+    ],
+    featuredNote: 'Mostriamo prima una selezione mirata; il portfolio completo resta disponibile per evidenze tecniche più ampie.',
+    showAll: 'Vedi tutti i casi',
+    showLess: 'Torna ai casi principali',
+    privacy: 'Privacy assistente AI',
+  },
+};
+
 // ─── Hooks ───────────────────────────────────────────────────────────────────
 
 const useScrollReveal = (deps = []) => {
@@ -957,6 +1050,9 @@ const LanguageSwitcher = ({ lang, setLang }) => {
     <div className="relative">
       <button
         onClick={() => setOpen(!open)}
+        aria-expanded={open}
+        aria-haspopup="menu"
+        aria-label="Select language"
         className="flex h-11 items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 text-sm text-gray-300 backdrop-blur-sm transition-all hover:bg-white/10 hover:text-white"
       >
         <Globe size={14} />
@@ -965,10 +1061,11 @@ const LanguageSwitcher = ({ lang, setLang }) => {
       {open && (
         <>
           <div className="fixed inset-0 z-40" onClick={() => setOpen(false)} />
-          <div className="absolute right-0 mt-2 py-1 rounded-xl border border-white/10 bg-[#0a0e1a]/95 backdrop-blur-xl shadow-xl z-50 min-w-[100px]">
+          <div role="menu" className="absolute right-0 mt-2 py-1 rounded-xl border border-white/10 bg-[#0a0e1a]/95 backdrop-blur-xl shadow-xl z-50 min-w-[100px]">
             {Object.entries(langLabels).map(([code, label]) => (
               <button
                 key={code}
+                role="menuitem"
                 onClick={() => { setLang(code); setOpen(false); }}
                 className={`block w-full text-left px-4 py-2 text-sm transition-colors ${
                   lang === code ? 'text-blue-400' : 'text-gray-400 hover:text-white hover:bg-white/5'
@@ -1013,13 +1110,87 @@ const MobileMenu = ({ isOpen, onClose, t, lang, setLang }) => {
 
 // ─── Card Components ─────────────────────────────────────────────────────────
 
-const ServiceCard = ({ icon: Icon, index, kicker, title, description, features, deliverable, deliverablesLabel }) => (
+const EvidenceLoop = ({ copy }) => {
+  const icons = [ScanSearch, Database, Workflow, Gauge];
+  return (
+    <aside className="hero-proof relative overflow-hidden rounded-[1.75rem] border border-cyan-200/15 bg-[#0b1220]/80 p-5 shadow-2xl shadow-blue-950/40 backdrop-blur-xl md:p-6" aria-label={copy.proofLabel}>
+      <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-cyan-300/70 to-transparent" />
+      <div className="mb-6 flex items-center justify-between gap-4">
+        <span className="text-[10px] font-semibold uppercase tracking-[0.22em] text-cyan-200/70">{copy.proofLabel}</span>
+        <span className="inline-flex items-center gap-2 rounded-full border border-lime-300/15 bg-lime-300/[0.07] px-3 py-1.5 text-[10px] font-medium text-lime-100/80">
+          <span className="h-1.5 w-1.5 rounded-full bg-lime-300 shadow-[0_0_8px_rgba(190,242,100,.65)]" />
+          {copy.proofStatus}
+        </span>
+      </div>
+      <h2 className="max-w-md text-xl font-semibold leading-snug text-white md:text-2xl">{copy.proofTitle}</h2>
+      <ol className="mt-6 space-y-2">
+        {copy.proofSteps.map(([label, text], index) => {
+          const Icon = icons[index];
+          return (
+            <li key={label} className="group relative grid grid-cols-[2.5rem_1fr] gap-3 rounded-2xl border border-white/[0.07] bg-white/[0.025] p-3.5 transition-colors hover:border-cyan-300/15 hover:bg-white/[0.045]">
+              <div className="flex h-10 w-10 items-center justify-center rounded-xl border border-white/[0.08] bg-white/[0.04] text-cyan-200/80">
+                <Icon size={17} />
+              </div>
+              <div>
+                <div className="flex items-center gap-2 text-xs font-semibold text-white/90">
+                  <span className="font-mono text-[10px] text-white/30">0{index + 1}</span>
+                  {label}
+                </div>
+                <p className="mt-1 text-xs leading-5 text-gray-400">{text}</p>
+              </div>
+              {index < copy.proofSteps.length - 1 && <span className="absolute -bottom-2.5 left-[2rem] z-10 h-3 w-px bg-gradient-to-b from-cyan-300/50 to-transparent" />}
+            </li>
+          );
+        })}
+      </ol>
+      <p className="mt-5 flex items-start gap-2.5 border-t border-white/[0.07] pt-4 text-xs leading-5 text-cyan-50/65">
+        <ShieldCheck size={15} className="mt-0.5 shrink-0 text-cyan-300/70" />
+        {copy.proofFooter}
+      </p>
+    </aside>
+  );
+};
+
+const ProblemFitSection = ({ copy, onSelect }) => (
+  <section className="relative py-16 md:py-24" aria-labelledby="problem-fit-title">
+    <div className="container mx-auto px-6">
+      <div className="section-reveal grid gap-10 lg:grid-cols-[0.72fr_1.28fr] lg:items-start">
+        <div className="lg:sticky lg:top-28">
+          <span className="text-xs font-semibold uppercase tracking-[0.22em] text-cyan-300/75">{copy.fitLabel}</span>
+          <h2 id="problem-fit-title" className="mt-4 text-3xl font-bold leading-tight md:text-5xl">{copy.fitTitle}</h2>
+          <p className="mt-5 max-w-xl text-sm leading-7 text-gray-400 md:text-base md:leading-8">{copy.fitIntro}</p>
+        </div>
+        <div className="mobile-card-rail flex gap-4 sm:block sm:divide-y sm:divide-white/[0.08] sm:border-y sm:border-white/[0.08]">
+          {copy.fitItems.map(([problem, route, detail, target], index) => {
+            const content = (
+              <>
+                <span className="font-mono text-[10px] text-white/25">0{index + 1}</span>
+                <span>
+                  <strong className="block text-base font-medium leading-7 text-white md:text-lg">{problem}</strong>
+                  <span className="mt-2 block text-sm leading-6 text-gray-500">{detail}</span>
+                </span>
+                <span className="col-start-2 flex items-center gap-2 text-left text-xs font-medium text-cyan-200/75 md:col-start-auto md:justify-end md:text-right md:text-sm">
+                  {route}<ArrowRight size={15} className="shrink-0 transition-transform group-hover:translate-x-1" />
+                </span>
+              </>
+            );
+            const classes = "group grid min-h-[260px] w-[82vw] max-w-[320px] shrink-0 snap-start grid-cols-[1.5rem_1fr] content-start gap-x-3 gap-y-3 rounded-2xl border border-white/[0.08] bg-white/[0.02] p-5 text-left transition-colors hover:bg-white/[0.04] sm:min-h-0 sm:w-full sm:max-w-none sm:rounded-none sm:border-0 sm:bg-transparent sm:py-5 md:grid-cols-[2rem_1fr_10rem] md:items-center md:px-3";
+            return target === 'capabilities'
+              ? <a key={problem} href="#capabilities" className={classes}>{content}</a>
+              : <button key={problem} type="button" onClick={() => onSelect(target)} className={classes}>{content}</button>;
+          })}
+        </div>
+      </div>
+    </div>
+  </section>
+);
+
+const ServiceCard = ({ icon: Icon, kicker, title, description, features, deliverable, deliverablesLabel }) => (
   <article className="group flex h-full flex-col rounded-3xl border border-white/10 bg-white/[0.025] p-6 transition-all duration-300 hover:-translate-y-1 hover:border-cyan-300/20 hover:bg-white/[0.04] md:p-8">
     <div className="mb-7 flex items-center justify-between">
       <div className="flex h-12 w-12 items-center justify-center rounded-2xl border border-blue-400/15 bg-gradient-to-br from-blue-500/20 to-purple-500/15 transition-colors group-hover:from-blue-500/30 group-hover:to-purple-500/25">
         <Icon size={22} className="text-blue-300" />
       </div>
-      <span className="font-mono text-xs text-white/25">0{index + 1}</span>
     </div>
     <p className="mb-2 text-xs font-medium uppercase tracking-[0.14em] text-cyan-300/70">{kicker}</p>
     <h3 className="mb-4 text-2xl font-bold">{title}</h3>
@@ -1045,7 +1216,7 @@ const TeamMemberCard = ({ name, role, avatar, bio, credentials }) => (
       <div className="flex flex-col items-center shrink-0">
         <div className="relative">
           <div className="absolute -inset-1 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full opacity-0 group-hover:opacity-40 blur transition-opacity duration-300" />
-          <img src={avatar} alt={name} className="relative w-20 h-20 rounded-full border-2 border-white/10 group-hover:border-white/20 transition-colors object-cover" />
+          <img src={avatar} alt={name} loading="lazy" decoding="async" className="relative w-20 h-20 rounded-full border-2 border-white/10 group-hover:border-white/20 transition-colors object-cover" />
         </div>
       </div>
       <div className="flex-1 min-w-0">
@@ -1069,6 +1240,7 @@ const TeamMemberCard = ({ name, role, avatar, bio, credentials }) => (
 // ─── Portfolio Wall ─────────────────────────────────────────────────────────
 
 const ProjectWall = ({ items, projectsData, copy, viewLabel, onSelect, analysisById, outcomesById, lang }) => {
+  const [showAll, setShowAll] = useState(false);
   const groups = [
     { key: 'fde', title: copy.fdeTitle, subtitle: copy.fdeSubtitle, ids: fdeWorkOrder },
     { key: 'product', title: copy.productTitle, subtitle: copy.productSubtitle, ids: productWorkOrder },
@@ -1084,7 +1256,8 @@ const ProjectWall = ({ items, projectsData, copy, viewLabel, onSelect, analysisB
 
       <div className="space-y-24">
         {groups.map((group) => {
-          const groupItems = group.ids.map((id) => items.find((item) => item.id === id)).filter(Boolean);
+          const allGroupItems = group.ids.map((id) => items.find((item) => item.id === id)).filter(Boolean);
+          const groupItems = showAll ? allGroupItems : allGroupItems.slice(0, group.key === 'fde' ? 4 : 3);
           return (
             <section key={group.key} aria-labelledby={`${group.key}-portfolio-title`}>
               <div className="mb-8 flex flex-col justify-between gap-4 border-b border-white/10 pb-6 md:flex-row md:items-end">
@@ -1111,7 +1284,7 @@ const ProjectWall = ({ items, projectsData, copy, viewLabel, onSelect, analysisB
                       className="portfolio-tile group relative min-h-[360px] w-[84vw] max-w-[328px] shrink-0 snap-start overflow-hidden rounded-2xl border border-white/10 bg-[#101625] text-left sm:min-h-[420px] sm:w-auto sm:max-w-none"
                       aria-label={`${viewLabel}: ${study.title}`}
                     >
-                      {image && <img src={image} alt="" className="portfolio-tile-image absolute inset-0 h-full w-full object-cover object-top transition duration-700 ease-out group-hover:scale-[1.045]" />}
+                      {image && <img src={image} alt="" loading="lazy" decoding="async" className="portfolio-tile-image absolute inset-0 h-full w-full object-cover object-top transition duration-700 ease-out group-hover:scale-[1.045]" />}
                       <div className="portfolio-tile-wash absolute inset-0" />
                       <div className="portfolio-tile-gradient absolute inset-0" />
                       <div className="absolute inset-x-0 top-0 flex items-start justify-between p-4">
@@ -1146,6 +1319,13 @@ const ProjectWall = ({ items, projectsData, copy, viewLabel, onSelect, analysisB
             </section>
           );
         })}
+      </div>
+      <div className="mt-14 flex flex-col items-center border-t border-white/[0.08] pt-8 text-center">
+        <p className="max-w-2xl text-sm leading-7 text-gray-500">{copy.featuredNote}</p>
+        <button type="button" onClick={() => setShowAll((value) => !value)} className="mt-5 inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-white/10 bg-white/[0.04] px-6 text-sm font-medium text-white/80 transition-colors hover:border-cyan-300/25 hover:bg-white/[0.07] hover:text-white" aria-expanded={showAll}>
+          {showAll ? copy.showLess : copy.showAll}
+          <ChevronDown size={16} className={`transition-transform ${showAll ? 'rotate-180' : ''}`} />
+        </button>
       </div>
     </div>
   );
@@ -1315,6 +1495,7 @@ const LandingPage = () => {
   });
   const pageRef = useScrollReveal([lang]);
   const t = translations[lang];
+  const experience = experienceCopy[lang];
   const visibleWorkItems = getVisibleWorkItems(lang, t.work.items);
   const selectedProject = visibleWorkItems.find((item) => item.id === activeProject);
   const ActiveCaseView = activeProject && fdeProjectIds.has(activeProject) ? CaseDetail : ProjectModal;
@@ -1345,6 +1526,10 @@ const LandingPage = () => {
     setActiveProject(null);
   }, []);
 
+  const openChat = useCallback(() => {
+    window.dispatchEvent(new CustomEvent('onyx:open-chat'));
+  }, []);
+
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 50);
     window.addEventListener('scroll', handleScroll);
@@ -1369,6 +1554,10 @@ const LandingPage = () => {
 
   return (
     <div ref={pageRef} className="min-h-screen bg-[#0a0e1a] text-white overflow-hidden">
+
+      <a href="#main-content" className="fixed left-4 top-3 z-[200] -translate-y-20 rounded-lg bg-white px-4 py-2 text-sm font-semibold text-slate-950 shadow-xl transition-transform focus:translate-y-0">
+        {lang === 'zh' ? '跳至主要内容' : lang === 'it' ? 'Vai al contenuto' : 'Skip to main content'}
+      </a>
 
       {/* ── Navigation ── */}
       <nav className={`fixed w-full z-50 transition-all duration-500 ${
@@ -1399,8 +1588,10 @@ const LandingPage = () => {
       </nav>
       <MobileMenu isOpen={mobileMenuOpen} onClose={() => setMobileMenuOpen(false)} t={t} lang={lang} setLang={setLang} />
 
+      <main id="main-content">
+
       {/* ── Hero ── */}
-      <header className="relative min-h-screen flex items-center px-6 overflow-hidden">
+      <header className="relative flex min-h-[780px] items-center overflow-hidden px-6 pb-14 pt-28 md:min-h-[820px] md:pb-20 md:pt-32">
         <div className="absolute inset-0 bg-gradient-to-br from-blue-600/20 via-purple-600/10 to-cyan-600/20 animate-gradient" />
         <div className="absolute inset-0 opacity-[0.03]"
           style={{
@@ -1412,8 +1603,9 @@ const LandingPage = () => {
         <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-500/15 rounded-full blur-[120px] animate-float-delayed" />
         <div className="absolute top-1/2 right-1/3 w-48 h-48 bg-cyan-500/10 rounded-full blur-[80px] animate-float" style={{ animationDelay: '2s' }} />
 
-        <div className="container mx-auto relative z-10">
-          <div className="max-w-6xl">
+        <div className="container relative z-10 mx-auto">
+          <div className="grid items-center gap-12 xl:grid-cols-[1.08fr_.92fr] xl:gap-16">
+            <div className="max-w-3xl">
             <div className="inline-flex items-center px-4 py-2 rounded-full border border-blue-500/20 bg-blue-500/5 text-blue-300 text-sm mb-8 backdrop-blur-sm">
               <span className="w-2 h-2 bg-blue-400 rounded-full mr-3 animate-pulse-glow" />
               {t.hero.badge}
@@ -1425,8 +1617,12 @@ const LandingPage = () => {
                 {t.hero.title[1]}
               </span>
             </h1>
-            <p className="mb-6 max-w-3xl text-base leading-8 text-gray-300 md:text-xl md:leading-9">
+            <p className="mb-5 max-w-2xl text-base leading-8 text-gray-300 md:text-lg md:leading-9">
               {t.hero.subtitle}
+            </p>
+            <p className="mb-6 flex max-w-2xl items-start gap-2.5 text-sm leading-6 text-cyan-100/65">
+              <ShieldCheck size={16} className="mt-1 shrink-0 text-cyan-300/70" />
+              {experience.fdeDefinition}
             </p>
             <div className="mb-9 flex flex-wrap gap-2.5">
               {t.hero.modes.map((mode, index) => (
@@ -1437,15 +1633,19 @@ const LandingPage = () => {
               ))}
             </div>
             <div className="flex flex-col sm:flex-row gap-4">
-              <a href="#contact"
+              <button type="button" onClick={openChat}
                 className="group inline-flex items-center justify-center gap-3 px-8 py-4 rounded-xl bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-400 hover:to-purple-400 transition-all duration-300 hover:shadow-xl hover:shadow-blue-500/25 text-base font-medium">
-                {t.hero.cta}
+                {experience.primaryCta}
                 <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
-              </a>
+              </button>
               <a href="#work"
                 className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl border border-white/10 hover:border-white/25 bg-white/5 hover:bg-white/10 transition-all duration-300 text-base text-gray-300 hover:text-white backdrop-blur-sm">
-                {t.hero.secondary}
+                {experience.secondaryCta}
               </a>
+            </div>
+            </div>
+            <div className="hidden xl:block">
+              <EvidenceLoop copy={experience} />
             </div>
           </div>
         </div>
@@ -1471,6 +1671,8 @@ const LandingPage = () => {
         </div>
       </section>
 
+      <ProblemFitSection copy={experience} onSelect={openProject} />
+
       {/* ── AI Capabilities ── */}
       <section id="capabilities" className="relative scroll-mt-20 py-20 md:py-28">
         <div className="container mx-auto px-6">
@@ -1487,7 +1689,7 @@ const LandingPage = () => {
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {t.services.items.map((service, index) => (
               <div key={index} className="section-reveal" style={{ transitionDelay: `${index * 150}ms` }}>
-                <ServiceCard icon={serviceIcons[index]} index={index} deliverablesLabel={t.services.deliverablesLabel} {...service} />
+                <ServiceCard icon={serviceIcons[index]} deliverablesLabel={t.services.deliverablesLabel} {...service} />
               </div>
             ))}
           </div>
@@ -1515,7 +1717,7 @@ const LandingPage = () => {
           <ProjectWall
             items={visibleWorkItems}
             projectsData={projectsData}
-            copy={portfolioCopy[lang]}
+            copy={{ ...portfolioCopy[lang], ...experience }}
             viewLabel={t.work.viewDetails}
             onSelect={openProject}
             analysisById={caseAnalysisZh}
@@ -1608,7 +1810,7 @@ const LandingPage = () => {
                 <p className="text-lg text-gray-400 mb-8 max-w-xl mx-auto">{t.cta.subtitle}</p>
                 <div className="flex flex-col items-center gap-3 mb-8">
                   <div className="w-40 h-40 rounded-2xl overflow-hidden bg-white p-2 flex items-center justify-center">
-                    <img src="/wechat-qr.png" alt={t.cta.wechatNote} className="w-full h-full object-contain" />
+                    <img src="/wechat-qr.png" alt={t.cta.wechatNote} loading="lazy" decoding="async" className="w-full h-full object-contain" />
                   </div>
                   <p className="text-white font-medium flex items-center gap-2">
                     <MessageCircle size={16} className="text-green-400" />
@@ -1617,7 +1819,7 @@ const LandingPage = () => {
                   <p className="text-sm text-gray-400">{t.cta.wechatIdLabel}：{t.cta.wechatId}</p>
                 </div>
                 <p className="text-sm text-gray-500">
-                  {t.cta.secondaryLabel}：{t.cta.contactLine}
+                  {t.cta.secondaryLabel}：<a className="transition-colors hover:text-white" href="mailto:info@onyxdevslab.com">info@onyxdevslab.com</a> · <a className="transition-colors hover:text-white" href="tel:+8618923743756">+86 18923743756</a>
                 </p>
               </>
             ) : (
@@ -1630,12 +1832,13 @@ const LandingPage = () => {
                   ?
                 </h2>
                 <p className="text-lg text-gray-400 mb-6 max-w-xl mx-auto">{t.cta.subtitle}</p>
-                <p className="text-base text-gray-300 font-medium tracking-wide">{t.cta.contactLine}</p>
+                <p className="text-base text-gray-300 font-medium tracking-wide"><a className="hover:text-white" href="mailto:info@onyxdevslab.com">info@onyxdevslab.com</a> · <a className="hover:text-white" href="tel:+14165655366">+1 (416) 565-5366</a></p>
               </>
             )}
           </div>
         </div>
       </section>
+      </main>
 
       {/* ── Footer ── */}
       <footer className="py-16 border-t border-white/5 relative">
@@ -1652,17 +1855,17 @@ const LandingPage = () => {
             <div className="md:text-right">
               <h3 className="text-xl font-bold mb-4">{t.footer.contactTitle}</h3>
               <p className="text-gray-500 leading-relaxed">
-                info@onyxdevslab.com<br />
+                <a className="transition-colors hover:text-white" href="mailto:info@onyxdevslab.com">info@onyxdevslab.com</a><br />
                 {lang === 'zh' ? (
                   <>
-                    +86 18923743756<br />
+                    <a className="transition-colors hover:text-white" href="tel:+8618923743756">+86 18923743756</a><br />
                     {t.footer.wechatLabel}：{t.footer.wechatId}<br />
                     {t.footer.addressLines.map((line) => (<React.Fragment key={line}>{line}<br /></React.Fragment>))}
                     <span className="text-gray-600 text-sm">{t.footer.serviceNote}</span>
                   </>
                 ) : (
                   <>
-                    +1 (416) 565-5366<br />
+                    <a className="transition-colors hover:text-white" href="tel:+14165655366">+1 (416) 565-5366</a><br />
                     8 Lai Ying Street, Grand Victoria III<br />
                     Cheung Sha Wan, Kowloon, HK
                   </>
@@ -1670,8 +1873,9 @@ const LandingPage = () => {
               </p>
             </div>
           </div>
-          <div className="mt-12 pt-8 border-t border-white/5 text-center text-gray-600 text-sm">
-            &copy; {new Date().getFullYear()} Onyx Devs Lab. {t.footer.rights}
+          <div className="mt-12 flex flex-col items-center justify-between gap-4 border-t border-white/5 pt-8 text-center text-sm text-gray-600 sm:flex-row sm:text-left">
+            <span>&copy; {new Date().getFullYear()} Onyx Devs Lab. {t.footer.rights}</span>
+            <a href="/privacy.html" className="transition-colors hover:text-gray-300">{experience.privacy}</a>
           </div>
         </div>
       </footer>
