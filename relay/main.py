@@ -9,11 +9,13 @@ import uuid
 from collections import defaultdict
 from contextlib import asynccontextmanager
 from datetime import date
+from pathlib import Path
 from typing import Literal
 
 import httpx
 from fastapi import FastAPI, Header, HTTPException, Request
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel, Field
 from sse_starlette.sse import EventSourceResponse
 
@@ -91,6 +93,23 @@ app.add_middleware(
 )
 
 
+@app.middleware("http")
+async def secure_operator_routes(request: Request, call_next):
+    response = await call_next(request)
+    if request.url.path.startswith(("/workbench", "/v1/admin")):
+        response.headers["Cache-Control"] = "no-store"
+        response.headers["X-Content-Type-Options"] = "nosniff"
+        response.headers["X-Frame-Options"] = "DENY"
+        response.headers["Referrer-Policy"] = "no-referrer"
+        if request.url.path.startswith("/workbench"):
+            response.headers["Content-Security-Policy"] = (
+                "default-src 'self'; style-src 'self'; script-src 'self'; "
+                "img-src 'self' data:; connect-src 'self'; frame-ancestors 'none'; "
+                "base-uri 'none'; form-action 'self'"
+            )
+    return response
+
+
 class ChatMessage(BaseModel):
     id: str | None = Field(default=None, max_length=128, pattern=r"^[A-Za-z0-9_-]+$")
     role: Literal["user", "assistant"]
@@ -117,6 +136,8 @@ class LeadRequest(BaseModel):
 
 class LeadStatusRequest(BaseModel):
     status: Literal["new", "contacted", "qualified", "closed", "spam"]
+    assigned_to: str | None = Field(default=None, max_length=100)
+    internal_notes: str | None = Field(default=None, max_length=4000)
 
 
 _minute_buckets: dict[tuple[str, str], list[float]] = defaultdict(list)
@@ -418,6 +439,18 @@ async def admin_list_leads(
     return {"leads": await database.list_leads(min(max(limit, 1), 500))}
 
 
+@app.get("/v1/admin/leads/{lead_id}")
+async def admin_get_lead(
+    lead_id: uuid.UUID,
+    authorization: str | None = Header(default=None, alias="Authorization"),
+):
+    _require_admin(authorization)
+    context = await database.get_lead_context(lead_id)
+    if not context:
+        raise HTTPException(status_code=404, detail="Unknown lead")
+    return context
+
+
 @app.patch("/v1/admin/leads/{lead_id}")
 async def admin_update_lead(
     lead_id: uuid.UUID,
@@ -425,7 +458,12 @@ async def admin_update_lead(
     authorization: str | None = Header(default=None, alias="Authorization"),
 ):
     _require_admin(authorization)
-    updated = await database.update_lead_status(lead_id, payload.status)
+    updated = await database.update_lead(
+        lead_id,
+        payload.status,
+        payload.assigned_to.strip() if payload.assigned_to is not None else None,
+        payload.internal_notes.strip() if payload.internal_notes is not None else None,
+    )
     if not updated:
         raise HTTPException(status_code=404, detail="Unknown lead")
     return {"updated": True, "status": payload.status}
@@ -545,3 +583,7 @@ async def chat(assistant_id: str, payload: ChatRequest, request: Request):
             "X-Accel-Buffering": "no",
         },
     )
+
+
+workbench_dir = Path(__file__).parent / "workbench"
+app.mount("/workbench", StaticFiles(directory=workbench_dir, html=True), name="workbench")

@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex, nofollow" />
+    <title>Onyx Lead Desk</title>
+    <link rel="stylesheet" href="/workbench/styles.css" />
+  </head>
+  <body>
+    <main class="shell">
+      <section id="login-view" class="login-wrap">
+        <div class="login-card">
+          <div class="brand-mark">O</div>
+          <p class="eyebrow">ONYX · INTERNAL</p>
+          <h1>客户线索工作台</h1>
+          <p class="muted">输入服务器管理令牌后查看官网访客提交的合作需求。令牌仅保存在当前标签页。</p>
+          <form id="login-form">
+            <label for="token">管理令牌</label>
+            <input id="token" name="token" type="password" autocomplete="current-password" required />
+            <button class="primary" type="submit">进入工作台</button>
+            <p id="login-error" class="error" role="alert"></p>
+          </form>
+        </div>
+      </section>
+
+      <section id="desk-view" class="desk" hidden>
+        <header class="topbar">
+          <div>
+            <p class="eyebrow">ONYX · LEAD DESK</p>
+            <h1>客户线索</h1>
+          </div>
+          <div class="top-actions">
+            <span id="sync-state" class="sync-state">准备同步</span>
+            <button id="refresh-button" class="ghost" type="button">立即刷新</button>
+            <button id="logout-button" class="ghost" type="button">退出</button>
+          </div>
+        </header>
+
+        <section id="metrics" class="metrics" aria-label="线索概览"></section>
+
+        <section class="workspace">
+          <div class="list-panel">
+            <div class="toolbar">
+              <label class="search-label">
+                <span class="sr-only">搜索线索</span>
+                <input id="search" type="search" placeholder="搜索联系方式、需求或负责人" />
+              </label>
+              <label>
+                <span class="sr-only">按状态筛选</span>
+                <select id="status-filter">
+                  <option value="all">全部状态</option>
+                  <option value="new">待处理</option>
+                  <option value="contacted">已联系</option>
+                  <option value="qualified">已确认</option>
+                  <option value="closed">已关闭</option>
+                  <option value="spam">无效</option>
+                </select>
+              </label>
+            </div>
+            <div class="table-scroll">
+              <table>
+                <thead>
+                  <tr>
+                    <th>客户 / 联系方式</th>
+                    <th>需求</th>
+                    <th>预约</th>
+                    <th>负责人</th>
+                    <th>状态</th>
+                    <th>提交时间</th>
+                  </tr>
+                </thead>
+                <tbody id="lead-rows"></tbody>
+              </table>
+              <div id="empty-state" class="empty" hidden>暂时没有符合条件的线索</div>
+            </div>
+          </div>
+
+          <aside id="detail-panel" class="detail-panel" aria-label="线索详情">
+            <div id="detail-placeholder" class="detail-placeholder">
+              <span>↗</span>
+              <p>选择一条线索查看需求和对话上下文</p>
+            </div>
+            <div id="detail-content" hidden>
+              <div class="detail-head">
+                <div>
+                  <p class="eyebrow">LEAD DETAIL</p>
+                  <h2 id="detail-contact"></h2>
+                </div>
+                <button id="close-detail" class="icon-button" type="button" aria-label="关闭详情">×</button>
+              </div>
+              <dl id="detail-meta" class="detail-meta"></dl>
+              <div class="summary-block">
+                <span>需求摘要</span>
+                <p id="detail-summary"></p>
+              </div>
+              <form id="lead-form" class="followup-form">
+                <label for="lead-status">跟进状态</label>
+                <select id="lead-status">
+                  <option value="new">待处理</option>
+                  <option value="contacted">已联系</option>
+                  <option value="qualified">已确认</option>
+                  <option value="closed">已关闭</option>
+                  <option value="spam">无效</option>
+                </select>
+                <label for="assigned-to">负责人</label>
+                <input id="assigned-to" maxlength="100" placeholder="姓名或团队" />
+                <label for="internal-notes">内部备注</label>
+                <textarea id="internal-notes" maxlength="4000" rows="4" placeholder="跟进结论、下一步动作……"></textarea>
+                <button class="primary" type="submit">保存跟进记录</button>
+                <p id="save-state" class="form-state" role="status"></p>
+              </form>
+              <section class="activity-section">
+                <div class="section-title">
+                  <h3>跟进动态</h3>
+                  <span id="event-count"></span>
+                </div>
+                <div id="activity" class="activity"></div>
+              </section>
+              <section class="conversation-section">
+                <div class="section-title">
+                  <h3>访客对话</h3>
+                  <span id="message-count"></span>
+                </div>
+                <div id="memory-block" class="memory-block" hidden></div>
+                <div id="conversation" class="conversation"></div>
+              </section>
+            </div>
+          </aside>
+        </section>
+      </section>
+    </main>
+    <script src="/workbench/app.js" defer></script>
+  </body>
+</html>

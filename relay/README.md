@@ -14,6 +14,7 @@ GET  /v1/assistants/{assistant_id}/sessions/{session_id}
 DELETE /v1/assistants/{assistant_id}/sessions/{session_id}
 POST /v1/assistants/{assistant_id}/leads
 GET  /v1/admin/leads
+GET  /v1/admin/leads/{lead_id}
 PATCH /v1/admin/leads/{lead_id}
 ```
 
@@ -30,6 +31,16 @@ Session read/delete calls require the browser's pseudonymous `X-Visitor-ID`.
 Lead creation requires an explicit `consent: true` submission. Admin lead routes
 require a server-side bearer token. When `LEAD_WEBHOOK_URL` is configured, each
 lead is delivered with timestamped HMAC-SHA256 headers and durable retry state.
+
+## Team workbench
+
+Open `/workbench/` on the gateway domain and enter `ADMIN_API_TOKEN`. The token
+is kept in the current tab's `sessionStorage`, never embedded in the JavaScript
+bundle or written to the database. The workbench polls every 15 seconds and
+shows lead counts, appointment intent, contact details, requirements, source,
+conversation context and compacted memory. Team members can assign an owner,
+write internal notes and move a lead through the follow-up states. Admin API and
+workbench responses use `no-store`, frame denial and a restrictive CSP.
 
 ## Adding another assistant
 

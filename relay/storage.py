@@ -235,6 +235,18 @@ class Database:
                     str(lead_id),
                     json.dumps(payload, ensure_ascii=False),
                 )
+                await connection.execute(
+                    """
+                    INSERT INTO assistant_lead_events (lead_id, event_type, actor, detail)
+                    VALUES ($1, 'lead.created', 'visitor', $2::jsonb)
+                    """,
+                    lead_id,
+                    json.dumps({
+                        "appointment_requested": appointment_requested,
+                        "preferred_time": preferred_time,
+                        "consent_recorded": True,
+                    }, ensure_ascii=False),
+                )
         return lead_id
 
     async def list_sessions(self, assistant_id: str, visitor_id: str, limit: int = 30) -> list[dict]:
@@ -336,7 +348,8 @@ class Database:
             """
             SELECT l.id, l.assistant_id, l.contact, l.contact_type,
                    l.requirement_summary, l.appointment_requested, l.preferred_time,
-                   l.timezone, l.status, l.source_origin, l.created_at, l.notified_at,
+                   l.timezone, l.status, l.assigned_to, l.internal_notes,
+                   l.source_origin, l.created_at, l.updated_at, l.notified_at,
                    COALESCE(o.status, 'not_queued') AS notification_status,
                    COALESCE(o.attempts, 0) AS notification_attempts
             FROM assistant_leads l
@@ -352,14 +365,103 @@ class Database:
         )
         return [dict(row) for row in rows]
 
-    async def update_lead_status(self, lead_id: uuid.UUID, status: str) -> bool:
+    async def get_lead_context(self, lead_id: uuid.UUID) -> dict | None:
         assert self.pool
-        result = await self.pool.execute(
-            "UPDATE assistant_leads SET status = $2 WHERE id = $1",
+        lead = await self.pool.fetchrow(
+            """
+            SELECT id, assistant_id, session_id, contact, contact_type,
+                   requirement_summary, appointment_requested, preferred_time,
+                   timezone, status, assigned_to, internal_notes, source_origin,
+                   consent_at, created_at, updated_at, notified_at, expires_at
+            FROM assistant_leads WHERE id = $1
+            """,
             lead_id,
-            status,
         )
-        return _command_count(result) > 0
+        if not lead:
+            return None
+        messages = await self.pool.fetch(
+            """
+            SELECT client_message_id AS id, role, content, metadata, created_at
+            FROM assistant_messages
+            WHERE assistant_id = $1 AND session_id = $2
+            ORDER BY created_at, id
+            """,
+            lead["assistant_id"],
+            lead["session_id"],
+        )
+        memory = await self.pool.fetchrow(
+            """
+            SELECT summary, covered_message_count, updated_at
+            FROM assistant_memories
+            WHERE assistant_id = $1 AND session_id = $2
+            """,
+            lead["assistant_id"],
+            lead["session_id"],
+        )
+        events = await self.pool.fetch(
+            """
+            SELECT id, event_type, actor, detail, created_at
+            FROM assistant_lead_events
+            WHERE lead_id = $1
+            ORDER BY created_at DESC, id DESC
+            """,
+            lead_id,
+        )
+        return {
+            "lead": dict(lead),
+            "messages": [dict(message) for message in messages],
+            "memory": dict(memory) if memory else None,
+            "events": [dict(event) for event in events],
+        }
+
+    async def update_lead(
+        self,
+        lead_id: uuid.UUID,
+        status: str,
+        assigned_to: str | None,
+        internal_notes: str | None,
+    ) -> bool:
+        assert self.pool
+        async with self.pool.acquire() as connection:
+            async with connection.transaction():
+                previous = await connection.fetchrow(
+                    "SELECT status, assigned_to, internal_notes FROM assistant_leads WHERE id = $1 FOR UPDATE",
+                    lead_id,
+                )
+                if not previous:
+                    return False
+                next_assignee = previous["assigned_to"] if assigned_to is None else assigned_to
+                next_notes = previous["internal_notes"] if internal_notes is None else internal_notes
+                await connection.execute(
+                    """
+                    UPDATE assistant_leads
+                    SET status = $2, assigned_to = $3, internal_notes = $4, updated_at = now()
+                    WHERE id = $1
+                    """,
+                    lead_id,
+                    status,
+                    next_assignee,
+                    next_notes,
+                )
+                changes = {}
+                for key, old, new in (
+                    ("status", previous["status"], status),
+                    ("assigned_to", previous["assigned_to"], next_assignee),
+                    ("internal_notes", previous["internal_notes"], next_notes),
+                ):
+                    if old != new:
+                        changes[key] = {"from": old, "to": new}
+                if changes:
+                    await connection.execute(
+                        """
+                        INSERT INTO assistant_lead_events (lead_id, event_type, actor, detail)
+                        VALUES ($1, 'lead.updated', $2, $3::jsonb)
+                        """,
+                        lead_id,
+                        next_assignee or "team",
+                        json.dumps({"changes": changes}, ensure_ascii=False),
+                    )
+                return True
 
     async def mark_notification_delivered(self, notification_id: int, lead_id: str) -> None:
         assert self.pool
