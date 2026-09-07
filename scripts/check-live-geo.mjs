@@ -23,7 +23,23 @@ if (!llms.body.includes('# Onyx Devs Lab')) failures.push('/llms.txt: expected s
 
 const sitemap = await get('/sitemap.xml', 'xml');
 const urls = [...sitemap.body.matchAll(/<loc>([^<]+)<\/loc>/g)].map((match) => match[1]);
-if (urls.length < 10) failures.push(`/sitemap.xml: expected at least 10 URLs, got ${urls.length}`);
+if (urls.length < 24) failures.push(`/sitemap.xml: expected at least 24 URLs, got ${urls.length}`);
+
+const requiredPaths = [
+  '/en/about/',
+  '/zh-hk/about/',
+  '/en/guides/ai-advisory-vs-custom-development-vs-fde/',
+  '/zh-hk/guides/ai-consulting-vs-development-vs-fde/',
+  '/en/guides/custom-ai-development-cost-hong-kong/',
+  '/zh-hk/guides/ai-custom-development-cost/',
+  '/en/guides/enterprise-ai-agent-erp-integration/',
+  '/zh-hk/guides/enterprise-ai-agent-erp-integration/',
+  '/en/methodology/enterprise-ai-evaluation/',
+  '/zh-hk/methodology/enterprise-ai-evaluation/',
+];
+for (const pathname of requiredPaths) {
+  if (!urls.some((url) => new URL(url).pathname === pathname)) failures.push(`/sitemap.xml: required GEO URL missing: ${pathname}`);
+}
 
 for (const absoluteUrl of urls) {
   const url = new URL(absoluteUrl);

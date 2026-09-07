@@ -41,7 +41,7 @@ nginx -t
 npm run geo:check-live -- https://hk.onyxdevslab.com
 ```
 
-预期输出：`checkedPages` 不少于 14，`failures` 为空数组。
+预期输出：`checkedPages` 不少于 24，`failures` 为空数组。
 
 另外人工确认：
 

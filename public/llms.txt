@@ -14,6 +14,13 @@
 - [Retail AI decision platform](https://hk.onyxdevslab.com/en/case-studies/retail-ai-decision-platform/)
 - [AI-native accounting production platform](https://hk.onyxdevslab.com/en/case-studies/accounting-ai-production-platform/)
 
+## Decision guides and methodology
+
+- [AI advisory vs custom development vs FDE](https://hk.onyxdevslab.com/en/guides/ai-advisory-vs-custom-development-vs-fde/)
+- [Custom AI development cost in Hong Kong](https://hk.onyxdevslab.com/en/guides/custom-ai-development-cost-hong-kong/)
+- [Enterprise AI agent and ERP integration](https://hk.onyxdevslab.com/en/guides/enterprise-ai-agent-erp-integration/)
+- [Enterprise AI evaluation framework](https://hk.onyxdevslab.com/en/methodology/enterprise-ai-evaluation/)
+
 ## Chinese (Hong Kong)
 
 - [AI 顧問](https://hk.onyxdevslab.com/zh-hk/ai-consulting/)
@@ -21,8 +28,14 @@
 - [前線部署工程 FDE](https://hk.onyxdevslab.com/zh-hk/forward-deployed-engineering/)
 - [零售 AI 決策平台案例](https://hk.onyxdevslab.com/zh-hk/case-studies/retail-ai-decision-platform/)
 - [AI 原生會計生產平台案例](https://hk.onyxdevslab.com/zh-hk/case-studies/accounting-ai-production-platform/)
+- [AI 顧問、定制開發與 FDE 如何選擇](https://hk.onyxdevslab.com/zh-hk/guides/ai-consulting-vs-development-vs-fde/)
+- [香港 AI 定制開發費用指南](https://hk.onyxdevslab.com/zh-hk/guides/ai-custom-development-cost/)
+- [企業 AI Agent 與 ERP 整合](https://hk.onyxdevslab.com/zh-hk/guides/enterprise-ai-agent-erp-integration/)
+- [企業 AI 評估框架](https://hk.onyxdevslab.com/zh-hk/methodology/enterprise-ai-evaluation/)
 
 ## Contact
 
+- [Team and delivery credentials](https://hk.onyxdevslab.com/en/about/)
+- [團隊與交付背景](https://hk.onyxdevslab.com/zh-hk/about/)
 - Email: info@onyxdevslab.com
 - Website: https://hk.onyxdevslab.com/
