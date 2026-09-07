@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 import PropTypes from 'prop-types'
 import { CalendarDays, Check, Copy, Send, ShieldCheck } from 'lucide-react'
 
@@ -16,6 +16,7 @@ const ContactActionCard = ({ action, chatApiUrl, sessionId, visitorId }) => {
   const [consent, setConsent] = useState(false)
   const [status, setStatus] = useState('idle')
   const [error, setError] = useState('')
+  const submissionId = useRef(crypto.randomUUID())
 
   const copyWechat = async () => {
     try {
@@ -42,6 +43,7 @@ const ContactActionCard = ({ action, chatApiUrl, sessionId, visitorId }) => {
         body: JSON.stringify({
           session_id: sessionId,
           visitor_id: visitorId,
+          submission_id: submissionId.current,
           contact,
           requirement_summary: summary,
           appointment_requested: action.appointment_requested,

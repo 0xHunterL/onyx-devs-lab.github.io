@@ -179,6 +179,7 @@ class Database:
         assistant_id: str,
         session_id: str,
         visitor_hash: str,
+        submission_id: str | None,
         contact: str,
         requirement_summary: str,
         appointment_requested: bool,
@@ -186,7 +187,7 @@ class Database:
         visitor_timezone: str | None,
         consent_text: str,
         source_origin: str | None,
-    ) -> uuid.UUID:
+    ) -> tuple[uuid.UUID, bool]:
         assert self.pool
         lead_id = uuid.uuid4()
         contact_type = _contact_type(contact)
@@ -202,21 +203,26 @@ class Database:
         }
         async with self.pool.acquire() as connection:
             async with connection.transaction():
-                await connection.execute(
+                inserted = await connection.fetchrow(
                     """
                     INSERT INTO assistant_leads (
-                        id, assistant_id, session_id, visitor_hash, contact, contact_type,
+                        id, assistant_id, session_id, visitor_hash, submission_id, contact, contact_type,
                         requirement_summary, appointment_requested, preferred_time, timezone,
                         consent_text, consent_at, source_origin, created_at, expires_at
                     ) VALUES (
-                        $1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, now(), $12,
-                        now(), now() + ($13 * INTERVAL '1 day')
+                        $1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, now(), $13,
+                        now(), now() + ($14 * INTERVAL '1 day')
                     )
+                    ON CONFLICT (assistant_id, submission_id)
+                        WHERE submission_id IS NOT NULL
+                        DO NOTHING
+                    RETURNING id
                     """,
                     lead_id,
                     assistant_id,
                     session_id,
                     visitor_hash,
+                    submission_id,
                     contact,
                     contact_type,
                     requirement_summary,
@@ -227,6 +233,16 @@ class Database:
                     source_origin,
                     self.lead_retention_days,
                 )
+                if not inserted:
+                    existing_id = await connection.fetchval(
+                        """
+                        SELECT id FROM assistant_leads
+                        WHERE assistant_id = $1 AND submission_id = $2
+                        """,
+                        assistant_id,
+                        submission_id,
+                    )
+                    return existing_id, False
                 await connection.execute(
                     """
                     INSERT INTO assistant_notification_outbox (event_type, aggregate_id, payload)
@@ -247,7 +263,7 @@ class Database:
                         "consent_recorded": True,
                     }, ensure_ascii=False),
                 )
-        return lead_id
+        return lead_id, True
 
     async def list_sessions(self, assistant_id: str, visitor_id: str, limit: int = 30) -> list[dict]:
         assert self.pool

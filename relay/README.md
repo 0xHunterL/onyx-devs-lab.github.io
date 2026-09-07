@@ -34,13 +34,17 @@ lead is delivered with timestamped HMAC-SHA256 headers and durable retry state.
 
 ## Team workbench
 
-Open `/workbench/` on the gateway domain and enter `ADMIN_API_TOKEN`. The token
-is kept in the current tab's `sessionStorage`, never embedded in the JavaScript
-bundle or written to the database. The workbench polls every 15 seconds and
+Open `/workbench/` on the gateway domain and enter `ADMIN_API_TOKEN`. After the
+one-time verification, the server issues a signed, `HttpOnly`, `Secure`,
+`SameSite=Strict` 12-hour session cookie; the token is never embedded in or kept
+by the JavaScript bundle. Cookie-authenticated writes additionally require the
+configured same-origin request. The workbench polls every 15 seconds and
 shows lead counts, appointment intent, contact details, requirements, source,
 conversation context and compacted memory. Team members can assign an owner,
-write internal notes and move a lead through the follow-up states. Admin API and
-workbench responses use `no-store`, frame denial and a restrictive CSP.
+write internal notes and move a lead through the follow-up states. New leads are
+sorted to the top, overdue items are highlighted, and the operator can opt into
+browser notifications. Admin API and workbench responses use `no-store`, frame
+denial and a restrictive CSP.
 
 ## Adding another assistant
 

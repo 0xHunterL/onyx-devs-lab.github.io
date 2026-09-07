@@ -9,12 +9,16 @@
   </head>
   <body>
     <main class="shell">
-      <section id="login-view" class="login-wrap">
+      <section id="boot-view" class="boot-view" aria-live="polite">
+        <div class="brand-mark">O</div>
+        <p>正在连接工作台…</p>
+      </section>
+      <section id="login-view" class="login-wrap" hidden>
         <div class="login-card">
           <div class="brand-mark">O</div>
           <p class="eyebrow">ONYX · INTERNAL</p>
           <h1>客户线索工作台</h1>
-          <p class="muted">输入服务器管理令牌后查看官网访客提交的合作需求。令牌仅保存在当前标签页。</p>
+          <p class="muted">输入服务器管理令牌后查看官网访客提交的合作需求。验证成功后，本设备保持登录 12 小时。</p>
           <form id="login-form">
             <label for="token">管理令牌</label>
             <input id="token" name="token" type="password" autocomplete="current-password" required />
@@ -32,6 +36,7 @@
           </div>
           <div class="top-actions">
             <span id="sync-state" class="sync-state">准备同步</span>
+            <button id="notification-button" class="ghost" type="button" hidden>开启新线索提醒</button>
             <button id="refresh-button" class="ghost" type="button">立即刷新</button>
             <button id="logout-button" class="ghost" type="button">退出</button>
           </div>
@@ -67,7 +72,7 @@
                     <th>预约</th>
                     <th>负责人</th>
                     <th>状态</th>
-                    <th>提交时间</th>
+                    <th>等待时间</th>
                   </tr>
                 </thead>
                 <tbody id="lead-rows"></tbody>

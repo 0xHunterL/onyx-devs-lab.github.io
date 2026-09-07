@@ -12,6 +12,8 @@ class RelaySettings(BaseSettings):
     LEAD_WEBHOOK_FORMAT: str = "generic"
     LEAD_WEBHOOK_SECRET: str = ""
     ADMIN_API_TOKEN: str = ""
+    WORKBENCH_ORIGIN: str = "https://chat.mimimiai.com"
+    WORKBENCH_SESSION_HOURS: int = 12
     RATE_LIMIT_PER_MINUTE: int = 6
     RATE_LIMIT_PER_HOUR: int = 60
     GLOBAL_DAILY_REQUEST_LIMIT: int = 1000

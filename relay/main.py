@@ -13,12 +13,13 @@ from pathlib import Path
 from typing import Literal
 
 import httpx
-from fastapi import FastAPI, Header, HTTPException, Request
+from fastapi import FastAPI, Header, HTTPException, Request, Response
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel, Field
 from sse_starlette.sse import EventSourceResponse
 
+from admin_auth import new_admin_session, valid_admin_session
 from assistant_registry import AssistantRegistry
 from config import RelaySettings
 from notifier import deliver_notifications
@@ -126,6 +127,7 @@ class ChatRequest(BaseModel):
 class LeadRequest(BaseModel):
     session_id: str = Field(min_length=8, max_length=128, pattern=r"^[A-Za-z0-9_-]+$")
     visitor_id: str = Field(min_length=8, max_length=128, pattern=r"^[A-Za-z0-9_-]+$")
+    submission_id: str | None = Field(default=None, min_length=8, max_length=128, pattern=r"^[A-Za-z0-9_-]+$")
     contact: str = Field(min_length=2, max_length=200)
     requirement_summary: str = Field(min_length=5, max_length=4000)
     appointment_requested: bool = False
@@ -138,6 +140,10 @@ class LeadStatusRequest(BaseModel):
     status: Literal["new", "contacted", "qualified", "closed", "spam"]
     assigned_to: str | None = Field(default=None, max_length=100)
     internal_notes: str | None = Field(default=None, max_length=4000)
+
+
+class AdminLoginRequest(BaseModel):
+    token: str = Field(min_length=1, max_length=512)
 
 
 _minute_buckets: dict[tuple[str, str], list[float]] = defaultdict(list)
@@ -398,10 +404,11 @@ async def create_lead(assistant_id: str, payload: LeadRequest, request: Request)
     except SessionOwnershipError as error:
         raise HTTPException(status_code=403, detail=str(error)) from error
 
-    lead_id = await database.create_lead(
+    lead_id, created = await database.create_lead(
         assistant_id,
         payload.session_id,
         visitor_hash,
+        payload.submission_id,
         payload.contact.strip(),
         payload.requirement_summary.strip(),
         payload.appointment_requested,
@@ -419,32 +426,74 @@ async def create_lead(assistant_id: str, payload: LeadRequest, request: Request)
     )
     return {
         "lead_id": str(lead_id),
-        "status": "recorded",
+        "status": "recorded" if created else "already_recorded",
         "notification": "queued" if not settings.LEAD_WEBHOOK_URL else "processing",
     }
 
 
-def _require_admin(authorization: str | None) -> None:
+ADMIN_COOKIE = "onyx_workbench_session"
+
+
+def _require_admin(request: Request, authorization: str | None) -> None:
     expected = f"Bearer {settings.ADMIN_API_TOKEN}"
-    if not settings.ADMIN_API_TOKEN or not authorization or not hmac.compare_digest(authorization, expected):
+    bearer_valid = bool(
+        settings.ADMIN_API_TOKEN
+        and authorization
+        and hmac.compare_digest(authorization, expected)
+    )
+    cookie_valid = valid_admin_session(
+        request.cookies.get(ADMIN_COOKIE), settings.ADMIN_API_TOKEN
+    )
+    if not bearer_valid and not cookie_valid:
         raise HTTPException(status_code=401, detail="Unauthorized")
+    if cookie_valid and not bearer_valid and request.method not in {"GET", "HEAD", "OPTIONS"}:
+        if request.headers.get("Origin") != settings.WORKBENCH_ORIGIN:
+            raise HTTPException(status_code=403, detail="Invalid workbench origin")
+
+
+@app.post("/v1/admin/login")
+async def admin_login(payload: AdminLoginRequest, request: Request, response: Response):
+    await _check_limits("admin:login", _client_ip(request))
+    if not hmac.compare_digest(payload.token, settings.ADMIN_API_TOKEN):
+        raise HTTPException(status_code=401, detail="管理令牌无效")
+    session, max_age = new_admin_session(
+        settings.ADMIN_API_TOKEN, settings.WORKBENCH_SESSION_HOURS
+    )
+    response.set_cookie(
+        ADMIN_COOKIE,
+        session,
+        max_age=max_age,
+        httponly=True,
+        secure=True,
+        samesite="strict",
+        path="/",
+    )
+    return {"authenticated": True, "expires_in": max_age}
+
+
+@app.post("/v1/admin/logout")
+async def admin_logout(response: Response):
+    response.delete_cookie(ADMIN_COOKIE, path="/", secure=True, httponly=True, samesite="strict")
+    return {"authenticated": False}
 
 
 @app.get("/v1/admin/leads")
 async def admin_list_leads(
+    request: Request,
     authorization: str | None = Header(default=None, alias="Authorization"),
     limit: int = 100,
 ):
-    _require_admin(authorization)
+    _require_admin(request, authorization)
     return {"leads": await database.list_leads(min(max(limit, 1), 500))}
 
 
 @app.get("/v1/admin/leads/{lead_id}")
 async def admin_get_lead(
     lead_id: uuid.UUID,
+    request: Request,
     authorization: str | None = Header(default=None, alias="Authorization"),
 ):
-    _require_admin(authorization)
+    _require_admin(request, authorization)
     context = await database.get_lead_context(lead_id)
     if not context:
         raise HTTPException(status_code=404, detail="Unknown lead")
@@ -455,9 +504,10 @@ async def admin_get_lead(
 async def admin_update_lead(
     lead_id: uuid.UUID,
     payload: LeadStatusRequest,
+    request: Request,
     authorization: str | None = Header(default=None, alias="Authorization"),
 ):
-    _require_admin(authorization)
+    _require_admin(request, authorization)
     updated = await database.update_lead(
         lead_id,
         payload.status,
