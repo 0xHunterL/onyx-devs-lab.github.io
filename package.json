@@ -6,7 +6,8 @@
   "homepage": "https://onyx-devs-lab.github.io",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "vite build && node scripts/generate-geo-pages.mjs",
+    "geo:check": "node scripts/check-geo.mjs",
     "lint": "eslint .",
     "preview": "vite preview",
     "predeploy": "npm run build",

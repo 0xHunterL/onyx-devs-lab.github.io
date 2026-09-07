@@ -1,0 +1,28 @@
+# Onyx Devs Lab
+
+> Onyx Devs Lab is a senior AI advisory and engineering team serving Hong Kong and cross-border enterprises. We diagnose business constraints, build custom AI systems, and deliver Forward Deployed Engineering engagements through measurable validation.
+
+## Core services
+
+- [AI Advisory](https://hk.onyxdevslab.com/en/ai-consulting-hong-kong/): AI opportunity diagnosis, feasibility, governance, and delivery roadmaps.
+- [Custom AI Development](https://hk.onyxdevslab.com/en/custom-ai-development-hong-kong/): Production AI agents, RAG, automation, data systems, and enterprise integration.
+- [Forward Deployed Engineering](https://hk.onyxdevslab.com/en/forward-deployed-engineering/): Field diagnosis, embedded engineering, deployment, and outcome validation.
+- [What is Forward Deployed Engineering?](https://hk.onyxdevslab.com/en/insights/what-is-forward-deployed-engineering/): A practical definition and engagement guide.
+
+## Evidence
+
+- [Retail AI decision platform](https://hk.onyxdevslab.com/en/case-studies/retail-ai-decision-platform/)
+- [AI-native accounting production platform](https://hk.onyxdevslab.com/en/case-studies/accounting-ai-production-platform/)
+
+## Chinese (Hong Kong)
+
+- [AI 顧問](https://hk.onyxdevslab.com/zh-hk/ai-consulting/)
+- [AI 定制開發](https://hk.onyxdevslab.com/zh-hk/custom-ai-development/)
+- [前線部署工程 FDE](https://hk.onyxdevslab.com/zh-hk/forward-deployed-engineering/)
+- [零售 AI 決策平台案例](https://hk.onyxdevslab.com/zh-hk/case-studies/retail-ai-decision-platform/)
+- [AI 原生會計生產平台案例](https://hk.onyxdevslab.com/zh-hk/case-studies/accounting-ai-production-platform/)
+
+## Contact
+
+- Email: info@onyxdevslab.com
+- Website: https://hk.onyxdevslab.com/
