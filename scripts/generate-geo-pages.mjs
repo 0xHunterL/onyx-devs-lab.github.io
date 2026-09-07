@@ -6,6 +6,12 @@ const dist = path.join(root, 'dist');
 const origin = 'https://hk.onyxdevslab.com';
 const updated = '2026-09-07';
 
+// These route trees are owned by this generator. Remove them first so an
+// in-place VPS build cannot leave retired pages indexable after a rename.
+for (const routeRoot of ['en', 'zh-hk']) {
+  fs.rmSync(path.join(dist, routeRoot), { recursive: true, force: true });
+}
+
 const pages = [
   {
     path: '/en/ai-consulting-hong-kong/', lang: 'en', alternate: '/zh-hk/ai-consulting/',

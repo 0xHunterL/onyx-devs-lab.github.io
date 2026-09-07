@@ -27,6 +27,9 @@ jobs:
       - name: Build
         run: npm run build
 
+      - name: Validate GEO output
+        run: npm run lint && npm run geo:check
+
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@v4
         with:
