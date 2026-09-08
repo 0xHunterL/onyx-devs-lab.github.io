@@ -70,6 +70,32 @@ for (const url of urls) {
   if (!fs.existsSync(target)) failures.push(`sitemap target missing: ${pathname}`);
 }
 
-const report = { htmlFiles: htmlFiles.length, sitemapUrls: urls.length, failures };
+const incomingLinks = new Map(urls.map((url) => [url, new Set()]));
+for (const file of htmlFiles) {
+  const html = fs.readFileSync(file, 'utf8');
+  const source = html.match(/<link rel="canonical" href="([^"]+)"/)?.[1];
+  if (!source) continue;
+  for (const match of html.matchAll(/<a\b[^>]*href="([^"]+)"/g)) {
+    try {
+      const target = new URL(match[1], source);
+      if (target.origin !== 'https://hk.onyxdevslab.com') continue;
+      target.search = '';
+      target.hash = '';
+      incomingLinks.get(target.href)?.add(source);
+    } catch {
+      failures.push(`${path.relative(dist, file)}: invalid anchor URL ${match[1]}`);
+    }
+  }
+}
+
+const orphanUrls = urls.filter((url) => new URL(url).pathname !== '/' && !incomingLinks.get(url)?.size);
+for (const url of orphanUrls) failures.push(`sitemap URL has no static HTML inbound link: ${url}`);
+const lowestInboundCounts = [...incomingLinks]
+  .filter(([url]) => new URL(url).pathname !== '/')
+  .map(([url, sources]) => ({ url, sources: sources.size }))
+  .sort((left, right) => left.sources - right.sources)
+  .slice(0, 10);
+
+const report = { htmlFiles: htmlFiles.length, sitemapUrls: urls.length, orphanUrls, lowestInboundCounts, failures };
 console.log(JSON.stringify(report, null, 2));
 if (failures.length) process.exit(1);
