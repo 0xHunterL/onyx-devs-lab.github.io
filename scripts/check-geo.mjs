@@ -6,6 +6,7 @@ const failures = [];
 const htmlFiles = [];
 const titles = new Map();
 const canonicals = new Map();
+const languageAlternates = new Map();
 
 function walk(directory) {
   for (const entry of fs.readdirSync(directory, { withFileTypes: true })) {
@@ -31,8 +32,14 @@ for (const file of htmlFiles) {
   if (!html.includes('"contactPoint":{"@type":"ContactPoint"')) failures.push(`${relative}: missing organization contact point`);
   const title = html.match(/<title>([^<]+)<\/title>/)?.[1];
   const canonical = html.match(/<link rel="canonical" href="([^"]+)"/)?.[1];
+  const lang = html.match(/<html lang="([^"]+)"/)?.[1];
   if (title) titles.set(title, [...(titles.get(title) || []), relative]);
   if (canonical) canonicals.set(canonical, [...(canonicals.get(canonical) || []), relative]);
+  if (canonical && lang) {
+    const alternates = [...html.matchAll(/<link rel="alternate" hreflang="([^"]+)" href="([^"]+)"/g)]
+      .map((match) => ({ lang: match[1], url: match[2] }));
+    languageAlternates.set(canonical, { lang, alternates, relative });
+  }
   for (const match of html.matchAll(/<script type="application\/ld\+json">([^<]+)<\/script>/g)) {
     try { JSON.parse(match[1]); } catch { failures.push(`${relative}: invalid JSON-LD`); }
   }
@@ -40,6 +47,27 @@ for (const file of htmlFiles) {
 
 for (const [title, files] of titles) if (files.length > 1) failures.push(`duplicate title: ${title}`);
 for (const [canonical, files] of canonicals) if (files.length > 1) failures.push(`duplicate canonical: ${canonical}`);
+
+for (const [canonical, page] of languageAlternates) {
+  const languageCodes = page.alternates.map((alternate) => alternate.lang);
+  const isRootSelector = new URL(canonical).pathname === '/';
+  const selfLanguage = isRootSelector ? 'x-default' : page.lang;
+  if (new Set(languageCodes).size !== languageCodes.length) failures.push(`${page.relative}: duplicate hreflang value`);
+  if (!page.alternates.some((alternate) => alternate.lang === selfLanguage && alternate.url === canonical)) {
+    failures.push(`${page.relative}: hreflang does not include its own canonical language URL`);
+  }
+  for (const alternate of page.alternates.filter((item) => item.lang !== 'x-default')) {
+    const target = languageAlternates.get(alternate.url);
+    if (!target) {
+      failures.push(`${page.relative}: hreflang target missing from built pages: ${alternate.url}`);
+      continue;
+    }
+    if (target.lang !== alternate.lang) failures.push(`${page.relative}: hreflang ${alternate.lang} points to ${target.lang}: ${alternate.url}`);
+    if (page.alternates.length > 1 && !target.alternates.some((item) => item.lang === selfLanguage && item.url === canonical)) {
+      failures.push(`${page.relative}: hreflang target does not return-link: ${alternate.url}`);
+    }
+  }
+}
 
 for (const file of htmlFiles) {
   const html = fs.readFileSync(file, 'utf8');
