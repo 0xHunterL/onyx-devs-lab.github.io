@@ -26,6 +26,9 @@ for (const file of htmlFiles) {
   if (!/<link rel="canonical" href="https:\/\/hk\.onyxdevslab\.com\//.test(html)) failures.push(`${relative}: missing hk canonical`);
   if (!/<h1[ >]/.test(html)) failures.push(`${relative}: missing H1`);
   if (!html.includes('https://github.com/0xHunterL/onyx-devs-lab.github.io')) failures.push(`${relative}: missing public GitHub entity reference`);
+  if (!html.includes('"leiCode":"254900Z30CLK7HKE9H46"')) failures.push(`${relative}: missing direct LEI organization property`);
+  if (!html.includes('"logo":{"@type":"ImageObject","url":"https://hk.onyxdevslab.com/favicon.svg"')) failures.push(`${relative}: missing organization logo`);
+  if (!html.includes('"contactPoint":{"@type":"ContactPoint"')) failures.push(`${relative}: missing organization contact point`);
   const title = html.match(/<title>([^<]+)<\/title>/)?.[1];
   const canonical = html.match(/<link rel="canonical" href="([^"]+)"/)?.[1];
   if (title) titles.set(title, [...(titles.get(title) || []), relative]);
