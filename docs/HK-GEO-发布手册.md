@@ -39,7 +39,7 @@ npm run geo:check
 ```bash
 nginx -t
 npm run geo:check-live -- https://hk.onyxdevslab.com
-npm run geo:crawler-report -- --since=2026-09-01 --verify-openai /var/log/nginx/hk.onyxdevslab.com.geo.log
+npm run geo:crawler-report -- --since=2026-09-01 --verify-openai --verify-bing /var/log/nginx/hk.onyxdevslab.com.geo.log
 ```
 
 预期输出：`checkedPages` 不少于 50，`failures` 为空数组；简体核心页同时通过带自测标记的 Bytespider User-Agent 模拟抓取。
@@ -55,7 +55,7 @@ curl -sS https://hk.onyxdevslab.com/en/forward-deployed-engineering/ | grep '<h1
 
 前三个文件不能回退成 SPA 首页；内容类型应分别为纯文本、XML、纯文本。
 
-`deploy/nginx-geo-log.conf` 定义独立的 JSON 访问日志格式，保留 Cloudflare 传入的原始客户端 IP；`deploy/nginx-hk.conf` 把该站点写入独立日志。报告工具会把带 `Onyx-GEO-Release-Check` 的发布自测排除，并可按 OpenAI 官方公布的 IP 段验证 GPTBot 与 OAI-SearchBot。其他平台在没有公开稳定 IP 规则时仍只记为候选抓取。
+`deploy/nginx-geo-log.conf` 定义独立的 JSON 访问日志格式，保留 Cloudflare 传入的原始客户端 IP；`deploy/nginx-hk.conf` 把该站点写入独立日志。报告工具会把带 `Onyx-GEO-Release-Check` 的发布自测排除，并可按 OpenAI 官方公布的 IP 段验证 GPTBot 与 OAI-SearchBot；Bingbot 则按 Bing 官方流程执行反向 DNS 与正向 DNS 双重验证。其他平台在没有公开稳定 IP 规则时仍只记为候选抓取。
 
 ## 回滚原则
 

@@ -1,4 +1,5 @@
 import { readFile } from 'node:fs/promises';
+import { lookup, reverse } from 'node:dns/promises';
 import { gunzipSync } from 'node:zlib';
 
 const crawlerFamilies = [
@@ -105,6 +106,41 @@ async function openAiPrefixes(url) {
   return body.prefixes.map((entry) => entry.ipv4Prefix).filter(Boolean);
 }
 
+function normalizeIp(ip) {
+  return ip.toLowerCase().replace(/^::ffff:/, '');
+}
+
+async function verifyBingIp(ip) {
+  try {
+    const hostnames = await reverse(ip);
+    const bingHostnames = hostnames
+      .map((hostname) => hostname.toLowerCase().replace(/\.$/, ''))
+      .filter((hostname) => hostname.endsWith('.search.msn.com'));
+    if (!bingHostnames.length) {
+      return { verified: false, hostnames, reason: 'reverse-dns-not-search.msn.com' };
+    }
+
+    const forwardResults = await Promise.all(
+      bingHostnames.map(async (hostname) => ({
+        hostname,
+        addresses: (await lookup(hostname, { all: true, verbatim: true })).map((result) => result.address),
+      })),
+    );
+    const normalizedIp = normalizeIp(ip);
+    const verified = forwardResults.some((result) =>
+      result.addresses.some((address) => normalizeIp(address) === normalizedIp),
+    );
+    return {
+      verified,
+      hostnames: bingHostnames,
+      forwardAddresses: [...new Set(forwardResults.flatMap((result) => result.addresses))],
+      reason: verified ? 'forward-confirmed-original-ip' : 'forward-dns-did-not-return-original-ip',
+    };
+  } catch (error) {
+    return { verified: false, reason: 'dns-verification-error', error: error.message };
+  }
+}
+
 async function load(path) {
   const data = await readFile(path);
   return path.endsWith('.gz') ? gunzipSync(data).toString('utf8') : data.toString('utf8');
@@ -113,15 +149,29 @@ async function load(path) {
 const args = process.argv.slice(2);
 const sinceArg = args.find((arg) => arg.startsWith('--since='));
 const verifyOpenAi = args.includes('--verify-openai');
+const verifyBing = args.includes('--verify-bing');
 const since = sinceArg ? Date.parse(`${sinceArg.slice('--since='.length)}T00:00:00Z`) : null;
 if (sinceArg && Number.isNaN(since)) {
   console.error('Invalid --since date. Use --since=YYYY-MM-DD.');
   process.exit(2);
 }
-const paths = args.filter((arg) => !arg.startsWith('--since=') && arg !== '--verify-openai');
+const paths = args.filter((arg) => !arg.startsWith('--since=') && !['--verify-openai', '--verify-bing'].includes(arg));
 if (!paths.length) {
-  console.error('Usage: npm run geo:crawler-report -- [--since=YYYY-MM-DD] [--verify-openai] /var/log/nginx/access.log [/var/log/nginx/access.log.1.gz ...]');
+  console.error('Usage: npm run geo:crawler-report -- [--since=YYYY-MM-DD] [--verify-openai] [--verify-bing] /var/log/nginx/access.log [/var/log/nginx/access.log.1.gz ...]');
   process.exit(2);
+}
+
+if (verifyBing) {
+  const bingIps = [...new Set(events.filter((event) => event.family === 'Bingbot').map((event) => event.ip))];
+  const bingVerifications = new Map(
+    await Promise.all(bingIps.map(async (ip) => [ip, await verifyBingIp(ip)])),
+  );
+  for (const event of events) {
+    if (event.family !== 'Bingbot') continue;
+    const verification = bingVerifications.get(event.ip);
+    event.providerVerified = verification.verified;
+    event.providerVerification = { method: 'reverse-and-forward-dns', ...verification };
+  }
 }
 
 const events = [];
@@ -165,13 +215,15 @@ const discoveryCandidates = events.filter((event) => event.classification === 'c
 const suspiciousCandidates = events.filter((event) => event.classification === 'suspicious-spoof-or-scan');
 const syntheticChecks = events.filter((event) => event.classification === 'synthetic-release-check');
 const verifiedOpenAiPages = pageCandidates.filter((event) => event.providerVerified === true);
+const verifiedBingPages = pageCandidates.filter((event) => event.family === 'Bingbot' && event.providerVerified === true);
 
 console.log(JSON.stringify({
   generatedAt: new Date().toISOString(),
-  caveat: 'User-Agent strings are self-declared. Candidate content crawls are useful evidence, but do not prove that the request came from the named platform.',
+  caveat: 'User-Agent strings are self-declared. Candidate content crawls do not prove platform identity unless providerVerified is true under an enabled provider verification method.',
   files: paths,
   since: sinceArg ? sinceArg.slice('--since='.length) : null,
   verifyOpenAi,
+  verifyBing,
   totals: {
     candidateCrawlerRequests: events.length,
     candidatePageCrawls: pageCandidates.length,
@@ -179,6 +231,7 @@ console.log(JSON.stringify({
     suspiciousSpoofOrScanRequests: suspiciousCandidates.length,
     syntheticReleaseChecks: syntheticChecks.length,
     verifiedOpenAiPageCrawls: verifiedOpenAiPages.length,
+    verifiedBingPageCrawls: verifiedBingPages.length,
     unparsableLines,
   },
   byFamily,
@@ -186,5 +239,6 @@ console.log(JSON.stringify({
   recentCandidatePageCrawls: pageCandidates.slice(-50),
   recentCandidateDiscoveryFileCrawls: discoveryCandidates.slice(-30),
   recentVerifiedOpenAiPageCrawls: verifiedOpenAiPages.slice(-50),
+  recentVerifiedBingPageCrawls: verifiedBingPages.slice(-50),
   recentSuspiciousRequests: suspiciousCandidates.slice(-20),
 }, null, 2));
