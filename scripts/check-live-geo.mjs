@@ -3,14 +3,19 @@ const canonicalOrigin = (process.argv[3] || 'https://hk.onyxdevslab.com').replac
 const failures = [];
 
 async function get(pathname, expectedType, userAgent = 'Onyx-GEO-Release-Check/1.0') {
-  const response = await fetch(`${origin}${pathname}`, {
+  const requestedUrl = `${origin}${pathname}`;
+  const response = await fetch(requestedUrl, {
     headers: { 'user-agent': userAgent },
     redirect: 'follow',
   });
   const body = await response.text();
   const contentType = response.headers.get('content-type') || '';
   if (!response.ok) failures.push(`${pathname}: HTTP ${response.status}`);
+  if (response.redirected || response.url !== requestedUrl) failures.push(`${pathname}: unexpected redirect to ${response.url}`);
   if (!contentType.includes(expectedType)) failures.push(`${pathname}: expected ${expectedType}, got ${contentType || 'none'}`);
+  const xRobotsTag = response.headers.get('x-robots-tag') || '';
+  if (/\b(?:noindex|none)\b/i.test(xRobotsTag)) failures.push(`${pathname}: blocking X-Robots-Tag: ${xRobotsTag}`);
+  if (/cf-chl-|challenge-platform|<title>\s*Just a moment/i.test(body)) failures.push(`${pathname}: Cloudflare challenge page detected`);
   return { response, body, contentType };
 }
 
@@ -18,6 +23,7 @@ const robots = await get('/robots.txt', 'text/plain');
 if (!robots.body.includes(`Sitemap: ${canonicalOrigin}/sitemap.xml`)) failures.push('/robots.txt: sitemap declaration is missing or points to the wrong canonical origin');
 if (!robots.body.includes('OAI-SearchBot')) failures.push('/robots.txt: OAI-SearchBot policy is missing');
 if (!robots.body.includes('Bytespider')) failures.push('/robots.txt: Bytespider policy is missing');
+if (/^\s*Disallow:\s*\/\s*$/im.test(robots.body)) failures.push('/robots.txt: broad Disallow rule detected');
 
 const llms = await get('/llms.txt', 'text/plain');
 if (!llms.body.includes('# Onyx Devs Lab')) failures.push('/llms.txt: expected site summary is missing');
@@ -34,6 +40,10 @@ if (indexNowKey.body.trim() !== '9c37a18bd2044e1687f45c2e91ad603b') failures.pus
 const sitemap = await get('/sitemap.xml', 'xml');
 const urls = [...sitemap.body.matchAll(/<loc>([^<]+)<\/loc>/g)].map((match) => match[1]);
 if (urls.length < 50) failures.push(`/sitemap.xml: expected at least 50 URLs, got ${urls.length}`);
+if (new Set(urls).size !== urls.length) failures.push('/sitemap.xml: duplicate canonical URLs detected');
+for (const url of urls) {
+  if (!url.startsWith(`${canonicalOrigin}/`)) failures.push(`/sitemap.xml: non-canonical origin: ${url}`);
+}
 
 const requiredPaths = [
   '/en/about/',
@@ -91,6 +101,7 @@ for (const absoluteUrl of urls) {
   if (!/<h1[ >][\s\S]*?<\/h1>/.test(page.body)) failures.push(`${url.pathname}: H1 is missing from response HTML`);
   if (!page.body.includes(`<link rel="canonical" href="${absoluteUrl}"`)) failures.push(`${url.pathname}: canonical does not match sitemap URL`);
   if (!page.body.includes('application/ld+json')) failures.push(`${url.pathname}: JSON-LD is missing`);
+  if (/<meta[^>]+(?:name|property)=["']robots["'][^>]+content=["'][^"']*\b(?:noindex|none)\b/i.test(page.body)) failures.push(`${url.pathname}: blocking robots meta detected`);
 }
 
 console.log(JSON.stringify({ origin, canonicalOrigin, checkedPages: urls.length, failures }, null, 2));
