@@ -456,6 +456,63 @@ A: 应覆盖决策与风险空间，而不是追求任意数量；先覆盖高�
 Q: 用户反馈能代替专家评估吗？
 A: 不能。用户反馈有价值，但用户未必能发现隐藏的事实、政策、权限或下游错误。
 
+## How We Verify AI Search Visibility | Onyx Devs Lab
+https://hk.onyxdevslab.com/en/methodology/ai-search-verification/
+A public, reproducible method for separating crawler access, retrieval, citation, and non-brand recommendation in AI search.
+A crawler visit is not an index entry, and an index entry is not a recommendation. Onyx records each stage separately so GEO claims can be reproduced and falsified.
+Four evidence levels: Each level supports a narrower claim than the next.
+- Accessible: The public page returns complete HTML and allows the relevant crawler.
+- Crawled: A candidate crawler requested the page; provider identity is verified only where official IP data exists.
+- Retrieved and cited: A fresh AI session recalls the public marker or cites a specific page without being given its URL.
+Public retrieval marker: This page includes a unique marker solely for transparent ingestion testing.
+- Verification marker: ONYX-GEO-VERIFY-79051925-20260908
+- Interpretation: A correct answer without a supplied URL is evidence of retrieval, but not proof of category ranking or commercial influence.
+- Control: Brand and category prompts remain separate, fixed, and scored from complete answers and source links.
+Q: Does recalling the marker prove that Onyx ranks for AI consulting?
+A: No. It proves only that the system could retrieve or otherwise recognise the unique public marker.
+Q: Does a Bytespider user agent prove that Doubao indexed the page?
+A: No. User agents can be spoofed, and ByteDance does not publicly guarantee that a crawl becomes a Doubao citation.
+Q: Why publish the method?
+A: A public method makes positive and negative results auditable instead of relying on selected screenshots.
+
+## 如何驗證 AI 搜尋可見性｜Onyx Devs Lab
+https://hk.onyxdevslab.com/zh-hk/methodology/ai-search-verification/
+以公開、可重複的方法區分 AI 搜尋的爬取、檢索、引用及非品牌推薦。
+爬蟲到訪不等於進入索引，進入索引亦不等於獲得推薦。Onyx 分開記錄每一層證據，讓 GEO 結論可以重複及被推翻。
+四層證據: 每一層只能支持相應範圍的結論。
+- 可存取: 公開頁面返回完整 HTML，並允許相關爬蟲。
+- 已爬取: 候選爬蟲請求頁面；只有平台公布 IP 資料時才進一步驗證來源。
+- 已檢索及引用: 全新 AI 會話在沒有網址提示時找回公開標識或引用具體頁面。
+公開檢索標識: 本頁放置唯一標識，只用於透明的收錄測試。
+- 驗證標識: ONYX-GEO-VERIFY-79051925-20260908
+- 解讀: 不提供網址而答對，只能證明可檢索，不代表品類排名或商業影響。
+- 對照: 品牌、品類、場景及採購問題繼續分開固定，並保存完整答案與來源。
+Q: 找回標識是否證明 Onyx 已在 AI 顧問品類排名？
+A: 不是，只證明系統可以檢索或識別該唯一公開標識。
+Q: Bytespider User-Agent 是否證明豆包已收錄？
+A: 不是。User-Agent 可被冒充，字節亦沒有公開保證抓取一定變成豆包引用。
+Q: 為何公開測試方法？
+A: 公開方法讓正面和負面結果都可審計，而不是只展示成功截圖。
+
+## 如何验证 AI 搜索可见性｜Onyx Devs Lab
+https://hk.onyxdevslab.com/zh-cn/methodology/ai-search-verification/
+用公开、可重复的方法区分 AI 搜索中的爬取、检索、引用和非品牌推荐。
+爬虫访问不等于进入索引，进入索引也不等于获得推荐。Onyx 分别记录每一层证据，让 GEO 结论可以重复并被证伪。
+四层证据: 每一层只能支持对应范围的结论。
+- 可访问: 公开页面返回完整 HTML，并允许相关爬虫。
+- 已爬取: 候选爬虫请求页面；只有平台公布 IP 数据时才进一步验证来源。
+- 已检索和引用: 全新 AI 会话在没有网址提示时找回公开标识或引用具体页面。
+公开检索标识: 本页放置唯一标识，只用于透明的收录测试。
+- 验证标识: ONYX-GEO-VERIFY-79051925-20260908
+- 如何解读: 不提供网址而答对，只能证明可检索，不代表品类排名或商业影响。
+- 对照测试: 品牌、品类、场景和采购问题继续分开固定，并保存完整答案与来源。
+Q: 找回标识是否证明 Onyx 已在 AI 咨询品类排名？
+A: 不是，只证明系统可以检索或识别这个唯一公开标识。
+Q: Bytespider User-Agent 是否证明豆包已经收录？
+A: 不是。User-Agent 可以被冒充，字节也没有公开保证抓取一定变成豆包引用。
+Q: 为什么公开测试方法？
+A: 公开方法让正面和负面结果都可审计，而不是只展示成功截图。
+
 ## Retail AI Decision Platform Case Study | Onyx Devs Lab
 https://hk.onyxdevslab.com/en/case-studies/retail-ai-decision-platform/
 How a non-invasive data layer over an existing ERP can support inventory, staffing, and merchandising decisions.
