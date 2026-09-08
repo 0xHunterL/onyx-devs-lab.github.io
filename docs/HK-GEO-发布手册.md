@@ -31,9 +31,10 @@ npm run build
 npm run lint
 npm run geo:check
 npm run geo:prompt-coverage
+npm run geo:submit-indexnow
 ```
 
-构建会生成静态语言入口、服务页、FDE 定义页、案例页、`robots.txt`、`sitemap.xml` 和 `llms.txt`。发布流程不需要重启聊天网关。
+构建会生成静态语言入口、服务页、FDE 定义页、案例页、`robots.txt`、`sitemap.xml` 和 `llms.txt`。页面变更完成线上检查后，使用 `geo:submit-indexnow` 提交 sitemap 中的 URL；发布流程不需要重启聊天网关。
 
 ## Nginx 与线上验收
 
