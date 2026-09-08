@@ -8,6 +8,7 @@
     "dev": "vite",
     "build": "vite build && node scripts/generate-geo-pages.mjs",
     "geo:check": "node scripts/check-geo.mjs",
+    "geo:prompt-coverage": "node scripts/check-prompt-coverage.mjs",
     "geo:check-live": "node scripts/check-live-geo.mjs",
     "geo:crawler-report": "node scripts/report-ai-crawlers.mjs",
     "geo:referral-report": "node scripts/report-geo-referrals.mjs",

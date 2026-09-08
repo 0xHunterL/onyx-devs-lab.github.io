@@ -30,6 +30,7 @@ npm ci
 npm run build
 npm run lint
 npm run geo:check
+npm run geo:prompt-coverage
 ```
 
 构建会生成静态语言入口、服务页、FDE 定义页、案例页、`robots.txt`、`sitemap.xml` 和 `llms.txt`。发布流程不需要重启聊天网关。
@@ -42,7 +43,7 @@ npm run geo:check-live -- https://hk.onyxdevslab.com
 npm run geo:crawler-report -- --since=2026-09-01 --verify-openai --verify-bing /var/log/nginx/hk.onyxdevslab.com.geo.log
 ```
 
-预期输出：`checkedPages` 不少于 50，`failures` 为空数组；简体核心页同时通过带自测标记的 Bytespider User-Agent 模拟抓取。
+预期输出：`checkedPages` 不少于 50，页面和提示词覆盖检查的 `failures` 均为空数组；简体核心页同时通过带自测标记的 Bytespider User-Agent 模拟抓取。
 
 另外人工确认：
 

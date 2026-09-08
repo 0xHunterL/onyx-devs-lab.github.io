@@ -44,7 +44,7 @@
 
 每轮使用全新会话，分别记录是否提及、是否引用、引用 URL、出现位置、事实是否准确。
 
-机器可读的唯一版本位于 [`geo/prompt-matrix.json`](../geo/prompt-matrix.json)，测试结果保存在 [`docs/geo-baselines/`](./geo-baselines/README.md)，避免不同轮次临时改题后继续比较分数。
+机器可读的唯一版本位于 [`geo/prompt-matrix.json`](../geo/prompt-matrix.json)，测试结果保存在 [`docs/geo-baselines/`](./geo-baselines/README.md)，避免不同轮次临时改题后继续比较分数。每条题目同时声明 `evidenceUrls` 和 `answerTerms`；`npm run geo:prompt-coverage` 会检查证据页确实进入 sitemap、canonical 正确，并且组合页面包含回答该题所需的关键事实。
 
 ### 品牌词
 
