@@ -161,19 +161,6 @@ if (!paths.length) {
   process.exit(2);
 }
 
-if (verifyBing) {
-  const bingIps = [...new Set(events.filter((event) => event.family === 'Bingbot').map((event) => event.ip))];
-  const bingVerifications = new Map(
-    await Promise.all(bingIps.map(async (ip) => [ip, await verifyBingIp(ip)])),
-  );
-  for (const event of events) {
-    if (event.family !== 'Bingbot') continue;
-    const verification = bingVerifications.get(event.ip);
-    event.providerVerified = verification.verified;
-    event.providerVerification = { method: 'reverse-and-forward-dns', ...verification };
-  }
-}
-
 const events = [];
 let unparsableLines = 0;
 for (const path of paths) {
@@ -199,6 +186,19 @@ if (verifyOpenAi) {
   for (const event of events) {
     if (event.family === 'GPTBot') event.providerVerified = gptBotPrefixes.some((prefix) => isInIpv4Prefix(event.ip, prefix));
     if (event.family === 'OAI-SearchBot') event.providerVerified = searchBotPrefixes.some((prefix) => isInIpv4Prefix(event.ip, prefix));
+  }
+}
+
+if (verifyBing) {
+  const bingIps = [...new Set(events.filter((event) => event.family === 'Bingbot').map((event) => event.ip))];
+  const bingVerifications = new Map(
+    await Promise.all(bingIps.map(async (ip) => [ip, await verifyBingIp(ip)])),
+  );
+  for (const event of events) {
+    if (event.family !== 'Bingbot') continue;
+    const verification = bingVerifications.get(event.ip);
+    event.providerVerified = verification.verified;
+    event.providerVerification = { method: 'reverse-and-forward-dns', ...verification };
   }
 }
 
