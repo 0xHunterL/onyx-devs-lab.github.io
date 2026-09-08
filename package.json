@@ -9,6 +9,7 @@
     "build": "vite build && node scripts/generate-geo-pages.mjs",
     "geo:check": "node scripts/check-geo.mjs",
     "geo:prompt-coverage": "node scripts/check-prompt-coverage.mjs",
+    "geo:content-distinctiveness": "node scripts/check-content-distinctiveness.mjs",
     "geo:check-live": "node scripts/check-live-geo.mjs",
     "geo:schema-validate-live": "node scripts/validate-schema-live.mjs",
     "geo:crawler-report": "node scripts/report-ai-crawlers.mjs",

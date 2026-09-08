@@ -31,6 +31,7 @@ npm run build
 npm run lint
 npm run geo:check
 npm run geo:prompt-coverage
+npm run geo:content-distinctiveness
 npm run geo:submit-indexnow
 ```
 
@@ -45,7 +46,7 @@ npm run geo:schema-validate-live -- https://hk.onyxdevslab.com
 npm run geo:crawler-report -- --since=2026-09-01 --verify-openai --verify-bing --verify-google --verify-perplexity /var/log/nginx/hk.onyxdevslab.com.geo.log
 ```
 
-预期输出：`checkedPages` 不少于 50，页面、提示词覆盖和 Schema.org 在线验证的 `failures` 均为空数组；简体核心页同时通过带自测标记的 Bytespider User-Agent 模拟抓取。在线 Schema 检查默认覆盖首页、服务、指南、案例与团队五种模板。
+预期输出：`checkedPages` 不少于 50，页面、提示词覆盖、同语言正文差异度和 Schema.org 在线验证的 `failures` 均为空数组；简体核心页同时通过带自测标记的 Bytespider User-Agent 模拟抓取。差异度检查会阻止正文过短、描述重复或高度相似的批量查询变体；在线 Schema 检查默认覆盖首页、服务、指南、案例与团队五种模板。
 
 另外人工确认：
 

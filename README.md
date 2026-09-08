@@ -61,6 +61,7 @@ npm run build
 npm run lint
 npm run geo:check
 npm run geo:prompt-coverage
+npm run geo:content-distinctiveness
 npm run geo:check-live -- https://hk.onyxdevslab.com
 npm run geo:schema-validate-live -- https://hk.onyxdevslab.com
 npm run geo:submit-indexnow
