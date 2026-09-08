@@ -9,6 +9,7 @@ const crawlerFamilies = [
   ['OAI-SearchBot', /OAI-SearchBot/i],
   ['GPTBot', /GPTBot/i],
   ['PerplexityBot', /PerplexityBot/i],
+  ['Perplexity-User', /Perplexity-User/i],
   ['ClaudeBot', /ClaudeBot/i],
   ['Googlebot', /Googlebot/i],
 ];
@@ -99,7 +100,7 @@ function isInIpv4Prefix(ip, prefix) {
   return (value & mask) === (networkValue & mask);
 }
 
-async function openAiPrefixes(url) {
+async function publishedIpv4Prefixes(url) {
   const response = await fetch(url);
   if (!response.ok) throw new Error(`Unable to fetch ${url}: HTTP ${response.status}`);
   const body = await response.json();
@@ -151,15 +152,16 @@ const sinceArg = args.find((arg) => arg.startsWith('--since='));
 const verifyOpenAi = args.includes('--verify-openai');
 const verifyBing = args.includes('--verify-bing');
 const verifyGoogle = args.includes('--verify-google');
+const verifyPerplexity = args.includes('--verify-perplexity');
 const since = sinceArg ? Date.parse(`${sinceArg.slice('--since='.length)}T00:00:00Z`) : null;
 if (sinceArg && Number.isNaN(since)) {
   console.error('Invalid --since date. Use --since=YYYY-MM-DD.');
   process.exit(2);
 }
-const verificationFlags = ['--verify-openai', '--verify-bing', '--verify-google'];
+const verificationFlags = ['--verify-openai', '--verify-bing', '--verify-google', '--verify-perplexity'];
 const paths = args.filter((arg) => !arg.startsWith('--since=') && !verificationFlags.includes(arg));
 if (!paths.length) {
-  console.error('Usage: npm run geo:crawler-report -- [--since=YYYY-MM-DD] [--verify-openai] [--verify-bing] [--verify-google] /var/log/nginx/access.log [/var/log/nginx/access.log.1.gz ...]');
+  console.error('Usage: npm run geo:crawler-report -- [--since=YYYY-MM-DD] [--verify-openai] [--verify-bing] [--verify-google] [--verify-perplexity] /var/log/nginx/access.log [/var/log/nginx/access.log.1.gz ...]');
   process.exit(2);
 }
 
@@ -182,12 +184,23 @@ for (const path of paths) {
 
 if (verifyOpenAi) {
   const [gptBotPrefixes, searchBotPrefixes] = await Promise.all([
-    openAiPrefixes('https://openai.com/gptbot.json'),
-    openAiPrefixes('https://openai.com/searchbot.json'),
+    publishedIpv4Prefixes('https://openai.com/gptbot.json'),
+    publishedIpv4Prefixes('https://openai.com/searchbot.json'),
   ]);
   for (const event of events) {
     if (event.family === 'GPTBot') event.providerVerified = gptBotPrefixes.some((prefix) => isInIpv4Prefix(event.ip, prefix));
     if (event.family === 'OAI-SearchBot') event.providerVerified = searchBotPrefixes.some((prefix) => isInIpv4Prefix(event.ip, prefix));
+  }
+}
+
+if (verifyPerplexity) {
+  const [botPrefixes, userPrefixes] = await Promise.all([
+    publishedIpv4Prefixes('https://www.perplexity.com/perplexitybot.json'),
+    publishedIpv4Prefixes('https://www.perplexity.com/perplexity-user.json'),
+  ]);
+  for (const event of events) {
+    if (event.family === 'PerplexityBot') event.providerVerified = botPrefixes.some((prefix) => isInIpv4Prefix(event.ip, prefix));
+    if (event.family === 'Perplexity-User') event.providerVerified = userPrefixes.some((prefix) => isInIpv4Prefix(event.ip, prefix));
   }
 }
 
@@ -234,6 +247,9 @@ const verifiedOpenAiPages = pageCandidates.filter(
 );
 const verifiedBingPages = pageCandidates.filter((event) => event.family === 'Bingbot' && event.providerVerified === true);
 const verifiedGooglePages = pageCandidates.filter((event) => event.family === 'Googlebot' && event.providerVerified === true);
+const verifiedPerplexityPages = pageCandidates.filter(
+  (event) => ['PerplexityBot', 'Perplexity-User'].includes(event.family) && event.providerVerified === true,
+);
 
 console.log(JSON.stringify({
   generatedAt: new Date().toISOString(),
@@ -243,6 +259,7 @@ console.log(JSON.stringify({
   verifyOpenAi,
   verifyBing,
   verifyGoogle,
+  verifyPerplexity,
   totals: {
     candidateCrawlerRequests: events.length,
     candidatePageCrawls: pageCandidates.length,
@@ -252,6 +269,7 @@ console.log(JSON.stringify({
     verifiedOpenAiPageCrawls: verifiedOpenAiPages.length,
     verifiedBingPageCrawls: verifiedBingPages.length,
     verifiedGooglePageCrawls: verifiedGooglePages.length,
+    verifiedPerplexityPageCrawls: verifiedPerplexityPages.length,
     unparsableLines,
   },
   byFamily,
@@ -261,5 +279,6 @@ console.log(JSON.stringify({
   recentVerifiedOpenAiPageCrawls: verifiedOpenAiPages.slice(-50),
   recentVerifiedBingPageCrawls: verifiedBingPages.slice(-50),
   recentVerifiedGooglePageCrawls: verifiedGooglePages.slice(-50),
+  recentVerifiedPerplexityPageCrawls: verifiedPerplexityPages.slice(-50),
   recentSuspiciousRequests: suspiciousCandidates.slice(-20),
 }, null, 2));

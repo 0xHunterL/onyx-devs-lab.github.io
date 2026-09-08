@@ -23,6 +23,8 @@ const robots = await get('/robots.txt', 'text/plain');
 if (!robots.body.includes(`Sitemap: ${canonicalOrigin}/sitemap.xml`)) failures.push('/robots.txt: sitemap declaration is missing or points to the wrong canonical origin');
 if (!robots.body.includes('OAI-SearchBot')) failures.push('/robots.txt: OAI-SearchBot policy is missing');
 if (!robots.body.includes('Bytespider')) failures.push('/robots.txt: Bytespider policy is missing');
+if (!robots.body.includes('PerplexityBot')) failures.push('/robots.txt: PerplexityBot policy is missing');
+if (!robots.body.includes('Perplexity-User')) failures.push('/robots.txt: Perplexity-User policy is missing');
 if (/^\s*Disallow:\s*\/\s*$/im.test(robots.body)) failures.push('/robots.txt: broad Disallow rule detected');
 
 const llms = await get('/llms.txt', 'text/plain');

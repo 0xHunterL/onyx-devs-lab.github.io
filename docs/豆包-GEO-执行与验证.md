@@ -34,6 +34,7 @@
 - 字节没有提供足够完整、稳定且可核验的豆包排序与抓取公开规则。任何“固定权重”“保证首推”或无原始数据的成功率，都不能作为执行依据。
 - Google 2026 年生成式搜索官方指南明确把基础 SEO、可索引性和独特且非同质化的第一手内容放在核心位置，并说明批量制造查询变体页、虚假站外提及或把 `llms.txt` 当作 Google 排名信号没有依据：[Optimizing your website for generative AI features](https://developers.google.com/search/docs/fundamentals/ai-optimization-guide)。`llms.txt` 在本站继续作为便携知识摘要保留，但不把它计作 Google GEO 增长证据。
 - OpenAI 官方区分用于搜索展示的 OAI-SearchBot 与用于模型训练的 GPTBot，并分别公布可验证 IP 段：[Overview of OpenAI Crawlers](https://developers.openai.com/api/docs/bots)。因此 GPTBot 抓取可以证明内容被训练爬虫访问，但不能直接证明 ChatGPT Search 已经收录或会引用网站。
+- Perplexity 官方区分用于搜索索引的 PerplexityBot 与用户问题触发的 Perplexity-User，并为两者分别发布实时 IP 清单；监测脚本会分别验证，后者出现时只证明用户触发了页面访问，仍需结合回答引用确认可见性：[Perplexity Crawlers](https://docs.perplexity.ai/docs/resources/perplexity-crawlers)。
 
 ## 服务器日志判断
 
