@@ -75,7 +75,7 @@ for (const pathname of requiredPaths) {
 }
 
 
-const bytespiderAgent = 'Mozilla/5.0 (compatible; Bytespider; +https://zhanzhang.toutiao.com/)';
+const bytespiderAgent = 'Mozilla/5.0 (compatible; Bytespider; +https://zhanzhang.toutiao.com/) Onyx-GEO-Release-Check/1.0';
 for (const pathname of requiredPaths.filter((path) => path.startsWith('/zh-cn/'))) {
   const page = await get(pathname, 'text/html', bytespiderAgent);
   if (!page.body.includes('<html lang="zh-CN">')) failures.push(`${pathname}: Bytespider response is not the simplified Chinese HTML page`);

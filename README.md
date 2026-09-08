@@ -59,7 +59,7 @@ npm run build
 npm run lint
 npm run geo:check
 npm run geo:check-live -- https://hk.onyxdevslab.com
-npm run geo:crawler-report -- --since=2026-09-01 /var/log/nginx/access.log
+npm run geo:crawler-report -- --since=2026-09-01 --verify-openai /var/log/nginx/hk.onyxdevslab.com.geo.log
 ```
 
 Contact: [info@onyxdevslab.com](mailto:info@onyxdevslab.com)
