@@ -214,7 +214,9 @@ const pageCandidates = events.filter((event) => event.classification === 'candid
 const discoveryCandidates = events.filter((event) => event.classification === 'candidate-discovery-file-crawl');
 const suspiciousCandidates = events.filter((event) => event.classification === 'suspicious-spoof-or-scan');
 const syntheticChecks = events.filter((event) => event.classification === 'synthetic-release-check');
-const verifiedOpenAiPages = pageCandidates.filter((event) => event.providerVerified === true);
+const verifiedOpenAiPages = pageCandidates.filter(
+  (event) => ['GPTBot', 'OAI-SearchBot'].includes(event.family) && event.providerVerified === true,
+);
 const verifiedBingPages = pageCandidates.filter((event) => event.family === 'Bingbot' && event.providerVerified === true);
 
 console.log(JSON.stringify({
