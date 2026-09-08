@@ -33,7 +33,7 @@ if (indexNowKey.body.trim() !== '9c37a18bd2044e1687f45c2e91ad603b') failures.pus
 
 const sitemap = await get('/sitemap.xml', 'xml');
 const urls = [...sitemap.body.matchAll(/<loc>([^<]+)<\/loc>/g)].map((match) => match[1]);
-if (urls.length < 47) failures.push(`/sitemap.xml: expected at least 47 URLs, got ${urls.length}`);
+if (urls.length < 50) failures.push(`/sitemap.xml: expected at least 50 URLs, got ${urls.length}`);
 
 const requiredPaths = [
   '/en/about/',
@@ -55,6 +55,9 @@ const requiredPaths = [
   '/zh-cn/guides/custom-ai-development-cost/',
   '/zh-cn/guides/enterprise-ai-agent-erp-integration/',
   '/zh-cn/methodology/enterprise-ai-evaluation/',
+  '/en/methodology/ai-search-verification/',
+  '/zh-hk/methodology/ai-search-verification/',
+  '/zh-cn/methodology/ai-search-verification/',
   '/zh-cn/case-studies/retail-ai-decision-platform/',
   '/zh-cn/case-studies/accounting-ai-production-platform/',
   '/en/case-studies/legal-ai-evidence-workflow/',

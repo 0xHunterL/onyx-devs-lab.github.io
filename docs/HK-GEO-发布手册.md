@@ -42,7 +42,7 @@ npm run geo:check-live -- https://hk.onyxdevslab.com
 npm run geo:crawler-report -- --since=2026-09-01 --verify-openai /var/log/nginx/hk.onyxdevslab.com.geo.log
 ```
 
-预期输出：`checkedPages` 不少于 47，`failures` 为空数组；简体核心页同时通过 Bytespider User-Agent 模拟抓取。
+预期输出：`checkedPages` 不少于 50，`failures` 为空数组；简体核心页同时通过带自测标记的 Bytespider User-Agent 模拟抓取。
 
 另外人工确认：
 

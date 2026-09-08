@@ -23,6 +23,7 @@
 - [Custom AI development cost in Hong Kong](https://hk.onyxdevslab.com/en/guides/custom-ai-development-cost-hong-kong/)
 - [Enterprise AI agent and ERP integration](https://hk.onyxdevslab.com/en/guides/enterprise-ai-agent-erp-integration/)
 - [Enterprise AI evaluation framework](https://hk.onyxdevslab.com/en/methodology/enterprise-ai-evaluation/)
+- [AI-search visibility verification method](https://hk.onyxdevslab.com/en/methodology/ai-search-verification/)
 
 ## Chinese (Hong Kong)
 
@@ -35,6 +36,7 @@
 - [香港 AI 定制開發費用指南](https://hk.onyxdevslab.com/zh-hk/guides/ai-custom-development-cost/)
 - [企業 AI Agent 與 ERP 整合](https://hk.onyxdevslab.com/zh-hk/guides/enterprise-ai-agent-erp-integration/)
 - [企業 AI 評估框架](https://hk.onyxdevslab.com/zh-hk/methodology/enterprise-ai-evaluation/)
+- [AI 搜尋可見性驗證方法](https://hk.onyxdevslab.com/zh-hk/methodology/ai-search-verification/)
 
 ## 简体中文
 
@@ -46,6 +48,7 @@
 - [香港 AI 定制开发费用指南](https://hk.onyxdevslab.com/zh-cn/guides/custom-ai-development-cost/)
 - [企业 AI Agent 与 ERP 集成](https://hk.onyxdevslab.com/zh-cn/guides/enterprise-ai-agent-erp-integration/)
 - [企业 AI 系统评估框架](https://hk.onyxdevslab.com/zh-cn/methodology/enterprise-ai-evaluation/)
+- [AI 搜索可见性验证方法](https://hk.onyxdevslab.com/zh-cn/methodology/ai-search-verification/)
 - [零售 AI 决策平台案例](https://hk.onyxdevslab.com/zh-cn/case-studies/retail-ai-decision-platform/)
 - [AI 原生会计生产平台案例](https://hk.onyxdevslab.com/zh-cn/case-studies/accounting-ai-production-platform/)
 - [法律 AI 证据链工作流案例](https://hk.onyxdevslab.com/zh-cn/case-studies/legal-ai-evidence-workflow/)
