@@ -25,6 +25,7 @@ for (const file of htmlFiles) {
   if (!/<meta name="description" content="[^"]+"/.test(html)) failures.push(`${relative}: missing description`);
   if (!/<link rel="canonical" href="https:\/\/hk\.onyxdevslab\.com\//.test(html)) failures.push(`${relative}: missing hk canonical`);
   if (!/<h1[ >]/.test(html)) failures.push(`${relative}: missing H1`);
+  if (!html.includes('https://github.com/0xHunterL/onyx-devs-lab.github.io')) failures.push(`${relative}: missing public GitHub entity reference`);
   const title = html.match(/<title>([^<]+)<\/title>/)?.[1];
   const canonical = html.match(/<link rel="canonical" href="([^"]+)"/)?.[1];
   if (title) titles.set(title, [...(titles.get(title) || []), relative]);

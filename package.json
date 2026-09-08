@@ -10,6 +10,7 @@
     "geo:check": "node scripts/check-geo.mjs",
     "geo:check-live": "node scripts/check-live-geo.mjs",
     "geo:crawler-report": "node scripts/report-ai-crawlers.mjs",
+    "geo:referral-report": "node scripts/report-geo-referrals.mjs",
     "geo:submit-indexnow": "node scripts/submit-indexnow.mjs",
     "lint": "eslint .",
     "preview": "vite preview",
