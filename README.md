@@ -29,6 +29,14 @@ Each case separates delivered scope, validation metrics, measurement definitions
 - [XML sitemap](https://hk.onyxdevslab.com/sitemap.xml)
 - [Atom feed](https://hk.onyxdevslab.com/feed.xml)
 
+## Field notes and reproducible GEO checks
+
+- [FDE is not staff augmentation (Chinese)](docs/distribution/FDE不是驻场外包.md)
+- [Seven questions before connecting an AI agent to an ERP (Chinese)](docs/distribution/AI-Agent接入ERP前的七个问题.md)
+- [Designing evidence chains for legal AI (Chinese)](docs/distribution/法律AI证据链设计.md)
+- [Fixed AI-search prompt matrix](geo/prompt-matrix.json)
+- [Candidate AI crawler log report](scripts/report-ai-crawlers.mjs)
+
 ## Verified entity
 
 - Legal entity: **ONYX DEVS LAB LIMITED**
@@ -51,6 +59,7 @@ npm run build
 npm run lint
 npm run geo:check
 npm run geo:check-live -- https://hk.onyxdevslab.com
+npm run geo:crawler-report -- /var/log/nginx/access.log
 ```
 
 Contact: [info@onyxdevslab.com](mailto:info@onyxdevslab.com)

@@ -1,6 +1,6 @@
 # 豆包 GEO 执行与验证
 
-更新日期：2026-09-07
+更新日期：2026-09-08
 
 ## 目标
 
@@ -30,6 +30,7 @@
 - Bing 官方建议使用 IndexNow 主动通知新增、更新或删除 URL：[URL Submission](https://www.bing.com/webmasters/help/URL-Submission-62f2860b)。
 - Bing 明确说明提交站点地图并不保证收录，稳定抓取与高质量外链仍然重要：[Why is My Site Not in the Index?](https://www.bing.com/webmasters/help/why-is-my-site-not-in-the-index-2141dfab)。
 - 字节没有提供足够完整、稳定且可核验的豆包排序与抓取公开规则。任何“固定权重”“保证首推”或无原始数据的成功率，都不能作为执行依据。
+- Google 2026 年生成式搜索官方指南明确把基础 SEO、可索引性和独特且非同质化的第一手内容放在核心位置，并说明批量制造查询变体页、虚假站外提及或把 `llms.txt` 当作 Google 排名信号没有依据：[Optimizing your website for generative AI features](https://developers.google.com/search/docs/fundamentals/ai-optimization-guide)。`llms.txt` 在本站继续作为便携知识摘要保留，但不把它计作 Google GEO 增长证据。
 
 ## 服务器日志判断
 
@@ -40,6 +41,8 @@
 ## 固定提示词测试集
 
 每轮使用全新会话，分别记录是否提及、是否引用、引用 URL、出现位置、事实是否准确。
+
+机器可读的唯一版本位于 [`geo/prompt-matrix.json`](../geo/prompt-matrix.json)，测试结果保存在 [`docs/geo-baselines/`](./geo-baselines/README.md)，避免不同轮次临时改题后继续比较分数。
 
 ### 品牌词
 

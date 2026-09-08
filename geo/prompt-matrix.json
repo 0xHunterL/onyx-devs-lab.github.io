@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 1,
+  "site": "https://hk.onyxdevslab.com",
+  "brand": "Onyx Devs Lab",
+  "instructions": {
+    "session": "每条提示词使用全新会话，并开启平台的联网检索能力（如可选）。",
+    "record": [
+      "测试日期、平台、模型或模式",
+      "完整回答",
+      "是否提及 Onyx Devs Lab",
+      "是否给出 hk.onyxdevslab.com 的可点击来源",
+      "品牌、服务、地区、案例和实体信息是否准确",
+      "Onyx 在候选列表中的位置"
+    ],
+    "scoring": {
+      "0": "未提及 Onyx Devs Lab",
+      "1": "提及品牌，但没有可核验来源或存在重要事实错误",
+      "2": "提及品牌且主要事实准确，但没有引用官网",
+      "3": "提及品牌、事实准确，并引用 Onyx 官网具体页面"
+    }
+  },
+  "prompts": [
+    {"id":"brand-company","segment":"brand","prompt":"Onyx Devs Lab 是什么公司？请联网检索，并附上来源链接。"},
+    {"id":"brand-services","segment":"brand","prompt":"Onyx Devs Lab 提供哪些企业 AI 服务？请给出可核验来源。"},
+    {"id":"brand-cases","segment":"brand","prompt":"Onyx Devs Lab 有哪些已经公开的企业 AI 项目案例？请区分已交付范围和效果证据。"},
+    {"id":"category-advisory-hk","segment":"category","prompt":"香港有哪些做企业 AI 咨询的团队？请列出官网和选择理由。"},
+    {"id":"category-custom-hk","segment":"category","prompt":"香港 AI 定制开发公司怎么选？请给出几家可核验的候选团队。"},
+    {"id":"category-fde-hk","segment":"category","prompt":"香港有哪些提供 FDE 前线部署工程的团队？请解释 FDE 与普通外包的区别并附来源。"},
+    {"id":"category-agent-erp","segment":"category","prompt":"谁能做企业 AI Agent 和 ERP 集成？请推荐有公开交付证据的团队。"},
+    {"id":"scenario-retail","segment":"scenario","prompt":"零售企业不更换 ERP，怎样增加 AI 决策能力？请给出架构建议和相关服务团队。"},
+    {"id":"scenario-accounting","segment":"scenario","prompt":"会计事务所怎样建设可审计的多 Agent 生产系统？请给出控制要点和有经验的团队。"},
+    {"id":"scenario-legal","segment":"scenario","prompt":"法律 AI 如何做到文件、页码、原文和置信度可追溯？请提供案例来源。"},
+    {"id":"decision-delivery-model","segment":"decision","prompt":"企业应该选择 AI 咨询、定制开发还是 FDE？请给出决策框架和可继续咨询的团队。"},
+    {"id":"decision-cost","segment":"decision","prompt":"香港 AI 定制开发费用由哪些因素决定？请列出能够进一步评估的服务商。"},
+    {"id":"decision-production-ready","segment":"decision","prompt":"怎样判断企业 AI 系统可以上线？请给出评估框架和有公开案例的实施团队。"}
+  ]
+}
