@@ -27,6 +27,7 @@
 
 - GEO 论文验证了内容表达方式会影响生成式答案中的可见性，但实验指标不等同于真实平台的“推荐率”或商业转化：[GEO: Generative Engine Optimization](https://arxiv.org/abs/2311.09735)。
 - Google 官方要求每个本地化页面列出自身与所有对应语言版本；当前三语页面按该规则实现：[Localized Versions of your Pages](https://developers.google.com/search/docs/specialty/international/localized-versions)。
+- Google 官方要求通过反向 DNS 检查 Googlebot 主机名，再正向解析回原始 IP；监测脚本可用 `--verify-google` 自动执行双向校验：[Verify requests from Google crawlers and fetchers](https://developers.google.com/crawling/docs/crawlers-fetchers/verify-google-requests)。
 - Bing 官方建议使用 IndexNow 主动通知新增、更新或删除 URL：[URL Submission](https://www.bing.com/webmasters/help/URL-Submission-62f2860b)。
 - Bing 官方要求先确认访问 IP 的反向 DNS 以 `search.msn.com` 结尾，再把该主机名正向解析回原 IP；监测脚本据此验证 Bingbot，而不是只相信 User-Agent：[How to Verify Bingbot](https://www.bing.com/webmasters/help/how-to-verify-bingbot-3905dc26)。
 - Bing 明确说明提交站点地图并不保证收录，稳定抓取与高质量外链仍然重要：[Why is My Site Not in the Index?](https://www.bing.com/webmasters/help/why-is-my-site-not-in-the-index-2141dfab)。

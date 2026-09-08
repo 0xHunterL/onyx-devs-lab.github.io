@@ -64,7 +64,7 @@ npm run geo:prompt-coverage
 npm run geo:check-live -- https://hk.onyxdevslab.com
 npm run geo:schema-validate-live -- https://hk.onyxdevslab.com
 npm run geo:submit-indexnow
-npm run geo:crawler-report -- --since=2026-09-01 --verify-openai --verify-bing /var/log/nginx/hk.onyxdevslab.com.geo.log
+npm run geo:crawler-report -- --since=2026-09-01 --verify-openai --verify-bing --verify-google /var/log/nginx/hk.onyxdevslab.com.geo.log
 npm run geo:referral-report -- --since=2026-09-01 /var/log/nginx/hk.onyxdevslab.com.geo.log
 ```
 

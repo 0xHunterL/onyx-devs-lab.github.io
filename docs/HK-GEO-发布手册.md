@@ -42,7 +42,7 @@ npm run geo:submit-indexnow
 nginx -t
 npm run geo:check-live -- https://hk.onyxdevslab.com
 npm run geo:schema-validate-live -- https://hk.onyxdevslab.com
-npm run geo:crawler-report -- --since=2026-09-01 --verify-openai --verify-bing /var/log/nginx/hk.onyxdevslab.com.geo.log
+npm run geo:crawler-report -- --since=2026-09-01 --verify-openai --verify-bing --verify-google /var/log/nginx/hk.onyxdevslab.com.geo.log
 ```
 
 预期输出：`checkedPages` 不少于 50，页面、提示词覆盖和 Schema.org 在线验证的 `failures` 均为空数组；简体核心页同时通过带自测标记的 Bytespider User-Agent 模拟抓取。在线 Schema 检查默认覆盖首页、服务、指南、案例与团队五种模板。
@@ -58,7 +58,7 @@ curl -sS https://hk.onyxdevslab.com/en/forward-deployed-engineering/ | grep '<h1
 
 前三个文件不能回退成 SPA 首页；内容类型应分别为纯文本、XML、纯文本。
 
-`deploy/nginx-geo-log.conf` 定义独立的 JSON 访问日志格式，保留 Cloudflare 传入的原始客户端 IP；`deploy/nginx-hk.conf` 把该站点写入独立日志。报告工具会把带 `Onyx-GEO-Release-Check` 的发布自测排除，并可按 OpenAI 官方公布的 IP 段验证 GPTBot 与 OAI-SearchBot；Bingbot 则按 Bing 官方流程执行反向 DNS 与正向 DNS 双重验证。其他平台在没有公开稳定 IP 规则时仍只记为候选抓取。
+`deploy/nginx-geo-log.conf` 定义独立的 JSON 访问日志格式，保留 Cloudflare 传入的原始客户端 IP；`deploy/nginx-hk.conf` 把该站点写入独立日志。报告工具会把带 `Onyx-GEO-Release-Check` 的发布自测排除，并可按 OpenAI 官方公布的 IP 段验证 GPTBot 与 OAI-SearchBot；Bingbot 和 Googlebot 则分别按官方流程执行反向 DNS 与正向 DNS 双重验证。其他平台在没有公开稳定 IP 规则时仍只记为候选抓取。
 
 ## 回滚原则
 

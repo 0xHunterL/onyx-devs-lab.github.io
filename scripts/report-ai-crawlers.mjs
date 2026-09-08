@@ -110,18 +110,18 @@ function normalizeIp(ip) {
   return ip.toLowerCase().replace(/^::ffff:/, '');
 }
 
-async function verifyBingIp(ip) {
+async function verifyDnsIp(ip, allowedSuffixes) {
   try {
     const hostnames = await reverse(ip);
-    const bingHostnames = hostnames
+    const providerHostnames = hostnames
       .map((hostname) => hostname.toLowerCase().replace(/\.$/, ''))
-      .filter((hostname) => hostname.endsWith('.search.msn.com'));
-    if (!bingHostnames.length) {
-      return { verified: false, hostnames, reason: 'reverse-dns-not-search.msn.com' };
+      .filter((hostname) => allowedSuffixes.some((suffix) => hostname.endsWith(suffix)));
+    if (!providerHostnames.length) {
+      return { verified: false, hostnames, reason: 'reverse-dns-provider-domain-mismatch' };
     }
 
     const forwardResults = await Promise.all(
-      bingHostnames.map(async (hostname) => ({
+      providerHostnames.map(async (hostname) => ({
         hostname,
         addresses: (await lookup(hostname, { all: true, verbatim: true })).map((result) => result.address),
       })),
@@ -132,7 +132,7 @@ async function verifyBingIp(ip) {
     );
     return {
       verified,
-      hostnames: bingHostnames,
+      hostnames: providerHostnames,
       forwardAddresses: [...new Set(forwardResults.flatMap((result) => result.addresses))],
       reason: verified ? 'forward-confirmed-original-ip' : 'forward-dns-did-not-return-original-ip',
     };
@@ -150,14 +150,16 @@ const args = process.argv.slice(2);
 const sinceArg = args.find((arg) => arg.startsWith('--since='));
 const verifyOpenAi = args.includes('--verify-openai');
 const verifyBing = args.includes('--verify-bing');
+const verifyGoogle = args.includes('--verify-google');
 const since = sinceArg ? Date.parse(`${sinceArg.slice('--since='.length)}T00:00:00Z`) : null;
 if (sinceArg && Number.isNaN(since)) {
   console.error('Invalid --since date. Use --since=YYYY-MM-DD.');
   process.exit(2);
 }
-const paths = args.filter((arg) => !arg.startsWith('--since=') && !['--verify-openai', '--verify-bing'].includes(arg));
+const verificationFlags = ['--verify-openai', '--verify-bing', '--verify-google'];
+const paths = args.filter((arg) => !arg.startsWith('--since=') && !verificationFlags.includes(arg));
 if (!paths.length) {
-  console.error('Usage: npm run geo:crawler-report -- [--since=YYYY-MM-DD] [--verify-openai] [--verify-bing] /var/log/nginx/access.log [/var/log/nginx/access.log.1.gz ...]');
+  console.error('Usage: npm run geo:crawler-report -- [--since=YYYY-MM-DD] [--verify-openai] [--verify-bing] [--verify-google] /var/log/nginx/access.log [/var/log/nginx/access.log.1.gz ...]');
   process.exit(2);
 }
 
@@ -192,11 +194,24 @@ if (verifyOpenAi) {
 if (verifyBing) {
   const bingIps = [...new Set(events.filter((event) => event.family === 'Bingbot').map((event) => event.ip))];
   const bingVerifications = new Map(
-    await Promise.all(bingIps.map(async (ip) => [ip, await verifyBingIp(ip)])),
+    await Promise.all(bingIps.map(async (ip) => [ip, await verifyDnsIp(ip, ['.search.msn.com'])])),
   );
   for (const event of events) {
     if (event.family !== 'Bingbot') continue;
     const verification = bingVerifications.get(event.ip);
+    event.providerVerified = verification.verified;
+    event.providerVerification = { method: 'reverse-and-forward-dns', ...verification };
+  }
+}
+
+if (verifyGoogle) {
+  const googleIps = [...new Set(events.filter((event) => event.family === 'Googlebot').map((event) => event.ip))];
+  const googleVerifications = new Map(
+    await Promise.all(googleIps.map(async (ip) => [ip, await verifyDnsIp(ip, ['.googlebot.com'])])),
+  );
+  for (const event of events) {
+    if (event.family !== 'Googlebot') continue;
+    const verification = googleVerifications.get(event.ip);
     event.providerVerified = verification.verified;
     event.providerVerification = { method: 'reverse-and-forward-dns', ...verification };
   }
@@ -218,6 +233,7 @@ const verifiedOpenAiPages = pageCandidates.filter(
   (event) => ['GPTBot', 'OAI-SearchBot'].includes(event.family) && event.providerVerified === true,
 );
 const verifiedBingPages = pageCandidates.filter((event) => event.family === 'Bingbot' && event.providerVerified === true);
+const verifiedGooglePages = pageCandidates.filter((event) => event.family === 'Googlebot' && event.providerVerified === true);
 
 console.log(JSON.stringify({
   generatedAt: new Date().toISOString(),
@@ -226,6 +242,7 @@ console.log(JSON.stringify({
   since: sinceArg ? sinceArg.slice('--since='.length) : null,
   verifyOpenAi,
   verifyBing,
+  verifyGoogle,
   totals: {
     candidateCrawlerRequests: events.length,
     candidatePageCrawls: pageCandidates.length,
@@ -234,6 +251,7 @@ console.log(JSON.stringify({
     syntheticReleaseChecks: syntheticChecks.length,
     verifiedOpenAiPageCrawls: verifiedOpenAiPages.length,
     verifiedBingPageCrawls: verifiedBingPages.length,
+    verifiedGooglePageCrawls: verifiedGooglePages.length,
     unparsableLines,
   },
   byFamily,
@@ -242,5 +260,6 @@ console.log(JSON.stringify({
   recentCandidateDiscoveryFileCrawls: discoveryCandidates.slice(-30),
   recentVerifiedOpenAiPageCrawls: verifiedOpenAiPages.slice(-50),
   recentVerifiedBingPageCrawls: verifiedBingPages.slice(-50),
+  recentVerifiedGooglePageCrawls: verifiedGooglePages.slice(-50),
   recentSuspiciousRequests: suspiciousCandidates.slice(-20),
 }, null, 2));
