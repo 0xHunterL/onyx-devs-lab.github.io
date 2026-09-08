@@ -41,10 +41,11 @@ npm run geo:submit-indexnow
 ```bash
 nginx -t
 npm run geo:check-live -- https://hk.onyxdevslab.com
+npm run geo:schema-validate-live -- https://hk.onyxdevslab.com
 npm run geo:crawler-report -- --since=2026-09-01 --verify-openai --verify-bing /var/log/nginx/hk.onyxdevslab.com.geo.log
 ```
 
-预期输出：`checkedPages` 不少于 50，页面和提示词覆盖检查的 `failures` 均为空数组；简体核心页同时通过带自测标记的 Bytespider User-Agent 模拟抓取。
+预期输出：`checkedPages` 不少于 50，页面、提示词覆盖和 Schema.org 在线验证的 `failures` 均为空数组；简体核心页同时通过带自测标记的 Bytespider User-Agent 模拟抓取。在线 Schema 检查默认覆盖首页、服务、指南、案例与团队五种模板。
 
 另外人工确认：
 

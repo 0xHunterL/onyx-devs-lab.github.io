@@ -10,6 +10,7 @@
     "geo:check": "node scripts/check-geo.mjs",
     "geo:prompt-coverage": "node scripts/check-prompt-coverage.mjs",
     "geo:check-live": "node scripts/check-live-geo.mjs",
+    "geo:schema-validate-live": "node scripts/validate-schema-live.mjs",
     "geo:crawler-report": "node scripts/report-ai-crawlers.mjs",
     "geo:referral-report": "node scripts/report-geo-referrals.mjs",
     "geo:submit-indexnow": "node scripts/submit-indexnow.mjs",
