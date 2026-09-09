@@ -86,8 +86,18 @@ for (const file of htmlFiles.filter((candidate) => candidate.includes(`${path.se
   }
 }
 
-for (const file of ['robots.txt', 'sitemap.xml', 'feed.xml', 'llms.txt', 'llms-full.txt', '.nojekyll']) {
+for (const file of ['robots.txt', 'sitemap.xml', 'feed.xml', 'llms.txt', 'llms-full.txt', 'data/case-study-evidence.json', '.nojekyll']) {
   if (!fs.existsSync(path.join(dist, file))) failures.push(`missing ${file}`);
+}
+
+try {
+  const evidence = JSON.parse(fs.readFileSync(path.join(dist, 'data/case-study-evidence.json'), 'utf8'));
+  if (evidence.schemaVersion !== 1) failures.push('case-study evidence: unexpected schema version');
+  if (evidence.cases?.length !== 6) failures.push(`case-study evidence: expected 6 cases, got ${evidence.cases?.length ?? 0}`);
+  if (!evidence.cases?.every((item) => item.sourceUrl && item.evidenceBoundary && item.metrics?.length)) failures.push('case-study evidence: incomplete case entry');
+  if (!evidence.limitations?.includes('Not independently audited')) failures.push('case-study evidence: independent-audit limitation is missing');
+} catch {
+  failures.push('case-study evidence: invalid JSON');
 }
 
 const sitemap = fs.readFileSync(path.join(dist, 'sitemap.xml'), 'utf8');

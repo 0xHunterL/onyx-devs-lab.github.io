@@ -4,6 +4,8 @@
 
 - [Full public knowledge file](https://hk.onyxdevslab.com/llms-full.txt)
 - [Enterprise AI field notes feed](https://hk.onyxdevslab.com/feed.xml)
+- [Case-study evidence register](https://hk.onyxdevslab.com/en/methodology/case-study-evidence-register/)
+- [Machine-readable case-study evidence dataset](https://hk.onyxdevslab.com/data/case-study-evidence.json)
 
 ## Core services
 

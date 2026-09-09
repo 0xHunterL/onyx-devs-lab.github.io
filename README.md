@@ -19,6 +19,8 @@ We work in three delivery modes:
 
 Each case separates delivered scope, validation metrics, measurement definitions, and evidence limits. AI is not presented as replacing lawyers, analysts, recruiters, accountants, or safety-authorised industrial operators.
 
+The [case-study evidence register](https://hk.onyxdevslab.com/en/methodology/case-study-evidence-register/) and its [machine-readable JSON dataset](https://hk.onyxdevslab.com/data/case-study-evidence.json) publish the values, definitions, canonical source pages, and limitations together. They are anonymised first-party project validation snapshots, not independent audits or universal performance benchmarks.
+
 ## Languages and machine-readable resources
 
 - [English](https://hk.onyxdevslab.com/en/)

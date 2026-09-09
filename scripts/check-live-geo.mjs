@@ -36,12 +36,22 @@ if (!llmsFull.body.includes('Legal entity: ONYX DEVS LAB LIMITED')) failures.pus
 const feed = await get('/feed.xml', 'xml');
 if (!feed.body.includes('<feed xmlns="http://www.w3.org/2005/Atom">')) failures.push('/feed.xml: Atom feed root is missing');
 
+const evidenceDatasetResponse = await get('/data/case-study-evidence.json', 'application/json');
+try {
+  const evidenceDataset = JSON.parse(evidenceDatasetResponse.body);
+  if (evidenceDataset.schemaVersion !== 1) failures.push('/data/case-study-evidence.json: unexpected schema version');
+  if (evidenceDataset.cases?.length !== 6) failures.push(`/data/case-study-evidence.json: expected 6 cases, got ${evidenceDataset.cases?.length ?? 0}`);
+  if (!evidenceDataset.limitations?.includes('Not independently audited')) failures.push('/data/case-study-evidence.json: evidence limitation is missing');
+} catch {
+  failures.push('/data/case-study-evidence.json: invalid JSON');
+}
+
 const indexNowKey = await get('/9c37a18bd2044e1687f45c2e91ad603b.txt', 'text/plain');
 if (indexNowKey.body.trim() !== '9c37a18bd2044e1687f45c2e91ad603b') failures.push('/9c37a18bd2044e1687f45c2e91ad603b.txt: IndexNow key does not match');
 
 const sitemap = await get('/sitemap.xml', 'xml');
 const urls = [...sitemap.body.matchAll(/<loc>([^<]+)<\/loc>/g)].map((match) => match[1]);
-if (urls.length < 50) failures.push(`/sitemap.xml: expected at least 50 URLs, got ${urls.length}`);
+if (urls.length < 53) failures.push(`/sitemap.xml: expected at least 53 URLs, got ${urls.length}`);
 if (new Set(urls).size !== urls.length) failures.push('/sitemap.xml: duplicate canonical URLs detected');
 for (const url of urls) {
   if (!url.startsWith(`${canonicalOrigin}/`)) failures.push(`/sitemap.xml: non-canonical origin: ${url}`);
@@ -70,6 +80,9 @@ const requiredPaths = [
   '/en/methodology/ai-search-verification/',
   '/zh-hk/methodology/ai-search-verification/',
   '/zh-cn/methodology/ai-search-verification/',
+  '/en/methodology/case-study-evidence-register/',
+  '/zh-hk/methodology/case-study-evidence-register/',
+  '/zh-cn/methodology/case-study-evidence-register/',
   '/zh-cn/case-studies/retail-ai-decision-platform/',
   '/zh-cn/case-studies/accounting-ai-production-platform/',
   '/en/case-studies/legal-ai-evidence-workflow/',
