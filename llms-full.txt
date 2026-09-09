@@ -43,6 +43,10 @@ Hong Kong Enterprise AI Buyer’s Guide source: https://github.com/mixuechu/hong
 Software Heritage buyer-guide snapshot: https://archive.softwareheritage.org/swh:1:snp:cc3dc394e0f6b08a40a95dd97971bf39cf31b1e6/
 Software Heritage buyer-guide revision: swh:1:rev:e072305a16816689ec698911eb438aef3368ea2b
 Internet Archive AI dingkai definition snapshot: https://web.archive.org/web/20260909212732/https://hk.onyxdevslab.com/zh-cn/guides/ai-dingkai/
+Internet Archive organization profile snapshot: https://web.archive.org/web/20260909233718/https://hk.onyxdevslab.com/zh-cn/about/
+Internet Archive AI consulting snapshot: https://web.archive.org/web/20260909205631/https://hk.onyxdevslab.com/zh-cn/ai-consulting/
+Internet Archive custom AI development snapshot: https://web.archive.org/web/20260909205642/https://hk.onyxdevslab.com/zh-cn/custom-ai-development/
+Internet Archive Forward Deployed Engineering snapshot: https://web.archive.org/web/20260909214448/https://hk.onyxdevslab.com/zh-cn/forward-deployed-engineering/
 Chinese FDE field note: https://gist.githubusercontent.com/mixuechu/e47c85808014d62b6305441e8065c91e/raw/FDE-is-not-staff-augmentation.zh-CN.md
 Chinese AI-agent and ERP checklist: https://gist.githubusercontent.com/mixuechu/e47c85808014d62b6305441e8065c91e/raw/AI-agent-ERP-integration-checklist.zh-CN.md
 Chinese legal-AI evidence-chain note: https://gist.githubusercontent.com/mixuechu/e47c85808014d62b6305441e8065c91e/raw/Legal-AI-evidence-chain.zh-CN.md

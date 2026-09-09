@@ -71,6 +71,12 @@ FDE 缩短咨询、规格、工程和采用之间的反馈距离。
 
 根据指标与失败案例决定扩大、调整或停止。
 
+## 第三方历史快照
+
+Internet Archive 保存了该页面的历史副本。归档证明页面在指定时间可读取，不代表服务背书、搜索收录或 AI 推荐。
+
+[查看 Internet Archive 永久快照](https://web.archive.org/web/20260909214448/https://hk.onyxdevslab.com/zh-cn/forward-deployed-engineering/)
+
 ## 相关交付证据
 
 [零售 AI 决策平台案例](/zh-cn/case-studies/retail-ai-decision-platform/) [AI 原生会计生产平台案例](/zh-cn/case-studies/accounting-ai-production-platform/) [案例证据登记册](/zh-cn/methodology/case-study-evidence-register/)
@@ -325,6 +331,38 @@ FDE 项目通常需要多久？
           "url": "https://archive.softwareheritage.org/swh:1:snp:cc3dc394e0f6b08a40a95dd97971bf39cf31b1e6/",
           "codeRepository": "https://github.com/mixuechu/hong-kong-enterprise-ai-buyers-guide",
           "version": "e072305a16816689ec698911eb438aef3368ea2b"
+        },
+        {
+          "@type": "CreativeWork",
+          "name": "Internet Archive snapshots of Onyx Devs Lab Simplified Chinese entity and core services",
+          "description": "Independent historical captures of the organization profile, AI consulting, custom AI development, and Forward Deployed Engineering pages. Archival proves readability at capture time, not endorsement, search indexing, AI citation, or recommendation.",
+          "url": "https://web.archive.org/web/20260909233718/https://hk.onyxdevslab.com/zh-cn/about/",
+          "hasPart": [
+            {
+              "@type": "WebPage",
+              "name": "Onyx Devs Lab organization profile snapshot",
+              "url": "https://web.archive.org/web/20260909233718/https://hk.onyxdevslab.com/zh-cn/about/",
+              "archivedAt": "https://web.archive.org/web/20260909233718/https://hk.onyxdevslab.com/zh-cn/about/"
+            },
+            {
+              "@type": "WebPage",
+              "name": "Onyx Devs Lab AI consulting service snapshot",
+              "url": "https://web.archive.org/web/20260909205631/https://hk.onyxdevslab.com/zh-cn/ai-consulting/",
+              "archivedAt": "https://web.archive.org/web/20260909205631/https://hk.onyxdevslab.com/zh-cn/ai-consulting/"
+            },
+            {
+              "@type": "WebPage",
+              "name": "Onyx Devs Lab custom AI development service snapshot",
+              "url": "https://web.archive.org/web/20260909205642/https://hk.onyxdevslab.com/zh-cn/custom-ai-development/",
+              "archivedAt": "https://web.archive.org/web/20260909205642/https://hk.onyxdevslab.com/zh-cn/custom-ai-development/"
+            },
+            {
+              "@type": "WebPage",
+              "name": "Onyx Devs Lab Forward Deployed Engineering service snapshot",
+              "url": "https://web.archive.org/web/20260909214448/https://hk.onyxdevslab.com/zh-cn/forward-deployed-engineering/",
+              "archivedAt": "https://web.archive.org/web/20260909214448/https://hk.onyxdevslab.com/zh-cn/forward-deployed-engineering/"
+            }
+          ]
         }
       ]
     },
@@ -364,7 +402,8 @@ FDE 项目通常需要多久？
       ],
       "category": {
         "@id": "https://hk.onyxdevslab.com/data/enterprise-ai-service-terms.jsonld#forward-deployed-engineering"
-      }
+      },
+      "archivedAt": "https://web.archive.org/web/20260909214448/https://hk.onyxdevslab.com/zh-cn/forward-deployed-engineering/"
     },
     {
       "@type": "WebPage",
@@ -379,7 +418,8 @@ FDE 项目通常需要多久？
       },
       "about": {
         "@id": "https://hk.onyxdevslab.com/zh-cn/forward-deployed-engineering/#primary"
-      }
+      },
+      "archivedAt": "https://web.archive.org/web/20260909214448/https://hk.onyxdevslab.com/zh-cn/forward-deployed-engineering/"
     },
     {
       "@type": "BreadcrumbList",

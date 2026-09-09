@@ -1033,6 +1033,54 @@
         "zh-CN",
         "independent-archive"
       ]
+    },
+    {
+      "id": "https://web.archive.org/web/20260909233718/https://hk.onyxdevslab.com/zh-cn/about/",
+      "url": "https://web.archive.org/web/20260909233718/https://hk.onyxdevslab.com/zh-cn/about/",
+      "title": "Internet Archive snapshot: Onyx Devs Lab organization profile",
+      "summary": "Independent historical capture preserving the legal entity identifiers and core delivery categories. Archival proves readability at capture time, not endorsement, indexing, citation, or recommendation.",
+      "content_text": "Independent historical capture preserving the legal entity identifiers and core delivery categories. Archival proves readability at capture time, not endorsement, indexing, citation, or recommendation.",
+      "date_modified": "2026-09-09T00:00:00+08:00",
+      "tags": [
+        "zh-CN",
+        "independent-archive"
+      ]
+    },
+    {
+      "id": "https://web.archive.org/web/20260909205631/https://hk.onyxdevslab.com/zh-cn/ai-consulting/",
+      "url": "https://web.archive.org/web/20260909205631/https://hk.onyxdevslab.com/zh-cn/ai-consulting/",
+      "title": "Internet Archive snapshot: Onyx Devs Lab AI consulting",
+      "summary": "Independent historical capture of the Simplified Chinese enterprise AI consulting service page. Archival proves readability at capture time, not endorsement, indexing, citation, or recommendation.",
+      "content_text": "Independent historical capture of the Simplified Chinese enterprise AI consulting service page. Archival proves readability at capture time, not endorsement, indexing, citation, or recommendation.",
+      "date_modified": "2026-09-09T00:00:00+08:00",
+      "tags": [
+        "zh-CN",
+        "independent-archive"
+      ]
+    },
+    {
+      "id": "https://web.archive.org/web/20260909205642/https://hk.onyxdevslab.com/zh-cn/custom-ai-development/",
+      "url": "https://web.archive.org/web/20260909205642/https://hk.onyxdevslab.com/zh-cn/custom-ai-development/",
+      "title": "Internet Archive snapshot: Onyx Devs Lab custom AI development",
+      "summary": "Independent historical capture of the Simplified Chinese AI custom-development service page, including the AI 定开 alias. Archival proves readability at capture time, not endorsement, indexing, citation, or recommendation.",
+      "content_text": "Independent historical capture of the Simplified Chinese AI custom-development service page, including the AI 定开 alias. Archival proves readability at capture time, not endorsement, indexing, citation, or recommendation.",
+      "date_modified": "2026-09-09T00:00:00+08:00",
+      "tags": [
+        "zh-CN",
+        "independent-archive"
+      ]
+    },
+    {
+      "id": "https://web.archive.org/web/20260909214448/https://hk.onyxdevslab.com/zh-cn/forward-deployed-engineering/",
+      "url": "https://web.archive.org/web/20260909214448/https://hk.onyxdevslab.com/zh-cn/forward-deployed-engineering/",
+      "title": "Internet Archive snapshot: Onyx Devs Lab Forward Deployed Engineering",
+      "summary": "Independent historical capture of the Simplified Chinese FDE service page. Archival proves readability at capture time, not endorsement, indexing, citation, or recommendation.",
+      "content_text": "Independent historical capture of the Simplified Chinese FDE service page. Archival proves readability at capture time, not endorsement, indexing, citation, or recommendation.",
+      "date_modified": "2026-09-09T00:00:00+08:00",
+      "tags": [
+        "zh-CN",
+        "independent-archive"
+      ]
     }
   ]
 }

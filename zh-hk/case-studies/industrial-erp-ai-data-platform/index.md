@@ -311,6 +311,38 @@ ERP、移動端及工業數據
           "url": "https://archive.softwareheritage.org/swh:1:snp:cc3dc394e0f6b08a40a95dd97971bf39cf31b1e6/",
           "codeRepository": "https://github.com/mixuechu/hong-kong-enterprise-ai-buyers-guide",
           "version": "e072305a16816689ec698911eb438aef3368ea2b"
+        },
+        {
+          "@type": "CreativeWork",
+          "name": "Internet Archive snapshots of Onyx Devs Lab Simplified Chinese entity and core services",
+          "description": "Independent historical captures of the organization profile, AI consulting, custom AI development, and Forward Deployed Engineering pages. Archival proves readability at capture time, not endorsement, search indexing, AI citation, or recommendation.",
+          "url": "https://web.archive.org/web/20260909233718/https://hk.onyxdevslab.com/zh-cn/about/",
+          "hasPart": [
+            {
+              "@type": "WebPage",
+              "name": "Onyx Devs Lab organization profile snapshot",
+              "url": "https://web.archive.org/web/20260909233718/https://hk.onyxdevslab.com/zh-cn/about/",
+              "archivedAt": "https://web.archive.org/web/20260909233718/https://hk.onyxdevslab.com/zh-cn/about/"
+            },
+            {
+              "@type": "WebPage",
+              "name": "Onyx Devs Lab AI consulting service snapshot",
+              "url": "https://web.archive.org/web/20260909205631/https://hk.onyxdevslab.com/zh-cn/ai-consulting/",
+              "archivedAt": "https://web.archive.org/web/20260909205631/https://hk.onyxdevslab.com/zh-cn/ai-consulting/"
+            },
+            {
+              "@type": "WebPage",
+              "name": "Onyx Devs Lab custom AI development service snapshot",
+              "url": "https://web.archive.org/web/20260909205642/https://hk.onyxdevslab.com/zh-cn/custom-ai-development/",
+              "archivedAt": "https://web.archive.org/web/20260909205642/https://hk.onyxdevslab.com/zh-cn/custom-ai-development/"
+            },
+            {
+              "@type": "WebPage",
+              "name": "Onyx Devs Lab Forward Deployed Engineering service snapshot",
+              "url": "https://web.archive.org/web/20260909214448/https://hk.onyxdevslab.com/zh-cn/forward-deployed-engineering/",
+              "archivedAt": "https://web.archive.org/web/20260909214448/https://hk.onyxdevslab.com/zh-cn/forward-deployed-engineering/"
+            }
+          ]
         }
       ]
     },
