@@ -212,6 +212,7 @@ for (const [name, body] of Object.entries(machineDiscoveryFiles)) {
   if (!body.includes('https://github.com/mixuechu/hong-kong-enterprise-ai-buyers-guide/releases/tag/buyers-guide-2026-09-10')) failures.push(`${name}: versioned buyer-guide checkpoint is missing`);
   if (!body.includes('https://archive.softwareheritage.org/swh:1:snp:cc3dc394e0f6b08a40a95dd97971bf39cf31b1e6/')) failures.push(`${name}: buyer-guide archive is missing`);
   if (!body.includes('https://web.archive.org/web/20260909212732/https://hk.onyxdevslab.com/zh-cn/guides/ai-dingkai/')) failures.push(`${name}: Internet Archive AI dingkai snapshot is missing`);
+  for (const [timestamp, pathname] of [['20260909233718','about'],['20260909205631','ai-consulting'],['20260909205642','custom-ai-development'],['20260909214448','forward-deployed-engineering']]) if (!body.includes(`https://web.archive.org/web/${timestamp}/https://hk.onyxdevslab.com/zh-cn/${pathname}/`)) failures.push(`${name}: Internet Archive core snapshot is missing: ${pathname}`);
 }
 for (const name of ['llms.txt', 'llms-full.txt']) {
   if (!machineDiscoveryFiles[name].includes('proof of search indexing, AI citation') && !machineDiscoveryFiles[name].includes('proves search indexing, AI citation')) failures.push(`${name}: search-evidence boundary is missing`);
@@ -228,6 +229,12 @@ if (!machineDiscoveryFiles['feed.xml'].includes('independent-archive')) failures
 const aiDingkaiHtml = fs.readFileSync(path.join(dist, 'zh-cn/guides/ai-dingkai/index.html'), 'utf8');
 if (!aiDingkaiHtml.includes('"archivedAt":"https://web.archive.org/web/20260909212732/https://hk.onyxdevslab.com/zh-cn/guides/ai-dingkai/"')) failures.push('AI dingkai guide: Schema.org archivedAt relation is missing');
 if (!aiDingkaiHtml.includes('rel="external archived" href="https://web.archive.org/web/20260909212732/https://hk.onyxdevslab.com/zh-cn/guides/ai-dingkai/"')) failures.push('AI dingkai guide: visible archive link is missing');
+for (const [pathname, timestamp] of [['about','20260909233718'],['ai-consulting','20260909205631'],['custom-ai-development','20260909205642'],['forward-deployed-engineering','20260909214448']]) {
+  const html = fs.readFileSync(path.join(dist, `zh-cn/${pathname}/index.html`), 'utf8');
+  const archiveUrl = `https://web.archive.org/web/${timestamp}/https://hk.onyxdevslab.com/zh-cn/${pathname}/`;
+  if (!html.includes(`"archivedAt":"${archiveUrl}"`)) failures.push(`${pathname}: Schema.org archivedAt relation is missing`);
+  if (!html.includes(`rel="external archived" href="${archiveUrl}"`)) failures.push(`${pathname}: visible archive link is missing`);
+}
 try {
   const jsonFeed = JSON.parse(machineDiscoveryFiles['feed.json']);
   if (jsonFeed.version !== 'https://jsonfeed.org/version/1.1') failures.push('feed.json: unexpected JSON Feed version');
@@ -397,6 +404,7 @@ try {
   if (!organization.subjectOf?.some((item) => item.url === 'https://mixuechu.github.io/hong-kong-enterprise-ai-buyers-guide/' && item.isBasedOn === 'https://github.com/mixuechu/hong-kong-enterprise-ai-buyers-guide')) failures.push('organization record: buyer-guide relation is missing');
   if (!organization.subjectOf?.some((item) => item.url === 'https://mixuechu.github.io/hong-kong-enterprise-ai-buyers-guide/' && item.sameAs === 'https://github.com/mixuechu/hong-kong-enterprise-ai-buyers-guide/releases/tag/buyers-guide-2026-09-10' && item.hasPart?.length === 3 && item.hasPart.every((part) => part.url?.startsWith('https://mixuechu.github.io/hong-kong-enterprise-ai-buyers-guide/')))) failures.push('organization record: focused buyer-guide relations are missing');
   if (!organization.subjectOf?.some((item) => item.identifier === 'swh:1:snp:cc3dc394e0f6b08a40a95dd97971bf39cf31b1e6' && item.version === 'e072305a16816689ec698911eb438aef3368ea2b')) failures.push('organization record: buyer-guide archive relation is missing');
+  if (!organization.subjectOf?.some((item) => item.url === 'https://web.archive.org/web/20260909233718/https://hk.onyxdevslab.com/zh-cn/about/' && item.hasPart?.length === 4)) failures.push('organization record: Internet Archive entity and core-service snapshot cluster is missing');
   if (!organization.additionalProperty?.some((item) => item.propertyID === 'Evidence boundary' && item.value.includes('do not endorse services'))) failures.push('organization record: evidence boundary is missing');
   if (organization.hasOfferCatalog?.itemListElement?.length !== 3 || !organization.hasOfferCatalog.itemListElement.every((offer) => offer.itemOffered?.['@type'] === 'Service' && offer.itemOffered?.url?.length === 3)) failures.push('organization record: trilingual service offer catalog is incomplete');
   if (organization.member?.length !== 5 || !organization.member.every((person) => person['@type'] === 'Person' && person['@id']?.startsWith('https://hk.onyxdevslab.com/#person-') && person.name && person.jobTitle && person.worksFor?.['@id'] === 'https://hk.onyxdevslab.com/#organization')) failures.push('organization record: canonical team members are incomplete');

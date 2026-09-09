@@ -58,6 +58,17 @@ requireText('Internet Archive AI dingkai snapshot', waybackAiDingkai, [
   '254900Z30CLK7HKE9H46',
   'FDE',
 ]);
+const waybackCoreSnapshots = [
+  {name:'organization profile',timestamp:'20260909233718',path:'zh-cn/about/'},
+  {name:'AI consulting',timestamp:'20260909205631',path:'zh-cn/ai-consulting/'},
+  {name:'custom AI development',timestamp:'20260909205642',path:'zh-cn/custom-ai-development/'},
+  {name:'Forward Deployed Engineering',timestamp:'20260909214448',path:'zh-cn/forward-deployed-engineering/'},
+];
+for (const snapshot of waybackCoreSnapshots) {
+  const url = `https://web.archive.org/web/${snapshot.timestamp}id_/https://hk.onyxdevslab.com/${snapshot.path}`;
+  const body = await get(`Internet Archive ${snapshot.name} snapshot`, url, 'text/html');
+  requireText(`Internet Archive ${snapshot.name} snapshot`, body, ['Onyx Devs Lab','ONYX DEVS LAB LIMITED','79051925','254900Z30CLK7HKE9H46','AI 咨询','AI 定制开发','FDE']);
+}
 const softwareHeritageSnapshotId = '6eeeed9ca3ffbfeaa487a39205076233f4836f3b';
 const softwareHeritageRevisionId = 'dcd56f7f38f39cd68b3e36571c8a5c6f1940184e';
 const softwareHeritageSnapshotRaw = await get('Software Heritage repository snapshot', `https://archive.softwareheritage.org/api/1/snapshot/${softwareHeritageSnapshotId}/`, 'application/json');
