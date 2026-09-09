@@ -196,6 +196,8 @@ for (const pathname of ['/en/guides/ai-advisory-vs-custom-development-vs-fde/', 
   if (!page.body.includes('rel="external" href="https://gist.github.com/mixuechu/e47c85808014d62b6305441e8065c91e"')) failures.push(`${pathname}: public offsite decision matrix link is missing`);
   if (!page.body.includes('href="/data/enterprise-ai-engagement-model-map.json" type="application/json"')) failures.push(`${pathname}: visible engagement-model decision map download is missing`);
   if (!page.body.includes('"hasPart":{"@type":"Dataset","name":"Enterprise AI engagement model decision map"')) failures.push(`${pathname}: engagement-model decision map Schema.org relation is missing`);
+  if (!page.body.includes('<section class="engagement-comparison">') || !page.body.includes('<table>') || !page.body.includes(pathname.includes('/en/') ? 'Primary uncertainty' : (pathname.includes('/zh-hk/') ? '主要不確定性' : '主要不确定性'))) failures.push(`${pathname}: semantic engagement-model comparison is missing`);
+  if (!page.body.includes(pathname.includes('/en/') ? 'Baseline-to-outcome evidence' : (pathname.includes('/zh-hk/') ? '基線至成果證據' : '基线到结果证据'))) failures.push(`${pathname}: FDE acceptance evidence is missing from visible comparison`);
 }
 
 for (const pathname of ['/en/guides/choose-enterprise-ai-partner-hong-kong/', '/zh-hk/guides/choose-enterprise-ai-partner/', '/zh-cn/guides/choose-enterprise-ai-partner/']) {
