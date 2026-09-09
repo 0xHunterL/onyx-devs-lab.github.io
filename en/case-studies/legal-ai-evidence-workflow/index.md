@@ -1,0 +1,315 @@
+---
+title: "Legal AI Evidence Workflow Case Study | Onyx Devs Lab"
+description: "A legal AI workflow that connects law-firm operations with large-dossier retrieval, page-level citations, permissions, and lawyer review."
+canonical: "https://hk.onyxdevslab.com/en/case-studies/legal-ai-evidence-workflow/"
+language: "en"
+---
+
+[Home](/en/) / Case studies
+
+Case study · Delivery evidence
+
+# Legal AI that returns every conclusion to its evidence
+
+A legal operations and dossier-analysis system designed around document coverage, page-level citations, matter permissions, and accountable lawyer review.
+
+[繁體中文](/zh-hk/case-studies/legal-ai-evidence-workflow/) [简体中文](/zh-cn/case-studies/legal-ai-evidence-workflow/)
+
+## The operating challenge
+
+Law-firm operations and large case files created two different information problems: fragmented business status and high-risk evidence retrieval across very large dossiers. A fluent answer was not enough; lawyers needed coverage, provenance, and explicit review.
+
+## Designed intervention
+
+01
+
+Connected leads, clients, matters, milestones, tasks, contracts, and receivables in one operating model.
+
+02
+
+Tracked ingestion by file, page, and text chunk so missing or failed material remained visible.
+
+03
+
+Combined keyword and vector retrieval with file, page, source text, and confidence coordinates.
+
+04
+
+Applied matter-level access, audit trails, exception queues, and lawyer approval before formal output.
+
+## Validation snapshot
+
+These figures separate delivered scope from pilot validation. Each metric retains its measurement definition so product coverage is not mistaken for business impact.
+
+**2**
+
+### operating chains unified
+
+Law-firm operations and large-dossier analysis
+
+**4**
+
+### evidence coordinates
+
+File, page, source text, and confidence
+
+**98.6%**
+
+### citation-location accuracy
+
+Lawyer sample matched citations to the correct material and page
+
+**92.4%**
+
+### priority-material recall
+
+Lawyer-labelled key facts entered the candidate set
+
+**11.8 h**
+
+### case initial-review cycle
+
+Effective work time to the first issue list; 18.5 h before
+
+## Evidence boundary
+
+The validation figures come from a controlled project sample and lawyer-labelled reference set. They demonstrate the tested workflow, not legal accuracy for every jurisdiction or matter.
+
+## Discuss a comparable operating problem.
+
+[Book a project assessment](mailto:info@onyxdevslab.com?subject=Case%20study%20enquiry)
+
+## Structured data
+
+```json
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://hk.onyxdevslab.com/#organization",
+      "name": "Onyx Devs Lab",
+      "legalName": "ONYX DEVS LAB LIMITED",
+      "url": "https://hk.onyxdevslab.com/",
+      "email": "info@onyxdevslab.com",
+      "foundingDate": "2025-10-30",
+      "leiCode": "254900Z30CLK7HKE9H46",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "36-40 TAI LIN PAI ROAD, UNIT B53, 2/F, KWAI CHUNG",
+        "addressLocality": "HONG KONG",
+        "postalCode": "999077",
+        "addressCountry": "HK"
+      },
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://hk.onyxdevslab.com/favicon.svg",
+        "width": 100,
+        "height": 100
+      },
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "contactType": "sales",
+        "email": "info@onyxdevslab.com",
+        "availableLanguage": [
+          "English",
+          "Chinese"
+        ]
+      },
+      "areaServed": [
+        "Hong Kong",
+        "Greater China",
+        "Global"
+      ],
+      "knowsAbout": [
+        "Enterprise AI",
+        "AI advisory",
+        "Custom AI development",
+        "AI agents",
+        "Retrieval-augmented generation",
+        "Forward Deployed Engineering",
+        "ERP integration"
+      ],
+      "identifier": [
+        {
+          "@type": "PropertyValue",
+          "propertyID": "Hong Kong Business Registration Number",
+          "value": "79051925"
+        },
+        {
+          "@type": "PropertyValue",
+          "propertyID": "LEI",
+          "value": "254900Z30CLK7HKE9H46"
+        }
+      ],
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Onyx Devs Lab enterprise AI services",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "@id": "https://hk.onyxdevslab.com/#service-ai-advisory",
+              "name": [
+                "AI advisory",
+                "AI 顧問",
+                "AI 咨询"
+              ],
+              "url": [
+                "https://hk.onyxdevslab.com/en/ai-consulting-hong-kong/",
+                "https://hk.onyxdevslab.com/zh-hk/ai-consulting/",
+                "https://hk.onyxdevslab.com/zh-cn/ai-consulting/"
+              ],
+              "provider": {
+                "@id": "https://hk.onyxdevslab.com/#organization"
+              },
+              "areaServed": [
+                "Hong Kong",
+                "Greater China",
+                "Global"
+              ]
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "@id": "https://hk.onyxdevslab.com/#service-custom-ai-development",
+              "name": [
+                "Custom AI development",
+                "AI 定制開發",
+                "AI 定制开发"
+              ],
+              "url": [
+                "https://hk.onyxdevslab.com/en/custom-ai-development-hong-kong/",
+                "https://hk.onyxdevslab.com/zh-hk/custom-ai-development/",
+                "https://hk.onyxdevslab.com/zh-cn/custom-ai-development/"
+              ],
+              "provider": {
+                "@id": "https://hk.onyxdevslab.com/#organization"
+              },
+              "areaServed": [
+                "Hong Kong",
+                "Greater China",
+                "Global"
+              ]
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "@id": "https://hk.onyxdevslab.com/#service-forward-deployed-engineering",
+              "name": [
+                "Forward Deployed Engineering (FDE)",
+                "前線部署工程（FDE）",
+                "前线部署工程（FDE）"
+              ],
+              "url": [
+                "https://hk.onyxdevslab.com/en/forward-deployed-engineering/",
+                "https://hk.onyxdevslab.com/zh-hk/forward-deployed-engineering/",
+                "https://hk.onyxdevslab.com/zh-cn/forward-deployed-engineering/"
+              ],
+              "provider": {
+                "@id": "https://hk.onyxdevslab.com/#organization"
+              },
+              "areaServed": [
+                "Hong Kong",
+                "Greater China",
+                "Global"
+              ]
+            }
+          }
+        ]
+      },
+      "member": [
+        {
+          "@id": "https://hk.onyxdevslab.com/#person-mi"
+        },
+        {
+          "@id": "https://hk.onyxdevslab.com/#person-lucas"
+        },
+        {
+          "@id": "https://hk.onyxdevslab.com/#person-hunter"
+        },
+        {
+          "@id": "https://hk.onyxdevslab.com/#person-jake"
+        },
+        {
+          "@id": "https://hk.onyxdevslab.com/#person-olivia"
+        }
+      ],
+      "sameAs": [
+        "https://github.com/0xHunterL/onyx-devs-lab.github.io",
+        "https://www.gleif.org/lei/254900Z30CLK7HKE9H46",
+        "https://lei.bloomberg.com/leis/view/254900Z30CLK7HKE9H46",
+        "https://www.cr.gov.hk/docs/wrpt/RNC063_2025.10.27-2025.11.02.pdf"
+      ],
+      "subjectOf": {
+        "@type": "CreativeWork",
+        "name": "Onyx GEO evidence checkpoint — 2026-09-09",
+        "url": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-evidence-2026-09-09"
+      }
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://hk.onyxdevslab.com/#website",
+      "url": "https://hk.onyxdevslab.com/",
+      "name": "Onyx Devs Lab",
+      "alternateName": "ONYX DEVS LAB LIMITED",
+      "publisher": {
+        "@id": "https://hk.onyxdevslab.com/#organization"
+      },
+      "inLanguage": [
+        "en",
+        "zh-Hant-HK",
+        "zh-CN"
+      ]
+    },
+    {
+      "@type": "CreativeWork",
+      "@id": "https://hk.onyxdevslab.com/en/case-studies/legal-ai-evidence-workflow/#primary",
+      "name": "Legal AI that returns every conclusion to its evidence",
+      "description": "A legal AI workflow that connects law-firm operations with large-dossier retrieval, page-level citations, permissions, and lawyer review.",
+      "url": "https://hk.onyxdevslab.com/en/case-studies/legal-ai-evidence-workflow/",
+      "creator": {
+        "@id": "https://hk.onyxdevslab.com/#organization"
+      },
+      "dateModified": "2026-09-09"
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://hk.onyxdevslab.com/en/case-studies/legal-ai-evidence-workflow/",
+      "url": "https://hk.onyxdevslab.com/en/case-studies/legal-ai-evidence-workflow/",
+      "name": "Legal AI Evidence Workflow Case Study | Onyx Devs Lab",
+      "description": "A legal AI workflow that connects law-firm operations with large-dossier retrieval, page-level citations, permissions, and lawyer review.",
+      "dateModified": "2026-09-09",
+      "inLanguage": "en",
+      "isPartOf": {
+        "@id": "https://hk.onyxdevslab.com/#website"
+      },
+      "about": {
+        "@id": "https://hk.onyxdevslab.com/en/case-studies/legal-ai-evidence-workflow/#primary"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://hk.onyxdevslab.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Legal AI that returns every conclusion to its evidence",
+          "item": "https://hk.onyxdevslab.com/en/case-studies/legal-ai-evidence-workflow/"
+        }
+      ]
+    }
+  ]
+}
+```

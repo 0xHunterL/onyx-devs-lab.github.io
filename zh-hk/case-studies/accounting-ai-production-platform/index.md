@@ -1,0 +1,321 @@
+---
+title: "AI 原生會計生產平台案例｜Onyx Devs Lab"
+description: "具備流程編排、證據鏈、異常處理及人工控制的多 Agent 會計生產系統。"
+canonical: "https://hk.onyxdevslab.com/zh-hk/case-studies/accounting-ai-production-platform/"
+language: "zh-Hant-HK"
+---
+
+[首頁](/zh-hk/) / 案例
+
+案例 · 交付證據
+
+# 面向會計營運的 AI 原生生產線
+
+以每個客戶組合作為持續營運上下文，透過受控生產階段推進工作的多 Agent 平台。
+
+[English](/en/case-studies/accounting-ai-production-platform/) [简体中文](/zh-cn/case-studies/accounting-ai-production-platform/)
+
+## 營運問題
+
+會計工作分散在客戶文件、資料收集、記帳、覆核、稅務準備及異常處理之間。AI 需要協助完整流程，同時保留證據及專業責任。
+
+## 系統干預
+
+01
+
+梳理 12 個業務領域、52 個界面及 9 個生產工作區。
+
+02
+
+把確定性會計規則與 AI 判斷分開處理。
+
+03
+
+設計任務隊列、重試、狀態追蹤、證據鏈及明確人工接管。
+
+04
+
+在缺少直接 API 時，把最終官方提交保留在受控流程。
+
+## 驗證快照
+
+以下數據同時呈現已完成範圍與試點驗證結果；每項指標保留口徑，避免把產品範圍誤解為業務成果。
+
+**12 個**
+
+### 業務域完成建模
+
+覆蓋客戶、票據、記賬、申報及合規環節
+
+**52 個**
+
+### 界面與流程完成映射
+
+把頁面操作還原為可編排生產步驟
+
+**9 個**
+
+### 生產工作區落地
+
+批量作業、異常接管與權限治理
+
+**72.8%**
+
+### 低風險任務自動完成率
+
+無需人工改寫且通過確定性規則校驗
+
+**99.2%**
+
+### 證據鏈完整率
+
+關鍵判斷保留來源、規則、版本與操作記錄
+
+**4.7 小時**
+
+### 單客戶月結平均週期
+
+從資料齊備至形成可供人工覆核的結果
+
+## 證據邊界
+
+公開數字把已梳理的產品範圍與試點流程驗證分開，不構成財務成果聲明；受監管決策及官方提交仍由合資格人員覆核。
+
+## 討論一個相近的營運問題。
+
+[預約項目評估](mailto:info@onyxdevslab.com?subject=Case%20study%20enquiry)
+
+## Structured data
+
+```json
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://hk.onyxdevslab.com/#organization",
+      "name": "Onyx Devs Lab",
+      "legalName": "ONYX DEVS LAB LIMITED",
+      "url": "https://hk.onyxdevslab.com/",
+      "email": "info@onyxdevslab.com",
+      "foundingDate": "2025-10-30",
+      "leiCode": "254900Z30CLK7HKE9H46",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "36-40 TAI LIN PAI ROAD, UNIT B53, 2/F, KWAI CHUNG",
+        "addressLocality": "HONG KONG",
+        "postalCode": "999077",
+        "addressCountry": "HK"
+      },
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://hk.onyxdevslab.com/favicon.svg",
+        "width": 100,
+        "height": 100
+      },
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "contactType": "sales",
+        "email": "info@onyxdevslab.com",
+        "availableLanguage": [
+          "English",
+          "Chinese"
+        ]
+      },
+      "areaServed": [
+        "Hong Kong",
+        "Greater China",
+        "Global"
+      ],
+      "knowsAbout": [
+        "Enterprise AI",
+        "AI advisory",
+        "Custom AI development",
+        "AI agents",
+        "Retrieval-augmented generation",
+        "Forward Deployed Engineering",
+        "ERP integration"
+      ],
+      "identifier": [
+        {
+          "@type": "PropertyValue",
+          "propertyID": "Hong Kong Business Registration Number",
+          "value": "79051925"
+        },
+        {
+          "@type": "PropertyValue",
+          "propertyID": "LEI",
+          "value": "254900Z30CLK7HKE9H46"
+        }
+      ],
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Onyx Devs Lab enterprise AI services",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "@id": "https://hk.onyxdevslab.com/#service-ai-advisory",
+              "name": [
+                "AI advisory",
+                "AI 顧問",
+                "AI 咨询"
+              ],
+              "url": [
+                "https://hk.onyxdevslab.com/en/ai-consulting-hong-kong/",
+                "https://hk.onyxdevslab.com/zh-hk/ai-consulting/",
+                "https://hk.onyxdevslab.com/zh-cn/ai-consulting/"
+              ],
+              "provider": {
+                "@id": "https://hk.onyxdevslab.com/#organization"
+              },
+              "areaServed": [
+                "Hong Kong",
+                "Greater China",
+                "Global"
+              ]
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "@id": "https://hk.onyxdevslab.com/#service-custom-ai-development",
+              "name": [
+                "Custom AI development",
+                "AI 定制開發",
+                "AI 定制开发"
+              ],
+              "url": [
+                "https://hk.onyxdevslab.com/en/custom-ai-development-hong-kong/",
+                "https://hk.onyxdevslab.com/zh-hk/custom-ai-development/",
+                "https://hk.onyxdevslab.com/zh-cn/custom-ai-development/"
+              ],
+              "provider": {
+                "@id": "https://hk.onyxdevslab.com/#organization"
+              },
+              "areaServed": [
+                "Hong Kong",
+                "Greater China",
+                "Global"
+              ]
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "@id": "https://hk.onyxdevslab.com/#service-forward-deployed-engineering",
+              "name": [
+                "Forward Deployed Engineering (FDE)",
+                "前線部署工程（FDE）",
+                "前线部署工程（FDE）"
+              ],
+              "url": [
+                "https://hk.onyxdevslab.com/en/forward-deployed-engineering/",
+                "https://hk.onyxdevslab.com/zh-hk/forward-deployed-engineering/",
+                "https://hk.onyxdevslab.com/zh-cn/forward-deployed-engineering/"
+              ],
+              "provider": {
+                "@id": "https://hk.onyxdevslab.com/#organization"
+              },
+              "areaServed": [
+                "Hong Kong",
+                "Greater China",
+                "Global"
+              ]
+            }
+          }
+        ]
+      },
+      "member": [
+        {
+          "@id": "https://hk.onyxdevslab.com/#person-mi"
+        },
+        {
+          "@id": "https://hk.onyxdevslab.com/#person-lucas"
+        },
+        {
+          "@id": "https://hk.onyxdevslab.com/#person-hunter"
+        },
+        {
+          "@id": "https://hk.onyxdevslab.com/#person-jake"
+        },
+        {
+          "@id": "https://hk.onyxdevslab.com/#person-olivia"
+        }
+      ],
+      "sameAs": [
+        "https://github.com/0xHunterL/onyx-devs-lab.github.io",
+        "https://www.gleif.org/lei/254900Z30CLK7HKE9H46",
+        "https://lei.bloomberg.com/leis/view/254900Z30CLK7HKE9H46",
+        "https://www.cr.gov.hk/docs/wrpt/RNC063_2025.10.27-2025.11.02.pdf"
+      ],
+      "subjectOf": {
+        "@type": "CreativeWork",
+        "name": "Onyx GEO evidence checkpoint — 2026-09-09",
+        "url": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-evidence-2026-09-09"
+      }
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://hk.onyxdevslab.com/#website",
+      "url": "https://hk.onyxdevslab.com/",
+      "name": "Onyx Devs Lab",
+      "alternateName": "ONYX DEVS LAB LIMITED",
+      "publisher": {
+        "@id": "https://hk.onyxdevslab.com/#organization"
+      },
+      "inLanguage": [
+        "en",
+        "zh-Hant-HK",
+        "zh-CN"
+      ]
+    },
+    {
+      "@type": "CreativeWork",
+      "@id": "https://hk.onyxdevslab.com/zh-hk/case-studies/accounting-ai-production-platform/#primary",
+      "name": "面向會計營運的 AI 原生生產線",
+      "description": "具備流程編排、證據鏈、異常處理及人工控制的多 Agent 會計生產系統。",
+      "url": "https://hk.onyxdevslab.com/zh-hk/case-studies/accounting-ai-production-platform/",
+      "creator": {
+        "@id": "https://hk.onyxdevslab.com/#organization"
+      },
+      "dateModified": "2026-09-09"
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://hk.onyxdevslab.com/zh-hk/case-studies/accounting-ai-production-platform/",
+      "url": "https://hk.onyxdevslab.com/zh-hk/case-studies/accounting-ai-production-platform/",
+      "name": "AI 原生會計生產平台案例｜Onyx Devs Lab",
+      "description": "具備流程編排、證據鏈、異常處理及人工控制的多 Agent 會計生產系統。",
+      "dateModified": "2026-09-09",
+      "inLanguage": "zh-Hant-HK",
+      "isPartOf": {
+        "@id": "https://hk.onyxdevslab.com/#website"
+      },
+      "about": {
+        "@id": "https://hk.onyxdevslab.com/zh-hk/case-studies/accounting-ai-production-platform/#primary"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "首頁",
+          "item": "https://hk.onyxdevslab.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "面向會計營運的 AI 原生生產線",
+          "item": "https://hk.onyxdevslab.com/zh-hk/case-studies/accounting-ai-production-platform/"
+        }
+      ]
+    }
+  ]
+}
+```

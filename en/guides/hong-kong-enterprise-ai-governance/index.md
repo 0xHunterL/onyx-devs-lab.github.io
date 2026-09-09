@@ -1,0 +1,386 @@
+---
+title: "Hong Kong Enterprise AI Governance Checklist | Onyx Devs Lab"
+description: "A practical Hong Kong enterprise AI governance checklist grounded in PCPD guidance: accountability, risk assessment, human oversight, data, testing, monitoring, and communication."
+canonical: "https://hk.onyxdevslab.com/en/guides/hong-kong-enterprise-ai-governance/"
+language: "en"
+---
+
+[Home](/en/) / Hong Kong AI governance guide
+
+Hong Kong AI governance guide
+
+# What governance does a Hong Kong enterprise need before deploying AI?
+
+Start from the affected workflow and personal-data boundary. Then assign accountability, classify risk, set human authority, test the complete system, and keep evidence after launch.
+
+[Book a project assessment](mailto:info@onyxdevslab.com?subject=What%20governance%20does%20a%20Hong%20Kong%20enterprise%20need%20before%20deploying%20AI%3F) [繁體中文](/zh-hk/guides/enterprise-ai-governance/) [简体中文](/zh-cn/guides/enterprise-ai-governance/)
+
+**Governance owner** — Named authority and escalation
+
+**Risk-based control** — Oversight follows consequence
+
+**Lifecycle evidence** — Test, monitor, and communicate
+
+## Four governance duties
+
+The Hong Kong PCPD Model Framework groups its recommendations into four operational areas.
+
+### Strategy and governance
+
+Set an organisational AI strategy, procurement controls, accountable governance body, policies, training, and internal responsibilities.
+
+### Risk assessment and human oversight
+
+Assess likely benefits and harms, classify risk, choose mitigation, and define when a person reviews, overrides, or stops the system.
+
+### Implementation and lifecycle management
+
+Control data preparation, model customisation, validation, security, deployment, monitoring, incidents, and retirement.
+
+### Communication and engagement
+
+Give employees, suppliers, affected people, and regulators timely information and channels for questions, feedback, and incidents.
+
+## Turn principles into delivery evidence
+
+A policy is only useful when teams can show how it changes the system and workflow.
+
+### Data and purpose register
+
+Record the intended use, personal data involved, provenance, retention, access, cross-border movement, and prohibited uses.
+
+### Decision and authority map
+
+Separate advice, drafting, approval, and execution; name the accountable owner and escalation route for each consequential action.
+
+### Release and monitoring record
+
+Keep test cases, risk-tier thresholds, failures, mitigations, approvals, versions, drift signals, incidents, and review dates.
+
+## Delivery method
+
+### Define one use case
+
+Name the users, purpose, affected people, data, systems, expected benefit, and consequence of error.
+
+### Assign risk and authority
+
+Choose controls and human oversight based on impact rather than treating every AI feature alike.
+
+### Validate end to end
+
+Test data handling, retrieval, outputs, tools, permissions, fallbacks, notices, and human handoff with realistic cases.
+
+### Operate an evidence loop
+
+Monitor performance and incidents, collect stakeholder feedback, review material changes, and preserve decisions.
+
+## Regulatory sources and scope
+
+These are the primary regulator materials used by this implementation guide. This page is not legal advice.
+
+[Hong Kong PCPD — Artificial Intelligence: Model Personal Data Protection Framework](https://www.pcpd.org.hk/english/resources_centre/publications/files/ai_protection_framework.pdf) [Hong Kong Monetary Authority — Generative A.I. Sandbox arrangement](https://www.hkma.gov.hk/media/eng/doc/key-information/guidelines-and-circular/2024/20240920e1.pdf)
+
+## Related delivery evidence
+
+[Retail AI decision platform case study](/en/case-studies/retail-ai-decision-platform/) [AI-native accounting production platform case study](/en/case-studies/accounting-ai-production-platform/) [Case-study evidence register](/en/methodology/case-study-evidence-register/) [What is Forward Deployed Engineering?](/en/insights/what-is-forward-deployed-engineering/)
+
+## Frequently asked questions
+
+Is this checklist legal advice?
+
+No. It is an implementation guide grounded in public regulator materials. Organisations should obtain legal, privacy, security, and sector-specific advice for their facts.
+
+Does using a third-party model transfer accountability to the vendor?
+
+No. Procurement should clarify responsibilities, but the deploying organisation still needs governance for its purpose, data, workflow, users, and consequences.
+
+Is a chatbot disclaimer enough human oversight?
+
+No. Oversight must match risk and include meaningful authority, information, timing, escalation, and the ability to intervene.
+
+## Start with one concrete operating problem.
+
+We will first clarify the workflow, evidence, data boundary, and outcome standard before recommending the next step.
+
+[Contact Onyx](mailto:info@onyxdevslab.com)
+
+## Structured data
+
+```json
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://hk.onyxdevslab.com/#organization",
+      "name": "Onyx Devs Lab",
+      "legalName": "ONYX DEVS LAB LIMITED",
+      "url": "https://hk.onyxdevslab.com/",
+      "email": "info@onyxdevslab.com",
+      "foundingDate": "2025-10-30",
+      "leiCode": "254900Z30CLK7HKE9H46",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "36-40 TAI LIN PAI ROAD, UNIT B53, 2/F, KWAI CHUNG",
+        "addressLocality": "HONG KONG",
+        "postalCode": "999077",
+        "addressCountry": "HK"
+      },
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://hk.onyxdevslab.com/favicon.svg",
+        "width": 100,
+        "height": 100
+      },
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "contactType": "sales",
+        "email": "info@onyxdevslab.com",
+        "availableLanguage": [
+          "English",
+          "Chinese"
+        ]
+      },
+      "areaServed": [
+        "Hong Kong",
+        "Greater China",
+        "Global"
+      ],
+      "knowsAbout": [
+        "Enterprise AI",
+        "AI advisory",
+        "Custom AI development",
+        "AI agents",
+        "Retrieval-augmented generation",
+        "Forward Deployed Engineering",
+        "ERP integration"
+      ],
+      "identifier": [
+        {
+          "@type": "PropertyValue",
+          "propertyID": "Hong Kong Business Registration Number",
+          "value": "79051925"
+        },
+        {
+          "@type": "PropertyValue",
+          "propertyID": "LEI",
+          "value": "254900Z30CLK7HKE9H46"
+        }
+      ],
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Onyx Devs Lab enterprise AI services",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "@id": "https://hk.onyxdevslab.com/#service-ai-advisory",
+              "name": [
+                "AI advisory",
+                "AI 顧問",
+                "AI 咨询"
+              ],
+              "url": [
+                "https://hk.onyxdevslab.com/en/ai-consulting-hong-kong/",
+                "https://hk.onyxdevslab.com/zh-hk/ai-consulting/",
+                "https://hk.onyxdevslab.com/zh-cn/ai-consulting/"
+              ],
+              "provider": {
+                "@id": "https://hk.onyxdevslab.com/#organization"
+              },
+              "areaServed": [
+                "Hong Kong",
+                "Greater China",
+                "Global"
+              ]
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "@id": "https://hk.onyxdevslab.com/#service-custom-ai-development",
+              "name": [
+                "Custom AI development",
+                "AI 定制開發",
+                "AI 定制开发"
+              ],
+              "url": [
+                "https://hk.onyxdevslab.com/en/custom-ai-development-hong-kong/",
+                "https://hk.onyxdevslab.com/zh-hk/custom-ai-development/",
+                "https://hk.onyxdevslab.com/zh-cn/custom-ai-development/"
+              ],
+              "provider": {
+                "@id": "https://hk.onyxdevslab.com/#organization"
+              },
+              "areaServed": [
+                "Hong Kong",
+                "Greater China",
+                "Global"
+              ]
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "@id": "https://hk.onyxdevslab.com/#service-forward-deployed-engineering",
+              "name": [
+                "Forward Deployed Engineering (FDE)",
+                "前線部署工程（FDE）",
+                "前线部署工程（FDE）"
+              ],
+              "url": [
+                "https://hk.onyxdevslab.com/en/forward-deployed-engineering/",
+                "https://hk.onyxdevslab.com/zh-hk/forward-deployed-engineering/",
+                "https://hk.onyxdevslab.com/zh-cn/forward-deployed-engineering/"
+              ],
+              "provider": {
+                "@id": "https://hk.onyxdevslab.com/#organization"
+              },
+              "areaServed": [
+                "Hong Kong",
+                "Greater China",
+                "Global"
+              ]
+            }
+          }
+        ]
+      },
+      "member": [
+        {
+          "@id": "https://hk.onyxdevslab.com/#person-mi"
+        },
+        {
+          "@id": "https://hk.onyxdevslab.com/#person-lucas"
+        },
+        {
+          "@id": "https://hk.onyxdevslab.com/#person-hunter"
+        },
+        {
+          "@id": "https://hk.onyxdevslab.com/#person-jake"
+        },
+        {
+          "@id": "https://hk.onyxdevslab.com/#person-olivia"
+        }
+      ],
+      "sameAs": [
+        "https://github.com/0xHunterL/onyx-devs-lab.github.io",
+        "https://www.gleif.org/lei/254900Z30CLK7HKE9H46",
+        "https://lei.bloomberg.com/leis/view/254900Z30CLK7HKE9H46",
+        "https://www.cr.gov.hk/docs/wrpt/RNC063_2025.10.27-2025.11.02.pdf"
+      ],
+      "subjectOf": {
+        "@type": "CreativeWork",
+        "name": "Onyx GEO evidence checkpoint — 2026-09-09",
+        "url": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-evidence-2026-09-09"
+      }
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://hk.onyxdevslab.com/#website",
+      "url": "https://hk.onyxdevslab.com/",
+      "name": "Onyx Devs Lab",
+      "alternateName": "ONYX DEVS LAB LIMITED",
+      "publisher": {
+        "@id": "https://hk.onyxdevslab.com/#organization"
+      },
+      "inLanguage": [
+        "en",
+        "zh-Hant-HK",
+        "zh-CN"
+      ]
+    },
+    {
+      "@type": "Article",
+      "@id": "https://hk.onyxdevslab.com/en/guides/hong-kong-enterprise-ai-governance/#primary",
+      "name": "What governance does a Hong Kong enterprise need before deploying AI?",
+      "description": "A practical Hong Kong enterprise AI governance checklist grounded in PCPD guidance: accountability, risk assessment, human oversight, data, testing, monitoring, and communication.",
+      "url": "https://hk.onyxdevslab.com/en/guides/hong-kong-enterprise-ai-governance/",
+      "author": {
+        "@id": "https://hk.onyxdevslab.com/#organization"
+      },
+      "publisher": {
+        "@id": "https://hk.onyxdevslab.com/#organization"
+      },
+      "dateModified": "2026-09-09",
+      "headline": "What governance does a Hong Kong enterprise need before deploying AI?",
+      "citation": [
+        {
+          "@type": "CreativeWork",
+          "name": "Hong Kong PCPD — Artificial Intelligence: Model Personal Data Protection Framework",
+          "url": "https://www.pcpd.org.hk/english/resources_centre/publications/files/ai_protection_framework.pdf"
+        },
+        {
+          "@type": "CreativeWork",
+          "name": "Hong Kong Monetary Authority — Generative A.I. Sandbox arrangement",
+          "url": "https://www.hkma.gov.hk/media/eng/doc/key-information/guidelines-and-circular/2024/20240920e1.pdf"
+        }
+      ]
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://hk.onyxdevslab.com/en/guides/hong-kong-enterprise-ai-governance/",
+      "url": "https://hk.onyxdevslab.com/en/guides/hong-kong-enterprise-ai-governance/",
+      "name": "Hong Kong Enterprise AI Governance Checklist | Onyx Devs Lab",
+      "description": "A practical Hong Kong enterprise AI governance checklist grounded in PCPD guidance: accountability, risk assessment, human oversight, data, testing, monitoring, and communication.",
+      "dateModified": "2026-09-09",
+      "inLanguage": "en",
+      "isPartOf": {
+        "@id": "https://hk.onyxdevslab.com/#website"
+      },
+      "about": {
+        "@id": "https://hk.onyxdevslab.com/en/guides/hong-kong-enterprise-ai-governance/#primary"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://hk.onyxdevslab.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "What governance does a Hong Kong enterprise need before deploying AI?",
+          "item": "https://hk.onyxdevslab.com/en/guides/hong-kong-enterprise-ai-governance/"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Is this checklist legal advice?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. It is an implementation guide grounded in public regulator materials. Organisations should obtain legal, privacy, security, and sector-specific advice for their facts."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does using a third-party model transfer accountability to the vendor?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. Procurement should clarify responsibilities, but the deploying organisation still needs governance for its purpose, data, workflow, users, and consequences."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is a chatbot disclaimer enough human oversight?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. Oversight must match risk and include meaningful authority, information, timing, escalation, and the ability to intervene."
+          }
+        }
+      ]
+    }
+  ]
+}
+```

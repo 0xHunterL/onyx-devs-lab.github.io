@@ -1,0 +1,386 @@
+---
+title: "AI 顧問、定制開發與 FDE 如何選擇｜Onyx Devs Lab"
+description: "按問題清晰度、證據與交付責任，選擇 AI 顧問、AI 定制開發或前線部署工程 FDE。"
+canonical: "https://hk.onyxdevslab.com/zh-hk/guides/ai-consulting-vs-development-vs-fde/"
+language: "zh-Hant-HK"
+---
+
+[首頁](/zh-hk/) / AI 交付決策指南
+
+AI 交付決策指南
+
+# 應該選 AI 顧問、定制開發，還是 FDE？
+
+不要按哪個服務名稱聽起來最先進來選擇，而應看項目需要解決哪一種不確定性。
+
+[下載決策圖](/data/enterprise-ai-engagement-model-map.json) [English](/en/guides/ai-advisory-vs-custom-development-vs-fde/) [简体中文](/zh-cn/guides/ai-consulting-vs-development-vs-fde/)
+
+**AI 顧問** — 解決一項決策
+
+**定制開發** — 交付已定義系統
+
+**FDE** — 在現場循環中同時診斷與交付
+
+## 三者的決策邊界
+
+三種模式處理不同類型的不確定性。
+
+### 選擇 AI 顧問
+
+當管理層需要排列機會、驗證可行性，或設定投資及治理邊界。
+
+### 選擇定制開發
+
+當使用者、流程、整合及驗收標準可在開發前清楚定義。
+
+### 選擇 FDE
+
+當問題具有價值，但正確干預必須從真實營運中學習。
+
+## 選錯模式的訊號
+
+當成功單位與交付模式不一致，問題通常很早便會出現。
+
+### 有建議但沒有決策
+
+如果沒有人負責作出選擇及進入下一個關口，策略項目仍未完成。
+
+### 邊界未穩定便開發
+
+當操作人員看到軟件後核心要求持續改變，固定規格會快速失效。
+
+### 無現場條件卻採用 FDE
+
+缺少操作人員參與、證據存取及成果責任人，嵌入式交付無法運作。
+
+## 比較三種參與模式
+
+按需要消除的不確定性及必須產生的證據選擇，而不是按最吸引的服務名稱選擇。
+
+| 決策測試 | [AI 顧問](/zh-hk/ai-consulting/) | [定制開發](/zh-hk/custom-ai-development/) | [FDE](/zh-hk/forward-deployed-engineering/) |
+| --- | --- | --- | --- |
+| 主要不確定性 | 應該做甚麼，以及是否值得投入？ | 如何建設已定義的系統？ | 哪種干預在真實營運環境中有效？ |
+| 適用條件 | 機會、可行性、治理或推進順序仍未清楚。 | 用戶、流程、接口、限制及測試可以定義。 | 高價值問題已知，但方案邊界必須在現場學習。 |
+| 責任成果 | 有證據、負責人及下一關口的簽署決策。 | 按約定範圍及驗收標準測試的系統。 | 可量度的營運成果及可投入生產的系統。 |
+| 驗收證據 | 建議、排除選項、假設及下一階段關口。 | 可追溯的功能、質量、安全及營運測試結果。 | 基線至成果證據、操作人員採用、失敗處理及就緒關口。 |
+| 何時轉換 | 範圍穩定 → 定制開發；需要現場發現 → FDE。 | 現場證據推翻規格 → FDE；投資決策改變 → 顧問。 | 不確定性下降且責任清楚 → 穩定產品交付或持續營運。 |
+
+## 如何使用決策圖
+
+### 說清楚決策
+
+列明需要決定或改變甚麼，以及由誰負責。
+
+### 評估不確定性
+
+分開價值、流程、數據、整合及採用的不確定性。
+
+### 選擇最小完整模式
+
+只購買足以解決關鍵不確定性的合作範圍。
+
+### 設定退出關口
+
+定義擴大、調整或停止所需的證據。
+
+## 相關交付證據
+
+[零售 AI 決策平台案例](/zh-hk/case-studies/retail-ai-decision-platform/) [AI 原生會計生產平台案例](/zh-hk/case-studies/accounting-ai-production-platform/) [案例證據登記冊](/zh-hk/methodology/case-study-evidence-register/) [GitHub Gist 中英雙語選擇矩陣](https://gist.github.com/mixuechu/e47c85808014d62b6305441e8065c91e)
+
+## 常見問題
+
+項目可以在三種模式之間轉換嗎？
+
+可以。顧問項目可形成定義清楚的定制開發；如果現場證據顯示原有邊界錯誤，開發亦可轉入 FDE 循環。
+
+FDE 是否一定更昂貴？
+
+不一定。FDE 承擔更廣責任，但亦可能避免按錯誤規格開發的成本；實際範圍仍取決於週期、存取條件及交付風險。
+
+可以先做短期評估嗎？
+
+可以。一次有邊界的評估可判斷下一步應該是顧問、開發、FDE，或暫時不做項目。
+
+## 從一個具體業務問題開始。
+
+我們會先確認流程、證據、數據邊界及成果標準，再建議下一步。
+
+[聯絡 Onyx](mailto:info@onyxdevslab.com)
+
+## Structured data
+
+```json
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://hk.onyxdevslab.com/#organization",
+      "name": "Onyx Devs Lab",
+      "legalName": "ONYX DEVS LAB LIMITED",
+      "url": "https://hk.onyxdevslab.com/",
+      "email": "info@onyxdevslab.com",
+      "foundingDate": "2025-10-30",
+      "leiCode": "254900Z30CLK7HKE9H46",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "36-40 TAI LIN PAI ROAD, UNIT B53, 2/F, KWAI CHUNG",
+        "addressLocality": "HONG KONG",
+        "postalCode": "999077",
+        "addressCountry": "HK"
+      },
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://hk.onyxdevslab.com/favicon.svg",
+        "width": 100,
+        "height": 100
+      },
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "contactType": "sales",
+        "email": "info@onyxdevslab.com",
+        "availableLanguage": [
+          "English",
+          "Chinese"
+        ]
+      },
+      "areaServed": [
+        "Hong Kong",
+        "Greater China",
+        "Global"
+      ],
+      "knowsAbout": [
+        "Enterprise AI",
+        "AI advisory",
+        "Custom AI development",
+        "AI agents",
+        "Retrieval-augmented generation",
+        "Forward Deployed Engineering",
+        "ERP integration"
+      ],
+      "identifier": [
+        {
+          "@type": "PropertyValue",
+          "propertyID": "Hong Kong Business Registration Number",
+          "value": "79051925"
+        },
+        {
+          "@type": "PropertyValue",
+          "propertyID": "LEI",
+          "value": "254900Z30CLK7HKE9H46"
+        }
+      ],
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Onyx Devs Lab enterprise AI services",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "@id": "https://hk.onyxdevslab.com/#service-ai-advisory",
+              "name": [
+                "AI advisory",
+                "AI 顧問",
+                "AI 咨询"
+              ],
+              "url": [
+                "https://hk.onyxdevslab.com/en/ai-consulting-hong-kong/",
+                "https://hk.onyxdevslab.com/zh-hk/ai-consulting/",
+                "https://hk.onyxdevslab.com/zh-cn/ai-consulting/"
+              ],
+              "provider": {
+                "@id": "https://hk.onyxdevslab.com/#organization"
+              },
+              "areaServed": [
+                "Hong Kong",
+                "Greater China",
+                "Global"
+              ]
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "@id": "https://hk.onyxdevslab.com/#service-custom-ai-development",
+              "name": [
+                "Custom AI development",
+                "AI 定制開發",
+                "AI 定制开发"
+              ],
+              "url": [
+                "https://hk.onyxdevslab.com/en/custom-ai-development-hong-kong/",
+                "https://hk.onyxdevslab.com/zh-hk/custom-ai-development/",
+                "https://hk.onyxdevslab.com/zh-cn/custom-ai-development/"
+              ],
+              "provider": {
+                "@id": "https://hk.onyxdevslab.com/#organization"
+              },
+              "areaServed": [
+                "Hong Kong",
+                "Greater China",
+                "Global"
+              ]
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "@id": "https://hk.onyxdevslab.com/#service-forward-deployed-engineering",
+              "name": [
+                "Forward Deployed Engineering (FDE)",
+                "前線部署工程（FDE）",
+                "前线部署工程（FDE）"
+              ],
+              "url": [
+                "https://hk.onyxdevslab.com/en/forward-deployed-engineering/",
+                "https://hk.onyxdevslab.com/zh-hk/forward-deployed-engineering/",
+                "https://hk.onyxdevslab.com/zh-cn/forward-deployed-engineering/"
+              ],
+              "provider": {
+                "@id": "https://hk.onyxdevslab.com/#organization"
+              },
+              "areaServed": [
+                "Hong Kong",
+                "Greater China",
+                "Global"
+              ]
+            }
+          }
+        ]
+      },
+      "member": [
+        {
+          "@id": "https://hk.onyxdevslab.com/#person-mi"
+        },
+        {
+          "@id": "https://hk.onyxdevslab.com/#person-lucas"
+        },
+        {
+          "@id": "https://hk.onyxdevslab.com/#person-hunter"
+        },
+        {
+          "@id": "https://hk.onyxdevslab.com/#person-jake"
+        },
+        {
+          "@id": "https://hk.onyxdevslab.com/#person-olivia"
+        }
+      ],
+      "sameAs": [
+        "https://github.com/0xHunterL/onyx-devs-lab.github.io",
+        "https://www.gleif.org/lei/254900Z30CLK7HKE9H46",
+        "https://lei.bloomberg.com/leis/view/254900Z30CLK7HKE9H46",
+        "https://www.cr.gov.hk/docs/wrpt/RNC063_2025.10.27-2025.11.02.pdf"
+      ],
+      "subjectOf": {
+        "@type": "CreativeWork",
+        "name": "Onyx GEO evidence checkpoint — 2026-09-09",
+        "url": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-evidence-2026-09-09"
+      }
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://hk.onyxdevslab.com/#website",
+      "url": "https://hk.onyxdevslab.com/",
+      "name": "Onyx Devs Lab",
+      "alternateName": "ONYX DEVS LAB LIMITED",
+      "publisher": {
+        "@id": "https://hk.onyxdevslab.com/#organization"
+      },
+      "inLanguage": [
+        "en",
+        "zh-Hant-HK",
+        "zh-CN"
+      ]
+    },
+    {
+      "@type": "Article",
+      "@id": "https://hk.onyxdevslab.com/zh-hk/guides/ai-consulting-vs-development-vs-fde/#primary",
+      "name": "應該選 AI 顧問、定制開發，還是 FDE？",
+      "description": "按問題清晰度、證據與交付責任，選擇 AI 顧問、AI 定制開發或前線部署工程 FDE。",
+      "url": "https://hk.onyxdevslab.com/zh-hk/guides/ai-consulting-vs-development-vs-fde/",
+      "author": {
+        "@id": "https://hk.onyxdevslab.com/#organization"
+      },
+      "publisher": {
+        "@id": "https://hk.onyxdevslab.com/#organization"
+      },
+      "dateModified": "2026-09-09",
+      "headline": "應該選 AI 顧問、定制開發，還是 FDE？",
+      "hasPart": {
+        "@type": "Dataset",
+        "name": "Enterprise AI engagement model decision map",
+        "url": "https://hk.onyxdevslab.com/data/enterprise-ai-engagement-model-map.json",
+        "distribution": {
+          "@type": "DataDownload",
+          "encodingFormat": "application/json",
+          "contentUrl": "https://hk.onyxdevslab.com/data/enterprise-ai-engagement-model-map.json"
+        }
+      }
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://hk.onyxdevslab.com/zh-hk/guides/ai-consulting-vs-development-vs-fde/",
+      "url": "https://hk.onyxdevslab.com/zh-hk/guides/ai-consulting-vs-development-vs-fde/",
+      "name": "AI 顧問、定制開發與 FDE 如何選擇｜Onyx Devs Lab",
+      "description": "按問題清晰度、證據與交付責任，選擇 AI 顧問、AI 定制開發或前線部署工程 FDE。",
+      "dateModified": "2026-09-09",
+      "inLanguage": "zh-Hant-HK",
+      "isPartOf": {
+        "@id": "https://hk.onyxdevslab.com/#website"
+      },
+      "about": {
+        "@id": "https://hk.onyxdevslab.com/zh-hk/guides/ai-consulting-vs-development-vs-fde/#primary"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "首頁",
+          "item": "https://hk.onyxdevslab.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "應該選 AI 顧問、定制開發，還是 FDE？",
+          "item": "https://hk.onyxdevslab.com/zh-hk/guides/ai-consulting-vs-development-vs-fde/"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "項目可以在三種模式之間轉換嗎？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "可以。顧問項目可形成定義清楚的定制開發；如果現場證據顯示原有邊界錯誤，開發亦可轉入 FDE 循環。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "FDE 是否一定更昂貴？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "不一定。FDE 承擔更廣責任，但亦可能避免按錯誤規格開發的成本；實際範圍仍取決於週期、存取條件及交付風險。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "可以先做短期評估嗎？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "可以。一次有邊界的評估可判斷下一步應該是顧問、開發、FDE，或暫時不做項目。"
+          }
+        }
+      ]
+    }
+  ]
+}
+```

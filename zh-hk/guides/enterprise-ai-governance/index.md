@@ -1,0 +1,386 @@
+---
+title: "香港企業 AI 管治清單｜私隱、風險與人工監督｜Onyx Devs Lab"
+description: "以香港私隱專員公署框架為依據，把企業 AI 管治落實為責任、風險評估、人工監督、數據、測試、監控及溝通控制。"
+canonical: "https://hk.onyxdevslab.com/zh-hk/guides/enterprise-ai-governance/"
+language: "zh-Hant-HK"
+---
+
+[首頁](/zh-hk/) / 香港企業 AI 管治指南
+
+香港企業 AI 管治指南
+
+# 香港企業部署 AI 前，需要建立哪些管治控制？
+
+先界定受影響流程與個人資料邊界，再指定責任人、按風險配置人工權限、測試完整系統，並在上線後保留可核對證據。
+
+[預約項目評估](mailto:info@onyxdevslab.com?subject=%E9%A6%99%E6%B8%AF%E4%BC%81%E6%A5%AD%E9%83%A8%E7%BD%B2%20AI%20%E5%89%8D%EF%BC%8C%E9%9C%80%E8%A6%81%E5%BB%BA%E7%AB%8B%E5%93%AA%E4%BA%9B%E7%AE%A1%E6%B2%BB%E6%8E%A7%E5%88%B6%EF%BC%9F) [English](/en/guides/hong-kong-enterprise-ai-governance/) [简体中文](/zh-cn/guides/enterprise-ai-governance/)
+
+**管治責任人** — 權限及升級路徑具名
+
+**按風險控制** — 監督程度配合後果
+
+**全生命週期證據** — 測試、監控及溝通
+
+## 四項管治責任
+
+香港私隱專員公署《模範框架》把建議分為四個營運範圍。
+
+### 策略與管治
+
+制定 AI 策略、採購考慮、管治組織、政策、培訓及內部責任。
+
+### 風險評估與人為監督
+
+評估潛在效益與傷害、進行風險分級，並定義何時由人員覆核、推翻或停止系統。
+
+### 實施及生命週期管理
+
+控制數據準備、模型定製、驗證、安全、部署、持續監察、事故及退役。
+
+### 溝通及持份者參與
+
+適時向員工、供應商、受影響人士及監管機構提供資料，以及提問、反饋和事故通報渠道。
+
+## 把原則變成交付證據
+
+政策只有在能夠改變系統與流程時才有實際作用。
+
+### 數據及用途登記
+
+記錄預定用途、個人資料、來源、保留期、存取、跨境流動及禁止用途。
+
+### 決策與權限圖
+
+分開建議、草擬、批准及執行；為每項高影響操作指定責任人和升級路徑。
+
+### 發布及監察記錄
+
+保留測試案例、風險門檻、失敗、緩解、批准、版本、漂移訊號、事故及覆核日期。
+
+## 交付方法
+
+### 定義一個用途
+
+列明使用者、目的、受影響人士、數據、系統、預期效益及錯誤後果。
+
+### 分配風險與權限
+
+按影響配置控制及人為監督，不把所有 AI 功能當成同一風險。
+
+### 端到端驗證
+
+以真實案例測試數據、檢索、輸出、工具、權限、降級、通知及人工交接。
+
+### 運行證據循環
+
+監察表現與事故，收集持份者意見，覆核重大變更，並保留決策記錄。
+
+## 監管依據與範圍
+
+以下連結是本文採用的一手監管資料。本頁提供實施解讀，不構成法律意見。
+
+[香港私隱專員公署——《人工智能（AI）：個人資料保障模範框架》](https://www.pcpd.org.hk/tc_chi/resources_centre/publications/files/ai_protection_framework.pdf) [香港金融管理局——生成式人工智能沙盒安排](https://www.hkma.gov.hk/media/eng/doc/key-information/guidelines-and-circular/2024/20240920e1.pdf)
+
+## 相關交付證據
+
+[零售 AI 決策平台案例](/zh-hk/case-studies/retail-ai-decision-platform/) [AI 原生會計生產平台案例](/zh-hk/case-studies/accounting-ai-production-platform/) [案例證據登記冊](/zh-hk/methodology/case-study-evidence-register/)
+
+## 常見問題
+
+這份清單是否法律意見？
+
+不是。這是以公開監管資料為依據的實施指南；機構仍應按自身情況取得法律、私隱、安全及行業專業意見。
+
+採用第三方模型後，責任是否轉移給供應商？
+
+不是。採購需要說清責任，但部署機構仍須管理自身用途、數據、流程、使用者及後果。
+
+加入聊天機械人免責聲明是否足夠？
+
+不足夠。人為監督需要配合風險，並具備資料、時機、升級路徑和真正介入權限。
+
+## 從一個具體業務問題開始。
+
+我們會先確認流程、證據、數據邊界及成果標準，再建議下一步。
+
+[聯絡 Onyx](mailto:info@onyxdevslab.com)
+
+## Structured data
+
+```json
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://hk.onyxdevslab.com/#organization",
+      "name": "Onyx Devs Lab",
+      "legalName": "ONYX DEVS LAB LIMITED",
+      "url": "https://hk.onyxdevslab.com/",
+      "email": "info@onyxdevslab.com",
+      "foundingDate": "2025-10-30",
+      "leiCode": "254900Z30CLK7HKE9H46",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "36-40 TAI LIN PAI ROAD, UNIT B53, 2/F, KWAI CHUNG",
+        "addressLocality": "HONG KONG",
+        "postalCode": "999077",
+        "addressCountry": "HK"
+      },
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://hk.onyxdevslab.com/favicon.svg",
+        "width": 100,
+        "height": 100
+      },
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "contactType": "sales",
+        "email": "info@onyxdevslab.com",
+        "availableLanguage": [
+          "English",
+          "Chinese"
+        ]
+      },
+      "areaServed": [
+        "Hong Kong",
+        "Greater China",
+        "Global"
+      ],
+      "knowsAbout": [
+        "Enterprise AI",
+        "AI advisory",
+        "Custom AI development",
+        "AI agents",
+        "Retrieval-augmented generation",
+        "Forward Deployed Engineering",
+        "ERP integration"
+      ],
+      "identifier": [
+        {
+          "@type": "PropertyValue",
+          "propertyID": "Hong Kong Business Registration Number",
+          "value": "79051925"
+        },
+        {
+          "@type": "PropertyValue",
+          "propertyID": "LEI",
+          "value": "254900Z30CLK7HKE9H46"
+        }
+      ],
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Onyx Devs Lab enterprise AI services",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "@id": "https://hk.onyxdevslab.com/#service-ai-advisory",
+              "name": [
+                "AI advisory",
+                "AI 顧問",
+                "AI 咨询"
+              ],
+              "url": [
+                "https://hk.onyxdevslab.com/en/ai-consulting-hong-kong/",
+                "https://hk.onyxdevslab.com/zh-hk/ai-consulting/",
+                "https://hk.onyxdevslab.com/zh-cn/ai-consulting/"
+              ],
+              "provider": {
+                "@id": "https://hk.onyxdevslab.com/#organization"
+              },
+              "areaServed": [
+                "Hong Kong",
+                "Greater China",
+                "Global"
+              ]
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "@id": "https://hk.onyxdevslab.com/#service-custom-ai-development",
+              "name": [
+                "Custom AI development",
+                "AI 定制開發",
+                "AI 定制开发"
+              ],
+              "url": [
+                "https://hk.onyxdevslab.com/en/custom-ai-development-hong-kong/",
+                "https://hk.onyxdevslab.com/zh-hk/custom-ai-development/",
+                "https://hk.onyxdevslab.com/zh-cn/custom-ai-development/"
+              ],
+              "provider": {
+                "@id": "https://hk.onyxdevslab.com/#organization"
+              },
+              "areaServed": [
+                "Hong Kong",
+                "Greater China",
+                "Global"
+              ]
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "@id": "https://hk.onyxdevslab.com/#service-forward-deployed-engineering",
+              "name": [
+                "Forward Deployed Engineering (FDE)",
+                "前線部署工程（FDE）",
+                "前线部署工程（FDE）"
+              ],
+              "url": [
+                "https://hk.onyxdevslab.com/en/forward-deployed-engineering/",
+                "https://hk.onyxdevslab.com/zh-hk/forward-deployed-engineering/",
+                "https://hk.onyxdevslab.com/zh-cn/forward-deployed-engineering/"
+              ],
+              "provider": {
+                "@id": "https://hk.onyxdevslab.com/#organization"
+              },
+              "areaServed": [
+                "Hong Kong",
+                "Greater China",
+                "Global"
+              ]
+            }
+          }
+        ]
+      },
+      "member": [
+        {
+          "@id": "https://hk.onyxdevslab.com/#person-mi"
+        },
+        {
+          "@id": "https://hk.onyxdevslab.com/#person-lucas"
+        },
+        {
+          "@id": "https://hk.onyxdevslab.com/#person-hunter"
+        },
+        {
+          "@id": "https://hk.onyxdevslab.com/#person-jake"
+        },
+        {
+          "@id": "https://hk.onyxdevslab.com/#person-olivia"
+        }
+      ],
+      "sameAs": [
+        "https://github.com/0xHunterL/onyx-devs-lab.github.io",
+        "https://www.gleif.org/lei/254900Z30CLK7HKE9H46",
+        "https://lei.bloomberg.com/leis/view/254900Z30CLK7HKE9H46",
+        "https://www.cr.gov.hk/docs/wrpt/RNC063_2025.10.27-2025.11.02.pdf"
+      ],
+      "subjectOf": {
+        "@type": "CreativeWork",
+        "name": "Onyx GEO evidence checkpoint — 2026-09-09",
+        "url": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-evidence-2026-09-09"
+      }
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://hk.onyxdevslab.com/#website",
+      "url": "https://hk.onyxdevslab.com/",
+      "name": "Onyx Devs Lab",
+      "alternateName": "ONYX DEVS LAB LIMITED",
+      "publisher": {
+        "@id": "https://hk.onyxdevslab.com/#organization"
+      },
+      "inLanguage": [
+        "en",
+        "zh-Hant-HK",
+        "zh-CN"
+      ]
+    },
+    {
+      "@type": "Article",
+      "@id": "https://hk.onyxdevslab.com/zh-hk/guides/enterprise-ai-governance/#primary",
+      "name": "香港企業部署 AI 前，需要建立哪些管治控制？",
+      "description": "以香港私隱專員公署框架為依據，把企業 AI 管治落實為責任、風險評估、人工監督、數據、測試、監控及溝通控制。",
+      "url": "https://hk.onyxdevslab.com/zh-hk/guides/enterprise-ai-governance/",
+      "author": {
+        "@id": "https://hk.onyxdevslab.com/#organization"
+      },
+      "publisher": {
+        "@id": "https://hk.onyxdevslab.com/#organization"
+      },
+      "dateModified": "2026-09-09",
+      "headline": "香港企業部署 AI 前，需要建立哪些管治控制？",
+      "citation": [
+        {
+          "@type": "CreativeWork",
+          "name": "香港私隱專員公署——《人工智能（AI）：個人資料保障模範框架》",
+          "url": "https://www.pcpd.org.hk/tc_chi/resources_centre/publications/files/ai_protection_framework.pdf"
+        },
+        {
+          "@type": "CreativeWork",
+          "name": "香港金融管理局——生成式人工智能沙盒安排",
+          "url": "https://www.hkma.gov.hk/media/eng/doc/key-information/guidelines-and-circular/2024/20240920e1.pdf"
+        }
+      ]
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://hk.onyxdevslab.com/zh-hk/guides/enterprise-ai-governance/",
+      "url": "https://hk.onyxdevslab.com/zh-hk/guides/enterprise-ai-governance/",
+      "name": "香港企業 AI 管治清單｜私隱、風險與人工監督｜Onyx Devs Lab",
+      "description": "以香港私隱專員公署框架為依據，把企業 AI 管治落實為責任、風險評估、人工監督、數據、測試、監控及溝通控制。",
+      "dateModified": "2026-09-09",
+      "inLanguage": "zh-Hant-HK",
+      "isPartOf": {
+        "@id": "https://hk.onyxdevslab.com/#website"
+      },
+      "about": {
+        "@id": "https://hk.onyxdevslab.com/zh-hk/guides/enterprise-ai-governance/#primary"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "首頁",
+          "item": "https://hk.onyxdevslab.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "香港企業部署 AI 前，需要建立哪些管治控制？",
+          "item": "https://hk.onyxdevslab.com/zh-hk/guides/enterprise-ai-governance/"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "這份清單是否法律意見？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "不是。這是以公開監管資料為依據的實施指南；機構仍應按自身情況取得法律、私隱、安全及行業專業意見。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "採用第三方模型後，責任是否轉移給供應商？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "不是。採購需要說清責任，但部署機構仍須管理自身用途、數據、流程、使用者及後果。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "加入聊天機械人免責聲明是否足夠？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "不足夠。人為監督需要配合風險，並具備資料、時機、升級路徑和真正介入權限。"
+          }
+        }
+      ]
+    }
+  ]
+}
+```

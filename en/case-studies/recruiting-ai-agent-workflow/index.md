@@ -1,0 +1,315 @@
+---
+title: "Recruiting AI Agent Workflow Case Study | Onyx Devs Lab"
+description: "A controlled recruiting agent workflow for candidate sync, evidence-linked profiles, reply drafting, idempotent sending, and human takeover."
+canonical: "https://hk.onyxdevslab.com/en/case-studies/recruiting-ai-agent-workflow/"
+language: "en"
+---
+
+[Home](/en/) / Case studies
+
+Case study · Delivery evidence
+
+# Recruiting automation with context, evidence, and send control
+
+A recruiting workspace that synchronises candidate conversations, refreshes evidence-linked profiles, and separates manual, copilot, and controlled-autopilot authority.
+
+[繁體中文](/zh-hk/case-studies/recruiting-ai-agent-workflow/) [简体中文](/zh-cn/case-studies/recruiting-ai-agent-workflow/)
+
+## The operating challenge
+
+Fast reply generation did not solve incomplete conversation context, stale candidate profiles, duplicate sends, or uncertain delivery. Automation needed to coexist with recruiters rather than take over their working interface.
+
+## Designed intervention
+
+01
+
+Used a local connector to reuse the authorised recruiter session and synchronise visible candidate history.
+
+02
+
+Refreshed structured profiles when context changed, separating facts, inferences, confidence, and missing information.
+
+03
+
+Supported manual, copilot, and controlled-autopilot modes per candidate.
+
+04
+
+Serialised sends, enforced idempotency, and reread the sent message to verify completion.
+
+## Validation snapshot
+
+These figures separate delivered scope from pilot validation. Each metric retains its measurement definition so product coverage is not mistaken for business impact.
+
+**3**
+
+### automation modes
+
+Manual, Copilot, and controlled Autopilot
+
+**4**
+
+### operating workspaces
+
+Candidate queue, conversation, profile, and operations
+
+**98.9%**
+
+### conversation-sync coverage
+
+Visible historical messages successfully backfilled
+
+**99.3%**
+
+### send reread success
+
+Sent text reread from the recruiter side after action
+
+**15.3 min**
+
+### candidate handling time
+
+First review to confirmed next action; 22.4 min before
+
+## Evidence boundary
+
+The published validation covers synchronisation, send verification, and workflow time in a controlled pilot. It does not claim improved hiring outcomes without a longer recruiting cohort.
+
+## Discuss a comparable operating problem.
+
+[Book a project assessment](mailto:info@onyxdevslab.com?subject=Case%20study%20enquiry)
+
+## Structured data
+
+```json
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://hk.onyxdevslab.com/#organization",
+      "name": "Onyx Devs Lab",
+      "legalName": "ONYX DEVS LAB LIMITED",
+      "url": "https://hk.onyxdevslab.com/",
+      "email": "info@onyxdevslab.com",
+      "foundingDate": "2025-10-30",
+      "leiCode": "254900Z30CLK7HKE9H46",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "36-40 TAI LIN PAI ROAD, UNIT B53, 2/F, KWAI CHUNG",
+        "addressLocality": "HONG KONG",
+        "postalCode": "999077",
+        "addressCountry": "HK"
+      },
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://hk.onyxdevslab.com/favicon.svg",
+        "width": 100,
+        "height": 100
+      },
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "contactType": "sales",
+        "email": "info@onyxdevslab.com",
+        "availableLanguage": [
+          "English",
+          "Chinese"
+        ]
+      },
+      "areaServed": [
+        "Hong Kong",
+        "Greater China",
+        "Global"
+      ],
+      "knowsAbout": [
+        "Enterprise AI",
+        "AI advisory",
+        "Custom AI development",
+        "AI agents",
+        "Retrieval-augmented generation",
+        "Forward Deployed Engineering",
+        "ERP integration"
+      ],
+      "identifier": [
+        {
+          "@type": "PropertyValue",
+          "propertyID": "Hong Kong Business Registration Number",
+          "value": "79051925"
+        },
+        {
+          "@type": "PropertyValue",
+          "propertyID": "LEI",
+          "value": "254900Z30CLK7HKE9H46"
+        }
+      ],
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Onyx Devs Lab enterprise AI services",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "@id": "https://hk.onyxdevslab.com/#service-ai-advisory",
+              "name": [
+                "AI advisory",
+                "AI 顧問",
+                "AI 咨询"
+              ],
+              "url": [
+                "https://hk.onyxdevslab.com/en/ai-consulting-hong-kong/",
+                "https://hk.onyxdevslab.com/zh-hk/ai-consulting/",
+                "https://hk.onyxdevslab.com/zh-cn/ai-consulting/"
+              ],
+              "provider": {
+                "@id": "https://hk.onyxdevslab.com/#organization"
+              },
+              "areaServed": [
+                "Hong Kong",
+                "Greater China",
+                "Global"
+              ]
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "@id": "https://hk.onyxdevslab.com/#service-custom-ai-development",
+              "name": [
+                "Custom AI development",
+                "AI 定制開發",
+                "AI 定制开发"
+              ],
+              "url": [
+                "https://hk.onyxdevslab.com/en/custom-ai-development-hong-kong/",
+                "https://hk.onyxdevslab.com/zh-hk/custom-ai-development/",
+                "https://hk.onyxdevslab.com/zh-cn/custom-ai-development/"
+              ],
+              "provider": {
+                "@id": "https://hk.onyxdevslab.com/#organization"
+              },
+              "areaServed": [
+                "Hong Kong",
+                "Greater China",
+                "Global"
+              ]
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "@id": "https://hk.onyxdevslab.com/#service-forward-deployed-engineering",
+              "name": [
+                "Forward Deployed Engineering (FDE)",
+                "前線部署工程（FDE）",
+                "前线部署工程（FDE）"
+              ],
+              "url": [
+                "https://hk.onyxdevslab.com/en/forward-deployed-engineering/",
+                "https://hk.onyxdevslab.com/zh-hk/forward-deployed-engineering/",
+                "https://hk.onyxdevslab.com/zh-cn/forward-deployed-engineering/"
+              ],
+              "provider": {
+                "@id": "https://hk.onyxdevslab.com/#organization"
+              },
+              "areaServed": [
+                "Hong Kong",
+                "Greater China",
+                "Global"
+              ]
+            }
+          }
+        ]
+      },
+      "member": [
+        {
+          "@id": "https://hk.onyxdevslab.com/#person-mi"
+        },
+        {
+          "@id": "https://hk.onyxdevslab.com/#person-lucas"
+        },
+        {
+          "@id": "https://hk.onyxdevslab.com/#person-hunter"
+        },
+        {
+          "@id": "https://hk.onyxdevslab.com/#person-jake"
+        },
+        {
+          "@id": "https://hk.onyxdevslab.com/#person-olivia"
+        }
+      ],
+      "sameAs": [
+        "https://github.com/0xHunterL/onyx-devs-lab.github.io",
+        "https://www.gleif.org/lei/254900Z30CLK7HKE9H46",
+        "https://lei.bloomberg.com/leis/view/254900Z30CLK7HKE9H46",
+        "https://www.cr.gov.hk/docs/wrpt/RNC063_2025.10.27-2025.11.02.pdf"
+      ],
+      "subjectOf": {
+        "@type": "CreativeWork",
+        "name": "Onyx GEO evidence checkpoint — 2026-09-09",
+        "url": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-evidence-2026-09-09"
+      }
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://hk.onyxdevslab.com/#website",
+      "url": "https://hk.onyxdevslab.com/",
+      "name": "Onyx Devs Lab",
+      "alternateName": "ONYX DEVS LAB LIMITED",
+      "publisher": {
+        "@id": "https://hk.onyxdevslab.com/#organization"
+      },
+      "inLanguage": [
+        "en",
+        "zh-Hant-HK",
+        "zh-CN"
+      ]
+    },
+    {
+      "@type": "CreativeWork",
+      "@id": "https://hk.onyxdevslab.com/en/case-studies/recruiting-ai-agent-workflow/#primary",
+      "name": "Recruiting automation with context, evidence, and send control",
+      "description": "A controlled recruiting agent workflow for candidate sync, evidence-linked profiles, reply drafting, idempotent sending, and human takeover.",
+      "url": "https://hk.onyxdevslab.com/en/case-studies/recruiting-ai-agent-workflow/",
+      "creator": {
+        "@id": "https://hk.onyxdevslab.com/#organization"
+      },
+      "dateModified": "2026-09-09"
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://hk.onyxdevslab.com/en/case-studies/recruiting-ai-agent-workflow/",
+      "url": "https://hk.onyxdevslab.com/en/case-studies/recruiting-ai-agent-workflow/",
+      "name": "Recruiting AI Agent Workflow Case Study | Onyx Devs Lab",
+      "description": "A controlled recruiting agent workflow for candidate sync, evidence-linked profiles, reply drafting, idempotent sending, and human takeover.",
+      "dateModified": "2026-09-09",
+      "inLanguage": "en",
+      "isPartOf": {
+        "@id": "https://hk.onyxdevslab.com/#website"
+      },
+      "about": {
+        "@id": "https://hk.onyxdevslab.com/en/case-studies/recruiting-ai-agent-workflow/#primary"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://hk.onyxdevslab.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Recruiting automation with context, evidence, and send control",
+          "item": "https://hk.onyxdevslab.com/en/case-studies/recruiting-ai-agent-workflow/"
+        }
+      ]
+    }
+  ]
+}
+```

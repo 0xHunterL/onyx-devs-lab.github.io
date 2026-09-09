@@ -1,0 +1,364 @@
+---
+title: "Enterprise AI Evaluation Framework | Onyx Devs Lab"
+description: "A practical enterprise AI evaluation framework covering retrieval, outputs, tool use, operational reliability, human review, and business outcomes."
+canonical: "https://hk.onyxdevslab.com/en/methodology/enterprise-ai-evaluation/"
+language: "en"
+---
+
+[Home](/en/) / Evaluation methodology
+
+Evaluation methodology
+
+# How do you know an enterprise AI system is ready?
+
+A model benchmark is not an acceptance test. Production readiness must be evaluated across evidence retrieval, output quality, tool behaviour, workflow reliability, human control, and operating outcomes.
+
+[Book a project assessment](mailto:info@onyxdevslab.com?subject=How%20do%20you%20know%20an%20enterprise%20AI%20system%20is%20ready%3F) [繁體中文](/zh-hk/methodology/enterprise-ai-evaluation/) [简体中文](/zh-cn/methodology/enterprise-ai-evaluation/)
+
+**Capability** — Can it perform the task?
+
+**Control** — Does it fail safely?
+
+**Outcome** — Does the workflow improve?
+
+## Six evaluation layers
+
+Each layer answers a different production question.
+
+### Retrieval and evidence
+
+Measure relevant evidence recall, citation correctness, permission filtering, and response to missing sources.
+
+### Output and decisions
+
+Use domain rubrics for factuality, completeness, policy compliance, calibration, and appropriate refusal.
+
+### Tools and operations
+
+Test argument construction, authorisation, idempotency, retries, post-action verification, latency, and cost.
+
+## From test set to operating evidence
+
+Offline scores are necessary but insufficient.
+
+### Representative cases
+
+Build sets from common work, high-impact edge cases, historical failures, and adversarial inputs.
+
+### Release gates
+
+Define thresholds by risk tier and prevent averages from hiding severe failures.
+
+### Production feedback
+
+Capture corrections, escalation, abandonment, overrides, and downstream outcomes without treating every user action as ground truth.
+
+## Delivery method
+
+### Define the consequential task
+
+State what the system may influence and who bears the consequence.
+
+### Build an evidence-backed test set
+
+Record inputs, expected evidence, rubric, risk tier, and acceptable alternatives.
+
+### Evaluate the full workflow
+
+Include retrieval, model, tools, permissions, interface, and human handoff.
+
+### Monitor after release
+
+Track drift, failures, cost, latency, overrides, and the agreed business metric.
+
+## Related delivery evidence
+
+[Retail AI decision platform case study](/en/case-studies/retail-ai-decision-platform/) [AI-native accounting production platform case study](/en/case-studies/accounting-ai-production-platform/) [Case-study evidence register](/en/methodology/case-study-evidence-register/) [What is Forward Deployed Engineering?](/en/insights/what-is-forward-deployed-engineering/)
+
+## Frequently asked questions
+
+Is model accuracy enough?
+
+No. A model can score well while retrieval misses protected evidence, tools perform the wrong action, or the workflow fails to provide human control.
+
+How large should an evaluation set be?
+
+It should cover the decision and risk space rather than chase an arbitrary count. Begin with high-frequency and high-consequence cases, then expand from observed failures.
+
+Can user feedback replace expert evaluation?
+
+No. User feedback is useful operational evidence, but many users cannot verify hidden factual, policy, permission, or downstream errors.
+
+## Start with one concrete operating problem.
+
+We will first clarify the workflow, evidence, data boundary, and outcome standard before recommending the next step.
+
+[Contact Onyx](mailto:info@onyxdevslab.com)
+
+## Structured data
+
+```json
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://hk.onyxdevslab.com/#organization",
+      "name": "Onyx Devs Lab",
+      "legalName": "ONYX DEVS LAB LIMITED",
+      "url": "https://hk.onyxdevslab.com/",
+      "email": "info@onyxdevslab.com",
+      "foundingDate": "2025-10-30",
+      "leiCode": "254900Z30CLK7HKE9H46",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "36-40 TAI LIN PAI ROAD, UNIT B53, 2/F, KWAI CHUNG",
+        "addressLocality": "HONG KONG",
+        "postalCode": "999077",
+        "addressCountry": "HK"
+      },
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://hk.onyxdevslab.com/favicon.svg",
+        "width": 100,
+        "height": 100
+      },
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "contactType": "sales",
+        "email": "info@onyxdevslab.com",
+        "availableLanguage": [
+          "English",
+          "Chinese"
+        ]
+      },
+      "areaServed": [
+        "Hong Kong",
+        "Greater China",
+        "Global"
+      ],
+      "knowsAbout": [
+        "Enterprise AI",
+        "AI advisory",
+        "Custom AI development",
+        "AI agents",
+        "Retrieval-augmented generation",
+        "Forward Deployed Engineering",
+        "ERP integration"
+      ],
+      "identifier": [
+        {
+          "@type": "PropertyValue",
+          "propertyID": "Hong Kong Business Registration Number",
+          "value": "79051925"
+        },
+        {
+          "@type": "PropertyValue",
+          "propertyID": "LEI",
+          "value": "254900Z30CLK7HKE9H46"
+        }
+      ],
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Onyx Devs Lab enterprise AI services",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "@id": "https://hk.onyxdevslab.com/#service-ai-advisory",
+              "name": [
+                "AI advisory",
+                "AI 顧問",
+                "AI 咨询"
+              ],
+              "url": [
+                "https://hk.onyxdevslab.com/en/ai-consulting-hong-kong/",
+                "https://hk.onyxdevslab.com/zh-hk/ai-consulting/",
+                "https://hk.onyxdevslab.com/zh-cn/ai-consulting/"
+              ],
+              "provider": {
+                "@id": "https://hk.onyxdevslab.com/#organization"
+              },
+              "areaServed": [
+                "Hong Kong",
+                "Greater China",
+                "Global"
+              ]
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "@id": "https://hk.onyxdevslab.com/#service-custom-ai-development",
+              "name": [
+                "Custom AI development",
+                "AI 定制開發",
+                "AI 定制开发"
+              ],
+              "url": [
+                "https://hk.onyxdevslab.com/en/custom-ai-development-hong-kong/",
+                "https://hk.onyxdevslab.com/zh-hk/custom-ai-development/",
+                "https://hk.onyxdevslab.com/zh-cn/custom-ai-development/"
+              ],
+              "provider": {
+                "@id": "https://hk.onyxdevslab.com/#organization"
+              },
+              "areaServed": [
+                "Hong Kong",
+                "Greater China",
+                "Global"
+              ]
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "@id": "https://hk.onyxdevslab.com/#service-forward-deployed-engineering",
+              "name": [
+                "Forward Deployed Engineering (FDE)",
+                "前線部署工程（FDE）",
+                "前线部署工程（FDE）"
+              ],
+              "url": [
+                "https://hk.onyxdevslab.com/en/forward-deployed-engineering/",
+                "https://hk.onyxdevslab.com/zh-hk/forward-deployed-engineering/",
+                "https://hk.onyxdevslab.com/zh-cn/forward-deployed-engineering/"
+              ],
+              "provider": {
+                "@id": "https://hk.onyxdevslab.com/#organization"
+              },
+              "areaServed": [
+                "Hong Kong",
+                "Greater China",
+                "Global"
+              ]
+            }
+          }
+        ]
+      },
+      "member": [
+        {
+          "@id": "https://hk.onyxdevslab.com/#person-mi"
+        },
+        {
+          "@id": "https://hk.onyxdevslab.com/#person-lucas"
+        },
+        {
+          "@id": "https://hk.onyxdevslab.com/#person-hunter"
+        },
+        {
+          "@id": "https://hk.onyxdevslab.com/#person-jake"
+        },
+        {
+          "@id": "https://hk.onyxdevslab.com/#person-olivia"
+        }
+      ],
+      "sameAs": [
+        "https://github.com/0xHunterL/onyx-devs-lab.github.io",
+        "https://www.gleif.org/lei/254900Z30CLK7HKE9H46",
+        "https://lei.bloomberg.com/leis/view/254900Z30CLK7HKE9H46",
+        "https://www.cr.gov.hk/docs/wrpt/RNC063_2025.10.27-2025.11.02.pdf"
+      ],
+      "subjectOf": {
+        "@type": "CreativeWork",
+        "name": "Onyx GEO evidence checkpoint — 2026-09-09",
+        "url": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-evidence-2026-09-09"
+      }
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://hk.onyxdevslab.com/#website",
+      "url": "https://hk.onyxdevslab.com/",
+      "name": "Onyx Devs Lab",
+      "alternateName": "ONYX DEVS LAB LIMITED",
+      "publisher": {
+        "@id": "https://hk.onyxdevslab.com/#organization"
+      },
+      "inLanguage": [
+        "en",
+        "zh-Hant-HK",
+        "zh-CN"
+      ]
+    },
+    {
+      "@type": "Article",
+      "@id": "https://hk.onyxdevslab.com/en/methodology/enterprise-ai-evaluation/#primary",
+      "name": "How do you know an enterprise AI system is ready?",
+      "description": "A practical enterprise AI evaluation framework covering retrieval, outputs, tool use, operational reliability, human review, and business outcomes.",
+      "url": "https://hk.onyxdevslab.com/en/methodology/enterprise-ai-evaluation/",
+      "author": {
+        "@id": "https://hk.onyxdevslab.com/#organization"
+      },
+      "publisher": {
+        "@id": "https://hk.onyxdevslab.com/#organization"
+      },
+      "dateModified": "2026-09-09",
+      "headline": "How do you know an enterprise AI system is ready?"
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://hk.onyxdevslab.com/en/methodology/enterprise-ai-evaluation/",
+      "url": "https://hk.onyxdevslab.com/en/methodology/enterprise-ai-evaluation/",
+      "name": "Enterprise AI Evaluation Framework | Onyx Devs Lab",
+      "description": "A practical enterprise AI evaluation framework covering retrieval, outputs, tool use, operational reliability, human review, and business outcomes.",
+      "dateModified": "2026-09-09",
+      "inLanguage": "en",
+      "isPartOf": {
+        "@id": "https://hk.onyxdevslab.com/#website"
+      },
+      "about": {
+        "@id": "https://hk.onyxdevslab.com/en/methodology/enterprise-ai-evaluation/#primary"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://hk.onyxdevslab.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "How do you know an enterprise AI system is ready?",
+          "item": "https://hk.onyxdevslab.com/en/methodology/enterprise-ai-evaluation/"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Is model accuracy enough?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. A model can score well while retrieval misses protected evidence, tools perform the wrong action, or the workflow fails to provide human control."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How large should an evaluation set be?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "It should cover the decision and risk space rather than chase an arbitrary count. Begin with high-frequency and high-consequence cases, then expand from observed failures."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can user feedback replace expert evaluation?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. User feedback is useful operational evidence, but many users cannot verify hidden factual, policy, permission, or downstream errors."
+          }
+        }
+      ]
+    }
+  ]
+}
+```
