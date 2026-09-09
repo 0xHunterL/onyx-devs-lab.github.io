@@ -206,6 +206,12 @@ requireText('GitHub repository README source', repositoryReadme, [
   'geo_repository',
   'Onyx-enterprise-AI-machine-resources.md',
   'CITATION.cff',
+  'FDE 不是驻场外包：企业 AI 什么时候需要前线部署工程',
+  'docs/distribution/FDE不是驻场外包.md',
+  'AI Agent 接入 ERP 前必须回答的七个问题',
+  'docs/distribution/AI-Agent接入ERP前的七个问题.md',
+  '法律 AI 不应只给答案：如何设计可复核证据链',
+  'docs/distribution/法律AI证据链设计.md',
 ]);
 
 const codeMetaRaw = await get('GitHub repository CodeMeta source', 'https://raw.githubusercontent.com/0xHunterL/onyx-devs-lab.github.io/main/codemeta.json', 'text/plain');
