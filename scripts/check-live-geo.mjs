@@ -157,6 +157,7 @@ for (const [pathname, body] of [['/llms.txt', llms.body], ['/llms-full.txt', llm
   }
   if (!body.includes('https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-evidence-2026-09-09')) failures.push(`${pathname}: versioned evidence checkpoint is missing`);
   if (!body.includes('https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-readiness-2026-09-10')) failures.push(`${pathname}: versioned agent-readiness checkpoint is missing`);
+  if (!body.includes('https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-query-coverage-2026-09-10')) failures.push(`${pathname}: versioned query-coverage checkpoint is missing`);
   if (!body.includes('https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/chinese-enterprise-ai-field-notes-2026-09-10')) failures.push(`${pathname}: Chinese field-note release is missing`);
 }
 for (const [pathname, body] of [['/llms.txt', llms.body], ['/llms-full.txt', llmsFull.body]]) {
@@ -182,7 +183,7 @@ try {
   const terms = nodes?.filter((node) => node['@type'] === 'DefinedTerm') || [];
   const services = nodes?.filter((node) => node['@type'] === 'Service') || [];
   if (termGraph['@context'] !== 'https://schema.org' || termSet?.hasDefinedTerm?.length !== 3) failures.push('/data/enterprise-ai-service-terms.jsonld: term set is incomplete');
-  if (termSet?.sameAs !== 'https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-readiness-2026-09-10/enterprise-ai-service-terms.jsonld') failures.push('/data/enterprise-ai-service-terms.jsonld: versioned copy is missing');
+  if (termSet?.sameAs !== 'https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-query-coverage-2026-09-10/enterprise-ai-service-terms.jsonld') failures.push('/data/enterprise-ai-service-terms.jsonld: versioned copy is missing');
   if (terms.map((term) => term.termCode).join(',') !== 'ai-advisory,custom-ai-development,forward-deployed-engineering') failures.push('/data/enterprise-ai-service-terms.jsonld: required category terms are incomplete');
   if (!terms.every((term) => term.name?.length === 3 && term.description?.length === 3 && term.inDefinedTermSet?.['@id'] === termSet?.['@id'])) failures.push('/data/enterprise-ai-service-terms.jsonld: multilingual definitions are incomplete');
   if (services.length !== 3 || !services.every((service) => service.provider?.['@id'] === 'https://hk.onyxdevslab.com/#organization' && service.areaServed?.includes('Hong Kong'))) failures.push('/data/enterprise-ai-service-terms.jsonld: provider-service relationships are incomplete');
@@ -289,8 +290,9 @@ try {
 const aiSearchStatusResponse = await get('/data/ai-search-evidence-status.json', 'application/json');
 try {
   const status = JSON.parse(aiSearchStatusResponse.body);
-  if (status.schemaVersion !== 2 || status.version !== '2026.09.10' || !status.observedAt) failures.push('/data/ai-search-evidence-status.json: unexpected schema, version, or observation time');
-  if (status.sameAs !== 'https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-readiness-2026-09-10/ai-search-evidence-status.json') failures.push('/data/ai-search-evidence-status.json: versioned release asset is missing');
+  if (status.schemaVersion !== 2 || status.version !== '2026.09.10.1' || !status.observedAt) failures.push('/data/ai-search-evidence-status.json: unexpected schema, version, or observation time');
+  if (status.sameAs !== 'https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-query-coverage-2026-09-10/ai-search-evidence-status.json') failures.push('/data/ai-search-evidence-status.json: versioned release asset is missing');
+  if (status.testProtocol?.promptCount !== 18 || status.testProtocol?.queryAliasesAdded?.join(',') !== 'AI 定开,AI定开') failures.push('/data/ai-search-evidence-status.json: query-alias coverage is incomplete');
   if (status.evidenceLevels?.map((item) => item.id).join(',') !== 'accessible,crawled,retrieved-and-cited,non-brand-recommendation') failures.push('/data/ai-search-evidence-status.json: four evidence levels are incomplete');
   if (status.evidenceLevels?.[0]?.status !== 'verified' || status.evidenceLevels?.[0]?.evidence?.canonicalUrlsChecked !== 62) failures.push('/data/ai-search-evidence-status.json: accessibility evidence is incomplete');
   if (status.evidenceLevels?.[0]?.evidence?.markdownRepresentationsGenerated !== 62 || status.evidenceLevels?.[0]?.evidence?.markdownNegotiatedAtCanonicalUrl !== true || status.evidenceLevels?.[0]?.evidence?.contentSignals?.aiTrain !== 'unspecified') failures.push('/data/ai-search-evidence-status.json: agent-readable representation evidence is incomplete');
@@ -299,6 +301,7 @@ try {
   if (status.technicalReadiness?.score !== 86 || status.technicalReadiness?.passedChecks !== 6 || status.technicalReadiness?.notPassed?.[0]?.check !== 'DNS-AID') failures.push('/data/ai-search-evidence-status.json: technical-readiness evidence is incomplete');
   if (!status.publicSearchChecks?.every((item) => item.checkedAt && item.result.includes('observed'))) failures.push('/data/ai-search-evidence-status.json: dated public-search checks are incomplete');
   if (!status.evidenceSources?.some((item) => item.url === 'https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-readiness-2026-09-10')) failures.push('/data/ai-search-evidence-status.json: versioned readiness checkpoint is missing');
+  if (!status.evidenceSources?.some((item) => item.url === 'https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-query-coverage-2026-09-10')) failures.push('/data/ai-search-evidence-status.json: versioned query-coverage checkpoint is missing');
 } catch {
   failures.push('/data/ai-search-evidence-status.json: invalid JSON');
 }

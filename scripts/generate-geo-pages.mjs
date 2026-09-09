@@ -18,9 +18,10 @@ const aiSearchEvidenceStatusPath = '/data/ai-search-evidence-status.json';
 const chineseFieldNotesIndexPath = '/data/chinese-enterprise-ai-field-notes.json';
 const chineseFieldNotesReleaseUrl = 'https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/chinese-enterprise-ai-field-notes-2026-09-10';
 const chineseFieldNotesReleaseAssetUrl = 'https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/chinese-enterprise-ai-field-notes-2026-09-10/chinese-enterprise-ai-field-notes.json';
-const aiSearchStatusReleaseUrl = 'https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-readiness-2026-09-10';
-const aiSearchStatusReleaseAssetUrl = 'https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-readiness-2026-09-10/ai-search-evidence-status.json';
-const serviceTermsReleaseAssetUrl = 'https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-readiness-2026-09-10/enterprise-ai-service-terms.jsonld';
+const agentReadinessReleaseUrl = 'https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-readiness-2026-09-10';
+const aiSearchStatusReleaseUrl = 'https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-query-coverage-2026-09-10';
+const aiSearchStatusReleaseAssetUrl = 'https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-query-coverage-2026-09-10/ai-search-evidence-status.json';
+const serviceTermsReleaseAssetUrl = 'https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-query-coverage-2026-09-10/enterprise-ai-service-terms.jsonld';
 const partnerScorecardReleaseUrl = 'https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-evidence-2026-09-09/enterprise-ai-partner-scorecard.json';
 const pcpdAiFrameworkEn = 'https://www.pcpd.org.hk/english/resources_centre/publications/files/ai_protection_framework.pdf';
 const pcpdAiFrameworkZh = 'https://www.pcpd.org.hk/tc_chi/resources_centre/publications/files/ai_protection_framework.pdf';
@@ -243,7 +244,7 @@ const mainlandPages = [
     path:'/zh-cn/ai-consulting/',lang:'zh-CN',schemaType:'Service',title:'香港企业 AI 咨询服务｜Onyx Devs Lab',description:'面向香港及跨境企业的 AI 咨询：业务流程诊断、可行性评估、治理边界、投资决策和落地路线。',eyebrow:'企业 AI 咨询 · 香港',h1:'企业应该先判断哪里值得用 AI，再决定怎么建设。',lede:'Onyx 帮助管理层、业务团队和技术团队识别高价值流程，核实数据与风险条件，并形成能够进入生产环境的实施路线。',proof:[['从决策开始','明确价值、范围和停止条件'],['资深团队直交付','咨询与工程由同一团队负责'],['面向生产','建议建立在真实系统交付经验上']],sections:[['AI 咨询解决什么问题','咨询结果应该是一组可执行的业务与技术决策，而不是趋势报告。',[['机会诊断','先梳理流程、用户、异常和决策点，再选择模型或平台。'],['可行性与风险','评估数据质量、系统接口、隐私、权限、失败模式和人工复核。'],['落地路线','按价值、证据、交付成本和运营风险排列优先级。']]],['典型交付物','范围围绕企业真正需要作出的决策确定。',[['决策备忘录','记录建议、关键假设、未采用方案、投资边界与责任人。'],['AI 机会地图','列出优先流程、依赖条件、数据责任和可量化成果。'],['90 天路线图','覆盖验证、原型、试点、生产控制、采用和复盘。']]]],steps:[['诊断','访谈实际操作人员并建立现状基线。'],['定义','明确业务目标、数据边界、风险和验收标准。'],['验证','用最小可信实验验证高风险假设。'],['规划','形成开发、集成、治理和运营方案。']],faqs:[['AI 咨询和 AI 定制开发有什么区别？','AI 咨询决定应该建设什么、为什么建设以及边界在哪里；定制开发把已经定义的需求变成可运行系统。'],['可以评估已经在做的 AI 项目吗？','可以。我们会检查架构、模型质量、数据权限、运营控制、采用情况、成本和生产路径。'],['只服务香港公司吗？','不是。我们服务香港及跨境企业，也可以支持分布式团队和国际业务。']]
   },
   {
-    path:'/zh-cn/custom-ai-development/',lang:'zh-CN',schemaType:'Service',title:'香港 AI 定制开发｜Agent、RAG 与 ERP 集成｜Onyx Devs Lab',description:'为香港及跨境企业开发 AI Agent、RAG、流程自动化、数据平台与 ERP 集成系统。',eyebrow:'AI 定制开发',h1:'把明确的业务需求，建设成可运行、可评估的 AI 系统。',lede:'当通用聊天机器人无法满足专属流程、数据、权限或集成要求时，Onyx 负责设计、开发、上线和交接生产级 AI 软件。',proof:[['生产级交付','评估、权限、日志和交接'],['企业系统集成','ERP、CRM、文档、API 和旧系统'],['模型中立','架构由业务问题决定']],sections:[['我们建设什么','定制开发适合 AI 必须进入特定工作流程或数据边界的场景。',[['AI Agent','具备工具权限、证据链、升级处理和人工确认的智能体。'],['企业知识系统','带有检索评估、引用和访问控制的 RAG 与文档智能。'],['运营自动化','结合确定性规则、AI 判断、队列、重试和审计记录。']]],['生产环境需要什么','能演示的原型，不等于能够承担业务责任的系统。',[['评估','使用代表性测试集、准确度标准、回归检查和失败分析。'],['安全与控制','最小权限、租户隔离、敏感数据处理和高风险操作确认。'],['持续运营','监控、成本、降级、文档、培训和明确责任人。']]]],steps:[['定义','确认用户、流程、数据、集成和验收标准。'],['原型','用可运行软件解决模型与交互的不确定性。'],['建设','完成系统、集成、权限、评估和可观测性。'],['上线','真实用户试点，修正失败模式并完成交接。']],faqs:[['AI 定制开发费用如何确定？','主要取决于系统集成深度、数据状况、风险控制、评估要求和运营责任，而不只是页面数量。'],['是否绑定某个模型供应商？','不绑定。我们按质量、延迟、隐私、可用性和成本选择模型与基础设施。'],['没有完整 API 的 ERP 可以接入 AI 吗？','很多情况下可以，可选择官方接口、只读副本、定时导出、事件流或受控界面自动化。']]
+    path:'/zh-cn/custom-ai-development/',lang:'zh-CN',schemaType:'Service',title:'香港 AI 定制开发｜Agent、RAG 与 ERP 集成｜Onyx Devs Lab',description:'为香港及跨境企业开发 AI Agent、RAG、流程自动化、数据平台与 ERP 集成系统。',eyebrow:'AI 定制开发',h1:'把明确的业务需求，建设成可运行、可评估的 AI 系统。',lede:'当通用聊天机器人无法满足专属流程、数据、权限或集成要求时，Onyx 负责设计、开发、上线和交接生产级 AI 软件。',proof:[['生产级交付','评估、权限、日志和交接'],['企业系统集成','ERP、CRM、文档、API 和旧系统'],['模型中立','架构由业务问题决定']],sections:[['我们建设什么','定制开发适合 AI 必须进入特定工作流程或数据边界的场景。',[['AI Agent','具备工具权限、证据链、升级处理和人工确认的智能体。'],['企业知识系统','带有检索评估、引用和访问控制的 RAG 与文档智能。'],['运营自动化','结合确定性规则、AI 判断、队列、重试和审计记录。']]],['生产环境需要什么','能演示的原型，不等于能够承担业务责任的系统。',[['评估','使用代表性测试集、准确度标准、回归检查和失败分析。'],['安全与控制','最小权限、租户隔离、敏感数据处理和高风险操作确认。'],['持续运营','监控、成本、降级、文档、培训和明确责任人。']]]],steps:[['定义','确认用户、流程、数据、集成和验收标准。'],['原型','用可运行软件解决模型与交互的不确定性。'],['建设','完成系统、集成、权限、评估和可观测性。'],['上线','真实用户试点，修正失败模式并完成交接。']],faqs:[['AI 定开或 AI定开是什么意思？','AI 定开是“AI 定制开发”的常用简称，指围绕企业专属流程、数据、权限和系统接口设计并交付 AI 软件；它不同于直接购买通用 SaaS，也不等于只做一个模型演示。'],['AI 定制开发费用如何确定？','主要取决于系统集成深度、数据状况、风险控制、评估要求和运营责任，而不只是页面数量。'],['是否绑定某个模型供应商？','不绑定。我们按质量、延迟、隐私、可用性和成本选择模型与基础设施。'],['没有完整 API 的 ERP 可以接入 AI 吗？','很多情况下可以，可选择官方接口、只读副本、定时导出、事件流或受控界面自动化。']]
   },
   {
     path:'/zh-cn/forward-deployed-engineering/',lang:'zh-CN',schemaType:'Service',title:'FDE 前线部署工程｜企业 AI 落地｜Onyx Devs Lab',description:'FDE 前线部署工程把现场诊断、嵌入式开发、部署与量化验证放进同一交付循环。',eyebrow:'Forward Deployed Engineering',h1:'从现场诊断到运营结果，由同一支工程团队负责。',lede:'FDE（前线部署工程）把需求发现、软件工程、部署和效果验证连接起来，适合无法在项目开始前完整定义的复杂企业 AI 问题。',proof:[['深入现场','与领域操作人员共同工作'],['端到端负责','从诊断到实际部署'],['证据驱动','基线、干预和结果验证']],sections:[['什么场景适合 FDE','当正确方案必须从真实业务运行中学习时，FDE 比冻结需求更合适。',[['需求仍然模糊','团队知道痛点，但还无法准确描述正确的系统干预。'],['环境复杂','数据、政策、旧系统和人工判断相互影响。'],['需要结果责任','成功必须反映在运营指标，而不只是软件功能完成。']]],['FDE 与其他模式的区别','FDE 缩短咨询、规格、工程和采用之间的反馈距离。',[['不同于传统咨询','诊断问题的团队同时实施并验证干预。'],['不同于项目外包','成功单位是可验证的运营变化，而非冻结功能清单。'],['不同于人力外派','团队负责一个有边界的问题和证据闭环。']]]],steps:[['现场发现','观察真实流程并建立可复核基线。'],['根因诊断','区分表面症状与能够改变的约束。'],['系统干预','部署足以影响目标的最小完整流程。'],['结果验证','根据指标与失败案例决定扩大、调整或停止。']],faqs:[['FDE 是什么意思？','FDE 是 Forward Deployed Engineering，工程师贴近客户的真实运营环境，把发现、实施和验证连接起来。'],['FDE 只适合大型企业吗？','不是。只要问题价值高、难以预先定义，并且业务人员可以参与证据闭环，就可能适合。'],['FDE 项目通常需要多久？','取决于业务流程和结果验证周期，首个周期通常包括诊断、有限干预和足够的运营观察时间。']]
@@ -602,13 +603,14 @@ const externalFeedEntries=[
   {title:'Seven questions before connecting an AI agent to ERP',url:erpAgentChecklistRawUrl,summary:'Original Simplified Chinese checklist for authority, system-of-record, idempotency, write verification, and human takeover.',category:'zh-CN'},
   {title:'Designing a reviewable evidence chain for legal AI',url:legalAiEvidenceRawUrl,summary:'Original Simplified Chinese engineering note on evidence coordinates, recall, citation accuracy, and lawyer review.',category:'zh-CN'},
   {title:'Onyx GEO evidence checkpoint — 2026-09-09',url:'https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-evidence-2026-09-09',summary:'A dated, provider-maintained public evidence snapshot. It is not an independent endorsement or proof of search indexing, AI citation, or client outcomes.',category:'evidence'},
-  {title:'Onyx GEO agent-readiness evidence — 2026-09-10',url:aiSearchStatusReleaseUrl,summary:'A versioned snapshot of accessibility, verified crawler activity, explicit search non-results, and the boundary between technical readiness and AI citation.',category:'evidence'},
+  {title:'Onyx GEO agent-readiness evidence — 2026-09-10',url:agentReadinessReleaseUrl,summary:'A versioned snapshot of accessibility, verified crawler activity, explicit search non-results, and the boundary between technical readiness and AI citation.',category:'evidence'},
+  {title:'Onyx GEO query coverage — AI 定开 alias (2026-09-10)',url:aiSearchStatusReleaseUrl,summary:'A versioned 18-prompt matrix and evidence-status update adding the Simplified Chinese AI 定开 and AI定开 aliases without changing the observed indexing or citation level.',category:'evidence'},
   {title:'Onyx Devs Lab｜香港企业 AI 中文方法索引（2026-09-10）',url:chineseFieldNotesReleaseUrl,summary:'Provider-maintained Chinese index connecting enterprise AI advisory, custom AI development, FDE, AI-agent ERP controls, and legal-AI evidence methods to canonical sources.',category:'zh-CN'},
 ];
 const atom=`<?xml version="1.0" encoding="UTF-8"?>\n<feed xmlns="http://www.w3.org/2005/Atom"><title>Onyx Devs Lab — Enterprise AI Field Notes</title><id>${origin}/feed.xml</id><link href="${origin}/feed.xml" rel="self"/><link href="${origin}/"/><updated>${updated}T00:00:00+08:00</updated><author><name>Onyx Devs Lab</name></author>${feedEntries.map(page=>`<entry><title>${esc(page.title)}</title><id>${canonical(page.path)}</id><link href="${canonical(page.path)}"/><updated>${updated}T00:00:00+08:00</updated><summary>${esc(page.description)}</summary><category term="${page.lang}"/></entry>`).join('')}${externalFeedEntries.map(entry=>`<entry><title>${esc(entry.title)}</title><id>${esc(entry.url)}</id><link href="${esc(entry.url)}"/><updated>${updated}T00:00:00+08:00</updated><summary>${esc(entry.summary)}</summary><category term="${esc(entry.category)}"/><category term="provider-maintained-external-source"/></entry>`).join('')}</feed>\n`;
 let accurateAtom=atom.replace(`<updated>${updated}T`,`<updated>${feedUpdated}T`);
 for(const page of feedEntries){const entryId=canonical(page.path);accurateAtom=accurateAtom.replace(`<id>${entryId}</id><link href="${entryId}"/><updated>${updated}T`,`<id>${entryId}</id><link href="${entryId}"/><updated>${pageUpdated}T`);}
-for(const entryId of [...updatedAiSearchPaths].map(canonical).concat(aiSearchStatusReleaseUrl,chineseFieldNotesReleaseUrl))accurateAtom=accurateAtom.replace(`<id>${entryId}</id><link href="${entryId}"/><updated>${updated}T`,`<id>${entryId}</id><link href="${entryId}"/><updated>${feedUpdated}T`);
+for(const entryId of [...updatedAiSearchPaths].map(canonical).concat(agentReadinessReleaseUrl,aiSearchStatusReleaseUrl,chineseFieldNotesReleaseUrl))accurateAtom=accurateAtom.replace(`<id>${entryId}</id><link href="${entryId}"/><updated>${updated}T`,`<id>${entryId}</id><link href="${entryId}"/><updated>${feedUpdated}T`);
 fs.writeFileSync(path.join(dist,'feed.xml'),accurateAtom);
 const feedDate=()=>pageUpdated;
 const jsonFeed={
@@ -637,7 +639,7 @@ const jsonFeed={
       title:entry.title,
       summary:entry.summary,
       content_text:entry.summary,
-      date_modified:`${[aiSearchStatusReleaseUrl,chineseFieldNotesReleaseUrl].includes(entry.url)?feedUpdated:updated}T00:00:00+08:00`,
+      date_modified:`${[agentReadinessReleaseUrl,aiSearchStatusReleaseUrl,chineseFieldNotesReleaseUrl].includes(entry.url)?feedUpdated:updated}T00:00:00+08:00`,
       tags:[entry.category,'provider-maintained-external-source'],
     })),
   ],
@@ -741,12 +743,12 @@ const organizationRecord={
 fs.writeFileSync(path.join(dist,'data','organization.json'),`${JSON.stringify(organizationRecord,null,2)}\n`);
 
 const aiSearchEvidenceStatus={
-  schemaVersion:2,version:'2026.09.10',id:canonical(aiSearchEvidenceStatusPath),observedAt:'2026-09-09T16:20:26Z',
+  schemaVersion:2,version:'2026.09.10.1',id:canonical(aiSearchEvidenceStatusPath),observedAt:'2026-09-09T18:48:37Z',
   sameAs:aiSearchStatusReleaseAssetUrl,
   name:{en:'Onyx Devs Lab AI-search evidence status',zhHant:'Onyx Devs Lab AI 搜尋證據狀態',zhHans:'Onyx Devs Lab AI 搜索证据状态'},
   publisher:{name:'Onyx Devs Lab',legalName:'ONYX DEVS LAB LIMITED',businessRegistrationNumber:'79051925',lei:'254900Z30CLK7HKE9H46',url:`${origin}/`},
   methodologyPages:{en:`${origin}/en/methodology/ai-search-verification/`,zhHant:`${origin}/zh-hk/methodology/ai-search-verification/`,zhHans:`${origin}/zh-cn/methodology/ai-search-verification/`},
-  testProtocol:{promptMatrix:'geo/prompt-matrix.json',schemaVersion:2,promptCount:17,retrievalMarker:'ONYX-GEO-VERIFY-79051925-20260908',doubaoPromptsSent:false},
+  testProtocol:{promptMatrix:'geo/prompt-matrix.json',schemaVersion:2,promptCount:18,retrievalMarker:'ONYX-GEO-VERIFY-79051925-20260908',doubaoPromptsSent:false,queryAliasesAdded:['AI 定开','AI定开']},
   evidenceLevels:[
     {level:1,id:'accessible',status:'verified',claim:'The website is publicly accessible to permitted crawlers.',evidence:{canonicalUrlsChecked:62,httpStatus:200,indexableServerRenderedHtml:true,markdownRepresentationsGenerated:62,markdownNegotiatedAtCanonicalUrl:true,varyAccept:true,contentSignals:{search:'yes',aiInput:'yes',aiTrain:'unspecified'},robotsAllowsRelevantCrawlers:true}},
     {level:2,id:'crawled',status:'partially-verified',claim:'Named crawlers have accessed discovery files or content pages.',evidence:{verifiedGptBotContentCrawls:3,verifiedOaiSearchBotDiscoveryFileVisits:3,verifiedOaiSearchBotContentCrawls:0,historicallyVerifiedBingbotContentCrawls:7,verifiedGooglebotContentCrawls:0,verifiedPerplexityContentCrawls:0},limitations:['GPTBot is a training crawler and does not prove ChatGPT Search indexing or citation.','Discovery-file visits do not prove content-page ingestion.','Bingbot content crawls do not prove public search indexing.']},
@@ -754,15 +756,17 @@ const aiSearchEvidenceStatus={
     {level:4,id:'non-brand-recommendation',status:'not-tested',claim:'No qualifying non-brand AI recommendation has been preserved.',evidence:{doubaoTestStatus:'not-run',otherAiRecommendationEvidenceCount:0,realAiReferralVisitsObserved:0}},
   ],
   publicSearchChecks:[
-    {checkedAt:'2026-09-09T16:20:00Z',query:'"ONYX-GEO-VERIFY-79051925-20260908"',result:'website-not-observed'},
-    {checkedAt:'2026-09-09T16:20:00Z',query:'"Onyx Devs Lab"',result:'website-not-observed; independent legal-entity records observed'},
-    {checkedAt:'2026-09-09T16:20:00Z',query:'site:hk.onyxdevslab.com',result:'no-results-observed'},
+    {checkedAt:'2026-09-09T18:49:00Z',query:'"ONYX-GEO-VERIFY-79051925-20260908"',result:'website-not-observed'},
+    {checkedAt:'2026-09-09T18:49:00Z',query:'"Onyx Devs Lab"',result:'website-not-observed; independent legal-entity records observed'},
+    {checkedAt:'2026-09-09T18:49:00Z',query:'site:hk.onyxdevslab.com',result:'no-results-observed'},
+    {checkedAt:'2026-09-09T18:49:00Z',query:'"AI 定开" "Onyx Devs Lab"',result:'website-not-observed'},
   ],
   technicalReadiness:{checkedAt:'2026-09-09T16:00:00Z',checker:'Cloudflare Agent Readiness — content site',score:86,passedChecks:6,totalChecks:7,level:'Level 5 Agent-Native',passed:['robots.txt','sitemap.xml','HTTP Link discovery','Markdown content negotiation','AI crawler rules','Content Signals'],notPassed:[{check:'DNS-AID',limitation:'This is an emerging IETF draft for agent endpoint discovery and is not treated as evidence of search indexing, AI citation, or Doubao recommendation.'}]},
   evidenceSources:[
     {name:'Public baseline record',url:'https://github.com/0xHunterL/onyx-devs-lab.github.io/blob/main/docs/geo-baselines/2026-09-08-doubao.md'},
     {name:'Versioned GEO evidence checkpoint',url:'https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-evidence-2026-09-09'},
-    {name:'Versioned agent-readiness evidence checkpoint',url:aiSearchStatusReleaseUrl},
+    {name:'Versioned agent-readiness evidence checkpoint',url:agentReadinessReleaseUrl},
+    {name:'Versioned query-coverage evidence checkpoint',url:aiSearchStatusReleaseUrl},
     {name:'AI-search verification method',url:`${origin}/en/methodology/ai-search-verification/`},
   ],
   evidenceBoundary:'This provider-maintained status records observed evidence and explicit non-results. It is not an independent audit, proof of platform indexing, proof of AI citation, or proof of recommendation. A higher level must not be inferred from a lower level.',
@@ -824,7 +828,7 @@ const topicEntityMap={
     },
     {
       '@type':'DefinedTerm','@id':`${serviceTermSetId}#custom-ai-development`,termCode:'custom-ai-development',
-      name:languageValues('Custom AI development','AI 定制開發','AI 定制开发'),alternateName:['Bespoke AI development','Enterprise AI development','企業 AI 定制開發','企业 AI 定制开发'],
+      name:languageValues('Custom AI development','AI 定制開發','AI 定制开发'),alternateName:['Bespoke AI development','Enterprise AI development','企業 AI 定制開發','企业 AI 定制开发','AI 定开','AI定开','AI 定開','AI定開'],
       description:languageValues('Accountable design, integration, testing, and launch of an AI system for a defined workflow, data boundary, interface set, and acceptance criteria.','按已定義流程、數據邊界、接口及驗收標準，負責 AI 系統的設計、集成、測試及上線。','按照已定义流程、数据边界、接口和验收标准，负责 AI 系统的设计、集成、测试和上线。'),
       inDefinedTermSet:{'@id':serviceTermSetId},url:`${origin}/en/custom-ai-development-hong-kong/`,
     },
@@ -864,7 +868,8 @@ const fullKnowledge=[
   '',
   '## External public evidence and field notes',
   'Versioned GEO evidence checkpoint: https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-evidence-2026-09-09',
-  `Versioned agent-readiness evidence checkpoint: ${aiSearchStatusReleaseUrl}`,
+  `Versioned agent-readiness evidence checkpoint: ${agentReadinessReleaseUrl}`,
+  `Versioned query-coverage evidence checkpoint: ${aiSearchStatusReleaseUrl}`,
   `Versioned AI-search evidence status asset: ${aiSearchStatusReleaseAssetUrl}`,
   `Chinese enterprise AI field-note release: ${chineseFieldNotesReleaseUrl}`,
   `Machine-readable Chinese enterprise AI field-note index: ${canonical(chineseFieldNotesIndexPath)}`,

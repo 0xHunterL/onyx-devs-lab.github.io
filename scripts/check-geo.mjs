@@ -188,6 +188,7 @@ for (const [name, body] of Object.entries(machineDiscoveryFiles)) {
   }
   if (!body.includes('https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-evidence-2026-09-09')) failures.push(`${name}: versioned evidence checkpoint is missing`);
   if (!body.includes('https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-readiness-2026-09-10')) failures.push(`${name}: versioned agent-readiness checkpoint is missing`);
+  if (!body.includes('https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-query-coverage-2026-09-10')) failures.push(`${name}: versioned query-coverage checkpoint is missing`);
   if (!body.includes('https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/chinese-enterprise-ai-field-notes-2026-09-10')) failures.push(`${name}: Chinese field-note release is missing`);
 }
 for (const name of ['llms.txt', 'llms-full.txt']) {
@@ -208,6 +209,7 @@ try {
   if (!jsonFeed.user_comment?.includes('does not prove search indexing, AI retrieval, citation, recommendation')) failures.push('feed.json: evidence boundary is missing');
   if (!jsonFeed.items?.length || !jsonFeed.items.every((item) => item.id && item.url && item.title && item.content_text && item.date_modified)) failures.push('feed.json: item fields are incomplete');
   if (!jsonFeed.items.some((item) => item.url === 'https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-readiness-2026-09-10' && item.date_modified === '2026-09-10T00:00:00+08:00')) failures.push('feed.json: readiness checkpoint entry is missing or stale');
+  if (!jsonFeed.items.some((item) => item.url === 'https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-query-coverage-2026-09-10' && item.date_modified === '2026-09-10T00:00:00+08:00')) failures.push('feed.json: query-coverage checkpoint entry is missing or stale');
   if (!jsonFeed.items.some((item) => item.url === 'https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/chinese-enterprise-ai-field-notes-2026-09-10' && item.date_modified === '2026-09-10T00:00:00+08:00')) failures.push('feed.json: Chinese field-note release entry is missing or stale');
   if (!jsonFeed.items.some((item) => item.tags?.includes('provider-maintained-external-source'))) failures.push('feed.json: external-source category is missing');
 } catch {
@@ -221,7 +223,7 @@ try {
   const terms = nodes?.filter((node) => node['@type'] === 'DefinedTerm') || [];
   const services = nodes?.filter((node) => node['@type'] === 'Service') || [];
   if (termSet?.['@id'] !== 'https://hk.onyxdevslab.com/data/enterprise-ai-service-terms.jsonld' || termSet?.hasDefinedTerm?.length !== 3) failures.push('service term graph: DefinedTermSet is incomplete');
-  if (termSet?.sameAs !== 'https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-readiness-2026-09-10/enterprise-ai-service-terms.jsonld') failures.push('service term graph: versioned copy is missing');
+  if (termSet?.sameAs !== 'https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-query-coverage-2026-09-10/enterprise-ai-service-terms.jsonld') failures.push('service term graph: versioned copy is missing');
   if (terms.map((term) => term.termCode).join(',') !== 'ai-advisory,custom-ai-development,forward-deployed-engineering') failures.push('service term graph: required category terms are incomplete');
   if (!terms.every((term) => term.name?.length === 3 && term.description?.length === 3 && term.inDefinedTermSet?.['@id'] === termSet?.['@id'] && term.url)) failures.push('service term graph: multilingual term definitions are incomplete');
   if (services.length !== 3 || !services.every((service) => service.provider?.['@id'] === 'https://hk.onyxdevslab.com/#organization' && service.areaServed?.includes('Hong Kong') && service.category?.['@id'])) failures.push('service term graph: provider-service-category relationships are incomplete');
@@ -350,8 +352,9 @@ try {
 
 try {
   const status = JSON.parse(fs.readFileSync(path.join(dist, 'data/ai-search-evidence-status.json'), 'utf8'));
-  if (status.schemaVersion !== 2 || status.version !== '2026.09.10' || !status.observedAt) failures.push('AI-search evidence status: unexpected schema, version, or observation time');
-  if (status.sameAs !== 'https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-readiness-2026-09-10/ai-search-evidence-status.json') failures.push('AI-search evidence status: versioned release asset is missing');
+  if (status.schemaVersion !== 2 || status.version !== '2026.09.10.1' || !status.observedAt) failures.push('AI-search evidence status: unexpected schema, version, or observation time');
+  if (status.sameAs !== 'https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-query-coverage-2026-09-10/ai-search-evidence-status.json') failures.push('AI-search evidence status: versioned release asset is missing');
+  if (status.version !== '2026.09.10.1' || status.testProtocol?.promptCount !== 18 || status.testProtocol?.queryAliasesAdded?.join(',') !== 'AI 定开,AI定开') failures.push('AI-search evidence status: query-alias coverage version is incomplete');
   if (status.evidenceLevels?.map((item) => item.id).join(',') !== 'accessible,crawled,retrieved-and-cited,non-brand-recommendation') failures.push('AI-search evidence status: four evidence levels are incomplete');
   if (status.evidenceLevels?.[0]?.status !== 'verified' || status.evidenceLevels?.[0]?.evidence?.canonicalUrlsChecked !== 62) failures.push('AI-search evidence status: accessibility evidence is incomplete');
   if (status.evidenceLevels?.[0]?.evidence?.markdownRepresentationsGenerated !== 62 || status.evidenceLevels?.[0]?.evidence?.markdownNegotiatedAtCanonicalUrl !== true || status.evidenceLevels?.[0]?.evidence?.contentSignals?.aiTrain !== 'unspecified') failures.push('AI-search evidence status: agent-readable representation evidence is incomplete');
@@ -361,6 +364,7 @@ try {
   if (status.technicalReadiness?.score !== 86 || status.technicalReadiness?.passedChecks !== 6 || status.technicalReadiness?.notPassed?.[0]?.check !== 'DNS-AID') failures.push('AI-search evidence status: technical-readiness evidence is incomplete');
   if (!status.publicSearchChecks?.every((item) => item.checkedAt && item.result.includes('observed'))) failures.push('AI-search evidence status: dated public-search checks are incomplete');
   if (!status.evidenceSources?.some((item) => item.url === 'https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-readiness-2026-09-10')) failures.push('AI-search evidence status: versioned readiness checkpoint is missing');
+  if (!status.evidenceSources?.some((item) => item.url === 'https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-query-coverage-2026-09-10')) failures.push('AI-search evidence status: versioned query-coverage checkpoint is missing');
 } catch {
   failures.push('AI-search evidence status: invalid JSON');
 }
@@ -393,6 +397,7 @@ for (const pathname of ['/en/methodology/ai-search-verification/', '/zh-hk/metho
 }
 if (!machineDiscoveryFiles['feed.xml'].includes('<updated>2026-09-10T00:00:00+08:00</updated>')) failures.push('feed.xml: feed update date is stale');
 if (!machineDiscoveryFiles['feed.xml'].includes(`<id>https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-readiness-2026-09-10</id><link href="https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-readiness-2026-09-10"/><updated>2026-09-10T00:00:00+08:00</updated>`)) failures.push('feed.xml: readiness checkpoint entry date is stale');
+if (!machineDiscoveryFiles['feed.xml'].includes(`<id>https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-query-coverage-2026-09-10</id><link href="https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-query-coverage-2026-09-10"/><updated>2026-09-10T00:00:00+08:00</updated>`)) failures.push('feed.xml: query-coverage checkpoint entry date is stale');
 for (const url of urls) {
   const pathname = new URL(url).pathname;
   const target = pathname === '/' ? path.join(dist, 'index.html') : path.join(dist, pathname, 'index.html');
