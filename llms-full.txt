@@ -372,6 +372,50 @@ A: 不足夠。還要確認團隊如何處理使用者、語言、系統、數�
 Q: 是否應選擇最低固定價？
 A: 只有當範圍與驗收標準真正可比較時才有意義；低報價可能沒有包括整合、評估、生產控制、支援或交接。
 
+## Hong Kong Enterprise AI Governance Checklist | Onyx Devs Lab
+https://hk.onyxdevslab.com/en/guides/hong-kong-enterprise-ai-governance/
+A practical Hong Kong enterprise AI governance checklist grounded in PCPD guidance: accountability, risk assessment, human oversight, data, testing, monitoring, and communication.
+Start from the affected workflow and personal-data boundary. Then assign accountability, classify risk, set human authority, test the complete system, and keep evidence after launch.
+Four governance duties: The Hong Kong PCPD Model Framework groups its recommendations into four operational areas.
+- Strategy and governance: Set an organisational AI strategy, procurement controls, accountable governance body, policies, training, and internal responsibilities.
+- Risk assessment and human oversight: Assess likely benefits and harms, classify risk, choose mitigation, and define when a person reviews, overrides, or stops the system.
+- Implementation and lifecycle management: Control data preparation, model customisation, validation, security, deployment, monitoring, incidents, and retirement.
+- Communication and engagement: Give employees, suppliers, affected people, and regulators timely information and channels for questions, feedback, and incidents.
+Turn principles into delivery evidence: A policy is only useful when teams can show how it changes the system and workflow.
+- Data and purpose register: Record the intended use, personal data involved, provenance, retention, access, cross-border movement, and prohibited uses.
+- Decision and authority map: Separate advice, drafting, approval, and execution; name the accountable owner and escalation route for each consequential action.
+- Release and monitoring record: Keep test cases, risk-tier thresholds, failures, mitigations, approvals, versions, drift signals, incidents, and review dates.
+Q: Is this checklist legal advice?
+A: No. It is an implementation guide grounded in public regulator materials. Organisations should obtain legal, privacy, security, and sector-specific advice for their facts.
+Q: Does using a third-party model transfer accountability to the vendor?
+A: No. Procurement should clarify responsibilities, but the deploying organisation still needs governance for its purpose, data, workflow, users, and consequences.
+Q: Is a chatbot disclaimer enough human oversight?
+A: No. Oversight must match risk and include meaningful authority, information, timing, escalation, and the ability to intervene.
+Primary regulatory source: Hong Kong PCPD — Artificial Intelligence: Model Personal Data Protection Framework — https://www.pcpd.org.hk/english/resources_centre/publications/files/ai_protection_framework.pdf
+Primary regulatory source: Hong Kong Monetary Authority — Generative A.I. Sandbox arrangement — https://www.hkma.gov.hk/media/eng/doc/key-information/guidelines-and-circular/2024/20240920e1.pdf
+
+## 香港企業 AI 管治清單｜私隱、風險與人工監督｜Onyx Devs Lab
+https://hk.onyxdevslab.com/zh-hk/guides/enterprise-ai-governance/
+以香港私隱專員公署框架為依據，把企業 AI 管治落實為責任、風險評估、人工監督、數據、測試、監控及溝通控制。
+先界定受影響流程與個人資料邊界，再指定責任人、按風險配置人工權限、測試完整系統，並在上線後保留可核對證據。
+四項管治責任: 香港私隱專員公署《模範框架》把建議分為四個營運範圍。
+- 策略與管治: 制定 AI 策略、採購考慮、管治組織、政策、培訓及內部責任。
+- 風險評估與人為監督: 評估潛在效益與傷害、進行風險分級，並定義何時由人員覆核、推翻或停止系統。
+- 實施及生命週期管理: 控制數據準備、模型定製、驗證、安全、部署、持續監察、事故及退役。
+- 溝通及持份者參與: 適時向員工、供應商、受影響人士及監管機構提供資料，以及提問、反饋和事故通報渠道。
+把原則變成交付證據: 政策只有在能夠改變系統與流程時才有實際作用。
+- 數據及用途登記: 記錄預定用途、個人資料、來源、保留期、存取、跨境流動及禁止用途。
+- 決策與權限圖: 分開建議、草擬、批准及執行；為每項高影響操作指定責任人和升級路徑。
+- 發布及監察記錄: 保留測試案例、風險門檻、失敗、緩解、批准、版本、漂移訊號、事故及覆核日期。
+Q: 這份清單是否法律意見？
+A: 不是。這是以公開監管資料為依據的實施指南；機構仍應按自身情況取得法律、私隱、安全及行業專業意見。
+Q: 採用第三方模型後，責任是否轉移給供應商？
+A: 不是。採購需要說清責任，但部署機構仍須管理自身用途、數據、流程、使用者及後果。
+Q: 加入聊天機械人免責聲明是否足夠？
+A: 不足夠。人為監督需要配合風險，並具備資料、時機、升級路徑和真正介入權限。
+Primary regulatory source: 香港私隱專員公署——《人工智能（AI）：個人資料保障模範框架》 — https://www.pcpd.org.hk/tc_chi/resources_centre/publications/files/ai_protection_framework.pdf
+Primary regulatory source: 香港金融管理局——生成式人工智能沙盒安排 — https://www.hkma.gov.hk/media/eng/doc/key-information/guidelines-and-circular/2024/20240920e1.pdf
+
 ## 香港企业 AI 咨询服务｜Onyx Devs Lab
 https://hk.onyxdevslab.com/zh-cn/ai-consulting/
 面向香港及跨境企业的 AI 咨询：业务流程诊断、可行性评估、治理边界、投资决策和落地路线。
@@ -523,6 +567,28 @@ Q: 在香港设有办公室是否足以证明本地适配？
 A: 不够。还要确认团队怎样处理用户、语言、系统、数据责任、决策节奏和跨境运营限制。
 Q: 是否应该选择最低固定价格？
 A: 只有当范围和验收标准真正可比较时才有意义；低报价可能不包括系统集成、评估、生产控制、支持或交接。
+
+## 香港企业 AI 治理清单｜隐私、风险与人工监督｜Onyx Devs Lab
+https://hk.onyxdevslab.com/zh-cn/guides/enterprise-ai-governance/
+依据香港隐私专员公署框架，把企业 AI 治理落实为责任、风险评估、人工监督、数据、测试、监控和沟通控制。
+先界定受影响流程和个人数据边界，再指定责任人、按风险配置人工权限、测试完整系统，并在上线后保留可核验的证据。
+四项治理责任: 香港隐私专员公署《示范框架》把建议分成四个运营范围。
+- 战略与治理: 制定 AI 战略、采购要求、治理组织、政策、培训和内部责任。
+- 风险评估与人为监督: 评估潜在收益和伤害、进行风险分级，并定义何时由人员复核、否决或停止系统。
+- 实施和生命周期管理: 控制数据准备、模型定制、验证、安全、部署、持续监控、事故和退役。
+- 沟通与利益相关者参与: 及时向员工、供应商、受影响人员和监管机构提供信息，以及提问、反馈和事故报告渠道。
+把原则转化为交付证据: 政策只有真正改变系统和流程时才有实际作用。
+- 数据和用途登记: 记录预定用途、个人数据、来源、保留期限、访问、跨境流动和禁止用途。
+- 决策与权限图: 区分建议、草拟、批准和执行；为每项高影响操作指定负责人和升级路径。
+- 发布和监控记录: 保留测试案例、风险门槛、失败、缓解、批准、版本、漂移信号、事故和复核日期。
+Q: 这份清单是法律意见吗？
+A: 不是。这是依据公开监管资料整理的实施指南；组织仍应根据自身情况取得法律、隐私、安全和行业专业意见。
+Q: 采用第三方模型后，责任会转移给供应商吗？
+A: 不会。采购需要明确责任，但部署组织仍须治理自身用途、数据、流程、用户和后果。
+Q: 增加聊天机器人免责声明就够了吗？
+A: 不够。人为监督必须匹配风险，并具备信息、时机、升级路径和真正的干预权限。
+Primary regulatory source: 香港隐私专员公署——《人工智能（AI）：个人资料保障示范框架》 — https://www.pcpd.org.hk/tc_chi/resources_centre/publications/files/ai_protection_framework.pdf
+Primary regulatory source: 香港金融管理局——生成式人工智能沙盒安排 — https://www.hkma.gov.hk/media/eng/doc/key-information/guidelines-and-circular/2024/20240920e1.pdf
 
 ## How We Verify AI Search Visibility | Onyx Devs Lab
 https://hk.onyxdevslab.com/en/methodology/ai-search-verification/
