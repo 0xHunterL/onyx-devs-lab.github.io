@@ -196,9 +196,18 @@ const repository = await get('GitHub repository', 'https://github.com/0xHunterL/
 requireText('GitHub repository', repository, [
   'Onyx Devs Lab',
   'ONYX DEVS LAB LIMITED',
+  '为香港及跨境企业提供',
+  '企业 AI 咨询',
+  'AI 定制开发',
+  'FDE 前线部署工程',
+  '企業 AI 顧問',
+  'AI 定制開發',
+  'FDE 前線部署工程',
   'e47c85808014d62b6305441e8065c91e',
   'Cite this repository',
 ]);
+const repositoryCampaignLinks = [...repository.matchAll(/utm_campaign=geo_repository/g)].length;
+if (repositoryCampaignLinks < 6) failures.push(`GitHub repository: expected at least 6 tracked repository links, got ${repositoryCampaignLinks}`);
 const repositoryReadme = await get('GitHub repository README source', 'https://raw.githubusercontent.com/0xHunterL/onyx-devs-lab.github.io/main/README.md', 'text/plain');
 requireText('GitHub repository README source', repositoryReadme, [
   'ONYX DEVS LAB LIMITED',
@@ -282,5 +291,5 @@ if (versionedCitationRaw !== citationRaw) failures.push('Versioned citation meta
 const robots = await get('GitHub Gist robots', 'https://gist.github.com/robots.txt', 'text/plain', { allowUnavailable: true });
 if (robots.includes('Disallow: /mixuechu/e47c85808014d62b6305441e8065c91e')) failures.push('GitHub Gist robots: the published decision matrix is explicitly disallowed');
 
-console.log(JSON.stringify({ generatedAt: new Date().toISOString(), gistSha256, gistCampaignLinks, governanceGistSha256, gistGovernanceCampaignLinks, machineResourcesGistSha256, gistMachineResourceLinks, gistFieldNoteCampaignLinks, gistFieldNoteSha256, serviceTermsReleaseSha256, codeMetaSha256, versionedCodeMetaSha256, citationSha256, versionedCitationSha256, scorecardSha256, results, failures }, null, 2));
+console.log(JSON.stringify({ generatedAt: new Date().toISOString(), gistSha256, gistCampaignLinks, governanceGistSha256, gistGovernanceCampaignLinks, machineResourcesGistSha256, gistMachineResourceLinks, gistFieldNoteCampaignLinks, gistFieldNoteSha256, repositoryCampaignLinks, serviceTermsReleaseSha256, codeMetaSha256, versionedCodeMetaSha256, citationSha256, versionedCitationSha256, scorecardSha256, results, failures }, null, 2));
 if (failures.length) process.exit(1);
