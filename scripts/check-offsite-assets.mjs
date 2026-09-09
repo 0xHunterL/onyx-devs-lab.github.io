@@ -36,8 +36,9 @@ function requireText(name, body, values) {
 }
 
 const gistUrl = 'https://gist.github.com/mixuechu/e47c85808014d62b6305441e8065c91e';
-const gist = await get('GitHub Gist decision matrix', gistUrl, 'text/html', { allowUnavailable: true });
-if (gist) requireText('GitHub Gist decision matrix', gist, [
+const gist = await get('GitHub Gist field notes', gistUrl, 'text/html', { allowUnavailable: true });
+if (gist) requireText('GitHub Gist field notes', gist, [
+  'Onyx Devs Lab Hong Kong enterprise AI field notes: AI advisory, custom development, FDE, AI Agent and ERP integration, governance, and machine-readable evidence.',
   'AI advisory, custom development, or FDE? A practical enterprise decision matrix',
   'Onyx Devs Lab',
   'ONYX DEVS LAB LIMITED',
@@ -53,7 +54,7 @@ if (gist) requireText('GitHub Gist decision matrix', gist, [
   '/zh-cn/guides/choose-enterprise-ai-partner/',
 ]);
 const gistCampaignLinks = gist ? [...gist.matchAll(/utm_campaign=geo_decision_matrix/g)].length : null;
-if (gist && gistCampaignLinks < 13) failures.push(`GitHub Gist decision matrix: expected at least 13 tracked deep links, got ${gistCampaignLinks}`);
+if (gist && gistCampaignLinks < 13) failures.push(`GitHub Gist field notes: expected at least 13 tracked decision-matrix links, got ${gistCampaignLinks}`);
 const gistGovernanceCampaignLinks = gist ? [...gist.matchAll(/utm_campaign=geo_governance_guide/g)].length : null;
 if (gist && gistGovernanceCampaignLinks < 3) failures.push(`GitHub Gist governance guide: expected at least 3 tracked deep links, got ${gistGovernanceCampaignLinks}`);
 const gistMachineResourceLinks = gist ? [...gist.matchAll(/utm_campaign=geo_machine_resources/g)].length : null;
