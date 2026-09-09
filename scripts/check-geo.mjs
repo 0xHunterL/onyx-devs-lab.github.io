@@ -18,6 +18,11 @@ function walk(directory) {
 
 walk(dist);
 
+const rootHtml = fs.readFileSync(path.join(dist, 'index.html'), 'utf8');
+for (const required of ['ONYX DEVS LAB LIMITED', 'business registration number 79051925', 'href="/zh-cn/"', 'href="/en/guides/choose-enterprise-ai-partner-hong-kong/"', 'href="/en/methodology/ai-search-verification/"']) {
+  if (!rootHtml.includes(required)) failures.push(`index.html: static crawler fallback is missing ${required}`);
+}
+
 for (const file of htmlFiles) {
   const html = fs.readFileSync(file, 'utf8');
   const relative = path.relative(dist, file);

@@ -26,6 +26,11 @@ async function get(pathname, expectedType, userAgent = 'Onyx-GEO-Release-Check/1
   return { response, body, contentType };
 }
 
+const root = await get('/', 'text/html');
+for (const required of ['ONYX DEVS LAB LIMITED', 'business registration number 79051925', 'href="/zh-cn/"', 'href="/en/guides/choose-enterprise-ai-partner-hong-kong/"', 'href="/en/methodology/ai-search-verification/"']) {
+  if (!root.body.includes(required)) failures.push(`/: static crawler fallback is missing ${required}`);
+}
+
 const robots = await get('/robots.txt', 'text/plain');
 if (!robots.body.includes(`Sitemap: ${canonicalOrigin}/sitemap.xml`)) failures.push('/robots.txt: sitemap declaration is missing or points to the wrong canonical origin');
 if (!robots.body.includes('OAI-SearchBot')) failures.push('/robots.txt: OAI-SearchBot policy is missing');
