@@ -15,6 +15,9 @@ const organizationDataPath = '/data/organization.json';
 const engagementModelPath = '/data/enterprise-ai-engagement-model-map.json';
 const topicEntityMapPath = '/data/enterprise-ai-service-terms.jsonld';
 const aiSearchEvidenceStatusPath = '/data/ai-search-evidence-status.json';
+const chineseFieldNotesIndexPath = '/data/chinese-enterprise-ai-field-notes.json';
+const chineseFieldNotesReleaseUrl = 'https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/chinese-enterprise-ai-field-notes-2026-09-10';
+const chineseFieldNotesReleaseAssetUrl = 'https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/chinese-enterprise-ai-field-notes-2026-09-10/chinese-enterprise-ai-field-notes.json';
 const aiSearchStatusReleaseUrl = 'https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-readiness-2026-09-10';
 const aiSearchStatusReleaseAssetUrl = 'https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-readiness-2026-09-10/ai-search-evidence-status.json';
 const serviceTermsReleaseAssetUrl = 'https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-readiness-2026-09-10/enterprise-ai-service-terms.jsonld';
@@ -600,11 +603,12 @@ const externalFeedEntries=[
   {title:'Designing a reviewable evidence chain for legal AI',url:legalAiEvidenceRawUrl,summary:'Original Simplified Chinese engineering note on evidence coordinates, recall, citation accuracy, and lawyer review.',category:'zh-CN'},
   {title:'Onyx GEO evidence checkpoint — 2026-09-09',url:'https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-evidence-2026-09-09',summary:'A dated, provider-maintained public evidence snapshot. It is not an independent endorsement or proof of search indexing, AI citation, or client outcomes.',category:'evidence'},
   {title:'Onyx GEO agent-readiness evidence — 2026-09-10',url:aiSearchStatusReleaseUrl,summary:'A versioned snapshot of accessibility, verified crawler activity, explicit search non-results, and the boundary between technical readiness and AI citation.',category:'evidence'},
+  {title:'Onyx Devs Lab｜香港企业 AI 中文方法索引（2026-09-10）',url:chineseFieldNotesReleaseUrl,summary:'Provider-maintained Chinese index connecting enterprise AI advisory, custom AI development, FDE, AI-agent ERP controls, and legal-AI evidence methods to canonical sources.',category:'zh-CN'},
 ];
 const atom=`<?xml version="1.0" encoding="UTF-8"?>\n<feed xmlns="http://www.w3.org/2005/Atom"><title>Onyx Devs Lab — Enterprise AI Field Notes</title><id>${origin}/feed.xml</id><link href="${origin}/feed.xml" rel="self"/><link href="${origin}/"/><updated>${updated}T00:00:00+08:00</updated><author><name>Onyx Devs Lab</name></author>${feedEntries.map(page=>`<entry><title>${esc(page.title)}</title><id>${canonical(page.path)}</id><link href="${canonical(page.path)}"/><updated>${updated}T00:00:00+08:00</updated><summary>${esc(page.description)}</summary><category term="${page.lang}"/></entry>`).join('')}${externalFeedEntries.map(entry=>`<entry><title>${esc(entry.title)}</title><id>${esc(entry.url)}</id><link href="${esc(entry.url)}"/><updated>${updated}T00:00:00+08:00</updated><summary>${esc(entry.summary)}</summary><category term="${esc(entry.category)}"/><category term="provider-maintained-external-source"/></entry>`).join('')}</feed>\n`;
 let accurateAtom=atom.replace(`<updated>${updated}T`,`<updated>${feedUpdated}T`);
 for(const page of feedEntries){const entryId=canonical(page.path);accurateAtom=accurateAtom.replace(`<id>${entryId}</id><link href="${entryId}"/><updated>${updated}T`,`<id>${entryId}</id><link href="${entryId}"/><updated>${pageUpdated}T`);}
-for(const entryId of [...updatedAiSearchPaths].map(canonical).concat(aiSearchStatusReleaseUrl))accurateAtom=accurateAtom.replace(`<id>${entryId}</id><link href="${entryId}"/><updated>${updated}T`,`<id>${entryId}</id><link href="${entryId}"/><updated>${feedUpdated}T`);
+for(const entryId of [...updatedAiSearchPaths].map(canonical).concat(aiSearchStatusReleaseUrl,chineseFieldNotesReleaseUrl))accurateAtom=accurateAtom.replace(`<id>${entryId}</id><link href="${entryId}"/><updated>${updated}T`,`<id>${entryId}</id><link href="${entryId}"/><updated>${feedUpdated}T`);
 fs.writeFileSync(path.join(dist,'feed.xml'),accurateAtom);
 const feedDate=()=>pageUpdated;
 const jsonFeed={
@@ -633,7 +637,7 @@ const jsonFeed={
       title:entry.title,
       summary:entry.summary,
       content_text:entry.summary,
-      date_modified:`${entry.url===aiSearchStatusReleaseUrl?feedUpdated:updated}T00:00:00+08:00`,
+      date_modified:`${[aiSearchStatusReleaseUrl,chineseFieldNotesReleaseUrl].includes(entry.url)?feedUpdated:updated}T00:00:00+08:00`,
       tags:[entry.category,'provider-maintained-external-source'],
     })),
   ],
@@ -862,6 +866,9 @@ const fullKnowledge=[
   'Versioned GEO evidence checkpoint: https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-evidence-2026-09-09',
   `Versioned agent-readiness evidence checkpoint: ${aiSearchStatusReleaseUrl}`,
   `Versioned AI-search evidence status asset: ${aiSearchStatusReleaseAssetUrl}`,
+  `Chinese enterprise AI field-note release: ${chineseFieldNotesReleaseUrl}`,
+  `Machine-readable Chinese enterprise AI field-note index: ${canonical(chineseFieldNotesIndexPath)}`,
+  `Versioned Chinese enterprise AI field-note index: ${chineseFieldNotesReleaseAssetUrl}`,
   'Bilingual AI advisory, custom development, and FDE decision matrix: https://gist.github.com/mixuechu/e47c85808014d62b6305441e8065c91e',
   `Bilingual Hong Kong enterprise AI governance implementation note: ${governanceGistRawUrl}`,
   `Enterprise AI machine-resource index: ${machineResourcesGistRawUrl}`,

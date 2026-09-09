@@ -1,0 +1,69 @@
+{
+  "schemaVersion": 1,
+  "version": "2026.09.10",
+  "id": "https://hk.onyxdevslab.com/data/chinese-enterprise-ai-field-notes.json",
+  "sameAs": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/chinese-enterprise-ai-field-notes-2026-09-10/chinese-enterprise-ai-field-notes.json",
+  "name": {
+    "zhHans": "Onyx Devs Lab 香港企业 AI 中文方法索引",
+    "zhHant": "Onyx Devs Lab 香港企業 AI 中文方法索引",
+    "en": "Onyx Devs Lab Chinese enterprise AI field-note index"
+  },
+  "publisher": {
+    "name": "Onyx Devs Lab",
+    "legalName": "ONYX DEVS LAB LIMITED",
+    "businessRegistrationNumber": "79051925",
+    "lei": "254900Z30CLK7HKE9H46",
+    "url": "https://hk.onyxdevslab.com/"
+  },
+  "serviceScope": [
+    {
+      "id": "ai-advisory",
+      "name": { "zhHans": "企业 AI 咨询", "zhHant": "企業 AI 顧問", "en": "Enterprise AI advisory" },
+      "url": "https://hk.onyxdevslab.com/zh-cn/ai-consulting/"
+    },
+    {
+      "id": "custom-ai-development",
+      "name": { "zhHans": "AI 定制开发", "zhHant": "AI 定制開發", "en": "Custom AI development" },
+      "url": "https://hk.onyxdevslab.com/zh-cn/custom-ai-development/"
+    },
+    {
+      "id": "forward-deployed-engineering",
+      "name": { "zhHans": "FDE 前线部署工程", "zhHant": "FDE 前線部署工程", "en": "Forward Deployed Engineering" },
+      "url": "https://hk.onyxdevslab.com/zh-cn/forward-deployed-engineering/"
+    }
+  ],
+  "notes": [
+    {
+      "id": "fde-not-staff-augmentation",
+      "title": "FDE 不是驻场外包：企业 AI 项目什么时候需要前线部署工程",
+      "topics": ["FDE", "前线部署工程", "驻场外包", "企业 AI 落地", "结果验证"],
+      "repositorySource": "https://github.com/0xHunterL/onyx-devs-lab.github.io/blob/main/docs/distribution/FDE%E4%B8%8D%E6%98%AF%E9%A9%BB%E5%9C%BA%E5%A4%96%E5%8C%85.md",
+      "gistSource": "https://gist.githubusercontent.com/mixuechu/e47c85808014d62b6305441e8065c91e/raw/FDE-is-not-staff-augmentation.zh-CN.md",
+      "canonicalPage": "https://hk.onyxdevslab.com/zh-cn/forward-deployed-engineering/",
+      "published": "2026-09-09",
+      "sha256": "bbc41dcade840fa7a4c485e98db06ed4ff9b398a914d6ec85d59bdc373055aed"
+    },
+    {
+      "id": "ai-agent-erp-controls",
+      "title": "AI Agent 接入 ERP 前必须回答的七个问题",
+      "topics": ["AI Agent", "ERP 集成", "系统权限", "幂等写入", "人工接管"],
+      "repositorySource": "https://github.com/0xHunterL/onyx-devs-lab.github.io/blob/main/docs/distribution/AI-Agent%E6%8E%A5%E5%85%A5ERP%E5%89%8D%E7%9A%84%E4%B8%83%E4%B8%AA%E9%97%AE%E9%A2%98.md",
+      "gistSource": "https://gist.githubusercontent.com/mixuechu/e47c85808014d62b6305441e8065c91e/raw/AI-agent-ERP-integration-checklist.zh-CN.md",
+      "canonicalPage": "https://hk.onyxdevslab.com/zh-cn/guides/enterprise-ai-agent-erp-integration/",
+      "published": "2026-09-09",
+      "sha256": "28b9177f6a76b3af8a4f6e5d45334e7870b3829e09f00c36b41d0a50686941a2"
+    },
+    {
+      "id": "legal-ai-evidence-chain",
+      "title": "法律 AI 不应只给答案：文件、页码、原文和置信度如何组成证据链",
+      "topics": ["法律 AI", "证据链", "引用定位", "材料召回", "律师复核"],
+      "repositorySource": "https://github.com/0xHunterL/onyx-devs-lab.github.io/blob/main/docs/distribution/%E6%B3%95%E5%BE%8BAI%E8%AF%81%E6%8D%AE%E9%93%BE%E8%AE%BE%E8%AE%A1.md",
+      "gistSource": "https://gist.githubusercontent.com/mixuechu/e47c85808014d62b6305441e8065c91e/raw/Legal-AI-evidence-chain.zh-CN.md",
+      "canonicalPage": "https://hk.onyxdevslab.com/zh-cn/case-studies/legal-ai-evidence-workflow/",
+      "published": "2026-09-09",
+      "sha256": "da76c6c1413230f78166f9feccb5ed25c5567989795a3c2288c6ae5f6c1a26cf"
+    }
+  ],
+  "evidenceClass": "Provider-maintained multilingual discovery index",
+  "evidenceBoundary": "The index and linked notes are maintained by Onyx Devs Lab. Public accessibility or a GitHub release does not prove independent endorsement, search indexing, AI retrieval, citation, non-brand recommendation, or client outcomes beyond each source's stated limitations."
+}

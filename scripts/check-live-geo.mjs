@@ -157,6 +157,7 @@ for (const [pathname, body] of [['/llms.txt', llms.body], ['/llms-full.txt', llm
   }
   if (!body.includes('https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-evidence-2026-09-09')) failures.push(`${pathname}: versioned evidence checkpoint is missing`);
   if (!body.includes('https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-readiness-2026-09-10')) failures.push(`${pathname}: versioned agent-readiness checkpoint is missing`);
+  if (!body.includes('https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/chinese-enterprise-ai-field-notes-2026-09-10')) failures.push(`${pathname}: Chinese field-note release is missing`);
 }
 for (const [pathname, body] of [['/llms.txt', llms.body], ['/llms-full.txt', llmsFull.body]]) {
   if (!body.includes('not independent endorsements or proof of search indexing, AI citation')) failures.push(`${pathname}: provider-maintained evidence boundary is missing`);
@@ -165,8 +166,11 @@ for (const [pathname, body] of [['/llms.txt', llms.body], ['/llms-full.txt', llm
   if (!body.includes('https://hk.onyxdevslab.com/data/enterprise-ai-engagement-model-map.json')) failures.push(`${pathname}: engagement-model decision map discovery link is missing`);
   if (!body.includes('https://hk.onyxdevslab.com/data/ai-search-evidence-status.json')) failures.push(`${pathname}: AI-search evidence status discovery link is missing`);
   if (!body.includes('https://hk.onyxdevslab.com/data/organization.json')) failures.push(`${pathname}: canonical organization record discovery link is missing`);
+  if (!body.includes('https://hk.onyxdevslab.com/data/chinese-enterprise-ai-field-notes.json')) failures.push(`${pathname}: Chinese field-note index is missing`);
+  if (!body.includes('https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/chinese-enterprise-ai-field-notes-2026-09-10/chinese-enterprise-ai-field-notes.json')) failures.push(`${pathname}: versioned Chinese field-note index is missing`);
 }
 if (!feed.body.includes('provider-maintained-external-source')) failures.push('/feed.xml: external-source category is missing');
+if (!feed.body.includes('https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/chinese-enterprise-ai-field-notes-2026-09-10')) failures.push('/feed.xml: Chinese field-note release entry is missing');
 if (!root.body.includes('type="application/feed+json"') || !root.body.includes('href="https://hk.onyxdevslab.com/feed.json"')) failures.push('/: JSON Feed discovery link is missing');
 if (!root.body.includes('rel="describedby" type="application/ld+json"') || !root.body.includes('href="https://hk.onyxdevslab.com/data/enterprise-ai-service-terms.jsonld"')) failures.push('/: service term graph discovery link is missing');
 
@@ -185,6 +189,18 @@ try {
   if (!termGraph.evidenceBoundary?.includes('does not prove independent endorsement, search indexing, AI citation, recommendation')) failures.push('/data/enterprise-ai-service-terms.jsonld: evidence boundary is missing');
 } catch {
   failures.push('/data/enterprise-ai-service-terms.jsonld: invalid JSON');
+}
+
+const chineseFieldNotesResponse = await get('/data/chinese-enterprise-ai-field-notes.json', 'application/json');
+try {
+  const fieldNotes = JSON.parse(chineseFieldNotesResponse.body);
+  const expectedHashes = ['bbc41dcade840fa7a4c485e98db06ed4ff9b398a914d6ec85d59bdc373055aed', '28b9177f6a76b3af8a4f6e5d45334e7870b3829e09f00c36b41d0a50686941a2', 'da76c6c1413230f78166f9feccb5ed25c5567989795a3c2288c6ae5f6c1a26cf'];
+  if (fieldNotes.schemaVersion !== 1 || fieldNotes.version !== '2026.09.10' || fieldNotes.notes?.length !== 3 || fieldNotes.serviceScope?.length !== 3) failures.push('/data/chinese-enterprise-ai-field-notes.json: collection structure is incomplete');
+  if (fieldNotes.sameAs !== 'https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/chinese-enterprise-ai-field-notes-2026-09-10/chinese-enterprise-ai-field-notes.json') failures.push('/data/chinese-enterprise-ai-field-notes.json: versioned asset is missing');
+  if (fieldNotes.notes?.map((note) => note.sha256).join(',') !== expectedHashes.join(',') || !fieldNotes.notes?.every((note) => note.repositorySource && note.gistSource && note.canonicalPage && note.topics?.length)) failures.push('/data/chinese-enterprise-ai-field-notes.json: source map or hashes are incomplete');
+  if (!fieldNotes.evidenceBoundary?.includes('does not prove independent endorsement, search indexing, AI retrieval, citation, non-brand recommendation')) failures.push('/data/chinese-enterprise-ai-field-notes.json: evidence boundary is missing');
+} catch {
+  failures.push('/data/chinese-enterprise-ai-field-notes.json: invalid JSON');
 }
 
 const evidenceDatasetResponse = await get('/data/case-study-evidence.json', 'application/json');

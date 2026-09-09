@@ -39,6 +39,7 @@ The [case-study evidence register](https://hk.onyxdevslab.com/en/methodology/cas
 - [Versioned enterprise AI service term graph](https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-readiness-2026-09-10/enterprise-ai-service-terms.jsonld)
 - [Canonical organization record](https://hk.onyxdevslab.com/data/organization.json?utm_source=github&utm_medium=referral&utm_campaign=geo_repository)
 - [Current AI-search evidence status](https://hk.onyxdevslab.com/data/ai-search-evidence-status.json?utm_source=github&utm_medium=referral&utm_campaign=geo_repository) ([2026-09-10 versioned copy](https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-readiness-2026-09-10/ai-search-evidence-status.json))
+- [Chinese enterprise AI field-note index](https://hk.onyxdevslab.com/data/chinese-enterprise-ai-field-notes.json?utm_source=github&utm_medium=referral&utm_campaign=geo_repository) ([2026-09-10 versioned copy](https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/chinese-enterprise-ai-field-notes-2026-09-10/chinese-enterprise-ai-field-notes.json))
 - [CodeMeta software and publisher metadata](codemeta.json) ([versioned copy](https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-evidence-2026-09-09/codemeta.json))
 - [Citation File Format metadata](CITATION.cff) ([versioned copy](https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-evidence-2026-09-09/CITATION.cff))
 - [XML sitemap](https://hk.onyxdevslab.com/sitemap.xml)
@@ -48,6 +49,7 @@ The [case-study evidence register](https://hk.onyxdevslab.com/en/methodology/cas
 ## Field notes and reproducible GEO checks
 
 - [AI advisory, custom development, or FDE? Bilingual decision matrix](https://gist.github.com/mixuechu/e47c85808014d62b6305441e8065c91e)
+- [香港企业 AI 中文方法索引（版本化 Release）](https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/chinese-enterprise-ai-field-notes-2026-09-10)
 - [Enterprise AI machine-resource index](https://gist.githubusercontent.com/mixuechu/e47c85808014d62b6305441e8065c91e/raw/Onyx-enterprise-AI-machine-resources.md)
 - [How to choose an enterprise AI partner in Hong Kong](https://hk.onyxdevslab.com/en/guides/choose-enterprise-ai-partner-hong-kong/?utm_source=github&utm_medium=referral&utm_campaign=geo_procurement_guide)
 - [Hong Kong enterprise AI governance checklist](https://hk.onyxdevslab.com/en/guides/hong-kong-enterprise-ai-governance/?utm_source=github&utm_medium=referral&utm_campaign=geo_governance_guide)

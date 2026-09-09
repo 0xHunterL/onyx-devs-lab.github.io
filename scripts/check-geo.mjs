@@ -152,7 +152,7 @@ for (const pathname of ['/en/about/', '/zh-hk/about/', '/zh-cn/about/']) {
   if (!html.includes('"@type":["AboutPage","ProfilePage"]') || !html.includes('"mainEntity":{"@id":"https://hk.onyxdevslab.com/#organization"}') || !html.includes('"dateModified":"2026-09-10"')) failures.push(`${pathname}: organization ProfilePage markup is incomplete`);
 }
 
-for (const file of ['robots.txt', 'sitemap.xml', 'feed.xml', 'feed.json', 'llms.txt', 'llms-full.txt', 'data/case-study-evidence.json', 'data/enterprise-ai-partner-scorecard.json', 'data/enterprise-ai-pilot-charter.json', 'data/enterprise-ai-engagement-model-map.json', 'data/enterprise-ai-service-terms.jsonld', 'data/ai-search-evidence-status.json', 'data/organization.json', '.nojekyll']) {
+for (const file of ['robots.txt', 'sitemap.xml', 'feed.xml', 'feed.json', 'llms.txt', 'llms-full.txt', 'data/case-study-evidence.json', 'data/enterprise-ai-partner-scorecard.json', 'data/enterprise-ai-pilot-charter.json', 'data/enterprise-ai-engagement-model-map.json', 'data/enterprise-ai-service-terms.jsonld', 'data/chinese-enterprise-ai-field-notes.json', 'data/ai-search-evidence-status.json', 'data/organization.json', '.nojekyll']) {
   if (!fs.existsSync(path.join(dist, file))) failures.push(`missing ${file}`);
 }
 
@@ -188,6 +188,7 @@ for (const [name, body] of Object.entries(machineDiscoveryFiles)) {
   }
   if (!body.includes('https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-evidence-2026-09-09')) failures.push(`${name}: versioned evidence checkpoint is missing`);
   if (!body.includes('https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-readiness-2026-09-10')) failures.push(`${name}: versioned agent-readiness checkpoint is missing`);
+  if (!body.includes('https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/chinese-enterprise-ai-field-notes-2026-09-10')) failures.push(`${name}: Chinese field-note release is missing`);
 }
 for (const name of ['llms.txt', 'llms-full.txt']) {
   if (!machineDiscoveryFiles[name].includes('not independent endorsements or proof of search indexing, AI citation')) failures.push(`${name}: provider-maintained evidence boundary is missing`);
@@ -196,6 +197,8 @@ for (const name of ['llms.txt', 'llms-full.txt']) {
   if (!machineDiscoveryFiles[name].includes('https://hk.onyxdevslab.com/data/enterprise-ai-engagement-model-map.json')) failures.push(`${name}: engagement-model decision map discovery link is missing`);
   if (!machineDiscoveryFiles[name].includes('https://hk.onyxdevslab.com/data/ai-search-evidence-status.json')) failures.push(`${name}: AI-search evidence status discovery link is missing`);
   if (!machineDiscoveryFiles[name].includes('https://hk.onyxdevslab.com/data/organization.json')) failures.push(`${name}: canonical organization record discovery link is missing`);
+  if (!machineDiscoveryFiles[name].includes('https://hk.onyxdevslab.com/data/chinese-enterprise-ai-field-notes.json')) failures.push(`${name}: Chinese field-note index is missing`);
+  if (!machineDiscoveryFiles[name].includes('https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/chinese-enterprise-ai-field-notes-2026-09-10/chinese-enterprise-ai-field-notes.json')) failures.push(`${name}: versioned Chinese field-note index is missing`);
 }
 if (!machineDiscoveryFiles['feed.xml'].includes('provider-maintained-external-source')) failures.push('feed.xml: external-source category is missing');
 try {
@@ -205,6 +208,7 @@ try {
   if (!jsonFeed.user_comment?.includes('does not prove search indexing, AI retrieval, citation, recommendation')) failures.push('feed.json: evidence boundary is missing');
   if (!jsonFeed.items?.length || !jsonFeed.items.every((item) => item.id && item.url && item.title && item.content_text && item.date_modified)) failures.push('feed.json: item fields are incomplete');
   if (!jsonFeed.items.some((item) => item.url === 'https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-readiness-2026-09-10' && item.date_modified === '2026-09-10T00:00:00+08:00')) failures.push('feed.json: readiness checkpoint entry is missing or stale');
+  if (!jsonFeed.items.some((item) => item.url === 'https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/chinese-enterprise-ai-field-notes-2026-09-10' && item.date_modified === '2026-09-10T00:00:00+08:00')) failures.push('feed.json: Chinese field-note release entry is missing or stale');
   if (!jsonFeed.items.some((item) => item.tags?.includes('provider-maintained-external-source'))) failures.push('feed.json: external-source category is missing');
 } catch {
   failures.push('feed.json: invalid JSON');
@@ -224,6 +228,16 @@ try {
   if (!termGraph.evidenceBoundary?.includes('does not prove independent endorsement, search indexing, AI citation, recommendation')) failures.push('service term graph: evidence boundary is missing');
 } catch {
   failures.push('service term graph: invalid JSON');
+}
+try {
+  const fieldNotes = JSON.parse(fs.readFileSync(path.join(dist, 'data/chinese-enterprise-ai-field-notes.json'), 'utf8'));
+  const expectedHashes = ['bbc41dcade840fa7a4c485e98db06ed4ff9b398a914d6ec85d59bdc373055aed', '28b9177f6a76b3af8a4f6e5d45334e7870b3829e09f00c36b41d0a50686941a2', 'da76c6c1413230f78166f9feccb5ed25c5567989795a3c2288c6ae5f6c1a26cf'];
+  if (fieldNotes.schemaVersion !== 1 || fieldNotes.version !== '2026.09.10' || fieldNotes.notes?.length !== 3 || fieldNotes.serviceScope?.length !== 3) failures.push('Chinese field-note index: expected collection structure is incomplete');
+  if (fieldNotes.sameAs !== 'https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/chinese-enterprise-ai-field-notes-2026-09-10/chinese-enterprise-ai-field-notes.json') failures.push('Chinese field-note index: versioned asset is missing');
+  if (fieldNotes.notes?.map((note) => note.sha256).join(',') !== expectedHashes.join(',') || !fieldNotes.notes?.every((note) => note.repositorySource && note.gistSource && note.canonicalPage && note.topics?.length)) failures.push('Chinese field-note index: source map or hashes are incomplete');
+  if (!fieldNotes.evidenceBoundary?.includes('does not prove independent endorsement, search indexing, AI retrieval, citation, non-brand recommendation')) failures.push('Chinese field-note index: evidence boundary is missing');
+} catch {
+  failures.push('Chinese field-note index: invalid JSON');
 }
 try {
   const organization = JSON.parse(fs.readFileSync(path.join(dist, 'data/organization.json'), 'utf8'));
