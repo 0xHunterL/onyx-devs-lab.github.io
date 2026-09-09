@@ -37,6 +37,7 @@ const citationReleaseUrl = 'https://github.com/0xHunterL/onyx-devs-lab.github.io
 const fdeFieldNoteRawUrl = 'https://gist.githubusercontent.com/mixuechu/e47c85808014d62b6305441e8065c91e/raw/FDE-is-not-staff-augmentation.zh-CN.md';
 const erpAgentChecklistRawUrl = 'https://gist.githubusercontent.com/mixuechu/e47c85808014d62b6305441e8065c91e/raw/AI-agent-ERP-integration-checklist.zh-CN.md';
 const legalAiEvidenceRawUrl = 'https://gist.githubusercontent.com/mixuechu/e47c85808014d62b6305441e8065c91e/raw/Legal-AI-evidence-chain.zh-CN.md';
+const webSubHubUrl = 'https://pubsubhubbub.appspot.com/';
 
 // These route trees are owned by this generator. Remove them first so an
 // in-place VPS build cannot leave retired pages indexable after a rename.
@@ -607,7 +608,7 @@ const externalFeedEntries=[
   {title:'Onyx GEO query coverage — AI 定开 alias (2026-09-10)',url:aiSearchStatusReleaseUrl,summary:'A versioned 18-prompt matrix and evidence-status update adding the Simplified Chinese AI 定开 and AI定开 aliases without changing the observed indexing or citation level.',category:'evidence'},
   {title:'Onyx Devs Lab｜香港企业 AI 中文方法索引（2026-09-10）',url:chineseFieldNotesReleaseUrl,summary:'Provider-maintained Chinese index connecting enterprise AI advisory, custom AI development, FDE, AI-agent ERP controls, and legal-AI evidence methods to canonical sources.',category:'zh-CN'},
 ];
-const atom=`<?xml version="1.0" encoding="UTF-8"?>\n<feed xmlns="http://www.w3.org/2005/Atom"><title>Onyx Devs Lab — Enterprise AI Field Notes</title><id>${origin}/feed.xml</id><link href="${origin}/feed.xml" rel="self"/><link href="${origin}/"/><updated>${updated}T00:00:00+08:00</updated><author><name>Onyx Devs Lab</name></author>${feedEntries.map(page=>`<entry><title>${esc(page.title)}</title><id>${canonical(page.path)}</id><link href="${canonical(page.path)}"/><updated>${updated}T00:00:00+08:00</updated><summary>${esc(page.description)}</summary><category term="${page.lang}"/></entry>`).join('')}${externalFeedEntries.map(entry=>`<entry><title>${esc(entry.title)}</title><id>${esc(entry.url)}</id><link href="${esc(entry.url)}"/><updated>${updated}T00:00:00+08:00</updated><summary>${esc(entry.summary)}</summary><category term="${esc(entry.category)}"/><category term="provider-maintained-external-source"/></entry>`).join('')}</feed>\n`;
+const atom=`<?xml version="1.0" encoding="UTF-8"?>\n<feed xmlns="http://www.w3.org/2005/Atom"><title>Onyx Devs Lab — Enterprise AI Field Notes</title><id>${origin}/feed.xml</id><link href="${origin}/feed.xml" rel="self"/><link href="${webSubHubUrl}" rel="hub"/><link href="${origin}/"/><updated>${updated}T00:00:00+08:00</updated><author><name>Onyx Devs Lab</name></author>${feedEntries.map(page=>`<entry><title>${esc(page.title)}</title><id>${canonical(page.path)}</id><link href="${canonical(page.path)}"/><updated>${updated}T00:00:00+08:00</updated><summary>${esc(page.description)}</summary><category term="${page.lang}"/></entry>`).join('')}${externalFeedEntries.map(entry=>`<entry><title>${esc(entry.title)}</title><id>${esc(entry.url)}</id><link href="${esc(entry.url)}"/><updated>${updated}T00:00:00+08:00</updated><summary>${esc(entry.summary)}</summary><category term="${esc(entry.category)}"/><category term="provider-maintained-external-source"/></entry>`).join('')}</feed>\n`;
 let accurateAtom=atom.replace(`<updated>${updated}T`,`<updated>${feedUpdated}T`);
 for(const page of feedEntries){const entryId=canonical(page.path);accurateAtom=accurateAtom.replace(`<id>${entryId}</id><link href="${entryId}"/><updated>${updated}T`,`<id>${entryId}</id><link href="${entryId}"/><updated>${pageUpdated}T`);}
 for(const entryId of [...updatedAiSearchPaths].map(canonical).concat(agentReadinessReleaseUrl,aiSearchStatusReleaseUrl,chineseFieldNotesReleaseUrl))accurateAtom=accurateAtom.replace(`<id>${entryId}</id><link href="${entryId}"/><updated>${updated}T`,`<id>${entryId}</id><link href="${entryId}"/><updated>${feedUpdated}T`);
@@ -618,6 +619,7 @@ const jsonFeed={
   title:'Onyx Devs Lab — Enterprise AI Field Notes',
   home_page_url:`${origin}/`,
   feed_url:`${origin}/feed.json`,
+  hubs:[{type:'WebSub',url:webSubHubUrl}],
   description:'Enterprise AI advisory, custom development, Forward Deployed Engineering, buyer guides, methods, and evidence resources from Onyx Devs Lab.',
   user_comment:'Provider-maintained discovery feed. Accessibility does not prove search indexing, AI retrieval, citation, recommendation, independent endorsement, or client outcomes beyond each resource’s stated limitations.',
   authors:[{name:'Onyx Devs Lab',url:`${origin}/`}],

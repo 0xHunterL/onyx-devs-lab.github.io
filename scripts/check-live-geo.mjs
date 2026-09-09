@@ -132,7 +132,12 @@ if (!llmsFull.body.includes('Registered office: 36-40 TAI LIN PAI ROAD, UNIT B53
 
 const feed = await get('/feed.xml', 'xml');
 if (!feed.body.includes('<feed xmlns="http://www.w3.org/2005/Atom">')) failures.push('/feed.xml: Atom feed root is missing');
+if (!feed.body.includes('<link href="https://hk.onyxdevslab.com/feed.xml" rel="self"/>') || !feed.body.includes('<link href="https://pubsubhubbub.appspot.com/" rel="hub"/>')) failures.push('/feed.xml: WebSub self or hub discovery is missing');
+const atomLinkHeader = feed.response?.headers.get('link') || '';
+if (!atomLinkHeader.includes('<https://hk.onyxdevslab.com/feed.xml>; rel="self"') || !atomLinkHeader.includes('<https://pubsubhubbub.appspot.com/>; rel="hub"')) failures.push('/feed.xml: HTTP WebSub self or hub discovery is missing');
 const jsonFeedResponse = await get('/feed.json', 'application/feed+json');
+const jsonFeedLinkHeader = jsonFeedResponse.response?.headers.get('link') || '';
+if (!jsonFeedLinkHeader.includes('<https://hk.onyxdevslab.com/feed.json>; rel="self"') || !jsonFeedLinkHeader.includes('<https://pubsubhubbub.appspot.com/>; rel="hub"')) failures.push('/feed.json: HTTP WebSub self or hub discovery is missing');
 let jsonFeed = null;
 try {
   jsonFeed = JSON.parse(jsonFeedResponse.body);
@@ -140,6 +145,7 @@ try {
   if (jsonFeed.home_page_url !== `${canonicalOrigin}/` || jsonFeed.feed_url !== `${canonicalOrigin}/feed.json`) failures.push('/feed.json: canonical feed URLs are incomplete');
   if (!jsonFeed.user_comment?.includes('does not prove search indexing, AI retrieval, citation, recommendation')) failures.push('/feed.json: evidence boundary is missing');
   if (!jsonFeed.items?.length || !jsonFeed.items.every((item) => item.id && item.url && item.title && item.content_text && item.date_modified)) failures.push('/feed.json: item fields are incomplete');
+  if (jsonFeed.hubs?.length !== 1 || jsonFeed.hubs[0]?.type !== 'WebSub' || jsonFeed.hubs[0]?.url !== 'https://pubsubhubbub.appspot.com/') failures.push('/feed.json: WebSub hub discovery is missing');
   if (!jsonFeed.items.some((item) => item.tags?.includes('provider-maintained-external-source'))) failures.push('/feed.json: external-source category is missing');
 } catch {
   failures.push('/feed.json: invalid JSON');

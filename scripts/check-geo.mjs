@@ -208,6 +208,7 @@ try {
   if (jsonFeed.home_page_url !== 'https://hk.onyxdevslab.com/' || jsonFeed.feed_url !== 'https://hk.onyxdevslab.com/feed.json') failures.push('feed.json: canonical feed URLs are incomplete');
   if (!jsonFeed.user_comment?.includes('does not prove search indexing, AI retrieval, citation, recommendation')) failures.push('feed.json: evidence boundary is missing');
   if (!jsonFeed.items?.length || !jsonFeed.items.every((item) => item.id && item.url && item.title && item.content_text && item.date_modified)) failures.push('feed.json: item fields are incomplete');
+  if (jsonFeed.hubs?.length !== 1 || jsonFeed.hubs[0]?.type !== 'WebSub' || jsonFeed.hubs[0]?.url !== 'https://pubsubhubbub.appspot.com/') failures.push('feed.json: WebSub hub discovery is missing');
   if (!jsonFeed.items.some((item) => item.url === 'https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-readiness-2026-09-10' && item.date_modified === '2026-09-10T00:00:00+08:00')) failures.push('feed.json: readiness checkpoint entry is missing or stale');
   if (!jsonFeed.items.some((item) => item.url === 'https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-query-coverage-2026-09-10' && item.date_modified === '2026-09-10T00:00:00+08:00')) failures.push('feed.json: query-coverage checkpoint entry is missing or stale');
   if (!jsonFeed.items.some((item) => item.url === 'https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/chinese-enterprise-ai-field-notes-2026-09-10' && item.date_modified === '2026-09-10T00:00:00+08:00')) failures.push('feed.json: Chinese field-note release entry is missing or stale');
@@ -380,7 +381,7 @@ const nginxConfig = fs.readFileSync(path.resolve('deploy/nginx-hk.conf'), 'utf8'
 for (const resource of ['sitemap.xml', 'feed.xml', 'feed.json', 'data/enterprise-ai-service-terms.jsonld', 'llms.txt']) {
   if (!nginxConfig.includes(`https://hk.onyxdevslab.com/${resource}`)) failures.push(`nginx: Link discovery header is missing ${resource}`);
 }
-for (const required of ['text/markdown', 'Vary "Accept"', 'Content-Signal "search=yes, ai-input=yes"']) {
+for (const required of ['text/markdown', 'Vary "Accept"', 'Content-Signal "search=yes, ai-input=yes"', 'https://pubsubhubbub.appspot.com/', 'rel="hub"', 'rel="self"']) {
   if (!nginxConfig.includes(required)) failures.push(`nginx: Markdown negotiation is missing ${required}`);
 }
 if (!nginxConfig.includes('application/feed+json json')) failures.push('nginx: JSON Feed MIME mapping is missing');
@@ -396,6 +397,7 @@ for (const pathname of ['/en/methodology/ai-search-verification/', '/zh-hk/metho
   if ((html.match(/"dateModified":"2026-09-10"/g) || []).length < 2) failures.push(`${pathname}: Article and WebPage dateModified are stale`);
 }
 if (!machineDiscoveryFiles['feed.xml'].includes('<updated>2026-09-10T00:00:00+08:00</updated>')) failures.push('feed.xml: feed update date is stale');
+if (!machineDiscoveryFiles['feed.xml'].includes('<link href="https://hk.onyxdevslab.com/feed.xml" rel="self"/>') || !machineDiscoveryFiles['feed.xml'].includes('<link href="https://pubsubhubbub.appspot.com/" rel="hub"/>')) failures.push('feed.xml: WebSub self or hub discovery is missing');
 if (!machineDiscoveryFiles['feed.xml'].includes(`<id>https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-readiness-2026-09-10</id><link href="https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-readiness-2026-09-10"/><updated>2026-09-10T00:00:00+08:00</updated>`)) failures.push('feed.xml: readiness checkpoint entry date is stale');
 if (!machineDiscoveryFiles['feed.xml'].includes(`<id>https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-query-coverage-2026-09-10</id><link href="https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-query-coverage-2026-09-10"/><updated>2026-09-10T00:00:00+08:00</updated>`)) failures.push('feed.xml: query-coverage checkpoint entry date is stale');
 for (const url of urls) {
