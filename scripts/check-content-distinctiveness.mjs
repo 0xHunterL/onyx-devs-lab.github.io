@@ -20,7 +20,7 @@ async function walk(directory) {
         .replace(/&(?:amp|lt|gt|quot|#39);/g, ' ')
         .replace(/\s+/g, ' ')
         .trim();
-      const description = html.match(/<meta name="description" content="([^"]+)"/)?.[1] || '';
+      const description = html.replace(/\s+/g, ' ').match(/<meta\s+name="description"\s+content="([^"]+)"/)?.[1] || '';
       pages.push({ file: path.relative(dist, file), lang, text, description });
     }
   }

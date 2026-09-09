@@ -89,8 +89,21 @@ requireText('GitHub enterprise AI buyer guide', buyerGuide, [
   '254900Z30CLK7HKE9H46',
   'geo_buyers_guide',
 ]);
-const buyerGuideSnapshotId = '32650766e381cb73f8761ebe2aaacc2957aa1219';
-const buyerGuideRevisionId = 'abfed4d175d9719cab678cdc365e77a967eee0bb';
+const buyerGuideSiteUrl = 'https://mixuechu.github.io/hong-kong-enterprise-ai-buyers-guide/';
+const buyerGuideSite = await get('GitHub Pages enterprise AI buyer guide', buyerGuideSiteUrl, 'text/html');
+requireText('GitHub Pages enterprise AI buyer guide', buyerGuideSite, [
+  '<link rel="canonical" href="https://mixuechu.github.io/hong-kong-enterprise-ai-buyers-guide/">',
+  '香港企业 AI 采购指南',
+  'AI 定开',
+  'Forward Deployed Engineering',
+  'ONYX DEVS LAB LIMITED',
+  '79051925',
+  '254900Z30CLK7HKE9H46',
+  'github_pages',
+  'application/ld+json',
+]);
+const buyerGuideSnapshotId = '6c5c259a59148caefcf62e5f06aa5b640f6770b7';
+const buyerGuideRevisionId = '7b948c532576f9cbba8b42ccd67441e2ce092f93';
 const buyerGuideSnapshotRaw = await get('Software Heritage buyer-guide snapshot', `https://archive.softwareheritage.org/api/1/snapshot/${buyerGuideSnapshotId}/`, 'application/json');
 try {
   const snapshot = JSON.parse(buyerGuideSnapshotRaw);
