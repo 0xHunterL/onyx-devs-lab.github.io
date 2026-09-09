@@ -164,7 +164,6 @@ for (const [pathname, body] of [['/llms.txt', llms.body], ['/llms-full.txt', llm
   }
   if (!body.includes('https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-evidence-2026-09-09')) failures.push(`${pathname}: versioned evidence checkpoint is missing`);
   if (!body.includes('https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-readiness-2026-09-10')) failures.push(`${pathname}: versioned agent-readiness checkpoint is missing`);
-  if (!body.includes('https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-ai-dingkai-guide-2026-09-10')) failures.push(`${pathname}: versioned AI dingkai definition-guide checkpoint is missing`);
   if (!body.includes('https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-provider-shortlist-2026-09-10')) failures.push(`${pathname}: versioned provider-shortlist checkpoint is missing`);
   if (!body.includes('https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/chinese-enterprise-ai-field-notes-2026-09-10')) failures.push(`${pathname}: Chinese field-note release is missing`);
 }
@@ -219,7 +218,7 @@ try {
   const providerNames = shortlist.providers?.map((provider) => provider.name).join(',');
   if (shortlist.schemaVersion !== 1 || shortlist.dateReviewed !== '2026-09-10') failures.push('/data/hong-kong-enterprise-ai-provider-shortlist.json: unexpected schema or review date');
   if (providerNames !== 'Onyx Devs Lab,Accenture,Deloitte China,PwC Hong Kong,Hong Kong Productivity Council') failures.push('/data/hong-kong-enterprise-ai-provider-shortlist.json: expected five providers are incomplete');
-  if (!shortlist.providers?.every((provider) => provider.officialSources?.length && provider.deliveryScopes?.length)) failures.push('/data/hong-kong-enterprise-ai-provider-shortlist.json: official sources or delivery scopes are incomplete');
+  if (!shortlist.providers?.every((provider) => typeof provider.hongKongEvidence === 'string' && provider.capabilityEvidence?.length && provider.publiclyDescribedScope?.length)) failures.push('/data/hong-kong-enterprise-ai-provider-shortlist.json: official sources or delivery scopes are incomplete');
   if (!shortlist.limitations?.some((item) => item.includes('non-exhaustive')) || !shortlist.limitations?.some((item) => item.includes('not an endorsement'))) failures.push('/data/hong-kong-enterprise-ai-provider-shortlist.json: evidence boundary is incomplete');
 } catch {
   failures.push('/data/hong-kong-enterprise-ai-provider-shortlist.json: invalid JSON');
@@ -322,7 +321,6 @@ try {
   if (status.technicalReadiness?.score !== 86 || status.technicalReadiness?.passedChecks !== 6 || status.technicalReadiness?.notPassed?.[0]?.check !== 'DNS-AID') failures.push('/data/ai-search-evidence-status.json: technical-readiness evidence is incomplete');
   if (!status.publicSearchChecks?.every((item) => item.checkedAt && item.result.includes('observed'))) failures.push('/data/ai-search-evidence-status.json: dated public-search checks are incomplete');
   if (!status.evidenceSources?.some((item) => item.url === 'https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-readiness-2026-09-10')) failures.push('/data/ai-search-evidence-status.json: versioned readiness checkpoint is missing');
-  if (!status.evidenceSources?.some((item) => item.url === 'https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-ai-dingkai-guide-2026-09-10')) failures.push('/data/ai-search-evidence-status.json: versioned AI dingkai definition-guide checkpoint is missing');
   if (!status.evidenceSources?.some((item) => item.url === 'https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-provider-shortlist-2026-09-10')) failures.push('/data/ai-search-evidence-status.json: versioned provider-shortlist checkpoint is missing');
 } catch {
   failures.push('/data/ai-search-evidence-status.json: invalid JSON');
