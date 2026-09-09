@@ -711,8 +711,9 @@ const externalFeedEntries=[
   {title:'Onyx GEO agent-readiness evidence — 2026-09-10',url:agentReadinessReleaseUrl,summary:'A versioned snapshot of accessibility, verified crawler activity, explicit search non-results, and the boundary between technical readiness and AI citation.',category:'evidence'},
   {title:'Enterprise AI RFP requirements and evidence checkpoint (2026-09-10)',url:aiSearchStatusReleaseUrl,summary:'A versioned, trilingual RFP requirements template grounded in public Hong Kong and NIST guidance, with 20-prompt evidence coverage and explicit indexing and citation boundaries.',category:'evidence'},
   {title:'Onyx Devs Lab｜香港企业 AI 中文方法索引（2026-09-10）',url:chineseFieldNotesReleaseUrl,summary:'Provider-maintained Chinese index connecting enterprise AI advisory, custom AI development, FDE, AI-agent ERP controls, and legal-AI evidence methods to canonical sources.',category:'zh-CN'},
+  {title:'Software Heritage archive of the Onyx Devs Lab public repository',url:softwareHeritageSnapshotUrl,summary:'Independent, content-addressed preservation of the public source, citation metadata, machine-readable evidence, and Git history at revision dcd56f7. Archival is not an endorsement or proof of website indexing.',category:'versioned-evidence',ownership:'independent-archive'},
 ];
-const atom=`<?xml version="1.0" encoding="UTF-8"?>\n<feed xmlns="http://www.w3.org/2005/Atom"><title>Onyx Devs Lab — Enterprise AI Field Notes</title><id>${origin}/feed.xml</id><link href="${origin}/feed.xml" rel="self"/><link href="${webSubHubUrl}" rel="hub"/><link href="${origin}/"/><updated>${updated}T00:00:00+08:00</updated><author><name>Onyx Devs Lab</name></author>${feedEntries.map(page=>`<entry><title>${esc(page.title)}</title><id>${canonical(page.path)}</id><link href="${canonical(page.path)}"/><updated>${updated}T00:00:00+08:00</updated><summary>${esc(page.description)}</summary><category term="${page.lang}"/></entry>`).join('')}${externalFeedEntries.map(entry=>`<entry><title>${esc(entry.title)}</title><id>${esc(entry.url)}</id><link href="${esc(entry.url)}"/><updated>${updated}T00:00:00+08:00</updated><summary>${esc(entry.summary)}</summary><category term="${esc(entry.category)}"/><category term="provider-maintained-external-source"/></entry>`).join('')}</feed>\n`;
+const atom=`<?xml version="1.0" encoding="UTF-8"?>\n<feed xmlns="http://www.w3.org/2005/Atom"><title>Onyx Devs Lab — Enterprise AI Field Notes</title><id>${origin}/feed.xml</id><link href="${origin}/feed.xml" rel="self"/><link href="${webSubHubUrl}" rel="hub"/><link href="${origin}/"/><updated>${updated}T00:00:00+08:00</updated><author><name>Onyx Devs Lab</name></author>${feedEntries.map(page=>`<entry><title>${esc(page.title)}</title><id>${canonical(page.path)}</id><link href="${canonical(page.path)}"/><updated>${updated}T00:00:00+08:00</updated><summary>${esc(page.description)}</summary><category term="${page.lang}"/></entry>`).join('')}${externalFeedEntries.map(entry=>`<entry><title>${esc(entry.title)}</title><id>${esc(entry.url)}</id><link href="${esc(entry.url)}"/><updated>${updated}T00:00:00+08:00</updated><summary>${esc(entry.summary)}</summary><category term="${esc(entry.category)}"/><category term="${esc(entry.ownership||'provider-maintained-external-source')}"/></entry>`).join('')}</feed>\n`;
 let accurateAtom=atom.replace(`<updated>${updated}T`,`<updated>${feedUpdated}T`);
 for(const page of feedEntries){const entryId=canonical(page.path);accurateAtom=accurateAtom.replace(`<id>${entryId}</id><link href="${entryId}"/><updated>${updated}T`,`<id>${entryId}</id><link href="${entryId}"/><updated>${pageUpdated}T`);}
 for(const entryId of [...updatedAiSearchPaths].map(canonical).concat(agentReadinessReleaseUrl,aiSearchStatusReleaseUrl,chineseFieldNotesReleaseUrl))accurateAtom=accurateAtom.replace(`<id>${entryId}</id><link href="${entryId}"/><updated>${updated}T`,`<id>${entryId}</id><link href="${entryId}"/><updated>${feedUpdated}T`);
@@ -746,7 +747,7 @@ const jsonFeed={
       summary:entry.summary,
       content_text:entry.summary,
       date_modified:`${[agentReadinessReleaseUrl,aiSearchStatusReleaseUrl,chineseFieldNotesReleaseUrl].includes(entry.url)?feedUpdated:updated}T00:00:00+08:00`,
-      tags:[entry.category,'provider-maintained-external-source'],
+      tags:[entry.category,entry.ownership||'provider-maintained-external-source'],
     })),
   ],
 };
@@ -1036,6 +1037,8 @@ const fullKnowledge=[
   `Versioned CodeMeta checkpoint: ${codeMetaReleaseUrl}`,
   `Citation File Format metadata: ${citationRawUrl}`,
   `Versioned citation metadata checkpoint: ${citationReleaseUrl}`,
+  `Software Heritage repository snapshot: ${softwareHeritageSnapshotUrl}`,
+  'Software Heritage archived revision: swh:1:rev:dcd56f7f38f39cd68b3e36571c8a5c6f1940184e',
   `Chinese FDE field note: ${fdeFieldNoteRawUrl}`,
   `Chinese AI-agent and ERP checklist: ${erpAgentChecklistRawUrl}`,
   `Chinese legal-AI evidence-chain note: ${legalAiEvidenceRawUrl}`,
@@ -1047,7 +1050,7 @@ const fullKnowledge=[
   'Machine-readable AI-search evidence status: https://hk.onyxdevslab.com/data/ai-search-evidence-status.json',
   'Canonical machine-readable organization record: https://hk.onyxdevslab.com/data/organization.json',
   'Official GLEIF entity record: https://www.gleif.org/lei/254900Z30CLK7HKE9H46',
-  'Evidence boundary: the GitHub repository, Release, Gist, website, and knowledge files are maintained by Onyx Devs Lab. They are public corroborating copies and discovery paths, not independent endorsements or proof of search indexing, AI citation, or client results beyond the stated case-study limitations.',
+  'Evidence boundary: the GitHub repository, Release, Gist, website, and knowledge files are maintained by Onyx Devs Lab. The Software Heritage snapshot is an independent archival copy, not an endorsement. None of these links proves search indexing, AI citation, recommendation, or client results beyond the stated case-study limitations.',
   '',
   ...[...hubs,...aboutPages,...pages,...cases].flatMap(page=>{
     const lines=[`## ${page.title}`,canonical(page.path),page.description,page.lede||''];
