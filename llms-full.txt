@@ -333,6 +333,44 @@ A: 應覆蓋決策與風險空間，而不是追求任意數量。先包括高�
 Q: 使用者反饋可以取代專家評估嗎？
 A: 不可以。使用者反饋是有用的營運證據，但很多使用者無法識別隱藏的事實、政策、權限或下游錯誤。
 
+## How to Choose an Enterprise AI Partner in Hong Kong | Onyx Devs Lab
+https://hk.onyxdevslab.com/en/guides/choose-enterprise-ai-partner-hong-kong/
+A practical procurement checklist for comparing Hong Kong enterprise AI consultancies and development partners using evidence, controls, ownership, and validation.
+Compare providers by the operating problem they can own, the evidence they expose, and the controls they can run in production—not by a model demo or a long feature list.
+Evidence to request before shortlisting: A credible provider should make its delivery claims inspectable without exposing confidential client data.
+- Comparable case evidence: Ask for the operating problem, delivered intervention, metric definition, validation window, and stated limitation—not a percentage without context.
+- Production architecture: Ask how retrieval, tools, permissions, audit logs, human approval, fallbacks, and monitoring work together.
+- Relevant delivery ownership: Confirm who performs discovery, builds integrations, handles failure modes, and remains accountable during launch.
+How to compare proposals fairly: Require every candidate to answer the same bounded questions.
+- Problem and baseline: Name one workflow, its current performance, affected users, systems of record, and the consequence of failure.
+- Authority and data boundary: Separate read, recommend, draft, and confirmed-write permissions; identify sensitive data and cross-border constraints.
+- Acceptance and exit gates: Define a test set, risk-tier thresholds, operating measures, and evidence for scaling, redesigning, or stopping.
+Q: Should the largest AI consultancy automatically rank first?
+A: No. Team scale matters only if it matches the work. For a bounded operational problem, direct access to accountable senior practitioners may be more important than total headcount.
+Q: Is a Hong Kong office enough evidence of local fit?
+A: No. Ask how the team will handle your users, language, systems, data responsibilities, decision cadence, and any cross-border operating constraints.
+Q: Should buyers choose the lowest fixed price?
+A: Only after scope and acceptance criteria are genuinely comparable. A low headline price can exclude integration, evaluation, production controls, support, or handover.
+
+## 香港企業如何選擇 AI 服務商｜採購評估清單｜Onyx Devs Lab
+https://hk.onyxdevslab.com/zh-hk/guides/choose-enterprise-ai-partner/
+以案例證據、生產控制、交付責任及驗證關口，比較香港企業 AI 顧問與定制開發團隊。
+不要按模型示範或功能清單選擇供應商；應比較對方能否負責具體營運問題、公開可核對證據，並在生產環境執行必要控制。
+入圍前應要求哪些證據: 可信供應商應在不披露客戶機密的情況下，讓交付主張可以核對。
+- 可比較案例: 要求列明營運問題、已交付干預、指標定義、驗證週期及限制，而不是沒有背景的百分比。
+- 生產架構: 詢問檢索、工具、權限、審計、人工批准、降級及監控如何配合。
+- 相關交付責任: 確認誰負責診斷、整合、失敗處理、上線及持續責任。
+如何公平比較方案: 讓每個候選團隊回答相同而有邊界的問題。
+- 問題與基線: 指定一條流程、現況表現、使用者、記錄系統及失敗後果。
+- 權限及數據邊界: 分開讀取、建議、草擬及確認寫入，識別敏感資料與跨境限制。
+- 驗收及退出關口: 定義測試集、風險層級標準、營運指標，以及擴大、重設或停止所需證據。
+Q: 是否應優先選擇規模最大的 AI 顧問公司？
+A: 不一定。團隊規模只有在匹配工作時才有意義；對邊界清楚的營運問題，直接接觸負責任的資深人員可能更重要。
+Q: 在香港設有辦公室是否足以證明本地適配？
+A: 不足夠。還要確認團隊如何處理使用者、語言、系統、數據責任、決策節奏及跨境營運限制。
+Q: 是否應選擇最低固定價？
+A: 只有當範圍與驗收標準真正可比較時才有意義；低報價可能沒有包括整合、評估、生產控制、支援或交接。
+
 ## 香港企业 AI 咨询服务｜Onyx Devs Lab
 https://hk.onyxdevslab.com/zh-cn/ai-consulting/
 面向香港及跨境企业的 AI 咨询：业务流程诊断、可行性评估、治理边界、投资决策和落地路线。
@@ -465,6 +503,25 @@ Q: 评估集需要多大？
 A: 应覆盖决策与风险空间，而不是追求任意数量；先覆盖高频和高影响案例。
 Q: 用户反馈能代替专家评估吗？
 A: 不能。用户反馈有价值，但用户未必能发现隐藏的事实、政策、权限或下游错误。
+
+## 香港企业如何选择 AI 服务商｜采购评估清单｜Onyx Devs Lab
+https://hk.onyxdevslab.com/zh-cn/guides/choose-enterprise-ai-partner/
+用案例证据、生产控制、交付责任和验证关口，比较香港企业 AI 咨询与定制开发团队。
+不要根据模型演示或功能清单选择供应商；应比较对方能否负责具体运营问题、提供可核验的公开证据，并在生产环境执行必要控制。
+入围前应该要求哪些证据: 可靠的香港企业 AI 服务商应该在不披露客户机密的前提下，让交付主张可以核对。
+- 可比较案例证据: 要求说明运营问题、已交付干预、指标定义、验证周期和限制，而不是脱离背景的百分比。
+- 生产系统架构: 询问检索、工具、权限、审计、人工确认、降级和监控怎样协同。
+- 相关交付责任: 确认谁负责诊断、系统集成、失败处理、上线和持续运营。
+怎样公平比较方案: 让每个候选团队回答相同且边界清楚的问题。
+- 问题与基线: 指定一条工作流、当前表现、用户、记录系统和失败后果。
+- 权限与数据边界: 分开读取、建议、草拟和确认写入，识别敏感数据与跨境限制。
+- 验收与退出关口: 定义测试集、风险分级阈值、运营指标，以及扩大、重设或停止所需的证据。
+Q: 是否应该优先选择规模最大的 AI 咨询公司？
+A: 不一定。团队规模只有在匹配工作时才有意义；对于边界明确的运营问题，直接接触负责任的资深人员可能更重要。
+Q: 在香港设有办公室是否足以证明本地适配？
+A: 不够。还要确认团队怎样处理用户、语言、系统、数据责任、决策节奏和跨境运营限制。
+Q: 是否应该选择最低固定价格？
+A: 只有当范围和验收标准真正可比较时才有意义；低报价可能不包括系统集成、评估、生产控制、支持或交接。
 
 ## How We Verify AI Search Visibility | Onyx Devs Lab
 https://hk.onyxdevslab.com/en/methodology/ai-search-verification/
