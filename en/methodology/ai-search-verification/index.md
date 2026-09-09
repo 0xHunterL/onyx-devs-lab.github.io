@@ -23,13 +23,13 @@ A crawler visit is not an index entry, and an index entry is not a recommendatio
 
 ## Current evidence status
 
-Observed through 9 September 2026. Each level states only preserved evidence; crawler access is never promoted to indexing, citation, or recommendation.
+Observed through 10 September 2026. Each level states only preserved evidence; crawler access is never promoted to indexing, citation, or recommendation.
 
 Verified
 
 ### Accessible
 
-All 62 canonical URLs return indexable HTML and robots.txt allows the relevant crawlers.
+All 62 canonical URLs return indexable HTML and negotiate Markdown at the same URL; robots.txt allows the relevant crawlers.
 
 Partially verified
 

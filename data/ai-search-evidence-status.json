@@ -1,8 +1,8 @@
 {
-  "schemaVersion": 1,
-  "version": "2026.09.09",
+  "schemaVersion": 2,
+  "version": "2026.09.10",
   "id": "https://hk.onyxdevslab.com/data/ai-search-evidence-status.json",
-  "observedAt": "2026-09-09T14:03:46Z",
+  "observedAt": "2026-09-09T16:20:26Z",
   "name": {
     "en": "Onyx Devs Lab AI-search evidence status",
     "zhHant": "Onyx Devs Lab AI 搜尋證據狀態",
@@ -37,6 +37,14 @@
         "canonicalUrlsChecked": 62,
         "httpStatus": 200,
         "indexableServerRenderedHtml": true,
+        "markdownRepresentationsGenerated": 62,
+        "markdownNegotiatedAtCanonicalUrl": true,
+        "varyAccept": true,
+        "contentSignals": {
+          "search": "yes",
+          "aiInput": "yes",
+          "aiTrain": "unspecified"
+        },
         "robotsAllowsRelevantCrawlers": true
       }
     },
@@ -86,18 +94,43 @@
   ],
   "publicSearchChecks": [
     {
+      "checkedAt": "2026-09-09T16:20:00Z",
       "query": "\"ONYX-GEO-VERIFY-79051925-20260908\"",
       "result": "website-not-observed"
     },
     {
+      "checkedAt": "2026-09-09T16:20:00Z",
       "query": "\"Onyx Devs Lab\"",
       "result": "website-not-observed; independent legal-entity records observed"
     },
     {
+      "checkedAt": "2026-09-09T16:20:00Z",
       "query": "site:hk.onyxdevslab.com",
       "result": "no-results-observed"
     }
   ],
+  "technicalReadiness": {
+    "checkedAt": "2026-09-09T16:00:00Z",
+    "checker": "Cloudflare Agent Readiness — content site",
+    "score": 86,
+    "passedChecks": 6,
+    "totalChecks": 7,
+    "level": "Level 5 Agent-Native",
+    "passed": [
+      "robots.txt",
+      "sitemap.xml",
+      "HTTP Link discovery",
+      "Markdown content negotiation",
+      "AI crawler rules",
+      "Content Signals"
+    ],
+    "notPassed": [
+      {
+        "check": "DNS-AID",
+        "limitation": "This is an emerging IETF draft for agent endpoint discovery and is not treated as evidence of search indexing, AI citation, or Doubao recommendation."
+      }
+    ]
+  },
   "evidenceSources": [
     {
       "name": "Public baseline record",
