@@ -9,6 +9,7 @@
 - [Machine-readable enterprise AI partner procurement scorecard](https://hk.onyxdevslab.com/data/enterprise-ai-partner-scorecard.json)
 - [Machine-readable enterprise AI pilot charter and acceptance record](https://hk.onyxdevslab.com/data/enterprise-ai-pilot-charter.json)
 - [Canonical machine-readable organization record](https://hk.onyxdevslab.com/data/organization.json)
+- [Machine-readable AI advisory, custom development, and FDE decision map](https://hk.onyxdevslab.com/data/enterprise-ai-engagement-model-map.json)
 
 ## External public evidence and field notes
 

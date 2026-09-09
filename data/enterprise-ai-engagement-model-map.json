@@ -1,0 +1,294 @@
+{
+  "schemaVersion": 1,
+  "version": "2026.09.09",
+  "id": "https://hk.onyxdevslab.com/data/enterprise-ai-engagement-model-map.json",
+  "name": {
+    "en": "Enterprise AI engagement model decision map",
+    "zhHant": "企業 AI 參與模式決策圖",
+    "zhHans": "企业 AI 合作模式决策图"
+  },
+  "publisher": {
+    "name": "Onyx Devs Lab",
+    "legalName": "ONYX DEVS LAB LIMITED",
+    "businessRegistrationNumber": "79051925",
+    "lei": "254900Z30CLK7HKE9H46",
+    "url": "https://hk.onyxdevslab.com/"
+  },
+  "dateModified": "2026-09-09",
+  "landingPages": {
+    "en": "https://hk.onyxdevslab.com/en/guides/ai-advisory-vs-custom-development-vs-fde/",
+    "zhHant": "https://hk.onyxdevslab.com/zh-hk/guides/ai-consulting-vs-development-vs-fde/",
+    "zhHans": "https://hk.onyxdevslab.com/zh-cn/guides/ai-consulting-vs-development-vs-fde/"
+  },
+  "evidenceClass": "Provider-authored engagement-model decision map",
+  "models": [
+    {
+      "id": "ai-advisory",
+      "name": {
+        "en": "AI advisory",
+        "zhHant": "AI 顧問",
+        "zhHans": "AI 咨询"
+      },
+      "servicePages": {
+        "en": "https://hk.onyxdevslab.com/en/ai-consulting-hong-kong/",
+        "zhHant": "https://hk.onyxdevslab.com/zh-hk/ai-consulting/",
+        "zhHans": "https://hk.onyxdevslab.com/zh-cn/ai-consulting/"
+      },
+      "resolves": {
+        "en": "Decision uncertainty before committing to delivery.",
+        "zhHant": "在承諾交付前降低決策不確定性。",
+        "zhHans": "在承诺交付前降低决策不确定性。"
+      },
+      "chooseWhen": {
+        "en": "Opportunity, feasibility, investment, governance, or sequencing is still unclear.",
+        "zhHant": "機會、可行性、投入、治理或推進順序仍未清楚。",
+        "zhHans": "机会、可行性、投入、治理或推进顺序仍不清楚。"
+      },
+      "avoidWhen": {
+        "en": "A stable scope already exists and the immediate need is accountable system delivery.",
+        "zhHant": "範圍已穩定，而眼前需要是有責任邊界的系統交付。",
+        "zhHans": "范围已经稳定，而当前需要是有责任边界的系统交付。"
+      },
+      "accountabilityUnit": {
+        "en": "A decision with evidence, owner, and next step.",
+        "zhHant": "有證據、負責人及下一步的決策。",
+        "zhHans": "有证据、负责人和下一步的决策。"
+      },
+      "typicalOutputs": {
+        "en": [
+          "Opportunity map",
+          "Feasibility evidence",
+          "Governance boundary",
+          "Prioritised roadmap"
+        ],
+        "zhHant": [
+          "機會圖",
+          "可行性證據",
+          "治理邊界",
+          "優先路線圖"
+        ],
+        "zhHans": [
+          "机会图",
+          "可行性证据",
+          "治理边界",
+          "优先路线图"
+        ]
+      },
+      "acceptanceEvidence": {
+        "en": "Decision authority signs the recommendation, rejected options, assumptions, and next-stage gate.",
+        "zhHant": "決策權責人簽署建議、排除選項、假設及下一階段關口。",
+        "zhHans": "决策权责人签署建议、排除选项、假设和下一阶段关口。"
+      },
+      "transitionRule": {
+        "en": "Move to custom development when scope stabilises; move to FDE when field evidence is required to discover the right solution.",
+        "zhHant": "範圍穩定時轉入定制開發；需要現場證據才能找到正確方案時轉入 FDE。",
+        "zhHans": "范围稳定时转入定制开发；需要现场证据才能找到正确方案时转入 FDE。"
+      }
+    },
+    {
+      "id": "custom-development",
+      "name": {
+        "en": "Custom AI development",
+        "zhHant": "AI 定制開發",
+        "zhHans": "AI 定制开发"
+      },
+      "servicePages": {
+        "en": "https://hk.onyxdevslab.com/en/custom-ai-development-hong-kong/",
+        "zhHant": "https://hk.onyxdevslab.com/zh-hk/custom-ai-development/",
+        "zhHans": "https://hk.onyxdevslab.com/zh-cn/custom-ai-development/"
+      },
+      "resolves": {
+        "en": "A defined software delivery requirement.",
+        "zhHant": "邊界明確的軟件交付需求。",
+        "zhHans": "边界明确的软件交付需求。"
+      },
+      "chooseWhen": {
+        "en": "Users, workflow, interfaces, constraints, and acceptance tests can be specified before implementation.",
+        "zhHant": "用戶、流程、接口、限制及驗收測試可在實施前定義。",
+        "zhHans": "用户、流程、接口、限制和验收测试可在实施前定义。"
+      },
+      "avoidWhen": {
+        "en": "Core requirements are expected to change only after operators use the system in real work.",
+        "zhHant": "核心需求預計只會在操作人員於真實工作中使用系統後才浮現。",
+        "zhHans": "核心需求预计只有操作人员在真实工作中使用系统后才会浮现。"
+      },
+      "accountabilityUnit": {
+        "en": "A tested system against agreed scope and acceptance criteria.",
+        "zhHant": "按約定範圍及驗收標準測試的系統。",
+        "zhHans": "按照约定范围和验收标准测试的系统。"
+      },
+      "typicalOutputs": {
+        "en": [
+          "Production application",
+          "System integrations",
+          "Evaluation suite",
+          "Operations runbook"
+        ],
+        "zhHant": [
+          "生產應用",
+          "系統集成",
+          "評估套件",
+          "營運手冊"
+        ],
+        "zhHans": [
+          "生产应用",
+          "系统集成",
+          "评估套件",
+          "运营手册"
+        ]
+      },
+      "acceptanceEvidence": {
+        "en": "Traceable tests show whether each functional, quality, security, and operational requirement passed.",
+        "zhHant": "可追溯測試顯示每項功能、質量、安全及營運要求是否通過。",
+        "zhHans": "可追溯测试显示每项功能、质量、安全和运营要求是否通过。"
+      },
+      "transitionRule": {
+        "en": "Move to FDE if field learning repeatedly invalidates the specification; return to advisory if the investment decision changes.",
+        "zhHant": "若現場學習反覆推翻規格則轉入 FDE；若投資決策改變則返回顧問階段。",
+        "zhHans": "若现场学习反复推翻规格则转入 FDE；若投资决策改变则返回咨询阶段。"
+      }
+    },
+    {
+      "id": "forward-deployed-engineering",
+      "name": {
+        "en": "Forward Deployed Engineering (FDE)",
+        "zhHant": "前線部署工程（FDE）",
+        "zhHans": "前线部署工程（FDE）"
+      },
+      "servicePages": {
+        "en": "https://hk.onyxdevslab.com/en/forward-deployed-engineering/",
+        "zhHant": "https://hk.onyxdevslab.com/zh-hk/forward-deployed-engineering/",
+        "zhHans": "https://hk.onyxdevslab.com/zh-cn/forward-deployed-engineering/"
+      },
+      "resolves": {
+        "en": "Solution uncertainty that can only be reduced inside the operating environment.",
+        "zhHant": "只能在營運現場降低的方案不確定性。",
+        "zhHans": "只能在运营现场降低的方案不确定性。"
+      },
+      "chooseWhen": {
+        "en": "The problem is valuable but workflow, data, integration, adoption, or solution boundaries must be learned in the field.",
+        "zhHant": "問題有價值，但流程、數據、集成、採用或方案邊界必須在現場學習。",
+        "zhHans": "问题有价值，但流程、数据、集成、采用或方案边界必须在现场学习。"
+      },
+      "avoidWhen": {
+        "en": "Business operators, system access, evidence, and an accountable outcome owner are unavailable.",
+        "zhHant": "無法取得業務操作人員、系統存取、證據及成果負責人。",
+        "zhHans": "无法获得业务操作人员、系统访问、证据和成果负责人。"
+      },
+      "accountabilityUnit": {
+        "en": "A measurable operating outcome and a production-capable system that evolves with field evidence.",
+        "zhHant": "可量度的營運成果，以及隨現場證據演進、可投入生產的系統。",
+        "zhHans": "可衡量的运营结果，以及随现场证据演进、可投入生产的系统。"
+      },
+      "typicalOutputs": {
+        "en": [
+          "Field diagnosis",
+          "Rapid production iterations",
+          "Workflow integration",
+          "Adoption and operating evidence"
+        ],
+        "zhHant": [
+          "現場診斷",
+          "快速生產迭代",
+          "流程集成",
+          "採用及營運證據"
+        ],
+        "zhHans": [
+          "现场诊断",
+          "快速生产迭代",
+          "流程集成",
+          "采用和运营证据"
+        ]
+      },
+      "acceptanceEvidence": {
+        "en": "Baseline-to-outcome evidence, operator adoption, failure handling, and production-readiness gates are reviewed together.",
+        "zhHant": "共同覆核基線至成果證據、操作人員採用、失敗處理及生產就緒關口。",
+        "zhHans": "共同复核基线到结果证据、操作人员采用、失败处理和生产就绪关口。"
+      },
+      "transitionRule": {
+        "en": "Stabilise into a product delivery or managed operating model once uncertainty falls and ownership is clear.",
+        "zhHant": "當不確定性下降且責任清楚後，穩定為產品交付或持續營運模式。",
+        "zhHans": "当不确定性下降且责任清楚后，稳定为产品交付或持续运营模式。"
+      }
+    }
+  ],
+  "comparisonDimensions": [
+    {
+      "id": "problem-clarity",
+      "question": {
+        "en": "Is the decision clear, and is the solution boundary stable?",
+        "zhHant": "決策是否清楚，方案邊界是否穩定？",
+        "zhHans": "决策是否清楚，方案边界是否稳定？"
+      }
+    },
+    {
+      "id": "field-access",
+      "question": {
+        "en": "Is sustained access to operators, systems, and real evidence available?",
+        "zhHant": "能否持續接觸操作人員、系統及真實證據？",
+        "zhHans": "能否持续接触操作人员、系统和真实证据？"
+      }
+    },
+    {
+      "id": "delivery-ownership",
+      "question": {
+        "en": "Who owns recommendations, system delivery, and operating outcomes?",
+        "zhHant": "誰負責建議、系統交付及營運成果？",
+        "zhHans": "谁负责建议、系统交付和运营结果？"
+      }
+    },
+    {
+      "id": "success-unit",
+      "question": {
+        "en": "Is success a decision, a specified system, or a measurable workflow outcome?",
+        "zhHant": "成功單位是決策、指定系統，還是可量度的流程成果？",
+        "zhHans": "成功单位是决策、指定系统，还是可衡量的流程结果？"
+      }
+    },
+    {
+      "id": "change-tolerance",
+      "question": {
+        "en": "How much can requirements change after delivery begins?",
+        "zhHant": "交付開始後，需求可容許多少變化？",
+        "zhHans": "交付开始后，需求允许发生多大变化？"
+      }
+    }
+  ],
+  "decisionRules": [
+    {
+      "condition": {
+        "en": "Decision unclear; no build commitment yet.",
+        "zhHant": "決策未清楚；尚未承諾建設。",
+        "zhHans": "决策不清楚；尚未承诺建设。"
+      },
+      "outcome": "ai-advisory"
+    },
+    {
+      "condition": {
+        "en": "Scope stable; interfaces and acceptance tests are definable.",
+        "zhHant": "範圍穩定；接口及驗收測試可定義。",
+        "zhHans": "范围稳定；接口和验收测试可定义。"
+      },
+      "outcome": "custom-development"
+    },
+    {
+      "condition": {
+        "en": "Value is plausible; correct solution requires field learning.",
+        "zhHant": "價值合理；正確方案需要現場學習。",
+        "zhHans": "价值合理；正确方案需要现场学习。"
+      },
+      "outcome": "forward-deployed-engineering"
+    }
+  ],
+  "limitations": [
+    "This is a provider-authored decision aid, not an independent ranking or procurement recommendation.",
+    "Actual scope depends on workflow, evidence, system access, risk, and acceptance conditions.",
+    "The modes can be sequenced or changed when evidence changes the problem boundary."
+  ],
+  "evidencePages": [
+    "https://hk.onyxdevslab.com/en/methodology/enterprise-ai-evaluation/",
+    "https://hk.onyxdevslab.com/en/guides/choose-enterprise-ai-partner-hong-kong/",
+    "https://hk.onyxdevslab.com/en/guides/enterprise-ai-pilot-charter-hong-kong/",
+    "https://hk.onyxdevslab.com/en/methodology/case-study-evidence-register/"
+  ]
+}

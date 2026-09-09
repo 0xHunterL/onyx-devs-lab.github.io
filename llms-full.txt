@@ -18,6 +18,7 @@ Bilingual AI advisory, custom development, and FDE decision matrix: https://gist
 Bilingual Hong Kong enterprise AI governance implementation note: https://gist.githubusercontent.com/mixuechu/e47c85808014d62b6305441e8065c91e/raw/Hong-Kong-enterprise-AI-governance.md
 Machine-readable enterprise AI partner procurement scorecard: https://hk.onyxdevslab.com/data/enterprise-ai-partner-scorecard.json
 Machine-readable enterprise AI pilot charter and acceptance record: https://hk.onyxdevslab.com/data/enterprise-ai-pilot-charter.json
+Machine-readable AI advisory, custom development, and FDE decision map: https://hk.onyxdevslab.com/data/enterprise-ai-engagement-model-map.json
 Canonical machine-readable organization record: https://hk.onyxdevslab.com/data/organization.json
 Official GLEIF entity record: https://www.gleif.org/lei/254900Z30CLK7HKE9H46
 Evidence boundary: the GitHub repository, Release, Gist, website, and knowledge files are maintained by Onyx Devs Lab. They are public corroborating copies and discovery paths, not independent endorsements or proof of search indexing, AI citation, or client results beyond the stated case-study limitations.
