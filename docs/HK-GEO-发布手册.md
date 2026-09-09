@@ -46,6 +46,8 @@ npm run geo:schema-validate-live -- https://hk.onyxdevslab.com
 npm run geo:crawler-report -- --since=2026-09-01 --verify-openai --verify-bing --verify-google --verify-perplexity /var/log/nginx/hk.onyxdevslab.com.geo.log
 ```
 
+Schema 在线检查的退出码区分证据状态：`0` 表示官方验证器完成且无错误／警告，`1` 表示验证器确实返回了结构问题，`2` 表示验证服务限流、反自动化拦截或不可用。退出码 `2` 只能记为“未能在线验证”，不得写成 Schema 错误或通过；此时仍需保留本地 JSON-LD 解析与字段门禁，稍后再以单页重试官方服务。
+
 预期输出：`checkedPages` 不少于 50，页面、提示词覆盖、同语言正文差异度和 Schema.org 在线验证的 `failures` 均为空数组；简体核心页同时通过带自测标记的 Bytespider User-Agent 模拟抓取。差异度检查会阻止正文过短、描述重复或高度相似的批量查询变体；在线 Schema 检查默认覆盖首页、服务、指南、案例与团队五种模板。
 
 另外人工确认：
