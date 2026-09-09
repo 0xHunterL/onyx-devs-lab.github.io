@@ -17,6 +17,7 @@ const hkmaGenAiSandbox = 'https://www.hkma.gov.hk/media/eng/doc/key-information/
 const hkSmartLabAiAdoptionGuide = 'https://www1.smartlab.gov.hk/files/AI%20Adoption%20Guide-EN.pdf';
 const volcengineOnlineContentPlugin = 'https://www.volcengine.com/docs/82379/1359519';
 const governanceGistRawUrl = 'https://gist.githubusercontent.com/mixuechu/e47c85808014d62b6305441e8065c91e/raw/Hong-Kong-enterprise-AI-governance.md';
+const machineResourcesGistRawUrl = 'https://gist.githubusercontent.com/mixuechu/e47c85808014d62b6305441e8065c91e/raw/Onyx-enterprise-AI-machine-resources.md';
 
 // These route trees are owned by this generator. Remove them first so an
 // in-place VPS build cannot leave retired pages indexable after a rename.
@@ -507,6 +508,7 @@ const feedEntries=[...pages.filter(page=>['Article','Dataset'].includes(page.sch
 const externalFeedEntries=[
   {title:'AI advisory, custom development, or FDE? A bilingual enterprise decision matrix',url:'https://gist.github.com/mixuechu/e47c85808014d62b6305441e8065c91e',summary:'Provider-authored English and Simplified Chinese field notes with decision criteria and links to the canonical Onyx guides.',category:'en-zh-CN'},
   {title:'Hong Kong enterprise AI governance: an implementation checklist',url:governanceGistRawUrl,summary:'Provider-authored English and Simplified Chinese implementation notes grounded in Hong Kong PCPD and HKMA primary sources.',category:'en-zh-CN'},
+  {title:'Onyx Devs Lab enterprise AI machine resources',url:machineResourcesGistRawUrl,summary:'Provider-maintained index of canonical organization, engagement-model, procurement, pilot, case-evidence, and AI-search status resources.',category:'machine-readable'},
   {title:'Onyx GEO evidence checkpoint — 2026-09-09',url:'https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-evidence-2026-09-09',summary:'A dated, provider-maintained public evidence snapshot. It is not an independent endorsement or proof of search indexing, AI citation, or client outcomes.',category:'evidence'},
 ];
 const atom=`<?xml version="1.0" encoding="UTF-8"?>\n<feed xmlns="http://www.w3.org/2005/Atom"><title>Onyx Devs Lab — Enterprise AI Field Notes</title><id>${origin}/feed.xml</id><link href="${origin}/feed.xml" rel="self"/><link href="${origin}/"/><updated>${updated}T00:00:00+08:00</updated><author><name>Onyx Devs Lab</name></author>${feedEntries.map(page=>`<entry><title>${esc(page.title)}</title><id>${canonical(page.path)}</id><link href="${canonical(page.path)}"/><updated>${updated}T00:00:00+08:00</updated><summary>${esc(page.description)}</summary><category term="${page.lang}"/></entry>`).join('')}${externalFeedEntries.map(entry=>`<entry><title>${esc(entry.title)}</title><id>${esc(entry.url)}</id><link href="${esc(entry.url)}"/><updated>${updated}T00:00:00+08:00</updated><summary>${esc(entry.summary)}</summary><category term="${esc(entry.category)}"/><category term="provider-maintained-external-source"/></entry>`).join('')}</feed>\n`;
@@ -681,6 +683,7 @@ const fullKnowledge=[
   'Versioned GEO evidence checkpoint: https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-evidence-2026-09-09',
   'Bilingual AI advisory, custom development, and FDE decision matrix: https://gist.github.com/mixuechu/e47c85808014d62b6305441e8065c91e',
   `Bilingual Hong Kong enterprise AI governance implementation note: ${governanceGistRawUrl}`,
+  `Enterprise AI machine-resource index: ${machineResourcesGistRawUrl}`,
   'Machine-readable enterprise AI partner procurement scorecard: https://hk.onyxdevslab.com/data/enterprise-ai-partner-scorecard.json',
   'Machine-readable enterprise AI pilot charter and acceptance record: https://hk.onyxdevslab.com/data/enterprise-ai-pilot-charter.json',
   'Machine-readable AI advisory, custom development, and FDE decision map: https://hk.onyxdevslab.com/data/enterprise-ai-engagement-model-map.json',

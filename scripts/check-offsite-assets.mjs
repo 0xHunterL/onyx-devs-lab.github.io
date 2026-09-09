@@ -39,12 +39,16 @@ requireText('GitHub Gist decision matrix', gist, [
   'geo_decision_matrix',
   'Hong Kong enterprise AI governance: an implementation checklist',
   'geo_governance_guide',
+  'Onyx Devs Lab enterprise AI machine resources',
+  'geo_machine_resources',
   '/zh-cn/guides/choose-enterprise-ai-partner/',
 ]);
 const gistCampaignLinks = [...gist.matchAll(/utm_campaign=geo_decision_matrix/g)].length;
 if (gistCampaignLinks < 13) failures.push(`GitHub Gist decision matrix: expected at least 13 tracked deep links, got ${gistCampaignLinks}`);
 const gistGovernanceCampaignLinks = [...gist.matchAll(/utm_campaign=geo_governance_guide/g)].length;
 if (gistGovernanceCampaignLinks < 3) failures.push(`GitHub Gist governance guide: expected at least 3 tracked deep links, got ${gistGovernanceCampaignLinks}`);
+const gistMachineResourceLinks = [...gist.matchAll(/utm_campaign=geo_machine_resources/g)].length;
+if (gistMachineResourceLinks < 10) failures.push(`GitHub Gist machine resources: expected at least 10 tracked links, got ${gistMachineResourceLinks}`);
 
 const gistRaw = await get('GitHub Gist raw source', `${gistUrl}/raw/enterprise-ai-engagement-model.md`, 'text/plain');
 const gistSha256 = createHash('sha256').update(gistRaw).digest('hex');
@@ -56,6 +60,18 @@ const governanceGistRaw = await get('GitHub Gist governance source', governanceG
 const governanceGistSha256 = createHash('sha256').update(governanceGistRaw).digest('hex');
 const expectedGovernanceGistSha256 = '93f86e7aa6b036789049b355a232468e1f5b6a0ccdd95300103ba768940d01b5';
 if (governanceGistSha256 !== expectedGovernanceGistSha256) failures.push(`GitHub Gist governance source: SHA-256 mismatch, got ${governanceGistSha256}`);
+
+const machineResourcesGistRawUrl = 'https://gist.githubusercontent.com/mixuechu/e47c85808014d62b6305441e8065c91e/raw/Onyx-enterprise-AI-machine-resources.md';
+const machineResourcesGistRaw = await get('GitHub Gist machine-resource index', machineResourcesGistRawUrl, 'text/plain');
+const machineResourcesGistSha256 = createHash('sha256').update(machineResourcesGistRaw).digest('hex');
+const expectedMachineResourcesGistSha256 = '679b537d07fb4f4c7912d6e5242f3641031089caf4be3b6bcd13ed0df63b09f1';
+if (machineResourcesGistSha256 !== expectedMachineResourcesGistSha256) failures.push(`GitHub Gist machine-resource index: SHA-256 mismatch, got ${machineResourcesGistSha256}`);
+requireText('GitHub Gist machine-resource index', machineResourcesGistRaw, [
+  'data/organization.json?utm_source=github_gist',
+  'data/ai-search-evidence-status.json?utm_source=github_gist',
+  'No Doubao prompts have been sent',
+  '不等于已被搜索引擎收录',
+]);
 
 const scorecardUrl = 'https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-evidence-2026-09-09/enterprise-ai-partner-scorecard.json';
 const scorecardRaw = await get('Versioned enterprise AI partner scorecard', scorecardUrl, 'application/');
@@ -116,5 +132,5 @@ requireText('GitHub repository README source', repositoryReadme, [
 const robots = await get('GitHub Gist robots', 'https://gist.github.com/robots.txt', 'text/plain');
 if (robots.includes('Disallow: /mixuechu/e47c85808014d62b6305441e8065c91e')) failures.push('GitHub Gist robots: the published decision matrix is explicitly disallowed');
 
-console.log(JSON.stringify({ generatedAt: new Date().toISOString(), gistSha256, gistCampaignLinks, governanceGistSha256, gistGovernanceCampaignLinks, scorecardSha256, results, failures }, null, 2));
+console.log(JSON.stringify({ generatedAt: new Date().toISOString(), gistSha256, gistCampaignLinks, governanceGistSha256, gistGovernanceCampaignLinks, machineResourcesGistSha256, gistMachineResourceLinks, scorecardSha256, results, failures }, null, 2));
 if (failures.length) process.exit(1);
