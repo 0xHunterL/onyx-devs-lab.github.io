@@ -298,7 +298,15 @@ AI 定制开发费用如何确定？
         "Hong Kong",
         "Greater China",
         "Global"
-      ]
+      ],
+      "serviceType": [
+        "Custom AI development",
+        "AI 定制開發",
+        "AI 定制开发"
+      ],
+      "category": {
+        "@id": "https://hk.onyxdevslab.com/data/enterprise-ai-service-terms.jsonld#custom-ai-development"
+      }
     },
     {
       "@type": "WebPage",

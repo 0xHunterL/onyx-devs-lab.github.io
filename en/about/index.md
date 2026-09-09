@@ -262,7 +262,10 @@ Cross-disciplinary strategy and operations lead with computer science, mathemati
       "@id": "https://hk.onyxdevslab.com/en/about/#primary",
       "name": "The people who diagnose the problem also build the answer.",
       "description": "Meet the senior Onyx Devs Lab team delivering AI advisory, custom development, and Forward Deployed Engineering for enterprise operations.",
-      "url": "https://hk.onyxdevslab.com/en/about/"
+      "url": "https://hk.onyxdevslab.com/en/about/",
+      "mainEntity": {
+        "@id": "https://hk.onyxdevslab.com/#organization"
+      }
     },
     {
       "@type": "WebPage",

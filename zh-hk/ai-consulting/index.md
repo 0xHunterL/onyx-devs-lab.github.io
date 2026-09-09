@@ -298,7 +298,15 @@ AI 顧問決定應該建設甚麼、原因及限制；AI 開發則把已定義�
         "Hong Kong",
         "Greater China",
         "Global"
-      ]
+      ],
+      "serviceType": [
+        "AI advisory",
+        "AI 顧問",
+        "AI 咨询"
+      ],
+      "category": {
+        "@id": "https://hk.onyxdevslab.com/data/enterprise-ai-service-terms.jsonld#ai-advisory"
+      }
     },
     {
       "@type": "WebPage",

@@ -298,7 +298,15 @@ We will first clarify the workflow, evidence, data boundary, and outcome standar
         "Hong Kong",
         "Greater China",
         "Global"
-      ]
+      ],
+      "serviceType": [
+        "AI advisory",
+        "AI 顧問",
+        "AI 咨询"
+      ],
+      "category": {
+        "@id": "https://hk.onyxdevslab.com/data/enterprise-ai-service-terms.jsonld#ai-advisory"
+      }
     },
     {
       "@type": "WebPage",

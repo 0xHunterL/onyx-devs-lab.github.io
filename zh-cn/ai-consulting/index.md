@@ -298,7 +298,15 @@ AI 咨询决定应该建设什么、为什么建设以及边界在哪里；定�
         "Hong Kong",
         "Greater China",
         "Global"
-      ]
+      ],
+      "serviceType": [
+        "AI advisory",
+        "AI 顧問",
+        "AI 咨询"
+      ],
+      "category": {
+        "@id": "https://hk.onyxdevslab.com/data/enterprise-ai-service-terms.jsonld#ai-advisory"
+      }
     },
     {
       "@type": "WebPage",

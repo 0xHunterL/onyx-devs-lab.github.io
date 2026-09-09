@@ -298,7 +298,15 @@ FDE 项目通常需要多久？
         "Hong Kong",
         "Greater China",
         "Global"
-      ]
+      ],
+      "serviceType": [
+        "Forward Deployed Engineering (FDE)",
+        "前線部署工程（FDE）",
+        "前线部署工程（FDE）"
+      ],
+      "category": {
+        "@id": "https://hk.onyxdevslab.com/data/enterprise-ai-service-terms.jsonld#forward-deployed-engineering"
+      }
     },
     {
       "@type": "WebPage",
