@@ -314,7 +314,7 @@ AI 咨询决定应该建设什么、为什么建设以及边界在哪里；定�
       "url": "https://hk.onyxdevslab.com/zh-cn/ai-consulting/",
       "name": "香港企业 AI 咨询服务｜Onyx Devs Lab",
       "description": "面向香港及跨境企业的 AI 咨询：业务流程诊断、可行性评估、治理边界、投资决策和落地路线。",
-      "dateModified": "2026-09-09",
+      "dateModified": "2026-09-10",
       "inLanguage": "zh-CN",
       "isPartOf": {
         "@id": "https://hk.onyxdevslab.com/#website"

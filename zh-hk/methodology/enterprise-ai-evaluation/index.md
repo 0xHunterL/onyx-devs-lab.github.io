@@ -297,7 +297,7 @@ language: "zh-Hant-HK"
       "publisher": {
         "@id": "https://hk.onyxdevslab.com/#organization"
       },
-      "dateModified": "2026-09-09",
+      "dateModified": "2026-09-10",
       "headline": "如何判斷企業 AI 系統可以上線？"
     },
     {
@@ -306,7 +306,7 @@ language: "zh-Hant-HK"
       "url": "https://hk.onyxdevslab.com/zh-hk/methodology/enterprise-ai-evaluation/",
       "name": "企業 AI 評估框架｜從模型到營運成果｜Onyx Devs Lab",
       "description": "企業 AI 評估框架，涵蓋檢索、輸出、工具操作、流程可靠性、人工覆核及業務成果。",
-      "dateModified": "2026-09-09",
+      "dateModified": "2026-09-10",
       "inLanguage": "zh-Hant-HK",
       "isPartOf": {
         "@id": "https://hk.onyxdevslab.com/#website"

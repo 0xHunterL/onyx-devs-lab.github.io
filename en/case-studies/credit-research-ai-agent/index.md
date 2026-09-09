@@ -278,7 +278,7 @@ The validation sample measures fact recall, citation coverage, and first-draft t
       "creator": {
         "@id": "https://hk.onyxdevslab.com/#organization"
       },
-      "dateModified": "2026-09-09"
+      "dateModified": "2026-09-10"
     },
     {
       "@type": "WebPage",
@@ -286,7 +286,7 @@ The validation sample measures fact recall, citation coverage, and first-draft t
       "url": "https://hk.onyxdevslab.com/en/case-studies/credit-research-ai-agent/",
       "name": "Credit Research AI Agent Case Study | Onyx Devs Lab",
       "description": "A credit-research agent workflow combining internal material, current public information, source-linked conclusions, and analyst review.",
-      "dateModified": "2026-09-09",
+      "dateModified": "2026-09-10",
       "inLanguage": "en",
       "isPartOf": {
         "@id": "https://hk.onyxdevslab.com/#website"

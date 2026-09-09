@@ -278,7 +278,7 @@ The published validation covers synchronisation, send verification, and workflow
       "creator": {
         "@id": "https://hk.onyxdevslab.com/#organization"
       },
-      "dateModified": "2026-09-09"
+      "dateModified": "2026-09-10"
     },
     {
       "@type": "WebPage",
@@ -286,7 +286,7 @@ The published validation covers synchronisation, send verification, and workflow
       "url": "https://hk.onyxdevslab.com/en/case-studies/recruiting-ai-agent-workflow/",
       "name": "Recruiting AI Agent Workflow Case Study | Onyx Devs Lab",
       "description": "A controlled recruiting agent workflow for candidate sync, evidence-linked profiles, reply drafting, idempotent sending, and human takeover.",
-      "dateModified": "2026-09-09",
+      "dateModified": "2026-09-10",
       "inLanguage": "en",
       "isPartOf": {
         "@id": "https://hk.onyxdevslab.com/#website"

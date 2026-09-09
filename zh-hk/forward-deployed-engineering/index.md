@@ -314,7 +314,7 @@ FDE 項目通常需時多久？
       "url": "https://hk.onyxdevslab.com/zh-hk/forward-deployed-engineering/",
       "name": "前線部署工程 FDE｜企業 AI 落地｜Onyx Devs Lab",
       "description": "Forward Deployed Engineering 前線部署工程：把現場診斷、嵌入式開發、部署及量化驗證放在同一交付循環。",
-      "dateModified": "2026-09-09",
+      "dateModified": "2026-09-10",
       "inLanguage": "zh-Hant-HK",
       "isPartOf": {
         "@id": "https://hk.onyxdevslab.com/#website"

@@ -367,7 +367,7 @@ language: "zh-Hant-HK"
         "@id": "https://hk.onyxdevslab.com/#organization"
       },
       "datePublished": "2026-09-09",
-      "dateModified": "2026-09-09",
+      "dateModified": "2026-09-10",
       "version": "2026.09.09",
       "identifier": "https://hk.onyxdevslab.com/data/case-study-evidence.json",
       "isAccessibleForFree": true,
@@ -428,7 +428,7 @@ language: "zh-Hant-HK"
       "url": "https://hk.onyxdevslab.com/zh-hk/methodology/case-study-evidence-register/",
       "name": "企業 AI 案例證據登記冊｜Onyx Devs Lab",
       "description": "集中記錄 Onyx 企業 AI 案例指標的定義、範圍、來源頁及限制。",
-      "dateModified": "2026-09-09",
+      "dateModified": "2026-09-10",
       "inLanguage": "zh-Hant-HK",
       "isPartOf": {
         "@id": "https://hk.onyxdevslab.com/#website"

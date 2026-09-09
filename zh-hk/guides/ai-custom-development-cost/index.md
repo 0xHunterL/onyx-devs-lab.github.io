@@ -297,7 +297,7 @@ language: "zh-Hant-HK"
       "publisher": {
         "@id": "https://hk.onyxdevslab.com/#organization"
       },
-      "dateModified": "2026-09-09",
+      "dateModified": "2026-09-10",
       "headline": "香港 AI 定制開發費用由甚麼決定？"
     },
     {
@@ -306,7 +306,7 @@ language: "zh-Hant-HK"
       "url": "https://hk.onyxdevslab.com/zh-hk/guides/ai-custom-development-cost/",
       "name": "香港 AI 定制開發費用如何估算｜Onyx Devs Lab",
       "description": "了解香港 AI 定制開發的主要成本因素、可信報價應包含甚麼，以及如何在全面開發前降低風險。",
-      "dateModified": "2026-09-09",
+      "dateModified": "2026-09-10",
       "inLanguage": "zh-Hant-HK",
       "isPartOf": {
         "@id": "https://hk.onyxdevslab.com/#website"

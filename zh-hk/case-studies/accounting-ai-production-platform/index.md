@@ -284,7 +284,7 @@ language: "zh-Hant-HK"
       "creator": {
         "@id": "https://hk.onyxdevslab.com/#organization"
       },
-      "dateModified": "2026-09-09"
+      "dateModified": "2026-09-10"
     },
     {
       "@type": "WebPage",
@@ -292,7 +292,7 @@ language: "zh-Hant-HK"
       "url": "https://hk.onyxdevslab.com/zh-hk/case-studies/accounting-ai-production-platform/",
       "name": "AI 原生會計生產平台案例｜Onyx Devs Lab",
       "description": "具備流程編排、證據鏈、異常處理及人工控制的多 Agent 會計生產系統。",
-      "dateModified": "2026-09-09",
+      "dateModified": "2026-09-10",
       "inLanguage": "zh-Hant-HK",
       "isPartOf": {
         "@id": "https://hk.onyxdevslab.com/#website"

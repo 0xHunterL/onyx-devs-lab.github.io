@@ -278,7 +278,7 @@ The published metrics come from project records and describe the delivered scope
       "creator": {
         "@id": "https://hk.onyxdevslab.com/#organization"
       },
-      "dateModified": "2026-09-09"
+      "dateModified": "2026-09-10"
     },
     {
       "@type": "WebPage",
@@ -286,7 +286,7 @@ The published metrics come from project records and describe the delivered scope
       "url": "https://hk.onyxdevslab.com/en/case-studies/retail-ai-decision-platform/",
       "name": "Retail AI Decision Platform Case Study | Onyx Devs Lab",
       "description": "How a non-invasive data layer over an existing ERP can support inventory, staffing, and merchandising decisions.",
-      "dateModified": "2026-09-09",
+      "dateModified": "2026-09-10",
       "inLanguage": "en",
       "isPartOf": {
         "@id": "https://hk.onyxdevslab.com/#website"

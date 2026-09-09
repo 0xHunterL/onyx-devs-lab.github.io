@@ -278,7 +278,7 @@ language: "zh-Hant-HK"
       "creator": {
         "@id": "https://hk.onyxdevslab.com/#organization"
       },
-      "dateModified": "2026-09-09"
+      "dateModified": "2026-09-10"
     },
     {
       "@type": "WebPage",
@@ -286,7 +286,7 @@ language: "zh-Hant-HK"
       "url": "https://hk.onyxdevslab.com/zh-hk/case-studies/credit-research-ai-agent/",
       "name": "債權研究 AI Agent 案例｜Onyx Devs Lab",
       "description": "融合內部材料、最新公開信息、可回查結論與分析師覆核的債權研究 Agent 工作流。",
-      "dateModified": "2026-09-09",
+      "dateModified": "2026-09-10",
       "inLanguage": "zh-Hant-HK",
       "isPartOf": {
         "@id": "https://hk.onyxdevslab.com/#website"

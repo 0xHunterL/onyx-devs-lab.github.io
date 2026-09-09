@@ -297,7 +297,7 @@ language: "zh-CN"
       "publisher": {
         "@id": "https://hk.onyxdevslab.com/#organization"
       },
-      "dateModified": "2026-09-09",
+      "dateModified": "2026-09-10",
       "headline": "怎样判断企业 AI 系统可以上线？"
     },
     {
@@ -306,7 +306,7 @@ language: "zh-CN"
       "url": "https://hk.onyxdevslab.com/zh-cn/methodology/enterprise-ai-evaluation/",
       "name": "企业 AI 系统评估框架｜Onyx Devs Lab",
       "description": "从检索证据、输出、工具调用、运营可靠性、人工复核和业务结果判断企业 AI 能否上线。",
-      "dateModified": "2026-09-09",
+      "dateModified": "2026-09-10",
       "inLanguage": "zh-CN",
       "isPartOf": {
         "@id": "https://hk.onyxdevslab.com/#website"

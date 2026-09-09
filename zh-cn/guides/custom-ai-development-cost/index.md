@@ -297,7 +297,7 @@ AI 项目成本指南
       "publisher": {
         "@id": "https://hk.onyxdevslab.com/#organization"
       },
-      "dateModified": "2026-09-09",
+      "dateModified": "2026-09-10",
       "headline": "香港 AI 定制开发费用由什么决定？"
     },
     {
@@ -306,7 +306,7 @@ AI 项目成本指南
       "url": "https://hk.onyxdevslab.com/zh-cn/guides/custom-ai-development-cost/",
       "name": "香港 AI 定制开发费用怎么估算｜Onyx Devs Lab",
       "description": "了解香港 AI 定制开发的成本因素、可靠报价应包含什么，以及如何降低项目风险。",
-      "dateModified": "2026-09-09",
+      "dateModified": "2026-09-10",
       "inLanguage": "zh-CN",
       "isPartOf": {
         "@id": "https://hk.onyxdevslab.com/#website"

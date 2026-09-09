@@ -278,7 +278,7 @@ language: "zh-Hant-HK"
       "creator": {
         "@id": "https://hk.onyxdevslab.com/#organization"
       },
-      "dateModified": "2026-09-09"
+      "dateModified": "2026-09-10"
     },
     {
       "@type": "WebPage",
@@ -286,7 +286,7 @@ language: "zh-Hant-HK"
       "url": "https://hk.onyxdevslab.com/zh-hk/case-studies/legal-ai-evidence-workflow/",
       "name": "法律 AI 證據鏈工作流案例｜Onyx Devs Lab",
       "description": "把律所營運、大型卷宗檢索、逐頁引用、案件權限及律師覆核連接起來的法律 AI 工作流。",
-      "dateModified": "2026-09-09",
+      "dateModified": "2026-09-10",
       "inLanguage": "zh-Hant-HK",
       "isPartOf": {
         "@id": "https://hk.onyxdevslab.com/#website"

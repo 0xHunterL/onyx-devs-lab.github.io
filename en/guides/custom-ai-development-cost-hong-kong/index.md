@@ -297,7 +297,7 @@ We will first clarify the workflow, evidence, data boundary, and outcome standar
       "publisher": {
         "@id": "https://hk.onyxdevslab.com/#organization"
       },
-      "dateModified": "2026-09-09",
+      "dateModified": "2026-09-10",
       "headline": "What determines custom AI development cost in Hong Kong?"
     },
     {
@@ -306,7 +306,7 @@ We will first clarify the workflow, evidence, data boundary, and outcome standar
       "url": "https://hk.onyxdevslab.com/en/guides/custom-ai-development-cost-hong-kong/",
       "name": "Custom AI Development Cost in Hong Kong | Scope Guide",
       "description": "Understand what drives custom AI development cost in Hong Kong, what a credible estimate includes, and how to reduce risk before committing to a build.",
-      "dateModified": "2026-09-09",
+      "dateModified": "2026-09-10",
       "inLanguage": "en",
       "isPartOf": {
         "@id": "https://hk.onyxdevslab.com/#website"

@@ -297,7 +297,7 @@ We will first clarify the workflow, evidence, data boundary, and outcome standar
       "publisher": {
         "@id": "https://hk.onyxdevslab.com/#organization"
       },
-      "dateModified": "2026-09-09",
+      "dateModified": "2026-09-10",
       "headline": "How should an AI agent connect to an ERP?"
     },
     {
@@ -306,7 +306,7 @@ We will first clarify the workflow, evidence, data boundary, and outcome standar
       "url": "https://hk.onyxdevslab.com/en/guides/enterprise-ai-agent-erp-integration/",
       "name": "Enterprise AI Agent and ERP Integration Guide | Onyx Devs Lab",
       "description": "A practical architecture and control guide for connecting enterprise AI agents to ERP data and actions without replacing the system of record.",
-      "dateModified": "2026-09-09",
+      "dateModified": "2026-09-10",
       "inLanguage": "en",
       "isPartOf": {
         "@id": "https://hk.onyxdevslab.com/#website"

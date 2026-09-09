@@ -278,7 +278,7 @@ language: "zh-Hant-HK"
       "creator": {
         "@id": "https://hk.onyxdevslab.com/#organization"
       },
-      "dateModified": "2026-09-09"
+      "dateModified": "2026-09-10"
     },
     {
       "@type": "WebPage",
@@ -286,7 +286,7 @@ language: "zh-Hant-HK"
       "url": "https://hk.onyxdevslab.com/zh-hk/case-studies/recruiting-ai-agent-workflow/",
       "name": "香港招聘 AI Agent 工作流案例｜Onyx Devs Lab",
       "description": "涵蓋候選人同步、證據化畫像、回覆草擬、冪等發送及人工接管的受控招聘 Agent 工作流。",
-      "dateModified": "2026-09-09",
+      "dateModified": "2026-09-10",
       "inLanguage": "zh-Hant-HK",
       "isPartOf": {
         "@id": "https://hk.onyxdevslab.com/#website"

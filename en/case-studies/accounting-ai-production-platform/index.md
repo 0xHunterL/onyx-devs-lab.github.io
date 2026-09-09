@@ -284,7 +284,7 @@ The published figures separate mapped product scope from pilot workflow validati
       "creator": {
         "@id": "https://hk.onyxdevslab.com/#organization"
       },
-      "dateModified": "2026-09-09"
+      "dateModified": "2026-09-10"
     },
     {
       "@type": "WebPage",
@@ -292,7 +292,7 @@ The published figures separate mapped product scope from pilot workflow validati
       "url": "https://hk.onyxdevslab.com/en/case-studies/accounting-ai-production-platform/",
       "name": "AI Accounting Production Platform Case Study | Onyx Devs Lab",
       "description": "A multi-agent accounting production system with workflow orchestration, evidence, exception handling, and human control.",
-      "dateModified": "2026-09-09",
+      "dateModified": "2026-09-10",
       "inLanguage": "en",
       "isPartOf": {
         "@id": "https://hk.onyxdevslab.com/#website"

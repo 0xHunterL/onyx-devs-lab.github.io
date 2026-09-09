@@ -367,7 +367,7 @@ Every metric retains its value, name, measurement definition, source page, and e
         "@id": "https://hk.onyxdevslab.com/#organization"
       },
       "datePublished": "2026-09-09",
-      "dateModified": "2026-09-09",
+      "dateModified": "2026-09-10",
       "version": "2026.09.09",
       "identifier": "https://hk.onyxdevslab.com/data/case-study-evidence.json",
       "isAccessibleForFree": true,
@@ -428,7 +428,7 @@ Every metric retains its value, name, measurement definition, source page, and e
       "url": "https://hk.onyxdevslab.com/en/methodology/case-study-evidence-register/",
       "name": "Enterprise AI Case Study Evidence Register | Onyx Devs Lab",
       "description": "A versioned register of the definitions, scope, source pages, and limitations behind Onyx enterprise AI case-study metrics.",
-      "dateModified": "2026-09-09",
+      "dateModified": "2026-09-10",
       "inLanguage": "en",
       "isPartOf": {
         "@id": "https://hk.onyxdevslab.com/#website"

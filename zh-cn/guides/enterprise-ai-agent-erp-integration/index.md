@@ -297,7 +297,7 @@ Agent 可以直接写生产数据吗？
       "publisher": {
         "@id": "https://hk.onyxdevslab.com/#organization"
       },
-      "dateModified": "2026-09-09",
+      "dateModified": "2026-09-10",
       "headline": "AI Agent 应该怎样连接 ERP？"
     },
     {
@@ -306,7 +306,7 @@ Agent 可以直接写生产数据吗？
       "url": "https://hk.onyxdevslab.com/zh-cn/guides/enterprise-ai-agent-erp-integration/",
       "name": "企业 AI Agent 与 ERP 集成指南｜Onyx Devs Lab",
       "description": "在保留 ERP 作为记录系统的前提下，把企业 AI Agent 安全连接到数据与业务操作。",
-      "dateModified": "2026-09-09",
+      "dateModified": "2026-09-10",
       "inLanguage": "zh-CN",
       "isPartOf": {
         "@id": "https://hk.onyxdevslab.com/#website"

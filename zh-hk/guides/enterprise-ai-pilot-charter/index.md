@@ -303,7 +303,7 @@ AI 試點決策工具
       "publisher": {
         "@id": "https://hk.onyxdevslab.com/#organization"
       },
-      "dateModified": "2026-09-09",
+      "dateModified": "2026-09-10",
       "headline": "香港企業應如何定義及驗收 AI 試點？",
       "citation": [
         {
@@ -334,7 +334,7 @@ AI 試點決策工具
       "url": "https://hk.onyxdevslab.com/zh-hk/guides/enterprise-ai-pilot-charter/",
       "name": "香港企業 AI 試點章程與驗收模板｜Onyx Devs Lab",
       "description": "可下載的香港企業 AI 試點章程，定義範圍、證據、風險控制、驗收門檻，以及擴大、重設或停止決策。",
-      "dateModified": "2026-09-09",
+      "dateModified": "2026-09-10",
       "inLanguage": "zh-Hant-HK",
       "isPartOf": {
         "@id": "https://hk.onyxdevslab.com/#website"

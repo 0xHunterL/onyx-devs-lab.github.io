@@ -314,7 +314,7 @@ We will first clarify the workflow, evidence, data boundary, and outcome standar
       "url": "https://hk.onyxdevslab.com/en/ai-consulting-hong-kong/",
       "name": "AI Consulting Hong Kong | Strategy to Production | Onyx Devs Lab",
       "description": "Senior AI consulting for Hong Kong enterprises: workflow diagnosis, feasibility, governance, roadmap, and a measurable route from opportunity to production.",
-      "dateModified": "2026-09-09",
+      "dateModified": "2026-09-10",
       "inLanguage": "en",
       "isPartOf": {
         "@id": "https://hk.onyxdevslab.com/#website"

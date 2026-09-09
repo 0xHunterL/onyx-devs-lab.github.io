@@ -307,7 +307,7 @@ We will first clarify the workflow, evidence, data boundary, and outcome standar
       "publisher": {
         "@id": "https://hk.onyxdevslab.com/#organization"
       },
-      "dateModified": "2026-09-09",
+      "dateModified": "2026-09-10",
       "headline": "What governance does a Hong Kong enterprise need before deploying AI?",
       "citation": [
         {
@@ -328,7 +328,7 @@ We will first clarify the workflow, evidence, data boundary, and outcome standar
       "url": "https://hk.onyxdevslab.com/en/guides/hong-kong-enterprise-ai-governance/",
       "name": "Hong Kong Enterprise AI Governance Checklist | Onyx Devs Lab",
       "description": "A practical Hong Kong enterprise AI governance checklist grounded in PCPD guidance: accountability, risk assessment, human oversight, data, testing, monitoring, and communication.",
-      "dateModified": "2026-09-09",
+      "dateModified": "2026-09-10",
       "inLanguage": "en",
       "isPartOf": {
         "@id": "https://hk.onyxdevslab.com/#website"

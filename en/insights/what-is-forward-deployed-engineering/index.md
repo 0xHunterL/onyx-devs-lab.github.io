@@ -297,7 +297,7 @@ We will first clarify the workflow, evidence, data boundary, and outcome standar
       "publisher": {
         "@id": "https://hk.onyxdevslab.com/#organization"
       },
-      "dateModified": "2026-09-09",
+      "dateModified": "2026-09-10",
       "headline": "What is Forward Deployed Engineering?"
     },
     {
@@ -306,7 +306,7 @@ We will first clarify the workflow, evidence, data boundary, and outcome standar
       "url": "https://hk.onyxdevslab.com/en/insights/what-is-forward-deployed-engineering/",
       "name": "What Is Forward Deployed Engineering (FDE)? | Onyx Devs Lab",
       "description": "A practical definition of Forward Deployed Engineering, how FDE differs from consulting and outsourcing, and when the model fits an enterprise AI project.",
-      "dateModified": "2026-09-09",
+      "dateModified": "2026-09-10",
       "inLanguage": "en",
       "isPartOf": {
         "@id": "https://hk.onyxdevslab.com/#website"

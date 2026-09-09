@@ -309,7 +309,7 @@ FDE 是否一定更昂貴？
       "publisher": {
         "@id": "https://hk.onyxdevslab.com/#organization"
       },
-      "dateModified": "2026-09-09",
+      "dateModified": "2026-09-10",
       "headline": "應該選 AI 顧問、定制開發，還是 FDE？",
       "hasPart": {
         "@type": "Dataset",
@@ -328,7 +328,7 @@ FDE 是否一定更昂貴？
       "url": "https://hk.onyxdevslab.com/zh-hk/guides/ai-consulting-vs-development-vs-fde/",
       "name": "AI 顧問、定制開發與 FDE 如何選擇｜Onyx Devs Lab",
       "description": "按問題清晰度、證據與交付責任，選擇 AI 顧問、AI 定制開發或前線部署工程 FDE。",
-      "dateModified": "2026-09-09",
+      "dateModified": "2026-09-10",
       "inLanguage": "zh-Hant-HK",
       "isPartOf": {
         "@id": "https://hk.onyxdevslab.com/#website"

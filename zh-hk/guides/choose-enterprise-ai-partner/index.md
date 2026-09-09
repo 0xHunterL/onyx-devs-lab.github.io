@@ -297,7 +297,7 @@ language: "zh-Hant-HK"
       "publisher": {
         "@id": "https://hk.onyxdevslab.com/#organization"
       },
-      "dateModified": "2026-09-09",
+      "dateModified": "2026-09-10",
       "headline": "香港企業應如何選擇 AI 交付夥伴？",
       "hasPart": {
         "@type": "Dataset",
@@ -317,7 +317,7 @@ language: "zh-Hant-HK"
       "url": "https://hk.onyxdevslab.com/zh-hk/guides/choose-enterprise-ai-partner/",
       "name": "香港企業如何選擇 AI 服務商｜採購評估清單｜Onyx Devs Lab",
       "description": "以案例證據、生產控制、交付責任及驗證關口，比較香港企業 AI 顧問與定制開發團隊。",
-      "dateModified": "2026-09-09",
+      "dateModified": "2026-09-10",
       "inLanguage": "zh-Hant-HK",
       "isPartOf": {
         "@id": "https://hk.onyxdevslab.com/#website"

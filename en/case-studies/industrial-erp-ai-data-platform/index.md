@@ -278,7 +278,7 @@ Validation covers data-record completeness, collection timeliness, and operator 
       "creator": {
         "@id": "https://hk.onyxdevslab.com/#organization"
       },
-      "dateModified": "2026-09-09"
+      "dateModified": "2026-09-10"
     },
     {
       "@type": "WebPage",
@@ -286,7 +286,7 @@ Validation covers data-record completeness, collection timeliness, and operator 
       "url": "https://hk.onyxdevslab.com/en/case-studies/industrial-erp-ai-data-platform/",
       "name": "Industrial ERP and AI Data Platform Case Study | Onyx Devs Lab",
       "description": "An industrial data platform connecting weighbridge, laboratory, vehicle, energy, ERP, and PLC information without handing safety control to AI.",
-      "dateModified": "2026-09-09",
+      "dateModified": "2026-09-10",
       "inLanguage": "en",
       "isPartOf": {
         "@id": "https://hk.onyxdevslab.com/#website"

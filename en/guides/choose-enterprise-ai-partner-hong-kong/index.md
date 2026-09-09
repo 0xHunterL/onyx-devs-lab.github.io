@@ -297,7 +297,7 @@ We will first clarify the workflow, evidence, data boundary, and outcome standar
       "publisher": {
         "@id": "https://hk.onyxdevslab.com/#organization"
       },
-      "dateModified": "2026-09-09",
+      "dateModified": "2026-09-10",
       "headline": "How should a Hong Kong enterprise choose an AI delivery partner?",
       "hasPart": {
         "@type": "Dataset",
@@ -317,7 +317,7 @@ We will first clarify the workflow, evidence, data boundary, and outcome standar
       "url": "https://hk.onyxdevslab.com/en/guides/choose-enterprise-ai-partner-hong-kong/",
       "name": "How to Choose an Enterprise AI Partner in Hong Kong | Onyx Devs Lab",
       "description": "A practical procurement checklist for comparing Hong Kong enterprise AI consultancies and development partners using evidence, controls, ownership, and validation.",
-      "dateModified": "2026-09-09",
+      "dateModified": "2026-09-10",
       "inLanguage": "en",
       "isPartOf": {
         "@id": "https://hk.onyxdevslab.com/#website"

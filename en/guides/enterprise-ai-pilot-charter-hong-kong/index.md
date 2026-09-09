@@ -303,7 +303,7 @@ We will first clarify the workflow, evidence, data boundary, and outcome standar
       "publisher": {
         "@id": "https://hk.onyxdevslab.com/#organization"
       },
-      "dateModified": "2026-09-09",
+      "dateModified": "2026-09-10",
       "headline": "How should a Hong Kong enterprise define and accept an AI pilot?",
       "citation": [
         {
@@ -334,7 +334,7 @@ We will first clarify the workflow, evidence, data boundary, and outcome standar
       "url": "https://hk.onyxdevslab.com/en/guides/enterprise-ai-pilot-charter-hong-kong/",
       "name": "Enterprise AI Pilot Charter and Acceptance Template Hong Kong | Onyx Devs Lab",
       "description": "A downloadable Hong Kong enterprise AI pilot charter for defining scope, evidence, risk controls, acceptance thresholds, and scale, redesign, or stop decisions.",
-      "dateModified": "2026-09-09",
+      "dateModified": "2026-09-10",
       "inLanguage": "en",
       "isPartOf": {
         "@id": "https://hk.onyxdevslab.com/#website"

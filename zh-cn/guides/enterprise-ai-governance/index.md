@@ -307,7 +307,7 @@ language: "zh-CN"
       "publisher": {
         "@id": "https://hk.onyxdevslab.com/#organization"
       },
-      "dateModified": "2026-09-09",
+      "dateModified": "2026-09-10",
       "headline": "香港企业部署 AI 前，需要建立哪些治理控制？",
       "citation": [
         {
@@ -328,7 +328,7 @@ language: "zh-CN"
       "url": "https://hk.onyxdevslab.com/zh-cn/guides/enterprise-ai-governance/",
       "name": "香港企业 AI 治理清单｜隐私、风险与人工监督｜Onyx Devs Lab",
       "description": "依据香港隐私专员公署框架，把企业 AI 治理落实为责任、风险评估、人工监督、数据、测试、监控和沟通控制。",
-      "dateModified": "2026-09-09",
+      "dateModified": "2026-09-10",
       "inLanguage": "zh-CN",
       "isPartOf": {
         "@id": "https://hk.onyxdevslab.com/#website"

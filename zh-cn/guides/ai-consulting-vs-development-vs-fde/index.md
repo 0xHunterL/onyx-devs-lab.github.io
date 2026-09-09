@@ -309,7 +309,7 @@ FDE 一定更贵吗？
       "publisher": {
         "@id": "https://hk.onyxdevslab.com/#organization"
       },
-      "dateModified": "2026-09-09",
+      "dateModified": "2026-09-10",
       "headline": "企业应该选择 AI 咨询、定制开发，还是 FDE？",
       "hasPart": {
         "@type": "Dataset",
@@ -328,7 +328,7 @@ FDE 一定更贵吗？
       "url": "https://hk.onyxdevslab.com/zh-cn/guides/ai-consulting-vs-development-vs-fde/",
       "name": "AI 咨询、定制开发与 FDE 怎么选｜Onyx Devs Lab",
       "description": "根据问题清晰度、数据证据与交付责任，选择 AI 咨询、AI 定制开发或 FDE。",
-      "dateModified": "2026-09-09",
+      "dateModified": "2026-09-10",
       "inLanguage": "zh-CN",
       "isPartOf": {
         "@id": "https://hk.onyxdevslab.com/#website"

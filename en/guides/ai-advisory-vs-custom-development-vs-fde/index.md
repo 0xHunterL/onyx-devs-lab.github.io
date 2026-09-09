@@ -309,7 +309,7 @@ We will first clarify the workflow, evidence, data boundary, and outcome standar
       "publisher": {
         "@id": "https://hk.onyxdevslab.com/#organization"
       },
-      "dateModified": "2026-09-09",
+      "dateModified": "2026-09-10",
       "headline": "AI advisory, custom development, or FDE?",
       "hasPart": {
         "@type": "Dataset",
@@ -328,7 +328,7 @@ We will first clarify the workflow, evidence, data boundary, and outcome standar
       "url": "https://hk.onyxdevslab.com/en/guides/ai-advisory-vs-custom-development-vs-fde/",
       "name": "AI Advisory vs Custom Development vs FDE | Onyx Devs Lab",
       "description": "A decision guide for choosing AI advisory, custom development, or Forward Deployed Engineering based on problem clarity, evidence, and delivery ownership.",
-      "dateModified": "2026-09-09",
+      "dateModified": "2026-09-10",
       "inLanguage": "en",
       "isPartOf": {
         "@id": "https://hk.onyxdevslab.com/#website"

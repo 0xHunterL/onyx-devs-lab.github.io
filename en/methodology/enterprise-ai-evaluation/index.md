@@ -297,7 +297,7 @@ We will first clarify the workflow, evidence, data boundary, and outcome standar
       "publisher": {
         "@id": "https://hk.onyxdevslab.com/#organization"
       },
-      "dateModified": "2026-09-09",
+      "dateModified": "2026-09-10",
       "headline": "How do you know an enterprise AI system is ready?"
     },
     {
@@ -306,7 +306,7 @@ We will first clarify the workflow, evidence, data boundary, and outcome standar
       "url": "https://hk.onyxdevslab.com/en/methodology/enterprise-ai-evaluation/",
       "name": "Enterprise AI Evaluation Framework | Onyx Devs Lab",
       "description": "A practical enterprise AI evaluation framework covering retrieval, outputs, tool use, operational reliability, human review, and business outcomes.",
-      "dateModified": "2026-09-09",
+      "dateModified": "2026-09-10",
       "inLanguage": "en",
       "isPartOf": {
         "@id": "https://hk.onyxdevslab.com/#website"

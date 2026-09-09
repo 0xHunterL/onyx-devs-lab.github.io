@@ -278,7 +278,7 @@ language: "zh-CN"
       "creator": {
         "@id": "https://hk.onyxdevslab.com/#organization"
       },
-      "dateModified": "2026-09-09"
+      "dateModified": "2026-09-10"
     },
     {
       "@type": "WebPage",
@@ -286,7 +286,7 @@ language: "zh-CN"
       "url": "https://hk.onyxdevslab.com/zh-cn/case-studies/retail-ai-decision-platform/",
       "name": "零售 AI 决策平台案例｜Onyx Devs Lab",
       "description": "在不更换现有 ERP 的前提下，建立支持库存、人力和商品组合决策的数据与 AI 层。",
-      "dateModified": "2026-09-09",
+      "dateModified": "2026-09-10",
       "inLanguage": "zh-CN",
       "isPartOf": {
         "@id": "https://hk.onyxdevslab.com/#website"

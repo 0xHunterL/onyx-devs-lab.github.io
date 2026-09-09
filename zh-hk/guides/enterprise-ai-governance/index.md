@@ -307,7 +307,7 @@ language: "zh-Hant-HK"
       "publisher": {
         "@id": "https://hk.onyxdevslab.com/#organization"
       },
-      "dateModified": "2026-09-09",
+      "dateModified": "2026-09-10",
       "headline": "香港企業部署 AI 前，需要建立哪些管治控制？",
       "citation": [
         {
@@ -328,7 +328,7 @@ language: "zh-Hant-HK"
       "url": "https://hk.onyxdevslab.com/zh-hk/guides/enterprise-ai-governance/",
       "name": "香港企業 AI 管治清單｜私隱、風險與人工監督｜Onyx Devs Lab",
       "description": "以香港私隱專員公署框架為依據，把企業 AI 管治落實為責任、風險評估、人工監督、數據、測試、監控及溝通控制。",
-      "dateModified": "2026-09-09",
+      "dateModified": "2026-09-10",
       "inLanguage": "zh-Hant-HK",
       "isPartOf": {
         "@id": "https://hk.onyxdevslab.com/#website"

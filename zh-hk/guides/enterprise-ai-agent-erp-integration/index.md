@@ -297,7 +297,7 @@ Agent 應否直接寫入生產記錄？
       "publisher": {
         "@id": "https://hk.onyxdevslab.com/#organization"
       },
-      "dateModified": "2026-09-09",
+      "dateModified": "2026-09-10",
       "headline": "AI Agent 應該如何連接 ERP？"
     },
     {
@@ -306,7 +306,7 @@ Agent 應否直接寫入生產記錄？
       "url": "https://hk.onyxdevslab.com/zh-hk/guides/enterprise-ai-agent-erp-integration/",
       "name": "企業 AI Agent 與 ERP 整合指南｜Onyx Devs Lab",
       "description": "在不更換記錄系統的情況下，把企業 AI Agent 安全連接至 ERP 數據與操作的架構及控制方法。",
-      "dateModified": "2026-09-09",
+      "dateModified": "2026-09-10",
       "inLanguage": "zh-Hant-HK",
       "isPartOf": {
         "@id": "https://hk.onyxdevslab.com/#website"

@@ -278,7 +278,7 @@ ERP、移動端及工業數據
       "creator": {
         "@id": "https://hk.onyxdevslab.com/#organization"
       },
-      "dateModified": "2026-09-09"
+      "dateModified": "2026-09-10"
     },
     {
       "@type": "WebPage",
@@ -286,7 +286,7 @@ ERP、移動端及工業數據
       "url": "https://hk.onyxdevslab.com/zh-hk/case-studies/industrial-erp-ai-data-platform/",
       "name": "工業 ERP 與 AI 數據平台案例｜Onyx Devs Lab",
       "description": "連接司磅、化驗、車輛、能耗、ERP 與 PLC 信息，同時不把安全控制交給 AI 的工業數據平台。",
-      "dateModified": "2026-09-09",
+      "dateModified": "2026-09-10",
       "inLanguage": "zh-Hant-HK",
       "isPartOf": {
         "@id": "https://hk.onyxdevslab.com/#website"
