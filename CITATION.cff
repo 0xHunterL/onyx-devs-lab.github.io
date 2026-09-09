@@ -1,0 +1,23 @@
+cff-version: 1.2.0
+message: "If you use this dataset, please cite it using the metadata below and retain its evidence limitations."
+title: "Onyx Devs Lab Enterprise AI Case-study Evidence Register"
+type: dataset
+version: 2026.09.09
+date-released: "2026-09-09"
+authors:
+  - name: "Onyx Devs Lab"
+abstract: "A versioned register of 31 metrics from six anonymised enterprise AI delivery cases, including measurement definitions, canonical source pages, and explicit evidence boundaries. The records are first-party project validation snapshots, not independent audits or universal performance benchmarks."
+keywords:
+  - enterprise AI
+  - AI consulting
+  - custom AI development
+  - Forward Deployed Engineering
+  - case-study evidence
+  - validation metrics
+  - Hong Kong
+url: "https://hk.onyxdevslab.com/en/methodology/case-study-evidence-register/"
+repository-code: "https://github.com/0xHunterL/onyx-devs-lab.github.io"
+identifiers:
+  - type: url
+    value: "https://hk.onyxdevslab.com/data/case-study-evidence.json"
+    description: "Canonical machine-readable dataset"

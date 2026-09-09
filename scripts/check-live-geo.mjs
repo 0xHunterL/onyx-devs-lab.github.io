@@ -40,8 +40,10 @@ const evidenceDatasetResponse = await get('/data/case-study-evidence.json', 'app
 try {
   const evidenceDataset = JSON.parse(evidenceDatasetResponse.body);
   if (evidenceDataset.schemaVersion !== 1) failures.push('/data/case-study-evidence.json: unexpected schema version');
+  if (evidenceDataset.version !== '2026.09.09') failures.push('/data/case-study-evidence.json: unexpected dataset version');
   if (evidenceDataset.cases?.length !== 6) failures.push(`/data/case-study-evidence.json: expected 6 cases, got ${evidenceDataset.cases?.length ?? 0}`);
   if (!evidenceDataset.limitations?.includes('Not independently audited')) failures.push('/data/case-study-evidence.json: evidence limitation is missing');
+  if (!evidenceDataset.sameAs?.includes('/releases/download/geo-evidence-2026-09-09/')) failures.push('/data/case-study-evidence.json: versioned repository copy is missing');
 } catch {
   failures.push('/data/case-study-evidence.json: invalid JSON');
 }
