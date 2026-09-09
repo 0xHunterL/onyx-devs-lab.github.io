@@ -57,6 +57,7 @@ The [case-study evidence register](https://hk.onyxdevslab.com/en/methodology/cas
 - [香港企业 AI 中文方法索引（版本化 Release）](https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/chinese-enterprise-ai-field-notes-2026-09-10)
 - [Enterprise AI machine-resource index](https://gist.githubusercontent.com/mixuechu/e47c85808014d62b6305441e8065c91e/raw/Onyx-enterprise-AI-machine-resources.md)
 - [Internet Archive homepage snapshot — 2026-09-09](https://web.archive.org/web/20260909205420/https://hk.onyxdevslab.com/) — third-party archival copy, not an endorsement or indexing claim.
+- [Mobile page-experience baseline](docs/geo-baselines/2026-09-10-page-experience.md) — reproducible Lighthouse before/after evidence for the homepage contrast fix.
 - [How to choose an enterprise AI partner in Hong Kong](https://hk.onyxdevslab.com/en/guides/choose-enterprise-ai-partner-hong-kong/?utm_source=github&utm_medium=referral&utm_campaign=geo_procurement_guide)
 - [Hong Kong enterprise AI governance checklist](https://hk.onyxdevslab.com/en/guides/hong-kong-enterprise-ai-governance/?utm_source=github&utm_medium=referral&utm_campaign=geo_governance_guide)
 - [FDE 不是驻场外包：企业 AI 项目什么时候需要前线部署工程](https://gist.githubusercontent.com/mixuechu/e47c85808014d62b6305441e8065c91e/raw/FDE-is-not-staff-augmentation.zh-CN.md) · [repository source](docs/distribution/FDE不是驻场外包.md)
