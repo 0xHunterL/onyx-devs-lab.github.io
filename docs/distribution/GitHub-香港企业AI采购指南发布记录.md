@@ -44,7 +44,16 @@ Pages 路径已发布公开 IndexNow key，并用该路径作为 `keyLocation` �
 
 三个页面均提供独立 Canonical、Article／Organization／BreadcrumbList JSON-LD、移动端目录、跨专题内链和专用归因参数；Sitemap、`llms.txt`、机器资源图及新增 Atom Feed 同步发现全部四页。线上匿名请求均为 HTTP `200`，正文和实体标识出现在首次 HTML；代表性页面 Lighthouse 的 Performance、Accessibility、Best Practices、SEO 均为 `100`。四个规范 URL 的 IndexNow 提交返回 HTTP `200`，仅记为通知已接收。
 
-扩展提交为 `c775293030d4842ed9216b116acf7b6c6cfcae8e`。Software Heritage 请求 `2469101` 状态为 `succeeded`、访问为 `full`，当前快照为 [`swh:1:snp:a44573c912e6f9895dbf853358e55ef6b207e3d5`](https://archive.softwareheritage.org/swh:1:snp:a44573c912e6f9895dbf853358e55ef6b207e3d5/)，`refs/heads/main` 已核验指向该提交。
+扩展提交为 `c775293030d4842ed9216b116acf7b6c6cfcae8e`。Software Heritage 请求 `2469101` 状态为 `succeeded`、访问为 `full`，该阶段快照为 [`swh:1:snp:a44573c912e6f9895dbf853358e55ef6b207e3d5`](https://archive.softwareheritage.org/swh:1:snp:a44573c912e6f9895dbf853358e55ef6b207e3d5/)，`refs/heads/main` 已核验指向该提交。
+
+随后补充 GitHub 可识别的 `CITATION.cff`、CodeMeta 3.1、Pages 同源机器副本和页面发现关系，并发布[版本化采购指南检查点](https://github.com/mixuechu/hong-kong-enterprise-ai-buyers-guide/releases/tag/buyers-guide-2026-09-10)。Release 首屏明确显示品牌、法律主体、BRN、LEI、三类服务词、四个规范入口与证据边界；四项下载资产已匿名复核：
+
+- `CITATION.cff`：`aa5d88d5bce33f6257d0c94607b0fecf5ab8fd8d5ef05d99df6e064605addcc5`，通过 CFF 1.2.0 官方 JSON Schema；
+- `codemeta.json`：`0b032c2b0de1d906b703662dd63c9a5a9ea62b33d8a87a53a1a269a6c582e9c8`；
+- `resources.json`：`a81e385d40bcac8b350ebf467c9c8f7ccbf88bed48eb2afdce831af0118ecac1`；
+- `llms.txt`：`7865801cd89804e18310157a72e456342c1278d7c9dcf93e53cac134b60285e4`。
+
+元数据提交为 `e072305a16816689ec698911eb438aef3368ea2b`。Software Heritage 请求 `2469105` 状态为 `succeeded`、访问为 `full`，当前快照为 [`swh:1:snp:cc3dc394e0f6b08a40a95dd97971bf39cf31b1e6`](https://archive.softwareheritage.org/swh:1:snp:cc3dc394e0f6b08a40a95dd97971bf39cf31b1e6/)；`refs/heads/main` 和 `refs/tags/buyers-guide-2026-09-10` 均已核验指向该提交。
 
 ## 证据边界
 

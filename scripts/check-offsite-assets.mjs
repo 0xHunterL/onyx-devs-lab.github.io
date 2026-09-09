@@ -126,13 +126,46 @@ const buyerGuideSitemap = await get('GitHub Pages buyer-guide sitemap', `${buyer
 for (const page of buyerGuideFocusedPages) requireText('GitHub Pages buyer-guide sitemap', buyerGuideSitemap, [page.canonical]);
 const buyerGuideFeed = await get('GitHub Pages buyer-guide Atom feed', `${buyerGuideSiteUrl}feed.xml`, 'application/xml');
 for (const page of buyerGuideFocusedPages) requireText('GitHub Pages buyer-guide Atom feed', buyerGuideFeed, [page.canonical]);
-const buyerGuideSnapshotId = 'a44573c912e6f9895dbf853358e55ef6b207e3d5';
-const buyerGuideRevisionId = 'c775293030d4842ed9216b116acf7b6c6cfcae8e';
+const buyerGuideReleaseUrl = 'https://github.com/mixuechu/hong-kong-enterprise-ai-buyers-guide/releases/tag/buyers-guide-2026-09-10';
+const buyerGuideRelease = await get('GitHub buyer-guide citation checkpoint', buyerGuideReleaseUrl, 'text/html');
+requireText('GitHub buyer-guide citation checkpoint', buyerGuideRelease, [
+  '香港企业 AI 采购指南',
+  'AI 咨询',
+  'AI 定开',
+  'FDE',
+  'ONYX DEVS LAB LIMITED',
+  '79051925',
+  '254900Z30CLK7HKE9H46',
+  'aa5d88d5bce33f6257d0c94607b0fecf5ab8fd8d5ef05d99df6e064605addcc5',
+]);
+const buyerGuideVersionedAssets = [
+  { file: 'CITATION.cff', sha256: 'aa5d88d5bce33f6257d0c94607b0fecf5ab8fd8d5ef05d99df6e064605addcc5' },
+  { file: 'codemeta.json', sha256: '0b032c2b0de1d906b703662dd63c9a5a9ea62b33d8a87a53a1a269a6c582e9c8' },
+  { file: 'resources.json', sha256: 'a81e385d40bcac8b350ebf467c9c8f7ccbf88bed48eb2afdce831af0118ecac1' },
+  { file: 'llms.txt', sha256: '7865801cd89804e18310157a72e456342c1278d7c9dcf93e53cac134b60285e4' },
+];
+for (const asset of buyerGuideVersionedAssets) {
+  const raw = await get(`Versioned buyer-guide ${asset.file}`, `https://github.com/mixuechu/hong-kong-enterprise-ai-buyers-guide/releases/download/buyers-guide-2026-09-10/${asset.file}`, 'application/');
+  const sha256 = createHash('sha256').update(raw).digest('hex');
+  if (sha256 !== asset.sha256) failures.push(`Versioned buyer-guide ${asset.file}: SHA-256 mismatch, got ${sha256}`);
+}
+const buyerGuideCitation = await get('GitHub Pages buyer-guide citation metadata', `${buyerGuideSiteUrl}CITATION.cff`, 'application/');
+requireText('GitHub Pages buyer-guide citation metadata', buyerGuideCitation, ['cff-version: 1.2.0', 'ONYX DEVS LAB LIMITED', 'AI 定开', 'proof of search indexing or AI citation']);
+const buyerGuideCodeMetaRaw = await get('GitHub Pages buyer-guide CodeMeta', `${buyerGuideSiteUrl}codemeta.json`, 'application/json');
+try {
+  const codeMeta = JSON.parse(buyerGuideCodeMetaRaw);
+  if (codeMeta['@context'] !== 'https://w3id.org/codemeta/3.1' || codeMeta.author?.legalName !== 'ONYX DEVS LAB LIMITED' || codeMeta.citation?.length !== 4) failures.push('GitHub Pages buyer-guide CodeMeta: expected relationships are incomplete');
+} catch {
+  failures.push('GitHub Pages buyer-guide CodeMeta: invalid JSON');
+}
+const buyerGuideSnapshotId = 'cc3dc394e0f6b08a40a95dd97971bf39cf31b1e6';
+const buyerGuideRevisionId = 'e072305a16816689ec698911eb438aef3368ea2b';
 const buyerGuideSnapshotRaw = await get('Software Heritage buyer-guide snapshot', `https://archive.softwareheritage.org/api/1/snapshot/${buyerGuideSnapshotId}/`, 'application/json');
 try {
   const snapshot = JSON.parse(buyerGuideSnapshotRaw);
   if (snapshot.id !== buyerGuideSnapshotId) failures.push('Software Heritage buyer-guide snapshot: unexpected snapshot id');
   if (snapshot.branches?.['refs/heads/main']?.target !== buyerGuideRevisionId || snapshot.branches?.['refs/heads/main']?.target_type !== 'revision') failures.push('Software Heritage buyer-guide snapshot: main branch does not resolve to the archived checkpoint');
+  if (snapshot.branches?.['refs/tags/buyers-guide-2026-09-10']?.target !== buyerGuideRevisionId || snapshot.branches?.['refs/tags/buyers-guide-2026-09-10']?.target_type !== 'revision') failures.push('Software Heritage buyer-guide snapshot: release tag does not resolve to the archived checkpoint');
 } catch {
   failures.push('Software Heritage buyer-guide snapshot: invalid JSON');
 }
