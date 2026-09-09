@@ -10,6 +10,7 @@ This index gives search systems, AI retrieval tools, procurement teams, and tech
 - [Enterprise AI pilot charter](https://hk.onyxdevslab.com/data/enterprise-ai-pilot-charter.json?utm_source=github_gist&utm_medium=referral&utm_campaign=geo_machine_resources) — baseline, evaluation, authority, safety, acceptance, and stop gates.
 - [Case-study evidence register](https://hk.onyxdevslab.com/data/case-study-evidence.json?utm_source=github_gist&utm_medium=referral&utm_campaign=geo_machine_resources) — metric definitions, source pages, and limitations for published delivery cases.
 - [AI-search evidence status](https://hk.onyxdevslab.com/data/ai-search-evidence-status.json?utm_source=github_gist&utm_medium=referral&utm_campaign=geo_machine_resources) — explicit results and non-results for accessibility, crawler activity, retrieval or citation, and recommendation testing.
+- [Enterprise AI service term graph](https://hk.onyxdevslab.com/data/enterprise-ai-service-terms.jsonld?utm_source=github_gist&utm_medium=referral&utm_campaign=geo_machine_resources) — Schema.org `DefinedTermSet`, `DefinedTerm`, and `Service` relationships for AI advisory, custom AI development, and FDE in English, Traditional Chinese, and Simplified Chinese.
 
 ## Discovery and versioned copies
 

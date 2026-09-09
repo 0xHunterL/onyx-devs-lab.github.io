@@ -57,7 +57,7 @@ if (gist && gistCampaignLinks < 13) failures.push(`GitHub Gist decision matrix: 
 const gistGovernanceCampaignLinks = gist ? [...gist.matchAll(/utm_campaign=geo_governance_guide/g)].length : null;
 if (gist && gistGovernanceCampaignLinks < 3) failures.push(`GitHub Gist governance guide: expected at least 3 tracked deep links, got ${gistGovernanceCampaignLinks}`);
 const gistMachineResourceLinks = gist ? [...gist.matchAll(/utm_campaign=geo_machine_resources/g)].length : null;
-if (gist && gistMachineResourceLinks < 10) failures.push(`GitHub Gist machine resources: expected at least 10 tracked links, got ${gistMachineResourceLinks}`);
+if (gist && gistMachineResourceLinks < 12) failures.push(`GitHub Gist machine resources: expected at least 12 tracked links, got ${gistMachineResourceLinks}`);
 const gistFieldNoteCampaignLinks = Object.fromEntries(['geo_fde_field_note', 'geo_erp_agent_checklist', 'geo_legal_ai_evidence'].map(campaign => [campaign, gist ? [...gist.matchAll(new RegExp(`utm_campaign=${campaign}`, 'g'))].length : null]));
 for (const [campaign, count] of Object.entries(gistFieldNoteCampaignLinks)) {
   if (gist && count !== 2) failures.push(`GitHub Gist field note: expected 2 tracked links for ${campaign}, got ${count}`);
@@ -77,11 +77,12 @@ if (governanceGistSha256 !== expectedGovernanceGistSha256) failures.push(`GitHub
 const machineResourcesGistRawUrl = 'https://gist.githubusercontent.com/mixuechu/e47c85808014d62b6305441e8065c91e/raw/Onyx-enterprise-AI-machine-resources.md';
 const machineResourcesGistRaw = await get('GitHub Gist machine-resource index', machineResourcesGistRawUrl, 'text/plain');
 const machineResourcesGistSha256 = createHash('sha256').update(machineResourcesGistRaw).digest('hex');
-const expectedMachineResourcesGistSha256 = 'bff133712bea4b8c37cd1a86ec900af072117beb0168b27e6ec7afd8afc2a13d';
+const expectedMachineResourcesGistSha256 = '4ee566c4017aebce5eb93a08172007b6c313a214ae4eb598d50832a20574b1f8';
 if (machineResourcesGistSha256 !== expectedMachineResourcesGistSha256) failures.push(`GitHub Gist machine-resource index: SHA-256 mismatch, got ${machineResourcesGistSha256}`);
 requireText('GitHub Gist machine-resource index', machineResourcesGistRaw, [
   'data/organization.json?utm_source=github_gist',
   'data/ai-search-evidence-status.json?utm_source=github_gist',
+  'data/enterprise-ai-service-terms.jsonld?utm_source=github_gist',
   'feed.json?utm_source=github_gist',
   'raw.githubusercontent.com/0xHunterL/onyx-devs-lab.github.io/main/CITATION.cff',
   'releases/download/geo-evidence-2026-09-09/CITATION.cff',

@@ -23,6 +23,7 @@ const machineResourcePaths = [
   '/data/organization.json',
   '/data/enterprise-ai-engagement-model-map.json',
   '/data/ai-search-evidence-status.json',
+  '/data/enterprise-ai-service-terms.jsonld',
 ];
 for (const pathname of machineResourcePaths) {
   if (!fs.existsSync(path.join('dist', pathname))) throw new Error(`Machine discovery resource is missing: dist${pathname}`);

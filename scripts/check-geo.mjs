@@ -108,7 +108,7 @@ for (const file of htmlFiles.filter((candidate) => candidate.includes(`${path.se
   }
 }
 
-for (const file of ['robots.txt', 'sitemap.xml', 'feed.xml', 'feed.json', 'llms.txt', 'llms-full.txt', 'data/case-study-evidence.json', 'data/enterprise-ai-partner-scorecard.json', 'data/enterprise-ai-pilot-charter.json', 'data/enterprise-ai-engagement-model-map.json', 'data/ai-search-evidence-status.json', 'data/organization.json', '.nojekyll']) {
+for (const file of ['robots.txt', 'sitemap.xml', 'feed.xml', 'feed.json', 'llms.txt', 'llms-full.txt', 'data/case-study-evidence.json', 'data/enterprise-ai-partner-scorecard.json', 'data/enterprise-ai-pilot-charter.json', 'data/enterprise-ai-engagement-model-map.json', 'data/enterprise-ai-service-terms.jsonld', 'data/ai-search-evidence-status.json', 'data/organization.json', '.nojekyll']) {
   if (!fs.existsSync(path.join(dist, file))) failures.push(`missing ${file}`);
 }
 
@@ -164,6 +164,21 @@ try {
   if (!jsonFeed.items.some((item) => item.tags?.includes('provider-maintained-external-source'))) failures.push('feed.json: external-source category is missing');
 } catch {
   failures.push('feed.json: invalid JSON');
+}
+try {
+  const termGraph = JSON.parse(fs.readFileSync(path.join(dist, 'data/enterprise-ai-service-terms.jsonld'), 'utf8'));
+  const nodes = termGraph['@graph'];
+  if (termGraph['@context'] !== 'https://schema.org' || !Array.isArray(nodes)) failures.push('service term graph: invalid JSON-LD context or graph');
+  const termSet = nodes?.find((node) => node['@type'] === 'DefinedTermSet');
+  const terms = nodes?.filter((node) => node['@type'] === 'DefinedTerm') || [];
+  const services = nodes?.filter((node) => node['@type'] === 'Service') || [];
+  if (termSet?.['@id'] !== 'https://hk.onyxdevslab.com/data/enterprise-ai-service-terms.jsonld' || termSet?.hasDefinedTerm?.length !== 3) failures.push('service term graph: DefinedTermSet is incomplete');
+  if (terms.map((term) => term.termCode).join(',') !== 'ai-advisory,custom-ai-development,forward-deployed-engineering') failures.push('service term graph: required category terms are incomplete');
+  if (!terms.every((term) => term.name?.length === 3 && term.description?.length === 3 && term.inDefinedTermSet?.['@id'] === termSet?.['@id'] && term.url)) failures.push('service term graph: multilingual term definitions are incomplete');
+  if (services.length !== 3 || !services.every((service) => service.provider?.['@id'] === 'https://hk.onyxdevslab.com/#organization' && service.areaServed?.includes('Hong Kong') && service.category?.['@id'])) failures.push('service term graph: provider-service-category relationships are incomplete');
+  if (!termGraph.evidenceBoundary?.includes('does not prove independent endorsement, search indexing, AI citation, recommendation')) failures.push('service term graph: evidence boundary is missing');
+} catch {
+  failures.push('service term graph: invalid JSON');
 }
 for (const pathname of ['/en/about/', '/zh-hk/about/', '/zh-cn/about/']) {
   const html = fs.readFileSync(path.join(dist, pathname, 'index.html'), 'utf8');
@@ -288,13 +303,14 @@ for (const agent of ['Claude-SearchBot', 'Claude-User', 'ClaudeBot', 'Googlebot'
 }
 
 const nginxConfig = fs.readFileSync(path.resolve('deploy/nginx-hk.conf'), 'utf8');
-for (const resource of ['sitemap.xml', 'feed.xml', 'feed.json', 'llms.txt']) {
+for (const resource of ['sitemap.xml', 'feed.xml', 'feed.json', 'data/enterprise-ai-service-terms.jsonld', 'llms.txt']) {
   if (!nginxConfig.includes(`https://hk.onyxdevslab.com/${resource}`)) failures.push(`nginx: Link discovery header is missing ${resource}`);
 }
 for (const required of ['text/markdown', 'Vary "Accept"', 'Content-Signal "search=yes, ai-input=yes"']) {
   if (!nginxConfig.includes(required)) failures.push(`nginx: Markdown negotiation is missing ${required}`);
 }
 if (!nginxConfig.includes('application/feed+json json')) failures.push('nginx: JSON Feed MIME mapping is missing');
+if (!nginxConfig.includes('application/ld+json jsonld')) failures.push('nginx: JSON-LD MIME mapping is missing');
 
 const sitemap = fs.readFileSync(path.join(dist, 'sitemap.xml'), 'utf8');
 const urls = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map((match) => match[1]);
@@ -317,6 +333,7 @@ for (const file of htmlFiles) {
   const source = html.match(/<link rel="canonical" href="([^"]+)"/)?.[1];
   if (!source) continue;
   if (!html.includes('type="application/feed+json"') || !html.includes('href="https://hk.onyxdevslab.com/feed.json"')) failures.push(`${path.relative(dist, file)}: JSON Feed discovery link is missing`);
+  if (!html.includes('rel="describedby" type="application/ld+json"') || !html.includes('href="https://hk.onyxdevslab.com/data/enterprise-ai-service-terms.jsonld"')) failures.push(`${path.relative(dist, file)}: service term graph discovery link is missing`);
   for (const match of html.matchAll(/<a\b[^>]*href="([^"]+)"/g)) {
     try {
       const target = new URL(match[1], source);
