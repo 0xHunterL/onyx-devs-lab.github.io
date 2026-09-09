@@ -1,0 +1,267 @@
+{
+  "schemaVersion": 1,
+  "id": "https://hk.onyxdevslab.com/data/case-study-evidence.json",
+  "name": "Onyx Devs Lab enterprise AI case-study evidence register",
+  "publisher": {
+    "name": "Onyx Devs Lab",
+    "legalName": "ONYX DEVS LAB LIMITED",
+    "businessRegistrationNumber": "79051925",
+    "lei": "254900Z30CLK7HKE9H46",
+    "url": "https://hk.onyxdevslab.com/"
+  },
+  "dateModified": "2026-09-09",
+  "evidenceClass": "Anonymised first-party project validation snapshots",
+  "limitations": [
+    "Not independently audited",
+    "Not a universal performance benchmark",
+    "Client identities, raw records, and confidential baselines are not published"
+  ],
+  "methodologyUrl": "https://hk.onyxdevslab.com/en/methodology/case-study-evidence-register/",
+  "cases": [
+    {
+      "id": "retail",
+      "name": "Turning retail transaction data into operating decisions",
+      "sourceUrl": "https://hk.onyxdevslab.com/en/case-studies/retail-ai-decision-platform/",
+      "operatingChallenge": "Transaction data existed, but inventory, workforce, and loss signals were fragmented. The business needed better decisions without replacing the operational ERP.",
+      "deliveredIntervention": [
+        "Connected existing transaction data through a separate analytics layer.",
+        "Designed missing workforce and inventory-loss data modules.",
+        "Applied inventory forecasting and market-basket analysis to operational decisions.",
+        "Kept recommendations reviewable by operators rather than automating high-impact decisions invisibly."
+      ],
+      "evidenceBoundary": "The published metrics come from project records and describe the delivered scope and pilot validation. They should not be extrapolated as expected results for another organisation.",
+      "metrics": [
+        {
+          "value": "51",
+          "name": "stores covered",
+          "definition": "Cross-store sales, inventory, and operating analysis"
+        },
+        {
+          "value": "289",
+          "name": "legacy tables mapped",
+          "definition": "Fields, sources, and metric ownership documented"
+        },
+        {
+          "value": "99.6%",
+          "name": "reconciliation consistency",
+          "definition": "Daily sales and inventory metrics checked against source systems"
+        },
+        {
+          "value": "77.2%",
+          "name": "actionable inventory alerts",
+          "definition": "Alerts followed by replenishment, transfer, or stock-reduction action"
+        },
+        {
+          "value": "21 min",
+          "name": "median decision-data time",
+          "definition": "From a cross-store question to a reviewable answer"
+        }
+      ]
+    },
+    {
+      "id": "accounting",
+      "name": "An AI-native production line for accounting operations",
+      "sourceUrl": "https://hk.onyxdevslab.com/en/case-studies/accounting-ai-production-platform/",
+      "operatingChallenge": "Accounting work was split across client files, collection, bookkeeping, review, tax preparation, and exception handling. AI needed to assist the full workflow without obscuring evidence or professional accountability.",
+      "deliveredIntervention": [
+        "Mapped 12 business domains, 52 screens, and 9 production workspaces.",
+        "Separated deterministic accounting rules from AI judgement.",
+        "Designed queues, retries, status tracking, evidence chains, and explicit human takeover.",
+        "Kept final official submissions in a controlled path where direct APIs were unavailable."
+      ],
+      "evidenceBoundary": "The published figures separate mapped product scope from pilot workflow validation. They do not claim financial outcomes, and regulated decisions and official submissions remain subject to qualified human review.",
+      "metrics": [
+        {
+          "value": "12",
+          "name": "business domains modelled",
+          "definition": "Customer, invoice, bookkeeping, filing, and compliance operations"
+        },
+        {
+          "value": "52",
+          "name": "screens and flows mapped",
+          "definition": "Interface operations translated into orchestrated production steps"
+        },
+        {
+          "value": "9",
+          "name": "production workspaces",
+          "definition": "Batch work, exception takeover, and permission governance"
+        },
+        {
+          "value": "72.8%",
+          "name": "low-risk task automation",
+          "definition": "Tasks completed without rewriting and passed deterministic checks"
+        },
+        {
+          "value": "99.2%",
+          "name": "evidence-chain completeness",
+          "definition": "Critical judgements retain source, rule, version, and action record"
+        },
+        {
+          "value": "4.7 h",
+          "name": "average month-end cycle",
+          "definition": "From complete documents to a result ready for human review"
+        }
+      ]
+    },
+    {
+      "id": "legal",
+      "name": "Legal AI that returns every conclusion to its evidence",
+      "sourceUrl": "https://hk.onyxdevslab.com/en/case-studies/legal-ai-evidence-workflow/",
+      "operatingChallenge": "Law-firm operations and large case files created two different information problems: fragmented business status and high-risk evidence retrieval across very large dossiers. A fluent answer was not enough; lawyers needed coverage, provenance, and explicit review.",
+      "deliveredIntervention": [
+        "Connected leads, clients, matters, milestones, tasks, contracts, and receivables in one operating model.",
+        "Tracked ingestion by file, page, and text chunk so missing or failed material remained visible.",
+        "Combined keyword and vector retrieval with file, page, source text, and confidence coordinates.",
+        "Applied matter-level access, audit trails, exception queues, and lawyer approval before formal output."
+      ],
+      "evidenceBoundary": "The validation figures come from a controlled project sample and lawyer-labelled reference set. They demonstrate the tested workflow, not legal accuracy for every jurisdiction or matter.",
+      "metrics": [
+        {
+          "value": "2",
+          "name": "operating chains unified",
+          "definition": "Law-firm operations and large-dossier analysis"
+        },
+        {
+          "value": "4",
+          "name": "evidence coordinates",
+          "definition": "File, page, source text, and confidence"
+        },
+        {
+          "value": "98.6%",
+          "name": "citation-location accuracy",
+          "definition": "Lawyer sample matched citations to the correct material and page"
+        },
+        {
+          "value": "92.4%",
+          "name": "priority-material recall",
+          "definition": "Lawyer-labelled key facts entered the candidate set"
+        },
+        {
+          "value": "11.8 h",
+          "name": "case initial-review cycle",
+          "definition": "Effective work time to the first issue list; 18.5 h before"
+        }
+      ]
+    },
+    {
+      "id": "recruiting",
+      "name": "Recruiting automation with context, evidence, and send control",
+      "sourceUrl": "https://hk.onyxdevslab.com/en/case-studies/recruiting-ai-agent-workflow/",
+      "operatingChallenge": "Fast reply generation did not solve incomplete conversation context, stale candidate profiles, duplicate sends, or uncertain delivery. Automation needed to coexist with recruiters rather than take over their working interface.",
+      "deliveredIntervention": [
+        "Used a local connector to reuse the authorised recruiter session and synchronise visible candidate history.",
+        "Refreshed structured profiles when context changed, separating facts, inferences, confidence, and missing information.",
+        "Supported manual, copilot, and controlled-autopilot modes per candidate.",
+        "Serialised sends, enforced idempotency, and reread the sent message to verify completion."
+      ],
+      "evidenceBoundary": "The published validation covers synchronisation, send verification, and workflow time in a controlled pilot. It does not claim improved hiring outcomes without a longer recruiting cohort.",
+      "metrics": [
+        {
+          "value": "3",
+          "name": "automation modes",
+          "definition": "Manual, Copilot, and controlled Autopilot"
+        },
+        {
+          "value": "4",
+          "name": "operating workspaces",
+          "definition": "Candidate queue, conversation, profile, and operations"
+        },
+        {
+          "value": "98.9%",
+          "name": "conversation-sync coverage",
+          "definition": "Visible historical messages successfully backfilled"
+        },
+        {
+          "value": "99.3%",
+          "name": "send reread success",
+          "definition": "Sent text reread from the recruiter side after action"
+        },
+        {
+          "value": "15.3 min",
+          "name": "candidate handling time",
+          "definition": "First review to confirmed next action; 22.4 min before"
+        }
+      ]
+    },
+    {
+      "id": "industrial",
+      "name": "A trusted data path from industrial operations to management decisions",
+      "sourceUrl": "https://hk.onyxdevslab.com/en/case-studies/industrial-erp-ai-data-platform/",
+      "operatingChallenge": "Production information was fragmented across equipment, paper records, and isolated systems. Management received delayed summaries, but connecting the data could not compromise safety-related industrial control.",
+      "deliveredIntervention": [
+        "Mapped material movement, weighing, quality testing, vehicle energy, and production records to accountable business objects.",
+        "Established a controlled data interface between PLC information and management systems.",
+        "Unified operational dashboards, mobile access, permissions, validation, and audit records.",
+        "Added business questions and exception explanation above the trusted data layer, not direct AI control of production."
+      ],
+      "evidenceBoundary": "Validation covers data-record completeness, collection timeliness, and operator acknowledgement in the delivered project scope. Safety-related actions remain under authorised site personnel.",
+      "metrics": [
+        {
+          "value": "4",
+          "name": "field processes connected",
+          "definition": "Weighbridge, laboratory, vehicle, and energy"
+        },
+        {
+          "value": "1",
+          "name": "unified operating entry",
+          "definition": "ERP, mobile access, and industrial data"
+        },
+        {
+          "value": "96.1%",
+          "name": "field-data coverage",
+          "definition": "Critical shifts, equipment, and business events recorded"
+        },
+        {
+          "value": "99.2%",
+          "name": "on-time collection",
+          "definition": "Data arrived within the defined dashboard window"
+        },
+        {
+          "value": "27 min",
+          "name": "exception acknowledgement",
+          "definition": "Alert to accountable operator confirmation; 41 min before"
+        }
+      ]
+    },
+    {
+      "id": "credit",
+      "name": "Credit research automation without hiding the source",
+      "sourceUrl": "https://hk.onyxdevslab.com/en/case-studies/credit-research-ai-agent/",
+      "operatingChallenge": "Analysts repeatedly collected, reconciled, and reformatted information across internal files and public sources. Faster drafting was useful only if material facts, conflicts, freshness, and provenance remained visible.",
+      "deliveredIntervention": [
+        "Modelled the research task, evidence levels, report structure, and analyst approval boundary.",
+        "Connected internal materials with current public financial information through a deduplicated retrieval pipeline.",
+        "Separated facts, inference, and risk judgement while attaching sources to material conclusions.",
+        "Recorded analyst edits and missing evidence as evaluation data for future releases."
+      ],
+      "evidenceBoundary": "The validation sample measures fact recall, citation coverage, and first-draft time. The system does not replace credit, investment, or trading decisions.",
+      "metrics": [
+        {
+          "value": "2",
+          "name": "research source classes",
+          "definition": "Internal material and current public financial information"
+        },
+        {
+          "value": "3",
+          "name": "orchestrated stages",
+          "definition": "Retrieval, cross-checking, and report drafting"
+        },
+        {
+          "value": "91.6%",
+          "name": "priority-fact recall",
+          "definition": "Reference facts entered the evidence set"
+        },
+        {
+          "value": "98.3%",
+          "name": "conclusion citation coverage",
+          "definition": "Material report judgements retained a reviewable source"
+        },
+        {
+          "value": "4.4 h",
+          "name": "research first-draft cycle",
+          "definition": "Task creation to analyst-ready draft; 7.6 h before"
+        }
+      ]
+    }
+  ]
+}

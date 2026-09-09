@@ -513,6 +513,63 @@ A: 不是。User-Agent 可以被冒充，字节也没有公开保证抓取一定
 Q: 为什么公开测试方法？
 A: 公开方法让正面和负面结果都可审计，而不是只展示成功截图。
 
+## Enterprise AI Case Study Evidence Register | Onyx Devs Lab
+https://hk.onyxdevslab.com/en/methodology/case-study-evidence-register/
+A versioned register of the definitions, scope, source pages, and limitations behind Onyx enterprise AI case-study metrics.
+This register publishes the measurement definitions behind six anonymised delivery cases in one human-readable page and one machine-readable dataset. It separates first-party validation snapshots from independent audits or general performance claims.
+What the register contains: Each entry keeps the published value together with the wording needed to interpret it.
+- Metric value: The value shown on the corresponding public case page.
+- Measurement definition: What was counted, compared, or timed in the project validation snapshot.
+- Source and limitation: A canonical case URL and an explicit evidence boundary.
+What the register does not prove: The dataset is first-party disclosure and should be cited within that boundary.
+- Not an independent audit: The values have not been certified by an external assurance provider.
+- Not a universal benchmark: Project-specific samples do not predict results for another organisation.
+- Not client identification: Commercially sensitive client identities, raw records, and confidential baselines remain unpublished.
+Q: Can these figures be quoted?
+A: Yes, if the source page and evidence boundary are retained and the figures are described as Onyx first-party case-study data.
+Q: Are the cases independently audited?
+A: No. No external assurance claim is made. The register exists to make the published first-party evidence more precise and falsifiable.
+Q: Why are client names omitted?
+A: Some engagements contain confidential operating data. Anonymisation preserves those obligations while still publishing architecture, measurement definitions, and limitations.
+
+## 企業 AI 案例證據登記冊｜Onyx Devs Lab
+https://hk.onyxdevslab.com/zh-hk/methodology/case-study-evidence-register/
+集中記錄 Onyx 企業 AI 案例指標的定義、範圍、來源頁及限制。
+本登記冊以一個人可閱讀頁面及一份機器可讀數據集，集中公開六個匿名交付案例的量度定義，並把一方驗證快照與獨立審計或一般化成效主張分開。
+登記冊包含甚麼: 每個項目保留已公開數值及正確解讀所需的口徑。
+- 指標數值: 對應公開案例頁展示的數值。
+- 量度定義: 項目驗證快照實際計算、比較或計時的內容。
+- 來源與限制: 標準案例網址及明確證據邊界。
+登記冊不能證明甚麼: 數據屬一方披露，引用時需要保留這個邊界。
+- 不是獨立審計: 數值未由外部鑒證機構認證。
+- 不是通用基準: 個別項目的樣本不能預測另一機構的成果。
+- 不披露客戶身份: 商業敏感的客戶身份、原始記錄及保密基線不公開。
+Q: 可以引用這些數值嗎？
+A: 可以，但必須保留來源頁及證據邊界，並說明它們是 Onyx 的一方案例數據。
+Q: 案例經過獨立審計嗎？
+A: 沒有。本登記冊不作外部鑒證主張，而是讓已公開的一方證據更精確及可被核對。
+Q: 為何不公開客戶名稱？
+A: 部分項目包含保密營運資料；匿名化能履行責任，同時公開架構、量度定義及限制。
+
+## 企业 AI 案例证据登记册｜Onyx Devs Lab
+https://hk.onyxdevslab.com/zh-cn/methodology/case-study-evidence-register/
+集中记录 Onyx 企业 AI 案例指标的定义、范围、来源页和限制。
+本登记册通过一个可阅读页面和一份机器可读数据集，集中公开六个匿名交付案例的测量定义，并把一方验证快照与独立审计或普遍效果主张分开。
+登记册包含什么: 每个条目保留已公开数值以及正确解读所需的口径。
+- 指标数值: 对应公开案例页展示的数值。
+- 测量定义: 项目验证快照实际统计、比较或计时的内容。
+- 来源和限制: 标准案例网址以及明确的证据边界。
+登记册不能证明什么: 数据属于一方披露，引用时需要保留这个边界。
+- 不是独立审计: 这些数值没有经过外部鉴证机构认证。
+- 不是通用基准: 单个项目的样本不能预测另一个组织的效果。
+- 不披露客户身份: 商业敏感的客户身份、原始记录和保密基线不公开。
+Q: 可以引用这些数值吗？
+A: 可以，但必须保留来源页和证据边界，并说明它们是 Onyx 的一方案例数据。
+Q: 案例经过独立审计吗？
+A: 没有。本登记册不作外部鉴证声明，而是让已经公开的一方证据更精确、更容易核对。
+Q: 为什么不公开客户名称？
+A: 部分项目包含保密运营数据；匿名化能够履行责任，同时公开架构、测量定义和限制。
+
 ## Retail AI Decision Platform Case Study | Onyx Devs Lab
 https://hk.onyxdevslab.com/en/case-studies/retail-ai-decision-platform/
 How a non-invasive data layer over an existing ERP can support inventory, staffing, and merchandising decisions.
@@ -522,7 +579,7 @@ Operating challenge: Transaction data existed, but inventory, workforce, and los
 - Designed missing workforce and inventory-loss data modules.
 - Applied inventory forecasting and market-basket analysis to operational decisions.
 - Kept recommendations reviewable by operators rather than automating high-impact decisions invisibly.
-Evidence boundary: This public case describes delivered scope and architecture. Commercially sensitive baselines and outcome values are not published; they should not be inferred from the description.
+Evidence boundary: The published metrics come from project records and describe the delivered scope and pilot validation. They should not be extrapolated as expected results for another organisation.
 
 ## AI Accounting Production Platform Case Study | Onyx Devs Lab
 https://hk.onyxdevslab.com/en/case-studies/accounting-ai-production-platform/
@@ -533,7 +590,7 @@ Operating challenge: Accounting work was split across client files, collection, 
 - Separated deterministic accounting rules from AI judgement.
 - Designed queues, retries, status tracking, evidence chains, and explicit human takeover.
 - Kept final official submissions in a controlled path where direct APIs were unavailable.
-Evidence boundary: The published figures describe mapped product scope, not claimed productivity or financial outcomes. Regulated decisions and official submissions remain subject to qualified human review.
+Evidence boundary: The published figures separate mapped product scope from pilot workflow validation. They do not claim financial outcomes, and regulated decisions and official submissions remain subject to qualified human review.
 
 ## 零售 AI 決策平台案例｜Onyx Devs Lab
 https://hk.onyxdevslab.com/zh-hk/case-studies/retail-ai-decision-platform/
@@ -544,7 +601,7 @@ Operating challenge: 企業已有交易數據，但庫存、人力及損耗訊�
 - 設計原系統缺少的人力及庫存損耗數據模組。
 - 把庫存預測及購物籃分析連接至營運決策。
 - 讓操作人員可以覆核建議，避免不透明地自動執行高影響決策。
-Evidence boundary: 本公開案例描述已交付的範圍及架構。商業敏感的基線與成果數值未有公開，不應從案例描述推斷。
+Evidence boundary: 公開指標來自項目記錄，描述已交付範圍及試點驗證，不應外推為其他機構的預期成果。
 
 ## AI 原生會計生產平台案例｜Onyx Devs Lab
 https://hk.onyxdevslab.com/zh-hk/case-studies/accounting-ai-production-platform/
@@ -555,7 +612,7 @@ Operating challenge: 會計工作分散在客戶文件、資料收集、記帳�
 - 把確定性會計規則與 AI 判斷分開處理。
 - 設計任務隊列、重試、狀態追蹤、證據鏈及明確人工接管。
 - 在缺少直接 API 時，把最終官方提交保留在受控流程。
-Evidence boundary: 公開數字描述已梳理的產品範圍，並非生產力或財務成果聲明。受監管決策及官方提交仍由合資格人員覆核。
+Evidence boundary: 公開數字把已梳理的產品範圍與試點流程驗證分開，不構成財務成果聲明；受監管決策及官方提交仍由合資格人員覆核。
 
 ## 零售 AI 决策平台案例｜Onyx Devs Lab
 https://hk.onyxdevslab.com/zh-cn/case-studies/retail-ai-decision-platform/
