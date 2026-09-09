@@ -131,13 +131,24 @@ async function verifyDnsIp(ip, allowedSuffixes) {
       })),
     );
     const normalizedIp = normalizeIp(ip);
+    const forwardAddresses = [...new Set(forwardResults.flatMap((result) => result.addresses))];
+    const benchmarkAddresses = forwardAddresses.filter((address) => isInIpv4Prefix(normalizeIp(address), '198.18.0.0/15'));
+    if (forwardAddresses.length && benchmarkAddresses.length === forwardAddresses.length) {
+      return {
+        verified: null,
+        verificationUnavailable: true,
+        hostnames: providerHostnames,
+        forwardAddresses,
+        reason: 'forward-dns-returned-rfc2544-benchmark-address',
+      };
+    }
     const verified = forwardResults.some((result) =>
       result.addresses.some((address) => normalizeIp(address) === normalizedIp),
     );
     return {
       verified,
       hostnames: providerHostnames,
-      forwardAddresses: [...new Set(forwardResults.flatMap((result) => result.addresses))],
+      forwardAddresses,
       reason: verified ? 'forward-confirmed-original-ip' : 'forward-dns-did-not-return-original-ip',
     };
   } catch (error) {
@@ -271,10 +282,16 @@ const verifiedGoogleDiscoveryFiles = discoveryCandidates.filter(
 const verifiedPerplexityDiscoveryFiles = discoveryCandidates.filter(
   (event) => ['PerplexityBot', 'Perplexity-User'].includes(event.family) && event.providerVerified === true,
 );
+const dnsVerificationUnavailablePages = pageCandidates.filter(
+  (event) => event.providerVerification?.verificationUnavailable === true,
+);
+const dnsVerificationUnavailableDiscoveryFiles = discoveryCandidates.filter(
+  (event) => event.providerVerification?.verificationUnavailable === true,
+);
 
 console.log(JSON.stringify({
   generatedAt: new Date().toISOString(),
-  caveat: 'User-Agent strings are self-declared. Candidate content crawls do not prove platform identity unless providerVerified is true under an enabled provider verification method. GPTBot is reported separately from OAI-SearchBot because a verified training crawl is not evidence of search indexing or citation.',
+  caveat: 'User-Agent strings are self-declared. Candidate content crawls do not prove platform identity unless providerVerified is true under an enabled provider verification method. A null providerVerified value with verificationUnavailable means the resolver returned only RFC 2544 benchmark addresses, so identity could not be tested and must not be reported as failed. GPTBot is reported separately from OAI-SearchBot because a verified training crawl is not evidence of search indexing or citation.',
   files: paths,
   since: sinceArg ? sinceArg.slice('--since='.length) : null,
   verifyOpenAi,
@@ -299,6 +316,8 @@ console.log(JSON.stringify({
     verifiedBingDiscoveryFileCrawls: verifiedBingDiscoveryFiles.length,
     verifiedGoogleDiscoveryFileCrawls: verifiedGoogleDiscoveryFiles.length,
     verifiedPerplexityDiscoveryFileCrawls: verifiedPerplexityDiscoveryFiles.length,
+    dnsVerificationUnavailablePageCrawls: dnsVerificationUnavailablePages.length,
+    dnsVerificationUnavailableDiscoveryFileCrawls: dnsVerificationUnavailableDiscoveryFiles.length,
     unparsableLines,
   },
   byFamily,
@@ -317,5 +336,7 @@ console.log(JSON.stringify({
   recentVerifiedBingDiscoveryFileCrawls: verifiedBingDiscoveryFiles.slice(-30),
   recentVerifiedGoogleDiscoveryFileCrawls: verifiedGoogleDiscoveryFiles.slice(-30),
   recentVerifiedPerplexityDiscoveryFileCrawls: verifiedPerplexityDiscoveryFiles.slice(-30),
+  recentDnsVerificationUnavailablePageCrawls: dnsVerificationUnavailablePages.slice(-50),
+  recentDnsVerificationUnavailableDiscoveryFileCrawls: dnsVerificationUnavailableDiscoveryFiles.slice(-30),
   recentSuspiciousRequests: suspiciousCandidates.slice(-20),
 }, null, 2));

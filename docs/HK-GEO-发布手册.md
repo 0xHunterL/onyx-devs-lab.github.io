@@ -63,6 +63,8 @@ curl -sS https://hk.onyxdevslab.com/en/forward-deployed-engineering/ | grep '<h1
 
 `deploy/nginx-geo-log.conf` 定义独立的 JSON 访问日志格式，保留 Cloudflare 传入的原始客户端 IP，并只记录 Referer 的主机名（不保存可能含查询内容的路径或参数）；`deploy/nginx-hk.conf` 把该站点写入独立日志。报告工具会把带 `Onyx-GEO-Release-Check` 的发布自测排除，并按 OpenAI 与 Perplexity 官方公布的 IP 段验证对应爬虫；Bingbot 和 Googlebot 则分别按官方流程执行反向 DNS 与正向 DNS 双重验证。其他平台在没有公开稳定 IP 规则时仍只记为候选抓取。引荐报告同时识别 UTM 和已知 AI 产品来源域，但浏览器或应用可能因 Referrer-Policy 不发送来源，因此“0 次来源点击”只能表示日志未观测到，不能证明没有点击。
 
+如果反向 DNS 命中官方域名，但正向解析只返回 RFC 2544 的 `198.18.0.0/15` 基准测试地址，报告会将验证标为 `verificationUnavailable`，而不是身份失败。这通常表示本机 DNS 代理或网络过滤器接管了解析；在可信公共解析环境重新运行双向 DNS 验证前，该请求只能保留为候选抓取，也不能用来推翻此前保存的成功验证证据。
+
 ## 回滚原则
 
 如果线上检查失败，使用发布前记录的提交重新构建。不要删除整个仓库或 `dist` 目录，也不要覆盖未知的服务器改动。回滚后再次执行线上抓取检查，确认公开站点已经恢复。
