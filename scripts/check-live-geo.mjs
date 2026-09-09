@@ -45,6 +45,8 @@ for (const [pathname, body] of [['/llms.txt', llms.body], ['/llms-full.txt', llm
 }
 for (const [pathname, body] of [['/llms.txt', llms.body], ['/llms-full.txt', llmsFull.body]]) {
   if (!body.includes('not independent endorsements or proof of search indexing, AI citation')) failures.push(`${pathname}: provider-maintained evidence boundary is missing`);
+  if (!body.includes('https://hk.onyxdevslab.com/data/enterprise-ai-partner-scorecard.json')) failures.push(`${pathname}: procurement scorecard discovery link is missing`);
+  if (!body.includes('https://hk.onyxdevslab.com/data/enterprise-ai-pilot-charter.json')) failures.push(`${pathname}: pilot charter discovery link is missing`);
 }
 if (!feed.body.includes('provider-maintained-external-source')) failures.push('/feed.xml: external-source category is missing');
 
@@ -70,6 +72,18 @@ try {
   if (!scorecard.limitations?.some((item) => item.includes('not an independent ranking or endorsement'))) failures.push('/data/enterprise-ai-partner-scorecard.json: independent-ranking limitation is missing');
 } catch {
   failures.push('/data/enterprise-ai-partner-scorecard.json: invalid JSON');
+}
+
+const pilotCharterResponse = await get('/data/enterprise-ai-pilot-charter.json', 'application/json');
+try {
+  const charter = JSON.parse(pilotCharterResponse.body);
+  if (charter.schemaVersion !== 1 || charter.version !== '2026.09.09') failures.push('/data/enterprise-ai-pilot-charter.json: unexpected schema or version');
+  if (charter.sections?.length !== 8) failures.push(`/data/enterprise-ai-pilot-charter.json: expected 8 sections, got ${charter.sections?.length ?? 0}`);
+  if (!charter.sections?.every((item) => item.id && item.name?.en && item.name?.zhHant && item.name?.zhHans && item.fields?.length)) failures.push('/data/enterprise-ai-pilot-charter.json: incomplete multilingual section');
+  if (!charter.dispositions?.includes('scale') || !charter.dispositions?.includes('stop')) failures.push('/data/enterprise-ai-pilot-charter.json: disposition choices are incomplete');
+  if (!charter.mandatoryRule?.includes('cannot be offset by an average score')) failures.push('/data/enterprise-ai-pilot-charter.json: mandatory-gate rule is missing');
+} catch {
+  failures.push('/data/enterprise-ai-pilot-charter.json: invalid JSON');
 }
 
 const indexNowKey = await get('/9c37a18bd2044e1687f45c2e91ad603b.txt', 'text/plain');
@@ -106,6 +120,9 @@ const requiredPaths = [
   '/en/guides/hong-kong-enterprise-ai-governance/',
   '/zh-hk/guides/enterprise-ai-governance/',
   '/zh-cn/guides/enterprise-ai-governance/',
+  '/en/guides/enterprise-ai-pilot-charter-hong-kong/',
+  '/zh-hk/guides/enterprise-ai-pilot-charter/',
+  '/zh-cn/guides/enterprise-ai-pilot-charter/',
   '/zh-cn/guides/custom-ai-development-cost/',
   '/zh-cn/guides/enterprise-ai-agent-erp-integration/',
   '/zh-cn/methodology/enterprise-ai-evaluation/',
@@ -158,6 +175,13 @@ for (const pathname of ['/en/guides/hong-kong-enterprise-ai-governance/', '/zh-h
   if (!page.body.includes('rel="external" href="https://www.pcpd.org.hk/')) failures.push(`${pathname}: visible PCPD primary source is missing`);
   if (!page.body.includes('rel="external" href="https://www.hkma.gov.hk/')) failures.push(`${pathname}: visible HKMA primary source is missing`);
   if (!page.body.includes('"citation":[{"@type":"CreativeWork"')) failures.push(`${pathname}: Article citation Schema.org relation is missing`);
+}
+
+for (const pathname of ['/en/guides/enterprise-ai-pilot-charter-hong-kong/', '/zh-hk/guides/enterprise-ai-pilot-charter/', '/zh-cn/guides/enterprise-ai-pilot-charter/']) {
+  const page = await get(pathname, 'text/html');
+  if (!page.body.includes('href="/data/enterprise-ai-pilot-charter.json" type="application/json"')) failures.push(`${pathname}: visible pilot charter download is missing`);
+  if (!page.body.includes('"hasPart":{"@type":"Dataset","name":"Enterprise AI pilot charter and acceptance record"')) failures.push(`${pathname}: pilot charter Schema.org relation is missing`);
+  if (!page.body.includes('https://www1.smartlab.gov.hk/files/AI%20Adoption%20Guide-EN.pdf')) failures.push(`${pathname}: Hong Kong AI Adoption Guide source is missing`);
 }
 
 for (const absoluteUrl of urls) {

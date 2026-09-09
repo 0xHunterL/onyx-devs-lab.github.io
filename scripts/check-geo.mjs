@@ -89,7 +89,7 @@ for (const file of htmlFiles.filter((candidate) => candidate.includes(`${path.se
   }
 }
 
-for (const file of ['robots.txt', 'sitemap.xml', 'feed.xml', 'llms.txt', 'llms-full.txt', 'data/case-study-evidence.json', 'data/enterprise-ai-partner-scorecard.json', '.nojekyll']) {
+for (const file of ['robots.txt', 'sitemap.xml', 'feed.xml', 'llms.txt', 'llms-full.txt', 'data/case-study-evidence.json', 'data/enterprise-ai-partner-scorecard.json', 'data/enterprise-ai-pilot-charter.json', '.nojekyll']) {
   if (!fs.existsSync(path.join(dist, file))) failures.push(`missing ${file}`);
 }
 
@@ -115,6 +115,7 @@ for (const [name, body] of Object.entries(machineDiscoveryFiles)) {
 for (const name of ['llms.txt', 'llms-full.txt']) {
   if (!machineDiscoveryFiles[name].includes('not independent endorsements or proof of search indexing, AI citation')) failures.push(`${name}: provider-maintained evidence boundary is missing`);
   if (!machineDiscoveryFiles[name].includes('https://hk.onyxdevslab.com/data/enterprise-ai-partner-scorecard.json')) failures.push(`${name}: procurement scorecard discovery link is missing`);
+  if (!machineDiscoveryFiles[name].includes('https://hk.onyxdevslab.com/data/enterprise-ai-pilot-charter.json')) failures.push(`${name}: pilot charter discovery link is missing`);
 }
 if (!machineDiscoveryFiles['feed.xml'].includes('provider-maintained-external-source')) failures.push('feed.xml: external-source category is missing');
 for (const pathname of ['/en/about/', '/zh-hk/about/', '/zh-cn/about/']) {
@@ -151,6 +152,13 @@ for (const pathname of governanceGuidePaths) {
   if (!html.includes('"citation":[{"@type":"CreativeWork"')) failures.push(`${pathname}: Article citation Schema.org relation is missing`);
   if (!html.includes(pathname.includes('/en/') ? 'This page is not legal advice.' : (pathname.includes('/zh-hk/') ? '本頁提供實施解讀，不構成法律意見。' : '本页提供实施解读，不构成法律意见。'))) failures.push(`${pathname}: scope boundary is missing`);
 }
+const pilotGuidePaths = ['/en/guides/enterprise-ai-pilot-charter-hong-kong/', '/zh-hk/guides/enterprise-ai-pilot-charter/', '/zh-cn/guides/enterprise-ai-pilot-charter/'];
+for (const pathname of pilotGuidePaths) {
+  const html = fs.readFileSync(path.join(dist, pathname, 'index.html'), 'utf8');
+  if (!html.includes('href="/data/enterprise-ai-pilot-charter.json" type="application/json"')) failures.push(`${pathname}: visible pilot charter download is missing`);
+  if (!html.includes('"hasPart":{"@type":"Dataset","name":"Enterprise AI pilot charter and acceptance record"')) failures.push(`${pathname}: pilot charter Schema.org relation is missing`);
+  if (!html.includes('https://www1.smartlab.gov.hk/files/AI%20Adoption%20Guide-EN.pdf')) failures.push(`${pathname}: Hong Kong AI Adoption Guide source is missing`);
+}
 try {
   const scorecard = JSON.parse(fs.readFileSync(path.join(dist, 'data/enterprise-ai-partner-scorecard.json'), 'utf8'));
   if (scorecard.schemaVersion !== 1 || scorecard.version !== '2026.09.09') failures.push('procurement scorecard: unexpected schema or version');
@@ -160,6 +168,17 @@ try {
   if (!scorecard.limitations?.some((item) => item.includes('not an independent ranking or endorsement'))) failures.push('procurement scorecard: independent-ranking limitation is missing');
 } catch {
   failures.push('procurement scorecard: invalid JSON');
+}
+try {
+  const charter = JSON.parse(fs.readFileSync(path.join(dist, 'data/enterprise-ai-pilot-charter.json'), 'utf8'));
+  if (charter.schemaVersion !== 1 || charter.version !== '2026.09.09') failures.push('pilot charter: unexpected schema or version');
+  if (charter.sections?.length !== 8) failures.push(`pilot charter: expected 8 sections, got ${charter.sections?.length ?? 0}`);
+  if (!charter.sections?.every((item) => item.id && item.name?.en && item.name?.zhHant && item.name?.zhHans && item.fields?.length)) failures.push('pilot charter: incomplete multilingual section');
+  if (!charter.dispositions?.includes('scale') || !charter.dispositions?.includes('stop')) failures.push('pilot charter: disposition choices are incomplete');
+  if (!charter.mandatoryRule?.includes('cannot be offset by an average score')) failures.push('pilot charter: mandatory-gate rule is missing');
+  if (!charter.limitations?.some((item) => item.includes('does not prove'))) failures.push('pilot charter: evidence limitation is missing');
+} catch {
+  failures.push('pilot charter: invalid JSON');
 }
 
 const sitemap = fs.readFileSync(path.join(dist, 'sitemap.xml'), 'utf8');
