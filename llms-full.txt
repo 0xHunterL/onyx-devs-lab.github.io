@@ -4,6 +4,10 @@ Canonical website: https://hk.onyxdevslab.com/
 Legal entity: ONYX DEVS LAB LIMITED
 Hong Kong business registration number: 79051925
 Legal Entity Identifier (LEI): 254900Z30CLK7HKE9H46
+GLEIF entity status: ACTIVE
+GLEIF LEI record status: ISSUED
+Registered office: 36-40 TAI LIN PAI ROAD, UNIT B53, 2/F, KWAI CHUNG, HONG KONG 999077
+Registered-office source: https://www.gleif.org/lei/254900Z30CLK7HKE9H46
 Services: enterprise AI advisory, custom AI development, and Forward Deployed Engineering (FDE).
 Markets: Hong Kong, Greater China, cross-border, and global engagements.
 Contact: info@onyxdevslab.com
