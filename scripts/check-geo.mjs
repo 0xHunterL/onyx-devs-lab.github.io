@@ -8,6 +8,17 @@ const titles = new Map();
 const canonicals = new Map();
 const languageAlternates = new Map();
 
+function normalizeHtmlForChecks(source) {
+  const compactJsonLd = source.replace(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g, (match, value) => {
+    try {
+      return `<script type="application/ld+json">${JSON.stringify(JSON.parse(value))}</script>`;
+    } catch {
+      return match;
+    }
+  });
+  return compactJsonLd.replace(/\s+/g, ' ');
+}
+
 function expectedPublishedDate(pathname) {
   if (pathname.includes('/methodology/ai-search-verification/')) return '2026-09-08';
   if (pathname.includes('/guides/what-is-ai-dingkai/') || pathname.includes('/guides/ai-dingkai/') || pathname.includes('/guides/hong-kong-ai-consulting-companies/') || pathname.includes('/guides/hong-kong-ai-service-providers/') || pathname.includes('/guides/enterprise-ai-rfp-template')) return '2026-09-10';
@@ -49,7 +60,7 @@ if (!nginxRouteConfig.includes('try_files $uri $uri/ =404;')) failures.push('ngi
 if (!nginxRouteConfig.includes('if ($request_uri ~ ^/index\\.html(?:\\?|$))')) failures.push('nginx: duplicate /index.html homepage is not redirected');
 
 for (const file of htmlFiles) {
-  const html = fs.readFileSync(file, 'utf8');
+  const html = normalizeHtmlForChecks(fs.readFileSync(file, 'utf8'));
   const relative = path.relative(dist, file);
   if (!/<html lang="[^"]+"/.test(html)) failures.push(`${relative}: missing lang`);
   if (!/<title>[^<]+<\/title>/.test(html)) failures.push(`${relative}: missing title`);
@@ -64,6 +75,7 @@ for (const file of htmlFiles) {
   if (!html.includes('https://www.gleif.org/lei/254900Z30CLK7HKE9H46')) failures.push(`${relative}: missing official GLEIF entity reference`);
   if (!html.includes('"name":"Onyx GEO evidence checkpoint — 2026-09-09","url":"https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-evidence-2026-09-09"')) failures.push(`${relative}: missing versioned entity-evidence reference`);
   if (!html.includes('"identifier":"swh:1:snp:6eeeed9ca3ffbfeaa487a39205076233f4836f3b"')) failures.push(`${relative}: missing Software Heritage snapshot reference`);
+  if (!html.includes('"identifier":"swh:1:snp:32650766e381cb73f8761ebe2aaacc2957aa1219"')) failures.push(`${relative}: missing buyer-guide archive reference`);
   if (!html.includes('"logo":{"@type":"ImageObject","url":"https://hk.onyxdevslab.com/onyx-devs-lab-logo.svg","contentUrl":"https://hk.onyxdevslab.com/onyx-devs-lab-logo.svg","width":512,"height":512}')) failures.push(`${relative}: organization logo does not meet the declared 112px minimum`);
   if (!html.includes('"contactPoint":{"@type":"ContactPoint"')) failures.push(`${relative}: missing organization contact point`);
   if (!html.includes('"hasOfferCatalog":{"@type":"OfferCatalog","name":"Onyx Devs Lab enterprise AI services"')) failures.push(`${relative}: missing organization service offer catalog`);
@@ -120,7 +132,7 @@ for (const [canonical, page] of languageAlternates) {
 }
 
 for (const file of htmlFiles) {
-  const html = fs.readFileSync(file, 'utf8');
+  const html = normalizeHtmlForChecks(fs.readFileSync(file, 'utf8'));
   for (const match of html.matchAll(/href="(\/(?:en|zh-hk|zh-cn)\/[^"?#]*)"/g)) {
     const pathname = match[1];
     const target = pathname.endsWith('/') ? path.join(dist, pathname, 'index.html') : path.join(dist, pathname);
@@ -193,6 +205,8 @@ for (const [name, body] of Object.entries(machineDiscoveryFiles)) {
   if (!body.includes('https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-ai-rfp-template-2026-09-10')) failures.push(`${name}: versioned AI RFP checkpoint is missing`);
   if (!body.includes('https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/chinese-enterprise-ai-field-notes-2026-09-10')) failures.push(`${name}: Chinese field-note release is missing`);
   if (!body.includes('https://archive.softwareheritage.org/swh:1:snp:6eeeed9ca3ffbfeaa487a39205076233f4836f3b/')) failures.push(`${name}: Software Heritage snapshot is missing`);
+  if (!body.includes('https://github.com/mixuechu/hong-kong-enterprise-ai-buyers-guide')) failures.push(`${name}: enterprise AI buyer-guide repository is missing`);
+  if (!body.includes('https://archive.softwareheritage.org/swh:1:snp:32650766e381cb73f8761ebe2aaacc2957aa1219/')) failures.push(`${name}: buyer-guide archive is missing`);
   if (!body.includes('https://web.archive.org/web/20260909212732/https://hk.onyxdevslab.com/zh-cn/guides/ai-dingkai/')) failures.push(`${name}: Internet Archive AI dingkai snapshot is missing`);
 }
 for (const name of ['llms.txt', 'llms-full.txt']) {
@@ -222,6 +236,8 @@ try {
   if (!jsonFeed.items.some((item) => item.url === 'https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/chinese-enterprise-ai-field-notes-2026-09-10' && item.date_modified === '2026-09-10T00:00:00+08:00')) failures.push('feed.json: Chinese field-note release entry is missing or stale');
   if (!jsonFeed.items.some((item) => item.tags?.includes('provider-maintained-external-source'))) failures.push('feed.json: external-source category is missing');
   if (!jsonFeed.items.some((item) => item.tags?.includes('independent-archive') && item.url === 'https://archive.softwareheritage.org/swh:1:snp:6eeeed9ca3ffbfeaa487a39205076233f4836f3b/')) failures.push('feed.json: Software Heritage archive item is missing');
+  if (!jsonFeed.items.some((item) => item.tags?.includes('provider-maintained-external-source') && item.url === 'https://github.com/mixuechu/hong-kong-enterprise-ai-buyers-guide')) failures.push('feed.json: buyer-guide repository item is missing');
+  if (!jsonFeed.items.some((item) => item.tags?.includes('independent-archive') && item.url === 'https://archive.softwareheritage.org/swh:1:snp:32650766e381cb73f8761ebe2aaacc2957aa1219/')) failures.push('feed.json: buyer-guide archive item is missing');
 } catch {
   failures.push('feed.json: invalid JSON');
 }
@@ -372,6 +388,8 @@ try {
   if (!organization.identifier?.some((item) => item.propertyID === 'Hong Kong Business Registration Number' && item.value === '79051925')) failures.push('organization record: business registration number is missing');
   if (!organization.subjectOf?.some((item) => item.url.includes('gleif.org/lei/254900Z30CLK7HKE9H46'))) failures.push('organization record: official GLEIF source is missing');
   if (!organization.subjectOf?.some((item) => item.identifier === 'swh:1:snp:6eeeed9ca3ffbfeaa487a39205076233f4836f3b' && item.version === 'dcd56f7f38f39cd68b3e36571c8a5c6f1940184e')) failures.push('organization record: Software Heritage snapshot relation is missing');
+  if (!organization.subjectOf?.some((item) => item.url === 'https://github.com/mixuechu/hong-kong-enterprise-ai-buyers-guide')) failures.push('organization record: buyer-guide relation is missing');
+  if (!organization.subjectOf?.some((item) => item.identifier === 'swh:1:snp:32650766e381cb73f8761ebe2aaacc2957aa1219' && item.version === 'abfed4d175d9719cab678cdc365e77a967eee0bb')) failures.push('organization record: buyer-guide archive relation is missing');
   if (!organization.additionalProperty?.some((item) => item.propertyID === 'Evidence boundary' && item.value.includes('do not endorse services'))) failures.push('organization record: evidence boundary is missing');
   if (organization.hasOfferCatalog?.itemListElement?.length !== 3 || !organization.hasOfferCatalog.itemListElement.every((offer) => offer.itemOffered?.['@type'] === 'Service' && offer.itemOffered?.url?.length === 3)) failures.push('organization record: trilingual service offer catalog is incomplete');
   if (organization.member?.length !== 5 || !organization.member.every((person) => person['@type'] === 'Person' && person['@id']?.startsWith('https://hk.onyxdevslab.com/#person-') && person.name && person.jobTitle && person.worksFor?.['@id'] === 'https://hk.onyxdevslab.com/#organization')) failures.push('organization record: canonical team members are incomplete');
@@ -451,7 +469,7 @@ for (const url of urls) {
 
 const incomingLinks = new Map(urls.map((url) => [url, new Set()]));
 for (const file of htmlFiles) {
-  const html = fs.readFileSync(file, 'utf8');
+  const html = normalizeHtmlForChecks(fs.readFileSync(file, 'utf8'));
   const source = html.match(/<link rel="canonical" href="([^"]+)"/)?.[1];
   if (!source) continue;
   if (!html.includes('type="application/feed+json"') || !html.includes('href="https://hk.onyxdevslab.com/feed.json"')) failures.push(`${path.relative(dist, file)}: JSON Feed discovery link is missing`);

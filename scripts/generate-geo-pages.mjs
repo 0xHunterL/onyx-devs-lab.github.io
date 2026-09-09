@@ -572,9 +572,13 @@ const serviceOfferCatalog={"@type":"OfferCatalog",name:'Onyx Devs Lab enterprise
 ]};
 const entityReferences=['https://github.com/0xHunterL/onyx-devs-lab.github.io','https://www.gleif.org/lei/254900Z30CLK7HKE9H46','https://lei.bloomberg.com/leis/view/254900Z30CLK7HKE9H46','https://www.cr.gov.hk/docs/wrpt/RNC063_2025.10.27-2025.11.02.pdf'];
 const softwareHeritageSnapshotUrl='https://archive.softwareheritage.org/swh:1:snp:6eeeed9ca3ffbfeaa487a39205076233f4836f3b/';
+const buyerGuideRepositoryUrl='https://github.com/mixuechu/hong-kong-enterprise-ai-buyers-guide';
+const buyerGuideArchiveUrl='https://archive.softwareheritage.org/swh:1:snp:32650766e381cb73f8761ebe2aaacc2957aa1219/';
 const entityEvidence=[
   {"@type":"CreativeWork",name:'Onyx GEO evidence checkpoint — 2026-09-09',url:'https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-evidence-2026-09-09'},
   {"@type":"SoftwareSourceCode",name:'Software Heritage archive of the Onyx Devs Lab public repository',identifier:'swh:1:snp:6eeeed9ca3ffbfeaa487a39205076233f4836f3b',url:softwareHeritageSnapshotUrl,codeRepository:'https://github.com/0xHunterL/onyx-devs-lab.github.io',version:'dcd56f7f38f39cd68b3e36571c8a5c6f1940184e'},
+  {"@type":"CreativeWork",name:'Hong Kong Enterprise AI Buyer’s Guide',description:'Provider-authored field guide covering AI advisory, AI 定开, custom AI development, FDE, vendor evaluation, and acceptance evidence.',url:buyerGuideRepositoryUrl},
+  {"@type":"SoftwareSourceCode",name:'Software Heritage archive of the Hong Kong Enterprise AI Buyer’s Guide',identifier:'swh:1:snp:32650766e381cb73f8761ebe2aaacc2957aa1219',url:buyerGuideArchiveUrl,codeRepository:buyerGuideRepositoryUrl,version:'abfed4d175d9719cab678cdc365e77a967eee0bb'},
 ];
 function layout(page, body, type='Service'){
   const zh=page.lang.startsWith('zh'); const cn=page.lang==='zh-CN'; const home=cn?'/zh-cn/':(zh?'/?lang=zh':'/?lang=en');
@@ -715,6 +719,8 @@ const externalFeedEntries=[
   {title:'Enterprise AI RFP requirements and evidence checkpoint (2026-09-10)',url:aiSearchStatusReleaseUrl,summary:'A versioned, trilingual RFP requirements template grounded in public Hong Kong and NIST guidance, with 20-prompt evidence coverage and explicit indexing and citation boundaries.',category:'evidence'},
   {title:'Onyx Devs Lab｜香港企业 AI 中文方法索引（2026-09-10）',url:chineseFieldNotesReleaseUrl,summary:'Provider-maintained Chinese index connecting enterprise AI advisory, custom AI development, FDE, AI-agent ERP controls, and legal-AI evidence methods to canonical sources.',category:'zh-CN'},
   {title:'Software Heritage archive of the Onyx Devs Lab public repository',url:softwareHeritageSnapshotUrl,summary:'Independent, content-addressed preservation of the public source, citation metadata, machine-readable evidence, and Git history at revision dcd56f7. Archival is not an endorsement or proof of website indexing.',category:'versioned-evidence',ownership:'independent-archive'},
+  {title:'Hong Kong Enterprise AI Buyer’s Guide',url:buyerGuideRepositoryUrl,summary:'Provider-authored GitHub field guide covering AI advisory, AI 定开, custom AI development, FDE, vendor evaluation, and acceptance evidence.',category:'en-zh-CN'},
+  {title:'Software Heritage archive of the Hong Kong Enterprise AI Buyer’s Guide',url:buyerGuideArchiveUrl,summary:'Independent, content-addressed preservation of the buyer guide at revision abfed4d. Archival proves preservation, not endorsement, search indexing, AI citation, or recommendation.',category:'versioned-evidence',ownership:'independent-archive'},
   {title:'Internet Archive snapshot: AI 定开是什么意思？',url:'https://web.archive.org/web/20260909212732/https://hk.onyxdevslab.com/zh-cn/guides/ai-dingkai/',summary:'Independent historical capture of the Simplified Chinese AI dingkai definition page. The snapshot proves readability at capture time, not endorsement, indexing, citation, or recommendation.',category:'zh-CN',ownership:'independent-archive'},
 ];
 const atom=`<?xml version="1.0" encoding="UTF-8"?>\n<feed xmlns="http://www.w3.org/2005/Atom"><title>Onyx Devs Lab — Enterprise AI Field Notes</title><id>${origin}/feed.xml</id><link href="${origin}/feed.xml" rel="self"/><link href="${webSubHubUrl}" rel="hub"/><link href="${origin}/"/><updated>${updated}T00:00:00+08:00</updated><author><name>Onyx Devs Lab</name></author>${feedEntries.map(page=>`<entry><title>${esc(page.title)}</title><id>${canonical(page.path)}</id><link href="${canonical(page.path)}"/><updated>${updated}T00:00:00+08:00</updated><summary>${esc(page.description)}</summary><category term="${page.lang}"/></entry>`).join('')}${externalFeedEntries.map(entry=>`<entry><title>${esc(entry.title)}</title><id>${esc(entry.url)}</id><link href="${esc(entry.url)}"/><updated>${updated}T00:00:00+08:00</updated><summary>${esc(entry.summary)}</summary><category term="${esc(entry.category)}"/><category term="${esc(entry.ownership||'provider-maintained-external-source')}"/></entry>`).join('')}</feed>\n`;
@@ -898,6 +904,8 @@ const organizationRecord={
     {'@type':'CreativeWork',name:'GLEIF LEI record',description:'Corroborates legal name, LEI, entity status, registration status, and registered address.',url:'https://www.gleif.org/lei/254900Z30CLK7HKE9H46'},
     {'@type':'CreativeWork',name:'Bloomberg LEI record',description:'Corroborates legal name, LEI, registration identifier, and registered address.',url:'https://lei.bloomberg.com/leis/view/254900Z30CLK7HKE9H46'},
     {'@type':'SoftwareSourceCode',name:'Software Heritage archive of the Onyx Devs Lab public repository',description:'Independently preserves the public source, citation metadata, machine-readable evidence files, and their Git history at revision dcd56f7. Archival does not endorse service claims or prove search indexing.',identifier:'swh:1:snp:6eeeed9ca3ffbfeaa487a39205076233f4836f3b',url:softwareHeritageSnapshotUrl,codeRepository:'https://github.com/0xHunterL/onyx-devs-lab.github.io',version:'dcd56f7f38f39cd68b3e36571c8a5c6f1940184e'},
+    {'@type':'CreativeWork',name:'Hong Kong Enterprise AI Buyer’s Guide',description:'Provider-authored field guide covering AI advisory, AI 定开, custom AI development, FDE, vendor evaluation, and acceptance evidence.',url:buyerGuideRepositoryUrl},
+    {'@type':'SoftwareSourceCode',name:'Software Heritage archive of the Hong Kong Enterprise AI Buyer’s Guide',description:'Independently preserves the guide at revision abfed4d. Archival does not endorse the guidance or prove search indexing.',identifier:'swh:1:snp:32650766e381cb73f8761ebe2aaacc2957aa1219',url:buyerGuideArchiveUrl,codeRepository:buyerGuideRepositoryUrl,version:'abfed4d175d9719cab678cdc365e77a967eee0bb'},
   ],
 };
 fs.writeFileSync(path.join(dist,'data','organization.json'),`${JSON.stringify(organizationRecord,null,2)}\n`);
@@ -1043,6 +1051,9 @@ const fullKnowledge=[
   `Versioned citation metadata checkpoint: ${citationReleaseUrl}`,
   `Software Heritage repository snapshot: ${softwareHeritageSnapshotUrl}`,
   'Software Heritage archived revision: swh:1:rev:dcd56f7f38f39cd68b3e36571c8a5c6f1940184e',
+  `Hong Kong Enterprise AI Buyer’s Guide: ${buyerGuideRepositoryUrl}`,
+  `Software Heritage buyer-guide snapshot: ${buyerGuideArchiveUrl}`,
+  'Software Heritage buyer-guide revision: swh:1:rev:abfed4d175d9719cab678cdc365e77a967eee0bb',
   'Internet Archive AI dingkai definition snapshot: https://web.archive.org/web/20260909212732/https://hk.onyxdevslab.com/zh-cn/guides/ai-dingkai/',
   `Chinese FDE field note: ${fdeFieldNoteRawUrl}`,
   `Chinese AI-agent and ERP checklist: ${erpAgentChecklistRawUrl}`,
@@ -1055,7 +1066,7 @@ const fullKnowledge=[
   'Machine-readable AI-search evidence status: https://hk.onyxdevslab.com/data/ai-search-evidence-status.json',
   'Canonical machine-readable organization record: https://hk.onyxdevslab.com/data/organization.json',
   'Official GLEIF entity record: https://www.gleif.org/lei/254900Z30CLK7HKE9H46',
-  'Evidence boundary: the GitHub repository, Release, Gist, website, and knowledge files are maintained by Onyx Devs Lab. The Software Heritage snapshot is an independent archival copy, not an endorsement. None of these links proves search indexing, AI citation, recommendation, or client results beyond the stated case-study limitations.',
+  'Evidence boundary: the GitHub repositories, Releases, Gist, website, and knowledge files are maintained by Onyx Devs Lab. Software Heritage snapshots are independent archival copies, not endorsements. None of these links proves search indexing, AI citation, recommendation, or client results beyond the stated case-study limitations.',
   '',
   ...[...hubs,...aboutPages,...pages,...cases].flatMap(page=>{
     const lines=[`## ${page.title}`,canonical(page.path),page.description,page.lede||''];

@@ -77,6 +77,28 @@ if (softwareHeritageRevisionRaw) {
     failures.push('Software Heritage archived revision: invalid JSON');
   }
 }
+const buyerGuideRepositoryUrl = 'https://github.com/mixuechu/hong-kong-enterprise-ai-buyers-guide';
+const buyerGuide = await get('GitHub enterprise AI buyer guide', buyerGuideRepositoryUrl, 'text/html');
+requireText('GitHub enterprise AI buyer guide', buyerGuide, [
+  'Hong Kong Enterprise AI Buyer’s Guide',
+  '香港企业 AI 采购指南',
+  'AI 定开',
+  'Forward Deployed Engineering',
+  'ONYX DEVS LAB LIMITED',
+  '79051925',
+  '254900Z30CLK7HKE9H46',
+  'geo_buyers_guide',
+]);
+const buyerGuideSnapshotId = '32650766e381cb73f8761ebe2aaacc2957aa1219';
+const buyerGuideRevisionId = 'abfed4d175d9719cab678cdc365e77a967eee0bb';
+const buyerGuideSnapshotRaw = await get('Software Heritage buyer-guide snapshot', `https://archive.softwareheritage.org/api/1/snapshot/${buyerGuideSnapshotId}/`, 'application/json');
+try {
+  const snapshot = JSON.parse(buyerGuideSnapshotRaw);
+  if (snapshot.id !== buyerGuideSnapshotId) failures.push('Software Heritage buyer-guide snapshot: unexpected snapshot id');
+  if (snapshot.branches?.['refs/heads/main']?.target !== buyerGuideRevisionId || snapshot.branches?.['refs/heads/main']?.target_type !== 'revision') failures.push('Software Heritage buyer-guide snapshot: main branch does not resolve to the archived checkpoint');
+} catch {
+  failures.push('Software Heritage buyer-guide snapshot: invalid JSON');
+}
 const gist = await get('GitHub Gist field notes', gistUrl, 'text/html', { allowUnavailable: true });
 if (gist) requireText('GitHub Gist field notes', gist, [
   'Onyx Devs Lab: Hong Kong AI advisory, custom development',

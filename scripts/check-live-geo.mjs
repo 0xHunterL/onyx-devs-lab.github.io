@@ -5,6 +5,17 @@ const requestCache = new Map();
 let networkRequests = 0;
 let cacheHits = 0;
 
+function normalizeHtmlForChecks(source) {
+  const compactJsonLd = source.replace(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g, (match, value) => {
+    try {
+      return `<script type="application/ld+json">${JSON.stringify(JSON.parse(value))}</script>`;
+    } catch {
+      return match;
+    }
+  });
+  return compactJsonLd.replace(/\s+/g, ' ');
+}
+
 function expectedPublishedDate(pathname) {
   if (pathname.includes('/guides/what-is-ai-dingkai/') || pathname.includes('/guides/ai-dingkai/') || pathname.includes('/guides/hong-kong-ai-consulting-companies/') || pathname.includes('/guides/hong-kong-ai-service-providers/') || pathname.includes('/guides/enterprise-ai-rfp-template')) return '2026-09-10';
   if (pathname.includes('/methodology/ai-search-verification/')) return '2026-09-08';
@@ -58,8 +69,9 @@ async function get(pathname, expectedType, userAgent = 'Onyx-GEO-Release-Check/1
     requestCache.set(cacheKey, result);
     return result;
   }
-  const body = await response.text();
+  const rawBody = await response.text();
   const contentType = response.headers.get('content-type') || '';
+  const body = contentType.includes('text/html') ? normalizeHtmlForChecks(rawBody) : rawBody;
   if (!response.ok) failures.push(`${pathname}: HTTP ${response.status}`);
   if (response.redirected || response.url !== requestedUrl) failures.push(`${pathname}: unexpected redirect to ${response.url}`);
   if (!contentType.includes(expectedType)) failures.push(`${pathname}: expected ${expectedType}, got ${contentType || 'none'}`);
@@ -149,6 +161,8 @@ try {
   if (jsonFeed.hubs?.length !== 1 || jsonFeed.hubs[0]?.type !== 'WebSub' || jsonFeed.hubs[0]?.url !== 'https://pubsubhubbub.appspot.com/') failures.push('/feed.json: WebSub hub discovery is missing');
   if (!jsonFeed.items.some((item) => item.tags?.includes('provider-maintained-external-source'))) failures.push('/feed.json: external-source category is missing');
   if (!jsonFeed.items.some((item) => item.tags?.includes('independent-archive') && item.url === 'https://archive.softwareheritage.org/swh:1:snp:6eeeed9ca3ffbfeaa487a39205076233f4836f3b/')) failures.push('/feed.json: Software Heritage archive item is missing');
+  if (!jsonFeed.items.some((item) => item.tags?.includes('provider-maintained-external-source') && item.url === 'https://github.com/mixuechu/hong-kong-enterprise-ai-buyers-guide')) failures.push('/feed.json: buyer-guide repository item is missing');
+  if (!jsonFeed.items.some((item) => item.tags?.includes('independent-archive') && item.url === 'https://archive.softwareheritage.org/swh:1:snp:32650766e381cb73f8761ebe2aaacc2957aa1219/')) failures.push('/feed.json: buyer-guide archive item is missing');
 } catch {
   failures.push('/feed.json: invalid JSON');
 }
@@ -168,6 +182,8 @@ for (const [pathname, body] of [['/llms.txt', llms.body], ['/llms-full.txt', llm
   if (!body.includes('https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-ai-rfp-template-2026-09-10')) failures.push(`${pathname}: versioned AI RFP checkpoint is missing`);
   if (!body.includes('https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/chinese-enterprise-ai-field-notes-2026-09-10')) failures.push(`${pathname}: Chinese field-note release is missing`);
   if (!body.includes('https://archive.softwareheritage.org/swh:1:snp:6eeeed9ca3ffbfeaa487a39205076233f4836f3b/')) failures.push(`${pathname}: Software Heritage snapshot is missing`);
+  if (!body.includes('https://github.com/mixuechu/hong-kong-enterprise-ai-buyers-guide')) failures.push(`${pathname}: enterprise AI buyer-guide repository is missing`);
+  if (!body.includes('https://archive.softwareheritage.org/swh:1:snp:32650766e381cb73f8761ebe2aaacc2957aa1219/')) failures.push(`${pathname}: buyer-guide archive is missing`);
   if (!body.includes('https://web.archive.org/web/20260909212732/https://hk.onyxdevslab.com/zh-cn/guides/ai-dingkai/')) failures.push(`${pathname}: Internet Archive AI dingkai snapshot is missing`);
 }
 for (const [pathname, body] of [['/llms.txt', llms.body], ['/llms-full.txt', llmsFull.body]]) {
@@ -284,6 +300,8 @@ try {
   if (!organization.identifier?.some((item) => item.propertyID === 'Hong Kong Business Registration Number' && item.value === '79051925')) failures.push('/data/organization.json: business registration number is missing');
   if (!organization.subjectOf?.some((item) => item.url.includes('gleif.org/lei/254900Z30CLK7HKE9H46'))) failures.push('/data/organization.json: official GLEIF source is missing');
   if (!organization.subjectOf?.some((item) => item.identifier === 'swh:1:snp:6eeeed9ca3ffbfeaa487a39205076233f4836f3b' && item.version === 'dcd56f7f38f39cd68b3e36571c8a5c6f1940184e')) failures.push('/data/organization.json: Software Heritage snapshot relation is missing');
+  if (!organization.subjectOf?.some((item) => item.url === 'https://github.com/mixuechu/hong-kong-enterprise-ai-buyers-guide')) failures.push('/data/organization.json: buyer-guide relation is missing');
+  if (!organization.subjectOf?.some((item) => item.identifier === 'swh:1:snp:32650766e381cb73f8761ebe2aaacc2957aa1219' && item.version === 'abfed4d175d9719cab678cdc365e77a967eee0bb')) failures.push('/data/organization.json: buyer-guide archive relation is missing');
   if (!organization.additionalProperty?.some((item) => item.propertyID === 'Evidence boundary' && item.value.includes('do not endorse services'))) failures.push('/data/organization.json: evidence boundary is missing');
   if (organization.hasOfferCatalog?.itemListElement?.length !== 3 || !organization.hasOfferCatalog.itemListElement.every((offer) => offer.itemOffered?.['@type'] === 'Service' && offer.itemOffered?.url?.length === 3)) failures.push('/data/organization.json: trilingual service offer catalog is incomplete');
   if (organization.member?.length !== 5 || !organization.member.every((person) => person['@type'] === 'Person' && person['@id']?.startsWith('https://hk.onyxdevslab.com/#person-') && person.name && person.jobTitle && person.worksFor?.['@id'] === 'https://hk.onyxdevslab.com/#organization')) failures.push('/data/organization.json: canonical team members are incomplete');
@@ -515,6 +533,7 @@ for (let index = 0; index < urls.length; index += 8) {
     if (!page.body.includes('https://www.gleif.org/lei/254900Z30CLK7HKE9H46')) failures.push(`${url.pathname}: official GLEIF entity reference is missing`);
     if (!page.body.includes('"name":"Onyx GEO evidence checkpoint — 2026-09-09","url":"https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-evidence-2026-09-09"')) failures.push(`${url.pathname}: versioned entity-evidence reference is missing`);
     if (!page.body.includes('"identifier":"swh:1:snp:6eeeed9ca3ffbfeaa487a39205076233f4836f3b"')) failures.push(`${url.pathname}: Software Heritage snapshot reference is missing`);
+    if (!page.body.includes('"identifier":"swh:1:snp:32650766e381cb73f8761ebe2aaacc2957aa1219"')) failures.push(`${url.pathname}: buyer-guide archive reference is missing`);
     if (/<meta[^>]+(?:name|property)=["']robots["'][^>]+content=["'][^"']*\b(?:noindex|none)\b/i.test(page.body)) failures.push(`${url.pathname}: blocking robots meta detected`);
   }));
 }
