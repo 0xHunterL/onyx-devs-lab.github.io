@@ -51,6 +51,7 @@ for (const [pathname, body] of [['/llms.txt', llms.body], ['/llms-full.txt', llm
   if (!body.includes('https://hk.onyxdevslab.com/data/enterprise-ai-partner-scorecard.json')) failures.push(`${pathname}: procurement scorecard discovery link is missing`);
   if (!body.includes('https://hk.onyxdevslab.com/data/enterprise-ai-pilot-charter.json')) failures.push(`${pathname}: pilot charter discovery link is missing`);
   if (!body.includes('https://hk.onyxdevslab.com/data/enterprise-ai-engagement-model-map.json')) failures.push(`${pathname}: engagement-model decision map discovery link is missing`);
+  if (!body.includes('https://hk.onyxdevslab.com/data/ai-search-evidence-status.json')) failures.push(`${pathname}: AI-search evidence status discovery link is missing`);
   if (!body.includes('https://hk.onyxdevslab.com/data/organization.json')) failures.push(`${pathname}: canonical organization record discovery link is missing`);
 }
 if (!feed.body.includes('provider-maintained-external-source')) failures.push('/feed.xml: external-source category is missing');
@@ -114,6 +115,18 @@ try {
   if (map.comparisonDimensions?.length < 5 || !map.evidenceClass?.includes('Provider-authored')) failures.push('/data/enterprise-ai-engagement-model-map.json: evidence boundary or comparison dimensions are incomplete');
 } catch {
   failures.push('/data/enterprise-ai-engagement-model-map.json: invalid JSON');
+}
+
+const aiSearchStatusResponse = await get('/data/ai-search-evidence-status.json', 'application/json');
+try {
+  const status = JSON.parse(aiSearchStatusResponse.body);
+  if (status.schemaVersion !== 1 || status.version !== '2026.09.09' || !status.observedAt) failures.push('/data/ai-search-evidence-status.json: unexpected schema, version, or observation time');
+  if (status.evidenceLevels?.map((item) => item.id).join(',') !== 'accessible,crawled,retrieved-and-cited,non-brand-recommendation') failures.push('/data/ai-search-evidence-status.json: four evidence levels are incomplete');
+  if (status.evidenceLevels?.[0]?.status !== 'verified' || status.evidenceLevels?.[0]?.evidence?.canonicalUrlsChecked !== 62) failures.push('/data/ai-search-evidence-status.json: accessibility evidence is incomplete');
+  if (status.evidenceLevels?.[1]?.evidence?.verifiedGptBotContentCrawls !== 3 || status.evidenceLevels?.[1]?.evidence?.historicallyVerifiedBingbotContentCrawls !== 7) failures.push('/data/ai-search-evidence-status.json: crawler evidence is incomplete');
+  if (status.evidenceLevels?.[2]?.status !== 'not-verified' || status.evidenceLevels?.[3]?.status !== 'not-tested' || status.testProtocol?.doubaoPromptsSent !== false) failures.push('/data/ai-search-evidence-status.json: negative evidence boundary is incomplete');
+} catch {
+  failures.push('/data/ai-search-evidence-status.json: invalid JSON');
 }
 
 const indexNowKey = await get('/9c37a18bd2044e1687f45c2e91ad603b.txt', 'text/plain');
@@ -221,6 +234,9 @@ for (const pathname of ['/en/methodology/ai-search-verification/', '/zh-hk/metho
   if (!page.body.includes('https://www.volcengine.com/docs/82379/1359519')) failures.push(`${pathname}: official Volcengine online-content source is missing`);
   if (!page.body.includes('Bytespider') || !page.body.includes(pathname.includes('/en/') ? 'Doubao' : '豆包')) failures.push(`${pathname}: Doubao crawler-to-answer evidence boundary is missing`);
   if (!page.body.includes(pathname.includes('/en/') ? 'Recommended' : (pathname.includes('/zh-hk/') ? '已推薦' : '已推荐'))) failures.push(`${pathname}: fourth recommendation evidence level is missing`);
+  if (!page.body.includes('href="/data/ai-search-evidence-status.json" type="application/json"')) failures.push(`${pathname}: visible AI-search evidence status download is missing`);
+  if (!page.body.includes('"hasPart":{"@type":"Dataset","name":"Onyx AI-search evidence status"')) failures.push(`${pathname}: AI-search evidence status Schema.org relation is missing`);
+  if (!page.body.includes('<section class="evidence-status">') || !page.body.includes('data-evidence-level="4"')) failures.push(`${pathname}: visible four-level current evidence status is missing`);
 }
 
 for (const pathname of ['/en/guides/enterprise-ai-pilot-charter-hong-kong/', '/zh-hk/guides/enterprise-ai-pilot-charter/', '/zh-cn/guides/enterprise-ai-pilot-charter/']) {

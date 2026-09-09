@@ -91,7 +91,7 @@ for (const file of htmlFiles.filter((candidate) => candidate.includes(`${path.se
   }
 }
 
-for (const file of ['robots.txt', 'sitemap.xml', 'feed.xml', 'llms.txt', 'llms-full.txt', 'data/case-study-evidence.json', 'data/enterprise-ai-partner-scorecard.json', 'data/enterprise-ai-pilot-charter.json', 'data/enterprise-ai-engagement-model-map.json', 'data/organization.json', '.nojekyll']) {
+for (const file of ['robots.txt', 'sitemap.xml', 'feed.xml', 'llms.txt', 'llms-full.txt', 'data/case-study-evidence.json', 'data/enterprise-ai-partner-scorecard.json', 'data/enterprise-ai-pilot-charter.json', 'data/enterprise-ai-engagement-model-map.json', 'data/ai-search-evidence-status.json', 'data/organization.json', '.nojekyll']) {
   if (!fs.existsSync(path.join(dist, file))) failures.push(`missing ${file}`);
 }
 
@@ -123,6 +123,7 @@ for (const name of ['llms.txt', 'llms-full.txt']) {
   if (!machineDiscoveryFiles[name].includes('https://hk.onyxdevslab.com/data/enterprise-ai-partner-scorecard.json')) failures.push(`${name}: procurement scorecard discovery link is missing`);
   if (!machineDiscoveryFiles[name].includes('https://hk.onyxdevslab.com/data/enterprise-ai-pilot-charter.json')) failures.push(`${name}: pilot charter discovery link is missing`);
   if (!machineDiscoveryFiles[name].includes('https://hk.onyxdevslab.com/data/enterprise-ai-engagement-model-map.json')) failures.push(`${name}: engagement-model decision map discovery link is missing`);
+  if (!machineDiscoveryFiles[name].includes('https://hk.onyxdevslab.com/data/ai-search-evidence-status.json')) failures.push(`${name}: AI-search evidence status discovery link is missing`);
   if (!machineDiscoveryFiles[name].includes('https://hk.onyxdevslab.com/data/organization.json')) failures.push(`${name}: canonical organization record discovery link is missing`);
 }
 if (!machineDiscoveryFiles['feed.xml'].includes('provider-maintained-external-source')) failures.push('feed.xml: external-source category is missing');
@@ -168,6 +169,9 @@ for (const pathname of aiSearchVerificationPaths) {
   if (!html.includes('https://www.volcengine.com/docs/82379/1359519')) failures.push(`${pathname}: official Volcengine online-content source is missing`);
   if (!html.includes('Bytespider') || !html.includes(pathname.includes('/en/') ? 'Doubao' : '豆包')) failures.push(`${pathname}: Doubao crawler-to-answer evidence boundary is missing`);
   if (!html.includes(pathname.includes('/en/') ? 'Recommended' : (pathname.includes('/zh-hk/') ? '已推薦' : '已推荐'))) failures.push(`${pathname}: fourth recommendation evidence level is missing`);
+  if (!html.includes('href="/data/ai-search-evidence-status.json" type="application/json"')) failures.push(`${pathname}: visible AI-search evidence status download is missing`);
+  if (!html.includes('"hasPart":{"@type":"Dataset","name":"Onyx AI-search evidence status"')) failures.push(`${pathname}: AI-search evidence status Schema.org relation is missing`);
+  if (!html.includes('<section class="evidence-status">') || !html.includes('data-evidence-level="4"')) failures.push(`${pathname}: visible four-level current evidence status is missing`);
 }
 const pilotGuidePaths = ['/en/guides/enterprise-ai-pilot-charter-hong-kong/', '/zh-hk/guides/enterprise-ai-pilot-charter/', '/zh-cn/guides/enterprise-ai-pilot-charter/'];
 for (const pathname of pilotGuidePaths) {
@@ -219,6 +223,18 @@ try {
   if (!map.evidenceClass?.includes('Provider-authored') || !map.limitations?.some((item) => item.includes('not an independent ranking'))) failures.push('engagement-model map: evidence boundary is missing');
 } catch {
   failures.push('engagement-model map: invalid JSON');
+}
+
+try {
+  const status = JSON.parse(fs.readFileSync(path.join(dist, 'data/ai-search-evidence-status.json'), 'utf8'));
+  if (status.schemaVersion !== 1 || status.version !== '2026.09.09' || !status.observedAt) failures.push('AI-search evidence status: unexpected schema, version, or observation time');
+  if (status.evidenceLevels?.map((item) => item.id).join(',') !== 'accessible,crawled,retrieved-and-cited,non-brand-recommendation') failures.push('AI-search evidence status: four evidence levels are incomplete');
+  if (status.evidenceLevels?.[0]?.status !== 'verified' || status.evidenceLevels?.[0]?.evidence?.canonicalUrlsChecked !== 62) failures.push('AI-search evidence status: accessibility evidence is incomplete');
+  if (status.evidenceLevels?.[1]?.evidence?.verifiedGptBotContentCrawls !== 3 || status.evidenceLevels?.[1]?.evidence?.historicallyVerifiedBingbotContentCrawls !== 7) failures.push('AI-search evidence status: crawler evidence is incomplete');
+  if (status.evidenceLevels?.[2]?.status !== 'not-verified' || status.evidenceLevels?.[3]?.status !== 'not-tested' || status.testProtocol?.doubaoPromptsSent !== false) failures.push('AI-search evidence status: negative evidence boundary is incomplete');
+  if (!status.evidenceBoundary?.includes('must not be inferred from a lower level')) failures.push('AI-search evidence status: inference boundary is missing');
+} catch {
+  failures.push('AI-search evidence status: invalid JSON');
 }
 
 const robotsText = fs.readFileSync(path.join(dist, 'robots.txt'), 'utf8');
