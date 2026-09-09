@@ -20,6 +20,15 @@ async function probe(pathname, accept = '') {
   return { status: response.status, location: response.headers.get('location') || '', body: await response.text() };
 }
 
+async function probeAbsolute(url) {
+  const response = await fetch(url, {
+    headers: { 'user-agent': 'Onyx-GEO-Release-Check/1.0' },
+    redirect: 'manual',
+    signal: AbortSignal.timeout(15_000),
+  });
+  return { status: response.status, location: response.headers.get('location') || '' };
+}
+
 async function get(pathname, expectedType, userAgent = 'Onyx-GEO-Release-Check/1.0', accept = '') {
   const requestedUrl = `${origin}${pathname}`;
   const cacheKey = `${requestedUrl}\n${userAgent}\n${accept}`;
@@ -73,7 +82,7 @@ for (const required of ['ONYX DEVS LAB LIMITED', 'business registration number 7
 }
 if (!root.body.includes('<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1"')) failures.push('/: unrestricted search and AI preview directive is missing');
 if (!root.body.includes('"iso6523Code":"0199:254900Z30CLK7HKE9H46"')) failures.push('/: ISO 6523 LEI organization property is missing');
-if (!root.body.includes('"contentUrl":"https://hk.onyxdevslab.com/favicon.svg","width":512,"height":512')) failures.push('/: organization logo dimensions or content URL are incomplete');
+if (!root.body.includes('"contentUrl":"https://hk.onyxdevslab.com/onyx-devs-lab-logo.svg","width":512,"height":512')) failures.push('/: organization logo dimensions or content URL are incomplete');
 
 for (const [pathname, accept] of [['/this-page-must-not-exist-onyx-geo-20260910', ''], ['/zh-cn/not-found-onyx-geo-20260910', ''], ['/en/not-found-onyx-geo-20260910/', 'text/markdown']]) {
   const response = await probe(pathname, accept);
@@ -84,6 +93,14 @@ const slashRedirect = await probe('/en/ai-consulting-hong-kong');
 if (slashRedirect.status !== 301 || slashRedirect.location !== '/en/ai-consulting-hong-kong/') failures.push(`/en/ai-consulting-hong-kong: expected one relative 301 to the canonical slash URL, got ${slashRedirect.status} ${slashRedirect.location}`);
 const indexRedirect = await probe('/index.html');
 if (indexRedirect.status !== 301 || indexRedirect.location !== '/') failures.push(`/index.html: expected one relative 301 to the canonical homepage, got ${indexRedirect.status} ${indexRedirect.location}`);
+if (canonicalOrigin.startsWith('https://')) {
+  const insecureOrigin = canonicalOrigin.replace(/^https:/, 'http:');
+  for (const pathname of ['/', '/zh-cn/ai-consulting/?geo_protocol_check=1']) {
+    const insecureRedirect = await probeAbsolute(`${insecureOrigin}${pathname}`);
+    const expectedLocation = `${canonicalOrigin}${pathname}`;
+    if (insecureRedirect.status !== 301 || insecureRedirect.location !== expectedLocation) failures.push(`${insecureOrigin}${pathname}: expected 301 to ${expectedLocation}, got ${insecureRedirect.status} ${insecureRedirect.location}`);
+  }
+}
 const markdownRoot = await get('/', 'text/markdown', 'Onyx-GEO-Markdown-Check/1.0', 'text/markdown');
 for (const required of ['title:', 'canonical: "https://hk.onyxdevslab.com/"', '# From business problem to working AI system.', 'ONYX DEVS LAB LIMITED', '## Structured data', '"@type": "Organization"']) {
   if (!markdownRoot.body.includes(required)) failures.push(`/: Markdown variant is missing ${required}`);
@@ -212,7 +229,7 @@ try {
   if (organization['@type'] !== 'Organization' || organization['@id'] !== 'https://hk.onyxdevslab.com/#organization') failures.push('/data/organization.json: unexpected Schema.org identity');
   if (organization.legalName !== 'ONYX DEVS LAB LIMITED' || organization.leiCode !== '254900Z30CLK7HKE9H46') failures.push('/data/organization.json: verified legal identity is incomplete');
   if (organization.iso6523Code !== '0199:254900Z30CLK7HKE9H46') failures.push('/data/organization.json: preferred ISO 6523 LEI is missing');
-  if (organization.logo?.contentUrl !== 'https://hk.onyxdevslab.com/favicon.svg' || organization.logo?.width !== 512 || organization.logo?.height !== 512) failures.push('/data/organization.json: indexable logo metadata is incomplete');
+  if (organization.logo?.contentUrl !== 'https://hk.onyxdevslab.com/onyx-devs-lab-logo.svg' || organization.logo?.width !== 512 || organization.logo?.height !== 512) failures.push('/data/organization.json: indexable logo metadata is incomplete');
   if (!organization.identifier?.some((item) => item.propertyID === 'Hong Kong Business Registration Number' && item.value === '79051925')) failures.push('/data/organization.json: business registration number is missing');
   if (!organization.subjectOf?.some((item) => item.url.includes('gleif.org/lei/254900Z30CLK7HKE9H46'))) failures.push('/data/organization.json: official GLEIF source is missing');
   if (!organization.additionalProperty?.some((item) => item.propertyID === 'Evidence boundary' && item.value.includes('do not endorse services'))) failures.push('/data/organization.json: evidence boundary is missing');
@@ -221,8 +238,8 @@ try {
 } catch {
   failures.push('/data/organization.json: invalid JSON');
 }
-const logoResponse = await get('/favicon.svg', 'image/svg+xml');
-if (!logoResponse.body.includes('width="512" height="512" viewBox="0 0 100 100"')) failures.push('/favicon.svg: explicit 512px logo dimensions are missing');
+const logoResponse = await get('/onyx-devs-lab-logo.svg', 'image/svg+xml');
+if (!logoResponse.body.includes('width="512" height="512" viewBox="0 0 100 100"') || !logoResponse.body.includes('<title id="title">Onyx Devs Lab logo</title>')) failures.push('/onyx-devs-lab-logo.svg: explicit dimensions or accessible brand title are missing');
 
 const servicePageGroups = [
   { code: 'ai-advisory', names: ['AI advisory', 'AI 顧問', 'AI 咨询'], paths: ['/en/ai-consulting-hong-kong/', '/zh-hk/ai-consulting/', '/zh-cn/ai-consulting/'] },

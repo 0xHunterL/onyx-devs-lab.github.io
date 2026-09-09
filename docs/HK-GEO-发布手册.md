@@ -50,10 +50,13 @@ Schema 在线检查的退出码区分证据状态：`0` 表示官方验证器完
 
 预期输出：`checkedPages` 不少于 50，页面、提示词覆盖、同语言正文差异度和 Schema.org 在线验证的 `failures` 均为空数组；简体核心页同时通过带自测标记的 Bytespider User-Agent 模拟抓取。差异度检查会阻止正文过短、描述重复或高度相似的批量查询变体；在线 Schema 检查默认覆盖首页、服务、指南、案例与团队五种模板。
 
+Cloudflare 会把访客协议写入 `X-Forwarded-Proto`。Nginx 必须把外部 HTTP 请求以单次 `301` 跳到完全相同路径和查询参数的 `https://hk.onyxdevslab.com`，避免 HTTP 与 HTTPS 同时返回 `200`、分散规范信号；HTTPS 目录规范化仍使用相对跳转，避免额外协议链。`geo:check-live` 会同时检查首页与一个带查询参数的深层 URL。
+
 另外人工确认：
 
 ```bash
 curl -I https://hk.onyxdevslab.com/robots.txt
+curl -I http://hk.onyxdevslab.com/
 curl -I https://hk.onyxdevslab.com/sitemap.xml
 curl -I https://hk.onyxdevslab.com/llms.txt
 curl -sS https://hk.onyxdevslab.com/en/forward-deployed-engineering/ | grep '<h1'
