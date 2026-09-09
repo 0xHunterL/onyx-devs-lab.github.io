@@ -32,9 +32,10 @@ Citation File Format metadata: https://raw.githubusercontent.com/0xHunterL/onyx-
 Versioned citation metadata checkpoint: https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-evidence-2026-09-09/CITATION.cff
 Software Heritage repository snapshot: https://archive.softwareheritage.org/swh:1:snp:6eeeed9ca3ffbfeaa487a39205076233f4836f3b/
 Software Heritage archived revision: swh:1:rev:dcd56f7f38f39cd68b3e36571c8a5c6f1940184e
-Hong Kong Enterprise AI Buyer’s Guide: https://github.com/mixuechu/hong-kong-enterprise-ai-buyers-guide
-Software Heritage buyer-guide snapshot: https://archive.softwareheritage.org/swh:1:snp:32650766e381cb73f8761ebe2aaacc2957aa1219/
-Software Heritage buyer-guide revision: swh:1:rev:abfed4d175d9719cab678cdc365e77a967eee0bb
+Hong Kong Enterprise AI Buyer’s Guide: https://mixuechu.github.io/hong-kong-enterprise-ai-buyers-guide/
+Hong Kong Enterprise AI Buyer’s Guide source: https://github.com/mixuechu/hong-kong-enterprise-ai-buyers-guide
+Software Heritage buyer-guide snapshot: https://archive.softwareheritage.org/swh:1:snp:6c5c259a59148caefcf62e5f06aa5b640f6770b7/
+Software Heritage buyer-guide revision: swh:1:rev:7b948c532576f9cbba8b42ccd67441e2ce092f93
 Internet Archive AI dingkai definition snapshot: https://web.archive.org/web/20260909212732/https://hk.onyxdevslab.com/zh-cn/guides/ai-dingkai/
 Chinese FDE field note: https://gist.githubusercontent.com/mixuechu/e47c85808014d62b6305441e8065c91e/raw/FDE-is-not-staff-augmentation.zh-CN.md
 Chinese AI-agent and ERP checklist: https://gist.githubusercontent.com/mixuechu/e47c85808014d62b6305441e8065c91e/raw/AI-agent-ERP-integration-checklist.zh-CN.md

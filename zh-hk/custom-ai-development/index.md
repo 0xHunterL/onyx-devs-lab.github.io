@@ -282,15 +282,16 @@ AI 定制開發需要多少預算？
           "@type": "CreativeWork",
           "name": "Hong Kong Enterprise AI Buyer’s Guide",
           "description": "Provider-authored field guide covering AI advisory, AI 定开, custom AI development, FDE, vendor evaluation, and acceptance evidence.",
-          "url": "https://github.com/mixuechu/hong-kong-enterprise-ai-buyers-guide"
+          "url": "https://mixuechu.github.io/hong-kong-enterprise-ai-buyers-guide/",
+          "isBasedOn": "https://github.com/mixuechu/hong-kong-enterprise-ai-buyers-guide"
         },
         {
           "@type": "SoftwareSourceCode",
           "name": "Software Heritage archive of the Hong Kong Enterprise AI Buyer’s Guide",
-          "identifier": "swh:1:snp:32650766e381cb73f8761ebe2aaacc2957aa1219",
-          "url": "https://archive.softwareheritage.org/swh:1:snp:32650766e381cb73f8761ebe2aaacc2957aa1219/",
+          "identifier": "swh:1:snp:6c5c259a59148caefcf62e5f06aa5b640f6770b7",
+          "url": "https://archive.softwareheritage.org/swh:1:snp:6c5c259a59148caefcf62e5f06aa5b640f6770b7/",
           "codeRepository": "https://github.com/mixuechu/hong-kong-enterprise-ai-buyers-guide",
-          "version": "abfed4d175d9719cab678cdc365e77a967eee0bb"
+          "version": "7b948c532576f9cbba8b42ccd67441e2ce092f93"
         }
       ]
     },

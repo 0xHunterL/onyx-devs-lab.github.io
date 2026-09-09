@@ -915,11 +915,11 @@
       ]
     },
     {
-      "id": "https://github.com/mixuechu/hong-kong-enterprise-ai-buyers-guide",
-      "url": "https://github.com/mixuechu/hong-kong-enterprise-ai-buyers-guide",
+      "id": "https://mixuechu.github.io/hong-kong-enterprise-ai-buyers-guide/",
+      "url": "https://mixuechu.github.io/hong-kong-enterprise-ai-buyers-guide/",
       "title": "Hong Kong Enterprise AI Buyer’s Guide",
-      "summary": "Provider-authored GitHub field guide covering AI advisory, AI 定开, custom AI development, FDE, vendor evaluation, and acceptance evidence.",
-      "content_text": "Provider-authored GitHub field guide covering AI advisory, AI 定开, custom AI development, FDE, vendor evaluation, and acceptance evidence.",
+      "summary": "Crawlable, provider-authored GitHub Pages field guide covering AI advisory, AI 定开, custom AI development, FDE, vendor evaluation, and acceptance evidence.",
+      "content_text": "Crawlable, provider-authored GitHub Pages field guide covering AI advisory, AI 定开, custom AI development, FDE, vendor evaluation, and acceptance evidence.",
       "date_modified": "2026-09-09T00:00:00+08:00",
       "tags": [
         "en-zh-CN",
@@ -927,11 +927,23 @@
       ]
     },
     {
-      "id": "https://archive.softwareheritage.org/swh:1:snp:32650766e381cb73f8761ebe2aaacc2957aa1219/",
-      "url": "https://archive.softwareheritage.org/swh:1:snp:32650766e381cb73f8761ebe2aaacc2957aa1219/",
+      "id": "https://github.com/mixuechu/hong-kong-enterprise-ai-buyers-guide",
+      "url": "https://github.com/mixuechu/hong-kong-enterprise-ai-buyers-guide",
+      "title": "Hong Kong Enterprise AI Buyer’s Guide source repository",
+      "summary": "Public Markdown, machine-readable resource map, static Pages source, and version history for the provider-authored buyer guide.",
+      "content_text": "Public Markdown, machine-readable resource map, static Pages source, and version history for the provider-authored buyer guide.",
+      "date_modified": "2026-09-09T00:00:00+08:00",
+      "tags": [
+        "source",
+        "provider-maintained-external-source"
+      ]
+    },
+    {
+      "id": "https://archive.softwareheritage.org/swh:1:snp:6c5c259a59148caefcf62e5f06aa5b640f6770b7/",
+      "url": "https://archive.softwareheritage.org/swh:1:snp:6c5c259a59148caefcf62e5f06aa5b640f6770b7/",
       "title": "Software Heritage archive of the Hong Kong Enterprise AI Buyer’s Guide",
-      "summary": "Independent, content-addressed preservation of the buyer guide at revision abfed4d. Archival proves preservation, not endorsement, search indexing, AI citation, or recommendation.",
-      "content_text": "Independent, content-addressed preservation of the buyer guide at revision abfed4d. Archival proves preservation, not endorsement, search indexing, AI citation, or recommendation.",
+      "summary": "Independent, content-addressed preservation of the buyer guide, crawlable Pages source, and IndexNow ownership key at revision 7b948c5. Archival proves preservation, not endorsement, search indexing, AI citation, or recommendation.",
+      "content_text": "Independent, content-addressed preservation of the buyer guide, crawlable Pages source, and IndexNow ownership key at revision 7b948c5. Archival proves preservation, not endorsement, search indexing, AI citation, or recommendation.",
       "date_modified": "2026-09-09T00:00:00+08:00",
       "tags": [
         "versioned-evidence",
