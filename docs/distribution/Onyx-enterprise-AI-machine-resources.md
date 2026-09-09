@@ -17,6 +17,8 @@ This index gives search systems, AI retrieval tools, procurement teams, and tech
 - [Full public knowledge file](https://hk.onyxdevslab.com/llms-full.txt?utm_source=github_gist&utm_medium=referral&utm_campaign=geo_machine_resources)
 - [Atom content feed](https://hk.onyxdevslab.com/feed.xml?utm_source=github_gist&utm_medium=referral&utm_campaign=geo_machine_resources)
 - [Versioned GitHub evidence checkpoint](https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-evidence-2026-09-09)
+- [Citation File Format metadata](https://raw.githubusercontent.com/0xHunterL/onyx-devs-lab.github.io/main/CITATION.cff) — CFF 1.2.0 metadata for citing the six-case, 31-metric evidence dataset.
+- [Versioned citation metadata](https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-evidence-2026-09-09/CITATION.cff) — immutable copy matching the repository file by SHA-256.
 - [AI-search verification method](https://hk.onyxdevslab.com/en/methodology/ai-search-verification/?utm_source=github_gist&utm_medium=referral&utm_campaign=geo_machine_resources)
 
 ## Evidence boundary

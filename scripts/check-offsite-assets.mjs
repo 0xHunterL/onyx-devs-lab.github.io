@@ -70,11 +70,13 @@ if (governanceGistSha256 !== expectedGovernanceGistSha256) failures.push(`GitHub
 const machineResourcesGistRawUrl = 'https://gist.githubusercontent.com/mixuechu/e47c85808014d62b6305441e8065c91e/raw/Onyx-enterprise-AI-machine-resources.md';
 const machineResourcesGistRaw = await get('GitHub Gist machine-resource index', machineResourcesGistRawUrl, 'text/plain');
 const machineResourcesGistSha256 = createHash('sha256').update(machineResourcesGistRaw).digest('hex');
-const expectedMachineResourcesGistSha256 = '679b537d07fb4f4c7912d6e5242f3641031089caf4be3b6bcd13ed0df63b09f1';
+const expectedMachineResourcesGistSha256 = 'c88cb4f9f9a69e41f45e3c50c4330fc218e78f43864467cc51b5c8784faa80b5';
 if (machineResourcesGistSha256 !== expectedMachineResourcesGistSha256) failures.push(`GitHub Gist machine-resource index: SHA-256 mismatch, got ${machineResourcesGistSha256}`);
 requireText('GitHub Gist machine-resource index', machineResourcesGistRaw, [
   'data/organization.json?utm_source=github_gist',
   'data/ai-search-evidence-status.json?utm_source=github_gist',
+  'raw.githubusercontent.com/0xHunterL/onyx-devs-lab.github.io/main/CITATION.cff',
+  'releases/download/geo-evidence-2026-09-09/CITATION.cff',
   'No Doubao prompts have been sent',
   '不等于已被搜索引擎收录',
 ]);
