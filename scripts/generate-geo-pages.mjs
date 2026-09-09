@@ -16,6 +16,7 @@ const topicEntityMapPath = '/data/enterprise-ai-service-terms.jsonld';
 const aiSearchEvidenceStatusPath = '/data/ai-search-evidence-status.json';
 const aiSearchStatusReleaseUrl = 'https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-readiness-2026-09-10';
 const aiSearchStatusReleaseAssetUrl = 'https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-readiness-2026-09-10/ai-search-evidence-status.json';
+const serviceTermsReleaseAssetUrl = 'https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-readiness-2026-09-10/enterprise-ai-service-terms.jsonld';
 const partnerScorecardReleaseUrl = 'https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-evidence-2026-09-09/enterprise-ai-partner-scorecard.json';
 const pcpdAiFrameworkEn = 'https://www.pcpd.org.hk/english/resources_centre/publications/files/ai_protection_framework.pdf';
 const pcpdAiFrameworkZh = 'https://www.pcpd.org.hk/tc_chi/resources_centre/publications/files/ai_protection_framework.pdf';
@@ -780,6 +781,7 @@ const topicEntityMap={
       name:languageValues('Onyx enterprise AI service terms','Onyx 企業 AI 服務術語','Onyx 企业 AI 服务术语'),
       description:languageValues('A provider-maintained vocabulary connecting AI advisory, custom AI development, and Forward Deployed Engineering to canonical definitions and service pages.','由服務商維護的術語集，把 AI 顧問、AI 定制開發及前線部署工程連接至規範定義與服務頁。','由服务商维护的术语集，把 AI 咨询、AI 定制开发和前线部署工程连接到规范定义与服务页。'),
       dateModified:feedUpdated,
+      sameAs:serviceTermsReleaseAssetUrl,
       creator:{'@id':`${origin}/#organization`},
       about:{'@id':`${origin}/#organization`},
       hasDefinedTerm:[{'@id':`${serviceTermSetId}#ai-advisory`},{'@id':`${serviceTermSetId}#custom-ai-development`},{'@id':`${serviceTermSetId}#forward-deployed-engineering`}],
@@ -828,6 +830,7 @@ const fullKnowledge=[
   'Contact: info@onyxdevslab.com',
   'JSON Feed 1.1: https://hk.onyxdevslab.com/feed.json',
   `Enterprise AI service term graph: ${canonical(topicEntityMapPath)}`,
+  `Versioned enterprise AI service term graph: ${serviceTermsReleaseAssetUrl}`,
   '',
   '## External public evidence and field notes',
   'Versioned GEO evidence checkpoint: https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-evidence-2026-09-09',

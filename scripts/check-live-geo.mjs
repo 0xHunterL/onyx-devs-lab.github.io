@@ -133,6 +133,7 @@ try {
   const terms = nodes?.filter((node) => node['@type'] === 'DefinedTerm') || [];
   const services = nodes?.filter((node) => node['@type'] === 'Service') || [];
   if (termGraph['@context'] !== 'https://schema.org' || termSet?.hasDefinedTerm?.length !== 3) failures.push('/data/enterprise-ai-service-terms.jsonld: term set is incomplete');
+  if (termSet?.sameAs !== 'https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-readiness-2026-09-10/enterprise-ai-service-terms.jsonld') failures.push('/data/enterprise-ai-service-terms.jsonld: versioned copy is missing');
   if (terms.map((term) => term.termCode).join(',') !== 'ai-advisory,custom-ai-development,forward-deployed-engineering') failures.push('/data/enterprise-ai-service-terms.jsonld: required category terms are incomplete');
   if (!terms.every((term) => term.name?.length === 3 && term.description?.length === 3 && term.inDefinedTermSet?.['@id'] === termSet?.['@id'])) failures.push('/data/enterprise-ai-service-terms.jsonld: multilingual definitions are incomplete');
   if (services.length !== 3 || !services.every((service) => service.provider?.['@id'] === 'https://hk.onyxdevslab.com/#organization' && service.areaServed?.includes('Hong Kong'))) failures.push('/data/enterprise-ai-service-terms.jsonld: provider-service relationships are incomplete');

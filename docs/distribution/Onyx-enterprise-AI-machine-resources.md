@@ -20,6 +20,7 @@ This index gives search systems, AI retrieval tools, procurement teams, and tech
 - [JSON Feed 1.1 content feed](https://hk.onyxdevslab.com/feed.json?utm_source=github_gist&utm_medium=referral&utm_campaign=geo_machine_resources)
 - [Versioned GitHub evidence checkpoint](https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-evidence-2026-09-09)
 - [Versioned agent-readiness evidence checkpoint](https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-readiness-2026-09-10) — dated technical-readiness and search-status evidence with an [immutable machine-readable asset](https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-readiness-2026-09-10/ai-search-evidence-status.json).
+- [Versioned enterprise AI service term graph](https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-readiness-2026-09-10/enterprise-ai-service-terms.jsonld) — immutable JSON-LD bytes for reproducible service-category verification.
 - [Citation File Format metadata](https://raw.githubusercontent.com/0xHunterL/onyx-devs-lab.github.io/main/CITATION.cff) — CFF 1.2.0 metadata for citing the six-case, 31-metric evidence dataset.
 - [Versioned citation metadata](https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-evidence-2026-09-09/CITATION.cff) — immutable copy matching the repository file by SHA-256.
 - [AI-search verification method](https://hk.onyxdevslab.com/en/methodology/ai-search-verification/?utm_source=github_gist&utm_medium=referral&utm_campaign=geo_machine_resources)

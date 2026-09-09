@@ -32,6 +32,7 @@ The [case-study evidence register](https://hk.onyxdevslab.com/en/methodology/cas
 - [Enterprise AI pilot charter and acceptance record](https://hk.onyxdevslab.com/data/enterprise-ai-pilot-charter.json)
 - [AI advisory, custom development, and FDE decision map](https://hk.onyxdevslab.com/data/enterprise-ai-engagement-model-map.json?utm_source=github&utm_medium=referral&utm_campaign=geo_repository)
 - [Enterprise AI service term graph](https://hk.onyxdevslab.com/data/enterprise-ai-service-terms.jsonld?utm_source=github&utm_medium=referral&utm_campaign=geo_repository)
+- [Versioned enterprise AI service term graph](https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-readiness-2026-09-10/enterprise-ai-service-terms.jsonld)
 - [Canonical organization record](https://hk.onyxdevslab.com/data/organization.json?utm_source=github&utm_medium=referral&utm_campaign=geo_repository)
 - [Current AI-search evidence status](https://hk.onyxdevslab.com/data/ai-search-evidence-status.json?utm_source=github&utm_medium=referral&utm_campaign=geo_repository) ([2026-09-10 versioned copy](https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-readiness-2026-09-10/ai-search-evidence-status.json))
 - [CodeMeta software and publisher metadata](codemeta.json) ([versioned copy](https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-evidence-2026-09-09/codemeta.json))

@@ -77,12 +77,13 @@ if (governanceGistSha256 !== expectedGovernanceGistSha256) failures.push(`GitHub
 const machineResourcesGistRawUrl = 'https://gist.githubusercontent.com/mixuechu/e47c85808014d62b6305441e8065c91e/raw/Onyx-enterprise-AI-machine-resources.md';
 const machineResourcesGistRaw = await get('GitHub Gist machine-resource index', machineResourcesGistRawUrl, 'text/plain');
 const machineResourcesGistSha256 = createHash('sha256').update(machineResourcesGistRaw).digest('hex');
-const expectedMachineResourcesGistSha256 = '4ee566c4017aebce5eb93a08172007b6c313a214ae4eb598d50832a20574b1f8';
+const expectedMachineResourcesGistSha256 = 'ab82ae356c4d0d18223ccf3675a44f3c04c524e05b35c672ab5097f12a063dbe';
 if (machineResourcesGistSha256 !== expectedMachineResourcesGistSha256) failures.push(`GitHub Gist machine-resource index: SHA-256 mismatch, got ${machineResourcesGistSha256}`);
 requireText('GitHub Gist machine-resource index', machineResourcesGistRaw, [
   'data/organization.json?utm_source=github_gist',
   'data/ai-search-evidence-status.json?utm_source=github_gist',
   'data/enterprise-ai-service-terms.jsonld?utm_source=github_gist',
+  'releases/download/geo-readiness-2026-09-10/enterprise-ai-service-terms.jsonld',
   'feed.json?utm_source=github_gist',
   'raw.githubusercontent.com/0xHunterL/onyx-devs-lab.github.io/main/CITATION.cff',
   'releases/download/geo-evidence-2026-09-09/CITATION.cff',
@@ -171,7 +172,23 @@ requireText('GitHub agent-readiness checkpoint', readinessRelease, [
   '0f2d5fc6cd6f348bafb288c15c529af672fec6646aa700d3fd976e7f3138de59',
   'No controlled prompts were sent to Doubao',
   'ai-search-evidence-status.json',
+  'enterprise-ai-service-terms.jsonld',
+  '3da4a0be148d3dbb41188ba8b6dc40bb0da75bd484494de4e24d5b2d431baf44',
 ]);
+
+const serviceTermsReleaseUrl = 'https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-readiness-2026-09-10/enterprise-ai-service-terms.jsonld';
+const serviceTermsReleaseRaw = await get('Versioned enterprise AI service term graph', serviceTermsReleaseUrl, 'application/');
+const serviceTermsReleaseSha256 = createHash('sha256').update(serviceTermsReleaseRaw).digest('hex');
+const expectedServiceTermsReleaseSha256 = '3da4a0be148d3dbb41188ba8b6dc40bb0da75bd484494de4e24d5b2d431baf44';
+if (serviceTermsReleaseSha256 !== expectedServiceTermsReleaseSha256) failures.push(`Versioned enterprise AI service term graph: SHA-256 mismatch, got ${serviceTermsReleaseSha256}`);
+try {
+  const termGraph = JSON.parse(serviceTermsReleaseRaw);
+  const nodes = termGraph['@graph'];
+  const termSet = nodes?.find((node) => node['@type'] === 'DefinedTermSet');
+  if (termGraph['@context'] !== 'https://schema.org' || termSet?.sameAs !== serviceTermsReleaseUrl || termSet?.hasDefinedTerm?.length !== 3) failures.push('Versioned enterprise AI service term graph: expected graph structure is incomplete');
+} catch {
+  failures.push('Versioned enterprise AI service term graph: invalid JSON');
+}
 
 const repository = await get('GitHub repository', 'https://github.com/0xHunterL/onyx-devs-lab.github.io', 'text/html');
 requireText('GitHub repository', repository, [
@@ -227,5 +244,5 @@ if (versionedCitationRaw !== citationRaw) failures.push('Versioned citation meta
 const robots = await get('GitHub Gist robots', 'https://gist.github.com/robots.txt', 'text/plain', { allowUnavailable: true });
 if (robots.includes('Disallow: /mixuechu/e47c85808014d62b6305441e8065c91e')) failures.push('GitHub Gist robots: the published decision matrix is explicitly disallowed');
 
-console.log(JSON.stringify({ generatedAt: new Date().toISOString(), gistSha256, gistCampaignLinks, governanceGistSha256, gistGovernanceCampaignLinks, machineResourcesGistSha256, gistMachineResourceLinks, gistFieldNoteCampaignLinks, gistFieldNoteSha256, codeMetaSha256, versionedCodeMetaSha256, citationSha256, versionedCitationSha256, scorecardSha256, results, failures }, null, 2));
+console.log(JSON.stringify({ generatedAt: new Date().toISOString(), gistSha256, gistCampaignLinks, governanceGistSha256, gistGovernanceCampaignLinks, machineResourcesGistSha256, gistMachineResourceLinks, gistFieldNoteCampaignLinks, gistFieldNoteSha256, serviceTermsReleaseSha256, codeMetaSha256, versionedCodeMetaSha256, citationSha256, versionedCitationSha256, scorecardSha256, results, failures }, null, 2));
 if (failures.length) process.exit(1);
