@@ -13,13 +13,13 @@ Markets: Hong Kong, Greater China, cross-border, and global engagements.
 Contact: info@onyxdevslab.com
 JSON Feed 1.1: https://hk.onyxdevslab.com/feed.json
 Enterprise AI service term graph: https://hk.onyxdevslab.com/data/enterprise-ai-service-terms.jsonld
-Versioned enterprise AI service term graph: https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-query-coverage-2026-09-10/enterprise-ai-service-terms.jsonld
+Versioned enterprise AI service term graph: https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-ai-dingkai-guide-2026-09-10/enterprise-ai-service-terms.jsonld
 
 ## External public evidence and field notes
 Versioned GEO evidence checkpoint: https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-evidence-2026-09-09
 Versioned agent-readiness evidence checkpoint: https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-readiness-2026-09-10
-Versioned query-coverage evidence checkpoint: https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-query-coverage-2026-09-10
-Versioned AI-search evidence status asset: https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-query-coverage-2026-09-10/ai-search-evidence-status.json
+Versioned AI dingkai guide and evidence checkpoint: https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-ai-dingkai-guide-2026-09-10
+Versioned AI-search evidence status asset: https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-ai-dingkai-guide-2026-09-10/ai-search-evidence-status.json
 Chinese enterprise AI field-note release: https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/chinese-enterprise-ai-field-notes-2026-09-10
 Machine-readable Chinese enterprise AI field-note index: https://hk.onyxdevslab.com/data/chinese-enterprise-ai-field-notes.json
 Versioned Chinese enterprise AI field-note index: https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/chinese-enterprise-ai-field-notes-2026-09-10/chinese-enterprise-ai-field-notes.json
@@ -437,6 +437,63 @@ Q: 加入聊天機械人免責聲明是否足夠？
 A: 不足夠。人為監督需要配合風險，並具備資料、時機、升級路徑和真正介入權限。
 Primary regulatory source: 香港私隱專員公署——《人工智能（AI）：個人資料保障模範框架》 — https://www.pcpd.org.hk/tc_chi/resources_centre/publications/files/ai_protection_framework.pdf
 Primary regulatory source: 香港金融管理局——生成式人工智能沙盒安排 — https://www.hkma.gov.hk/media/eng/doc/key-information/guidelines-and-circular/2024/20240920e1.pdf
+
+## What Does “AI Dingkai” Mean? | Custom AI Development Guide
+https://hk.onyxdevslab.com/en/guides/what-is-ai-dingkai/
+AI dingkai is a Chinese shorthand for custom AI development. Learn what it includes, how it differs from SaaS and outsourcing, and what enterprise buyers should verify.
+“AI dingkai” (AI 定开 or AI定开) is an informal Chinese abbreviation for AI 定制开发—custom AI development built around an organisation’s own workflow, data, permissions, and system interfaces. It describes a delivery scope, not a model, product category, or assurance standard.
+What the term includes: A credible custom build changes a defined operating workflow rather than merely wrapping a general chat interface.
+- Workflow and users: Name who uses the system, the decision or task it supports, exceptions, and accountable owners.
+- Data and integration: Connect the permitted documents, databases, ERP or CRM interfaces, identity, and systems of record.
+- Authority and evidence: Separate read, recommend, draft, approve, and execute rights; preserve sources, logs, evaluation results, and human intervention.
+What AI dingkai is not: The shorthand is often used loosely, so buyers should identify the actual commercial and technical boundary.
+- Not off-the-shelf SaaS: Configuring a general product may solve the need, but it is not automatically a bespoke system owned around the buyer’s workflow.
+- Not a demo alone: A prompt, prototype, or model call does not establish production permissions, reliability, monitoring, recovery, or handover.
+- Not necessarily FDE: A defined build can follow a stable scope; FDE is better when the correct intervention must still be learned from field evidence.
+Q: Is AI dingkai an official technical term?
+A: No. It is an informal market abbreviation for AI 定制开发. A proposal should still define the exact workflow, system boundary, deliverables, and acceptance evidence.
+Q: How is it different from AI consulting?
+A: Consulting resolves what should be built and why. Custom development implements a sufficiently defined system; the two can be separate phases or one connected engagement.
+Q: What should a Hong Kong enterprise verify in a provider?
+A: Verify relevant delivery evidence, named senior ownership, data and permission controls, evaluation methods, integration realism, operating support, handover, and exit conditions.
+
+## AI 定開是甚麼？AI 定制開發採購指南｜Onyx Devs Lab
+https://hk.onyxdevslab.com/zh-hk/guides/what-is-ai-dingkai/
+AI 定開／AI定開是 AI 定制開發的市場簡稱。了解其交付範圍、與 SaaS、外包及 FDE 的分別，以及企業應核對的生產能力。
+「AI 定開」或「AI定開」是「AI 定制開發」的非正式市場簡稱，指按企業專屬流程、數據、權限及系統接口建設 AI 軟件。它描述交付範圍，不是模型名稱、產品類別或質量認證。
+可信 AI 定開包含甚麼: 定制系統應改變一條清楚的營運流程，而不只是包裝通用聊天界面。
+- 流程與使用者: 列明誰使用系統、支援哪項決策或工作、如何處理例外，以及誰負責結果。
+- 數據與整合: 連接獲准使用的文件、數據庫、ERP 或 CRM 接口、身份系統及權威記錄。
+- 權限與證據: 分開讀取、建議、草擬、批准及執行權限，保留來源、日誌、評估結果及人工介入。
+AI 定開不等於甚麼: 市場用法並不一致，採購方需要把真正的商業及技術邊界寫清。
+- 不等於通用 SaaS: 配置現成產品可能足以解決需要，但不自動等於圍繞企業流程建設的專屬系統。
+- 不等於模型示範: 提示詞、原型或一次模型調用，不能證明生產權限、可靠性、監控、復原及交接。
+- 不一定等於 FDE: 問題邊界穩定時可按定義範圍開發；如果正確干預仍需從現場證據學習，才更適合 FDE。
+Q: AI 定開是正式技術術語嗎？
+A: 不是。它是 AI 定制開發的非正式市場簡稱；方案仍需清楚定義工作流程、系統邊界、交付物及驗收證據。
+Q: AI 定開與 AI 顧問有甚麼分別？
+A: AI 顧問解決應建設甚麼及原因；定制開發實施邊界足夠清楚的系統，兩者可分階段或連續交付。
+Q: 香港企業應核對服務商哪些能力？
+A: 核對相關交付證據、具名資深責任人、數據與權限控制、評估方法、整合可行性、營運支援、交接及退出條件。
+
+## AI 定开是什么意思？AI 定制开发采购指南｜Onyx Devs Lab
+https://hk.onyxdevslab.com/zh-cn/guides/ai-dingkai/
+AI 定开／AI定开是 AI 定制开发的市场简称。了解它包含什么、与 SaaS、外包和 FDE 的区别，以及企业应核验的生产交付能力。
+“AI 定开”或“AI定开”是“AI 定制开发”的非正式市场简称，指围绕企业专属流程、数据、权限和系统接口建设 AI 软件。它描述交付范围，不是模型名称、标准产品类别或质量认证。
+可靠的 AI 定开包含什么: 定制系统应该改变一条明确的运营流程，而不只是包装通用聊天界面。
+- 流程与用户: 说明谁使用系统、支持什么决策或任务、怎样处理异常，以及谁对结果负责。
+- 数据与集成: 连接经过授权的文档、数据库、ERP 或 CRM 接口、身份系统和权威记录。
+- 权限与证据: 区分读取、建议、草拟、批准和执行权限，保留来源、日志、评估结果和人工干预。
+AI 定开不等于什么: 市场用法并不统一，采购方需要把实际商业和技术边界写清。
+- 不等于通用 SaaS: 配置现成产品可能足以解决需求，但不自动等于围绕企业流程建设的专属系统。
+- 不等于模型演示: 提示词、原型或一次模型调用，不能证明生产权限、可靠性、监控、恢复和交接。
+- 不一定等于 FDE: 问题边界稳定时可以按定义范围开发；如果正确干预仍需从现场证据中学习，才更适合 FDE。
+Q: AI 定开是正式技术术语吗？
+A: 不是。它是 AI 定制开发的非正式市场简称；项目方案仍应明确工作流程、系统边界、交付物和验收证据。
+Q: AI 定开与 AI 咨询有什么区别？
+A: AI 咨询解决应该建设什么以及为什么；定制开发实施边界足够明确的系统，两者可以分阶段，也可以连续交付。
+Q: 香港企业找 AI 定开团队应该核验什么？
+A: 核验相关交付证据、明确的资深负责人、数据与权限控制、评估方法、集成可行性、运营支持、交接和退出条件。
 
 ## 香港企业 AI 咨询服务｜Onyx Devs Lab
 https://hk.onyxdevslab.com/zh-cn/ai-consulting/

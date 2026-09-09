@@ -23,6 +23,10 @@ language: "zh-Hant-HK"
 
 建設已整合的 Agent、知識系統與營運自動化。
 
+### [AI 定開是甚麼](/zh-hk/guides/what-is-ai-dingkai/)
+
+理解市場簡稱，並核對真正的生產交付邊界。
+
 ### [前線部署工程 FDE](/zh-hk/forward-deployed-engineering/)
 
 以現場診斷和嵌入式交付處理難以預先定義的複雜問題。

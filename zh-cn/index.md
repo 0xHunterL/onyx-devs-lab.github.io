@@ -23,6 +23,10 @@ language: "zh-CN"
 
 建设 Agent、RAG、数据系统和运营自动化。
 
+### [AI 定开是什么意思](/zh-cn/guides/ai-dingkai/)
+
+理解市场简称，并核验真正的生产交付能力。
+
 ### [FDE 前线部署工程](/zh-cn/forward-deployed-engineering/)
 
 通过现场诊断和嵌入式交付解决复杂问题。

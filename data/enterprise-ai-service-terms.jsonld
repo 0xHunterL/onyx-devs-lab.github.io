@@ -33,7 +33,7 @@
         }
       ],
       "dateModified": "2026-09-10",
-      "sameAs": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-query-coverage-2026-09-10/enterprise-ai-service-terms.jsonld",
+      "sameAs": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-ai-dingkai-guide-2026-09-10/enterprise-ai-service-terms.jsonld",
       "creator": {
         "@id": "https://hk.onyxdevslab.com/#organization"
       },
@@ -140,7 +140,7 @@
       "inDefinedTermSet": {
         "@id": "https://hk.onyxdevslab.com/data/enterprise-ai-service-terms.jsonld"
       },
-      "url": "https://hk.onyxdevslab.com/en/custom-ai-development-hong-kong/"
+      "url": "https://hk.onyxdevslab.com/en/guides/what-is-ai-dingkai/"
     },
     {
       "@type": "DefinedTerm",

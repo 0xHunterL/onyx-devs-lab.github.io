@@ -6,7 +6,7 @@
 - [Enterprise AI field notes feed](https://hk.onyxdevslab.com/feed.xml)
 - [Enterprise AI field notes JSON Feed 1.1](https://hk.onyxdevslab.com/feed.json)
 - [Enterprise AI service term graph](https://hk.onyxdevslab.com/data/enterprise-ai-service-terms.jsonld)
-- [Versioned enterprise AI service term graph](https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-query-coverage-2026-09-10/enterprise-ai-service-terms.jsonld)
+- [Versioned enterprise AI service term graph](https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-ai-dingkai-guide-2026-09-10/enterprise-ai-service-terms.jsonld)
 - [Case-study evidence register](https://hk.onyxdevslab.com/en/methodology/case-study-evidence-register/)
 - [Machine-readable case-study evidence dataset](https://hk.onyxdevslab.com/data/case-study-evidence.json)
 - [Machine-readable enterprise AI partner procurement scorecard](https://hk.onyxdevslab.com/data/enterprise-ai-partner-scorecard.json)
@@ -20,7 +20,8 @@
 
 - [Versioned GEO evidence checkpoint](https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-evidence-2026-09-09): a dated, provider-maintained snapshot of the public entity and case-study evidence.
 - [Versioned agent-readiness evidence checkpoint](https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-readiness-2026-09-10): a dated snapshot of accessibility, verified crawler activity, explicit search non-results, and technical-readiness boundaries; its [machine-readable asset](https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-readiness-2026-09-10/ai-search-evidence-status.json) preserves the exact status bytes.
-- [Versioned AI 定开 query-coverage checkpoint](https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-query-coverage-2026-09-10): the current 18-prompt matrix and evidence status, adding AI 定开 and AI定开 as aliases of AI 定制开发 without upgrading indexing or citation evidence.
+- [Versioned AI 定开 query-coverage checkpoint](https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-query-coverage-2026-09-10): the initial 18-prompt snapshot adding AI 定开 and AI定开 as aliases of AI 定制开发, without upgrading indexing or citation evidence.
+- [Versioned AI 定开 definition-guide checkpoint](https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-ai-dingkai-guide-2026-09-10): three canonical language guides, the updated 18-prompt evidence map, service-term graph, and evidence status. This provider-maintained release does not prove indexing or citation.
 - [香港企业 AI 中文方法索引](https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/chinese-enterprise-ai-field-notes-2026-09-10): a versioned Chinese index for enterprise AI advisory, custom AI development, FDE, AI-agent ERP controls, and legal-AI evidence methods; its [machine-readable asset](https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/chinese-enterprise-ai-field-notes-2026-09-10/chinese-enterprise-ai-field-notes.json) preserves the source map and hashes.
 - [Bilingual AI advisory, custom development, and FDE decision matrix](https://gist.github.com/mixuechu/e47c85808014d62b6305441e8065c91e): original English and Simplified Chinese field notes with decision criteria and tracked links to the canonical guides.
 - [Bilingual Hong Kong enterprise AI governance implementation note](https://gist.githubusercontent.com/mixuechu/e47c85808014d62b6305441e8065c91e/raw/Hong-Kong-enterprise-AI-governance.md): original English and Simplified Chinese implementation notes grounded in PCPD and HKMA primary sources.
@@ -38,6 +39,7 @@ Evidence boundary: the GitHub repository, Release, Gist, website, and knowledge 
 
 - [AI Advisory](https://hk.onyxdevslab.com/en/ai-consulting-hong-kong/): AI opportunity diagnosis, feasibility, governance, and delivery roadmaps.
 - [Custom AI Development](https://hk.onyxdevslab.com/en/custom-ai-development-hong-kong/): Production AI agents, RAG, automation, data systems, and enterprise integration.
+- [What does AI dingkai mean?](https://hk.onyxdevslab.com/en/guides/what-is-ai-dingkai/): AI 定开 and AI定开 are informal Chinese abbreviations for AI 定制开发; this guide defines the production-delivery boundary.
 - [Forward Deployed Engineering](https://hk.onyxdevslab.com/en/forward-deployed-engineering/): Field diagnosis, embedded engineering, deployment, and outcome validation.
 - [What is Forward Deployed Engineering?](https://hk.onyxdevslab.com/en/insights/what-is-forward-deployed-engineering/): A practical definition and engagement guide.
 
@@ -48,6 +50,7 @@ Evidence boundary: the GitHub repository, Release, Gist, website, and knowledge 
 
 ## Decision guides and methodology
 
+- [AI 定开是什么意思？](https://hk.onyxdevslab.com/zh-cn/guides/ai-dingkai/)
 - [AI advisory vs custom development vs FDE](https://hk.onyxdevslab.com/en/guides/ai-advisory-vs-custom-development-vs-fde/)
 - [How to choose an enterprise AI partner in Hong Kong](https://hk.onyxdevslab.com/en/guides/choose-enterprise-ai-partner-hong-kong/)
 - [Hong Kong enterprise AI governance checklist](https://hk.onyxdevslab.com/en/guides/hong-kong-enterprise-ai-governance/)
@@ -61,6 +64,7 @@ Evidence boundary: the GitHub repository, Release, Gist, website, and knowledge 
 
 - [AI 顧問](https://hk.onyxdevslab.com/zh-hk/ai-consulting/)
 - [AI 定制開發](https://hk.onyxdevslab.com/zh-hk/custom-ai-development/)
+- [AI 定開是甚麼？](https://hk.onyxdevslab.com/zh-hk/guides/what-is-ai-dingkai/)
 - [前線部署工程 FDE](https://hk.onyxdevslab.com/zh-hk/forward-deployed-engineering/)
 - [零售 AI 決策平台案例](https://hk.onyxdevslab.com/zh-hk/case-studies/retail-ai-decision-platform/)
 - [AI 原生會計生產平台案例](https://hk.onyxdevslab.com/zh-hk/case-studies/accounting-ai-production-platform/)
@@ -78,6 +82,7 @@ Evidence boundary: the GitHub repository, Release, Gist, website, and knowledge 
 - [香港企业 AI 服务](https://hk.onyxdevslab.com/zh-cn/)
 - [企业 AI 咨询](https://hk.onyxdevslab.com/zh-cn/ai-consulting/)
 - [AI 定制开发（AI 定开 / AI定开）](https://hk.onyxdevslab.com/zh-cn/custom-ai-development/)
+- [AI 定开是什么意思？](https://hk.onyxdevslab.com/zh-cn/guides/ai-dingkai/)
 - [FDE 前线部署工程](https://hk.onyxdevslab.com/zh-cn/forward-deployed-engineering/)
 - [AI 咨询、定制开发与 FDE 怎么选](https://hk.onyxdevslab.com/zh-cn/guides/ai-consulting-vs-development-vs-fde/)
 - [香港企业如何选择 AI 服务商](https://hk.onyxdevslab.com/zh-cn/guides/choose-enterprise-ai-partner/)

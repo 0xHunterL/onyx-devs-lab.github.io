@@ -1,91 +1,101 @@
 ---
-title: "Enterprise AI Services Hong Kong | Onyx Devs Lab"
-description: "AI advisory, custom AI development, and Forward Deployed Engineering for Hong Kong and cross-border enterprises."
-canonical: "https://hk.onyxdevslab.com/en/"
-language: "en"
+title: "AI 定开是什么意思？AI 定制开发采购指南｜Onyx Devs Lab"
+description: "AI 定开／AI定开是 AI 定制开发的市场简称。了解它包含什么、与 SaaS、外包和 FDE 的区别，以及企业应核验的生产交付能力。"
+canonical: "https://hk.onyxdevslab.com/zh-cn/guides/ai-dingkai/"
+language: "zh-CN"
 ---
 
-Enterprise AI services · Hong Kong
+[首页](/zh-cn/) / AI 开发术语指南
 
-# Enterprise AI services built around the operating problem.
+AI 开发术语指南
 
-Choose a focused advisory decision, a defined custom build, or an FDE engagement that owns the loop from diagnosis to validated change.
+# AI 定开是什么意思？
 
-[繁體中文](/zh-hk/) [简体中文](/zh-cn/)
+“AI 定开”或“AI定开”是“AI 定制开发”的非正式市场简称，指围绕企业专属流程、数据、权限和系统接口建设 AI 软件。它描述交付范围，不是模型名称、标准产品类别或质量认证。
 
-## Choose the engagement model
+作者 [Onyx Devs Lab](/zh-cn/about/) · 发布 2026-09-10 · 更新 2026-09-10
 
-### [AI advisory](/en/ai-consulting-hong-kong/)
+[预约项目评估](mailto:info@onyxdevslab.com?subject=AI%20%E5%AE%9A%E5%BC%80%E6%98%AF%E4%BB%80%E4%B9%88%E6%84%8F%E6%80%9D%EF%BC%9F) [English](/en/guides/what-is-ai-dingkai/) [繁體中文](/zh-hk/guides/what-is-ai-dingkai/)
 
-Decide where AI can create value and define a credible route to production.
+**市场简称** — AI 定开＝AI 定制开发
 
-### [Custom AI development](/en/custom-ai-development-hong-kong/)
+**企业专属** — 流程、数据、权限和集成
 
-Build integrated agents, knowledge systems, and operational automation.
+**生产证据** — 评估、控制、运营和交接
 
-### [What is AI dingkai?](/en/guides/what-is-ai-dingkai/)
+## 可靠的 AI 定开包含什么
 
-Understand the Chinese shorthand and verify the real production delivery boundary.
+定制系统应该改变一条明确的运营流程，而不只是包装通用聊天界面。
 
-### [Forward Deployed Engineering](/en/forward-deployed-engineering/)
+### 流程与用户
 
-Solve complex, underspecified problems through embedded diagnosis and delivery.
+说明谁使用系统、支持什么决策或任务、怎样处理异常，以及谁对结果负责。
 
-### [Choose the engagement model](/en/guides/ai-advisory-vs-custom-development-vs-fde/)
+### 数据与集成
 
-Compare advisory, custom development, and FDE by the uncertainty they resolve.
+连接经过授权的文档、数据库、ERP 或 CRM 接口、身份系统和权威记录。
 
-### [Choose an AI delivery partner](/en/guides/choose-enterprise-ai-partner-hong-kong/)
+### 权限与证据
 
-Compare providers by evidence, production controls, ownership, and validation.
+区分读取、建议、草拟、批准和执行权限，保留来源、日志、评估结果和人工干预。
 
-### [AI pilot charter](/en/guides/enterprise-ai-pilot-charter-hong-kong/)
+## AI 定开不等于什么
 
-Define evidence gates and sign a scale, redesign, hold, or stop decision.
+市场用法并不统一，采购方需要把实际商业和技术边界写清。
 
-### [Hong Kong AI governance](/en/guides/hong-kong-enterprise-ai-governance/)
+### 不等于通用 SaaS
 
-Turn PCPD guidance into accountable controls and lifecycle evidence.
+配置现成产品可能足以解决需求，但不自动等于围绕企业流程建设的专属系统。
 
-### [AI development cost guide](/en/guides/custom-ai-development-cost-hong-kong/)
+### 不等于模型演示
 
-Understand the scope and risk factors behind a credible estimate.
+提示词、原型或一次模型调用，不能证明生产权限、可靠性、监控、恢复和交接。
 
-### [ERP integration guide](/en/guides/enterprise-ai-agent-erp-integration/)
+### 不一定等于 FDE
 
-Connect agents to systems of record through explicit authority tiers.
+问题边界稳定时可以按定义范围开发；如果正确干预仍需从现场证据中学习，才更适合 FDE。
 
-### [Enterprise AI evaluation](/en/methodology/enterprise-ai-evaluation/)
+## 交付方法
 
-Evaluate capability, control, workflow reliability, and operating outcomes.
+### 定义一个运营结果
 
-### [Legal AI evidence workflow](/en/case-studies/legal-ai-evidence-workflow/)
+写明当前流程、基线、受影响用户和失败后果。
 
-Trace dossier conclusions to files, pages, source text, and lawyer review.
+### 揭示生产边界
 
-### [Recruiting AI workflow](/en/case-studies/recruiting-ai-agent-workflow/)
+列出数据、集成、权限层级、评估案例、监控、支持和排除范围。
 
-Automate candidate context and replies with send verification and takeover.
+### 先验证最高风险假设
 
-### [Industrial ERP and AI](/en/case-studies/industrial-erp-ai-data-platform/)
+扩大范围前测试数据访问、输出质量、工具安全、延迟、成本和操作人员采用。
 
-Connect field data to management without handing safety control to AI.
+### 验收并交接
 
-### [Credit research agents](/en/case-studies/credit-research-ai-agent/)
+用可测量标准作出决定，记录剩余风险，移交运营知识并保留退出路径。
 
-Accelerate research while retaining source coverage and analyst judgement.
+## 相关交付证据
 
-### [What is FDE?](/en/insights/what-is-forward-deployed-engineering/)
+[零售 AI 决策平台案例](/zh-cn/case-studies/retail-ai-decision-platform/) [AI 原生会计生产平台案例](/zh-cn/case-studies/accounting-ai-production-platform/) [案例证据登记册](/zh-cn/methodology/case-study-evidence-register/)
 
-Read the practical definition, fit criteria, and evidence loop.
+## 常见问题
 
-### [Case-study evidence register](/en/methodology/case-study-evidence-register/)
+AI 定开是正式技术术语吗？
 
-Read the metric definitions, source pages, and limitations behind six delivery cases.
+不是。它是 AI 定制开发的非正式市场简称；项目方案仍应明确工作流程、系统边界、交付物和验收证据。
 
-## Start with one concrete operating problem.
+AI 定开与 AI 咨询有什么区别？
 
-[Book a project assessment](mailto:info@onyxdevslab.com)
+AI 咨询解决应该建设什么以及为什么；定制开发实施边界足够明确的系统，两者可以分阶段，也可以连续交付。
+
+香港企业找 AI 定开团队应该核验什么？
+
+核验相关交付证据、明确的资深负责人、数据与权限控制、评估方法、集成可行性、运营支持、交接和退出条件。
+
+## 从一个具体业务问题开始。
+
+我们会先确认流程、证据、数据边界和结果标准，再建议下一步。
+
+[联系 Onyx](mailto:info@onyxdevslab.com)
 
 ## Structured data
 
@@ -278,25 +288,38 @@ Read the metric definitions, source pages, and limitations behind six delivery c
       ]
     },
     {
-      "@type": "CollectionPage",
-      "@id": "https://hk.onyxdevslab.com/en/#primary",
-      "name": "Enterprise AI services built around the operating problem.",
-      "description": "AI advisory, custom AI development, and Forward Deployed Engineering for Hong Kong and cross-border enterprises.",
-      "url": "https://hk.onyxdevslab.com/en/"
+      "@type": "Article",
+      "@id": "https://hk.onyxdevslab.com/zh-cn/guides/ai-dingkai/#primary",
+      "name": "AI 定开是什么意思？",
+      "description": "AI 定开／AI定开是 AI 定制开发的市场简称。了解它包含什么、与 SaaS、外包和 FDE 的区别，以及企业应核验的生产交付能力。",
+      "url": "https://hk.onyxdevslab.com/zh-cn/guides/ai-dingkai/",
+      "author": {
+        "@id": "https://hk.onyxdevslab.com/#organization"
+      },
+      "publisher": {
+        "@id": "https://hk.onyxdevslab.com/#organization"
+      },
+      "dateModified": "2026-09-10",
+      "headline": "AI 定开是什么意思？",
+      "datePublished": "2026-09-10",
+      "mainEntityOfPage": {
+        "@id": "https://hk.onyxdevslab.com/zh-cn/guides/ai-dingkai/"
+      },
+      "articleSection": "AI 开发术语指南"
     },
     {
       "@type": "WebPage",
-      "@id": "https://hk.onyxdevslab.com/en/",
-      "url": "https://hk.onyxdevslab.com/en/",
-      "name": "Enterprise AI Services Hong Kong | Onyx Devs Lab",
-      "description": "AI advisory, custom AI development, and Forward Deployed Engineering for Hong Kong and cross-border enterprises.",
+      "@id": "https://hk.onyxdevslab.com/zh-cn/guides/ai-dingkai/",
+      "url": "https://hk.onyxdevslab.com/zh-cn/guides/ai-dingkai/",
+      "name": "AI 定开是什么意思？AI 定制开发采购指南｜Onyx Devs Lab",
+      "description": "AI 定开／AI定开是 AI 定制开发的市场简称。了解它包含什么、与 SaaS、外包和 FDE 的区别，以及企业应核验的生产交付能力。",
       "dateModified": "2026-09-10",
-      "inLanguage": "en",
+      "inLanguage": "zh-CN",
       "isPartOf": {
         "@id": "https://hk.onyxdevslab.com/#website"
       },
       "about": {
-        "@id": "https://hk.onyxdevslab.com/en/#primary"
+        "@id": "https://hk.onyxdevslab.com/zh-cn/guides/ai-dingkai/#primary"
       }
     },
     {
@@ -305,14 +328,43 @@ Read the metric definitions, source pages, and limitations behind six delivery c
         {
           "@type": "ListItem",
           "position": 1,
-          "name": "Home",
+          "name": "首页",
           "item": "https://hk.onyxdevslab.com/"
         },
         {
           "@type": "ListItem",
           "position": 2,
-          "name": "Enterprise AI services built around the operating problem.",
-          "item": "https://hk.onyxdevslab.com/en/"
+          "name": "AI 定开是什么意思？",
+          "item": "https://hk.onyxdevslab.com/zh-cn/guides/ai-dingkai/"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "AI 定开是正式技术术语吗？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "不是。它是 AI 定制开发的非正式市场简称；项目方案仍应明确工作流程、系统边界、交付物和验收证据。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "AI 定开与 AI 咨询有什么区别？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "AI 咨询解决应该建设什么以及为什么；定制开发实施边界足够明确的系统，两者可以分阶段，也可以连续交付。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "香港企业找 AI 定开团队应该核验什么？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "核验相关交付证据、明确的资深负责人、数据与权限控制、评估方法、集成可行性、运营支持、交接和退出条件。"
+          }
         }
       ]
     }

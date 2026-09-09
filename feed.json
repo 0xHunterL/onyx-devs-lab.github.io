@@ -189,6 +189,45 @@
       ]
     },
     {
+      "id": "https://hk.onyxdevslab.com/en/guides/what-is-ai-dingkai/",
+      "url": "https://hk.onyxdevslab.com/en/guides/what-is-ai-dingkai/",
+      "title": "What Does “AI Dingkai” Mean? | Custom AI Development Guide",
+      "summary": "AI dingkai is a Chinese shorthand for custom AI development. Learn what it includes, how it differs from SaaS and outsourcing, and what enterprise buyers should verify.",
+      "content_text": "AI dingkai is a Chinese shorthand for custom AI development. Learn what it includes, how it differs from SaaS and outsourcing, and what enterprise buyers should verify.",
+      "date_modified": "2026-09-10T00:00:00+08:00",
+      "language": "en",
+      "tags": [
+        "Article",
+        "en"
+      ]
+    },
+    {
+      "id": "https://hk.onyxdevslab.com/zh-hk/guides/what-is-ai-dingkai/",
+      "url": "https://hk.onyxdevslab.com/zh-hk/guides/what-is-ai-dingkai/",
+      "title": "AI 定開是甚麼？AI 定制開發採購指南｜Onyx Devs Lab",
+      "summary": "AI 定開／AI定開是 AI 定制開發的市場簡稱。了解其交付範圍、與 SaaS、外包及 FDE 的分別，以及企業應核對的生產能力。",
+      "content_text": "AI 定開／AI定開是 AI 定制開發的市場簡稱。了解其交付範圍、與 SaaS、外包及 FDE 的分別，以及企業應核對的生產能力。",
+      "date_modified": "2026-09-10T00:00:00+08:00",
+      "language": "zh-Hant-HK",
+      "tags": [
+        "Article",
+        "zh-Hant-HK"
+      ]
+    },
+    {
+      "id": "https://hk.onyxdevslab.com/zh-cn/guides/ai-dingkai/",
+      "url": "https://hk.onyxdevslab.com/zh-cn/guides/ai-dingkai/",
+      "title": "AI 定开是什么意思？AI 定制开发采购指南｜Onyx Devs Lab",
+      "summary": "AI 定开／AI定开是 AI 定制开发的市场简称。了解它包含什么、与 SaaS、外包和 FDE 的区别，以及企业应核验的生产交付能力。",
+      "content_text": "AI 定开／AI定开是 AI 定制开发的市场简称。了解它包含什么、与 SaaS、外包和 FDE 的区别，以及企业应核验的生产交付能力。",
+      "date_modified": "2026-09-10T00:00:00+08:00",
+      "language": "zh-CN",
+      "tags": [
+        "Article",
+        "zh-CN"
+      ]
+    },
+    {
       "id": "https://hk.onyxdevslab.com/zh-cn/guides/ai-consulting-vs-development-vs-fde/",
       "url": "https://hk.onyxdevslab.com/zh-cn/guides/ai-consulting-vs-development-vs-fde/",
       "title": "AI 咨询、定制开发与 FDE 怎么选｜Onyx Devs Lab",
@@ -762,11 +801,11 @@
       ]
     },
     {
-      "id": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-query-coverage-2026-09-10",
-      "url": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-query-coverage-2026-09-10",
-      "title": "Onyx GEO query coverage — AI 定开 alias (2026-09-10)",
-      "summary": "A versioned 18-prompt matrix and evidence-status update adding the Simplified Chinese AI 定开 and AI定开 aliases without changing the observed indexing or citation level.",
-      "content_text": "A versioned 18-prompt matrix and evidence-status update adding the Simplified Chinese AI 定开 and AI定开 aliases without changing the observed indexing or citation level.",
+      "id": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-ai-dingkai-guide-2026-09-10",
+      "url": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-ai-dingkai-guide-2026-09-10",
+      "title": "AI 定开是什么意思？Onyx custom AI development guide (2026-09-10)",
+      "summary": "A versioned three-language terminology guide, 18-prompt evidence map, and status snapshot for AI 定开 and AI定开 without upgrading indexing or citation evidence.",
+      "content_text": "A versioned three-language terminology guide, 18-prompt evidence map, and status snapshot for AI 定开 and AI定开 without upgrading indexing or citation evidence.",
       "date_modified": "2026-09-10T00:00:00+08:00",
       "tags": [
         "evidence",

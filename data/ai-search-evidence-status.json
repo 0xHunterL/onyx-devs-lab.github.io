@@ -1,9 +1,9 @@
 {
   "schemaVersion": 2,
-  "version": "2026.09.10.1",
+  "version": "2026.09.10.2",
   "id": "https://hk.onyxdevslab.com/data/ai-search-evidence-status.json",
-  "observedAt": "2026-09-09T18:48:37Z",
-  "sameAs": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-query-coverage-2026-09-10/ai-search-evidence-status.json",
+  "observedAt": "2026-09-09T19:13:31Z",
+  "sameAs": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-ai-dingkai-guide-2026-09-10/ai-search-evidence-status.json",
   "name": {
     "en": "Onyx Devs Lab AI-search evidence status",
     "zhHant": "Onyx Devs Lab AI 搜尋證據狀態",
@@ -39,10 +39,10 @@
       "status": "verified",
       "claim": "The website is publicly accessible to permitted crawlers.",
       "evidence": {
-        "canonicalUrlsChecked": 62,
+        "canonicalUrlsChecked": 65,
         "httpStatus": 200,
         "indexableServerRenderedHtml": true,
-        "markdownRepresentationsGenerated": 62,
+        "markdownRepresentationsGenerated": 65,
         "markdownNegotiatedAtCanonicalUrl": true,
         "varyAccept": true,
         "contentSignals": {
@@ -99,22 +99,22 @@
   ],
   "publicSearchChecks": [
     {
-      "checkedAt": "2026-09-09T18:49:00Z",
+      "checkedAt": "2026-09-09T19:13:31Z",
       "query": "\"ONYX-GEO-VERIFY-79051925-20260908\"",
       "result": "website-not-observed"
     },
     {
-      "checkedAt": "2026-09-09T18:49:00Z",
+      "checkedAt": "2026-09-09T19:13:31Z",
       "query": "\"Onyx Devs Lab\"",
       "result": "website-not-observed; independent legal-entity records observed"
     },
     {
-      "checkedAt": "2026-09-09T18:49:00Z",
+      "checkedAt": "2026-09-09T19:13:31Z",
       "query": "site:hk.onyxdevslab.com",
       "result": "no-results-observed"
     },
     {
-      "checkedAt": "2026-09-09T18:49:00Z",
+      "checkedAt": "2026-09-09T19:13:31Z",
       "query": "\"AI 定开\" \"Onyx Devs Lab\"",
       "result": "website-not-observed"
     }
@@ -155,8 +155,8 @@
       "url": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-readiness-2026-09-10"
     },
     {
-      "name": "Versioned query-coverage evidence checkpoint",
-      "url": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-query-coverage-2026-09-10"
+      "name": "Versioned AI dingkai guide and evidence checkpoint",
+      "url": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-ai-dingkai-guide-2026-09-10"
     },
     {
       "name": "AI-search verification method",
