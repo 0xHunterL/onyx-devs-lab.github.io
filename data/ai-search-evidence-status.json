@@ -1,9 +1,9 @@
 {
   "schemaVersion": 2,
-  "version": "2026.09.10",
+  "version": "2026.09.10.1",
   "id": "https://hk.onyxdevslab.com/data/ai-search-evidence-status.json",
-  "observedAt": "2026-09-09T16:20:26Z",
-  "sameAs": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-readiness-2026-09-10/ai-search-evidence-status.json",
+  "observedAt": "2026-09-09T18:48:37Z",
+  "sameAs": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-query-coverage-2026-09-10/ai-search-evidence-status.json",
   "name": {
     "en": "Onyx Devs Lab AI-search evidence status",
     "zhHant": "Onyx Devs Lab AI 搜尋證據狀態",
@@ -24,9 +24,13 @@
   "testProtocol": {
     "promptMatrix": "geo/prompt-matrix.json",
     "schemaVersion": 2,
-    "promptCount": 17,
+    "promptCount": 18,
     "retrievalMarker": "ONYX-GEO-VERIFY-79051925-20260908",
-    "doubaoPromptsSent": false
+    "doubaoPromptsSent": false,
+    "queryAliasesAdded": [
+      "AI 定开",
+      "AI定开"
+    ]
   },
   "evidenceLevels": [
     {
@@ -95,19 +99,24 @@
   ],
   "publicSearchChecks": [
     {
-      "checkedAt": "2026-09-09T16:20:00Z",
+      "checkedAt": "2026-09-09T18:49:00Z",
       "query": "\"ONYX-GEO-VERIFY-79051925-20260908\"",
       "result": "website-not-observed"
     },
     {
-      "checkedAt": "2026-09-09T16:20:00Z",
+      "checkedAt": "2026-09-09T18:49:00Z",
       "query": "\"Onyx Devs Lab\"",
       "result": "website-not-observed; independent legal-entity records observed"
     },
     {
-      "checkedAt": "2026-09-09T16:20:00Z",
+      "checkedAt": "2026-09-09T18:49:00Z",
       "query": "site:hk.onyxdevslab.com",
       "result": "no-results-observed"
+    },
+    {
+      "checkedAt": "2026-09-09T18:49:00Z",
+      "query": "\"AI 定开\" \"Onyx Devs Lab\"",
+      "result": "website-not-observed"
     }
   ],
   "technicalReadiness": {
@@ -144,6 +153,10 @@
     {
       "name": "Versioned agent-readiness evidence checkpoint",
       "url": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-readiness-2026-09-10"
+    },
+    {
+      "name": "Versioned query-coverage evidence checkpoint",
+      "url": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-query-coverage-2026-09-10"
     },
     {
       "name": "AI-search verification method",

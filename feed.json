@@ -756,6 +756,18 @@
       ]
     },
     {
+      "id": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-query-coverage-2026-09-10",
+      "url": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-query-coverage-2026-09-10",
+      "title": "Onyx GEO query coverage — AI 定开 alias (2026-09-10)",
+      "summary": "A versioned 18-prompt matrix and evidence-status update adding the Simplified Chinese AI 定开 and AI定开 aliases without changing the observed indexing or citation level.",
+      "content_text": "A versioned 18-prompt matrix and evidence-status update adding the Simplified Chinese AI 定开 and AI定开 aliases without changing the observed indexing or citation level.",
+      "date_modified": "2026-09-10T00:00:00+08:00",
+      "tags": [
+        "evidence",
+        "provider-maintained-external-source"
+      ]
+    },
+    {
       "id": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/chinese-enterprise-ai-field-notes-2026-09-10",
       "url": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/chinese-enterprise-ai-field-notes-2026-09-10",
       "title": "Onyx Devs Lab｜香港企业 AI 中文方法索引（2026-09-10）",

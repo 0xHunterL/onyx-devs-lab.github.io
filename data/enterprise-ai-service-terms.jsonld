@@ -33,7 +33,7 @@
         }
       ],
       "dateModified": "2026-09-10",
-      "sameAs": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-readiness-2026-09-10/enterprise-ai-service-terms.jsonld",
+      "sameAs": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-query-coverage-2026-09-10/enterprise-ai-service-terms.jsonld",
       "creator": {
         "@id": "https://hk.onyxdevslab.com/#organization"
       },
@@ -117,7 +117,11 @@
         "Bespoke AI development",
         "Enterprise AI development",
         "企業 AI 定制開發",
-        "企业 AI 定制开发"
+        "企业 AI 定制开发",
+        "AI 定开",
+        "AI定开",
+        "AI 定開",
+        "AI定開"
       ],
       "description": [
         {

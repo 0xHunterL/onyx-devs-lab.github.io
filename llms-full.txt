@@ -13,12 +13,13 @@ Markets: Hong Kong, Greater China, cross-border, and global engagements.
 Contact: info@onyxdevslab.com
 JSON Feed 1.1: https://hk.onyxdevslab.com/feed.json
 Enterprise AI service term graph: https://hk.onyxdevslab.com/data/enterprise-ai-service-terms.jsonld
-Versioned enterprise AI service term graph: https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-readiness-2026-09-10/enterprise-ai-service-terms.jsonld
+Versioned enterprise AI service term graph: https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-query-coverage-2026-09-10/enterprise-ai-service-terms.jsonld
 
 ## External public evidence and field notes
 Versioned GEO evidence checkpoint: https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-evidence-2026-09-09
 Versioned agent-readiness evidence checkpoint: https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-readiness-2026-09-10
-Versioned AI-search evidence status asset: https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-readiness-2026-09-10/ai-search-evidence-status.json
+Versioned query-coverage evidence checkpoint: https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-query-coverage-2026-09-10
+Versioned AI-search evidence status asset: https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-query-coverage-2026-09-10/ai-search-evidence-status.json
 Chinese enterprise AI field-note release: https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/chinese-enterprise-ai-field-notes-2026-09-10
 Machine-readable Chinese enterprise AI field-note index: https://hk.onyxdevslab.com/data/chinese-enterprise-ai-field-notes.json
 Versioned Chinese enterprise AI field-note index: https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/chinese-enterprise-ai-field-notes-2026-09-10/chinese-enterprise-ai-field-notes.json
@@ -468,6 +469,8 @@ https://hk.onyxdevslab.com/zh-cn/custom-ai-development/
 - 评估: 使用代表性测试集、准确度标准、回归检查和失败分析。
 - 安全与控制: 最小权限、租户隔离、敏感数据处理和高风险操作确认。
 - 持续运营: 监控、成本、降级、文档、培训和明确责任人。
+Q: AI 定开或 AI定开是什么意思？
+A: AI 定开是“AI 定制开发”的常用简称，指围绕企业专属流程、数据、权限和系统接口设计并交付 AI 软件；它不同于直接购买通用 SaaS，也不等于只做一个模型演示。
 Q: AI 定制开发费用如何确定？
 A: 主要取决于系统集成深度、数据状况、风险控制、评估要求和运营责任，而不只是页面数量。
 Q: 是否绑定某个模型供应商？
