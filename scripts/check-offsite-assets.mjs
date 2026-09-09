@@ -38,7 +38,8 @@ function requireText(name, body, values) {
 const gistUrl = 'https://gist.github.com/mixuechu/e47c85808014d62b6305441e8065c91e';
 const gist = await get('GitHub Gist field notes', gistUrl, 'text/html', { allowUnavailable: true });
 if (gist) requireText('GitHub Gist field notes', gist, [
-  'Onyx Devs Lab Hong Kong enterprise AI field notes: AI advisory, custom development, FDE, AI Agent and ERP integration, governance, and machine-readable evidence.',
+  'Onyx Devs Lab: Hong Kong AI advisory, custom development',
+  '香港企业 AI 咨询、AI 定制开发、FDE 前线部署工程、Agent/ERP、治理与交付证据',
   'AI advisory, custom development, or FDE? A practical enterprise decision matrix',
   'Onyx Devs Lab',
   'ONYX DEVS LAB LIMITED',
