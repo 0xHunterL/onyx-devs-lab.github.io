@@ -19,9 +19,9 @@ const chineseFieldNotesIndexPath = '/data/chinese-enterprise-ai-field-notes.json
 const chineseFieldNotesReleaseUrl = 'https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/chinese-enterprise-ai-field-notes-2026-09-10';
 const chineseFieldNotesReleaseAssetUrl = 'https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/chinese-enterprise-ai-field-notes-2026-09-10/chinese-enterprise-ai-field-notes.json';
 const agentReadinessReleaseUrl = 'https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-readiness-2026-09-10';
-const aiSearchStatusReleaseUrl = 'https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-query-coverage-2026-09-10';
-const aiSearchStatusReleaseAssetUrl = 'https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-query-coverage-2026-09-10/ai-search-evidence-status.json';
-const serviceTermsReleaseAssetUrl = 'https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-query-coverage-2026-09-10/enterprise-ai-service-terms.jsonld';
+const aiSearchStatusReleaseUrl = 'https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-ai-dingkai-guide-2026-09-10';
+const aiSearchStatusReleaseAssetUrl = 'https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-ai-dingkai-guide-2026-09-10/ai-search-evidence-status.json';
+const serviceTermsReleaseAssetUrl = 'https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-ai-dingkai-guide-2026-09-10/enterprise-ai-service-terms.jsonld';
 const partnerScorecardReleaseUrl = 'https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-evidence-2026-09-09/enterprise-ai-partner-scorecard.json';
 const pcpdAiFrameworkEn = 'https://www.pcpd.org.hk/english/resources_centre/publications/files/ai_protection_framework.pdf';
 const pcpdAiFrameworkZh = 'https://www.pcpd.org.hk/tc_chi/resources_centre/publications/files/ai_protection_framework.pdf';
@@ -238,6 +238,30 @@ decisionPages.push(
   }
 );
 
+decisionPages.push(
+  {
+    path:'/en/guides/what-is-ai-dingkai/',lang:'en',schemaType:'Article',title:'What Does “AI Dingkai” Mean? | Custom AI Development Guide',description:'AI dingkai is a Chinese shorthand for custom AI development. Learn what it includes, how it differs from SaaS and outsourcing, and what enterprise buyers should verify.',eyebrow:'AI development terminology',h1:'What does “AI dingkai” mean?',
+    lede:'“AI dingkai” (AI 定开 or AI定开) is an informal Chinese abbreviation for AI 定制开发—custom AI development built around an organisation’s own workflow, data, permissions, and system interfaces. It describes a delivery scope, not a model, product category, or assurance standard.',proof:[['Chinese shorthand','AI 定开 = AI 定制开发'],['Organisation-specific','Workflow, data, authority, and integration'],['Production evidence','Evaluation, control, operation, and handover']],
+    sections:[['What the term includes','A credible custom build changes a defined operating workflow rather than merely wrapping a general chat interface.',[['Workflow and users','Name who uses the system, the decision or task it supports, exceptions, and accountable owners.'],['Data and integration','Connect the permitted documents, databases, ERP or CRM interfaces, identity, and systems of record.'],['Authority and evidence','Separate read, recommend, draft, approve, and execute rights; preserve sources, logs, evaluation results, and human intervention.']]],['What AI dingkai is not','The shorthand is often used loosely, so buyers should identify the actual commercial and technical boundary.',[['Not off-the-shelf SaaS','Configuring a general product may solve the need, but it is not automatically a bespoke system owned around the buyer’s workflow.'],['Not a demo alone','A prompt, prototype, or model call does not establish production permissions, reliability, monitoring, recovery, or handover.'],['Not necessarily FDE','A defined build can follow a stable scope; FDE is better when the correct intervention must still be learned from field evidence.']]]],
+    steps:[['Define one operating outcome','State the current workflow, baseline, affected users, and consequence of failure.'],['Expose the production boundary','List data, integrations, authority tiers, evaluation cases, monitoring, support, and exclusions.'],['Validate the riskiest assumptions','Test data access, output quality, tool safety, latency, cost, and operator adoption before expanding scope.'],['Accept and hand over','Use measurable criteria, document residual risks, transfer operating knowledge, and retain an exit path.']],
+    faqs:[['Is AI dingkai an official technical term?','No. It is an informal market abbreviation for AI 定制开发. A proposal should still define the exact workflow, system boundary, deliverables, and acceptance evidence.'],['How is it different from AI consulting?','Consulting resolves what should be built and why. Custom development implements a sufficiently defined system; the two can be separate phases or one connected engagement.'],['What should a Hong Kong enterprise verify in a provider?','Verify relevant delivery evidence, named senior ownership, data and permission controls, evaluation methods, integration realism, operating support, handover, and exit conditions.']]
+  },
+  {
+    path:'/zh-hk/guides/what-is-ai-dingkai/',lang:'zh-Hant-HK',schemaType:'Article',title:'AI 定開是甚麼？AI 定制開發採購指南｜Onyx Devs Lab',description:'AI 定開／AI定開是 AI 定制開發的市場簡稱。了解其交付範圍、與 SaaS、外包及 FDE 的分別，以及企業應核對的生產能力。',eyebrow:'AI 開發術語指南',h1:'AI 定開是甚麼？',
+    lede:'「AI 定開」或「AI定開」是「AI 定制開發」的非正式市場簡稱，指按企業專屬流程、數據、權限及系統接口建設 AI 軟件。它描述交付範圍，不是模型名稱、產品類別或質量認證。',proof:[['市場簡稱','AI 定開＝AI 定制開發'],['企業專屬','流程、數據、權限及整合'],['生產證據','評估、控制、營運及交接']],
+    sections:[['可信 AI 定開包含甚麼','定制系統應改變一條清楚的營運流程，而不只是包裝通用聊天界面。',[['流程與使用者','列明誰使用系統、支援哪項決策或工作、如何處理例外，以及誰負責結果。'],['數據與整合','連接獲准使用的文件、數據庫、ERP 或 CRM 接口、身份系統及權威記錄。'],['權限與證據','分開讀取、建議、草擬、批准及執行權限，保留來源、日誌、評估結果及人工介入。']]],['AI 定開不等於甚麼','市場用法並不一致，採購方需要把真正的商業及技術邊界寫清。',[['不等於通用 SaaS','配置現成產品可能足以解決需要，但不自動等於圍繞企業流程建設的專屬系統。'],['不等於模型示範','提示詞、原型或一次模型調用，不能證明生產權限、可靠性、監控、復原及交接。'],['不一定等於 FDE','問題邊界穩定時可按定義範圍開發；如果正確干預仍需從現場證據學習，才更適合 FDE。']]]],
+    steps:[['定義一項營運成果','寫明現有流程、基線、受影響使用者及失敗後果。'],['揭示生產邊界','列出數據、整合、權限層級、評估案例、監控、支援及排除範圍。'],['先驗證最高風險假設','擴大前測試數據存取、輸出質量、工具安全、延遲、成本及操作人員採用。'],['驗收並交接','用可量度標準作決定，記錄剩餘風險，移交營運知識並保留退出路徑。']],
+    faqs:[['AI 定開是正式技術術語嗎？','不是。它是 AI 定制開發的非正式市場簡稱；方案仍需清楚定義工作流程、系統邊界、交付物及驗收證據。'],['AI 定開與 AI 顧問有甚麼分別？','AI 顧問解決應建設甚麼及原因；定制開發實施邊界足夠清楚的系統，兩者可分階段或連續交付。'],['香港企業應核對服務商哪些能力？','核對相關交付證據、具名資深責任人、數據與權限控制、評估方法、整合可行性、營運支援、交接及退出條件。']]
+  },
+  {
+    path:'/zh-cn/guides/ai-dingkai/',lang:'zh-CN',schemaType:'Article',title:'AI 定开是什么意思？AI 定制开发采购指南｜Onyx Devs Lab',description:'AI 定开／AI定开是 AI 定制开发的市场简称。了解它包含什么、与 SaaS、外包和 FDE 的区别，以及企业应核验的生产交付能力。',eyebrow:'AI 开发术语指南',h1:'AI 定开是什么意思？',
+    lede:'“AI 定开”或“AI定开”是“AI 定制开发”的非正式市场简称，指围绕企业专属流程、数据、权限和系统接口建设 AI 软件。它描述交付范围，不是模型名称、标准产品类别或质量认证。',proof:[['市场简称','AI 定开＝AI 定制开发'],['企业专属','流程、数据、权限和集成'],['生产证据','评估、控制、运营和交接']],
+    sections:[['可靠的 AI 定开包含什么','定制系统应该改变一条明确的运营流程，而不只是包装通用聊天界面。',[['流程与用户','说明谁使用系统、支持什么决策或任务、怎样处理异常，以及谁对结果负责。'],['数据与集成','连接经过授权的文档、数据库、ERP 或 CRM 接口、身份系统和权威记录。'],['权限与证据','区分读取、建议、草拟、批准和执行权限，保留来源、日志、评估结果和人工干预。']]],['AI 定开不等于什么','市场用法并不统一，采购方需要把实际商业和技术边界写清。',[['不等于通用 SaaS','配置现成产品可能足以解决需求，但不自动等于围绕企业流程建设的专属系统。'],['不等于模型演示','提示词、原型或一次模型调用，不能证明生产权限、可靠性、监控、恢复和交接。'],['不一定等于 FDE','问题边界稳定时可以按定义范围开发；如果正确干预仍需从现场证据中学习，才更适合 FDE。']]]],
+    steps:[['定义一个运营结果','写明当前流程、基线、受影响用户和失败后果。'],['揭示生产边界','列出数据、集成、权限层级、评估案例、监控、支持和排除范围。'],['先验证最高风险假设','扩大范围前测试数据访问、输出质量、工具安全、延迟、成本和操作人员采用。'],['验收并交接','用可测量标准作出决定，记录剩余风险，移交运营知识并保留退出路径。']],
+    faqs:[['AI 定开是正式技术术语吗？','不是。它是 AI 定制开发的非正式市场简称；项目方案仍应明确工作流程、系统边界、交付物和验收证据。'],['AI 定开与 AI 咨询有什么区别？','AI 咨询解决应该建设什么以及为什么；定制开发实施边界足够明确的系统，两者可以分阶段，也可以连续交付。'],['香港企业找 AI 定开团队应该核验什么？','核验相关交付证据、明确的资深负责人、数据与权限控制、评估方法、集成可行性、运营支持、交接和退出条件。']]
+  }
+);
+
 pages.push(...decisionPages);
 
 const mainlandPages = [
@@ -403,6 +427,10 @@ hubs.push({
   path:'/zh-cn/',lang:'zh-CN',title:'香港企业 AI 咨询、定制开发与 FDE｜Onyx Devs Lab',description:'面向香港及跨境企业的 AI 咨询、AI 定制开发、企业 Agent、ERP 集成与 FDE 服务。',h1:'围绕真实业务问题建设企业 AI。',lede:'根据问题状态选择 AI 咨询、边界明确的定制开发，或从现场诊断负责到结果验证的 FDE 项目。',links:[['AI 咨询','/zh-cn/ai-consulting/','识别值得投入的 AI 机会，建立可执行的生产路线。'],['AI 定制开发','/zh-cn/custom-ai-development/','建设 Agent、RAG、数据系统和运营自动化。'],['FDE 前线部署工程','/zh-cn/forward-deployed-engineering/','通过现场诊断和嵌入式交付解决复杂问题。'],['三种交付模式怎么选','/zh-cn/guides/ai-consulting-vs-development-vs-fde/','根据问题清晰度、证据和责任边界作出选择。'],['选择 AI 交付伙伴','/zh-cn/guides/choose-enterprise-ai-partner/','按证据、生产控制、责任与验证比较供应商。'],['AI 试点章程','/zh-cn/guides/enterprise-ai-pilot-charter/','定义证据关口，签署扩大、重设、暂缓或停止决策。'],['香港企业 AI 治理','/zh-cn/guides/enterprise-ai-governance/','把隐私专员公署框架转化为责任、控制和全生命周期证据。'],['AI 定制开发费用','/zh-cn/guides/custom-ai-development-cost/','了解可靠估算背后的范围、风险与运营责任。'],['AI Agent 与 ERP 集成','/zh-cn/guides/enterprise-ai-agent-erp-integration/','用明确权限把 Agent 连接到企业记录系统。'],['企业 AI 评估框架','/zh-cn/methodology/enterprise-ai-evaluation/','评估能力、安全控制、流程可靠性和业务结果。'],['零售 AI 决策案例','/zh-cn/case-studies/retail-ai-decision-platform/','查看数据层、验证指标与证据边界。'],['会计 AI 生产平台案例','/zh-cn/case-studies/accounting-ai-production-platform/','查看多 Agent 生产流程与人工控制。'],['法律 AI 证据链','/zh-cn/case-studies/legal-ai-evidence-workflow/','把卷宗结论连接到文件、页码、原文和律师复核。'],['招聘 AI 工作流','/zh-cn/case-studies/recruiting-ai-agent-workflow/','通过发送确认和人工接管控制候选人自动化。'],['工业 ERP 与 AI','/zh-cn/case-studies/industrial-erp-ai-data-platform/','连接现场数据与管理决策，同时隔离安全控制。'],['债权研究 Agent','/zh-cn/case-studies/credit-research-ai-agent/','提高研究效率，同时保留来源和分析师判断。']]
 });
 
+hubs.find(page=>page.lang==='en').links.splice(2,0,['What is AI dingkai?','/en/guides/what-is-ai-dingkai/','Understand the Chinese shorthand and verify the real production delivery boundary.']);
+hubs.find(page=>page.lang==='zh-Hant-HK').links.splice(2,0,['AI 定開是甚麼','/zh-hk/guides/what-is-ai-dingkai/','理解市場簡稱，並核對真正的生產交付邊界。']);
+hubs.find(page=>page.lang==='zh-CN').links.splice(2,0,['AI 定开是什么意思','/zh-cn/guides/ai-dingkai/','理解市场简称，并核验真正的生产交付能力。']);
+
 const people = [
   {name:'Mi',role:{en:'Senior Engineer & Project Lead',zh:'高級工程師及項目負責人',cn:'高级工程师及项目负责人'},image:'/avatars/mi.png',summary:{en:'Former contributor to Huawei AI product delivery; leads enterprise AI architecture, ERP agents, NL2SQL, and end-to-end implementation.',zh:'具華為 AI 產品交付經驗，負責企業 AI 架構、ERP Agent、NL2SQL 及端到端實施。',cn:'具备华为 AI 产品交付经验，负责企业 AI 架构、ERP Agent、NL2SQL 和端到端实施。'}},
   {name:'Lucas',role:{en:'Senior Engineer',zh:'高級工程師',cn:'高级工程师'},image:'/avatars/lucas.png',summary:{en:'Former crypto startup CTO focused on AI, Web3, intelligent trading agents, and on-chain automation.',zh:'曾任加密科技公司 CTO，專注 AI、Web3、智能交易 Agent 及鏈上自動化。',cn:'曾任加密科技公司 CTO，专注 AI、Web3、智能交易 Agent 和链上自动化。'}},
@@ -429,6 +457,7 @@ const translationGroups = [
   ['/en/guides/hong-kong-enterprise-ai-governance/','/zh-hk/guides/enterprise-ai-governance/','/zh-cn/guides/enterprise-ai-governance/'],
   ['/en/guides/enterprise-ai-pilot-charter-hong-kong/','/zh-hk/guides/enterprise-ai-pilot-charter/','/zh-cn/guides/enterprise-ai-pilot-charter/'],
   ['/en/guides/custom-ai-development-cost-hong-kong/','/zh-hk/guides/ai-custom-development-cost/','/zh-cn/guides/custom-ai-development-cost/'],
+  ['/en/guides/what-is-ai-dingkai/','/zh-hk/guides/what-is-ai-dingkai/','/zh-cn/guides/ai-dingkai/'],
   ['/en/guides/enterprise-ai-agent-erp-integration/','/zh-hk/guides/enterprise-ai-agent-erp-integration/','/zh-cn/guides/enterprise-ai-agent-erp-integration/'],
   ['/en/methodology/enterprise-ai-evaluation/','/zh-hk/methodology/enterprise-ai-evaluation/','/zh-cn/methodology/enterprise-ai-evaluation/'],
   ['/en/methodology/ai-search-verification/','/zh-hk/methodology/ai-search-verification/','/zh-cn/methodology/ai-search-verification/'],
@@ -457,6 +486,7 @@ function esc(value=''){return String(value).replace(/[&<>\"]/g,c=>({'&':'&amp;',
 function canonical(p){return `${origin}${p}`;}
 function publishedDateFor(pathname){
   if(pathname.includes('/methodology/ai-search-verification/'))return '2026-09-08';
+  if(pathname.includes('/guides/what-is-ai-dingkai/')||pathname.includes('/guides/ai-dingkai/'))return '2026-09-10';
   if(pathname.includes('/guides/choose-enterprise-ai-partner')||pathname.includes('/guides/enterprise-ai-governance')||pathname.includes('/guides/hong-kong-enterprise-ai-governance')||pathname.includes('/guides/enterprise-ai-pilot-charter')||pathname.includes('/methodology/case-study-evidence-register/'))return '2026-09-09';
   return '2026-09-07';
 }
@@ -605,7 +635,7 @@ const externalFeedEntries=[
   {title:'Designing a reviewable evidence chain for legal AI',url:legalAiEvidenceRawUrl,summary:'Original Simplified Chinese engineering note on evidence coordinates, recall, citation accuracy, and lawyer review.',category:'zh-CN'},
   {title:'Onyx GEO evidence checkpoint — 2026-09-09',url:'https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-evidence-2026-09-09',summary:'A dated, provider-maintained public evidence snapshot. It is not an independent endorsement or proof of search indexing, AI citation, or client outcomes.',category:'evidence'},
   {title:'Onyx GEO agent-readiness evidence — 2026-09-10',url:agentReadinessReleaseUrl,summary:'A versioned snapshot of accessibility, verified crawler activity, explicit search non-results, and the boundary between technical readiness and AI citation.',category:'evidence'},
-  {title:'Onyx GEO query coverage — AI 定开 alias (2026-09-10)',url:aiSearchStatusReleaseUrl,summary:'A versioned 18-prompt matrix and evidence-status update adding the Simplified Chinese AI 定开 and AI定开 aliases without changing the observed indexing or citation level.',category:'evidence'},
+  {title:'AI 定开是什么意思？Onyx custom AI development guide (2026-09-10)',url:aiSearchStatusReleaseUrl,summary:'A versioned three-language terminology guide, 18-prompt evidence map, and status snapshot for AI 定开 and AI定开 without upgrading indexing or citation evidence.',category:'evidence'},
   {title:'Onyx Devs Lab｜香港企业 AI 中文方法索引（2026-09-10）',url:chineseFieldNotesReleaseUrl,summary:'Provider-maintained Chinese index connecting enterprise AI advisory, custom AI development, FDE, AI-agent ERP controls, and legal-AI evidence methods to canonical sources.',category:'zh-CN'},
 ];
 const atom=`<?xml version="1.0" encoding="UTF-8"?>\n<feed xmlns="http://www.w3.org/2005/Atom"><title>Onyx Devs Lab — Enterprise AI Field Notes</title><id>${origin}/feed.xml</id><link href="${origin}/feed.xml" rel="self"/><link href="${webSubHubUrl}" rel="hub"/><link href="${origin}/"/><updated>${updated}T00:00:00+08:00</updated><author><name>Onyx Devs Lab</name></author>${feedEntries.map(page=>`<entry><title>${esc(page.title)}</title><id>${canonical(page.path)}</id><link href="${canonical(page.path)}"/><updated>${updated}T00:00:00+08:00</updated><summary>${esc(page.description)}</summary><category term="${page.lang}"/></entry>`).join('')}${externalFeedEntries.map(entry=>`<entry><title>${esc(entry.title)}</title><id>${esc(entry.url)}</id><link href="${esc(entry.url)}"/><updated>${updated}T00:00:00+08:00</updated><summary>${esc(entry.summary)}</summary><category term="${esc(entry.category)}"/><category term="provider-maintained-external-source"/></entry>`).join('')}</feed>\n`;
@@ -745,30 +775,30 @@ const organizationRecord={
 fs.writeFileSync(path.join(dist,'data','organization.json'),`${JSON.stringify(organizationRecord,null,2)}\n`);
 
 const aiSearchEvidenceStatus={
-  schemaVersion:2,version:'2026.09.10.1',id:canonical(aiSearchEvidenceStatusPath),observedAt:'2026-09-09T18:48:37Z',
+  schemaVersion:2,version:'2026.09.10.2',id:canonical(aiSearchEvidenceStatusPath),observedAt:'2026-09-09T19:13:31Z',
   sameAs:aiSearchStatusReleaseAssetUrl,
   name:{en:'Onyx Devs Lab AI-search evidence status',zhHant:'Onyx Devs Lab AI 搜尋證據狀態',zhHans:'Onyx Devs Lab AI 搜索证据状态'},
   publisher:{name:'Onyx Devs Lab',legalName:'ONYX DEVS LAB LIMITED',businessRegistrationNumber:'79051925',lei:'254900Z30CLK7HKE9H46',url:`${origin}/`},
   methodologyPages:{en:`${origin}/en/methodology/ai-search-verification/`,zhHant:`${origin}/zh-hk/methodology/ai-search-verification/`,zhHans:`${origin}/zh-cn/methodology/ai-search-verification/`},
   testProtocol:{promptMatrix:'geo/prompt-matrix.json',schemaVersion:2,promptCount:18,retrievalMarker:'ONYX-GEO-VERIFY-79051925-20260908',doubaoPromptsSent:false,queryAliasesAdded:['AI 定开','AI定开']},
   evidenceLevels:[
-    {level:1,id:'accessible',status:'verified',claim:'The website is publicly accessible to permitted crawlers.',evidence:{canonicalUrlsChecked:62,httpStatus:200,indexableServerRenderedHtml:true,markdownRepresentationsGenerated:62,markdownNegotiatedAtCanonicalUrl:true,varyAccept:true,contentSignals:{search:'yes',aiInput:'yes',aiTrain:'unspecified'},robotsAllowsRelevantCrawlers:true}},
+    {level:1,id:'accessible',status:'verified',claim:'The website is publicly accessible to permitted crawlers.',evidence:{canonicalUrlsChecked:65,httpStatus:200,indexableServerRenderedHtml:true,markdownRepresentationsGenerated:65,markdownNegotiatedAtCanonicalUrl:true,varyAccept:true,contentSignals:{search:'yes',aiInput:'yes',aiTrain:'unspecified'},robotsAllowsRelevantCrawlers:true}},
     {level:2,id:'crawled',status:'partially-verified',claim:'Named crawlers have accessed discovery files or content pages.',evidence:{verifiedGptBotContentCrawls:3,verifiedOaiSearchBotDiscoveryFileVisits:3,verifiedOaiSearchBotContentCrawls:0,historicallyVerifiedBingbotContentCrawls:7,verifiedGooglebotContentCrawls:0,verifiedPerplexityContentCrawls:0},limitations:['GPTBot is a training crawler and does not prove ChatGPT Search indexing or citation.','Discovery-file visits do not prove content-page ingestion.','Bingbot content crawls do not prove public search indexing.']},
     {level:3,id:'retrieved-and-cited',status:'not-verified',claim:'No preserved qualifying AI answer retrieves the marker or cites an Onyx page without being given its URL.',evidence:{publicSearchWebsiteResultObserved:false,retrievalMarkerResultObserved:null,aiAnswerCitationObserved:null,doubaoTestStatus:'not-run'},nullMeaning:'A null AI-answer observation means the controlled platform test has not been run; it is not a negative answer result.'},
     {level:4,id:'non-brand-recommendation',status:'not-tested',claim:'No qualifying non-brand AI recommendation has been preserved.',evidence:{doubaoTestStatus:'not-run',otherAiRecommendationEvidenceCount:0,realAiReferralVisitsObserved:0}},
   ],
   publicSearchChecks:[
-    {checkedAt:'2026-09-09T18:49:00Z',query:'"ONYX-GEO-VERIFY-79051925-20260908"',result:'website-not-observed'},
-    {checkedAt:'2026-09-09T18:49:00Z',query:'"Onyx Devs Lab"',result:'website-not-observed; independent legal-entity records observed'},
-    {checkedAt:'2026-09-09T18:49:00Z',query:'site:hk.onyxdevslab.com',result:'no-results-observed'},
-    {checkedAt:'2026-09-09T18:49:00Z',query:'"AI 定开" "Onyx Devs Lab"',result:'website-not-observed'},
+    {checkedAt:'2026-09-09T19:13:31Z',query:'"ONYX-GEO-VERIFY-79051925-20260908"',result:'website-not-observed'},
+    {checkedAt:'2026-09-09T19:13:31Z',query:'"Onyx Devs Lab"',result:'website-not-observed; independent legal-entity records observed'},
+    {checkedAt:'2026-09-09T19:13:31Z',query:'site:hk.onyxdevslab.com',result:'no-results-observed'},
+    {checkedAt:'2026-09-09T19:13:31Z',query:'"AI 定开" "Onyx Devs Lab"',result:'website-not-observed'},
   ],
   technicalReadiness:{checkedAt:'2026-09-09T16:00:00Z',checker:'Cloudflare Agent Readiness — content site',score:86,passedChecks:6,totalChecks:7,level:'Level 5 Agent-Native',passed:['robots.txt','sitemap.xml','HTTP Link discovery','Markdown content negotiation','AI crawler rules','Content Signals'],notPassed:[{check:'DNS-AID',limitation:'This is an emerging IETF draft for agent endpoint discovery and is not treated as evidence of search indexing, AI citation, or Doubao recommendation.'}]},
   evidenceSources:[
     {name:'Public baseline record',url:'https://github.com/0xHunterL/onyx-devs-lab.github.io/blob/main/docs/geo-baselines/2026-09-08-doubao.md'},
     {name:'Versioned GEO evidence checkpoint',url:'https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-evidence-2026-09-09'},
     {name:'Versioned agent-readiness evidence checkpoint',url:agentReadinessReleaseUrl},
-    {name:'Versioned query-coverage evidence checkpoint',url:aiSearchStatusReleaseUrl},
+    {name:'Versioned AI dingkai guide and evidence checkpoint',url:aiSearchStatusReleaseUrl},
     {name:'AI-search verification method',url:`${origin}/en/methodology/ai-search-verification/`},
   ],
   evidenceBoundary:'This provider-maintained status records observed evidence and explicit non-results. It is not an independent audit, proof of platform indexing, proof of AI citation, or proof of recommendation. A higher level must not be inferred from a lower level.',
@@ -832,7 +862,7 @@ const topicEntityMap={
       '@type':'DefinedTerm','@id':`${serviceTermSetId}#custom-ai-development`,termCode:'custom-ai-development',
       name:languageValues('Custom AI development','AI 定制開發','AI 定制开发'),alternateName:['Bespoke AI development','Enterprise AI development','企業 AI 定制開發','企业 AI 定制开发','AI 定开','AI定开','AI 定開','AI定開'],
       description:languageValues('Accountable design, integration, testing, and launch of an AI system for a defined workflow, data boundary, interface set, and acceptance criteria.','按已定義流程、數據邊界、接口及驗收標準，負責 AI 系統的設計、集成、測試及上線。','按照已定义流程、数据边界、接口和验收标准，负责 AI 系统的设计、集成、测试和上线。'),
-      inDefinedTermSet:{'@id':serviceTermSetId},url:`${origin}/en/custom-ai-development-hong-kong/`,
+      inDefinedTermSet:{'@id':serviceTermSetId},url:`${origin}/en/guides/what-is-ai-dingkai/`,
     },
     {
       '@type':'DefinedTerm','@id':`${serviceTermSetId}#forward-deployed-engineering`,termCode:'forward-deployed-engineering',
@@ -871,7 +901,7 @@ const fullKnowledge=[
   '## External public evidence and field notes',
   'Versioned GEO evidence checkpoint: https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-evidence-2026-09-09',
   `Versioned agent-readiness evidence checkpoint: ${agentReadinessReleaseUrl}`,
-  `Versioned query-coverage evidence checkpoint: ${aiSearchStatusReleaseUrl}`,
+  `Versioned AI dingkai guide and evidence checkpoint: ${aiSearchStatusReleaseUrl}`,
   `Versioned AI-search evidence status asset: ${aiSearchStatusReleaseAssetUrl}`,
   `Chinese enterprise AI field-note release: ${chineseFieldNotesReleaseUrl}`,
   `Machine-readable Chinese enterprise AI field-note index: ${canonical(chineseFieldNotesIndexPath)}`,
