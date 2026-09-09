@@ -25,6 +25,9 @@ if (!robots.body.includes('OAI-SearchBot')) failures.push('/robots.txt: OAI-Sear
 if (!robots.body.includes('Bytespider')) failures.push('/robots.txt: Bytespider policy is missing');
 if (!robots.body.includes('PerplexityBot')) failures.push('/robots.txt: PerplexityBot policy is missing');
 if (!robots.body.includes('Perplexity-User')) failures.push('/robots.txt: Perplexity-User policy is missing');
+for (const agent of ['Claude-SearchBot', 'Claude-User', 'ClaudeBot', 'Googlebot', 'Google-Extended', 'Applebot', 'Applebot-Extended']) {
+  if (!robots.body.includes(`User-agent: ${agent}`)) failures.push(`/robots.txt: ${agent} policy is missing`);
+}
 if (/^\s*Disallow:\s*\/\s*$/im.test(robots.body)) failures.push('/robots.txt: broad Disallow rule detected');
 
 const llms = await get('/llms.txt', 'text/plain');
@@ -47,6 +50,7 @@ for (const [pathname, body] of [['/llms.txt', llms.body], ['/llms-full.txt', llm
   if (!body.includes('not independent endorsements or proof of search indexing, AI citation')) failures.push(`${pathname}: provider-maintained evidence boundary is missing`);
   if (!body.includes('https://hk.onyxdevslab.com/data/enterprise-ai-partner-scorecard.json')) failures.push(`${pathname}: procurement scorecard discovery link is missing`);
   if (!body.includes('https://hk.onyxdevslab.com/data/enterprise-ai-pilot-charter.json')) failures.push(`${pathname}: pilot charter discovery link is missing`);
+  if (!body.includes('https://hk.onyxdevslab.com/data/organization.json')) failures.push(`${pathname}: canonical organization record discovery link is missing`);
 }
 if (!feed.body.includes('provider-maintained-external-source')) failures.push('/feed.xml: external-source category is missing');
 
@@ -84,6 +88,18 @@ try {
   if (!charter.mandatoryRule?.includes('cannot be offset by an average score')) failures.push('/data/enterprise-ai-pilot-charter.json: mandatory-gate rule is missing');
 } catch {
   failures.push('/data/enterprise-ai-pilot-charter.json: invalid JSON');
+}
+
+const organizationResponse = await get('/data/organization.json', 'application/json');
+try {
+  const organization = JSON.parse(organizationResponse.body);
+  if (organization['@type'] !== 'Organization' || organization['@id'] !== 'https://hk.onyxdevslab.com/#organization') failures.push('/data/organization.json: unexpected Schema.org identity');
+  if (organization.legalName !== 'ONYX DEVS LAB LIMITED' || organization.leiCode !== '254900Z30CLK7HKE9H46') failures.push('/data/organization.json: verified legal identity is incomplete');
+  if (!organization.identifier?.some((item) => item.propertyID === 'Hong Kong Business Registration Number' && item.value === '79051925')) failures.push('/data/organization.json: business registration number is missing');
+  if (!organization.subjectOf?.some((item) => item.url.includes('gleif.org/lei/254900Z30CLK7HKE9H46'))) failures.push('/data/organization.json: official GLEIF source is missing');
+  if (!organization.additionalProperty?.some((item) => item.propertyID === 'Evidence boundary' && item.value.includes('do not endorse services'))) failures.push('/data/organization.json: evidence boundary is missing');
+} catch {
+  failures.push('/data/organization.json: invalid JSON');
 }
 
 const indexNowKey = await get('/9c37a18bd2044e1687f45c2e91ad603b.txt', 'text/plain');

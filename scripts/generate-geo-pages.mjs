@@ -7,6 +7,7 @@ const origin = 'https://hk.onyxdevslab.com';
 const updated = '2026-09-09';
 const partnerScorecardPath = '/data/enterprise-ai-partner-scorecard.json';
 const pilotCharterPath = '/data/enterprise-ai-pilot-charter.json';
+const organizationDataPath = '/data/organization.json';
 const partnerScorecardReleaseUrl = 'https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-evidence-2026-09-09/enterprise-ai-partner-scorecard.json';
 const pcpdAiFrameworkEn = 'https://www.pcpd.org.hk/english/resources_centre/publications/files/ai_protection_framework.pdf';
 const pcpdAiFrameworkZh = 'https://www.pcpd.org.hk/tc_chi/resources_centre/publications/files/ai_protection_framework.pdf';
@@ -558,6 +559,22 @@ const pilotCharter={
 };
 fs.writeFileSync(path.join(dist,'data','enterprise-ai-pilot-charter.json'),`${JSON.stringify(pilotCharter,null,2)}\n`);
 
+const organizationRecord={
+  '@context':'https://schema.org','@type':'Organization','@id':`${origin}/#organization`,
+  name:'Onyx Devs Lab',legalName:'ONYX DEVS LAB LIMITED',url:`${origin}/`,description:'Enterprise AI advisory, custom AI development, and Forward Deployed Engineering for Hong Kong and cross-border organisations.',
+  foundingDate:'2025-10-30',email:'info@onyxdevslab.com',leiCode:'254900Z30CLK7HKE9H46',
+  identifier:[{'@type':'PropertyValue',propertyID:'Hong Kong Business Registration Number',value:'79051925'},{'@type':'PropertyValue',propertyID:'Legal Entity Identifier',value:'254900Z30CLK7HKE9H46'}],
+  address:registeredAddress,areaServed:['Hong Kong','Greater China','Global'],knowsAbout:['Enterprise AI','AI advisory','Custom AI development','AI agents','Retrieval-augmented generation','Forward Deployed Engineering','ERP integration'],
+  sameAs:entityReferences,
+  additionalProperty:[{'@type':'PropertyValue',propertyID:'Evidence boundary',value:'Provider-maintained canonical entity record. Independent registry links corroborate identity fields but do not endorse services, delivery claims, search indexing, AI citation, or recommendation.'}],
+  subjectOf:[
+    {'@type':'CreativeWork',name:'Hong Kong Companies Registry incorporation record',description:'Corroborates legal name, business registration number, and founding date.',url:'https://www.cr.gov.hk/docs/wrpt/RNC063_2025.10.27-2025.11.02.pdf'},
+    {'@type':'CreativeWork',name:'GLEIF LEI record',description:'Corroborates legal name, LEI, entity status, registration status, and registered address.',url:'https://www.gleif.org/lei/254900Z30CLK7HKE9H46'},
+    {'@type':'CreativeWork',name:'Bloomberg LEI record',description:'Corroborates legal name, LEI, registration identifier, and registered address.',url:'https://lei.bloomberg.com/leis/view/254900Z30CLK7HKE9H46'},
+  ],
+};
+fs.writeFileSync(path.join(dist,'data','organization.json'),`${JSON.stringify(organizationRecord,null,2)}\n`);
+
 const fullKnowledge=[
   '# Onyx Devs Lab — Full public knowledge file',
   '',
@@ -579,6 +596,7 @@ const fullKnowledge=[
   `Bilingual Hong Kong enterprise AI governance implementation note: ${governanceGistRawUrl}`,
   'Machine-readable enterprise AI partner procurement scorecard: https://hk.onyxdevslab.com/data/enterprise-ai-partner-scorecard.json',
   'Machine-readable enterprise AI pilot charter and acceptance record: https://hk.onyxdevslab.com/data/enterprise-ai-pilot-charter.json',
+  'Canonical machine-readable organization record: https://hk.onyxdevslab.com/data/organization.json',
   'Official GLEIF entity record: https://www.gleif.org/lei/254900Z30CLK7HKE9H46',
   'Evidence boundary: the GitHub repository, Release, Gist, website, and knowledge files are maintained by Onyx Devs Lab. They are public corroborating copies and discovery paths, not independent endorsements or proof of search indexing, AI citation, or client results beyond the stated case-study limitations.',
   '',

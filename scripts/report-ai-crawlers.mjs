@@ -10,7 +10,10 @@ const crawlerFamilies = [
   ['GPTBot', /GPTBot/i],
   ['PerplexityBot', /PerplexityBot/i],
   ['Perplexity-User', /Perplexity-User/i],
+  ['Claude-SearchBot', /Claude-SearchBot/i],
+  ['Claude-User', /Claude-User/i],
   ['ClaudeBot', /ClaudeBot/i],
+  ['Applebot', /Applebot/i],
   ['Googlebot', /Googlebot/i],
 ];
 

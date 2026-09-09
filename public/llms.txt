@@ -8,6 +8,7 @@
 - [Machine-readable case-study evidence dataset](https://hk.onyxdevslab.com/data/case-study-evidence.json)
 - [Machine-readable enterprise AI partner procurement scorecard](https://hk.onyxdevslab.com/data/enterprise-ai-partner-scorecard.json)
 - [Machine-readable enterprise AI pilot charter and acceptance record](https://hk.onyxdevslab.com/data/enterprise-ai-pilot-charter.json)
+- [Canonical machine-readable organization record](https://hk.onyxdevslab.com/data/organization.json)
 
 ## External public evidence and field notes
 
