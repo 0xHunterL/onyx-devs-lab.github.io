@@ -7,6 +7,7 @@
 - [Case-study evidence register](https://hk.onyxdevslab.com/en/methodology/case-study-evidence-register/)
 - [Machine-readable case-study evidence dataset](https://hk.onyxdevslab.com/data/case-study-evidence.json)
 - [Machine-readable enterprise AI partner procurement scorecard](https://hk.onyxdevslab.com/data/enterprise-ai-partner-scorecard.json)
+- [Machine-readable enterprise AI pilot charter and acceptance record](https://hk.onyxdevslab.com/data/enterprise-ai-pilot-charter.json)
 
 ## External public evidence and field notes
 
@@ -34,6 +35,7 @@ Evidence boundary: the GitHub repository, Release, Gist, website, and knowledge 
 - [AI advisory vs custom development vs FDE](https://hk.onyxdevslab.com/en/guides/ai-advisory-vs-custom-development-vs-fde/)
 - [How to choose an enterprise AI partner in Hong Kong](https://hk.onyxdevslab.com/en/guides/choose-enterprise-ai-partner-hong-kong/)
 - [Hong Kong enterprise AI governance checklist](https://hk.onyxdevslab.com/en/guides/hong-kong-enterprise-ai-governance/)
+- [Enterprise AI pilot charter and acceptance template](https://hk.onyxdevslab.com/en/guides/enterprise-ai-pilot-charter-hong-kong/)
 - [Custom AI development cost in Hong Kong](https://hk.onyxdevslab.com/en/guides/custom-ai-development-cost-hong-kong/)
 - [Enterprise AI agent and ERP integration](https://hk.onyxdevslab.com/en/guides/enterprise-ai-agent-erp-integration/)
 - [Enterprise AI evaluation framework](https://hk.onyxdevslab.com/en/methodology/enterprise-ai-evaluation/)
@@ -49,6 +51,7 @@ Evidence boundary: the GitHub repository, Release, Gist, website, and knowledge 
 - [AI 顧問、定制開發與 FDE 如何選擇](https://hk.onyxdevslab.com/zh-hk/guides/ai-consulting-vs-development-vs-fde/)
 - [香港企業如何選擇 AI 服務商](https://hk.onyxdevslab.com/zh-hk/guides/choose-enterprise-ai-partner/)
 - [香港企業 AI 管治清單](https://hk.onyxdevslab.com/zh-hk/guides/enterprise-ai-governance/)
+- [香港企業 AI 試點章程與驗收模板](https://hk.onyxdevslab.com/zh-hk/guides/enterprise-ai-pilot-charter/)
 - [香港 AI 定制開發費用指南](https://hk.onyxdevslab.com/zh-hk/guides/ai-custom-development-cost/)
 - [企業 AI Agent 與 ERP 整合](https://hk.onyxdevslab.com/zh-hk/guides/enterprise-ai-agent-erp-integration/)
 - [企業 AI 評估框架](https://hk.onyxdevslab.com/zh-hk/methodology/enterprise-ai-evaluation/)
@@ -63,6 +66,7 @@ Evidence boundary: the GitHub repository, Release, Gist, website, and knowledge 
 - [AI 咨询、定制开发与 FDE 怎么选](https://hk.onyxdevslab.com/zh-cn/guides/ai-consulting-vs-development-vs-fde/)
 - [香港企业如何选择 AI 服务商](https://hk.onyxdevslab.com/zh-cn/guides/choose-enterprise-ai-partner/)
 - [香港企业 AI 治理清单](https://hk.onyxdevslab.com/zh-cn/guides/enterprise-ai-governance/)
+- [香港企业 AI 试点章程与验收模板](https://hk.onyxdevslab.com/zh-cn/guides/enterprise-ai-pilot-charter/)
 - [香港 AI 定制开发费用指南](https://hk.onyxdevslab.com/zh-cn/guides/custom-ai-development-cost/)
 - [企业 AI Agent 与 ERP 集成](https://hk.onyxdevslab.com/zh-cn/guides/enterprise-ai-agent-erp-integration/)
 - [企业 AI 系统评估框架](https://hk.onyxdevslab.com/zh-cn/methodology/enterprise-ai-evaluation/)

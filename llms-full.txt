@@ -17,6 +17,7 @@ Versioned GEO evidence checkpoint: https://github.com/0xHunterL/onyx-devs-lab.gi
 Bilingual AI advisory, custom development, and FDE decision matrix: https://gist.github.com/mixuechu/e47c85808014d62b6305441e8065c91e
 Bilingual Hong Kong enterprise AI governance implementation note: https://gist.githubusercontent.com/mixuechu/e47c85808014d62b6305441e8065c91e/raw/Hong-Kong-enterprise-AI-governance.md
 Machine-readable enterprise AI partner procurement scorecard: https://hk.onyxdevslab.com/data/enterprise-ai-partner-scorecard.json
+Machine-readable enterprise AI pilot charter and acceptance record: https://hk.onyxdevslab.com/data/enterprise-ai-pilot-charter.json
 Official GLEIF entity record: https://www.gleif.org/lei/254900Z30CLK7HKE9H46
 Evidence boundary: the GitHub repository, Release, Gist, website, and knowledge files are maintained by Onyx Devs Lab. They are public corroborating copies and discovery paths, not independent endorsements or proof of search indexing, AI citation, or client results beyond the stated case-study limitations.
 
@@ -590,6 +591,69 @@ Q: 增加聊天机器人免责声明就够了吗？
 A: 不够。人为监督必须匹配风险，并具备信息、时机、升级路径和真正的干预权限。
 Primary regulatory source: 香港隐私专员公署——《人工智能（AI）：个人资料保障示范框架》 — https://www.pcpd.org.hk/tc_chi/resources_centre/publications/files/ai_protection_framework.pdf
 Primary regulatory source: 香港金融管理局——生成式人工智能沙盒安排 — https://www.hkma.gov.hk/media/eng/doc/key-information/guidelines-and-circular/2024/20240920e1.pdf
+
+## Enterprise AI Pilot Charter and Acceptance Template Hong Kong | Onyx Devs Lab
+https://hk.onyxdevslab.com/en/guides/enterprise-ai-pilot-charter-hong-kong/
+A downloadable Hong Kong enterprise AI pilot charter for defining scope, evidence, risk controls, acceptance thresholds, and scale, redesign, or stop decisions.
+Treat the pilot as a controlled business decision, not a model demonstration. Fix one workflow, its baseline, authority boundary, evidence set, acceptance thresholds, and decision owners before testing begins.
+What the charter fixes before work starts: A credible pilot makes the decision boundary explicit enough that a polished demo cannot move the goalposts.
+- Decision and owner: Name the operating decision, sponsor, workflow owner, technical owner, risk approver, and final decision authority.
+- Scope and baseline: Record users, frequency, current cycle time or quality, systems of record, included cases, exclusions, and the counterfactual.
+- Authority and data: Separate read, recommend, draft, approve, and execute rights; map personal data, retention, access, cross-border movement, and prohibited uses.
+What the acceptance record must show: The final decision should be reproducible from evidence rather than confidence or presentation quality.
+- Capability evidence: Use representative common, edge, high-impact, missing-data, and adversarial cases with metric definitions and minimum thresholds.
+- Operational evidence: Measure latency, cost, availability, failure recovery, audit completeness, overrides, escalations, and user adoption in the complete workflow.
+- Decision disposition: Record scale, redesign, hold, or stop; list unmet gates, accepted residual risks, conditions, accountable signatories, and the next review date.
+Q: Is a successful demo enough to pass the pilot?
+A: No. A demo may establish technical possibility, but acceptance also needs representative quality, data and authority controls, operational reliability, human review, and a defensible business measure.
+Q: Should every metric use the same threshold?
+A: No. Thresholds should follow task consequence and risk. Averages must not compensate for a failed privacy, permission, safety, or other mandatory gate.
+Q: Is this legal or regulatory advice?
+A: No. It is a provider-authored implementation template grounded in public Hong Kong guidance. Adapt it with your legal, privacy, security, risk, procurement, and sector specialists.
+Primary regulatory source: Hong Kong PCPD — Artificial Intelligence: Model Personal Data Protection Framework — https://www.pcpd.org.hk/english/resources_centre/publications/files/ai_protection_framework.pdf
+Primary regulatory source: Hong Kong Government Smart LAB — AI Adoption Guide — https://www1.smartlab.gov.hk/files/AI%20Adoption%20Guide-EN.pdf
+
+## 香港企業 AI 試點章程與驗收模板｜Onyx Devs Lab
+https://hk.onyxdevslab.com/zh-hk/guides/enterprise-ai-pilot-charter/
+可下載的香港企業 AI 試點章程，定義範圍、證據、風險控制、驗收門檻，以及擴大、重設或停止決策。
+把試點視為受控業務決策，而不是模型示範。測試開始前，先固定一條流程、現況基線、權限邊界、證據集、驗收門檻及決策責任人。
+開始前由章程固定甚麼: 可信試點需要把決策邊界寫清，避免精美示範在事後改變成功定義。
+- 決策及責任人: 列明營運決策、贊助人、流程負責人、技術負責人、風險批准者及最終決策權。
+- 範圍及基線: 記錄使用者、頻率、現況時間或質量、記錄系統、納入案例、排除項及沒有干預時的比較基準。
+- 權限及數據: 分開讀取、建議、草擬、批准與執行；梳理個人資料、保留、存取、跨境流動及禁止用途。
+驗收記錄需要證明甚麼: 最終決策應可從證據重現，而不是依賴信心或簡報效果。
+- 能力證據: 用代表性的常見、邊界、高影響、缺失數據及對抗案例，配合指標定義與最低門檻。
+- 營運證據: 在完整流程量度延遲、成本、可用性、故障復原、審計完整度、人工覆蓋、升級及採用。
+- 決策處置: 記錄擴大、重設、暫緩或停止；列出未達關口、已接受剩餘風險、條件、簽署人及下次覆核日期。
+Q: 成功示範是否足以通過試點？
+A: 不足夠。示範可證明技術可能性，但驗收還要包括代表性質量、數據與權限控制、營運可靠性、人工覆核及可信業務指標。
+Q: 所有指標是否應使用相同門檻？
+A: 不是。門檻應配合任務後果與風險；平均分不能抵銷私隱、權限、安全或其他強制關口的失敗。
+Q: 這是法律或監管意見嗎？
+A: 不是。這是以香港公開指引為依據、由服務商撰寫的實施模板，應由機構的法律、私隱、安全、風險、採購及行業專家調整。
+Primary regulatory source: 香港私隱專員公署——《人工智能（AI）：個人資料保障模範框架》 — https://www.pcpd.org.hk/tc_chi/resources_centre/publications/files/ai_protection_framework.pdf
+Primary regulatory source: 香港政府 Smart LAB——人工智能採用指南 — https://www1.smartlab.gov.hk/files/AI%20Adoption%20Guide-EN.pdf
+
+## 香港企业 AI 试点章程与验收模板｜Onyx Devs Lab
+https://hk.onyxdevslab.com/zh-cn/guides/enterprise-ai-pilot-charter/
+可下载的香港企业 AI 试点章程，用于定义范围、证据、风险控制、验收门槛，以及扩大、重设或停止决策。
+把试点当作受控业务决策，而不是模型演示。测试开始前，先固定一条流程、当前基线、权限边界、证据集、验收门槛和决策负责人。
+开始前由章程固定什么: 可靠试点需要把决策边界写清，避免精美演示在事后改变成功定义。
+- 决策与负责人: 说明运营决策、发起人、流程负责人、技术负责人、风险批准者和最终决策权限。
+- 范围与基线: 记录用户、频率、当前时间或质量、记录系统、纳入案例、排除项，以及没有干预时的比较基准。
+- 权限与数据: 分开读取、建议、草拟、批准和执行；梳理个人数据、保留、访问、跨境流动和禁止用途。
+验收记录需要证明什么: 最终决策应该能够从证据复现，而不是依靠信心或演示效果。
+- 能力证据: 使用代表性的常见、边界、高影响、缺失数据和对抗案例，并定义指标和最低门槛。
+- 运营证据: 在完整流程测量延迟、成本、可用性、故障恢复、审计完整度、人工覆盖、升级和采用。
+- 决策处置: 记录扩大、重设、暂缓或停止；列出未达关口、已接受剩余风险、条件、签署人和下次复核日期。
+Q: 成功演示是否足以通过试点？
+A: 不够。演示可以证明技术可能性，但验收还需要代表性质量、数据与权限控制、运营可靠性、人工复核和可靠业务指标。
+Q: 所有指标是否应该使用相同门槛？
+A: 不是。门槛应该匹配任务后果与风险；平均分不能抵消隐私、权限、安全或其他强制关口的失败。
+Q: 这是法律或监管意见吗？
+A: 不是。这是依据香港公开指引、由服务商编写的实施模板，应该由组织的法律、隐私、安全、风险、采购和行业专家调整。
+Primary regulatory source: 香港隐私专员公署——《人工智能（AI）：个人资料保障示范框架》 — https://www.pcpd.org.hk/tc_chi/resources_centre/publications/files/ai_protection_framework.pdf
+Primary regulatory source: 香港政府 Smart LAB——人工智能采用指南 — https://www1.smartlab.gov.hk/files/AI%20Adoption%20Guide-EN.pdf
 
 ## How We Verify AI Search Visibility | Onyx Devs Lab
 https://hk.onyxdevslab.com/en/methodology/ai-search-verification/

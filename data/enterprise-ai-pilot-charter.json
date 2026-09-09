@@ -1,0 +1,222 @@
+{
+  "schemaVersion": 1,
+  "version": "2026.09.09",
+  "id": "https://hk.onyxdevslab.com/data/enterprise-ai-pilot-charter.json",
+  "name": {
+    "en": "Enterprise AI pilot charter and acceptance record",
+    "zhHant": "企業 AI 試點章程與驗收記錄",
+    "zhHans": "企业 AI 试点章程与验收记录"
+  },
+  "publisher": {
+    "name": "Onyx Devs Lab",
+    "legalName": "ONYX DEVS LAB LIMITED",
+    "businessRegistrationNumber": "79051925",
+    "lei": "254900Z30CLK7HKE9H46",
+    "url": "https://hk.onyxdevslab.com/"
+  },
+  "dateModified": "2026-09-09",
+  "landingPages": {
+    "en": "https://hk.onyxdevslab.com/en/guides/enterprise-ai-pilot-charter-hong-kong/",
+    "zhHant": "https://hk.onyxdevslab.com/zh-hk/guides/enterprise-ai-pilot-charter/",
+    "zhHans": "https://hk.onyxdevslab.com/zh-cn/guides/enterprise-ai-pilot-charter/"
+  },
+  "evidenceClass": "Provider-authored decision template grounded in public Hong Kong guidance",
+  "instructions": {
+    "en": "Complete and approve the charter before the pilot. At review, mark every gate pass, fail, inconclusive, or not tested and sign one disposition.",
+    "zhHant": "試點前填寫並批准章程；覆核時把每項關口標記為通過、失敗、未能判斷或未測試，並簽署一項處置。",
+    "zhHans": "试点前填写并批准章程；复核时把每项关口标记为通过、失败、无法判断或未测试，并签署一项处置。"
+  },
+  "statusValues": [
+    "draft",
+    "approved",
+    "in-progress",
+    "under-review",
+    "closed"
+  ],
+  "gateResults": [
+    "pass",
+    "fail",
+    "inconclusive",
+    "not-tested"
+  ],
+  "dispositions": [
+    "scale",
+    "redesign",
+    "hold",
+    "stop"
+  ],
+  "sections": [
+    {
+      "id": "decision",
+      "name": {
+        "en": "Decision and accountability",
+        "zhHant": "決策與責任",
+        "zhHans": "决策与责任"
+      },
+      "fields": [
+        "decision_to_make",
+        "executive_sponsor",
+        "workflow_owner",
+        "technical_owner",
+        "risk_approver",
+        "final_decision_authority",
+        "decision_date"
+      ]
+    },
+    {
+      "id": "workflow-baseline",
+      "name": {
+        "en": "Workflow, scope, and baseline",
+        "zhHant": "流程、範圍與基線",
+        "zhHans": "流程、范围与基线"
+      },
+      "fields": [
+        "operating_workflow",
+        "users",
+        "frequency",
+        "current_baseline",
+        "baseline_definition",
+        "counterfactual",
+        "included_cases",
+        "excluded_scope",
+        "failure_consequence"
+      ]
+    },
+    {
+      "id": "data-authority",
+      "name": {
+        "en": "Data and authority boundary",
+        "zhHant": "數據與權限邊界",
+        "zhHans": "数据与权限边界"
+      },
+      "fields": [
+        "systems_of_record",
+        "personal_or_sensitive_data",
+        "data_provenance",
+        "retention",
+        "access_roles",
+        "cross_border_movement",
+        "prohibited_uses",
+        "read_rights",
+        "recommend_rights",
+        "draft_rights",
+        "approve_rights",
+        "execute_rights"
+      ]
+    },
+    {
+      "id": "evaluation",
+      "name": {
+        "en": "Evaluation set and metrics",
+        "zhHant": "評估集與指標",
+        "zhHans": "评估集与指标"
+      },
+      "fields": [
+        "common_cases",
+        "edge_cases",
+        "high_impact_cases",
+        "missing_data_cases",
+        "adversarial_cases",
+        "metric_definitions",
+        "minimum_thresholds",
+        "mandatory_gates",
+        "sample_size",
+        "evaluation_owner"
+      ]
+    },
+    {
+      "id": "operations",
+      "name": {
+        "en": "Operational controls",
+        "zhHant": "營運控制",
+        "zhHans": "运营控制"
+      },
+      "fields": [
+        "latency_budget",
+        "cost_budget",
+        "availability_target",
+        "audit_fields",
+        "fallback",
+        "recovery_test",
+        "human_review",
+        "override_and_escalation",
+        "monitoring",
+        "support_owner"
+      ]
+    },
+    {
+      "id": "pilot-plan",
+      "name": {
+        "en": "Bounded pilot plan",
+        "zhHant": "有限試點計劃",
+        "zhHans": "有限试点计划"
+      },
+      "fields": [
+        "participants",
+        "environment",
+        "start_date",
+        "end_date",
+        "version_baseline",
+        "change_control",
+        "incident_route",
+        "stop_conditions",
+        "evidence_store"
+      ]
+    },
+    {
+      "id": "acceptance",
+      "name": {
+        "en": "Acceptance evidence",
+        "zhHant": "驗收證據",
+        "zhHans": "验收证据"
+      },
+      "fields": [
+        "gate_id",
+        "requirement",
+        "threshold",
+        "observed_result",
+        "result",
+        "evidence_reference",
+        "limitation",
+        "reviewer",
+        "review_date"
+      ]
+    },
+    {
+      "id": "disposition",
+      "name": {
+        "en": "Signed disposition",
+        "zhHant": "簽署處置",
+        "zhHans": "签署处置"
+      },
+      "fields": [
+        "disposition",
+        "approved_authority_tier",
+        "unmet_gates",
+        "accepted_residual_risks",
+        "conditions",
+        "next_review_date",
+        "evidence_owner",
+        "business_signatory",
+        "technical_signatory",
+        "risk_signatory"
+      ]
+    }
+  ],
+  "mandatoryRule": "A failed privacy, permission, safety, legal, or other mandatory gate cannot be offset by an average score.",
+  "limitations": [
+    "This template is not legal, privacy, security, risk, procurement, or sector-specific advice.",
+    "Thresholds and mandatory gates must be adapted to the workflow and consequence.",
+    "Completing the template does not prove that a system is safe, compliant, effective, or ready to scale."
+  ],
+  "sources": [
+    {
+      "name": "Hong Kong PCPD — Artificial Intelligence: Model Personal Data Protection Framework",
+      "url": "https://www.pcpd.org.hk/english/resources_centre/publications/files/ai_protection_framework.pdf"
+    },
+    {
+      "name": "Hong Kong Government Smart LAB — AI Adoption Guide",
+      "url": "https://www1.smartlab.gov.hk/files/AI%20Adoption%20Guide-EN.pdf"
+    }
+  ]
+}
