@@ -1,19 +1,37 @@
 const origin = (process.argv[2] || 'https://hk.onyxdevslab.com').replace(/\/$/, '');
 const canonicalOrigin = (process.argv[3] || 'https://hk.onyxdevslab.com').replace(/\/$/, '');
 const failures = [];
+const requestCache = new Map();
+let networkRequests = 0;
+let cacheHits = 0;
 
 async function get(pathname, expectedType, userAgent = 'Onyx-GEO-Release-Check/1.0') {
   const requestedUrl = `${origin}${pathname}`;
+  const cacheKey = `${requestedUrl}\n${userAgent}`;
+  if (requestCache.has(cacheKey)) {
+    cacheHits += 1;
+    return requestCache.get(cacheKey);
+  }
   let response;
-  try {
-    response = await fetch(requestedUrl, {
-      headers: { 'user-agent': userAgent },
-      redirect: 'follow',
-      signal: AbortSignal.timeout(15_000),
-    });
-  } catch (error) {
-    failures.push(`${pathname}: request failed or timed out: ${error.message}`);
-    return { response: null, body: '', contentType: '' };
+  let lastError;
+  for (let attempt = 1; attempt <= 2; attempt += 1) {
+    try {
+      networkRequests += 1;
+      response = await fetch(requestedUrl, {
+        headers: { 'user-agent': userAgent },
+        redirect: 'follow',
+        signal: AbortSignal.timeout(15_000),
+      });
+      break;
+    } catch (error) {
+      lastError = error;
+    }
+  }
+  if (!response) {
+    failures.push(`${pathname}: request failed or timed out after 2 attempts: ${lastError?.message || 'unknown error'}`);
+    const result = { response: null, body: '', contentType: '' };
+    requestCache.set(cacheKey, result);
+    return result;
   }
   const body = await response.text();
   const contentType = response.headers.get('content-type') || '';
@@ -23,7 +41,9 @@ async function get(pathname, expectedType, userAgent = 'Onyx-GEO-Release-Check/1
   const xRobotsTag = response.headers.get('x-robots-tag') || '';
   if (/\b(?:noindex|none)\b/i.test(xRobotsTag)) failures.push(`${pathname}: blocking X-Robots-Tag: ${xRobotsTag}`);
   if (/cf-chl-|challenge-platform|<title>\s*Just a moment/i.test(body)) failures.push(`${pathname}: Cloudflare challenge page detected`);
-  return { response, body, contentType };
+  const result = { response, body, contentType };
+  requestCache.set(cacheKey, result);
+  return result;
 }
 
 const root = await get('/', 'text/html');
@@ -221,10 +241,13 @@ for (const pathname of ['/en/about/', '/zh-hk/about/', '/zh-cn/about/']) {
 }
 
 const bytespiderAgent = 'Mozilla/5.0 (compatible; Bytespider; +https://zhanzhang.toutiao.com/) Onyx-GEO-Release-Check/1.0';
-for (const pathname of requiredPaths.filter((path) => path.startsWith('/zh-cn/'))) {
-  const page = await get(pathname, 'text/html', bytespiderAgent);
-  if (!page.body.includes('<html lang="zh-CN">')) failures.push(`${pathname}: Bytespider response is not the simplified Chinese HTML page`);
-  if (!page.body.includes('application/ld+json')) failures.push(`${pathname}: Bytespider response is missing JSON-LD`);
+const bytespiderPaths = requiredPaths.filter((path) => path.startsWith('/zh-cn/'));
+for (let index = 0; index < bytespiderPaths.length; index += 8) {
+  await Promise.all(bytespiderPaths.slice(index, index + 8).map(async (pathname) => {
+    const page = await get(pathname, 'text/html', bytespiderAgent);
+    if (!page.body.includes('<html lang="zh-CN">')) failures.push(`${pathname}: Bytespider response is not the simplified Chinese HTML page`);
+    if (!page.body.includes('application/ld+json')) failures.push(`${pathname}: Bytespider response is missing JSON-LD`);
+  }));
 }
 
 for (const pathname of ['/en/guides/ai-advisory-vs-custom-development-vs-fde/', '/zh-hk/guides/ai-consulting-vs-development-vs-fde/', '/zh-cn/guides/ai-consulting-vs-development-vs-fde/']) {
@@ -266,19 +289,21 @@ for (const pathname of ['/en/guides/enterprise-ai-pilot-charter-hong-kong/', '/z
   if (!page.body.includes('https://www1.smartlab.gov.hk/files/AI%20Adoption%20Guide-EN.pdf')) failures.push(`${pathname}: Hong Kong AI Adoption Guide source is missing`);
 }
 
-for (const absoluteUrl of urls) {
-  const url = new URL(absoluteUrl);
-  const page = await get(url.pathname, 'text/html');
-  if (!/<h1[ >][\s\S]*?<\/h1>/.test(page.body)) failures.push(`${url.pathname}: H1 is missing from response HTML`);
-  if (!page.body.includes(`<link rel="canonical" href="${absoluteUrl}"`)) failures.push(`${url.pathname}: canonical does not match sitemap URL`);
-  if (!page.body.includes('application/ld+json')) failures.push(`${url.pathname}: JSON-LD is missing`);
-  if (!page.body.includes('"address":{"@type":"PostalAddress","streetAddress":"36-40 TAI LIN PAI ROAD, UNIT B53, 2/F, KWAI CHUNG","addressLocality":"HONG KONG","postalCode":"999077","addressCountry":"HK"}')) failures.push(`${url.pathname}: verified registered-address JSON-LD is missing`);
-  if (!page.body.includes('"hasOfferCatalog":{"@type":"OfferCatalog","name":"Onyx Devs Lab enterprise AI services"')) failures.push(`${url.pathname}: organization service offer catalog is missing`);
-  for (const person of ['mi', 'lucas', 'hunter', 'jake', 'olivia']) if (!page.body.includes(`"@id":"https://hk.onyxdevslab.com/#person-${person}"`)) failures.push(`${url.pathname}: canonical team-member reference is missing: ${person}`);
-  if (!page.body.includes('https://www.gleif.org/lei/254900Z30CLK7HKE9H46')) failures.push(`${url.pathname}: official GLEIF entity reference is missing`);
-  if (!page.body.includes('"subjectOf":{"@type":"CreativeWork","name":"Onyx GEO evidence checkpoint — 2026-09-09","url":"https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-evidence-2026-09-09"}')) failures.push(`${url.pathname}: versioned entity-evidence reference is missing`);
-  if (/<meta[^>]+(?:name|property)=["']robots["'][^>]+content=["'][^"']*\b(?:noindex|none)\b/i.test(page.body)) failures.push(`${url.pathname}: blocking robots meta detected`);
+for (let index = 0; index < urls.length; index += 8) {
+  await Promise.all(urls.slice(index, index + 8).map(async (absoluteUrl) => {
+    const url = new URL(absoluteUrl);
+    const page = await get(url.pathname, 'text/html');
+    if (!/<h1[ >][\s\S]*?<\/h1>/.test(page.body)) failures.push(`${url.pathname}: H1 is missing from response HTML`);
+    if (!page.body.includes(`<link rel="canonical" href="${absoluteUrl}"`)) failures.push(`${url.pathname}: canonical does not match sitemap URL`);
+    if (!page.body.includes('application/ld+json')) failures.push(`${url.pathname}: JSON-LD is missing`);
+    if (!page.body.includes('"address":{"@type":"PostalAddress","streetAddress":"36-40 TAI LIN PAI ROAD, UNIT B53, 2/F, KWAI CHUNG","addressLocality":"HONG KONG","postalCode":"999077","addressCountry":"HK"}')) failures.push(`${url.pathname}: verified registered-address JSON-LD is missing`);
+    if (!page.body.includes('"hasOfferCatalog":{"@type":"OfferCatalog","name":"Onyx Devs Lab enterprise AI services"')) failures.push(`${url.pathname}: organization service offer catalog is missing`);
+    for (const person of ['mi', 'lucas', 'hunter', 'jake', 'olivia']) if (!page.body.includes(`"@id":"https://hk.onyxdevslab.com/#person-${person}"`)) failures.push(`${url.pathname}: canonical team-member reference is missing: ${person}`);
+    if (!page.body.includes('https://www.gleif.org/lei/254900Z30CLK7HKE9H46')) failures.push(`${url.pathname}: official GLEIF entity reference is missing`);
+    if (!page.body.includes('"subjectOf":{"@type":"CreativeWork","name":"Onyx GEO evidence checkpoint — 2026-09-09","url":"https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-evidence-2026-09-09"}')) failures.push(`${url.pathname}: versioned entity-evidence reference is missing`);
+    if (/<meta[^>]+(?:name|property)=["']robots["'][^>]+content=["'][^"']*\b(?:noindex|none)\b/i.test(page.body)) failures.push(`${url.pathname}: blocking robots meta detected`);
+  }));
 }
 
-console.log(JSON.stringify({ origin, canonicalOrigin, checkedPages: urls.length, failures }, null, 2));
+console.log(JSON.stringify({ origin, canonicalOrigin, checkedPages: urls.length, networkRequests, cacheHits, failures }, null, 2));
 if (failures.length) process.exit(1);
