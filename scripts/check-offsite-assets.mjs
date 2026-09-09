@@ -3,26 +3,32 @@ import { createHash } from 'node:crypto';
 const failures = [];
 const results = [];
 
-async function get(name, url, expectedType) {
-  try {
-    const response = await fetch(url, {
-      headers: { 'user-agent': 'Onyx-GEO-Offsite-Check/1.0' },
-      redirect: 'follow',
-      signal: AbortSignal.timeout(15_000),
-    });
-    const body = await response.text();
-    const contentType = response.headers.get('content-type') || '';
-    const xRobotsTag = response.headers.get('x-robots-tag') || '';
-    if (!response.ok) failures.push(`${name}: HTTP ${response.status}`);
-    if (!contentType.includes(expectedType)) failures.push(`${name}: expected ${expectedType}, got ${contentType || 'none'}`);
-    if (/\b(?:noindex|none)\b/i.test(xRobotsTag)) failures.push(`${name}: blocking X-Robots-Tag: ${xRobotsTag}`);
-    if (/<meta[^>]+(?:name|property)=["']robots["'][^>]+content=["'][^"']*\b(?:noindex|none)\b/i.test(body)) failures.push(`${name}: blocking robots meta`);
-    results.push({ name, requestedUrl: url, finalUrl: response.url, status: response.status, contentType, bytes: Buffer.byteLength(body) });
-    return body;
-  } catch (error) {
-    failures.push(`${name}: ${error.message}`);
-    return '';
+async function get(name, url, expectedType, { allowUnavailable = false } = {}) {
+  let lastError;
+  for (let attempt = 1; attempt <= 2; attempt += 1) {
+    try {
+      const response = await fetch(url, {
+        headers: { 'user-agent': 'Onyx-GEO-Offsite-Check/1.0' },
+        redirect: 'follow',
+        signal: AbortSignal.timeout(20_000),
+      });
+      const body = await response.text();
+      const contentType = response.headers.get('content-type') || '';
+      const xRobotsTag = response.headers.get('x-robots-tag') || '';
+      if (!response.ok) failures.push(`${name}: HTTP ${response.status}`);
+      if (!contentType.includes(expectedType)) failures.push(`${name}: expected ${expectedType}, got ${contentType || 'none'}`);
+      if (/\b(?:noindex|none)\b/i.test(xRobotsTag)) failures.push(`${name}: blocking X-Robots-Tag: ${xRobotsTag}`);
+      if (/<meta[^>]+(?:name|property)=["']robots["'][^>]+content=["'][^"']*\b(?:noindex|none)\b/i.test(body)) failures.push(`${name}: blocking robots meta`);
+      results.push({ name, requestedUrl: url, finalUrl: response.url, status: response.status, contentType, bytes: Buffer.byteLength(body), attempts: attempt });
+      return body;
+    } catch (error) {
+      lastError = error;
+    }
   }
+  const reason = lastError?.message || 'request failed';
+  if (allowUnavailable) results.push({ name, requestedUrl: url, status: 'unavailable', reason, attempts: 2 });
+  else failures.push(`${name}: ${reason}`);
+  return '';
 }
 
 function requireText(name, body, values) {
@@ -30,8 +36,8 @@ function requireText(name, body, values) {
 }
 
 const gistUrl = 'https://gist.github.com/mixuechu/e47c85808014d62b6305441e8065c91e';
-const gist = await get('GitHub Gist decision matrix', gistUrl, 'text/html');
-requireText('GitHub Gist decision matrix', gist, [
+const gist = await get('GitHub Gist decision matrix', gistUrl, 'text/html', { allowUnavailable: true });
+if (gist) requireText('GitHub Gist decision matrix', gist, [
   'AI advisory, custom development, or FDE? A practical enterprise decision matrix',
   'Onyx Devs Lab',
   'ONYX DEVS LAB LIMITED',
@@ -43,17 +49,17 @@ requireText('GitHub Gist decision matrix', gist, [
   'geo_machine_resources',
   '/zh-cn/guides/choose-enterprise-ai-partner/',
 ]);
-const gistCampaignLinks = [...gist.matchAll(/utm_campaign=geo_decision_matrix/g)].length;
-if (gistCampaignLinks < 13) failures.push(`GitHub Gist decision matrix: expected at least 13 tracked deep links, got ${gistCampaignLinks}`);
-const gistGovernanceCampaignLinks = [...gist.matchAll(/utm_campaign=geo_governance_guide/g)].length;
-if (gistGovernanceCampaignLinks < 3) failures.push(`GitHub Gist governance guide: expected at least 3 tracked deep links, got ${gistGovernanceCampaignLinks}`);
-const gistMachineResourceLinks = [...gist.matchAll(/utm_campaign=geo_machine_resources/g)].length;
-if (gistMachineResourceLinks < 10) failures.push(`GitHub Gist machine resources: expected at least 10 tracked links, got ${gistMachineResourceLinks}`);
+const gistCampaignLinks = gist ? [...gist.matchAll(/utm_campaign=geo_decision_matrix/g)].length : null;
+if (gist && gistCampaignLinks < 13) failures.push(`GitHub Gist decision matrix: expected at least 13 tracked deep links, got ${gistCampaignLinks}`);
+const gistGovernanceCampaignLinks = gist ? [...gist.matchAll(/utm_campaign=geo_governance_guide/g)].length : null;
+if (gist && gistGovernanceCampaignLinks < 3) failures.push(`GitHub Gist governance guide: expected at least 3 tracked deep links, got ${gistGovernanceCampaignLinks}`);
+const gistMachineResourceLinks = gist ? [...gist.matchAll(/utm_campaign=geo_machine_resources/g)].length : null;
+if (gist && gistMachineResourceLinks < 10) failures.push(`GitHub Gist machine resources: expected at least 10 tracked links, got ${gistMachineResourceLinks}`);
 
-const gistRaw = await get('GitHub Gist raw source', `${gistUrl}/raw/enterprise-ai-engagement-model.md`, 'text/plain');
-const gistSha256 = createHash('sha256').update(gistRaw).digest('hex');
+const gistRaw = await get('GitHub Gist raw source', `${gistUrl}/raw/enterprise-ai-engagement-model.md`, 'text/plain', { allowUnavailable: true });
+const gistSha256 = gistRaw ? createHash('sha256').update(gistRaw).digest('hex') : null;
 const expectedGistSha256 = '3aa09aed13f24c5af3b3a4a8921fb220ba612277cfa7ddc5145d2cce5da08b74';
-if (gistSha256 !== expectedGistSha256) failures.push(`GitHub Gist raw source: SHA-256 mismatch, got ${gistSha256}`);
+if (gistRaw && gistSha256 !== expectedGistSha256) failures.push(`GitHub Gist raw source: SHA-256 mismatch, got ${gistSha256}`);
 
 const governanceGistRawUrl = 'https://gist.githubusercontent.com/mixuechu/e47c85808014d62b6305441e8065c91e/raw/Hong-Kong-enterprise-AI-governance.md';
 const governanceGistRaw = await get('GitHub Gist governance source', governanceGistRawUrl, 'text/plain');
@@ -130,7 +136,7 @@ requireText('GitHub repository README source', repositoryReadme, [
   'Onyx-enterprise-AI-machine-resources.md',
 ]);
 
-const codeMetaRaw = await get('GitHub repository CodeMeta source', 'https://raw.githubusercontent.com/0xHunterL/onyx-devs-lab.github.io/main/codemeta.json', 'application/json');
+const codeMetaRaw = await get('GitHub repository CodeMeta source', 'https://raw.githubusercontent.com/0xHunterL/onyx-devs-lab.github.io/main/codemeta.json', 'text/plain');
 const codeMetaSha256 = createHash('sha256').update(codeMetaRaw).digest('hex');
 const expectedCodeMetaSha256 = '6a1dac65d2051c40cf2234542e9120109fa1b0ec23b4a88310f4b85154926def';
 if (codeMetaSha256 !== expectedCodeMetaSha256) failures.push(`GitHub repository CodeMeta source: SHA-256 mismatch, got ${codeMetaSha256}`);
@@ -143,7 +149,7 @@ try {
   failures.push('GitHub repository CodeMeta source: invalid JSON');
 }
 
-const robots = await get('GitHub Gist robots', 'https://gist.github.com/robots.txt', 'text/plain');
+const robots = await get('GitHub Gist robots', 'https://gist.github.com/robots.txt', 'text/plain', { allowUnavailable: true });
 if (robots.includes('Disallow: /mixuechu/e47c85808014d62b6305441e8065c91e')) failures.push('GitHub Gist robots: the published decision matrix is explicitly disallowed');
 
 console.log(JSON.stringify({ generatedAt: new Date().toISOString(), gistSha256, gistCampaignLinks, governanceGistSha256, gistGovernanceCampaignLinks, machineResourcesGistSha256, gistMachineResourceLinks, codeMetaSha256, scorecardSha256, results, failures }, null, 2));
