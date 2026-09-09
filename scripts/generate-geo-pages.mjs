@@ -1,5 +1,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
+import TurndownService from 'turndown';
+import { gfm } from 'turndown-plugin-gfm';
 
 const root = process.cwd();
 const dist = path.join(root, 'dist');
@@ -508,6 +510,44 @@ for(const p of cases){const out=path.join(dist,p.path,'index.html');fs.mkdirSync
 for(const p of hubs){const out=path.join(dist,p.path,'index.html');fs.mkdirSync(path.dirname(out),{recursive:true});fs.writeFileSync(out,layout(p,hubBody(p),'CollectionPage'));}
 for(const p of aboutPages){const out=path.join(dist,p.path,'index.html');fs.mkdirSync(path.dirname(out),{recursive:true});fs.writeFileSync(out,layout(p,aboutBody(p),'AboutPage'));}
 
+const turndown = new TurndownService({ headingStyle:'atx', bulletListMarker:'-', codeBlockStyle:'fenced' });
+turndown.use(gfm);
+
+function decodeMetadata(value='') {
+  return value.replaceAll('&amp;', '&').replaceAll('&quot;', '"').replaceAll('&#39;', "'").replaceAll('&lt;', '<').replaceAll('&gt;', '>');
+}
+
+function markdownVariant(html) {
+  const title=decodeMetadata(html.match(/<title>([^<]+)<\/title>/)?.[1]||'Onyx Devs Lab');
+  const description=decodeMetadata(html.match(/<meta name="description" content="([^"]*)"/)?.[1]||'');
+  const canonicalUrl=html.match(/<link rel="canonical" href="([^"]+)"/)?.[1]||origin;
+  const language=html.match(/<html lang="([^"]+)"/)?.[1]||'en';
+  const main=(html.match(/<main\b[^>]*>[\s\S]*?<\/main>/)?.[0]||'')
+    .replaceAll('</a><a','</a> <a')
+    .replaceAll('</strong><span','</strong> — <span');
+  const structuredData=[...html.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)].map(match=>{
+    try { return JSON.stringify(JSON.parse(match[1]),null,2); } catch { return match[1].trim(); }
+  }).filter(Boolean);
+  const body=turndown.turndown(main).trim();
+  const frontmatter=['---',`title: ${JSON.stringify(title)}`,`description: ${JSON.stringify(description)}`,`canonical: ${JSON.stringify(canonicalUrl)}`,`language: ${JSON.stringify(language)}`,'---',''].join('\n');
+  const schema=structuredData.length?`\n\n## Structured data\n\n\`\`\`json\n${structuredData.join('\n')}\n\`\`\``:'';
+  return `${frontmatter}\n${body}${schema}\n`;
+}
+
+const markdownFiles=[];
+function writeMarkdownVariants(directory) {
+  for(const entry of fs.readdirSync(directory,{withFileTypes:true})) {
+    const candidate=path.join(directory,entry.name);
+    if(entry.isDirectory()) writeMarkdownVariants(candidate);
+    else if(entry.name==='index.html') {
+      const markdownPath=path.join(directory,'index.md');
+      fs.writeFileSync(markdownPath,markdownVariant(fs.readFileSync(candidate,'utf8')));
+      markdownFiles.push(markdownPath);
+    }
+  }
+}
+writeMarkdownVariants(dist);
+
 const all=['/',...hubs.map(p=>p.path),...aboutPages.map(p=>p.path),...pages.map(p=>p.path),...cases.map(p=>p.path)];
 const sitemap=`<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">\n${all.map(p=>{const alternates=translationsFor(p).map(item=>`<xhtml:link rel="alternate" hreflang="${item.lang}" href="${canonical(item.path)}"/>`).join('');return `  <url><loc>${canonical(p)}</loc><lastmod>${updated}</lastmod>${alternates}</url>`}).join('\n')}\n</urlset>\n`;
 fs.writeFileSync(path.join(dist,'sitemap.xml'),sitemap);
@@ -725,4 +765,4 @@ const fullKnowledge=[
   }),
 ].join('\n');
 fs.writeFileSync(path.join(dist,'llms-full.txt'),`${fullKnowledge}\n`);
-console.log(`Generated ${pages.length + cases.length + hubs.length + aboutPages.length} GEO pages and sitemap.xml`);
+console.log(`Generated ${pages.length + cases.length + hubs.length + aboutPages.length} GEO pages, ${markdownFiles.length} Markdown variants, and sitemap.xml`);

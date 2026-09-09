@@ -18,6 +18,18 @@ function walk(directory) {
 
 walk(dist);
 
+const markdownFiles = htmlFiles.map(file => path.join(path.dirname(file), 'index.md'));
+for (const file of markdownFiles) {
+  if (!fs.existsSync(file)) {
+    failures.push(`${path.relative(dist, file)}: missing Markdown variant`);
+    continue;
+  }
+  const markdown = fs.readFileSync(file, 'utf8');
+  for (const required of ['title:', 'description:', 'canonical:', 'language:', '## Structured data', '"@context": "https://schema.org"']) {
+    if (!markdown.includes(required)) failures.push(`${path.relative(dist, file)}: Markdown variant is missing ${required}`);
+  }
+}
+
 const rootHtml = fs.readFileSync(path.join(dist, 'index.html'), 'utf8');
 for (const required of ['ONYX DEVS LAB LIMITED', 'business registration number 79051925', 'href="/zh-cn/"', 'href="/en/guides/choose-enterprise-ai-partner-hong-kong/"', 'href="/en/methodology/ai-search-verification/"']) {
   if (!rootHtml.includes(required)) failures.push(`index.html: static crawler fallback is missing ${required}`);
@@ -260,6 +272,9 @@ for (const agent of ['Claude-SearchBot', 'Claude-User', 'ClaudeBot', 'Googlebot'
 const nginxConfig = fs.readFileSync(path.resolve('deploy/nginx-hk.conf'), 'utf8');
 for (const resource of ['sitemap.xml', 'feed.xml', 'llms.txt']) {
   if (!nginxConfig.includes(`https://hk.onyxdevslab.com/${resource}`)) failures.push(`nginx: Link discovery header is missing ${resource}`);
+}
+for (const required of ['text/markdown', 'Vary "Accept"', 'Content-Signal "search=yes, ai-input=yes"']) {
+  if (!nginxConfig.includes(required)) failures.push(`nginx: Markdown negotiation is missing ${required}`);
 }
 
 const sitemap = fs.readFileSync(path.join(dist, 'sitemap.xml'), 'utf8');

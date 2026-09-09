@@ -5,9 +5,9 @@ const requestCache = new Map();
 let networkRequests = 0;
 let cacheHits = 0;
 
-async function get(pathname, expectedType, userAgent = 'Onyx-GEO-Release-Check/1.0') {
+async function get(pathname, expectedType, userAgent = 'Onyx-GEO-Release-Check/1.0', accept = '') {
   const requestedUrl = `${origin}${pathname}`;
-  const cacheKey = `${requestedUrl}\n${userAgent}`;
+  const cacheKey = `${requestedUrl}\n${userAgent}\n${accept}`;
   if (requestCache.has(cacheKey)) {
     cacheHits += 1;
     return requestCache.get(cacheKey);
@@ -18,7 +18,7 @@ async function get(pathname, expectedType, userAgent = 'Onyx-GEO-Release-Check/1
     try {
       networkRequests += 1;
       response = await fetch(requestedUrl, {
-        headers: { 'user-agent': userAgent },
+        headers: { 'user-agent': userAgent, ...(accept?{ accept }: {}) },
         redirect: 'follow',
         signal: AbortSignal.timeout(15_000),
       });
@@ -48,12 +48,20 @@ async function get(pathname, expectedType, userAgent = 'Onyx-GEO-Release-Check/1
 
 const root = await get('/', 'text/html');
 const rootLinkHeader = root.response?.headers.get('link') || '';
+if (!/(?:^|,)\s*Accept\s*(?:,|$)/i.test(root.response?.headers.get('vary') || '')) failures.push('/: Vary header does not include Accept');
+if (!/search=yes/.test(root.response?.headers.get('content-signal') || '') || !/ai-input=yes/.test(root.response?.headers.get('content-signal') || '')) failures.push('/: Content-Signal response header is incomplete');
 for (const resource of ['sitemap.xml', 'feed.xml', 'llms.txt']) {
   if (!rootLinkHeader.includes(`https://hk.onyxdevslab.com/${resource}`)) failures.push(`/: Link discovery header is missing ${resource}`);
 }
 for (const required of ['ONYX DEVS LAB LIMITED', 'business registration number 79051925', 'href="/zh-cn/"', 'href="/en/guides/choose-enterprise-ai-partner-hong-kong/"', 'href="/en/methodology/ai-search-verification/"']) {
   if (!root.body.includes(required)) failures.push(`/: static crawler fallback is missing ${required}`);
 }
+const markdownRoot = await get('/', 'text/markdown', 'Onyx-GEO-Markdown-Check/1.0', 'text/markdown');
+for (const required of ['title:', 'canonical: "https://hk.onyxdevslab.com/"', '# From business problem to working AI system.', 'ONYX DEVS LAB LIMITED', '## Structured data', '"@type": "Organization"']) {
+  if (!markdownRoot.body.includes(required)) failures.push(`/: Markdown variant is missing ${required}`);
+}
+if (!/(?:^|,)\s*Accept\s*(?:,|$)/i.test(markdownRoot.response?.headers.get('vary') || '')) failures.push('/: Markdown response Vary header does not include Accept');
+if (!/search=yes/.test(markdownRoot.response?.headers.get('content-signal') || '') || !/ai-input=yes/.test(markdownRoot.response?.headers.get('content-signal') || '')) failures.push('/: Markdown Content-Signal response header is incomplete');
 
 const robots = await get('/robots.txt', 'text/plain');
 if (!robots.body.includes(`Sitemap: ${canonicalOrigin}/sitemap.xml`)) failures.push('/robots.txt: sitemap declaration is missing or points to the wrong canonical origin');
