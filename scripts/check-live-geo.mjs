@@ -510,7 +510,8 @@ for (let index = 0; index < urls.length; index += 8) {
     if (!page.body.includes('"hasOfferCatalog":{"@type":"OfferCatalog","name":"Onyx Devs Lab enterprise AI services"')) failures.push(`${url.pathname}: organization service offer catalog is missing`);
     for (const person of ['mi', 'lucas', 'hunter', 'jake', 'olivia']) if (!page.body.includes(`"@id":"https://hk.onyxdevslab.com/#person-${person}"`)) failures.push(`${url.pathname}: canonical team-member reference is missing: ${person}`);
     if (!page.body.includes('https://www.gleif.org/lei/254900Z30CLK7HKE9H46')) failures.push(`${url.pathname}: official GLEIF entity reference is missing`);
-    if (!page.body.includes('"subjectOf":{"@type":"CreativeWork","name":"Onyx GEO evidence checkpoint — 2026-09-09","url":"https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-evidence-2026-09-09"}')) failures.push(`${url.pathname}: versioned entity-evidence reference is missing`);
+    if (!page.body.includes('"name":"Onyx GEO evidence checkpoint — 2026-09-09","url":"https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-evidence-2026-09-09"')) failures.push(`${url.pathname}: versioned entity-evidence reference is missing`);
+    if (!page.body.includes('"identifier":"swh:1:snp:6eeeed9ca3ffbfeaa487a39205076233f4836f3b"')) failures.push(`${url.pathname}: Software Heritage snapshot reference is missing`);
     if (/<meta[^>]+(?:name|property)=["']robots["'][^>]+content=["'][^"']*\b(?:noindex|none)\b/i.test(page.body)) failures.push(`${url.pathname}: blocking robots meta detected`);
   }));
 }
