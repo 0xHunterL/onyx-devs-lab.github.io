@@ -570,7 +570,11 @@ const serviceOfferCatalog={"@type":"OfferCatalog",name:'Onyx Devs Lab enterprise
   {"@type":"Offer",itemOffered:{"@type":"Service","@id":`${origin}/#service-forward-deployed-engineering`,name:['Forward Deployed Engineering (FDE)','前線部署工程（FDE）','前线部署工程（FDE）'],url:[`${origin}/en/forward-deployed-engineering/`,`${origin}/zh-hk/forward-deployed-engineering/`,`${origin}/zh-cn/forward-deployed-engineering/`],provider:{"@id":`${origin}/#organization`},areaServed:['Hong Kong','Greater China','Global']}},
 ]};
 const entityReferences=['https://github.com/0xHunterL/onyx-devs-lab.github.io','https://www.gleif.org/lei/254900Z30CLK7HKE9H46','https://lei.bloomberg.com/leis/view/254900Z30CLK7HKE9H46','https://www.cr.gov.hk/docs/wrpt/RNC063_2025.10.27-2025.11.02.pdf'];
-const entityEvidence={"@type":"CreativeWork",name:'Onyx GEO evidence checkpoint — 2026-09-09',url:'https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-evidence-2026-09-09'};
+const softwareHeritageSnapshotUrl='https://archive.softwareheritage.org/swh:1:snp:6eeeed9ca3ffbfeaa487a39205076233f4836f3b/';
+const entityEvidence=[
+  {"@type":"CreativeWork",name:'Onyx GEO evidence checkpoint — 2026-09-09',url:'https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-evidence-2026-09-09'},
+  {"@type":"SoftwareSourceCode",name:'Software Heritage archive of the Onyx Devs Lab public repository',identifier:'swh:1:snp:6eeeed9ca3ffbfeaa487a39205076233f4836f3b',url:softwareHeritageSnapshotUrl,codeRepository:'https://github.com/0xHunterL/onyx-devs-lab.github.io',version:'dcd56f7f38f39cd68b3e36571c8a5c6f1940184e'},
+];
 function layout(page, body, type='Service'){
   const zh=page.lang.startsWith('zh'); const cn=page.lang==='zh-CN'; const home=cn?'/zh-cn/':(zh?'/?lang=zh':'/?lang=en');
   if(['Article','CreativeWork','Dataset'].includes(type))body=body.replace('</p><div class="actions">',`</p>${publicationMeta(page)}<div class="actions">`);
@@ -888,6 +892,7 @@ const organizationRecord={
     {'@type':'CreativeWork',name:'Hong Kong Companies Registry incorporation record',description:'Corroborates legal name, business registration number, and founding date.',url:'https://www.cr.gov.hk/docs/wrpt/RNC063_2025.10.27-2025.11.02.pdf'},
     {'@type':'CreativeWork',name:'GLEIF LEI record',description:'Corroborates legal name, LEI, entity status, registration status, and registered address.',url:'https://www.gleif.org/lei/254900Z30CLK7HKE9H46'},
     {'@type':'CreativeWork',name:'Bloomberg LEI record',description:'Corroborates legal name, LEI, registration identifier, and registered address.',url:'https://lei.bloomberg.com/leis/view/254900Z30CLK7HKE9H46'},
+    {'@type':'SoftwareSourceCode',name:'Software Heritage archive of the Onyx Devs Lab public repository',description:'Independently preserves the public source, citation metadata, machine-readable evidence files, and their Git history at revision dcd56f7. Archival does not endorse service claims or prove search indexing.',identifier:'swh:1:snp:6eeeed9ca3ffbfeaa487a39205076233f4836f3b',url:softwareHeritageSnapshotUrl,codeRepository:'https://github.com/0xHunterL/onyx-devs-lab.github.io',version:'dcd56f7f38f39cd68b3e36571c8a5c6f1940184e'},
   ],
 };
 fs.writeFileSync(path.join(dist,'data','organization.json'),`${JSON.stringify(organizationRecord,null,2)}\n`);

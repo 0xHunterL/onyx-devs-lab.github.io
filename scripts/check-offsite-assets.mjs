@@ -47,6 +47,23 @@ requireText('Internet Archive homepage snapshot', waybackHomepage, [
   'Custom AI development',
   'Forward Deployed Engineering',
 ]);
+const softwareHeritageSnapshotId = '6eeeed9ca3ffbfeaa487a39205076233f4836f3b';
+const softwareHeritageRevisionId = 'dcd56f7f38f39cd68b3e36571c8a5c6f1940184e';
+const softwareHeritageSnapshotRaw = await get('Software Heritage repository snapshot', `https://archive.softwareheritage.org/api/1/snapshot/${softwareHeritageSnapshotId}/`, 'application/json');
+try {
+  const snapshot = JSON.parse(softwareHeritageSnapshotRaw);
+  if (snapshot.id !== softwareHeritageSnapshotId) failures.push('Software Heritage repository snapshot: unexpected snapshot id');
+  if (snapshot.branches?.['refs/heads/main']?.target !== softwareHeritageRevisionId || snapshot.branches?.['refs/heads/main']?.target_type !== 'revision') failures.push('Software Heritage repository snapshot: main branch does not resolve to the archived checkpoint');
+} catch {
+  failures.push('Software Heritage repository snapshot: invalid JSON');
+}
+const softwareHeritageRevisionRaw = await get('Software Heritage archived revision', `https://archive.softwareheritage.org/api/1/revision/${softwareHeritageRevisionId}/`, 'application/json');
+try {
+  const revision = JSON.parse(softwareHeritageRevisionRaw);
+  if (revision.id !== softwareHeritageRevisionId || !revision.directory) failures.push('Software Heritage archived revision: immutable Git revision is incomplete');
+} catch {
+  failures.push('Software Heritage archived revision: invalid JSON');
+}
 const gist = await get('GitHub Gist field notes', gistUrl, 'text/html', { allowUnavailable: true });
 if (gist) requireText('GitHub Gist field notes', gist, [
   'Onyx Devs Lab: Hong Kong AI advisory, custom development',
