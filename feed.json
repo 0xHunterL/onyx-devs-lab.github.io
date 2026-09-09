@@ -901,6 +901,18 @@
         "zh-CN",
         "provider-maintained-external-source"
       ]
+    },
+    {
+      "id": "https://archive.softwareheritage.org/swh:1:snp:6eeeed9ca3ffbfeaa487a39205076233f4836f3b/",
+      "url": "https://archive.softwareheritage.org/swh:1:snp:6eeeed9ca3ffbfeaa487a39205076233f4836f3b/",
+      "title": "Software Heritage archive of the Onyx Devs Lab public repository",
+      "summary": "Independent, content-addressed preservation of the public source, citation metadata, machine-readable evidence, and Git history at revision dcd56f7. Archival is not an endorsement or proof of website indexing.",
+      "content_text": "Independent, content-addressed preservation of the public source, citation metadata, machine-readable evidence, and Git history at revision dcd56f7. Archival is not an endorsement or proof of website indexing.",
+      "date_modified": "2026-09-09T00:00:00+08:00",
+      "tags": [
+        "versioned-evidence",
+        "independent-archive"
+      ]
     }
   ]
 }
