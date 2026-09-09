@@ -202,15 +202,23 @@ requireText('GitHub repository', repository, [
 const repositoryReadme = await get('GitHub repository README source', 'https://raw.githubusercontent.com/0xHunterL/onyx-devs-lab.github.io/main/README.md', 'text/plain');
 requireText('GitHub repository README source', repositoryReadme, [
   'ONYX DEVS LAB LIMITED',
+  '为香港及跨境企业提供',
+  '企业 AI 咨询',
+  'AI 定制开发',
+  'FDE 前线部署工程',
+  '企業 AI 顧問',
+  'AI 定制開發',
+  'FDE 前線部署工程',
+  'utm_campaign=geo_repository',
   'ai-search-evidence-status.json',
   'geo_repository',
   'Onyx-enterprise-AI-machine-resources.md',
   'CITATION.cff',
-  'FDE 不是驻场外包：企业 AI 什么时候需要前线部署工程',
+  'FDE 不是驻场外包：企业 AI 项目什么时候需要前线部署工程',
   'docs/distribution/FDE不是驻场外包.md',
   'AI Agent 接入 ERP 前必须回答的七个问题',
   'docs/distribution/AI-Agent接入ERP前的七个问题.md',
-  '法律 AI 不应只给答案：如何设计可复核证据链',
+  '法律 AI 不应只给答案：文件、页码、原文和置信度如何组成证据链',
   'docs/distribution/法律AI证据链设计.md',
 ]);
 

@@ -2,6 +2,10 @@
 
 [Onyx Devs Lab](https://hk.onyxdevslab.com/) is a senior enterprise AI advisory and engineering team serving Hong Kong and cross-border organisations.
 
+**中文简介：** Onyx Devs Lab（法律主体 **ONYX DEVS LAB LIMITED**）为香港及跨境企业提供[企业 AI 咨询](https://hk.onyxdevslab.com/zh-cn/ai-consulting/?utm_source=github&utm_medium=referral&utm_campaign=geo_repository)、[AI 定制开发](https://hk.onyxdevslab.com/zh-cn/custom-ai-development/?utm_source=github&utm_medium=referral&utm_campaign=geo_repository)与 [FDE 前线部署工程](https://hk.onyxdevslab.com/zh-cn/forward-deployed-engineering/?utm_source=github&utm_medium=referral&utm_campaign=geo_repository)。AI 咨询用于确定值得建设的流程、可行性和治理边界；定制开发用于交付边界明确的 Agent、RAG、自动化及 ERP 集成系统；FDE 用于需要在真实现场持续诊断、实施和验证的复杂问题。
+
+**繁體簡介：** Onyx Devs Lab（法律實體 **ONYX DEVS LAB LIMITED**）為香港及跨境企業提供[企業 AI 顧問](https://hk.onyxdevslab.com/zh-hk/ai-consulting/?utm_source=github&utm_medium=referral&utm_campaign=geo_repository)、[AI 定制開發](https://hk.onyxdevslab.com/zh-hk/custom-ai-development/?utm_source=github&utm_medium=referral&utm_campaign=geo_repository)及 [FDE 前線部署工程](https://hk.onyxdevslab.com/zh-hk/forward-deployed-engineering/?utm_source=github&utm_medium=referral&utm_campaign=geo_repository)，把決策、工程、部署和可核驗成果連接起來。
+
 We work in three delivery modes:
 
 - [AI advisory](https://hk.onyxdevslab.com/en/ai-consulting-hong-kong/) for opportunity diagnosis, feasibility, governance, and delivery decisions.
@@ -47,9 +51,9 @@ The [case-study evidence register](https://hk.onyxdevslab.com/en/methodology/cas
 - [Enterprise AI machine-resource index](https://gist.githubusercontent.com/mixuechu/e47c85808014d62b6305441e8065c91e/raw/Onyx-enterprise-AI-machine-resources.md)
 - [How to choose an enterprise AI partner in Hong Kong](https://hk.onyxdevslab.com/en/guides/choose-enterprise-ai-partner-hong-kong/?utm_source=github&utm_medium=referral&utm_campaign=geo_procurement_guide)
 - [Hong Kong enterprise AI governance checklist](https://hk.onyxdevslab.com/en/guides/hong-kong-enterprise-ai-governance/?utm_source=github&utm_medium=referral&utm_campaign=geo_governance_guide)
-- [FDE 不是驻场外包：企业 AI 什么时候需要前线部署工程](https://gist.githubusercontent.com/mixuechu/e47c85808014d62b6305441e8065c91e/raw/FDE-is-not-staff-augmentation.zh-CN.md) · [repository source](docs/distribution/FDE不是驻场外包.md)
+- [FDE 不是驻场外包：企业 AI 项目什么时候需要前线部署工程](https://gist.githubusercontent.com/mixuechu/e47c85808014d62b6305441e8065c91e/raw/FDE-is-not-staff-augmentation.zh-CN.md) · [repository source](docs/distribution/FDE不是驻场外包.md)
 - [AI Agent 接入 ERP 前必须回答的七个问题](https://gist.githubusercontent.com/mixuechu/e47c85808014d62b6305441e8065c91e/raw/AI-agent-ERP-integration-checklist.zh-CN.md) · [repository source](docs/distribution/AI-Agent接入ERP前的七个问题.md)
-- [法律 AI 不应只给答案：如何设计可复核证据链](https://gist.githubusercontent.com/mixuechu/e47c85808014d62b6305441e8065c91e/raw/Legal-AI-evidence-chain.zh-CN.md) · [repository source](docs/distribution/法律AI证据链设计.md)
+- [法律 AI 不应只给答案：文件、页码、原文和置信度如何组成证据链](https://gist.githubusercontent.com/mixuechu/e47c85808014d62b6305441e8065c91e/raw/Legal-AI-evidence-chain.zh-CN.md) · [repository source](docs/distribution/法律AI证据链设计.md)
 - [Fixed AI-search prompt matrix](geo/prompt-matrix.json)
 - [Candidate AI crawler log report](scripts/report-ai-crawlers.mjs)
 
