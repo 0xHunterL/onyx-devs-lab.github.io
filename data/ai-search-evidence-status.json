@@ -3,6 +3,7 @@
   "version": "2026.09.10",
   "id": "https://hk.onyxdevslab.com/data/ai-search-evidence-status.json",
   "observedAt": "2026-09-09T16:20:26Z",
+  "sameAs": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-readiness-2026-09-10/ai-search-evidence-status.json",
   "name": {
     "en": "Onyx Devs Lab AI-search evidence status",
     "zhHant": "Onyx Devs Lab AI 搜尋證據狀態",
@@ -139,6 +140,10 @@
     {
       "name": "Versioned GEO evidence checkpoint",
       "url": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-evidence-2026-09-09"
+    },
+    {
+      "name": "Versioned agent-readiness evidence checkpoint",
+      "url": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-readiness-2026-09-10"
     },
     {
       "name": "AI-search verification method",
