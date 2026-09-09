@@ -53,6 +53,8 @@ for (const required of ['ONYX DEVS LAB LIMITED', 'business registration number 7
 
 const robots = await get('/robots.txt', 'text/plain');
 if (!robots.body.includes(`Sitemap: ${canonicalOrigin}/sitemap.xml`)) failures.push('/robots.txt: sitemap declaration is missing or points to the wrong canonical origin');
+if (!/^Content-Signal:\s*search=yes,\s*ai-input=yes\s*$/im.test(robots.body)) failures.push('/robots.txt: search and AI-input content signals are missing');
+if (/^Content-Signal:.*ai-train=/im.test(robots.body)) failures.push('/robots.txt: AI-training preference must remain unspecified unless explicitly approved');
 if (!robots.body.includes('OAI-SearchBot')) failures.push('/robots.txt: OAI-SearchBot policy is missing');
 if (!robots.body.includes('Bytespider')) failures.push('/robots.txt: Bytespider policy is missing');
 if (!robots.body.includes('PerplexityBot')) failures.push('/robots.txt: PerplexityBot policy is missing');

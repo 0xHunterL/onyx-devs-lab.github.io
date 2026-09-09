@@ -18,6 +18,7 @@ FDE 首次出现时必须同时写出全称。中文页面采用“前线部署�
 - sitemap 只收录规范 URL；页面上线或发生实质更新时同步修改 `lastmod`。
 - 结构化数据只能描述页面上真实可见的内容，不添加未经证实的客户、认证、评价或结果。
 - 案例必须区分已交付范围、测量结果、项目目标和未公开数据。
+- `robots.txt` 使用 `Content-Signal: search=yes, ai-input=yes`，明确允许搜索索引及在查询时作为 AI grounding／RAG 输入；训练用途保持未声明，不能从前两项推断。Cloudflare 将 Content Signals 纳入 AI Agent Readiness，但它仍只是内容使用意图，不是任何平台已抓取、收录或引用的证据。
 
 ## 发布检查
 
