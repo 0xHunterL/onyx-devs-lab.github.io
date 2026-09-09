@@ -94,6 +94,7 @@ ERP、移动端和工业数据
       "email": "info@onyxdevslab.com",
       "foundingDate": "2025-10-30",
       "leiCode": "254900Z30CLK7HKE9H46",
+      "iso6523Code": "0199:254900Z30CLK7HKE9H46",
       "address": {
         "@type": "PostalAddress",
         "streetAddress": "36-40 TAI LIN PAI ROAD, UNIT B53, 2/F, KWAI CHUNG",
@@ -104,8 +105,9 @@ ERP、移动端和工业数据
       "logo": {
         "@type": "ImageObject",
         "url": "https://hk.onyxdevslab.com/favicon.svg",
-        "width": 100,
-        "height": 100
+        "contentUrl": "https://hk.onyxdevslab.com/favicon.svg",
+        "width": 512,
+        "height": 512
       },
       "contactPoint": {
         "@type": "ContactPoint",

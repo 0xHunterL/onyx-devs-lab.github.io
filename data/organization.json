@@ -9,6 +9,7 @@
   "foundingDate": "2025-10-30",
   "email": "info@onyxdevslab.com",
   "leiCode": "254900Z30CLK7HKE9H46",
+  "iso6523Code": "0199:254900Z30CLK7HKE9H46",
   "identifier": [
     {
       "@type": "PropertyValue",
@@ -27,6 +28,13 @@
     "addressLocality": "HONG KONG",
     "postalCode": "999077",
     "addressCountry": "HK"
+  },
+  "logo": {
+    "@type": "ImageObject",
+    "url": "https://hk.onyxdevslab.com/favicon.svg",
+    "contentUrl": "https://hk.onyxdevslab.com/favicon.svg",
+    "width": 512,
+    "height": 512
   },
   "areaServed": [
     "Hong Kong",
