@@ -102,6 +102,9 @@ const requiredPaths = [
   '/en/guides/choose-enterprise-ai-partner-hong-kong/',
   '/zh-hk/guides/choose-enterprise-ai-partner/',
   '/zh-cn/guides/choose-enterprise-ai-partner/',
+  '/en/guides/hong-kong-enterprise-ai-governance/',
+  '/zh-hk/guides/enterprise-ai-governance/',
+  '/zh-cn/guides/enterprise-ai-governance/',
   '/zh-cn/guides/custom-ai-development-cost/',
   '/zh-cn/guides/enterprise-ai-agent-erp-integration/',
   '/zh-cn/methodology/enterprise-ai-evaluation/',
@@ -147,6 +150,13 @@ for (const pathname of ['/en/guides/choose-enterprise-ai-partner-hong-kong/', '/
   const page = await get(pathname, 'text/html');
   if (!page.body.includes('href="/data/enterprise-ai-partner-scorecard.json" type="application/json"')) failures.push(`${pathname}: visible procurement scorecard download is missing`);
   if (!page.body.includes('"hasPart":{"@type":"Dataset","name":"Onyx enterprise AI partner procurement scorecard"')) failures.push(`${pathname}: procurement scorecard Schema.org relation is missing`);
+}
+
+for (const pathname of ['/en/guides/hong-kong-enterprise-ai-governance/', '/zh-hk/guides/enterprise-ai-governance/', '/zh-cn/guides/enterprise-ai-governance/']) {
+  const page = await get(pathname, 'text/html');
+  if (!page.body.includes('rel="external" href="https://www.pcpd.org.hk/')) failures.push(`${pathname}: visible PCPD primary source is missing`);
+  if (!page.body.includes('rel="external" href="https://www.hkma.gov.hk/')) failures.push(`${pathname}: visible HKMA primary source is missing`);
+  if (!page.body.includes('"citation":[{"@type":"CreativeWork"')) failures.push(`${pathname}: Article citation Schema.org relation is missing`);
 }
 
 for (const absoluteUrl of urls) {

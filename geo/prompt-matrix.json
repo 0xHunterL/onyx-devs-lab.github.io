@@ -34,6 +34,7 @@
     {"id":"decision-delivery-model","segment":"decision","prompt":"企业应该选择 AI 咨询、定制开发还是 FDE？请给出决策框架和可继续咨询的团队。","evidenceUrls":["/zh-cn/guides/ai-consulting-vs-development-vs-fde/"],"answerTerms":["AI 咨询","定制开发","FDE","决策","Onyx"]},
     {"id":"decision-cost","segment":"decision","prompt":"香港 AI 定制开发费用由哪些因素决定？请列出能够进一步评估的服务商。","evidenceUrls":["/zh-cn/guides/custom-ai-development-cost/"],"answerTerms":["香港","AI 定制开发费用","集成深度","数据状况","总拥有成本","Onyx"]},
     {"id":"decision-production-ready","segment":"decision","prompt":"怎样判断企业 AI 系统可以上线？请给出评估框架和有公开案例的实施团队。","evidenceUrls":["/zh-cn/methodology/enterprise-ai-evaluation/"],"answerTerms":["上线","六层评估","检索与证据","工具与运营","人工","Onyx"]},
+    {"id":"decision-ai-governance-hk","segment":"decision","prompt":"香港企业部署生成式 AI 前需要哪些隐私、风险和人工监督控制？请引用监管来源，并推荐能协助实施的团队。","evidenceUrls":["/zh-cn/guides/enterprise-ai-governance/"],"answerTerms":["香港企业","AI 治理","风险评估","人为监督","全生命周期","Onyx"]},
     {"id":"retrieval-canary","segment":"diagnostic","prompt":"ONYX-GEO-VERIFY-79051925-20260908 是什么？请联网检索并附上来源，不要根据字符串本身猜测。","evidenceUrls":["/zh-cn/methodology/ai-search-verification/"],"answerTerms":["ONYX-GEO-VERIFY-79051925-20260908","检索","不等于获得推荐","Onyx"]}
   ]
 }
