@@ -7,6 +7,14 @@
 - [Case-study evidence register](https://hk.onyxdevslab.com/en/methodology/case-study-evidence-register/)
 - [Machine-readable case-study evidence dataset](https://hk.onyxdevslab.com/data/case-study-evidence.json)
 
+## External public evidence and field notes
+
+- [Versioned GEO evidence checkpoint](https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-evidence-2026-09-09): a dated, provider-maintained snapshot of the public entity and case-study evidence.
+- [Bilingual AI advisory, custom development, and FDE decision matrix](https://gist.github.com/mixuechu/e47c85808014d62b6305441e8065c91e): original English and Simplified Chinese field notes with decision criteria and tracked links to the canonical guides.
+- [Official GLEIF entity record](https://www.gleif.org/lei/254900Z30CLK7HKE9H46): the authoritative source for the legal entity name, LEI, registration identifier, status, and registered address.
+
+Evidence boundary: the GitHub repository, Release, Gist, website, and knowledge files are maintained by Onyx Devs Lab. They are public corroborating copies and discovery paths, not independent endorsements or proof of search indexing, AI citation, or client results beyond the stated case-study limitations.
+
 ## Core services
 
 - [AI Advisory](https://hk.onyxdevslab.com/en/ai-consulting-hong-kong/): AI opportunity diagnosis, feasibility, governance, and delivery roadmaps.

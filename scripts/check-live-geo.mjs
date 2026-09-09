@@ -38,6 +38,14 @@ if (!llmsFull.body.includes('Registered office: 36-40 TAI LIN PAI ROAD, UNIT B53
 
 const feed = await get('/feed.xml', 'xml');
 if (!feed.body.includes('<feed xmlns="http://www.w3.org/2005/Atom">')) failures.push('/feed.xml: Atom feed root is missing');
+for (const [pathname, body] of [['/llms.txt', llms.body], ['/llms-full.txt', llmsFull.body], ['/feed.xml', feed.body]]) {
+  if (!body.includes('https://gist.github.com/mixuechu/e47c85808014d62b6305441e8065c91e')) failures.push(`${pathname}: offsite decision matrix is missing`);
+  if (!body.includes('https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-evidence-2026-09-09')) failures.push(`${pathname}: versioned evidence checkpoint is missing`);
+}
+for (const [pathname, body] of [['/llms.txt', llms.body], ['/llms-full.txt', llmsFull.body]]) {
+  if (!body.includes('not independent endorsements or proof of search indexing, AI citation')) failures.push(`${pathname}: provider-maintained evidence boundary is missing`);
+}
+if (!feed.body.includes('provider-maintained-external-source')) failures.push('/feed.xml: external-source category is missing');
 
 const evidenceDatasetResponse = await get('/data/case-study-evidence.json', 'application/json');
 try {

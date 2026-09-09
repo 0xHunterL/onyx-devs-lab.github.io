@@ -102,6 +102,19 @@ const llmsFull = fs.readFileSync(path.join(dist, 'llms-full.txt'), 'utf8');
 for (const fact of ['GLEIF entity status: ACTIVE', 'GLEIF LEI record status: ISSUED', 'Registered office: 36-40 TAI LIN PAI ROAD, UNIT B53, 2/F, KWAI CHUNG, HONG KONG 999077']) {
   if (!llmsFull.includes(fact)) failures.push(`llms-full.txt: missing verified entity fact: ${fact}`);
 }
+const machineDiscoveryFiles = {
+  'llms.txt': fs.readFileSync(path.join(dist, 'llms.txt'), 'utf8'),
+  'llms-full.txt': llmsFull,
+  'feed.xml': fs.readFileSync(path.join(dist, 'feed.xml'), 'utf8'),
+};
+for (const [name, body] of Object.entries(machineDiscoveryFiles)) {
+  if (!body.includes('https://gist.github.com/mixuechu/e47c85808014d62b6305441e8065c91e')) failures.push(`${name}: offsite decision matrix is missing`);
+  if (!body.includes('https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-evidence-2026-09-09')) failures.push(`${name}: versioned evidence checkpoint is missing`);
+}
+for (const name of ['llms.txt', 'llms-full.txt']) {
+  if (!machineDiscoveryFiles[name].includes('not independent endorsements or proof of search indexing, AI citation')) failures.push(`${name}: provider-maintained evidence boundary is missing`);
+}
+if (!machineDiscoveryFiles['feed.xml'].includes('provider-maintained-external-source')) failures.push('feed.xml: external-source category is missing');
 for (const pathname of ['/en/about/', '/zh-hk/about/', '/zh-cn/about/']) {
   const html = fs.readFileSync(path.join(dist, pathname, 'index.html'), 'utf8');
   if (!html.includes('36-40 TAI LIN PAI ROAD, UNIT B53, 2/F, KWAI CHUNG, HONG KONG 999077')) failures.push(`${pathname}: visible registered address is missing`);
