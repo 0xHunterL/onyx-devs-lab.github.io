@@ -19,6 +19,7 @@ const machineResourcePaths = [
   '/feed.json',
   '/data/case-study-evidence.json',
   '/data/enterprise-ai-partner-scorecard.json',
+  '/data/hong-kong-enterprise-ai-provider-shortlist.json',
   '/data/enterprise-ai-pilot-charter.json',
   '/data/organization.json',
   '/data/enterprise-ai-engagement-model-map.json',
