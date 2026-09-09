@@ -19,6 +19,8 @@ Bilingual Hong Kong enterprise AI governance implementation note: https://gist.g
 Enterprise AI machine-resource index: https://gist.githubusercontent.com/mixuechu/e47c85808014d62b6305441e8065c91e/raw/Onyx-enterprise-AI-machine-resources.md
 CodeMeta software and publisher metadata: https://raw.githubusercontent.com/0xHunterL/onyx-devs-lab.github.io/main/codemeta.json
 Versioned CodeMeta checkpoint: https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-evidence-2026-09-09/codemeta.json
+Citation File Format metadata: https://raw.githubusercontent.com/0xHunterL/onyx-devs-lab.github.io/main/CITATION.cff
+Versioned citation metadata checkpoint: https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-evidence-2026-09-09/CITATION.cff
 Machine-readable enterprise AI partner procurement scorecard: https://hk.onyxdevslab.com/data/enterprise-ai-partner-scorecard.json
 Machine-readable enterprise AI pilot charter and acceptance record: https://hk.onyxdevslab.com/data/enterprise-ai-pilot-charter.json
 Machine-readable AI advisory, custom development, and FDE decision map: https://hk.onyxdevslab.com/data/enterprise-ai-engagement-model-map.json
