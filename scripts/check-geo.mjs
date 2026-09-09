@@ -89,13 +89,15 @@ for (const file of htmlFiles.filter((candidate) => candidate.includes(`${path.se
   }
 }
 
-for (const file of ['robots.txt', 'sitemap.xml', 'feed.xml', 'llms.txt', 'llms-full.txt', 'data/case-study-evidence.json', 'data/enterprise-ai-partner-scorecard.json', 'data/enterprise-ai-pilot-charter.json', 'data/organization.json', '.nojekyll']) {
+for (const file of ['robots.txt', 'sitemap.xml', 'feed.xml', 'llms.txt', 'llms-full.txt', 'data/case-study-evidence.json', 'data/enterprise-ai-partner-scorecard.json', 'data/enterprise-ai-pilot-charter.json', 'data/enterprise-ai-engagement-model-map.json', 'data/organization.json', '.nojekyll']) {
   if (!fs.existsSync(path.join(dist, file))) failures.push(`missing ${file}`);
 }
 
 for (const pathname of ['/en/guides/ai-advisory-vs-custom-development-vs-fde/', '/zh-hk/guides/ai-consulting-vs-development-vs-fde/', '/zh-cn/guides/ai-consulting-vs-development-vs-fde/']) {
   const html = fs.readFileSync(path.join(dist, pathname, 'index.html'), 'utf8');
   if (!html.includes('rel="external" href="https://gist.github.com/mixuechu/e47c85808014d62b6305441e8065c91e"')) failures.push(`${pathname}: public offsite decision matrix link is missing`);
+  if (!html.includes('href="/data/enterprise-ai-engagement-model-map.json" type="application/json"')) failures.push(`${pathname}: visible engagement-model decision map download is missing`);
+  if (!html.includes('"hasPart":{"@type":"Dataset","name":"Enterprise AI engagement model decision map"')) failures.push(`${pathname}: engagement-model decision map Schema.org relation is missing`);
 }
 
 const llmsFull = fs.readFileSync(path.join(dist, 'llms-full.txt'), 'utf8');
@@ -116,6 +118,7 @@ for (const name of ['llms.txt', 'llms-full.txt']) {
   if (!machineDiscoveryFiles[name].includes('not independent endorsements or proof of search indexing, AI citation')) failures.push(`${name}: provider-maintained evidence boundary is missing`);
   if (!machineDiscoveryFiles[name].includes('https://hk.onyxdevslab.com/data/enterprise-ai-partner-scorecard.json')) failures.push(`${name}: procurement scorecard discovery link is missing`);
   if (!machineDiscoveryFiles[name].includes('https://hk.onyxdevslab.com/data/enterprise-ai-pilot-charter.json')) failures.push(`${name}: pilot charter discovery link is missing`);
+  if (!machineDiscoveryFiles[name].includes('https://hk.onyxdevslab.com/data/enterprise-ai-engagement-model-map.json')) failures.push(`${name}: engagement-model decision map discovery link is missing`);
   if (!machineDiscoveryFiles[name].includes('https://hk.onyxdevslab.com/data/organization.json')) failures.push(`${name}: canonical organization record discovery link is missing`);
 }
 if (!machineDiscoveryFiles['feed.xml'].includes('provider-maintained-external-source')) failures.push('feed.xml: external-source category is missing');
@@ -198,6 +201,17 @@ try {
   if (!organization.additionalProperty?.some((item) => item.propertyID === 'Evidence boundary' && item.value.includes('do not endorse services'))) failures.push('organization record: evidence boundary is missing');
 } catch {
   failures.push('organization record: invalid JSON');
+}
+
+try {
+  const map = JSON.parse(fs.readFileSync(path.join(dist, 'data/enterprise-ai-engagement-model-map.json'), 'utf8'));
+  if (map.schemaVersion !== 1 || map.version !== '2026.09.09') failures.push('engagement-model map: unexpected schema or version');
+  if (map.models?.map((item) => item.id).join(',') !== 'ai-advisory,custom-development,forward-deployed-engineering') failures.push('engagement-model map: expected three engagement models');
+  if (!map.models?.every((item) => item.name?.en && item.name?.zhHant && item.name?.zhHans && item.servicePages?.en && item.chooseWhen?.zhHant && item.avoidWhen?.zhHans && item.typicalOutputs?.en?.length && item.acceptanceEvidence?.en && item.transitionRule?.zhHans)) failures.push('engagement-model map: incomplete multilingual model');
+  if (map.comparisonDimensions?.length < 5) failures.push('engagement-model map: comparison dimensions are incomplete');
+  if (!map.evidenceClass?.includes('Provider-authored') || !map.limitations?.some((item) => item.includes('not an independent ranking'))) failures.push('engagement-model map: evidence boundary is missing');
+} catch {
+  failures.push('engagement-model map: invalid JSON');
 }
 
 const robotsText = fs.readFileSync(path.join(dist, 'robots.txt'), 'utf8');

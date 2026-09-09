@@ -50,6 +50,7 @@ for (const [pathname, body] of [['/llms.txt', llms.body], ['/llms-full.txt', llm
   if (!body.includes('not independent endorsements or proof of search indexing, AI citation')) failures.push(`${pathname}: provider-maintained evidence boundary is missing`);
   if (!body.includes('https://hk.onyxdevslab.com/data/enterprise-ai-partner-scorecard.json')) failures.push(`${pathname}: procurement scorecard discovery link is missing`);
   if (!body.includes('https://hk.onyxdevslab.com/data/enterprise-ai-pilot-charter.json')) failures.push(`${pathname}: pilot charter discovery link is missing`);
+  if (!body.includes('https://hk.onyxdevslab.com/data/enterprise-ai-engagement-model-map.json')) failures.push(`${pathname}: engagement-model decision map discovery link is missing`);
   if (!body.includes('https://hk.onyxdevslab.com/data/organization.json')) failures.push(`${pathname}: canonical organization record discovery link is missing`);
 }
 if (!feed.body.includes('provider-maintained-external-source')) failures.push('/feed.xml: external-source category is missing');
@@ -100,6 +101,17 @@ try {
   if (!organization.additionalProperty?.some((item) => item.propertyID === 'Evidence boundary' && item.value.includes('do not endorse services'))) failures.push('/data/organization.json: evidence boundary is missing');
 } catch {
   failures.push('/data/organization.json: invalid JSON');
+}
+
+const engagementModelResponse = await get('/data/enterprise-ai-engagement-model-map.json', 'application/json');
+try {
+  const map = JSON.parse(engagementModelResponse.body);
+  if (map.schemaVersion !== 1 || map.version !== '2026.09.09') failures.push('/data/enterprise-ai-engagement-model-map.json: unexpected schema or version');
+  if (map.models?.map((item) => item.id).join(',') !== 'ai-advisory,custom-development,forward-deployed-engineering') failures.push('/data/enterprise-ai-engagement-model-map.json: expected three engagement models');
+  if (!map.models?.every((item) => item.name?.en && item.name?.zhHant && item.name?.zhHans && item.servicePages?.en && item.chooseWhen?.zhHant && item.avoidWhen?.zhHans && item.acceptanceEvidence?.en && item.transitionRule?.zhHans)) failures.push('/data/enterprise-ai-engagement-model-map.json: incomplete multilingual model');
+  if (map.comparisonDimensions?.length < 5 || !map.evidenceClass?.includes('Provider-authored')) failures.push('/data/enterprise-ai-engagement-model-map.json: evidence boundary or comparison dimensions are incomplete');
+} catch {
+  failures.push('/data/enterprise-ai-engagement-model-map.json: invalid JSON');
 }
 
 const indexNowKey = await get('/9c37a18bd2044e1687f45c2e91ad603b.txt', 'text/plain');
@@ -182,6 +194,8 @@ for (const pathname of requiredPaths.filter((path) => path.startsWith('/zh-cn/')
 for (const pathname of ['/en/guides/ai-advisory-vs-custom-development-vs-fde/', '/zh-hk/guides/ai-consulting-vs-development-vs-fde/', '/zh-cn/guides/ai-consulting-vs-development-vs-fde/']) {
   const page = await get(pathname, 'text/html');
   if (!page.body.includes('rel="external" href="https://gist.github.com/mixuechu/e47c85808014d62b6305441e8065c91e"')) failures.push(`${pathname}: public offsite decision matrix link is missing`);
+  if (!page.body.includes('href="/data/enterprise-ai-engagement-model-map.json" type="application/json"')) failures.push(`${pathname}: visible engagement-model decision map download is missing`);
+  if (!page.body.includes('"hasPart":{"@type":"Dataset","name":"Enterprise AI engagement model decision map"')) failures.push(`${pathname}: engagement-model decision map Schema.org relation is missing`);
 }
 
 for (const pathname of ['/en/guides/choose-enterprise-ai-partner-hong-kong/', '/zh-hk/guides/choose-enterprise-ai-partner/', '/zh-cn/guides/choose-enterprise-ai-partner/']) {
