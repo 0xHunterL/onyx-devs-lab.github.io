@@ -79,7 +79,7 @@ if (governanceGistSha256 !== expectedGovernanceGistSha256) failures.push(`GitHub
 const machineResourcesGistRawUrl = 'https://gist.githubusercontent.com/mixuechu/e47c85808014d62b6305441e8065c91e/raw/Onyx-enterprise-AI-machine-resources.md';
 const machineResourcesGistRaw = await get('GitHub Gist machine-resource index', machineResourcesGistRawUrl, 'text/plain');
 const machineResourcesGistSha256 = createHash('sha256').update(machineResourcesGistRaw).digest('hex');
-const expectedMachineResourcesGistSha256 = 'ff3797a8a284d628fa90659c236854aa88c42e432c2c207455e7e5541f05a7c5';
+const expectedMachineResourcesGistSha256 = 'f409be2b6d1f0c5b8f87f4042aed7087e8fcc66246bb649b8f8dace7634cd620';
 if (machineResourcesGistSha256 !== expectedMachineResourcesGistSha256) failures.push(`GitHub Gist machine-resource index: SHA-256 mismatch, got ${machineResourcesGistSha256}`);
 requireText('GitHub Gist machine-resource index', machineResourcesGistRaw, [
   'data/organization.json?utm_source=github_gist',
@@ -92,6 +92,10 @@ requireText('GitHub Gist machine-resource index', machineResourcesGistRaw, [
   'releases/download/geo-evidence-2026-09-09/CITATION.cff',
   'releases/tag/geo-readiness-2026-09-10',
   'releases/download/geo-readiness-2026-09-10/ai-search-evidence-status.json',
+  'releases/tag/geo-query-coverage-2026-09-10',
+  'releases/download/geo-query-coverage-2026-09-10/ai-search-evidence-status.json',
+  'releases/download/geo-query-coverage-2026-09-10/prompt-matrix.json',
+  'releases/download/geo-query-coverage-2026-09-10/enterprise-ai-service-terms.jsonld',
   'releases/tag/chinese-enterprise-ai-field-notes-2026-09-10',
   'releases/download/chinese-enterprise-ai-field-notes-2026-09-10/chinese-enterprise-ai-field-notes.json',
   'FDE-is-not-staff-augmentation.zh-CN.md',
@@ -207,6 +211,55 @@ requireText('GitHub agent-readiness checkpoint', readinessRelease, [
   '3da4a0be148d3dbb41188ba8b6dc40bb0da75bd484494de4e24d5b2d431baf44',
 ]);
 
+const queryCoverageReleaseUrl = 'https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-query-coverage-2026-09-10';
+const queryCoverageRelease = await get('GitHub AI dingkai query-coverage checkpoint', queryCoverageReleaseUrl, 'text/html');
+requireText('GitHub AI dingkai query-coverage checkpoint', queryCoverageRelease, [
+  'Onyx GEO 查询覆盖',
+  'AI 定开',
+  '18 条提示词',
+  'prompt-matrix.json',
+  'ai-search-evidence-status.json',
+  'enterprise-ai-service-terms.jsonld',
+  'b62cde298c4b7684b0f8c86803533ced39c6e2b0779bea5c1c69cf677f3fc85b',
+]);
+
+const queryCoverageAssetBase = 'https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-query-coverage-2026-09-10';
+const queryCoverageStatusUrl = `${queryCoverageAssetBase}/ai-search-evidence-status.json`;
+const queryCoverageStatusRaw = await get('Versioned query-coverage evidence status', queryCoverageStatusUrl, 'application/');
+const queryCoverageStatusSha256 = createHash('sha256').update(queryCoverageStatusRaw).digest('hex');
+if (queryCoverageStatusSha256 !== 'b62cde298c4b7684b0f8c86803533ced39c6e2b0779bea5c1c69cf677f3fc85b') failures.push(`Versioned query-coverage evidence status: SHA-256 mismatch, got ${queryCoverageStatusSha256}`);
+try {
+  const status = JSON.parse(queryCoverageStatusRaw);
+  if (status.schemaVersion !== 2 || status.version !== '2026.09.10.1' || status.sameAs !== queryCoverageStatusUrl || status.testProtocol?.promptCount !== 18 || status.testProtocol?.queryAliasesAdded?.join(',') !== 'AI 定开,AI定开' || status.testProtocol?.doubaoPromptsSent !== false) failures.push('Versioned query-coverage evidence status: expected structure is incomplete');
+} catch {
+  failures.push('Versioned query-coverage evidence status: invalid JSON');
+}
+
+const queryCoveragePromptUrl = `${queryCoverageAssetBase}/prompt-matrix.json`;
+const queryCoveragePromptRaw = await get('Versioned query-coverage prompt matrix', queryCoveragePromptUrl, 'application/');
+const queryCoveragePromptSha256 = createHash('sha256').update(queryCoveragePromptRaw).digest('hex');
+if (queryCoveragePromptSha256 !== 'e68766f0e523965661623bfced5fdccedf33282b1764cbd9720eb64e24e6d67c') failures.push(`Versioned query-coverage prompt matrix: SHA-256 mismatch, got ${queryCoveragePromptSha256}`);
+try {
+  const matrix = JSON.parse(queryCoveragePromptRaw);
+  const aliasPrompt = matrix.prompts?.find((item) => item.id === 'category-ai-dingkai-hk');
+  if (matrix.schemaVersion !== 2 || matrix.prompts?.length !== 18 || !aliasPrompt?.answerTerms?.includes('AI 定开') || !aliasPrompt?.answerTerms?.includes('AI定开')) failures.push('Versioned query-coverage prompt matrix: expected alias prompt is incomplete');
+} catch {
+  failures.push('Versioned query-coverage prompt matrix: invalid JSON');
+}
+
+const queryCoverageTermsUrl = `${queryCoverageAssetBase}/enterprise-ai-service-terms.jsonld`;
+const queryCoverageTermsRaw = await get('Versioned query-coverage service term graph', queryCoverageTermsUrl, 'application/');
+const queryCoverageTermsSha256 = createHash('sha256').update(queryCoverageTermsRaw).digest('hex');
+if (queryCoverageTermsSha256 !== '92d99650a5b55cc88e82546e1a50127f8863fcc314bb4a461502262ae6e4fe77') failures.push(`Versioned query-coverage service term graph: SHA-256 mismatch, got ${queryCoverageTermsSha256}`);
+try {
+  const termGraph = JSON.parse(queryCoverageTermsRaw);
+  const customDevelopment = termGraph['@graph']?.find((node) => node.termCode === 'custom-ai-development');
+  const termSet = termGraph['@graph']?.find((node) => node['@type'] === 'DefinedTermSet');
+  if (termGraph['@context'] !== 'https://schema.org' || termSet?.sameAs !== queryCoverageTermsUrl || !customDevelopment?.alternateName?.includes('AI 定开') || !customDevelopment?.alternateName?.includes('AI定开')) failures.push('Versioned query-coverage service term graph: expected aliases or sameAs are incomplete');
+} catch {
+  failures.push('Versioned query-coverage service term graph: invalid JSON');
+}
+
 const serviceTermsReleaseUrl = 'https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-readiness-2026-09-10/enterprise-ai-service-terms.jsonld';
 const serviceTermsReleaseRaw = await get('Versioned enterprise AI service term graph', serviceTermsReleaseUrl, 'application/');
 const serviceTermsReleaseSha256 = createHash('sha256').update(serviceTermsReleaseRaw).digest('hex');
@@ -320,5 +373,5 @@ if (versionedCitationRaw !== citationRaw) failures.push('Versioned citation meta
 const robots = await get('GitHub Gist robots', 'https://gist.github.com/robots.txt', 'text/plain', { allowUnavailable: true });
 if (robots.includes('Disallow: /mixuechu/e47c85808014d62b6305441e8065c91e')) failures.push('GitHub Gist robots: the published decision matrix is explicitly disallowed');
 
-console.log(JSON.stringify({ generatedAt: new Date().toISOString(), gistSha256, gistCampaignLinks, governanceGistSha256, gistGovernanceCampaignLinks, machineResourcesGistSha256, gistMachineResourceLinks, gistFieldNoteCampaignLinks, gistFieldNoteSha256, chineseFieldNotesAssetSha256, repositoryCampaignLinks, serviceTermsReleaseSha256, codeMetaSha256, versionedCodeMetaSha256, citationSha256, versionedCitationSha256, scorecardSha256, results, failures }, null, 2));
+console.log(JSON.stringify({ generatedAt: new Date().toISOString(), gistSha256, gistCampaignLinks, governanceGistSha256, gistGovernanceCampaignLinks, machineResourcesGistSha256, gistMachineResourceLinks, gistFieldNoteCampaignLinks, gistFieldNoteSha256, chineseFieldNotesAssetSha256, repositoryCampaignLinks, serviceTermsReleaseSha256, queryCoverageStatusSha256, queryCoveragePromptSha256, queryCoverageTermsSha256, codeMetaSha256, versionedCodeMetaSha256, citationSha256, versionedCitationSha256, scorecardSha256, results, failures }, null, 2));
 if (failures.length) process.exit(1);
