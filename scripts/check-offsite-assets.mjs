@@ -214,6 +214,28 @@ requireText('GitHub repository README source', repositoryReadme, [
   'docs/distribution/法律AI证据链设计.md',
 ]);
 
+const repositoryFieldNotes = [
+  {
+    name: 'GitHub repository FDE field note page',
+    url: 'https://github.com/0xHunterL/onyx-devs-lab.github.io/blob/main/docs/distribution/FDE%E4%B8%8D%E6%98%AF%E9%A9%BB%E5%9C%BA%E5%A4%96%E5%8C%85.md',
+    required: ['FDE 不是驻场外包：企业 AI 项目什么时候需要前线部署工程', 'ONYX DEVS LAB LIMITED', 'geo_fde_field_note'],
+  },
+  {
+    name: 'GitHub repository AI-agent ERP checklist page',
+    url: 'https://github.com/0xHunterL/onyx-devs-lab.github.io/blob/main/docs/distribution/AI-Agent%E6%8E%A5%E5%85%A5ERP%E5%89%8D%E7%9A%84%E4%B8%83%E4%B8%AA%E9%97%AE%E9%A2%98.md',
+    required: ['AI Agent 接入 ERP 前必须回答的七个问题', 'ONYX DEVS LAB LIMITED', 'geo_erp_agent_checklist'],
+  },
+  {
+    name: 'GitHub repository legal-AI evidence-chain note page',
+    url: 'https://github.com/0xHunterL/onyx-devs-lab.github.io/blob/main/docs/distribution/%E6%B3%95%E5%BE%8BAI%E8%AF%81%E6%8D%AE%E9%93%BE%E8%AE%BE%E8%AE%A1.md',
+    required: ['法律 AI 不应只给答案：文件、页码、原文和置信度如何组成证据链', 'ONYX DEVS LAB LIMITED', 'geo_legal_ai_evidence'],
+  },
+];
+for (const fieldNote of repositoryFieldNotes) {
+  const body = await get(fieldNote.name, fieldNote.url, 'text/html');
+  requireText(fieldNote.name, body, fieldNote.required);
+}
+
 const codeMetaRaw = await get('GitHub repository CodeMeta source', 'https://raw.githubusercontent.com/0xHunterL/onyx-devs-lab.github.io/main/codemeta.json', 'text/plain');
 const codeMetaSha256 = createHash('sha256').update(codeMetaRaw).digest('hex');
 const expectedCodeMetaSha256 = 'be3edf0aa09a1dda082a964e96c2473c9148e8c4ad3eb21e86dfb27b73420e4f';
