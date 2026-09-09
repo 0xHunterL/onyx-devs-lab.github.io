@@ -47,6 +47,10 @@ async function get(pathname, expectedType, userAgent = 'Onyx-GEO-Release-Check/1
 }
 
 const root = await get('/', 'text/html');
+const rootLinkHeader = root.response?.headers.get('link') || '';
+for (const resource of ['sitemap.xml', 'feed.xml', 'llms.txt']) {
+  if (!rootLinkHeader.includes(`https://hk.onyxdevslab.com/${resource}`)) failures.push(`/: Link discovery header is missing ${resource}`);
+}
 for (const required of ['ONYX DEVS LAB LIMITED', 'business registration number 79051925', 'href="/zh-cn/"', 'href="/en/guides/choose-enterprise-ai-partner-hong-kong/"', 'href="/en/methodology/ai-search-verification/"']) {
   if (!root.body.includes(required)) failures.push(`/: static crawler fallback is missing ${required}`);
 }

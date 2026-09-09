@@ -257,6 +257,11 @@ for (const agent of ['Claude-SearchBot', 'Claude-User', 'ClaudeBot', 'Googlebot'
   if (!robotsText.includes(`User-agent: ${agent}`)) failures.push(`robots.txt: ${agent} policy is missing`);
 }
 
+const nginxConfig = fs.readFileSync(path.resolve('deploy/nginx-hk.conf'), 'utf8');
+for (const resource of ['sitemap.xml', 'feed.xml', 'llms.txt']) {
+  if (!nginxConfig.includes(`https://hk.onyxdevslab.com/${resource}`)) failures.push(`nginx: Link discovery header is missing ${resource}`);
+}
+
 const sitemap = fs.readFileSync(path.join(dist, 'sitemap.xml'), 'utf8');
 const urls = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map((match) => match[1]);
 for (const url of urls) {
