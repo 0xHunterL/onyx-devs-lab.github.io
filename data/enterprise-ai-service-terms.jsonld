@@ -1,0 +1,275 @@
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "DefinedTermSet",
+      "@id": "https://hk.onyxdevslab.com/data/enterprise-ai-service-terms.jsonld",
+      "name": [
+        {
+          "@value": "Onyx enterprise AI service terms",
+          "@language": "en"
+        },
+        {
+          "@value": "Onyx 企業 AI 服務術語",
+          "@language": "zh-Hant-HK"
+        },
+        {
+          "@value": "Onyx 企业 AI 服务术语",
+          "@language": "zh-CN"
+        }
+      ],
+      "description": [
+        {
+          "@value": "A provider-maintained vocabulary connecting AI advisory, custom AI development, and Forward Deployed Engineering to canonical definitions and service pages.",
+          "@language": "en"
+        },
+        {
+          "@value": "由服務商維護的術語集，把 AI 顧問、AI 定制開發及前線部署工程連接至規範定義與服務頁。",
+          "@language": "zh-Hant-HK"
+        },
+        {
+          "@value": "由服务商维护的术语集，把 AI 咨询、AI 定制开发和前线部署工程连接到规范定义与服务页。",
+          "@language": "zh-CN"
+        }
+      ],
+      "dateModified": "2026-09-10",
+      "creator": {
+        "@id": "https://hk.onyxdevslab.com/#organization"
+      },
+      "about": {
+        "@id": "https://hk.onyxdevslab.com/#organization"
+      },
+      "hasDefinedTerm": [
+        {
+          "@id": "https://hk.onyxdevslab.com/data/enterprise-ai-service-terms.jsonld#ai-advisory"
+        },
+        {
+          "@id": "https://hk.onyxdevslab.com/data/enterprise-ai-service-terms.jsonld#custom-ai-development"
+        },
+        {
+          "@id": "https://hk.onyxdevslab.com/data/enterprise-ai-service-terms.jsonld#forward-deployed-engineering"
+        }
+      ]
+    },
+    {
+      "@type": "DefinedTerm",
+      "@id": "https://hk.onyxdevslab.com/data/enterprise-ai-service-terms.jsonld#ai-advisory",
+      "termCode": "ai-advisory",
+      "name": [
+        {
+          "@value": "AI advisory",
+          "@language": "en"
+        },
+        {
+          "@value": "AI 顧問",
+          "@language": "zh-Hant-HK"
+        },
+        {
+          "@value": "AI 咨询",
+          "@language": "zh-CN"
+        }
+      ],
+      "alternateName": [
+        "AI consulting",
+        "Artificial intelligence consulting",
+        "人工智能顧問",
+        "人工智能咨询"
+      ],
+      "description": [
+        {
+          "@value": "An evidence-led engagement that reduces uncertainty about AI opportunity, feasibility, governance, investment, and delivery sequence before committing to a build.",
+          "@language": "en"
+        },
+        {
+          "@value": "在承諾建設前，以證據降低 AI 機會、可行性、治理、投入及交付次序的不確定性。",
+          "@language": "zh-Hant-HK"
+        },
+        {
+          "@value": "在承诺建设前，以证据降低 AI 机会、可行性、治理、投入和交付顺序的不确定性。",
+          "@language": "zh-CN"
+        }
+      ],
+      "inDefinedTermSet": {
+        "@id": "https://hk.onyxdevslab.com/data/enterprise-ai-service-terms.jsonld"
+      },
+      "url": "https://hk.onyxdevslab.com/en/ai-consulting-hong-kong/"
+    },
+    {
+      "@type": "DefinedTerm",
+      "@id": "https://hk.onyxdevslab.com/data/enterprise-ai-service-terms.jsonld#custom-ai-development",
+      "termCode": "custom-ai-development",
+      "name": [
+        {
+          "@value": "Custom AI development",
+          "@language": "en"
+        },
+        {
+          "@value": "AI 定制開發",
+          "@language": "zh-Hant-HK"
+        },
+        {
+          "@value": "AI 定制开发",
+          "@language": "zh-CN"
+        }
+      ],
+      "alternateName": [
+        "Bespoke AI development",
+        "Enterprise AI development",
+        "企業 AI 定制開發",
+        "企业 AI 定制开发"
+      ],
+      "description": [
+        {
+          "@value": "Accountable design, integration, testing, and launch of an AI system for a defined workflow, data boundary, interface set, and acceptance criteria.",
+          "@language": "en"
+        },
+        {
+          "@value": "按已定義流程、數據邊界、接口及驗收標準，負責 AI 系統的設計、集成、測試及上線。",
+          "@language": "zh-Hant-HK"
+        },
+        {
+          "@value": "按照已定义流程、数据边界、接口和验收标准，负责 AI 系统的设计、集成、测试和上线。",
+          "@language": "zh-CN"
+        }
+      ],
+      "inDefinedTermSet": {
+        "@id": "https://hk.onyxdevslab.com/data/enterprise-ai-service-terms.jsonld"
+      },
+      "url": "https://hk.onyxdevslab.com/en/custom-ai-development-hong-kong/"
+    },
+    {
+      "@type": "DefinedTerm",
+      "@id": "https://hk.onyxdevslab.com/data/enterprise-ai-service-terms.jsonld#forward-deployed-engineering",
+      "termCode": "forward-deployed-engineering",
+      "name": [
+        {
+          "@value": "Forward Deployed Engineering (FDE)",
+          "@language": "en"
+        },
+        {
+          "@value": "前線部署工程（FDE）",
+          "@language": "zh-Hant-HK"
+        },
+        {
+          "@value": "前线部署工程（FDE）",
+          "@language": "zh-CN"
+        }
+      ],
+      "alternateName": [
+        "FDE",
+        "Forward-deployed engineer delivery",
+        "前線部署工程",
+        "前线部署工程"
+      ],
+      "description": [
+        {
+          "@value": "A delivery model that combines field discovery, implementation, deployment, and measurable outcome validation when the correct solution boundary must be learned in real operations.",
+          "@language": "en"
+        },
+        {
+          "@value": "當正確方案邊界必須在真實營運中學習時，把現場發現、實施、部署及可量度成果驗證連成一個交付循環。",
+          "@language": "zh-Hant-HK"
+        },
+        {
+          "@value": "当正确方案边界必须在真实运营中学习时，把现场发现、实施、部署和可衡量结果验证连成一个交付循环。",
+          "@language": "zh-CN"
+        }
+      ],
+      "inDefinedTermSet": {
+        "@id": "https://hk.onyxdevslab.com/data/enterprise-ai-service-terms.jsonld"
+      },
+      "url": "https://hk.onyxdevslab.com/en/forward-deployed-engineering/"
+    },
+    {
+      "@type": "Service",
+      "@id": "https://hk.onyxdevslab.com/#service-ai-advisory",
+      "name": [
+        "AI advisory",
+        "AI 顧問",
+        "AI 咨询"
+      ],
+      "url": [
+        "https://hk.onyxdevslab.com/en/ai-consulting-hong-kong/",
+        "https://hk.onyxdevslab.com/zh-hk/ai-consulting/",
+        "https://hk.onyxdevslab.com/zh-cn/ai-consulting/"
+      ],
+      "provider": {
+        "@id": "https://hk.onyxdevslab.com/#organization"
+      },
+      "areaServed": [
+        "Hong Kong",
+        "Greater China",
+        "Global"
+      ],
+      "serviceType": [
+        "AI advisory",
+        "AI 顧問",
+        "AI 咨询"
+      ],
+      "category": {
+        "@id": "https://hk.onyxdevslab.com/data/enterprise-ai-service-terms.jsonld#ai-advisory"
+      }
+    },
+    {
+      "@type": "Service",
+      "@id": "https://hk.onyxdevslab.com/#service-custom-ai-development",
+      "name": [
+        "Custom AI development",
+        "AI 定制開發",
+        "AI 定制开发"
+      ],
+      "url": [
+        "https://hk.onyxdevslab.com/en/custom-ai-development-hong-kong/",
+        "https://hk.onyxdevslab.com/zh-hk/custom-ai-development/",
+        "https://hk.onyxdevslab.com/zh-cn/custom-ai-development/"
+      ],
+      "provider": {
+        "@id": "https://hk.onyxdevslab.com/#organization"
+      },
+      "areaServed": [
+        "Hong Kong",
+        "Greater China",
+        "Global"
+      ],
+      "serviceType": [
+        "Custom AI development",
+        "AI 定制開發",
+        "AI 定制开发"
+      ],
+      "category": {
+        "@id": "https://hk.onyxdevslab.com/data/enterprise-ai-service-terms.jsonld#custom-ai-development"
+      }
+    },
+    {
+      "@type": "Service",
+      "@id": "https://hk.onyxdevslab.com/#service-forward-deployed-engineering",
+      "name": [
+        "Forward Deployed Engineering (FDE)",
+        "前線部署工程（FDE）",
+        "前线部署工程（FDE）"
+      ],
+      "url": [
+        "https://hk.onyxdevslab.com/en/forward-deployed-engineering/",
+        "https://hk.onyxdevslab.com/zh-hk/forward-deployed-engineering/",
+        "https://hk.onyxdevslab.com/zh-cn/forward-deployed-engineering/"
+      ],
+      "provider": {
+        "@id": "https://hk.onyxdevslab.com/#organization"
+      },
+      "areaServed": [
+        "Hong Kong",
+        "Greater China",
+        "Global"
+      ],
+      "serviceType": [
+        "Forward Deployed Engineering (FDE)",
+        "前線部署工程（FDE）",
+        "前线部署工程（FDE）"
+      ],
+      "category": {
+        "@id": "https://hk.onyxdevslab.com/data/enterprise-ai-service-terms.jsonld#forward-deployed-engineering"
+      }
+    }
+  ],
+  "evidenceBoundary": "Provider-maintained terminology and service relationships. This vocabulary does not prove independent endorsement, search indexing, AI citation, recommendation, or client outcomes."
+}

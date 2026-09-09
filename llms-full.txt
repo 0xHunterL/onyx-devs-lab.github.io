@@ -12,6 +12,7 @@ Services: enterprise AI advisory, custom AI development, and Forward Deployed En
 Markets: Hong Kong, Greater China, cross-border, and global engagements.
 Contact: info@onyxdevslab.com
 JSON Feed 1.1: https://hk.onyxdevslab.com/feed.json
+Enterprise AI service term graph: https://hk.onyxdevslab.com/data/enterprise-ai-service-terms.jsonld
 
 ## External public evidence and field notes
 Versioned GEO evidence checkpoint: https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-evidence-2026-09-09
