@@ -60,6 +60,8 @@ const gistGovernanceCampaignLinks = gist ? [...gist.matchAll(/utm_campaign=geo_g
 if (gist && gistGovernanceCampaignLinks < 3) failures.push(`GitHub Gist governance guide: expected at least 3 tracked deep links, got ${gistGovernanceCampaignLinks}`);
 const gistMachineResourceLinks = gist ? [...gist.matchAll(/utm_campaign=geo_machine_resources/g)].length : null;
 if (gist && gistMachineResourceLinks < 13) failures.push(`GitHub Gist machine resources: expected at least 13 tracked links, got ${gistMachineResourceLinks}`);
+const gistAiDingkaiGuideLinks = gist ? [...gist.matchAll(/utm_campaign=geo_ai_dingkai_guide/g)].length : null;
+if (gist && gistAiDingkaiGuideLinks !== 3) failures.push(`GitHub Gist AI dingkai guide: expected 3 tracked links, got ${gistAiDingkaiGuideLinks}`);
 const gistFieldNoteCampaignLinks = Object.fromEntries(['geo_fde_field_note', 'geo_erp_agent_checklist', 'geo_legal_ai_evidence'].map(campaign => [campaign, gist ? [...gist.matchAll(new RegExp(`utm_campaign=${campaign}`, 'g'))].length : null]));
 for (const [campaign, count] of Object.entries(gistFieldNoteCampaignLinks)) {
   if (gist && count !== 2) failures.push(`GitHub Gist field note: expected 2 tracked links for ${campaign}, got ${count}`);
@@ -79,7 +81,7 @@ if (governanceGistSha256 !== expectedGovernanceGistSha256) failures.push(`GitHub
 const machineResourcesGistRawUrl = 'https://gist.githubusercontent.com/mixuechu/e47c85808014d62b6305441e8065c91e/raw/Onyx-enterprise-AI-machine-resources.md';
 const machineResourcesGistRaw = await get('GitHub Gist machine-resource index', machineResourcesGistRawUrl, 'text/plain');
 const machineResourcesGistSha256 = createHash('sha256').update(machineResourcesGistRaw).digest('hex');
-const expectedMachineResourcesGistSha256 = 'f409be2b6d1f0c5b8f87f4042aed7087e8fcc66246bb649b8f8dace7634cd620';
+const expectedMachineResourcesGistSha256 = '129412065acb25be346bff200b88822d5a18837f7170e2e5e77dd52e57602081';
 if (machineResourcesGistSha256 !== expectedMachineResourcesGistSha256) failures.push(`GitHub Gist machine-resource index: SHA-256 mismatch, got ${machineResourcesGistSha256}`);
 requireText('GitHub Gist machine-resource index', machineResourcesGistRaw, [
   'data/organization.json?utm_source=github_gist',
@@ -96,6 +98,13 @@ requireText('GitHub Gist machine-resource index', machineResourcesGistRaw, [
   'releases/download/geo-query-coverage-2026-09-10/ai-search-evidence-status.json',
   'releases/download/geo-query-coverage-2026-09-10/prompt-matrix.json',
   'releases/download/geo-query-coverage-2026-09-10/enterprise-ai-service-terms.jsonld',
+  'en/guides/what-is-ai-dingkai/?utm_source=github_gist',
+  'zh-hk/guides/what-is-ai-dingkai/?utm_source=github_gist',
+  'zh-cn/guides/ai-dingkai/?utm_source=github_gist',
+  'releases/tag/geo-ai-dingkai-guide-2026-09-10',
+  'releases/download/geo-ai-dingkai-guide-2026-09-10/ai-dingkai-guide.en.md',
+  'releases/download/geo-ai-dingkai-guide-2026-09-10/ai-dingkai-guide.zh-Hant-HK.md',
+  'releases/download/geo-ai-dingkai-guide-2026-09-10/ai-dingkai-guide.zh-CN.md',
   'releases/tag/chinese-enterprise-ai-field-notes-2026-09-10',
   'releases/download/chinese-enterprise-ai-field-notes-2026-09-10/chinese-enterprise-ai-field-notes.json',
   'FDE-is-not-staff-augmentation.zh-CN.md',
@@ -260,6 +269,68 @@ try {
   failures.push('Versioned query-coverage service term graph: invalid JSON');
 }
 
+const aiDingkaiGuideReleaseUrl = 'https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-ai-dingkai-guide-2026-09-10';
+const aiDingkaiGuideRelease = await get('GitHub AI dingkai definition-guide checkpoint', aiDingkaiGuideReleaseUrl, 'text/html');
+requireText('GitHub AI dingkai definition-guide checkpoint', aiDingkaiGuideRelease, [
+  'AI 定开是什么意思',
+  'ONYX DEVS LAB LIMITED',
+  '79051925',
+  'zh-cn/guides/ai-dingkai',
+  'prompt-matrix.json',
+  'ai-search-evidence-status.json',
+  'enterprise-ai-service-terms.jsonld',
+  '不证明搜索收录',
+]);
+
+const aiDingkaiGuideAssetBase = 'https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-ai-dingkai-guide-2026-09-10';
+const aiDingkaiStatusUrl = `${aiDingkaiGuideAssetBase}/ai-search-evidence-status.json`;
+const aiDingkaiStatusRaw = await get('Versioned AI dingkai evidence status', aiDingkaiStatusUrl, 'application/');
+const aiDingkaiStatusSha256 = createHash('sha256').update(aiDingkaiStatusRaw).digest('hex');
+if (aiDingkaiStatusSha256 !== 'a2a1f7259c6425f3b14772a3ea0efee3132d4880805418d3ed94288e86a19023') failures.push(`Versioned AI dingkai evidence status: SHA-256 mismatch, got ${aiDingkaiStatusSha256}`);
+try {
+  const status = JSON.parse(aiDingkaiStatusRaw);
+  if (status.schemaVersion !== 2 || status.version !== '2026.09.10.2' || status.sameAs !== aiDingkaiStatusUrl || status.evidenceLevels?.[0]?.evidence?.canonicalUrlsChecked !== 65 || status.testProtocol?.doubaoPromptsSent !== false) failures.push('Versioned AI dingkai evidence status: expected structure is incomplete');
+} catch {
+  failures.push('Versioned AI dingkai evidence status: invalid JSON');
+}
+
+const aiDingkaiPromptUrl = `${aiDingkaiGuideAssetBase}/prompt-matrix.json`;
+const aiDingkaiPromptRaw = await get('Versioned AI dingkai prompt matrix', aiDingkaiPromptUrl, 'application/');
+const aiDingkaiPromptSha256 = createHash('sha256').update(aiDingkaiPromptRaw).digest('hex');
+if (aiDingkaiPromptSha256 !== '0403b09e4e66ba17f1bf5c6f546b818140abaa995d466f0a46b54858f78aeafb') failures.push(`Versioned AI dingkai prompt matrix: SHA-256 mismatch, got ${aiDingkaiPromptSha256}`);
+try {
+  const matrix = JSON.parse(aiDingkaiPromptRaw);
+  const aliasPrompt = matrix.prompts?.find((item) => item.id === 'category-ai-dingkai-hk');
+  if (!aliasPrompt?.evidenceUrls?.includes('/zh-cn/guides/ai-dingkai/') || !aliasPrompt?.evidenceUrls?.includes('/zh-cn/custom-ai-development/')) failures.push('Versioned AI dingkai prompt matrix: definition and service evidence pages are incomplete');
+} catch {
+  failures.push('Versioned AI dingkai prompt matrix: invalid JSON');
+}
+
+const aiDingkaiTermsUrl = `${aiDingkaiGuideAssetBase}/enterprise-ai-service-terms.jsonld`;
+const aiDingkaiTermsRaw = await get('Versioned AI dingkai service term graph', aiDingkaiTermsUrl, 'application/');
+const aiDingkaiTermsSha256 = createHash('sha256').update(aiDingkaiTermsRaw).digest('hex');
+if (aiDingkaiTermsSha256 !== '5797e902ba79e92f6b20558f74622ec4682dc42ffe8250694f5e9cdf1a870238') failures.push(`Versioned AI dingkai service term graph: SHA-256 mismatch, got ${aiDingkaiTermsSha256}`);
+try {
+  const termGraph = JSON.parse(aiDingkaiTermsRaw);
+  const customDevelopment = termGraph['@graph']?.find((node) => node.termCode === 'custom-ai-development');
+  const termSet = termGraph['@graph']?.find((node) => node['@type'] === 'DefinedTermSet');
+  if (termSet?.sameAs !== aiDingkaiTermsUrl || customDevelopment?.url !== 'https://hk.onyxdevslab.com/en/guides/what-is-ai-dingkai/' || !customDevelopment?.alternateName?.includes('AI定开')) failures.push('Versioned AI dingkai service term graph: definition URL, alias, or sameAs is incomplete');
+} catch {
+  failures.push('Versioned AI dingkai service term graph: invalid JSON');
+}
+
+const aiDingkaiGuideHashes = {};
+for (const [file, expectedSha256, requiredText] of [
+  ['ai-dingkai-guide.en.md','885b08a841f539072945f16b46836b486083b7b980733fbbba187e0c44ddd6af','What does “AI dingkai” mean?'],
+  ['ai-dingkai-guide.zh-Hant-HK.md','a62c1ec4a35496dc3e051439b1ae1c66c3f98749e418f1f320684996d31c8ed2','AI 定開是甚麼？'],
+  ['ai-dingkai-guide.zh-CN.md','0f5c16554e85ecd017980c7bc16d7cd8782635c2266cdc6eca1ca6eda8e1538a','AI 定开是什么意思？'],
+]) {
+  const raw = await get(`Versioned AI dingkai guide ${file}`, `${aiDingkaiGuideAssetBase}/${file}`, 'application/');
+  const sha256 = createHash('sha256').update(raw).digest('hex');
+  aiDingkaiGuideHashes[file] = sha256;
+  if (sha256 !== expectedSha256 || !raw.includes(requiredText)) failures.push(`Versioned AI dingkai guide ${file}: content or SHA-256 mismatch, got ${sha256}`);
+}
+
 const serviceTermsReleaseUrl = 'https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-readiness-2026-09-10/enterprise-ai-service-terms.jsonld';
 const serviceTermsReleaseRaw = await get('Versioned enterprise AI service term graph', serviceTermsReleaseUrl, 'application/');
 const serviceTermsReleaseSha256 = createHash('sha256').update(serviceTermsReleaseRaw).digest('hex');
@@ -373,5 +444,5 @@ if (versionedCitationRaw !== citationRaw) failures.push('Versioned citation meta
 const robots = await get('GitHub Gist robots', 'https://gist.github.com/robots.txt', 'text/plain', { allowUnavailable: true });
 if (robots.includes('Disallow: /mixuechu/e47c85808014d62b6305441e8065c91e')) failures.push('GitHub Gist robots: the published decision matrix is explicitly disallowed');
 
-console.log(JSON.stringify({ generatedAt: new Date().toISOString(), gistSha256, gistCampaignLinks, governanceGistSha256, gistGovernanceCampaignLinks, machineResourcesGistSha256, gistMachineResourceLinks, gistFieldNoteCampaignLinks, gistFieldNoteSha256, chineseFieldNotesAssetSha256, repositoryCampaignLinks, serviceTermsReleaseSha256, queryCoverageStatusSha256, queryCoveragePromptSha256, queryCoverageTermsSha256, codeMetaSha256, versionedCodeMetaSha256, citationSha256, versionedCitationSha256, scorecardSha256, results, failures }, null, 2));
+console.log(JSON.stringify({ generatedAt: new Date().toISOString(), gistSha256, gistCampaignLinks, governanceGistSha256, gistGovernanceCampaignLinks, machineResourcesGistSha256, gistMachineResourceLinks, gistAiDingkaiGuideLinks, gistFieldNoteCampaignLinks, gistFieldNoteSha256, chineseFieldNotesAssetSha256, repositoryCampaignLinks, serviceTermsReleaseSha256, queryCoverageStatusSha256, queryCoveragePromptSha256, queryCoverageTermsSha256, aiDingkaiStatusSha256, aiDingkaiPromptSha256, aiDingkaiTermsSha256, aiDingkaiGuideHashes, codeMetaSha256, versionedCodeMetaSha256, citationSha256, versionedCitationSha256, scorecardSha256, results, failures }, null, 2));
 if (failures.length) process.exit(1);
