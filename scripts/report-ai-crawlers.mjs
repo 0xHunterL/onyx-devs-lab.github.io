@@ -245,6 +245,8 @@ const syntheticChecks = events.filter((event) => event.classification === 'synth
 const verifiedOpenAiPages = pageCandidates.filter(
   (event) => ['GPTBot', 'OAI-SearchBot'].includes(event.family) && event.providerVerified === true,
 );
+const verifiedGptBotPages = verifiedOpenAiPages.filter((event) => event.family === 'GPTBot');
+const verifiedOaiSearchBotPages = verifiedOpenAiPages.filter((event) => event.family === 'OAI-SearchBot');
 const verifiedBingPages = pageCandidates.filter((event) => event.family === 'Bingbot' && event.providerVerified === true);
 const verifiedGooglePages = pageCandidates.filter((event) => event.family === 'Googlebot' && event.providerVerified === true);
 const verifiedPerplexityPages = pageCandidates.filter(
@@ -252,6 +254,10 @@ const verifiedPerplexityPages = pageCandidates.filter(
 );
 const verifiedOpenAiDiscoveryFiles = discoveryCandidates.filter(
   (event) => ['GPTBot', 'OAI-SearchBot'].includes(event.family) && event.providerVerified === true,
+);
+const verifiedGptBotDiscoveryFiles = verifiedOpenAiDiscoveryFiles.filter((event) => event.family === 'GPTBot');
+const verifiedOaiSearchBotDiscoveryFiles = verifiedOpenAiDiscoveryFiles.filter(
+  (event) => event.family === 'OAI-SearchBot',
 );
 const verifiedBingDiscoveryFiles = discoveryCandidates.filter(
   (event) => event.family === 'Bingbot' && event.providerVerified === true,
@@ -265,7 +271,7 @@ const verifiedPerplexityDiscoveryFiles = discoveryCandidates.filter(
 
 console.log(JSON.stringify({
   generatedAt: new Date().toISOString(),
-  caveat: 'User-Agent strings are self-declared. Candidate content crawls do not prove platform identity unless providerVerified is true under an enabled provider verification method.',
+  caveat: 'User-Agent strings are self-declared. Candidate content crawls do not prove platform identity unless providerVerified is true under an enabled provider verification method. GPTBot is reported separately from OAI-SearchBot because a verified training crawl is not evidence of search indexing or citation.',
   files: paths,
   since: sinceArg ? sinceArg.slice('--since='.length) : null,
   verifyOpenAi,
@@ -279,10 +285,14 @@ console.log(JSON.stringify({
     suspiciousSpoofOrScanRequests: suspiciousCandidates.length,
     syntheticReleaseChecks: syntheticChecks.length,
     verifiedOpenAiPageCrawls: verifiedOpenAiPages.length,
+    verifiedGptBotPageCrawls: verifiedGptBotPages.length,
+    verifiedOaiSearchBotPageCrawls: verifiedOaiSearchBotPages.length,
     verifiedBingPageCrawls: verifiedBingPages.length,
     verifiedGooglePageCrawls: verifiedGooglePages.length,
     verifiedPerplexityPageCrawls: verifiedPerplexityPages.length,
     verifiedOpenAiDiscoveryFileCrawls: verifiedOpenAiDiscoveryFiles.length,
+    verifiedGptBotDiscoveryFileCrawls: verifiedGptBotDiscoveryFiles.length,
+    verifiedOaiSearchBotDiscoveryFileCrawls: verifiedOaiSearchBotDiscoveryFiles.length,
     verifiedBingDiscoveryFileCrawls: verifiedBingDiscoveryFiles.length,
     verifiedGoogleDiscoveryFileCrawls: verifiedGoogleDiscoveryFiles.length,
     verifiedPerplexityDiscoveryFileCrawls: verifiedPerplexityDiscoveryFiles.length,
@@ -293,10 +303,14 @@ console.log(JSON.stringify({
   recentCandidatePageCrawls: pageCandidates.slice(-50),
   recentCandidateDiscoveryFileCrawls: discoveryCandidates.slice(-30),
   recentVerifiedOpenAiPageCrawls: verifiedOpenAiPages.slice(-50),
+  recentVerifiedGptBotPageCrawls: verifiedGptBotPages.slice(-50),
+  recentVerifiedOaiSearchBotPageCrawls: verifiedOaiSearchBotPages.slice(-50),
   recentVerifiedBingPageCrawls: verifiedBingPages.slice(-50),
   recentVerifiedGooglePageCrawls: verifiedGooglePages.slice(-50),
   recentVerifiedPerplexityPageCrawls: verifiedPerplexityPages.slice(-50),
   recentVerifiedOpenAiDiscoveryFileCrawls: verifiedOpenAiDiscoveryFiles.slice(-30),
+  recentVerifiedGptBotDiscoveryFileCrawls: verifiedGptBotDiscoveryFiles.slice(-30),
+  recentVerifiedOaiSearchBotDiscoveryFileCrawls: verifiedOaiSearchBotDiscoveryFiles.slice(-30),
   recentVerifiedBingDiscoveryFileCrawls: verifiedBingDiscoveryFiles.slice(-30),
   recentVerifiedGoogleDiscoveryFileCrawls: verifiedGoogleDiscoveryFiles.slice(-30),
   recentVerifiedPerplexityDiscoveryFileCrawls: verifiedPerplexityDiscoveryFiles.slice(-30),
