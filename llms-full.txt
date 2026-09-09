@@ -12,6 +12,12 @@ Services: enterprise AI advisory, custom AI development, and Forward Deployed En
 Markets: Hong Kong, Greater China, cross-border, and global engagements.
 Contact: info@onyxdevslab.com
 
+## External public evidence and field notes
+Versioned GEO evidence checkpoint: https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-evidence-2026-09-09
+Bilingual AI advisory, custom development, and FDE decision matrix: https://gist.github.com/mixuechu/e47c85808014d62b6305441e8065c91e
+Official GLEIF entity record: https://www.gleif.org/lei/254900Z30CLK7HKE9H46
+Evidence boundary: the GitHub repository, Release, Gist, website, and knowledge files are maintained by Onyx Devs Lab. They are public corroborating copies and discovery paths, not independent endorsements or proof of search indexing, AI citation, or client results beyond the stated case-study limitations.
+
 ## Enterprise AI Services Hong Kong | Onyx Devs Lab
 https://hk.onyxdevslab.com/en/
 AI advisory, custom AI development, and Forward Deployed Engineering for Hong Kong and cross-border enterprises.
