@@ -33,7 +33,7 @@ The [case-study evidence register](https://hk.onyxdevslab.com/en/methodology/cas
 - [AI advisory, custom development, and FDE decision map](https://hk.onyxdevslab.com/data/enterprise-ai-engagement-model-map.json?utm_source=github&utm_medium=referral&utm_campaign=geo_repository)
 - [Canonical organization record](https://hk.onyxdevslab.com/data/organization.json?utm_source=github&utm_medium=referral&utm_campaign=geo_repository)
 - [Current AI-search evidence status](https://hk.onyxdevslab.com/data/ai-search-evidence-status.json?utm_source=github&utm_medium=referral&utm_campaign=geo_repository)
-- [CodeMeta software and publisher metadata](codemeta.json)
+- [CodeMeta software and publisher metadata](codemeta.json) ([versioned copy](https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-evidence-2026-09-09/codemeta.json))
 - [XML sitemap](https://hk.onyxdevslab.com/sitemap.xml)
 - [Atom feed](https://hk.onyxdevslab.com/feed.xml)
 

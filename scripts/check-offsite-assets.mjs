@@ -120,6 +120,7 @@ requireText('GitHub evidence checkpoint', release, [
   '62 canonical URLs',
   '17 fixed prompts',
   'ai-search-evidence-status.json',
+  'codemeta.json',
 ]);
 
 const repository = await get('GitHub repository', 'https://github.com/0xHunterL/onyx-devs-lab.github.io', 'text/html');
@@ -138,7 +139,7 @@ requireText('GitHub repository README source', repositoryReadme, [
 
 const codeMetaRaw = await get('GitHub repository CodeMeta source', 'https://raw.githubusercontent.com/0xHunterL/onyx-devs-lab.github.io/main/codemeta.json', 'text/plain');
 const codeMetaSha256 = createHash('sha256').update(codeMetaRaw).digest('hex');
-const expectedCodeMetaSha256 = '6a1dac65d2051c40cf2234542e9120109fa1b0ec23b4a88310f4b85154926def';
+const expectedCodeMetaSha256 = 'be3edf0aa09a1dda082a964e96c2473c9148e8c4ad3eb21e86dfb27b73420e4f';
 if (codeMetaSha256 !== expectedCodeMetaSha256) failures.push(`GitHub repository CodeMeta source: SHA-256 mismatch, got ${codeMetaSha256}`);
 try {
   const codeMeta = JSON.parse(codeMetaRaw);
@@ -149,8 +150,13 @@ try {
   failures.push('GitHub repository CodeMeta source: invalid JSON');
 }
 
+const versionedCodeMetaRaw = await get('Versioned CodeMeta source', 'https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-evidence-2026-09-09/codemeta.json', 'application/');
+const versionedCodeMetaSha256 = createHash('sha256').update(versionedCodeMetaRaw).digest('hex');
+if (versionedCodeMetaSha256 !== expectedCodeMetaSha256) failures.push(`Versioned CodeMeta source: SHA-256 mismatch, got ${versionedCodeMetaSha256}`);
+if (versionedCodeMetaRaw !== codeMetaRaw) failures.push('Versioned CodeMeta source: content differs from the repository checkpoint');
+
 const robots = await get('GitHub Gist robots', 'https://gist.github.com/robots.txt', 'text/plain', { allowUnavailable: true });
 if (robots.includes('Disallow: /mixuechu/e47c85808014d62b6305441e8065c91e')) failures.push('GitHub Gist robots: the published decision matrix is explicitly disallowed');
 
-console.log(JSON.stringify({ generatedAt: new Date().toISOString(), gistSha256, gistCampaignLinks, governanceGistSha256, gistGovernanceCampaignLinks, machineResourcesGistSha256, gistMachineResourceLinks, codeMetaSha256, scorecardSha256, results, failures }, null, 2));
+console.log(JSON.stringify({ generatedAt: new Date().toISOString(), gistSha256, gistCampaignLinks, governanceGistSha256, gistGovernanceCampaignLinks, machineResourcesGistSha256, gistMachineResourceLinks, codeMetaSha256, versionedCodeMetaSha256, scorecardSha256, results, failures }, null, 2));
 if (failures.length) process.exit(1);

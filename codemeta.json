@@ -12,6 +12,7 @@
   "applicationCategory": "Enterprise AI information and evidence publication",
   "codeRepository": "https://github.com/0xHunterL/onyx-devs-lab.github.io",
   "url": "https://hk.onyxdevslab.com/",
+  "sameAs": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-evidence-2026-09-09/codemeta.json",
   "readme": "https://github.com/0xHunterL/onyx-devs-lab.github.io/blob/main/README.md",
   "continuousIntegration": "https://github.com/0xHunterL/onyx-devs-lab.github.io/actions/workflows/deploy.yml",
   "downloadUrl": "https://github.com/0xHunterL/onyx-devs-lab.github.io/archive/refs/heads/main.zip",
@@ -73,4 +74,3 @@
     "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-evidence-2026-09-09"
   ]
 }
-

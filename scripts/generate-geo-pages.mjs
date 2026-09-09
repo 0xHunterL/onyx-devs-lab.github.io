@@ -19,6 +19,7 @@ const volcengineOnlineContentPlugin = 'https://www.volcengine.com/docs/82379/135
 const governanceGistRawUrl = 'https://gist.githubusercontent.com/mixuechu/e47c85808014d62b6305441e8065c91e/raw/Hong-Kong-enterprise-AI-governance.md';
 const machineResourcesGistRawUrl = 'https://gist.githubusercontent.com/mixuechu/e47c85808014d62b6305441e8065c91e/raw/Onyx-enterprise-AI-machine-resources.md';
 const codeMetaRawUrl = 'https://raw.githubusercontent.com/0xHunterL/onyx-devs-lab.github.io/main/codemeta.json';
+const codeMetaReleaseUrl = 'https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-evidence-2026-09-09/codemeta.json';
 
 // These route trees are owned by this generator. Remove them first so an
 // in-place VPS build cannot leave retired pages indexable after a rename.
@@ -511,6 +512,7 @@ const externalFeedEntries=[
   {title:'Hong Kong enterprise AI governance: an implementation checklist',url:governanceGistRawUrl,summary:'Provider-authored English and Simplified Chinese implementation notes grounded in Hong Kong PCPD and HKMA primary sources.',category:'en-zh-CN'},
   {title:'Onyx Devs Lab enterprise AI machine resources',url:machineResourcesGistRawUrl,summary:'Provider-maintained index of canonical organization, engagement-model, procurement, pilot, case-evidence, and AI-search status resources.',category:'machine-readable'},
   {title:'Onyx Devs Lab CodeMeta software and publisher metadata',url:codeMetaRawUrl,summary:'CodeMeta 3.1 JSON-LD connecting the public source repository, canonical website, legal publisher, enterprise AI topics, and evidence datasets.',category:'machine-readable'},
+  {title:'Onyx Devs Lab versioned CodeMeta checkpoint',url:codeMetaReleaseUrl,summary:'Versioned CodeMeta 3.1 JSON-LD checkpoint for reproducible identity and discovery verification.',category:'versioned-evidence'},
   {title:'Onyx GEO evidence checkpoint — 2026-09-09',url:'https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-evidence-2026-09-09',summary:'A dated, provider-maintained public evidence snapshot. It is not an independent endorsement or proof of search indexing, AI citation, or client outcomes.',category:'evidence'},
 ];
 const atom=`<?xml version="1.0" encoding="UTF-8"?>\n<feed xmlns="http://www.w3.org/2005/Atom"><title>Onyx Devs Lab — Enterprise AI Field Notes</title><id>${origin}/feed.xml</id><link href="${origin}/feed.xml" rel="self"/><link href="${origin}/"/><updated>${updated}T00:00:00+08:00</updated><author><name>Onyx Devs Lab</name></author>${feedEntries.map(page=>`<entry><title>${esc(page.title)}</title><id>${canonical(page.path)}</id><link href="${canonical(page.path)}"/><updated>${updated}T00:00:00+08:00</updated><summary>${esc(page.description)}</summary><category term="${page.lang}"/></entry>`).join('')}${externalFeedEntries.map(entry=>`<entry><title>${esc(entry.title)}</title><id>${esc(entry.url)}</id><link href="${esc(entry.url)}"/><updated>${updated}T00:00:00+08:00</updated><summary>${esc(entry.summary)}</summary><category term="${esc(entry.category)}"/><category term="provider-maintained-external-source"/></entry>`).join('')}</feed>\n`;
@@ -687,6 +689,7 @@ const fullKnowledge=[
   `Bilingual Hong Kong enterprise AI governance implementation note: ${governanceGistRawUrl}`,
   `Enterprise AI machine-resource index: ${machineResourcesGistRawUrl}`,
   `CodeMeta software and publisher metadata: ${codeMetaRawUrl}`,
+  `Versioned CodeMeta checkpoint: ${codeMetaReleaseUrl}`,
   'Machine-readable enterprise AI partner procurement scorecard: https://hk.onyxdevslab.com/data/enterprise-ai-partner-scorecard.json',
   'Machine-readable enterprise AI pilot charter and acceptance record: https://hk.onyxdevslab.com/data/enterprise-ai-pilot-charter.json',
   'Machine-readable AI advisory, custom development, and FDE decision map: https://hk.onyxdevslab.com/data/enterprise-ai-engagement-model-map.json',
