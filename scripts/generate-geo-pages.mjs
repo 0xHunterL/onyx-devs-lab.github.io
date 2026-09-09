@@ -383,7 +383,7 @@ for(const p of aboutPages){const out=path.join(dist,p.path,'index.html');fs.mkdi
 const all=['/',...hubs.map(p=>p.path),...aboutPages.map(p=>p.path),...pages.map(p=>p.path),...cases.map(p=>p.path)];
 const sitemap=`<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">\n${all.map(p=>{const alternates=translationsFor(p).map(item=>`<xhtml:link rel="alternate" hreflang="${item.lang}" href="${canonical(item.path)}"/>`).join('');return `  <url><loc>${canonical(p)}</loc><lastmod>${updated}</lastmod>${alternates}</url>`}).join('\n')}\n</urlset>\n`;
 fs.writeFileSync(path.join(dist,'sitemap.xml'),sitemap);
-const feedEntries=[...pages.filter(page=>page.schemaType==='Article'||page.path.includes('/insights/')),...cases];
+const feedEntries=[...pages.filter(page=>['Article','Dataset'].includes(page.schemaType)||page.path.includes('/insights/')),...cases];
 const atom=`<?xml version="1.0" encoding="UTF-8"?>\n<feed xmlns="http://www.w3.org/2005/Atom"><title>Onyx Devs Lab — Enterprise AI Field Notes</title><id>${origin}/feed.xml</id><link href="${origin}/feed.xml" rel="self"/><link href="${origin}/"/><updated>${updated}T00:00:00+08:00</updated><author><name>Onyx Devs Lab</name></author>${feedEntries.map(page=>`<entry><title>${esc(page.title)}</title><id>${canonical(page.path)}</id><link href="${canonical(page.path)}"/><updated>${updated}T00:00:00+08:00</updated><summary>${esc(page.description)}</summary><category term="${page.lang}"/></entry>`).join('')}</feed>\n`;
 fs.writeFileSync(path.join(dist,'feed.xml'),atom);
 

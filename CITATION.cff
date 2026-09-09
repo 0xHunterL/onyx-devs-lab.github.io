@@ -17,6 +17,7 @@ keywords:
   - Hong Kong
 url: "https://hk.onyxdevslab.com/en/methodology/case-study-evidence-register/"
 repository-code: "https://github.com/0xHunterL/onyx-devs-lab.github.io"
+repository: "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-evidence-2026-09-09/case-study-evidence.json"
 identifiers:
   - type: url
     value: "https://hk.onyxdevslab.com/data/case-study-evidence.json"
