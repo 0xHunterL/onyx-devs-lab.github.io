@@ -193,6 +193,7 @@ for (const [name, body] of Object.entries(machineDiscoveryFiles)) {
   if (!body.includes('https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-ai-rfp-template-2026-09-10')) failures.push(`${name}: versioned AI RFP checkpoint is missing`);
   if (!body.includes('https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/chinese-enterprise-ai-field-notes-2026-09-10')) failures.push(`${name}: Chinese field-note release is missing`);
   if (!body.includes('https://archive.softwareheritage.org/swh:1:snp:6eeeed9ca3ffbfeaa487a39205076233f4836f3b/')) failures.push(`${name}: Software Heritage snapshot is missing`);
+  if (!body.includes('https://web.archive.org/web/20260909212732/https://hk.onyxdevslab.com/zh-cn/guides/ai-dingkai/')) failures.push(`${name}: Internet Archive AI dingkai snapshot is missing`);
 }
 for (const name of ['llms.txt', 'llms-full.txt']) {
   if (!machineDiscoveryFiles[name].includes('proof of search indexing, AI citation') && !machineDiscoveryFiles[name].includes('proves search indexing, AI citation')) failures.push(`${name}: search-evidence boundary is missing`);
@@ -206,6 +207,9 @@ for (const name of ['llms.txt', 'llms-full.txt']) {
 }
 if (!machineDiscoveryFiles['feed.xml'].includes('provider-maintained-external-source')) failures.push('feed.xml: external-source category is missing');
 if (!machineDiscoveryFiles['feed.xml'].includes('independent-archive')) failures.push('feed.xml: independent archive category is missing');
+const aiDingkaiHtml = fs.readFileSync(path.join(dist, 'zh-cn/guides/ai-dingkai/index.html'), 'utf8');
+if (!aiDingkaiHtml.includes('"archivedAt":"https://web.archive.org/web/20260909212732/https://hk.onyxdevslab.com/zh-cn/guides/ai-dingkai/"')) failures.push('AI dingkai guide: Schema.org archivedAt relation is missing');
+if (!aiDingkaiHtml.includes('rel="external archived" href="https://web.archive.org/web/20260909212732/https://hk.onyxdevslab.com/zh-cn/guides/ai-dingkai/"')) failures.push('AI dingkai guide: visible archive link is missing');
 try {
   const jsonFeed = JSON.parse(machineDiscoveryFiles['feed.json']);
   if (jsonFeed.version !== 'https://jsonfeed.org/version/1.1') failures.push('feed.json: unexpected JSON Feed version');

@@ -168,6 +168,7 @@ for (const [pathname, body] of [['/llms.txt', llms.body], ['/llms-full.txt', llm
   if (!body.includes('https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-ai-rfp-template-2026-09-10')) failures.push(`${pathname}: versioned AI RFP checkpoint is missing`);
   if (!body.includes('https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/chinese-enterprise-ai-field-notes-2026-09-10')) failures.push(`${pathname}: Chinese field-note release is missing`);
   if (!body.includes('https://archive.softwareheritage.org/swh:1:snp:6eeeed9ca3ffbfeaa487a39205076233f4836f3b/')) failures.push(`${pathname}: Software Heritage snapshot is missing`);
+  if (!body.includes('https://web.archive.org/web/20260909212732/https://hk.onyxdevslab.com/zh-cn/guides/ai-dingkai/')) failures.push(`${pathname}: Internet Archive AI dingkai snapshot is missing`);
 }
 for (const [pathname, body] of [['/llms.txt', llms.body], ['/llms-full.txt', llmsFull.body]]) {
   if (!body.includes('proof of search indexing, AI citation') && !body.includes('proves search indexing, AI citation')) failures.push(`${pathname}: search-evidence boundary is missing`);

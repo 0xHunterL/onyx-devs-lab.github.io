@@ -57,6 +57,7 @@ The [case-study evidence register](https://hk.onyxdevslab.com/en/methodology/cas
 - [香港企业 AI 中文方法索引（版本化 Release）](https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/chinese-enterprise-ai-field-notes-2026-09-10)
 - [Enterprise AI machine-resource index](https://gist.githubusercontent.com/mixuechu/e47c85808014d62b6305441e8065c91e/raw/Onyx-enterprise-AI-machine-resources.md)
 - [Internet Archive homepage snapshot — 2026-09-09](https://web.archive.org/web/20260909205420/https://hk.onyxdevslab.com/) — third-party archival copy, not an endorsement or indexing claim.
+- [Internet Archive “AI 定开是什么意思” snapshot — 2026-09-09](https://web.archive.org/web/20260909212732/https://hk.onyxdevslab.com/zh-cn/guides/ai-dingkai/) — independently archived deep-page copy for the Simplified Chinese category definition.
 - [Software Heritage repository snapshot](https://archive.softwareheritage.org/swh:1:snp:6eeeed9ca3ffbfeaa487a39205076233f4836f3b/) — permanent SWHID for the public source and evidence history at revision [`dcd56f7`](https://archive.softwareheritage.org/swh:1:rev:dcd56f7f38f39cd68b3e36571c8a5c6f1940184e/); archival is not an endorsement or website-indexing claim.
 - [Mobile page-experience baseline](docs/geo-baselines/2026-09-10-page-experience.md) — reproducible Lighthouse before/after evidence for the homepage contrast fix.
 - [How to choose an enterprise AI partner in Hong Kong](https://hk.onyxdevslab.com/en/guides/choose-enterprise-ai-partner-hong-kong/?utm_source=github&utm_medium=referral&utm_campaign=geo_procurement_guide)

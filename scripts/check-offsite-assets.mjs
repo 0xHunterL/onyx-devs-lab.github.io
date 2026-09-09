@@ -47,6 +47,17 @@ requireText('Internet Archive homepage snapshot', waybackHomepage, [
   'Custom AI development',
   'Forward Deployed Engineering',
 ]);
+const waybackAiDingkaiUrl = 'https://web.archive.org/web/20260909212732id_/https://hk.onyxdevslab.com/zh-cn/guides/ai-dingkai/';
+const waybackAiDingkai = await get('Internet Archive AI dingkai snapshot', waybackAiDingkaiUrl, 'text/html');
+requireText('Internet Archive AI dingkai snapshot', waybackAiDingkai, [
+  'AI 定开是什么意思',
+  'AI 定制开发',
+  'Onyx Devs Lab',
+  'ONYX DEVS LAB LIMITED',
+  '79051925',
+  '254900Z30CLK7HKE9H46',
+  'FDE',
+]);
 const softwareHeritageSnapshotId = '6eeeed9ca3ffbfeaa487a39205076233f4836f3b';
 const softwareHeritageRevisionId = 'dcd56f7f38f39cd68b3e36571c8a5c6f1940184e';
 const softwareHeritageSnapshotRaw = await get('Software Heritage repository snapshot', `https://archive.softwareheritage.org/api/1/snapshot/${softwareHeritageSnapshotId}/`, 'application/json');
@@ -57,12 +68,14 @@ try {
 } catch {
   failures.push('Software Heritage repository snapshot: invalid JSON');
 }
-const softwareHeritageRevisionRaw = await get('Software Heritage archived revision', `https://archive.softwareheritage.org/api/1/revision/${softwareHeritageRevisionId}/`, 'application/json');
-try {
-  const revision = JSON.parse(softwareHeritageRevisionRaw);
-  if (revision.id !== softwareHeritageRevisionId || !revision.directory) failures.push('Software Heritage archived revision: immutable Git revision is incomplete');
-} catch {
-  failures.push('Software Heritage archived revision: invalid JSON');
+const softwareHeritageRevisionRaw = await get('Software Heritage archived revision', `https://archive.softwareheritage.org/api/1/revision/${softwareHeritageRevisionId}/`, 'application/json', { allowUnavailable: true });
+if (softwareHeritageRevisionRaw) {
+  try {
+    const revision = JSON.parse(softwareHeritageRevisionRaw);
+    if (revision.id !== softwareHeritageRevisionId || !revision.directory) failures.push('Software Heritage archived revision: immutable Git revision is incomplete');
+  } catch {
+    failures.push('Software Heritage archived revision: invalid JSON');
+  }
 }
 const gist = await get('GitHub Gist field notes', gistUrl, 'text/html', { allowUnavailable: true });
 if (gist) requireText('GitHub Gist field notes', gist, [
