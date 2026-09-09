@@ -177,6 +177,13 @@ for (const pathname of ['/en/guides/hong-kong-enterprise-ai-governance/', '/zh-h
   if (!page.body.includes('"citation":[{"@type":"CreativeWork"')) failures.push(`${pathname}: Article citation Schema.org relation is missing`);
 }
 
+for (const pathname of ['/en/methodology/ai-search-verification/', '/zh-hk/methodology/ai-search-verification/', '/zh-cn/methodology/ai-search-verification/']) {
+  const page = await get(pathname, 'text/html');
+  if (!page.body.includes('https://www.volcengine.com/docs/82379/1359519')) failures.push(`${pathname}: official Volcengine online-content source is missing`);
+  if (!page.body.includes('Bytespider') || !page.body.includes(pathname.includes('/en/') ? 'Doubao' : '豆包')) failures.push(`${pathname}: Doubao crawler-to-answer evidence boundary is missing`);
+  if (!page.body.includes(pathname.includes('/en/') ? 'Recommended' : (pathname.includes('/zh-hk/') ? '已推薦' : '已推荐'))) failures.push(`${pathname}: fourth recommendation evidence level is missing`);
+}
+
 for (const pathname of ['/en/guides/enterprise-ai-pilot-charter-hong-kong/', '/zh-hk/guides/enterprise-ai-pilot-charter/', '/zh-cn/guides/enterprise-ai-pilot-charter/']) {
   const page = await get(pathname, 'text/html');
   if (!page.body.includes('href="/data/enterprise-ai-pilot-charter.json" type="application/json"')) failures.push(`${pathname}: visible pilot charter download is missing`);

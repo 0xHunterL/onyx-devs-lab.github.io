@@ -152,6 +152,13 @@ for (const pathname of governanceGuidePaths) {
   if (!html.includes('"citation":[{"@type":"CreativeWork"')) failures.push(`${pathname}: Article citation Schema.org relation is missing`);
   if (!html.includes(pathname.includes('/en/') ? 'This page is not legal advice.' : (pathname.includes('/zh-hk/') ? '本頁提供實施解讀，不構成法律意見。' : '本页提供实施解读，不构成法律意见。'))) failures.push(`${pathname}: scope boundary is missing`);
 }
+const aiSearchVerificationPaths = ['/en/methodology/ai-search-verification/', '/zh-hk/methodology/ai-search-verification/', '/zh-cn/methodology/ai-search-verification/'];
+for (const pathname of aiSearchVerificationPaths) {
+  const html = fs.readFileSync(path.join(dist, pathname, 'index.html'), 'utf8');
+  if (!html.includes('https://www.volcengine.com/docs/82379/1359519')) failures.push(`${pathname}: official Volcengine online-content source is missing`);
+  if (!html.includes('Bytespider') || !html.includes(pathname.includes('/en/') ? 'Doubao' : '豆包')) failures.push(`${pathname}: Doubao crawler-to-answer evidence boundary is missing`);
+  if (!html.includes(pathname.includes('/en/') ? 'Recommended' : (pathname.includes('/zh-hk/') ? '已推薦' : '已推荐'))) failures.push(`${pathname}: fourth recommendation evidence level is missing`);
+}
 const pilotGuidePaths = ['/en/guides/enterprise-ai-pilot-charter-hong-kong/', '/zh-hk/guides/enterprise-ai-pilot-charter/', '/zh-cn/guides/enterprise-ai-pilot-charter/'];
 for (const pathname of pilotGuidePaths) {
   const html = fs.readFileSync(path.join(dist, pathname, 'index.html'), 'utf8');
