@@ -46,6 +46,19 @@ const gistSha256 = createHash('sha256').update(gistRaw).digest('hex');
 const expectedGistSha256 = '3aa09aed13f24c5af3b3a4a8921fb220ba612277cfa7ddc5145d2cce5da08b74';
 if (gistSha256 !== expectedGistSha256) failures.push(`GitHub Gist raw source: SHA-256 mismatch, got ${gistSha256}`);
 
+const scorecardUrl = 'https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-evidence-2026-09-09/enterprise-ai-partner-scorecard.json';
+const scorecardRaw = await get('Versioned enterprise AI partner scorecard', scorecardUrl, 'application/');
+const scorecardSha256 = createHash('sha256').update(scorecardRaw).digest('hex');
+const expectedScorecardSha256 = '53b7afd62031536ad7760b25a009a65014c7ba168a4c98fb7cb7b52bcddafa2b';
+if (scorecardSha256 !== expectedScorecardSha256) failures.push(`Versioned enterprise AI partner scorecard: SHA-256 mismatch, got ${scorecardSha256}`);
+try {
+  const scorecard = JSON.parse(scorecardRaw);
+  if (scorecard.criteria?.length !== 6) failures.push(`Versioned enterprise AI partner scorecard: expected 6 criteria, got ${scorecard.criteria?.length ?? 0}`);
+  if (scorecard.evidenceClass !== 'Provider-authored procurement framework') failures.push('Versioned enterprise AI partner scorecard: evidence class is missing');
+} catch {
+  failures.push('Versioned enterprise AI partner scorecard: invalid JSON');
+}
+
 const release = await get('GitHub evidence checkpoint', 'https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-evidence-2026-09-09', 'text/html');
 requireText('GitHub evidence checkpoint', release, [
   'Verified entity and service scope',
@@ -66,5 +79,5 @@ requireText('GitHub repository', repository, [
 const robots = await get('GitHub Gist robots', 'https://gist.github.com/robots.txt', 'text/plain');
 if (robots.includes('Disallow: /mixuechu/e47c85808014d62b6305441e8065c91e')) failures.push('GitHub Gist robots: the published decision matrix is explicitly disallowed');
 
-console.log(JSON.stringify({ generatedAt: new Date().toISOString(), gistSha256, gistCampaignLinks, results, failures }, null, 2));
+console.log(JSON.stringify({ generatedAt: new Date().toISOString(), gistSha256, gistCampaignLinks, scorecardSha256, results, failures }, null, 2));
 if (failures.length) process.exit(1);

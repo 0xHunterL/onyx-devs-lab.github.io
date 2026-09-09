@@ -28,6 +28,7 @@ The [case-study evidence register](https://hk.onyxdevslab.com/en/methodology/cas
 - [简体中文](https://hk.onyxdevslab.com/zh-cn/)
 - [llms.txt](https://hk.onyxdevslab.com/llms.txt)
 - [Full public knowledge file](https://hk.onyxdevslab.com/llms-full.txt)
+- [Enterprise AI partner procurement scorecard](https://hk.onyxdevslab.com/data/enterprise-ai-partner-scorecard.json)
 - [XML sitemap](https://hk.onyxdevslab.com/sitemap.xml)
 - [Atom feed](https://hk.onyxdevslab.com/feed.xml)
 

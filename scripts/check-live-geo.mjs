@@ -59,6 +59,18 @@ try {
   failures.push('/data/case-study-evidence.json: invalid JSON');
 }
 
+const scorecardResponse = await get('/data/enterprise-ai-partner-scorecard.json', 'application/json');
+try {
+  const scorecard = JSON.parse(scorecardResponse.body);
+  if (scorecard.schemaVersion !== 1 || scorecard.version !== '2026.09.09') failures.push('/data/enterprise-ai-partner-scorecard.json: unexpected schema or version');
+  if (scorecard.criteria?.length !== 6) failures.push(`/data/enterprise-ai-partner-scorecard.json: expected 6 criteria, got ${scorecard.criteria?.length ?? 0}`);
+  if (!scorecard.criteria?.every((item) => item.id && item.name?.en && item.name?.zhHant && item.name?.zhHans && item.evidenceRequired?.en?.length && item.redFlags?.zhHans?.length)) failures.push('/data/enterprise-ai-partner-scorecard.json: incomplete multilingual criterion');
+  if (!scorecard.sameAs?.includes('/releases/download/geo-evidence-2026-09-09/enterprise-ai-partner-scorecard.json')) failures.push('/data/enterprise-ai-partner-scorecard.json: versioned repository copy is missing');
+  if (!scorecard.limitations?.some((item) => item.includes('not an independent ranking or endorsement'))) failures.push('/data/enterprise-ai-partner-scorecard.json: independent-ranking limitation is missing');
+} catch {
+  failures.push('/data/enterprise-ai-partner-scorecard.json: invalid JSON');
+}
+
 const indexNowKey = await get('/9c37a18bd2044e1687f45c2e91ad603b.txt', 'text/plain');
 if (indexNowKey.body.trim() !== '9c37a18bd2044e1687f45c2e91ad603b') failures.push('/9c37a18bd2044e1687f45c2e91ad603b.txt: IndexNow key does not match');
 
@@ -129,6 +141,12 @@ for (const pathname of requiredPaths.filter((path) => path.startsWith('/zh-cn/')
 for (const pathname of ['/en/guides/ai-advisory-vs-custom-development-vs-fde/', '/zh-hk/guides/ai-consulting-vs-development-vs-fde/', '/zh-cn/guides/ai-consulting-vs-development-vs-fde/']) {
   const page = await get(pathname, 'text/html');
   if (!page.body.includes('rel="external" href="https://gist.github.com/mixuechu/e47c85808014d62b6305441e8065c91e"')) failures.push(`${pathname}: public offsite decision matrix link is missing`);
+}
+
+for (const pathname of ['/en/guides/choose-enterprise-ai-partner-hong-kong/', '/zh-hk/guides/choose-enterprise-ai-partner/', '/zh-cn/guides/choose-enterprise-ai-partner/']) {
+  const page = await get(pathname, 'text/html');
+  if (!page.body.includes('href="/data/enterprise-ai-partner-scorecard.json" type="application/json"')) failures.push(`${pathname}: visible procurement scorecard download is missing`);
+  if (!page.body.includes('"hasPart":{"@type":"Dataset","name":"Onyx enterprise AI partner procurement scorecard"')) failures.push(`${pathname}: procurement scorecard Schema.org relation is missing`);
 }
 
 for (const absoluteUrl of urls) {

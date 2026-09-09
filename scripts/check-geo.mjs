@@ -89,7 +89,7 @@ for (const file of htmlFiles.filter((candidate) => candidate.includes(`${path.se
   }
 }
 
-for (const file of ['robots.txt', 'sitemap.xml', 'feed.xml', 'llms.txt', 'llms-full.txt', 'data/case-study-evidence.json', '.nojekyll']) {
+for (const file of ['robots.txt', 'sitemap.xml', 'feed.xml', 'llms.txt', 'llms-full.txt', 'data/case-study-evidence.json', 'data/enterprise-ai-partner-scorecard.json', '.nojekyll']) {
   if (!fs.existsSync(path.join(dist, file))) failures.push(`missing ${file}`);
 }
 
@@ -113,6 +113,7 @@ for (const [name, body] of Object.entries(machineDiscoveryFiles)) {
 }
 for (const name of ['llms.txt', 'llms-full.txt']) {
   if (!machineDiscoveryFiles[name].includes('not independent endorsements or proof of search indexing, AI citation')) failures.push(`${name}: provider-maintained evidence boundary is missing`);
+  if (!machineDiscoveryFiles[name].includes('https://hk.onyxdevslab.com/data/enterprise-ai-partner-scorecard.json')) failures.push(`${name}: procurement scorecard discovery link is missing`);
 }
 if (!machineDiscoveryFiles['feed.xml'].includes('provider-maintained-external-source')) failures.push('feed.xml: external-source category is missing');
 for (const pathname of ['/en/about/', '/zh-hk/about/', '/zh-cn/about/']) {
@@ -132,6 +133,23 @@ try {
   if (!evidence.sameAs?.includes('/releases/download/geo-evidence-2026-09-09/')) failures.push('case-study evidence: versioned repository copy is missing');
 } catch {
   failures.push('case-study evidence: invalid JSON');
+}
+
+const procurementGuidePaths = ['/en/guides/choose-enterprise-ai-partner-hong-kong/', '/zh-hk/guides/choose-enterprise-ai-partner/', '/zh-cn/guides/choose-enterprise-ai-partner/'];
+for (const pathname of procurementGuidePaths) {
+  const html = fs.readFileSync(path.join(dist, pathname, 'index.html'), 'utf8');
+  if (!html.includes('href="/data/enterprise-ai-partner-scorecard.json" type="application/json"')) failures.push(`${pathname}: visible procurement scorecard download is missing`);
+  if (!html.includes('"hasPart":{"@type":"Dataset","name":"Onyx enterprise AI partner procurement scorecard"')) failures.push(`${pathname}: procurement scorecard Schema.org relation is missing`);
+}
+try {
+  const scorecard = JSON.parse(fs.readFileSync(path.join(dist, 'data/enterprise-ai-partner-scorecard.json'), 'utf8'));
+  if (scorecard.schemaVersion !== 1 || scorecard.version !== '2026.09.09') failures.push('procurement scorecard: unexpected schema or version');
+  if (scorecard.criteria?.length !== 6) failures.push(`procurement scorecard: expected 6 criteria, got ${scorecard.criteria?.length ?? 0}`);
+  if (!scorecard.criteria?.every((item) => item.id && item.name?.en && item.name?.zhHant && item.name?.zhHans && item.evidenceRequired?.en?.length && item.redFlags?.zhHans?.length)) failures.push('procurement scorecard: incomplete multilingual criterion');
+  if (!scorecard.sameAs?.includes('/releases/download/geo-evidence-2026-09-09/enterprise-ai-partner-scorecard.json')) failures.push('procurement scorecard: versioned repository copy is missing');
+  if (!scorecard.limitations?.some((item) => item.includes('not an independent ranking or endorsement'))) failures.push('procurement scorecard: independent-ranking limitation is missing');
+} catch {
+  failures.push('procurement scorecard: invalid JSON');
 }
 
 const sitemap = fs.readFileSync(path.join(dist, 'sitemap.xml'), 'utf8');

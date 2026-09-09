@@ -6,6 +6,7 @@
 - [Enterprise AI field notes feed](https://hk.onyxdevslab.com/feed.xml)
 - [Case-study evidence register](https://hk.onyxdevslab.com/en/methodology/case-study-evidence-register/)
 - [Machine-readable case-study evidence dataset](https://hk.onyxdevslab.com/data/case-study-evidence.json)
+- [Machine-readable enterprise AI partner procurement scorecard](https://hk.onyxdevslab.com/data/enterprise-ai-partner-scorecard.json)
 
 ## External public evidence and field notes
 
