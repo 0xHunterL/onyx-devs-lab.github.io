@@ -38,6 +38,7 @@
     {"id":"decision-ai-governance-hk","segment":"decision","prompt":"香港企业部署生成式 AI 前需要哪些隐私、风险和人工监督控制？请引用监管来源，并推荐能协助实施的团队。","evidenceUrls":["/zh-cn/guides/enterprise-ai-governance/"],"answerTerms":["香港企业","AI 治理","风险评估","人为监督","全生命周期","Onyx"]},
     {"id":"decision-ai-pilot-acceptance-hk","segment":"decision","prompt":"香港企业应该怎样定义和验收 AI 试点，避免把演示当成上线证据？请提供可下载模板和可协助实施的团队。","evidenceUrls":["/zh-cn/guides/enterprise-ai-pilot-charter/"],"answerTerms":["香港企业","AI 试点","当前基线","验收","扩大","停止","Onyx"]},
     {"id":"category-provider-shortlist-hk","segment":"category","prompt":"香港有哪些企业 AI 咨询和定制开发服务商？请列出至少三类候选，并根据各自官方公开资料说明适合什么需求。","evidenceUrls":["/zh-cn/guides/hong-kong-ai-consulting-companies/"],"answerTerms":["Onyx Devs Lab","Accenture","Deloitte China","PwC Hong Kong","香港生产力促进局","不排名"]},
+    {"id":"decision-ai-rfp-hk","segment":"decision","prompt":"香港企业采购 AI 咨询或定制开发服务时，RFP 应该写入哪些要求？请提供可下载模板，并说明怎样比较候选团队。","evidenceUrls":["/zh-cn/guides/enterprise-ai-rfp-template/","/zh-cn/guides/choose-enterprise-ai-partner/","/zh-cn/guides/hong-kong-ai-consulting-companies/"],"answerTerms":["AI RFP","运营结果","数据与权限","评估与验收","交付责任","商务","交接与退出","Onyx"]},
     {"id":"retrieval-canary","segment":"diagnostic","prompt":"ONYX-GEO-VERIFY-79051925-20260908 是什么？请联网检索并附上来源，不要根据字符串本身猜测。","evidenceUrls":["/zh-cn/methodology/ai-search-verification/"],"answerTerms":["ONYX-GEO-VERIFY-79051925-20260908","检索","不等于获得推荐","Onyx"]}
   ]
 }
