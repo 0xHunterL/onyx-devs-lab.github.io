@@ -81,3 +81,4 @@ npm run geo:check-live -- https://hk.onyxdevslab.com
 - sitemap、页面 `WebPage`／`Article`／`CreativeWork` 的 `dateModified` 只在页面发生实质变化时更新。
 - 已版本化的数据集继续保留其真实发布日期、版本号和内容摘要；页面更新不得伪造底层证据的新版本。
 - 2026-09-10 全站页面因搜索预览、主体 Schema、服务术语关系及 URL 行为发生实质更新，62 个 sitemap URL 和相应页面 Schema 记为 2026-09-10；2026-09-09 发布的案例证据、采购评分卡、试点章程及参与模式图仍保持原版本日期。
+- 三语团队页同时声明 `AboutPage` 与 `ProfilePage`，并以 `mainEntity` 指向规范 Organization 节点；这符合 [Google ProfilePage 结构化数据规范](https://developers.google.com/search/docs/appearance/structured-data/profile-page) 对关联组织介绍页的用例，但只代表搜索资格信号，不保证收录或富媒体结果。

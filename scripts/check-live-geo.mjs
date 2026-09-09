@@ -233,7 +233,7 @@ for (const group of servicePageGroups) {
 
 for (const pathname of ['/en/about/', '/zh-hk/about/', '/zh-cn/about/']) {
   const page = await get(pathname, 'text/html');
-  if (!page.body.includes('"@type":"AboutPage"') || !page.body.includes('"mainEntity":{"@id":"https://hk.onyxdevslab.com/#organization"}')) failures.push(`${pathname}: AboutPage main organization entity is missing`);
+  if (!page.body.includes('"@type":["AboutPage","ProfilePage"]') || !page.body.includes('"mainEntity":{"@id":"https://hk.onyxdevslab.com/#organization"}') || !page.body.includes('"dateModified":"2026-09-10"')) failures.push(`${pathname}: organization ProfilePage markup is incomplete`);
 }
 
 const engagementModelResponse = await get('/data/enterprise-ai-engagement-model-map.json', 'application/json');

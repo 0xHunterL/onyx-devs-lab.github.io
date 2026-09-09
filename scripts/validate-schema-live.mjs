@@ -9,6 +9,7 @@ if (!Number.isFinite(delayMs) || delayMs < 0) {
 const paths = args.filter((arg) => !arg.startsWith('--delay-ms='));
 const targets = (paths.length ? paths : [
   '/',
+  '/en/about/',
   '/zh-cn/ai-consulting/',
   '/zh-cn/guides/enterprise-ai-governance/',
   '/zh-cn/methodology/case-study-evidence-register/',
