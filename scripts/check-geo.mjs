@@ -72,7 +72,8 @@ for (const file of htmlFiles) {
   if (pathname.includes('/case-studies/') && !html.includes('"@type":"Article"')) failures.push(`${relative}: case study is not declared as Article`);
   if (html.includes('"@type":"Article"')) {
     const published = expectedPublishedDate(pathname);
-    for (const required of [`"datePublished":"${published}"`, '"dateModified":"2026-09-10"', `"mainEntityOfPage":{"@id":"${canonical}"}`, '"articleSection":', `<time datetime="${published}">${published}</time>`, '<time datetime="2026-09-10">2026-09-10</time>']) {
+    const authorPath = lang === 'zh-CN' ? '/zh-cn/about/' : (lang === 'zh-Hant-HK' ? '/zh-hk/about/' : '/en/about/');
+    for (const required of [`"datePublished":"${published}"`, '"dateModified":"2026-09-10"', `"mainEntityOfPage":{"@id":"${canonical}"}`, '"articleSection":', `<a rel="author" href="${authorPath}">Onyx Devs Lab</a>`, `<time datetime="${published}">${published}</time>`, '<time datetime="2026-09-10">2026-09-10</time>']) {
       if (!html.includes(required)) failures.push(`${relative}: Article publication metadata is missing ${required}`);
     }
   }

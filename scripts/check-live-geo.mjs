@@ -407,7 +407,8 @@ for (let index = 0; index < urls.length; index += 8) {
     if (url.pathname.includes('/case-studies/') && !page.body.includes('"@type":"Article"')) failures.push(`${url.pathname}: case study is not declared as Article`);
     if (page.body.includes('"@type":"Article"')) {
       const published = expectedPublishedDate(url.pathname);
-      for (const required of [`"datePublished":"${published}"`, '"dateModified":"2026-09-10"', `"mainEntityOfPage":{"@id":"${absoluteUrl}"}`, '"articleSection":', `<time datetime="${published}">${published}</time>`, '<time datetime="2026-09-10">2026-09-10</time>']) {
+      const authorPath = url.pathname.startsWith('/zh-cn/') ? '/zh-cn/about/' : (url.pathname.startsWith('/zh-hk/') ? '/zh-hk/about/' : '/en/about/');
+      for (const required of [`"datePublished":"${published}"`, '"dateModified":"2026-09-10"', `"mainEntityOfPage":{"@id":"${absoluteUrl}"}`, '"articleSection":', `<a rel="author" href="${authorPath}">Onyx Devs Lab</a>`, `<time datetime="${published}">${published}</time>`, '<time datetime="2026-09-10">2026-09-10</time>']) {
         if (!page.body.includes(required)) failures.push(`${url.pathname}: Article publication metadata is missing ${required}`);
       }
     }

@@ -457,8 +457,8 @@ function publishedDateFor(pathname){
 }
 function publicationMeta(page){
   const published=publishedDateFor(page.path);const zh=page.lang.startsWith('zh');const cn=page.lang==='zh-CN';
-  const publishedLabel=cn?'发布':(zh?'發布':'Published');const updatedLabel=cn?'更新':(zh?'更新':'Updated');
-  return `<p class="eyebrow content-dates">${publishedLabel} <time datetime="${published}">${published}</time> · ${updatedLabel} <time datetime="${pageUpdated}">${pageUpdated}</time></p>`;
+  const publishedLabel=cn?'发布':(zh?'發布':'Published');const updatedLabel=cn?'更新':(zh?'更新':'Updated');const authorLabel=cn?'作者':(zh?'作者':'By');const authorPath=cn?'/zh-cn/about/':(zh?'/zh-hk/about/':'/en/about/');
+  return `<p class="eyebrow content-dates">${authorLabel} <a rel="author" href="${authorPath}">Onyx Devs Lab</a> · ${publishedLabel} <time datetime="${published}">${published}</time> · ${updatedLabel} <time datetime="${pageUpdated}">${pageUpdated}</time></p>`;
 }
 const updatedAiSearchPaths=new Set(['/en/methodology/ai-search-verification/','/zh-hk/methodology/ai-search-verification/','/zh-cn/methodology/ai-search-verification/']);
 const registeredAddress={"@type":"PostalAddress",streetAddress:'36-40 TAI LIN PAI ROAD, UNIT B53, 2/F, KWAI CHUNG',addressLocality:'HONG KONG',postalCode:'999077',addressCountry:'HK'};
