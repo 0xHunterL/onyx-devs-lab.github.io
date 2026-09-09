@@ -8,6 +8,7 @@ async function get(name, url, expectedType) {
     const response = await fetch(url, {
       headers: { 'user-agent': 'Onyx-GEO-Offsite-Check/1.0' },
       redirect: 'follow',
+      signal: AbortSignal.timeout(15_000),
     });
     const body = await response.text();
     const contentType = response.headers.get('content-type') || '';
@@ -69,6 +70,23 @@ try {
   failures.push('Versioned enterprise AI partner scorecard: invalid JSON');
 }
 
+const additionalVersionedAssets = [
+  {name:'Enterprise AI pilot charter',file:'enterprise-ai-pilot-charter.json',sha256:'8be5d4193b6c45550240e09d86f8782295e485592644cb5da0254167f1ebac0a',validate:value=>value.sections?.length===8},
+  {name:'Enterprise AI engagement model map',file:'enterprise-ai-engagement-model-map.json',sha256:'684a09587ddcba63434360d52ef38e5871d5a28f2324a94bc10a19dd44065343',validate:value=>value.models?.length===3},
+  {name:'Canonical organization record',file:'organization.json',sha256:'f801da3f7bd1c5861d7eccd3bc466c532b6ea3b96826450e3d1b7cfca770631e',validate:value=>value.hasOfferCatalog?.itemListElement?.length===3&&value.member?.length===5},
+  {name:'AI-search evidence status',file:'ai-search-evidence-status.json',sha256:'4bbf0b125c6453e21dce57f327f56134f53eaeb46cd4253c5a3ff02a02d61676',validate:value=>value.evidenceLevels?.length===4&&value.testProtocol?.doubaoPromptsSent===false},
+];
+for (const asset of additionalVersionedAssets) {
+  const raw = await get(`Versioned ${asset.name}`, `https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-evidence-2026-09-09/${asset.file}`, 'application/');
+  const sha256 = createHash('sha256').update(raw).digest('hex');
+  if (sha256 !== asset.sha256) failures.push(`Versioned ${asset.name}: SHA-256 mismatch, got ${sha256}`);
+  try {
+    if (!asset.validate(JSON.parse(raw))) failures.push(`Versioned ${asset.name}: expected structure is incomplete`);
+  } catch {
+    failures.push(`Versioned ${asset.name}: invalid JSON`);
+  }
+}
+
 const release = await get('GitHub evidence checkpoint', 'https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-evidence-2026-09-09', 'text/html');
 requireText('GitHub evidence checkpoint', release, [
   'Verified entity and service scope',
@@ -77,6 +95,9 @@ requireText('GitHub evidence checkpoint', release, [
   'Custom AI development',
   'Forward Deployed Engineering',
   'geo_entity_profile',
+  '62 canonical URLs',
+  '17 fixed prompts',
+  'ai-search-evidence-status.json',
 ]);
 
 const repository = await get('GitHub repository', 'https://github.com/0xHunterL/onyx-devs-lab.github.io', 'text/html');
@@ -84,6 +105,8 @@ requireText('GitHub repository', repository, [
   'Onyx Devs Lab',
   'ONYX DEVS LAB LIMITED',
   'e47c85808014d62b6305441e8065c91e',
+  'ai-search-evidence-status.json',
+  'geo_repository',
 ]);
 
 const robots = await get('GitHub Gist robots', 'https://gist.github.com/robots.txt', 'text/plain');

@@ -25,6 +25,16 @@ The [public legal-entity profile](https://hk.onyxdevslab.com/en/about/?utm_sourc
 - Scope: 6 anonymised enterprise AI delivery cases and 31 metrics, each paired with a definition, canonical source page, and evidence boundary.
 - Limitation: first-party project validation snapshots; not independent audits or universal performance benchmarks.
 
+The versioned Release assets now also include:
+
+- `organization.json`: canonical legal entity, five team-member entities, and the trilingual service offer catalogue.
+- `enterprise-ai-engagement-model-map.json`: advisory, custom development, and FDE selection and transition rules.
+- `enterprise-ai-partner-scorecard.json`: six evidence-gated procurement criteria.
+- `enterprise-ai-pilot-charter.json`: eight pilot-definition and acceptance sections.
+- `ai-search-evidence-status.json`: the dated four-level accessibility, crawl, retrieval/citation, and recommendation status.
+
+These files are maintained by Onyx. They improve reproducibility and citation precision but are not independent endorsements, audits, proof of search inclusion, or proof of AI recommendation.
+
 ## Verified crawler evidence
 
 - GPTBot fetched `sitemap.xml` and then the English, Simplified Chinese, and Hong Kong Traditional Chinese AI-search verification pages on 9 September 2026 at 06:08 UTC. The source IP matched the official OpenAI crawler IP ranges.
@@ -35,7 +45,9 @@ The [public legal-entity profile](https://hk.onyxdevslab.com/en/about/?utm_sourc
 
 ## Release gates
 
-- 53 canonical pages passed live indexability checks.
-- 14 fixed prompts map to 14 evidence pages.
-- Schema.org validator: 0 errors and 0 warnings across 6 template samples, including the Dataset and About pages.
-- IndexNow accepted 53 URLs.
+- 62 canonical URLs passed the live indexability check, including server-rendered H1, canonical URL, JSON-LD, content type, and blocking-directive checks.
+- 17 fixed prompts map to 17 specific evidence pages with required answer terms.
+- Every embedded JSON-LD block parses successfully and the live checker verifies the Organization, Person, Service `OfferCatalog`, Article citation, and Dataset relations used by the templates.
+- The public Schema.org validator currently rate-limits or blocks automated validation, so its status is recorded as unavailable rather than as a markup pass or failure.
+- IndexNow accepted all 62 sitemap URLs.
+- The dated AI-search status remains: accessibility verified; crawler evidence partially verified; retrieval/citation not verified; non-brand recommendation not tested.

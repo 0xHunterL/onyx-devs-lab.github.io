@@ -29,6 +29,10 @@ The [case-study evidence register](https://hk.onyxdevslab.com/en/methodology/cas
 - [llms.txt](https://hk.onyxdevslab.com/llms.txt)
 - [Full public knowledge file](https://hk.onyxdevslab.com/llms-full.txt)
 - [Enterprise AI partner procurement scorecard](https://hk.onyxdevslab.com/data/enterprise-ai-partner-scorecard.json)
+- [Enterprise AI pilot charter and acceptance record](https://hk.onyxdevslab.com/data/enterprise-ai-pilot-charter.json)
+- [AI advisory, custom development, and FDE decision map](https://hk.onyxdevslab.com/data/enterprise-ai-engagement-model-map.json?utm_source=github&utm_medium=referral&utm_campaign=geo_repository)
+- [Canonical organization record](https://hk.onyxdevslab.com/data/organization.json?utm_source=github&utm_medium=referral&utm_campaign=geo_repository)
+- [Current AI-search evidence status](https://hk.onyxdevslab.com/data/ai-search-evidence-status.json?utm_source=github&utm_medium=referral&utm_campaign=geo_repository)
 - [XML sitemap](https://hk.onyxdevslab.com/sitemap.xml)
 - [Atom feed](https://hk.onyxdevslab.com/feed.xml)
 
@@ -53,7 +57,7 @@ The [case-study evidence register](https://hk.onyxdevslab.com/en/methodology/cas
 
 The registered office is an entity-verification address, not a project-delivery or service location. Public verification: [official GLEIF LEI record](https://www.gleif.org/lei/254900Z30CLK7HKE9H46) · [Hong Kong Companies Registry](https://www.cr.gov.hk/docs/wrpt/RNC063_2025.10.27-2025.11.02.pdf) · [Bloomberg LEI](https://lei.bloomberg.com/leis/view/254900Z30CLK7HKE9H46) · [Onyx legal-entity profile](https://hk.onyxdevslab.com/en/about/?utm_source=github&utm_medium=referral&utm_campaign=geo_entity_profile)
 
-AI-search measurement: [public GEO verification baseline](https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-baseline-2026-09-08) · [2026-09-09 evidence checkpoint](https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-evidence-2026-09-09) · [reproducible verification method](https://hk.onyxdevslab.com/en/methodology/ai-search-verification/)
+AI-search measurement: [public GEO verification baseline](https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-baseline-2026-09-08) · [2026-09-09 evidence checkpoint](https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-evidence-2026-09-09) · [reproducible verification method](https://hk.onyxdevslab.com/en/methodology/ai-search-verification/?utm_source=github&utm_medium=referral&utm_campaign=geo_repository) · [machine-readable current status](https://hk.onyxdevslab.com/data/ai-search-evidence-status.json?utm_source=github&utm_medium=referral&utm_campaign=geo_repository)
 
 ## Local development
 
