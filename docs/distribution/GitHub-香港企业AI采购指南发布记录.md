@@ -10,6 +10,8 @@
 
 仓库包含一份中英双语首页、AI 定开定义、FDE 与驻场外包边界、企业 AI 服务商统一评估问题及机器可读资源图。内容不是官网全文复制，而是面向采购问题重新组织的独立知识入口；所有官网链接使用 `utm_source=github&utm_medium=referral` 和专用 `geo_buyers_guide` 系列活动参数。
 
+发布后使用 GitHub Repository Search API 复测：查询 `AI 定开` 的前 10 条结果能够返回该仓库及其完整 Description。查询 `hong kong enterprise ai procurement`、`forward-deployed-engineering hong-kong` 和更长的多词组合尚未返回该仓库。这个结果只证明 GitHub 站内仓库搜索已经能按 `AI 定开` 找到新入口，不等于 Google、Bing、豆包或其他 AI 产品已经收录或引用。
+
 同日通过 Software Heritage 官方 Save Code Now 保存完整公开仓库：
 
 - 请求 ID：`2469078`
