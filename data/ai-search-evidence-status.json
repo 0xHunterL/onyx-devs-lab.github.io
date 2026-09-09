@@ -1,9 +1,9 @@
 {
   "schemaVersion": 2,
-  "version": "2026.09.10.2",
+  "version": "2026.09.10.3",
   "id": "https://hk.onyxdevslab.com/data/ai-search-evidence-status.json",
-  "observedAt": "2026-09-09T19:13:31Z",
-  "sameAs": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-ai-dingkai-guide-2026-09-10/ai-search-evidence-status.json",
+  "observedAt": "2026-09-09T20:05:00Z",
+  "sameAs": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-provider-shortlist-2026-09-10/ai-search-evidence-status.json",
   "name": {
     "en": "Onyx Devs Lab AI-search evidence status",
     "zhHant": "Onyx Devs Lab AI 搜尋證據狀態",
@@ -24,7 +24,7 @@
   "testProtocol": {
     "promptMatrix": "geo/prompt-matrix.json",
     "schemaVersion": 2,
-    "promptCount": 18,
+    "promptCount": 19,
     "retrievalMarker": "ONYX-GEO-VERIFY-79051925-20260908",
     "doubaoPromptsSent": false,
     "queryAliasesAdded": [
@@ -39,10 +39,10 @@
       "status": "verified",
       "claim": "The website is publicly accessible to permitted crawlers.",
       "evidence": {
-        "canonicalUrlsChecked": 65,
+        "canonicalUrlsChecked": 68,
         "httpStatus": 200,
         "indexableServerRenderedHtml": true,
-        "markdownRepresentationsGenerated": 65,
+        "markdownRepresentationsGenerated": 68,
         "markdownNegotiatedAtCanonicalUrl": true,
         "varyAccept": true,
         "contentSignals": {
@@ -155,8 +155,8 @@
       "url": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-readiness-2026-09-10"
     },
     {
-      "name": "Versioned AI dingkai guide and evidence checkpoint",
-      "url": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-ai-dingkai-guide-2026-09-10"
+      "name": "Versioned Hong Kong enterprise AI provider-shortlist and evidence checkpoint",
+      "url": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-provider-shortlist-2026-09-10"
     },
     {
       "name": "AI-search verification method",

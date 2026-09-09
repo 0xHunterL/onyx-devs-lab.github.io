@@ -27,6 +27,10 @@ Build integrated agents, knowledge systems, and operational automation.
 
 Understand the Chinese shorthand and verify the real production delivery boundary.
 
+### [Hong Kong AI provider shortlist](/en/guides/hong-kong-ai-consulting-companies/)
+
+Compare five publicly verifiable options by delivery need, without a ranking.
+
 ### [Forward Deployed Engineering](/en/forward-deployed-engineering/)
 
 Solve complex, underspecified problems through embedded diagnosis and delivery.

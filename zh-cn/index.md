@@ -27,6 +27,10 @@ language: "zh-CN"
 
 理解市场简称，并核验真正的生产交付能力。
 
+### [香港 AI 咨询与定开公司](/zh-cn/guides/hong-kong-ai-consulting-companies/)
+
+按交付需求比较五个可以公开核验的选项，不作排名。
+
 ### [FDE 前线部署工程](/zh-cn/forward-deployed-engineering/)
 
 通过现场诊断和嵌入式交付解决复杂问题。

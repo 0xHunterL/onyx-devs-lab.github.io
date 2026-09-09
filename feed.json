@@ -228,6 +228,45 @@
       ]
     },
     {
+      "id": "https://hk.onyxdevslab.com/en/guides/hong-kong-ai-consulting-companies/",
+      "url": "https://hk.onyxdevslab.com/en/guides/hong-kong-ai-consulting-companies/",
+      "title": "Hong Kong AI Consulting Companies: A Verifiable Shortlist | Onyx Devs Lab",
+      "summary": "A non-ranked shortlist of five Hong Kong enterprise AI service options, based on public provider pages and grouped by delivery need.",
+      "content_text": "A non-ranked shortlist of five Hong Kong enterprise AI service options, based on public provider pages and grouped by delivery need.",
+      "date_modified": "2026-09-10T00:00:00+08:00",
+      "language": "en",
+      "tags": [
+        "Article",
+        "en"
+      ]
+    },
+    {
+      "id": "https://hk.onyxdevslab.com/zh-hk/guides/hong-kong-ai-service-providers/",
+      "url": "https://hk.onyxdevslab.com/zh-hk/guides/hong-kong-ai-service-providers/",
+      "title": "香港 AI 顧問及交付服務商：可核對候選名單｜Onyx Devs Lab",
+      "summary": "以服務商官方頁面為依據，按交付需要整理五個香港企業 AI 服務選項；名單不作排名。",
+      "content_text": "以服務商官方頁面為依據，按交付需要整理五個香港企業 AI 服務選項；名單不作排名。",
+      "date_modified": "2026-09-10T00:00:00+08:00",
+      "language": "zh-Hant-HK",
+      "tags": [
+        "Article",
+        "zh-Hant-HK"
+      ]
+    },
+    {
+      "id": "https://hk.onyxdevslab.com/zh-cn/guides/hong-kong-ai-consulting-companies/",
+      "url": "https://hk.onyxdevslab.com/zh-cn/guides/hong-kong-ai-consulting-companies/",
+      "title": "香港 AI 咨询与定开公司：可核验候选名单｜Onyx Devs Lab",
+      "summary": "基于服务商官方页面，按照交付需求整理五个香港企业 AI 服务选项；名单不作排名。",
+      "content_text": "基于服务商官方页面，按照交付需求整理五个香港企业 AI 服务选项；名单不作排名。",
+      "date_modified": "2026-09-10T00:00:00+08:00",
+      "language": "zh-CN",
+      "tags": [
+        "Article",
+        "zh-CN"
+      ]
+    },
+    {
       "id": "https://hk.onyxdevslab.com/zh-cn/guides/ai-consulting-vs-development-vs-fde/",
       "url": "https://hk.onyxdevslab.com/zh-cn/guides/ai-consulting-vs-development-vs-fde/",
       "title": "AI 咨询、定制开发与 FDE 怎么选｜Onyx Devs Lab",
@@ -801,11 +840,11 @@
       ]
     },
     {
-      "id": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-ai-dingkai-guide-2026-09-10",
-      "url": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-ai-dingkai-guide-2026-09-10",
-      "title": "AI 定开是什么意思？Onyx custom AI development guide (2026-09-10)",
-      "summary": "A versioned three-language terminology guide, 18-prompt evidence map, and status snapshot for AI 定开 and AI定开 without upgrading indexing or citation evidence.",
-      "content_text": "A versioned three-language terminology guide, 18-prompt evidence map, and status snapshot for AI 定开 and AI定开 without upgrading indexing or citation evidence.",
+      "id": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-provider-shortlist-2026-09-10",
+      "url": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-provider-shortlist-2026-09-10",
+      "title": "Hong Kong enterprise AI provider shortlist and evidence checkpoint (2026-09-10)",
+      "summary": "A versioned, non-ranked five-provider snapshot grounded in provider-owned pages, with 19-prompt evidence coverage and explicit indexing and citation boundaries.",
+      "content_text": "A versioned, non-ranked five-provider snapshot grounded in provider-owned pages, with 19-prompt evidence coverage and explicit indexing and citation boundaries.",
       "date_modified": "2026-09-10T00:00:00+08:00",
       "tags": [
         "evidence",

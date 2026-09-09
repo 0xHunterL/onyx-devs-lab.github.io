@@ -27,6 +27,10 @@ language: "zh-Hant-HK"
 
 理解市場簡稱，並核對真正的生產交付邊界。
 
+### [香港 AI 服務商候選名單](/zh-hk/guides/hong-kong-ai-service-providers/)
+
+按交付需要比較五個可公開核對選項，不作排名。
+
 ### [前線部署工程 FDE](/zh-hk/forward-deployed-engineering/)
 
 以現場診斷和嵌入式交付處理難以預先定義的複雜問題。

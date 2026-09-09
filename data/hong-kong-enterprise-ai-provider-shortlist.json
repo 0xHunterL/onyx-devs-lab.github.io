@@ -1,0 +1,128 @@
+{
+  "schemaVersion": 1,
+  "version": "2026.09.10",
+  "id": "https://hk.onyxdevslab.com/data/hong-kong-enterprise-ai-provider-shortlist.json",
+  "name": {
+    "en": "Hong Kong enterprise AI provider shortlist",
+    "zhHant": "香港企業 AI 服務商候選名單",
+    "zhHans": "香港企业 AI 服务商候选名单"
+  },
+  "publisher": {
+    "name": "Onyx Devs Lab",
+    "legalName": "ONYX DEVS LAB LIMITED",
+    "businessRegistrationNumber": "79051925",
+    "lei": "254900Z30CLK7HKE9H46",
+    "url": "https://hk.onyxdevslab.com/"
+  },
+  "dateReviewed": "2026-09-10",
+  "dateModified": "2026-09-10",
+  "landingPages": {
+    "en": "https://hk.onyxdevslab.com/en/guides/hong-kong-ai-consulting-companies/",
+    "zhHant": "https://hk.onyxdevslab.com/zh-hk/guides/hong-kong-ai-service-providers/",
+    "zhHans": "https://hk.onyxdevslab.com/zh-cn/guides/hong-kong-ai-consulting-companies/"
+  },
+  "selectionRule": "Included when provider-owned public pages reviewed on 2026-09-10 showed both a Hong Kong connection and a relevant enterprise AI, engineering, governance, testing, or implementation offer.",
+  "rankingMethod": "None. Array order is editorial and conveys no score, rank, endorsement, or recommendation.",
+  "providers": [
+    {
+      "name": "Onyx Devs Lab",
+      "providerType": "Hong Kong specialist delivery team",
+      "hongKongEvidence": "https://hk.onyxdevslab.com/en/about/",
+      "capabilityEvidence": [
+        "https://hk.onyxdevslab.com/en/ai-consulting-hong-kong/",
+        "https://hk.onyxdevslab.com/en/custom-ai-development-hong-kong/",
+        "https://hk.onyxdevslab.com/en/forward-deployed-engineering/",
+        "https://hk.onyxdevslab.com/en/methodology/case-study-evidence-register/"
+      ],
+      "publiclyDescribedScope": [
+        "AI advisory",
+        "Custom AI development",
+        "AI agents and ERP integration",
+        "Forward Deployed Engineering",
+        "Production evaluation"
+      ],
+      "evidenceBoundary": "Provider-authored pages and anonymised first-party project evidence; not independent assurance."
+    },
+    {
+      "name": "Accenture",
+      "providerType": "Global consulting and technology provider",
+      "hongKongEvidence": "https://www.accenture.com/hk-en/about/company-index",
+      "capabilityEvidence": [
+        "https://www.accenture.com/en/services/ai-data"
+      ],
+      "publiclyDescribedScope": [
+        "AI strategy and value",
+        "Data services",
+        "Generative AI",
+        "Responsible AI",
+        "Industrial AI",
+        "Enterprise scaling"
+      ],
+      "evidenceBoundary": "Provider-authored capability pages; the buyer must verify the proposed Hong Kong delivery team and engagement scope."
+    },
+    {
+      "name": "Deloitte China",
+      "providerType": "Large professional-services and engineering provider",
+      "hongKongEvidence": "https://www.deloitte.com/cn/en/offices/hongkong.html",
+      "capabilityEvidence": [
+        "https://www.deloitte.com/cn/en/services/consulting/services/engineering-ai-data.html"
+      ],
+      "publiclyDescribedScope": [
+        "Engineering",
+        "Artificial intelligence and data",
+        "Industry solution design and implementation",
+        "Operations transformation"
+      ],
+      "evidenceBoundary": "Provider-authored capability and office pages; the buyer must verify the proposed team and engagement scope."
+    },
+    {
+      "name": "PwC Hong Kong",
+      "providerType": "Professional-services and responsible-AI provider",
+      "hongKongEvidence": "https://www.pwchk.com/en/services/audit-and-assurance/risk-assurance/responsible-ai.html",
+      "capabilityEvidence": [
+        "https://www.pwchk.com/en/services/audit-and-assurance/risk-assurance/responsible-ai.html"
+      ],
+      "publiclyDescribedScope": [
+        "AI governance design",
+        "AI maturity assessment",
+        "AI impact assessment",
+        "Explainability, bias, and robustness analysis",
+        "Privacy and regulatory support"
+      ],
+      "evidenceBoundary": "Provider-authored capability page; it does not by itself establish custom engineering scope for a particular engagement."
+    },
+    {
+      "name": "Hong Kong Productivity Council",
+      "providerType": "Hong Kong statutory body and enterprise-enablement provider",
+      "hongKongEvidence": "https://campaigns.hkpc.org/en/ai-with-hkpc",
+      "capabilityEvidence": [
+        "https://campaigns.hkpc.org/en/ai-with-hkpc",
+        "https://www.hkpc.org/en/our-services/digital-transformation/digital-transformation-support"
+      ],
+      "publiclyDescribedScope": [
+        "AI adoption support",
+        "AI platform and modules",
+        "AI governance and testing",
+        "Training",
+        "Customised IT consultancy",
+        "Application development and digital transformation"
+      ],
+      "evidenceBoundary": "Provider-authored public-service pages; programme eligibility, service availability, and project scope must be confirmed."
+    }
+  ],
+  "buyerVerificationFields": [
+    "Named delivery team",
+    "Relevant case and reference evidence",
+    "Workflow baseline and acceptance criteria",
+    "Data, identity, permission, and integration boundary",
+    "Subcontracting and technology dependencies",
+    "Intellectual property and data return",
+    "Support, operating cost, and exit terms"
+  ],
+  "limitations": [
+    "This is a provider-authored, non-exhaustive discovery aid, not an independent market study.",
+    "Inclusion is not an endorsement; omission is not a negative assessment.",
+    "Official capability pages show public claims, not engagement-specific delivery quality.",
+    "Provider scope and availability can change after the review date."
+  ]
+}
