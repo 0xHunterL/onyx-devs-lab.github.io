@@ -4,10 +4,17 @@ const failures = [];
 
 async function get(pathname, expectedType, userAgent = 'Onyx-GEO-Release-Check/1.0') {
   const requestedUrl = `${origin}${pathname}`;
-  const response = await fetch(requestedUrl, {
-    headers: { 'user-agent': userAgent },
-    redirect: 'follow',
-  });
+  let response;
+  try {
+    response = await fetch(requestedUrl, {
+      headers: { 'user-agent': userAgent },
+      redirect: 'follow',
+      signal: AbortSignal.timeout(15_000),
+    });
+  } catch (error) {
+    failures.push(`${pathname}: request failed or timed out: ${error.message}`);
+    return { response: null, body: '', contentType: '' };
+  }
   const body = await response.text();
   const contentType = response.headers.get('content-type') || '';
   if (!response.ok) failures.push(`${pathname}: HTTP ${response.status}`);
