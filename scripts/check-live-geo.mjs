@@ -32,6 +32,9 @@ if (!llms.body.includes('# Onyx Devs Lab')) failures.push('/llms.txt: expected s
 
 const llmsFull = await get('/llms-full.txt', 'text/plain');
 if (!llmsFull.body.includes('Legal entity: ONYX DEVS LAB LIMITED')) failures.push('/llms-full.txt: verified entity summary is missing');
+if (!llmsFull.body.includes('GLEIF entity status: ACTIVE')) failures.push('/llms-full.txt: GLEIF entity status is missing');
+if (!llmsFull.body.includes('GLEIF LEI record status: ISSUED')) failures.push('/llms-full.txt: GLEIF LEI record status is missing');
+if (!llmsFull.body.includes('Registered office: 36-40 TAI LIN PAI ROAD, UNIT B53, 2/F, KWAI CHUNG, HONG KONG 999077')) failures.push('/llms-full.txt: verified registered office is missing');
 
 const feed = await get('/feed.xml', 'xml');
 if (!feed.body.includes('<feed xmlns="http://www.w3.org/2005/Atom">')) failures.push('/feed.xml: Atom feed root is missing');
@@ -118,6 +121,8 @@ for (const absoluteUrl of urls) {
   if (!/<h1[ >][\s\S]*?<\/h1>/.test(page.body)) failures.push(`${url.pathname}: H1 is missing from response HTML`);
   if (!page.body.includes(`<link rel="canonical" href="${absoluteUrl}"`)) failures.push(`${url.pathname}: canonical does not match sitemap URL`);
   if (!page.body.includes('application/ld+json')) failures.push(`${url.pathname}: JSON-LD is missing`);
+  if (!page.body.includes('"address":{"@type":"PostalAddress","streetAddress":"36-40 TAI LIN PAI ROAD, UNIT B53, 2/F, KWAI CHUNG","addressLocality":"HONG KONG","postalCode":"999077","addressCountry":"HK"}')) failures.push(`${url.pathname}: verified registered-address JSON-LD is missing`);
+  if (!page.body.includes('https://www.gleif.org/lei/254900Z30CLK7HKE9H46')) failures.push(`${url.pathname}: official GLEIF entity reference is missing`);
   if (/<meta[^>]+(?:name|property)=["']robots["'][^>]+content=["'][^"']*\b(?:noindex|none)\b/i.test(page.body)) failures.push(`${url.pathname}: blocking robots meta detected`);
 }
 
