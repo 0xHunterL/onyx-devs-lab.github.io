@@ -1,7 +1,12 @@
 {
   "schemaVersion": 1,
+  "version": "2026.09.09",
   "id": "https://hk.onyxdevslab.com/data/case-study-evidence.json",
   "name": "Onyx Devs Lab enterprise AI case-study evidence register",
+  "alternateName": [
+    "Onyx enterprise AI evidence dataset",
+    "Onyx case-study metrics dataset"
+  ],
   "publisher": {
     "name": "Onyx Devs Lab",
     "legalName": "ONYX DEVS LAB LIMITED",
@@ -10,6 +15,17 @@
     "url": "https://hk.onyxdevslab.com/"
   },
   "dateModified": "2026-09-09",
+  "landingPage": "https://hk.onyxdevslab.com/en/methodology/case-study-evidence-register/",
+  "sameAs": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-evidence-2026-09-09/case-study-evidence.json",
+  "keywords": [
+    "enterprise AI",
+    "AI consulting",
+    "custom AI development",
+    "Forward Deployed Engineering",
+    "case studies",
+    "validation metrics",
+    "Hong Kong"
+  ],
   "evidenceClass": "Anonymised first-party project validation snapshots",
   "limitations": [
     "Not independently audited",
