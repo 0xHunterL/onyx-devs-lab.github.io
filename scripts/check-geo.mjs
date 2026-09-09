@@ -349,6 +349,8 @@ if (!nginxConfig.includes('application/ld+json jsonld')) failures.push('nginx: J
 
 const sitemap = fs.readFileSync(path.join(dist, 'sitemap.xml'), 'utf8');
 const urls = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map((match) => match[1]);
+const currentLastmods = [...sitemap.matchAll(/<lastmod>2026-09-10<\/lastmod>/g)];
+if (currentLastmods.length !== urls.length) failures.push(`sitemap: expected ${urls.length} current page lastmods, got ${currentLastmods.length}`);
 for (const pathname of ['/en/methodology/ai-search-verification/', '/zh-hk/methodology/ai-search-verification/', '/zh-cn/methodology/ai-search-verification/']) {
   if (!sitemap.includes(`<loc>https://hk.onyxdevslab.com${pathname}</loc><lastmod>2026-09-10</lastmod>`)) failures.push(`${pathname}: sitemap lastmod does not reflect the substantive evidence update`);
   const html = fs.readFileSync(path.join(dist, pathname, 'index.html'), 'utf8');
@@ -360,6 +362,10 @@ for (const url of urls) {
   const pathname = new URL(url).pathname;
   const target = pathname === '/' ? path.join(dist, 'index.html') : path.join(dist, pathname, 'index.html');
   if (!fs.existsSync(target)) failures.push(`sitemap target missing: ${pathname}`);
+  if (pathname !== '/' && fs.existsSync(target)) {
+    const html = fs.readFileSync(target, 'utf8');
+    if (!html.includes('"@type":"WebPage"') || !html.includes('"dateModified":"2026-09-10"')) failures.push(`${pathname}: WebPage freshness is stale`);
+  }
 }
 
 const incomingLinks = new Map(urls.map((url) => [url, new Set()]));

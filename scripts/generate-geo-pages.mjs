@@ -8,6 +8,7 @@ const dist = path.join(root, 'dist');
 const origin = 'https://hk.onyxdevslab.com';
 const updated = '2026-09-09';
 const feedUpdated = '2026-09-10';
+const pageUpdated = '2026-09-10';
 const partnerScorecardPath = '/data/enterprise-ai-partner-scorecard.json';
 const pilotCharterPath = '/data/enterprise-ai-pilot-charter.json';
 const organizationDataPath = '/data/organization.json';
@@ -479,8 +480,11 @@ function layout(page, body, type='Service'){
   if(type==='CreativeWork'){primary.creator={"@id":`${origin}/#organization`};primary.dateModified=updated;}
   if(type==='AboutPage')primary.mainEntity={"@id":`${origin}/#organization`};
   if(type==='Dataset'){primary.name=cn?'Onyx Devs Lab 企业 AI 案例证据登记册':(zh?'Onyx Devs Lab 企業 AI 案例證據登記冊':'Onyx Devs Lab Enterprise AI Case-study Evidence Register');primary.alternateName=['Onyx enterprise AI evidence dataset','Onyx case-study metrics dataset'];primary.creator={"@id":`${origin}/#organization`};primary.publisher={"@id":`${origin}/#organization`};primary.datePublished=updated;primary.dateModified=updated;primary.version='2026.09.09';primary.identifier=canonical(page.dataUrl);primary.isAccessibleForFree=true;primary.keywords=['enterprise AI','AI consulting','custom AI development','Forward Deployed Engineering','case studies','validation metrics','Hong Kong'];primary.measurementTechnique='Project-specific first-party validation methods documented with each metric';primary.variableMeasured=[...new Set(Object.values(caseValidation).flatMap(entry=>entry.en.map(metric=>metric[1])))];primary.sameAs='https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-evidence-2026-09-09/case-study-evidence.json';primary.distribution={"@type":"DataDownload",name:'Onyx case-study evidence register JSON',encodingFormat:'application/json',contentUrl:canonical(page.dataUrl)};}
+  if(type==='Dataset')primary.dateModified=pageUpdated;
+  if(type==='Article'||type==='CreativeWork')primary.dateModified=pageUpdated;
   const graph=[{"@type":"Organization","@id":`${origin}/#organization`,name:'Onyx Devs Lab',legalName:'ONYX DEVS LAB LIMITED',url:`${origin}/`,email:'info@onyxdevslab.com',foundingDate:'2025-10-30',leiCode:'254900Z30CLK7HKE9H46',iso6523Code:'0199:254900Z30CLK7HKE9H46',address:registeredAddress,logo:{"@type":"ImageObject",url:`${origin}/favicon.svg`,contentUrl:`${origin}/favicon.svg`,width:512,height:512},contactPoint:{"@type":"ContactPoint",contactType:'sales',email:'info@onyxdevslab.com',availableLanguage:['English','Chinese']},areaServed:['Hong Kong','Greater China','Global'],knowsAbout:['Enterprise AI','AI advisory','Custom AI development','AI agents','Retrieval-augmented generation','Forward Deployed Engineering','ERP integration'],identifier:[{"@type":"PropertyValue",propertyID:'Hong Kong Business Registration Number',value:'79051925'},{"@type":"PropertyValue",propertyID:'LEI',value:'254900Z30CLK7HKE9H46'}],hasOfferCatalog:serviceOfferCatalog,member:teamMemberReferences,sameAs:entityReferences,subjectOf:entityEvidence},{"@type":"WebSite","@id":`${origin}/#website`,url:`${origin}/`,name:'Onyx Devs Lab',alternateName:'ONYX DEVS LAB LIMITED',publisher:{"@id":`${origin}/#organization`},inLanguage:['en','zh-Hant-HK','zh-CN']},primary,{"@type":"WebPage","@id":canonical(page.path),url:canonical(page.path),name:page.title,description:page.description,dateModified:updated,inLanguage:page.lang,isPartOf:{"@id":`${origin}/#website`},about:{"@id":`${canonical(page.path)}#primary`}},{"@type":"BreadcrumbList",itemListElement:[{"@type":"ListItem",position:1,name:cn?'首页':(zh?'首頁':'Home'),item:`${origin}/`},{"@type":"ListItem",position:2,name:page.h1,item:canonical(page.path)}]}];
   if(updatedAiSearchPaths.has(page.path))graph.find(item=>item['@type']==='WebPage').dateModified=feedUpdated;
+  graph.find(item=>item['@type']==='WebPage').dateModified=pageUpdated;
   if(page.faqs)graph.push({"@type":"FAQPage",mainEntity:page.faqs.map(([question,answer])=>({"@type":"Question",name:question,acceptedAnswer:{"@type":"Answer",text:answer}}))});
   if(page.people)graph.push(...page.people.map(person=>({"@type":"Person","@id":personId(person.name),name:person.name,jobTitle:person.role[cn?'cn':(zh?'zh':'en')],description:person.summary[cn?'cn':(zh?'zh':'en')],image:canonical(person.image),worksFor:{"@id":`${origin}/#organization`}})));
   const schema={"@context":"https://schema.org","@graph":graph};
@@ -568,10 +572,8 @@ function writeMarkdownVariants(directory) {
 writeMarkdownVariants(dist);
 
 const all=['/',...hubs.map(p=>p.path),...aboutPages.map(p=>p.path),...pages.map(p=>p.path),...cases.map(p=>p.path)];
-const sitemap=`<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">\n${all.map(p=>{const alternates=translationsFor(p).map(item=>`<xhtml:link rel="alternate" hreflang="${item.lang}" href="${canonical(item.path)}"/>`).join('');return `  <url><loc>${canonical(p)}</loc><lastmod>${updated}</lastmod>${alternates}</url>`}).join('\n')}\n</urlset>\n`;
-let accurateSitemap=sitemap;
-for(const pathname of updatedAiSearchPaths)accurateSitemap=accurateSitemap.replace(`<loc>${canonical(pathname)}</loc><lastmod>${updated}</lastmod>`,`<loc>${canonical(pathname)}</loc><lastmod>${feedUpdated}</lastmod>`);
-fs.writeFileSync(path.join(dist,'sitemap.xml'),accurateSitemap);
+const sitemap=`<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">\n${all.map(p=>{const alternates=translationsFor(p).map(item=>`<xhtml:link rel="alternate" hreflang="${item.lang}" href="${canonical(item.path)}"/>`).join('');return `  <url><loc>${canonical(p)}</loc><lastmod>${pageUpdated}</lastmod>${alternates}</url>`}).join('\n')}\n</urlset>\n`;
+fs.writeFileSync(path.join(dist,'sitemap.xml'),sitemap);
 const feedEntries=[...pages.filter(page=>['Article','Dataset'].includes(page.schemaType)||page.path.includes('/insights/')),...cases];
 const externalFeedEntries=[
   {title:'AI advisory, custom development, or FDE? A bilingual enterprise decision matrix',url:'https://gist.github.com/mixuechu/e47c85808014d62b6305441e8065c91e',summary:'Provider-authored English and Simplified Chinese field notes with decision criteria and links to the canonical Onyx guides.',category:'en-zh-CN'},
@@ -589,9 +591,10 @@ const externalFeedEntries=[
 ];
 const atom=`<?xml version="1.0" encoding="UTF-8"?>\n<feed xmlns="http://www.w3.org/2005/Atom"><title>Onyx Devs Lab — Enterprise AI Field Notes</title><id>${origin}/feed.xml</id><link href="${origin}/feed.xml" rel="self"/><link href="${origin}/"/><updated>${updated}T00:00:00+08:00</updated><author><name>Onyx Devs Lab</name></author>${feedEntries.map(page=>`<entry><title>${esc(page.title)}</title><id>${canonical(page.path)}</id><link href="${canonical(page.path)}"/><updated>${updated}T00:00:00+08:00</updated><summary>${esc(page.description)}</summary><category term="${page.lang}"/></entry>`).join('')}${externalFeedEntries.map(entry=>`<entry><title>${esc(entry.title)}</title><id>${esc(entry.url)}</id><link href="${esc(entry.url)}"/><updated>${updated}T00:00:00+08:00</updated><summary>${esc(entry.summary)}</summary><category term="${esc(entry.category)}"/><category term="provider-maintained-external-source"/></entry>`).join('')}</feed>\n`;
 let accurateAtom=atom.replace(`<updated>${updated}T`,`<updated>${feedUpdated}T`);
+for(const page of feedEntries){const entryId=canonical(page.path);accurateAtom=accurateAtom.replace(`<id>${entryId}</id><link href="${entryId}"/><updated>${updated}T`,`<id>${entryId}</id><link href="${entryId}"/><updated>${pageUpdated}T`);}
 for(const entryId of [...updatedAiSearchPaths].map(canonical).concat(aiSearchStatusReleaseUrl))accurateAtom=accurateAtom.replace(`<id>${entryId}</id><link href="${entryId}"/><updated>${updated}T`,`<id>${entryId}</id><link href="${entryId}"/><updated>${feedUpdated}T`);
 fs.writeFileSync(path.join(dist,'feed.xml'),accurateAtom);
-const feedDate=(pathname)=>updatedAiSearchPaths.has(pathname)?feedUpdated:updated;
+const feedDate=()=>pageUpdated;
 const jsonFeed={
   version:'https://jsonfeed.org/version/1.1',
   title:'Onyx Devs Lab — Enterprise AI Field Notes',

@@ -269,6 +269,8 @@ if (indexNowKey.body.trim() !== '9c37a18bd2044e1687f45c2e91ad603b') failures.pus
 
 const sitemap = await get('/sitemap.xml', 'xml');
 const urls = [...sitemap.body.matchAll(/<loc>([^<]+)<\/loc>/g)].map((match) => match[1]);
+const currentLastmods = [...sitemap.body.matchAll(/<lastmod>2026-09-10<\/lastmod>/g)];
+if (currentLastmods.length !== urls.length) failures.push(`/sitemap.xml: expected ${urls.length} current page lastmods, got ${currentLastmods.length}`);
 for (const pathname of ['/en/methodology/ai-search-verification/', '/zh-hk/methodology/ai-search-verification/', '/zh-cn/methodology/ai-search-verification/']) {
   if (!sitemap.body.includes(`<loc>https://hk.onyxdevslab.com${pathname}</loc><lastmod>2026-09-10</lastmod>`)) failures.push(`${pathname}: sitemap lastmod does not reflect the substantive evidence update`);
 }
@@ -396,6 +398,7 @@ for (let index = 0; index < urls.length; index += 8) {
     if (!/<h1[ >][\s\S]*?<\/h1>/.test(page.body)) failures.push(`${url.pathname}: H1 is missing from response HTML`);
     if (!page.body.includes(`<link rel="canonical" href="${absoluteUrl}"`)) failures.push(`${url.pathname}: canonical does not match sitemap URL`);
     if (!page.body.includes('application/ld+json')) failures.push(`${url.pathname}: JSON-LD is missing`);
+    if (url.pathname !== '/' && (!page.body.includes('"@type":"WebPage"') || !page.body.includes('"dateModified":"2026-09-10"'))) failures.push(`${url.pathname}: WebPage freshness is stale`);
     if (!page.body.includes('type="application/feed+json"') || !page.body.includes('href="https://hk.onyxdevslab.com/feed.json"')) failures.push(`${url.pathname}: JSON Feed discovery link is missing`);
     if (!page.body.includes('rel="describedby" type="application/ld+json"') || !page.body.includes('href="https://hk.onyxdevslab.com/data/enterprise-ai-service-terms.jsonld"')) failures.push(`${url.pathname}: service term graph discovery link is missing`);
     if (!page.body.includes('"address":{"@type":"PostalAddress","streetAddress":"36-40 TAI LIN PAI ROAD, UNIT B53, 2/F, KWAI CHUNG","addressLocality":"HONG KONG","postalCode":"999077","addressCountry":"HK"}')) failures.push(`${url.pathname}: verified registered-address JSON-LD is missing`);
