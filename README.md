@@ -68,6 +68,7 @@ npm run geo:check
 npm run geo:prompt-coverage
 npm run geo:content-distinctiveness
 npm run geo:check-live -- https://hk.onyxdevslab.com
+npm run geo:check-offsite
 npm run geo:schema-validate-live -- https://hk.onyxdevslab.com
 npm run geo:submit-indexnow
 npm run geo:crawler-report -- --since=2026-09-01 --verify-openai --verify-bing --verify-google --verify-perplexity /var/log/nginx/hk.onyxdevslab.com.geo.log

@@ -93,6 +93,11 @@ for (const file of ['robots.txt', 'sitemap.xml', 'feed.xml', 'llms.txt', 'llms-f
   if (!fs.existsSync(path.join(dist, file))) failures.push(`missing ${file}`);
 }
 
+for (const pathname of ['/en/guides/ai-advisory-vs-custom-development-vs-fde/', '/zh-hk/guides/ai-consulting-vs-development-vs-fde/', '/zh-cn/guides/ai-consulting-vs-development-vs-fde/']) {
+  const html = fs.readFileSync(path.join(dist, pathname, 'index.html'), 'utf8');
+  if (!html.includes('rel="external" href="https://gist.github.com/mixuechu/e47c85808014d62b6305441e8065c91e"')) failures.push(`${pathname}: public offsite decision matrix link is missing`);
+}
+
 const llmsFull = fs.readFileSync(path.join(dist, 'llms-full.txt'), 'utf8');
 for (const fact of ['GLEIF entity status: ACTIVE', 'GLEIF LEI record status: ISSUED', 'Registered office: 36-40 TAI LIN PAI ROAD, UNIT B53, 2/F, KWAI CHUNG, HONG KONG 999077']) {
   if (!llmsFull.includes(fact)) failures.push(`llms-full.txt: missing verified entity fact: ${fact}`);

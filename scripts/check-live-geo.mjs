@@ -115,6 +115,11 @@ for (const pathname of requiredPaths.filter((path) => path.startsWith('/zh-cn/')
   if (!page.body.includes('application/ld+json')) failures.push(`${pathname}: Bytespider response is missing JSON-LD`);
 }
 
+for (const pathname of ['/en/guides/ai-advisory-vs-custom-development-vs-fde/', '/zh-hk/guides/ai-consulting-vs-development-vs-fde/', '/zh-cn/guides/ai-consulting-vs-development-vs-fde/']) {
+  const page = await get(pathname, 'text/html');
+  if (!page.body.includes('rel="external" href="https://gist.github.com/mixuechu/e47c85808014d62b6305441e8065c91e"')) failures.push(`${pathname}: public offsite decision matrix link is missing`);
+}
+
 for (const absoluteUrl of urls) {
   const url = new URL(absoluteUrl);
   const page = await get(url.pathname, 'text/html');
