@@ -484,11 +484,11 @@ function engagementComparisonBody(p){
 function aiSearchStatusBody(p){
   if(p.downloadName!=='Onyx AI-search evidence status')return '';
   const zh=p.lang.startsWith('zh');const cn=p.lang==='zh-CN';const copy=cn?{
-    heading:'当前证据状态',intro:'截至 2026 年 9 月 9 日。每一级只陈述已经保存的证据，不从爬虫访问推断收录、引用或推荐。',items:[['可访问','已验证','62 个规范 URL 返回可索引 HTML，robots.txt 允许相关爬虫。'],['已抓取','部分已验证','GPTBot 已验证抓取 3 个方法页；OAI-SearchBot 已验证读取发现文件 3 次；历史日志保存 7 次已验证 Bingbot 正文抓取。'],['已检索和引用','尚未验证','公开搜索未返回官网；尚未记录豆包或其他 AI 在不提供网址时召回并引用 Onyx 页面。'],['非品牌推荐','尚未测试','尚未在豆包发送固定提示词，也没有保存其他 AI 产品的合格非品牌推荐证据。']]
+    heading:'当前证据状态',intro:'截至 2026 年 9 月 10 日。每一级只陈述已经保存的证据，不从爬虫访问推断收录、引用或推荐。',items:[['可访问','已验证','62 个规范 URL 返回可索引 HTML，并可在同一 URL 协商为 Markdown；robots.txt 允许相关爬虫。'],['已抓取','部分已验证','GPTBot 已验证抓取 3 个方法页；OAI-SearchBot 已验证读取发现文件 3 次；历史日志保存 7 次已验证 Bingbot 正文抓取。'],['已检索和引用','尚未验证','公开搜索未返回官网；尚未记录豆包或其他 AI 在不提供网址时召回并引用 Onyx 页面。'],['非品牌推荐','尚未测试','尚未在豆包发送固定提示词，也没有保存其他 AI 产品的合格非品牌推荐证据。']]
   }:zh?{
-    heading:'目前證據狀態',intro:'截至 2026 年 9 月 9 日。每一級只陳述已保存證據，不從爬蟲到訪推斷收錄、引用或推薦。',items:[['可存取','已驗證','62 個標準 URL 返回可索引 HTML，robots.txt 允許相關爬蟲。'],['已爬取','部分已驗證','GPTBot 已驗證爬取 3 個方法頁；OAI-SearchBot 已驗證讀取發現檔案 3 次；歷史日誌保存 7 次已驗證 Bingbot 正文爬取。'],['已檢索及引用','尚未驗證','公開搜尋未返回官網；尚未記錄豆包或其他 AI 在沒有網址提示時找回並引用 Onyx 頁面。'],['非品牌推薦','尚未測試','尚未在豆包發送固定提示詞，也沒有保存其他 AI 產品的合格非品牌推薦證據。']]
+    heading:'目前證據狀態',intro:'截至 2026 年 9 月 10 日。每一級只陳述已保存證據，不從爬蟲到訪推斷收錄、引用或推薦。',items:[['可存取','已驗證','62 個標準 URL 返回可索引 HTML，並可在同一 URL 協商為 Markdown；robots.txt 允許相關爬蟲。'],['已爬取','部分已驗證','GPTBot 已驗證爬取 3 個方法頁；OAI-SearchBot 已驗證讀取發現檔案 3 次；歷史日誌保存 7 次已驗證 Bingbot 正文爬取。'],['已檢索及引用','尚未驗證','公開搜尋未返回官網；尚未記錄豆包或其他 AI 在沒有網址提示時找回並引用 Onyx 頁面。'],['非品牌推薦','尚未測試','尚未在豆包發送固定提示詞，也沒有保存其他 AI 產品的合格非品牌推薦證據。']]
   }:{
-    heading:'Current evidence status',intro:'Observed through 9 September 2026. Each level states only preserved evidence; crawler access is never promoted to indexing, citation, or recommendation.',items:[['Accessible','Verified','All 62 canonical URLs return indexable HTML and robots.txt allows the relevant crawlers.'],['Crawled','Partially verified','GPTBot verified three methodology-page crawls; OAI-SearchBot verified three discovery-file visits; historical logs preserve seven verified Bingbot content crawls.'],['Retrieved and cited','Not verified','Public search has not returned the website, and no saved AI answer retrieves and cites an Onyx page without being given its URL.'],['Non-brand recommendation','Not tested','No fixed prompts have been sent to Doubao, and no qualifying recommendation evidence from another AI product has been preserved.']]
+    heading:'Current evidence status',intro:'Observed through 10 September 2026. Each level states only preserved evidence; crawler access is never promoted to indexing, citation, or recommendation.',items:[['Accessible','Verified','All 62 canonical URLs return indexable HTML and negotiate Markdown at the same URL; robots.txt allows the relevant crawlers.'],['Crawled','Partially verified','GPTBot verified three methodology-page crawls; OAI-SearchBot verified three discovery-file visits; historical logs preserve seven verified Bingbot content crawls.'],['Retrieved and cited','Not verified','Public search has not returned the website, and no saved AI answer retrieves and cites an Onyx page without being given its URL.'],['Non-brand recommendation','Not tested','No fixed prompts have been sent to Doubao, and no qualifying recommendation evidence from another AI product has been preserved.']]
   };
   return `<section class="evidence-status"><div class="wrap"><h2>${copy.heading}</h2><p class="intro">${copy.intro}</p><div class="grid">${copy.items.map(([name,status,detail],index)=>`<article class="card" data-evidence-level="${index+1}"><div class="eyebrow">${esc(status)}</div><h3>${esc(name)}</h3><p>${esc(detail)}</p></article>`).join('')}</div></div></section>`;
 }
@@ -665,22 +665,23 @@ const organizationRecord={
 fs.writeFileSync(path.join(dist,'data','organization.json'),`${JSON.stringify(organizationRecord,null,2)}\n`);
 
 const aiSearchEvidenceStatus={
-  schemaVersion:1,version:'2026.09.09',id:canonical(aiSearchEvidenceStatusPath),observedAt:'2026-09-09T14:03:46Z',
+  schemaVersion:2,version:'2026.09.10',id:canonical(aiSearchEvidenceStatusPath),observedAt:'2026-09-09T16:20:26Z',
   name:{en:'Onyx Devs Lab AI-search evidence status',zhHant:'Onyx Devs Lab AI 搜尋證據狀態',zhHans:'Onyx Devs Lab AI 搜索证据状态'},
   publisher:{name:'Onyx Devs Lab',legalName:'ONYX DEVS LAB LIMITED',businessRegistrationNumber:'79051925',lei:'254900Z30CLK7HKE9H46',url:`${origin}/`},
   methodologyPages:{en:`${origin}/en/methodology/ai-search-verification/`,zhHant:`${origin}/zh-hk/methodology/ai-search-verification/`,zhHans:`${origin}/zh-cn/methodology/ai-search-verification/`},
   testProtocol:{promptMatrix:'geo/prompt-matrix.json',schemaVersion:2,promptCount:17,retrievalMarker:'ONYX-GEO-VERIFY-79051925-20260908',doubaoPromptsSent:false},
   evidenceLevels:[
-    {level:1,id:'accessible',status:'verified',claim:'The website is publicly accessible to permitted crawlers.',evidence:{canonicalUrlsChecked:62,httpStatus:200,indexableServerRenderedHtml:true,robotsAllowsRelevantCrawlers:true}},
+    {level:1,id:'accessible',status:'verified',claim:'The website is publicly accessible to permitted crawlers.',evidence:{canonicalUrlsChecked:62,httpStatus:200,indexableServerRenderedHtml:true,markdownRepresentationsGenerated:62,markdownNegotiatedAtCanonicalUrl:true,varyAccept:true,contentSignals:{search:'yes',aiInput:'yes',aiTrain:'unspecified'},robotsAllowsRelevantCrawlers:true}},
     {level:2,id:'crawled',status:'partially-verified',claim:'Named crawlers have accessed discovery files or content pages.',evidence:{verifiedGptBotContentCrawls:3,verifiedOaiSearchBotDiscoveryFileVisits:3,verifiedOaiSearchBotContentCrawls:0,historicallyVerifiedBingbotContentCrawls:7,verifiedGooglebotContentCrawls:0,verifiedPerplexityContentCrawls:0},limitations:['GPTBot is a training crawler and does not prove ChatGPT Search indexing or citation.','Discovery-file visits do not prove content-page ingestion.','Bingbot content crawls do not prove public search indexing.']},
     {level:3,id:'retrieved-and-cited',status:'not-verified',claim:'No preserved qualifying AI answer retrieves the marker or cites an Onyx page without being given its URL.',evidence:{publicSearchWebsiteResultObserved:false,retrievalMarkerResultObserved:null,aiAnswerCitationObserved:null,doubaoTestStatus:'not-run'},nullMeaning:'A null AI-answer observation means the controlled platform test has not been run; it is not a negative answer result.'},
     {level:4,id:'non-brand-recommendation',status:'not-tested',claim:'No qualifying non-brand AI recommendation has been preserved.',evidence:{doubaoTestStatus:'not-run',otherAiRecommendationEvidenceCount:0,realAiReferralVisitsObserved:0}},
   ],
   publicSearchChecks:[
-    {query:'"ONYX-GEO-VERIFY-79051925-20260908"',result:'website-not-observed'},
-    {query:'"Onyx Devs Lab"',result:'website-not-observed; independent legal-entity records observed'},
-    {query:'site:hk.onyxdevslab.com',result:'no-results-observed'},
+    {checkedAt:'2026-09-09T16:20:00Z',query:'"ONYX-GEO-VERIFY-79051925-20260908"',result:'website-not-observed'},
+    {checkedAt:'2026-09-09T16:20:00Z',query:'"Onyx Devs Lab"',result:'website-not-observed; independent legal-entity records observed'},
+    {checkedAt:'2026-09-09T16:20:00Z',query:'site:hk.onyxdevslab.com',result:'no-results-observed'},
   ],
+  technicalReadiness:{checkedAt:'2026-09-09T16:00:00Z',checker:'Cloudflare Agent Readiness — content site',score:86,passedChecks:6,totalChecks:7,level:'Level 5 Agent-Native',passed:['robots.txt','sitemap.xml','HTTP Link discovery','Markdown content negotiation','AI crawler rules','Content Signals'],notPassed:[{check:'DNS-AID',limitation:'This is an emerging IETF draft for agent endpoint discovery and is not treated as evidence of search indexing, AI citation, or Doubao recommendation.'}]},
   evidenceSources:[
     {name:'Public baseline record',url:'https://github.com/0xHunterL/onyx-devs-lab.github.io/blob/main/docs/geo-baselines/2026-09-08-doubao.md'},
     {name:'Versioned GEO evidence checkpoint',url:'https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-evidence-2026-09-09'},

@@ -252,12 +252,15 @@ try {
 
 try {
   const status = JSON.parse(fs.readFileSync(path.join(dist, 'data/ai-search-evidence-status.json'), 'utf8'));
-  if (status.schemaVersion !== 1 || status.version !== '2026.09.09' || !status.observedAt) failures.push('AI-search evidence status: unexpected schema, version, or observation time');
+  if (status.schemaVersion !== 2 || status.version !== '2026.09.10' || !status.observedAt) failures.push('AI-search evidence status: unexpected schema, version, or observation time');
   if (status.evidenceLevels?.map((item) => item.id).join(',') !== 'accessible,crawled,retrieved-and-cited,non-brand-recommendation') failures.push('AI-search evidence status: four evidence levels are incomplete');
   if (status.evidenceLevels?.[0]?.status !== 'verified' || status.evidenceLevels?.[0]?.evidence?.canonicalUrlsChecked !== 62) failures.push('AI-search evidence status: accessibility evidence is incomplete');
+  if (status.evidenceLevels?.[0]?.evidence?.markdownRepresentationsGenerated !== 62 || status.evidenceLevels?.[0]?.evidence?.markdownNegotiatedAtCanonicalUrl !== true || status.evidenceLevels?.[0]?.evidence?.contentSignals?.aiTrain !== 'unspecified') failures.push('AI-search evidence status: agent-readable representation evidence is incomplete');
   if (status.evidenceLevels?.[1]?.evidence?.verifiedGptBotContentCrawls !== 3 || status.evidenceLevels?.[1]?.evidence?.historicallyVerifiedBingbotContentCrawls !== 7) failures.push('AI-search evidence status: crawler evidence is incomplete');
   if (status.evidenceLevels?.[2]?.status !== 'not-verified' || status.evidenceLevels?.[3]?.status !== 'not-tested' || status.testProtocol?.doubaoPromptsSent !== false) failures.push('AI-search evidence status: negative evidence boundary is incomplete');
   if (!status.evidenceBoundary?.includes('must not be inferred from a lower level')) failures.push('AI-search evidence status: inference boundary is missing');
+  if (status.technicalReadiness?.score !== 86 || status.technicalReadiness?.passedChecks !== 6 || status.technicalReadiness?.notPassed?.[0]?.check !== 'DNS-AID') failures.push('AI-search evidence status: technical-readiness evidence is incomplete');
+  if (!status.publicSearchChecks?.every((item) => item.checkedAt && item.result.includes('observed'))) failures.push('AI-search evidence status: dated public-search checks are incomplete');
 } catch {
   failures.push('AI-search evidence status: invalid JSON');
 }
