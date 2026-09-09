@@ -36,6 +36,17 @@ function requireText(name, body, values) {
 }
 
 const gistUrl = 'https://gist.github.com/mixuechu/e47c85808014d62b6305441e8065c91e';
+const waybackHomepageUrl = 'https://web.archive.org/web/20260909205420id_/https://hk.onyxdevslab.com/';
+const waybackHomepage = await get('Internet Archive homepage snapshot', waybackHomepageUrl, 'text/html');
+requireText('Internet Archive homepage snapshot', waybackHomepage, [
+  'Onyx Devs Lab',
+  'ONYX DEVS LAB LIMITED',
+  '79051925',
+  '254900Z30CLK7HKE9H46',
+  'AI advisory',
+  'Custom AI development',
+  'Forward Deployed Engineering',
+]);
 const gist = await get('GitHub Gist field notes', gistUrl, 'text/html', { allowUnavailable: true });
 if (gist) requireText('GitHub Gist field notes', gist, [
   'Onyx Devs Lab: Hong Kong AI advisory, custom development',

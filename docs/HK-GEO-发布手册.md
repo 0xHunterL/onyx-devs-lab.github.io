@@ -35,7 +35,7 @@ npm run geo:content-distinctiveness
 npm run geo:submit-indexnow
 ```
 
-构建会生成静态语言入口、服务页、FDE 定义页、案例页、`robots.txt`、`sitemap.xml`、`llms.txt`、Atom Feed、JSON Feed 1.1 和服务术语 JSON-LD，并为 62 个规范 HTML 页面生成对应的 Markdown 表示。页面变更完成线上检查后，使用 `geo:submit-indexnow` 提交 Sitemap 中的规范 HTML URL，同时通知 `llms.txt`、`llms-full.txt`、两种 Feed 和 7 个机器证据资源的更新；Markdown 通过同一规范 URL 的内容协商提供，不作为独立 URL 提交。发布流程不需要重启聊天网关。HTTP `200` 或 `202` 只表示 IndexNow 收到通知，不代表已经抓取、收录、引用或推荐。
+构建会生成静态语言入口、服务页、FDE 定义页、案例页、`robots.txt`、`sitemap.xml`、`llms.txt`、Atom Feed、JSON Feed 1.1 和服务术语 JSON-LD，并为 71 个规范 HTML 页面生成对应的 Markdown 表示。页面变更完成线上检查后，使用 `geo:submit-indexnow` 提交 Sitemap 中的规范 HTML URL，同时通知 `llms.txt`、`llms-full.txt`、两种 Feed 和 14 个机器证据资源的更新；Markdown 通过同一规范 URL 的内容协商提供，不作为独立 URL 提交。发布流程不需要重启聊天网关。HTTP `200` 或 `202` 只表示 IndexNow 收到通知，不代表已经抓取、收录、引用或推荐。
 
 ## Nginx 与线上验收
 

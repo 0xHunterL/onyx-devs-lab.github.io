@@ -1864,18 +1864,18 @@ const LandingPage = () => {
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400">Onyx</span>
                 <span> Devs Lab</span>
               </h3>
-              <p className="text-gray-500 max-w-md leading-relaxed">{t.footer.description}</p>
+              <p className="text-gray-400 max-w-md leading-relaxed">{t.footer.description}</p>
             </div>
             <div className="md:text-right">
               <h3 className="text-xl font-bold mb-4">{t.footer.contactTitle}</h3>
-              <p className="text-gray-500 leading-relaxed">
+              <p className="text-gray-400 leading-relaxed">
                 <a className="transition-colors hover:text-white" href="mailto:info@onyxdevslab.com">info@onyxdevslab.com</a><br />
                 {lang === 'zh' ? (
                   <>
                     <a className="transition-colors hover:text-white" href="tel:+8618923743756">+86 18923743756</a><br />
                     {t.footer.wechatLabel}：{t.footer.wechatId}<br />
                     {t.footer.addressLines.map((line) => (<React.Fragment key={line}>{line}<br /></React.Fragment>))}
-                    <span className="text-gray-600 text-sm">{t.footer.serviceNote}</span>
+                    <span className="text-gray-400 text-sm">{t.footer.serviceNote}</span>
                   </>
                 ) : (
                   <>
@@ -1887,7 +1887,7 @@ const LandingPage = () => {
               </p>
             </div>
           </div>
-          <div className="mt-12 flex flex-col items-center justify-between gap-4 border-t border-white/5 pt-8 text-center text-sm text-gray-600 sm:flex-row sm:text-left">
+          <div className="mt-12 flex flex-col items-center justify-between gap-4 border-t border-white/5 pt-8 text-center text-sm text-gray-400 sm:flex-row sm:text-left">
             <span>&copy; {new Date().getFullYear()} Onyx Devs Lab. {t.footer.rights}</span>
             <a href="/privacy.html" className="transition-colors hover:text-gray-300">{experience.privacy}</a>
           </div>
