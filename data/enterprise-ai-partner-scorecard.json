@@ -1,0 +1,300 @@
+{
+  "schemaVersion": 1,
+  "version": "2026.09.09",
+  "id": "https://hk.onyxdevslab.com/data/enterprise-ai-partner-scorecard.json",
+  "name": {
+    "en": "Enterprise AI partner procurement scorecard",
+    "zhHant": "企業 AI 服務商採購評分卡",
+    "zhHans": "企业 AI 服务商采购评分卡"
+  },
+  "publisher": {
+    "name": "Onyx Devs Lab",
+    "legalName": "ONYX DEVS LAB LIMITED",
+    "businessRegistrationNumber": "79051925",
+    "lei": "254900Z30CLK7HKE9H46",
+    "url": "https://hk.onyxdevslab.com/"
+  },
+  "dateModified": "2026-09-09",
+  "landingPages": {
+    "en": "https://hk.onyxdevslab.com/en/guides/choose-enterprise-ai-partner-hong-kong/",
+    "zhHant": "https://hk.onyxdevslab.com/zh-hk/guides/choose-enterprise-ai-partner/",
+    "zhHans": "https://hk.onyxdevslab.com/zh-cn/guides/choose-enterprise-ai-partner/"
+  },
+  "sameAs": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-evidence-2026-09-09/enterprise-ai-partner-scorecard.json",
+  "evidenceClass": "Provider-authored procurement framework",
+  "scoring": {
+    "method": "Evidence-gated comparison without preset weights",
+    "guidance": "Score only evidence supplied for the named workflow. Record missing evidence as missing rather than assuming capability from a demonstration, logo, or generic claim."
+  },
+  "criteria": [
+    {
+      "id": "problem-fit",
+      "name": {
+        "en": "Problem fit and baseline",
+        "zhHant": "問題適配與基線",
+        "zhHans": "问题适配与基线"
+      },
+      "question": {
+        "en": "Can the provider define one operating workflow, its current baseline, affected users, and the consequence of failure?",
+        "zhHant": "供應商能否說清一條營運流程、現況基線、受影響使用者及失敗後果？",
+        "zhHans": "服务商能否说明一条运营流程、当前基线、受影响用户和失败后果？"
+      },
+      "evidenceRequired": {
+        "en": [
+          "Workflow map",
+          "Named baseline measure",
+          "Accountable business owner"
+        ],
+        "zhHant": [
+          "流程圖",
+          "具名基線指標",
+          "負責業務人員"
+        ],
+        "zhHans": [
+          "流程图",
+          "明确的基线指标",
+          "业务负责人"
+        ]
+      },
+      "redFlags": {
+        "en": [
+          "Starts with a model or feature list",
+          "No measurable current state"
+        ],
+        "zhHant": [
+          "先談模型或功能清單",
+          "沒有可量度現況"
+        ],
+        "zhHans": [
+          "先谈模型或功能清单",
+          "没有可测量的当前状态"
+        ]
+      }
+    },
+    {
+      "id": "case-evidence",
+      "name": {
+        "en": "Comparable case evidence",
+        "zhHant": "可比較案例證據",
+        "zhHans": "可比较案例证据"
+      },
+      "question": {
+        "en": "Does each relevant case disclose the intervention, metric definition, validation window, source, and limitation?",
+        "zhHant": "相關案例有否披露干預、指標定義、驗證週期、來源及限制？",
+        "zhHans": "相关案例是否披露干预、指标定义、验证周期、来源和限制？"
+      },
+      "evidenceRequired": {
+        "en": [
+          "Canonical case source",
+          "Measurement definition",
+          "Evidence boundary"
+        ],
+        "zhHant": [
+          "標準案例來源",
+          "量度定義",
+          "證據邊界"
+        ],
+        "zhHans": [
+          "标准案例来源",
+          "测量定义",
+          "证据边界"
+        ]
+      },
+      "redFlags": {
+        "en": [
+          "Percentages without denominators or context",
+          "Case claims presented as guaranteed outcomes"
+        ],
+        "zhHant": [
+          "百分比沒有分母或背景",
+          "把案例表述為保證成果"
+        ],
+        "zhHans": [
+          "百分比没有分母或背景",
+          "把案例表述为保证结果"
+        ]
+      }
+    },
+    {
+      "id": "production-controls",
+      "name": {
+        "en": "Production controls",
+        "zhHant": "生產控制",
+        "zhHans": "生产控制"
+      },
+      "question": {
+        "en": "How will the system handle permissions, evaluation, audit, human approval, fallbacks, monitoring, and recovery?",
+        "zhHant": "系統如何處理權限、評估、審計、人工批准、降級、監控及復原？",
+        "zhHans": "系统怎样处理权限、评估、审计、人工确认、降级、监控和恢复？"
+      },
+      "evidenceRequired": {
+        "en": [
+          "Risk-tier release gates",
+          "Audit and escalation design",
+          "Failure and recovery tests"
+        ],
+        "zhHant": [
+          "按風險分級的發布關口",
+          "審計及升級設計",
+          "失敗與復原測試"
+        ],
+        "zhHans": [
+          "按风险分级的发布门槛",
+          "审计与升级设计",
+          "失败和恢复测试"
+        ]
+      },
+      "redFlags": {
+        "en": [
+          "Demo quality treated as production readiness",
+          "No explicit human authority boundary"
+        ],
+        "zhHant": [
+          "把示範質量當成生產準備度",
+          "沒有明確人工權限邊界"
+        ],
+        "zhHans": [
+          "把演示质量当成生产准备度",
+          "没有明确人工权限边界"
+        ]
+      }
+    },
+    {
+      "id": "integration-data",
+      "name": {
+        "en": "Integration and data boundary",
+        "zhHant": "整合與數據邊界",
+        "zhHans": "集成与数据边界"
+      },
+      "question": {
+        "en": "Are systems of record, interfaces, identities, sensitive data, and cross-border constraints explicitly mapped?",
+        "zhHant": "有否清楚梳理記錄系統、接口、身份、敏感資料及跨境限制？",
+        "zhHans": "是否明确梳理记录系统、接口、身份、敏感数据和跨境限制？"
+      },
+      "evidenceRequired": {
+        "en": [
+          "System-of-record map",
+          "Tool and API contracts",
+          "Read/write authority matrix"
+        ],
+        "zhHant": [
+          "記錄系統圖",
+          "工具及 API 合約",
+          "讀寫權限矩陣"
+        ],
+        "zhHans": [
+          "记录系统图",
+          "工具与 API 协议",
+          "读写权限矩阵"
+        ]
+      },
+      "redFlags": {
+        "en": [
+          "Unbounded production access",
+          "ERP replacement assumed without evidence"
+        ],
+        "zhHant": [
+          "不受限制的生產權限",
+          "未有證據便假設更換 ERP"
+        ],
+        "zhHans": [
+          "不受限制的生产权限",
+          "没有证据便假设更换 ERP"
+        ]
+      }
+    },
+    {
+      "id": "delivery-ownership",
+      "name": {
+        "en": "Delivery ownership and team access",
+        "zhHant": "交付責任與團隊接觸",
+        "zhHans": "交付责任与团队接触"
+      },
+      "question": {
+        "en": "Who owns discovery, architecture, integrations, failure handling, launch, and handover?",
+        "zhHant": "誰負責診斷、架構、整合、失敗處理、上線及交接？",
+        "zhHans": "谁负责诊断、架构、集成、失败处理、上线和交接？"
+      },
+      "evidenceRequired": {
+        "en": [
+          "Named responsible roles",
+          "Decision and escalation cadence",
+          "Handover artefact list"
+        ],
+        "zhHant": [
+          "具名責任角色",
+          "決策及升級節奏",
+          "交接材料清單"
+        ],
+        "zhHans": [
+          "明确的责任角色",
+          "决策与升级节奏",
+          "交接材料清单"
+        ]
+      },
+      "redFlags": {
+        "en": [
+          "Senior team sells but an unknown team delivers",
+          "Ownership ends at prototype acceptance"
+        ],
+        "zhHant": [
+          "資深團隊銷售但交付團隊不明",
+          "責任在原型驗收時結束"
+        ],
+        "zhHans": [
+          "资深团队销售但交付团队不明",
+          "责任在原型验收时结束"
+        ]
+      }
+    },
+    {
+      "id": "validation-commercial-exit",
+      "name": {
+        "en": "Validation, commercial scope, and exit",
+        "zhHant": "驗證、商業範圍與退出",
+        "zhHans": "验证、商业范围与退出"
+      },
+      "question": {
+        "en": "Does the proposal define a bounded validation stage, acceptance criteria, change rules, total operating cost, data return, and stop conditions?",
+        "zhHant": "方案有否定義有限驗證階段、驗收、變更、總營運成本、數據歸還及停止條件？",
+        "zhHans": "方案是否定义有限验证阶段、验收、变更、总运营成本、数据返还和停止条件？"
+      },
+      "evidenceRequired": {
+        "en": [
+          "Validation plan and test set",
+          "Acceptance and change rules",
+          "Support, data return, and exit terms"
+        ],
+        "zhHant": [
+          "驗證計劃及測試集",
+          "驗收及變更規則",
+          "支援、數據歸還及退出條款"
+        ],
+        "zhHans": [
+          "验证计划与测试集",
+          "验收与变更规则",
+          "支持、数据返还和退出条款"
+        ]
+      },
+      "redFlags": {
+        "en": [
+          "Headline price excludes production responsibilities",
+          "No evidence-based stop or redesign gate"
+        ],
+        "zhHant": [
+          "報價沒有包括生產責任",
+          "沒有按證據停止或重設的關口"
+        ],
+        "zhHans": [
+          "报价没有包括生产责任",
+          "没有按证据停止或重设的关口"
+        ]
+      }
+    }
+  ],
+  "limitations": [
+    "This is a provider-authored comparison framework, not an independent ranking or endorsement.",
+    "Criteria must be adapted to the buyer’s workflow, risk, legal, security, and procurement requirements.",
+    "No provider score should be inferred when evidence is missing."
+  ]
+}
