@@ -35,7 +35,7 @@ npm run geo:content-distinctiveness
 npm run geo:submit-indexnow
 ```
 
-构建会生成静态语言入口、服务页、FDE 定义页、案例页、`robots.txt`、`sitemap.xml` 和 `llms.txt`。页面变更完成线上检查后，使用 `geo:submit-indexnow` 提交 Sitemap 中的规范 HTML URL，同时通知 `llms.txt`、`llms-full.txt`、Atom Feed 和 6 个机器证据 JSON 的更新；发布流程不需要重启聊天网关。HTTP `200` 或 `202` 只表示 IndexNow 收到通知，不代表已经抓取、收录、引用或推荐。
+构建会生成静态语言入口、服务页、FDE 定义页、案例页、`robots.txt`、`sitemap.xml`、`llms.txt`，并为 62 个规范 HTML 页面生成对应的 Markdown 表示。页面变更完成线上检查后，使用 `geo:submit-indexnow` 提交 Sitemap 中的规范 HTML URL，同时通知 `llms.txt`、`llms-full.txt`、Atom Feed和 6 个机器证据 JSON 的更新；Markdown 通过同一规范 URL 的内容协商提供，不作为独立 URL 提交。发布流程不需要重启聊天网关。HTTP `200` 或 `202` 只表示 IndexNow 收到通知，不代表已经抓取、收录、引用或推荐。
 
 ## Nginx 与线上验收
 
@@ -57,6 +57,8 @@ curl -I https://hk.onyxdevslab.com/robots.txt
 curl -I https://hk.onyxdevslab.com/sitemap.xml
 curl -I https://hk.onyxdevslab.com/llms.txt
 curl -sS https://hk.onyxdevslab.com/en/forward-deployed-engineering/ | grep '<h1'
+curl -I -H 'Accept: text/markdown' https://hk.onyxdevslab.com/
+curl -sS -H 'Accept: text/markdown' https://hk.onyxdevslab.com/ | sed -n '1,25p'
 ```
 
 前三个文件不能回退成 SPA 首页；内容类型应分别为纯文本、XML、纯文本。
@@ -64,6 +66,8 @@ curl -sS https://hk.onyxdevslab.com/en/forward-deployed-engineering/ | grep '<h1
 `robots.txt` 必须保留 `Content-Signal: search=yes, ai-input=yes`。这分别声明允许传统搜索索引和查询时的 AI 输入；`ai-train` 未经明确决策不作声明。信号存在只证明站点表达了使用意图，不证明爬虫或模型会采用。
 
 首页和 HTML 内容页响应必须包含 RFC 8288 `Link` 头，并能发现 `sitemap.xml`、`feed.xml` 与 `llms.txt`；`geo:check-live` 会直接检查线上响应，避免只修改仓库示例而没有加载到 Nginx。
+
+Markdown 协商响应必须为 `text/markdown`，并与 HTML 响应一样包含 `Vary: Accept`、`Content-Signal: search=yes, ai-input=yes` 和发现入口 `Link` 头；正文开头应能看到 title、canonical 与 language 前置元数据。未携带 Markdown Accept 头时，首页仍必须返回 `text/html`。
 
 `deploy/nginx-geo-log.conf` 定义独立的 JSON 访问日志格式，保留 Cloudflare 传入的原始客户端 IP，并只记录 Referer 的主机名（不保存可能含查询内容的路径或参数）；`deploy/nginx-hk.conf` 把该站点写入独立日志。报告工具会把带 `Onyx-GEO-Release-Check` 的发布自测排除，并按 OpenAI 与 Perplexity 官方公布的 IP 段验证对应爬虫；Bingbot 和 Googlebot 则分别按官方流程执行反向 DNS 与正向 DNS 双重验证。其他平台在没有公开稳定 IP 规则时仍只记为候选抓取。引荐报告同时识别 UTM 和已知 AI 产品来源域，但浏览器或应用可能因 Referrer-Policy 不发送来源，因此“0 次来源点击”只能表示日志未观测到，不能证明没有点击。
 
