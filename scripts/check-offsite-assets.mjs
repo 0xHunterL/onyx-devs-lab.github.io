@@ -129,6 +129,7 @@ requireText('GitHub repository', repository, [
   'Onyx Devs Lab',
   'ONYX DEVS LAB LIMITED',
   'e47c85808014d62b6305441e8065c91e',
+  'Cite this repository',
 ]);
 const repositoryReadme = await get('GitHub repository README source', 'https://raw.githubusercontent.com/0xHunterL/onyx-devs-lab.github.io/main/README.md', 'text/plain');
 requireText('GitHub repository README source', repositoryReadme, [
