@@ -35,6 +35,11 @@ for (const required of ['ONYX DEVS LAB LIMITED', 'business registration number 7
   if (!rootHtml.includes(required)) failures.push(`index.html: static crawler fallback is missing ${required}`);
 }
 
+const nginxRouteConfig = fs.readFileSync(path.resolve('deploy/nginx-hk.conf'), 'utf8');
+if (!nginxRouteConfig.includes('absolute_redirect off;')) failures.push('nginx: directory redirects are not constrained to relative HTTPS-safe targets');
+if (!nginxRouteConfig.includes('try_files $uri $uri/ =404;')) failures.push('nginx: unknown routes do not return a real 404');
+if (!nginxRouteConfig.includes('if ($request_uri ~ ^/index\\.html(?:\\?|$))')) failures.push('nginx: duplicate /index.html homepage is not redirected');
+
 for (const file of htmlFiles) {
   const html = fs.readFileSync(file, 'utf8');
   const relative = path.relative(dist, file);

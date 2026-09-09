@@ -5,6 +5,15 @@ const requestCache = new Map();
 let networkRequests = 0;
 let cacheHits = 0;
 
+async function probe(pathname, accept = '') {
+  const response = await fetch(`${origin}${pathname}`, {
+    headers: { 'user-agent': 'Onyx-GEO-Release-Check/1.0', ...(accept ? { accept } : {}) },
+    redirect: 'manual',
+    signal: AbortSignal.timeout(15_000),
+  });
+  return { status: response.status, location: response.headers.get('location') || '', body: await response.text() };
+}
+
 async function get(pathname, expectedType, userAgent = 'Onyx-GEO-Release-Check/1.0', accept = '') {
   const requestedUrl = `${origin}${pathname}`;
   const cacheKey = `${requestedUrl}\n${userAgent}\n${accept}`;
@@ -59,6 +68,16 @@ for (const required of ['ONYX DEVS LAB LIMITED', 'business registration number 7
 if (!root.body.includes('<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1"')) failures.push('/: unrestricted search and AI preview directive is missing');
 if (!root.body.includes('"iso6523Code":"0199:254900Z30CLK7HKE9H46"')) failures.push('/: ISO 6523 LEI organization property is missing');
 if (!root.body.includes('"contentUrl":"https://hk.onyxdevslab.com/favicon.svg","width":512,"height":512')) failures.push('/: organization logo dimensions or content URL are incomplete');
+
+for (const [pathname, accept] of [['/this-page-must-not-exist-onyx-geo-20260910', ''], ['/zh-cn/not-found-onyx-geo-20260910', ''], ['/en/not-found-onyx-geo-20260910/', 'text/markdown']]) {
+  const response = await probe(pathname, accept);
+  if (response.status !== 404) failures.push(`${pathname}: unknown URL returned ${response.status} instead of 404`);
+  if (response.body.includes('From business problem to working AI system.')) failures.push(`${pathname}: unknown URL returned homepage content`);
+}
+const slashRedirect = await probe('/en/ai-consulting-hong-kong');
+if (slashRedirect.status !== 301 || slashRedirect.location !== '/en/ai-consulting-hong-kong/') failures.push(`/en/ai-consulting-hong-kong: expected one relative 301 to the canonical slash URL, got ${slashRedirect.status} ${slashRedirect.location}`);
+const indexRedirect = await probe('/index.html');
+if (indexRedirect.status !== 301 || indexRedirect.location !== '/') failures.push(`/index.html: expected one relative 301 to the canonical homepage, got ${indexRedirect.status} ${indexRedirect.location}`);
 const markdownRoot = await get('/', 'text/markdown', 'Onyx-GEO-Markdown-Check/1.0', 'text/markdown');
 for (const required of ['title:', 'canonical: "https://hk.onyxdevslab.com/"', '# From business problem to working AI system.', 'ONYX DEVS LAB LIMITED', '## Structured data', '"@type": "Organization"']) {
   if (!markdownRoot.body.includes(required)) failures.push(`/: Markdown variant is missing ${required}`);
