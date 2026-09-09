@@ -13,6 +13,8 @@ AI 交付決策指南
 
 不要按哪個服務名稱聽起來最先進來選擇，而應看項目需要解決哪一種不確定性。
 
+發布 2026-09-07 · 更新 2026-09-10
+
 [下載決策圖](/data/enterprise-ai-engagement-model-map.json) [English](/en/guides/ai-advisory-vs-custom-development-vs-fde/) [简体中文](/zh-cn/guides/ai-consulting-vs-development-vs-fde/)
 
 **AI 顧問** — 解決一項決策
@@ -320,7 +322,12 @@ FDE 是否一定更昂貴？
           "encodingFormat": "application/json",
           "contentUrl": "https://hk.onyxdevslab.com/data/enterprise-ai-engagement-model-map.json"
         }
-      }
+      },
+      "datePublished": "2026-09-07",
+      "mainEntityOfPage": {
+        "@id": "https://hk.onyxdevslab.com/zh-hk/guides/ai-consulting-vs-development-vs-fde/"
+      },
+      "articleSection": "AI 交付決策指南"
     },
     {
       "@type": "WebPage",

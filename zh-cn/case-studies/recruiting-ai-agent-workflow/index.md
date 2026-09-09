@@ -13,6 +13,8 @@ language: "zh-CN"
 
 持续同步候选人对话、更新证据化画像，并分离人工、Copilot 和受控 Autopilot 权限的招聘工作台。
 
+发布 2026-09-07 · 更新 2026-09-10
+
 [English](/en/case-studies/recruiting-ai-agent-workflow/) [繁體中文](/zh-hk/case-studies/recruiting-ai-agent-workflow/)
 
 ## 业务问题
@@ -270,15 +272,24 @@ language: "zh-CN"
       ]
     },
     {
-      "@type": "CreativeWork",
+      "@type": "Article",
       "@id": "https://hk.onyxdevslab.com/zh-cn/case-studies/recruiting-ai-agent-workflow/#primary",
       "name": "具备上下文、证据和发送控制的招聘自动化",
       "description": "覆盖候选人同步、证据化画像、回复草拟、幂等发送和人工接管的受控招聘 Agent 工作流。",
       "url": "https://hk.onyxdevslab.com/zh-cn/case-studies/recruiting-ai-agent-workflow/",
-      "creator": {
+      "author": {
         "@id": "https://hk.onyxdevslab.com/#organization"
       },
-      "dateModified": "2026-09-10"
+      "publisher": {
+        "@id": "https://hk.onyxdevslab.com/#organization"
+      },
+      "dateModified": "2026-09-10",
+      "headline": "具备上下文、证据和发送控制的招聘自动化",
+      "datePublished": "2026-09-07",
+      "mainEntityOfPage": {
+        "@id": "https://hk.onyxdevslab.com/zh-cn/case-studies/recruiting-ai-agent-workflow/"
+      },
+      "articleSection": "案例研究"
     },
     {
       "@type": "WebPage",

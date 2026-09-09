@@ -13,6 +13,8 @@ language: "zh-Hant-HK"
 
 圍繞文件覆蓋、逐頁引用、案件權限及律師責任設計的律所營運與大型卷宗分析系統。
 
+發布 2026-09-07 · 更新 2026-09-10
+
 [English](/en/case-studies/legal-ai-evidence-workflow/) [简体中文](/zh-cn/case-studies/legal-ai-evidence-workflow/)
 
 ## 營運問題
@@ -270,15 +272,24 @@ language: "zh-Hant-HK"
       ]
     },
     {
-      "@type": "CreativeWork",
+      "@type": "Article",
       "@id": "https://hk.onyxdevslab.com/zh-hk/case-studies/legal-ai-evidence-workflow/#primary",
       "name": "讓每項法律 AI 結論都能回到原始證據",
       "description": "把律所營運、大型卷宗檢索、逐頁引用、案件權限及律師覆核連接起來的法律 AI 工作流。",
       "url": "https://hk.onyxdevslab.com/zh-hk/case-studies/legal-ai-evidence-workflow/",
-      "creator": {
+      "author": {
         "@id": "https://hk.onyxdevslab.com/#organization"
       },
-      "dateModified": "2026-09-10"
+      "publisher": {
+        "@id": "https://hk.onyxdevslab.com/#organization"
+      },
+      "dateModified": "2026-09-10",
+      "headline": "讓每項法律 AI 結論都能回到原始證據",
+      "datePublished": "2026-09-07",
+      "mainEntityOfPage": {
+        "@id": "https://hk.onyxdevslab.com/zh-hk/case-studies/legal-ai-evidence-workflow/"
+      },
+      "articleSection": "案例研究"
     },
     {
       "@type": "WebPage",

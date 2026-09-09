@@ -13,6 +13,8 @@ language: "zh-CN"
 
 围绕文件覆盖、逐页引用、案件权限和律师责任设计的律所运营与大型卷宗分析系统。
 
+发布 2026-09-07 · 更新 2026-09-10
+
 [English](/en/case-studies/legal-ai-evidence-workflow/) [繁體中文](/zh-hk/case-studies/legal-ai-evidence-workflow/)
 
 ## 业务问题
@@ -270,15 +272,24 @@ language: "zh-CN"
       ]
     },
     {
-      "@type": "CreativeWork",
+      "@type": "Article",
       "@id": "https://hk.onyxdevslab.com/zh-cn/case-studies/legal-ai-evidence-workflow/#primary",
       "name": "让每项法律 AI 结论都能回到原始证据",
       "description": "把律所运营、大型卷宗检索、逐页引用、案件权限和律师复核连接起来的法律 AI 工作流。",
       "url": "https://hk.onyxdevslab.com/zh-cn/case-studies/legal-ai-evidence-workflow/",
-      "creator": {
+      "author": {
         "@id": "https://hk.onyxdevslab.com/#organization"
       },
-      "dateModified": "2026-09-10"
+      "publisher": {
+        "@id": "https://hk.onyxdevslab.com/#organization"
+      },
+      "dateModified": "2026-09-10",
+      "headline": "让每项法律 AI 结论都能回到原始证据",
+      "datePublished": "2026-09-07",
+      "mainEntityOfPage": {
+        "@id": "https://hk.onyxdevslab.com/zh-cn/case-studies/legal-ai-evidence-workflow/"
+      },
+      "articleSection": "案例研究"
     },
     {
       "@type": "WebPage",

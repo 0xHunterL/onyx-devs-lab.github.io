@@ -13,6 +13,8 @@ language: "zh-Hant-HK"
 
 不要按模型示範或功能清單選擇供應商；應比較對方能否負責具體營運問題、公開可核對證據，並在生產環境執行必要控制。
 
+發布 2026-09-09 · 更新 2026-09-10
+
 [下載採購評分卡](/data/enterprise-ai-partner-scorecard.json) [English](/en/guides/choose-enterprise-ai-partner-hong-kong/) [简体中文](/zh-cn/guides/choose-enterprise-ai-partner/)
 
 **可比較證據** — 定義、來源及限制
@@ -309,7 +311,12 @@ language: "zh-Hant-HK"
           "contentUrl": "https://hk.onyxdevslab.com/data/enterprise-ai-partner-scorecard.json"
         },
         "sameAs": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-evidence-2026-09-09/enterprise-ai-partner-scorecard.json"
-      }
+      },
+      "datePublished": "2026-09-09",
+      "mainEntityOfPage": {
+        "@id": "https://hk.onyxdevslab.com/zh-hk/guides/choose-enterprise-ai-partner/"
+      },
+      "articleSection": "企業 AI 採購指南"
     },
     {
       "@type": "WebPage",

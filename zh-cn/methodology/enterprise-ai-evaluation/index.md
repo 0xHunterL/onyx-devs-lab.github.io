@@ -13,6 +13,8 @@ language: "zh-CN"
 
 模型基准分数不是验收测试。生产准备度必须同时评估证据检索、输出质量、工具行为、流程可靠性、人工控制和运营结果。
 
+发布 2026-09-07 · 更新 2026-09-10
+
 [预约项目评估](mailto:info@onyxdevslab.com?subject=%E6%80%8E%E6%A0%B7%E5%88%A4%E6%96%AD%E4%BC%81%E4%B8%9A%20AI%20%E7%B3%BB%E7%BB%9F%E5%8F%AF%E4%BB%A5%E4%B8%8A%E7%BA%BF%EF%BC%9F) [English](/en/methodology/enterprise-ai-evaluation/) [繁體中文](/zh-hk/methodology/enterprise-ai-evaluation/)
 
 **能力** — 系统能否完成任务
@@ -298,7 +300,12 @@ language: "zh-CN"
         "@id": "https://hk.onyxdevslab.com/#organization"
       },
       "dateModified": "2026-09-10",
-      "headline": "怎样判断企业 AI 系统可以上线？"
+      "headline": "怎样判断企业 AI 系统可以上线？",
+      "datePublished": "2026-09-07",
+      "mainEntityOfPage": {
+        "@id": "https://hk.onyxdevslab.com/zh-cn/methodology/enterprise-ai-evaluation/"
+      },
+      "articleSection": "企业 AI 评估方法"
     },
     {
       "@type": "WebPage",

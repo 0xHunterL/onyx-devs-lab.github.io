@@ -13,6 +13,8 @@ AI pilot decision tool
 
 Treat the pilot as a controlled business decision, not a model demonstration. Fix one workflow, its baseline, authority boundary, evidence set, acceptance thresholds, and decision owners before testing begins.
 
+Published 2026-09-09 · Updated 2026-09-10
+
 [Download pilot charter](/data/enterprise-ai-pilot-charter.json) [繁體中文](/zh-hk/guides/enterprise-ai-pilot-charter/) [简体中文](/zh-cn/guides/enterprise-ai-pilot-charter/)
 
 **One workflow** — Named users, baseline, and consequence
@@ -326,7 +328,12 @@ We will first clarify the workflow, evidence, data boundary, and outcome standar
           "encodingFormat": "application/json",
           "contentUrl": "https://hk.onyxdevslab.com/data/enterprise-ai-pilot-charter.json"
         }
-      }
+      },
+      "datePublished": "2026-09-09",
+      "mainEntityOfPage": {
+        "@id": "https://hk.onyxdevslab.com/en/guides/enterprise-ai-pilot-charter-hong-kong/"
+      },
+      "articleSection": "AI pilot decision tool"
     },
     {
       "@type": "WebPage",

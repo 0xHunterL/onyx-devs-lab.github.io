@@ -13,6 +13,8 @@ Hong Kong AI governance guide
 
 Start from the affected workflow and personal-data boundary. Then assign accountability, classify risk, set human authority, test the complete system, and keep evidence after launch.
 
+Published 2026-09-09 · Updated 2026-09-10
+
 [Book a project assessment](mailto:info@onyxdevslab.com?subject=What%20governance%20does%20a%20Hong%20Kong%20enterprise%20need%20before%20deploying%20AI%3F) [繁體中文](/zh-hk/guides/enterprise-ai-governance/) [简体中文](/zh-cn/guides/enterprise-ai-governance/)
 
 **Governance owner** — Named authority and escalation
@@ -320,7 +322,12 @@ We will first clarify the workflow, evidence, data boundary, and outcome standar
           "name": "Hong Kong Monetary Authority — Generative A.I. Sandbox arrangement",
           "url": "https://www.hkma.gov.hk/media/eng/doc/key-information/guidelines-and-circular/2024/20240920e1.pdf"
         }
-      ]
+      ],
+      "datePublished": "2026-09-09",
+      "mainEntityOfPage": {
+        "@id": "https://hk.onyxdevslab.com/en/guides/hong-kong-enterprise-ai-governance/"
+      },
+      "articleSection": "Hong Kong AI governance guide"
     },
     {
       "@type": "WebPage",

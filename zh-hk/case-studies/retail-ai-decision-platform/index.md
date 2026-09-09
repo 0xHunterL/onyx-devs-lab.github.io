@@ -13,6 +13,8 @@ language: "zh-Hant-HK"
 
 為意大利華人超市業務設計的非侵入式分析與 AI 層，保留既有 SaaS ERP 作為營運系統。
 
+發布 2026-09-07 · 更新 2026-09-10
+
 [English](/en/case-studies/retail-ai-decision-platform/) [简体中文](/zh-cn/case-studies/retail-ai-decision-platform/)
 
 ## 營運問題
@@ -270,15 +272,24 @@ language: "zh-Hant-HK"
       ]
     },
     {
-      "@type": "CreativeWork",
+      "@type": "Article",
       "@id": "https://hk.onyxdevslab.com/zh-hk/case-studies/retail-ai-decision-platform/#primary",
       "name": "把零售交易數據轉化為營運決策",
       "description": "在不更換既有 ERP 的前提下，建立支援庫存、人力及商品組合決策的數據與 AI 層。",
       "url": "https://hk.onyxdevslab.com/zh-hk/case-studies/retail-ai-decision-platform/",
-      "creator": {
+      "author": {
         "@id": "https://hk.onyxdevslab.com/#organization"
       },
-      "dateModified": "2026-09-10"
+      "publisher": {
+        "@id": "https://hk.onyxdevslab.com/#organization"
+      },
+      "dateModified": "2026-09-10",
+      "headline": "把零售交易數據轉化為營運決策",
+      "datePublished": "2026-09-07",
+      "mainEntityOfPage": {
+        "@id": "https://hk.onyxdevslab.com/zh-hk/case-studies/retail-ai-decision-platform/"
+      },
+      "articleSection": "案例研究"
     },
     {
       "@type": "WebPage",

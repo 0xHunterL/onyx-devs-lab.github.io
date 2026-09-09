@@ -13,6 +13,8 @@ AI 搜索测量
 
 爬虫访问不等于进入索引，进入索引也不等于获得推荐。Onyx 分别记录每一层证据，让 GEO 结论可以重复并被证伪。
 
+发布 2026-09-08 · 更新 2026-09-10
+
 [下载证据状态](/data/ai-search-evidence-status.json) [English](/en/methodology/ai-search-verification/) [繁體中文](/zh-hk/methodology/ai-search-verification/)
 
 **爬取** — 候选爬虫是否请求页面
@@ -369,7 +371,12 @@ Bytespider User-Agent 是否证明豆包已经收录？
           "encodingFormat": "application/json",
           "contentUrl": "https://hk.onyxdevslab.com/data/ai-search-evidence-status.json"
         }
-      }
+      },
+      "datePublished": "2026-09-08",
+      "mainEntityOfPage": {
+        "@id": "https://hk.onyxdevslab.com/zh-cn/methodology/ai-search-verification/"
+      },
+      "articleSection": "AI 搜索测量"
     },
     {
       "@type": "WebPage",

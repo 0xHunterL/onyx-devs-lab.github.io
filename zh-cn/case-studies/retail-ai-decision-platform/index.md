@@ -13,6 +13,8 @@ language: "zh-CN"
 
 为意大利华人超市业务设计的非侵入式分析与 AI 层，保留原有 SaaS ERP 作为运营系统。
 
+发布 2026-09-07 · 更新 2026-09-10
+
 [English](/en/case-studies/retail-ai-decision-platform/) [繁體中文](/zh-hk/case-studies/retail-ai-decision-platform/)
 
 ## 业务问题
@@ -270,15 +272,24 @@ language: "zh-CN"
       ]
     },
     {
-      "@type": "CreativeWork",
+      "@type": "Article",
       "@id": "https://hk.onyxdevslab.com/zh-cn/case-studies/retail-ai-decision-platform/#primary",
       "name": "把零售交易数据转化为运营决策",
       "description": "在不更换现有 ERP 的前提下，建立支持库存、人力和商品组合决策的数据与 AI 层。",
       "url": "https://hk.onyxdevslab.com/zh-cn/case-studies/retail-ai-decision-platform/",
-      "creator": {
+      "author": {
         "@id": "https://hk.onyxdevslab.com/#organization"
       },
-      "dateModified": "2026-09-10"
+      "publisher": {
+        "@id": "https://hk.onyxdevslab.com/#organization"
+      },
+      "dateModified": "2026-09-10",
+      "headline": "把零售交易数据转化为运营决策",
+      "datePublished": "2026-09-07",
+      "mainEntityOfPage": {
+        "@id": "https://hk.onyxdevslab.com/zh-cn/case-studies/retail-ai-decision-platform/"
+      },
+      "articleSection": "案例研究"
     },
     {
       "@type": "WebPage",

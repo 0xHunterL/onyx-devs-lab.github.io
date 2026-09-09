@@ -13,6 +13,8 @@ language: "zh-Hant-HK"
 
 安全做法是保留 ERP 作為記錄系統，只給 Agent 最小必要的數據及工具接口，並分開讀取、建議、草擬與確認寫入權限。
 
+發布 2026-09-07 · 更新 2026-09-10
+
 [預約項目評估](mailto:info@onyxdevslab.com?subject=AI%20Agent%20%E6%87%89%E8%A9%B2%E5%A6%82%E4%BD%95%E9%80%A3%E6%8E%A5%20ERP%EF%BC%9F) [English](/en/guides/enterprise-ai-agent-erp-integration/) [简体中文](/zh-cn/guides/enterprise-ai-agent-erp-integration/)
 
 **保留單一事實來源** — 不要暗中複製資料責任
@@ -298,7 +300,12 @@ Agent 應否直接寫入生產記錄？
         "@id": "https://hk.onyxdevslab.com/#organization"
       },
       "dateModified": "2026-09-10",
-      "headline": "AI Agent 應該如何連接 ERP？"
+      "headline": "AI Agent 應該如何連接 ERP？",
+      "datePublished": "2026-09-07",
+      "mainEntityOfPage": {
+        "@id": "https://hk.onyxdevslab.com/zh-hk/guides/enterprise-ai-agent-erp-integration/"
+      },
+      "articleSection": "企業整合指南"
     },
     {
       "@type": "WebPage",

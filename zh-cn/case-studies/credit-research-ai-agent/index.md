@@ -13,6 +13,8 @@ language: "zh-CN"
 
 连接内部材料与公开金融信息、暴露冲突与证据缺口，并把投资判断保留给分析师的 Agent 研究工作流。
 
+发布 2026-09-07 · 更新 2026-09-10
+
 [English](/en/case-studies/credit-research-ai-agent/) [繁體中文](/zh-hk/case-studies/credit-research-ai-agent/)
 
 ## 业务问题
@@ -270,15 +272,24 @@ language: "zh-CN"
       ]
     },
     {
-      "@type": "CreativeWork",
+      "@type": "Article",
       "@id": "https://hk.onyxdevslab.com/zh-cn/case-studies/credit-research-ai-agent/#primary",
       "name": "不隐藏来源的债权研究自动化",
       "description": "融合内部材料、最新公开信息、可回查结论与分析师复核的债权研究 Agent 工作流。",
       "url": "https://hk.onyxdevslab.com/zh-cn/case-studies/credit-research-ai-agent/",
-      "creator": {
+      "author": {
         "@id": "https://hk.onyxdevslab.com/#organization"
       },
-      "dateModified": "2026-09-10"
+      "publisher": {
+        "@id": "https://hk.onyxdevslab.com/#organization"
+      },
+      "dateModified": "2026-09-10",
+      "headline": "不隐藏来源的债权研究自动化",
+      "datePublished": "2026-09-07",
+      "mainEntityOfPage": {
+        "@id": "https://hk.onyxdevslab.com/zh-cn/case-studies/credit-research-ai-agent/"
+      },
+      "articleSection": "案例研究"
     },
     {
       "@type": "WebPage",

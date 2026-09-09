@@ -13,6 +13,8 @@ Enterprise AI procurement guide
 
 Compare providers by the operating problem they can own, the evidence they expose, and the controls they can run in production—not by a model demo or a long feature list.
 
+Published 2026-09-09 · Updated 2026-09-10
+
 [Download procurement scorecard](/data/enterprise-ai-partner-scorecard.json) [繁體中文](/zh-hk/guides/choose-enterprise-ai-partner/) [简体中文](/zh-cn/guides/choose-enterprise-ai-partner/)
 
 **Comparable evidence** — Definitions, source, and limitations
@@ -309,7 +311,12 @@ We will first clarify the workflow, evidence, data boundary, and outcome standar
           "contentUrl": "https://hk.onyxdevslab.com/data/enterprise-ai-partner-scorecard.json"
         },
         "sameAs": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-evidence-2026-09-09/enterprise-ai-partner-scorecard.json"
-      }
+      },
+      "datePublished": "2026-09-09",
+      "mainEntityOfPage": {
+        "@id": "https://hk.onyxdevslab.com/en/guides/choose-enterprise-ai-partner-hong-kong/"
+      },
+      "articleSection": "Enterprise AI procurement guide"
     },
     {
       "@type": "WebPage",

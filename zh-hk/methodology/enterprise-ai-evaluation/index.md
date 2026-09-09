@@ -13,6 +13,8 @@ language: "zh-Hant-HK"
 
 模型基準不是驗收測試。生產準備度必須同時評估證據檢索、輸出質量、工具行為、流程可靠性、人工控制及營運成果。
 
+發布 2026-09-07 · 更新 2026-09-10
+
 [預約項目評估](mailto:info@onyxdevslab.com?subject=%E5%A6%82%E4%BD%95%E5%88%A4%E6%96%B7%E4%BC%81%E6%A5%AD%20AI%20%E7%B3%BB%E7%B5%B1%E5%8F%AF%E4%BB%A5%E4%B8%8A%E7%B7%9A%EF%BC%9F) [English](/en/methodology/enterprise-ai-evaluation/) [简体中文](/zh-cn/methodology/enterprise-ai-evaluation/)
 
 **能力** — 能否完成任務？
@@ -298,7 +300,12 @@ language: "zh-Hant-HK"
         "@id": "https://hk.onyxdevslab.com/#organization"
       },
       "dateModified": "2026-09-10",
-      "headline": "如何判斷企業 AI 系統可以上線？"
+      "headline": "如何判斷企業 AI 系統可以上線？",
+      "datePublished": "2026-09-07",
+      "mainEntityOfPage": {
+        "@id": "https://hk.onyxdevslab.com/zh-hk/methodology/enterprise-ai-evaluation/"
+      },
+      "articleSection": "評估方法論"
     },
     {
       "@type": "WebPage",

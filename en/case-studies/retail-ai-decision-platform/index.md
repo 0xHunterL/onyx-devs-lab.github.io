@@ -13,6 +13,8 @@ Case study · Delivery evidence
 
 A non-invasive analytics and AI layer designed around an existing SaaS ERP for an Italian-Chinese supermarket operation.
 
+Published 2026-09-07 · Updated 2026-09-10
+
 [繁體中文](/zh-hk/case-studies/retail-ai-decision-platform/) [简体中文](/zh-cn/case-studies/retail-ai-decision-platform/)
 
 ## The operating challenge
@@ -270,15 +272,24 @@ The published metrics come from project records and describe the delivered scope
       ]
     },
     {
-      "@type": "CreativeWork",
+      "@type": "Article",
       "@id": "https://hk.onyxdevslab.com/en/case-studies/retail-ai-decision-platform/#primary",
       "name": "Turning retail transaction data into operating decisions",
       "description": "How a non-invasive data layer over an existing ERP can support inventory, staffing, and merchandising decisions.",
       "url": "https://hk.onyxdevslab.com/en/case-studies/retail-ai-decision-platform/",
-      "creator": {
+      "author": {
         "@id": "https://hk.onyxdevslab.com/#organization"
       },
-      "dateModified": "2026-09-10"
+      "publisher": {
+        "@id": "https://hk.onyxdevslab.com/#organization"
+      },
+      "dateModified": "2026-09-10",
+      "headline": "Turning retail transaction data into operating decisions",
+      "datePublished": "2026-09-07",
+      "mainEntityOfPage": {
+        "@id": "https://hk.onyxdevslab.com/en/case-studies/retail-ai-decision-platform/"
+      },
+      "articleSection": "Case studies"
     },
     {
       "@type": "WebPage",

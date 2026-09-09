@@ -13,6 +13,8 @@ AI search measurement
 
 A crawler visit is not an index entry, and an index entry is not a recommendation. Onyx records each stage separately so GEO claims can be reproduced and falsified.
 
+Published 2026-09-08 · Updated 2026-09-10
+
 [Download evidence status](/data/ai-search-evidence-status.json) [繁體中文](/zh-hk/methodology/ai-search-verification/) [简体中文](/zh-cn/methodology/ai-search-verification/)
 
 **Crawl** — Did a candidate bot request the page?
@@ -369,7 +371,12 @@ We will first clarify the workflow, evidence, data boundary, and outcome standar
           "encodingFormat": "application/json",
           "contentUrl": "https://hk.onyxdevslab.com/data/ai-search-evidence-status.json"
         }
-      }
+      },
+      "datePublished": "2026-09-08",
+      "mainEntityOfPage": {
+        "@id": "https://hk.onyxdevslab.com/en/methodology/ai-search-verification/"
+      },
+      "articleSection": "AI search measurement"
     },
     {
       "@type": "WebPage",

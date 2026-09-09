@@ -13,6 +13,8 @@ Case study · Delivery evidence
 
 A multi-agent workspace that treats each client portfolio as a persistent operating context and moves work through controlled production stages.
 
+Published 2026-09-07 · Updated 2026-09-10
+
 [繁體中文](/zh-hk/case-studies/accounting-ai-production-platform/) [简体中文](/zh-cn/case-studies/accounting-ai-production-platform/)
 
 ## The operating challenge
@@ -276,15 +278,24 @@ The published figures separate mapped product scope from pilot workflow validati
       ]
     },
     {
-      "@type": "CreativeWork",
+      "@type": "Article",
       "@id": "https://hk.onyxdevslab.com/en/case-studies/accounting-ai-production-platform/#primary",
       "name": "An AI-native production line for accounting operations",
       "description": "A multi-agent accounting production system with workflow orchestration, evidence, exception handling, and human control.",
       "url": "https://hk.onyxdevslab.com/en/case-studies/accounting-ai-production-platform/",
-      "creator": {
+      "author": {
         "@id": "https://hk.onyxdevslab.com/#organization"
       },
-      "dateModified": "2026-09-10"
+      "publisher": {
+        "@id": "https://hk.onyxdevslab.com/#organization"
+      },
+      "dateModified": "2026-09-10",
+      "headline": "An AI-native production line for accounting operations",
+      "datePublished": "2026-09-07",
+      "mainEntityOfPage": {
+        "@id": "https://hk.onyxdevslab.com/en/case-studies/accounting-ai-production-platform/"
+      },
+      "articleSection": "Case studies"
     },
     {
       "@type": "WebPage",

@@ -13,6 +13,8 @@ language: "zh-Hant-HK"
 
 先界定受影響流程與個人資料邊界，再指定責任人、按風險配置人工權限、測試完整系統，並在上線後保留可核對證據。
 
+發布 2026-09-09 · 更新 2026-09-10
+
 [預約項目評估](mailto:info@onyxdevslab.com?subject=%E9%A6%99%E6%B8%AF%E4%BC%81%E6%A5%AD%E9%83%A8%E7%BD%B2%20AI%20%E5%89%8D%EF%BC%8C%E9%9C%80%E8%A6%81%E5%BB%BA%E7%AB%8B%E5%93%AA%E4%BA%9B%E7%AE%A1%E6%B2%BB%E6%8E%A7%E5%88%B6%EF%BC%9F) [English](/en/guides/hong-kong-enterprise-ai-governance/) [简体中文](/zh-cn/guides/enterprise-ai-governance/)
 
 **管治責任人** — 權限及升級路徑具名
@@ -320,7 +322,12 @@ language: "zh-Hant-HK"
           "name": "香港金融管理局——生成式人工智能沙盒安排",
           "url": "https://www.hkma.gov.hk/media/eng/doc/key-information/guidelines-and-circular/2024/20240920e1.pdf"
         }
-      ]
+      ],
+      "datePublished": "2026-09-09",
+      "mainEntityOfPage": {
+        "@id": "https://hk.onyxdevslab.com/zh-hk/guides/enterprise-ai-governance/"
+      },
+      "articleSection": "香港企業 AI 管治指南"
     },
     {
       "@type": "WebPage",

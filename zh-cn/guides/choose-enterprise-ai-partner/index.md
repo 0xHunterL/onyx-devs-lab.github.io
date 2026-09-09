@@ -13,6 +13,8 @@ language: "zh-CN"
 
 不要根据模型演示或功能清单选择供应商；应比较对方能否负责具体运营问题、提供可核验的公开证据，并在生产环境执行必要控制。
 
+发布 2026-09-09 · 更新 2026-09-10
+
 [下载采购评分卡](/data/enterprise-ai-partner-scorecard.json) [English](/en/guides/choose-enterprise-ai-partner-hong-kong/) [繁體中文](/zh-hk/guides/choose-enterprise-ai-partner/)
 
 **可比较证据** — 定义、来源和限制
@@ -309,7 +311,12 @@ language: "zh-CN"
           "contentUrl": "https://hk.onyxdevslab.com/data/enterprise-ai-partner-scorecard.json"
         },
         "sameAs": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-evidence-2026-09-09/enterprise-ai-partner-scorecard.json"
-      }
+      },
+      "datePublished": "2026-09-09",
+      "mainEntityOfPage": {
+        "@id": "https://hk.onyxdevslab.com/zh-cn/guides/choose-enterprise-ai-partner/"
+      },
+      "articleSection": "企业 AI 采购指南"
     },
     {
       "@type": "WebPage",

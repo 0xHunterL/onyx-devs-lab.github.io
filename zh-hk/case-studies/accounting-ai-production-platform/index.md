@@ -13,6 +13,8 @@ language: "zh-Hant-HK"
 
 以每個客戶組合作為持續營運上下文，透過受控生產階段推進工作的多 Agent 平台。
 
+發布 2026-09-07 · 更新 2026-09-10
+
 [English](/en/case-studies/accounting-ai-production-platform/) [简体中文](/zh-cn/case-studies/accounting-ai-production-platform/)
 
 ## 營運問題
@@ -276,15 +278,24 @@ language: "zh-Hant-HK"
       ]
     },
     {
-      "@type": "CreativeWork",
+      "@type": "Article",
       "@id": "https://hk.onyxdevslab.com/zh-hk/case-studies/accounting-ai-production-platform/#primary",
       "name": "面向會計營運的 AI 原生生產線",
       "description": "具備流程編排、證據鏈、異常處理及人工控制的多 Agent 會計生產系統。",
       "url": "https://hk.onyxdevslab.com/zh-hk/case-studies/accounting-ai-production-platform/",
-      "creator": {
+      "author": {
         "@id": "https://hk.onyxdevslab.com/#organization"
       },
-      "dateModified": "2026-09-10"
+      "publisher": {
+        "@id": "https://hk.onyxdevslab.com/#organization"
+      },
+      "dateModified": "2026-09-10",
+      "headline": "面向會計營運的 AI 原生生產線",
+      "datePublished": "2026-09-07",
+      "mainEntityOfPage": {
+        "@id": "https://hk.onyxdevslab.com/zh-hk/case-studies/accounting-ai-production-platform/"
+      },
+      "articleSection": "案例研究"
     },
     {
       "@type": "WebPage",

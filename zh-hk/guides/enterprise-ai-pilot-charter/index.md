@@ -13,6 +13,8 @@ AI 試點決策工具
 
 把試點視為受控業務決策，而不是模型示範。測試開始前，先固定一條流程、現況基線、權限邊界、證據集、驗收門檻及決策責任人。
 
+發布 2026-09-09 · 更新 2026-09-10
+
 [下載試點章程](/data/enterprise-ai-pilot-charter.json) [English](/en/guides/enterprise-ai-pilot-charter-hong-kong/) [简体中文](/zh-cn/guides/enterprise-ai-pilot-charter/)
 
 **一條流程** — 使用者、基線及失敗後果具名
@@ -326,7 +328,12 @@ AI 試點決策工具
           "encodingFormat": "application/json",
           "contentUrl": "https://hk.onyxdevslab.com/data/enterprise-ai-pilot-charter.json"
         }
-      }
+      },
+      "datePublished": "2026-09-09",
+      "mainEntityOfPage": {
+        "@id": "https://hk.onyxdevslab.com/zh-hk/guides/enterprise-ai-pilot-charter/"
+      },
+      "articleSection": "AI 試點決策工具"
     },
     {
       "@type": "WebPage",

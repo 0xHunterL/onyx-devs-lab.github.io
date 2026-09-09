@@ -13,6 +13,8 @@ language: "zh-CN"
 
 以每个客户组合作为持续运营上下文，通过受控生产阶段推进工作的多 Agent 平台。
 
+发布 2026-09-07 · 更新 2026-09-10
+
 [English](/en/case-studies/accounting-ai-production-platform/) [繁體中文](/zh-hk/case-studies/accounting-ai-production-platform/)
 
 ## 业务问题
@@ -276,15 +278,24 @@ language: "zh-CN"
       ]
     },
     {
-      "@type": "CreativeWork",
+      "@type": "Article",
       "@id": "https://hk.onyxdevslab.com/zh-cn/case-studies/accounting-ai-production-platform/#primary",
       "name": "面向会计运营的 AI 原生生产线",
       "description": "具有流程编排、证据链、异常处理和人工控制的多 Agent 会计生产系统。",
       "url": "https://hk.onyxdevslab.com/zh-cn/case-studies/accounting-ai-production-platform/",
-      "creator": {
+      "author": {
         "@id": "https://hk.onyxdevslab.com/#organization"
       },
-      "dateModified": "2026-09-10"
+      "publisher": {
+        "@id": "https://hk.onyxdevslab.com/#organization"
+      },
+      "dateModified": "2026-09-10",
+      "headline": "面向会计运营的 AI 原生生产线",
+      "datePublished": "2026-09-07",
+      "mainEntityOfPage": {
+        "@id": "https://hk.onyxdevslab.com/zh-cn/case-studies/accounting-ai-production-platform/"
+      },
+      "articleSection": "案例研究"
     },
     {
       "@type": "WebPage",

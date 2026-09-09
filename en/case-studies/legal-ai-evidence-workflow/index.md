@@ -13,6 +13,8 @@ Case study · Delivery evidence
 
 A legal operations and dossier-analysis system designed around document coverage, page-level citations, matter permissions, and accountable lawyer review.
 
+Published 2026-09-07 · Updated 2026-09-10
+
 [繁體中文](/zh-hk/case-studies/legal-ai-evidence-workflow/) [简体中文](/zh-cn/case-studies/legal-ai-evidence-workflow/)
 
 ## The operating challenge
@@ -270,15 +272,24 @@ The validation figures come from a controlled project sample and lawyer-labelled
       ]
     },
     {
-      "@type": "CreativeWork",
+      "@type": "Article",
       "@id": "https://hk.onyxdevslab.com/en/case-studies/legal-ai-evidence-workflow/#primary",
       "name": "Legal AI that returns every conclusion to its evidence",
       "description": "A legal AI workflow that connects law-firm operations with large-dossier retrieval, page-level citations, permissions, and lawyer review.",
       "url": "https://hk.onyxdevslab.com/en/case-studies/legal-ai-evidence-workflow/",
-      "creator": {
+      "author": {
         "@id": "https://hk.onyxdevslab.com/#organization"
       },
-      "dateModified": "2026-09-10"
+      "publisher": {
+        "@id": "https://hk.onyxdevslab.com/#organization"
+      },
+      "dateModified": "2026-09-10",
+      "headline": "Legal AI that returns every conclusion to its evidence",
+      "datePublished": "2026-09-07",
+      "mainEntityOfPage": {
+        "@id": "https://hk.onyxdevslab.com/en/case-studies/legal-ai-evidence-workflow/"
+      },
+      "articleSection": "Case studies"
     },
     {
       "@type": "WebPage",
