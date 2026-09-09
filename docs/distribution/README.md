@@ -7,6 +7,7 @@
 1. [FDE 不是驻场外包](./FDE不是驻场外包.md)
 2. [AI Agent 接入 ERP 前必须回答的七个问题](./AI-Agent接入ERP前的七个问题.md)
 3. [法律 AI 的证据链应如何设计](./法律AI证据链设计.md)
+4. [今日头条首发包：企业 AI 项目不应该先选模型](./今日头条首发包-企业AI项目先选什么.md)
 
 ## 发布规则
 
@@ -18,3 +19,5 @@
 建议署名：`Onyx Devs Lab｜企业 AI 咨询、定制开发与 FDE 团队`。
 
 具体渠道、追踪链接和发布后记录要求见：[站外分发执行清单](./站外分发执行清单.md)。
+
+发布状态以 [`geo/distribution-manifest.json`](../../geo/distribution-manifest.json) 为准。草稿只有在记录公开 URL 并完成未登录访问验证后才能改为 `published`；准备完成不等于已经产生站外信号。

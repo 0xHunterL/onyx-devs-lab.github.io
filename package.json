@@ -12,6 +12,7 @@
     "geo:content-distinctiveness": "node scripts/check-content-distinctiveness.mjs",
     "geo:check-live": "node scripts/check-live-geo.mjs",
     "geo:check-offsite": "node scripts/check-offsite-assets.mjs",
+    "geo:check-distribution": "node scripts/check-distribution-manifest.mjs",
     "geo:schema-validate-live": "node scripts/validate-schema-live.mjs",
     "geo:crawler-report": "node scripts/report-ai-crawlers.mjs",
     "geo:referral-report": "node scripts/report-geo-referrals.mjs",

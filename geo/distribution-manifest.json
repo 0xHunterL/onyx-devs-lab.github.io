@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 1,
+  "updated": "2026-09-09",
+  "publisher": {
+    "brand": "Onyx Devs Lab",
+    "legalName": "ONYX DEVS LAB LIMITED",
+    "businessRegistrationNumber": "79051925",
+    "lei": "254900Z30CLK7HKE9H46"
+  },
+  "evidenceRule": "A prepared draft is not a published source. Status may change to published only after a public URL is recorded and anonymous access is verified.",
+  "items": [
+    {
+      "id": "toutiao-engagement-model-2026-09-09",
+      "channel": "toutiao",
+      "format": "article",
+      "language": "zh-CN",
+      "status": "ready-not-published",
+      "sourceFile": "docs/distribution/今日头条首发包-企业AI项目先选什么.md",
+      "title": "企业 AI 项目不应该先选模型：先判断你缺的是决策、系统，还是现场证据",
+      "campaign": "geo_toutiao_field_notes",
+      "trackedTargets": [
+        "https://hk.onyxdevslab.com/zh-cn/guides/ai-consulting-vs-development-vs-fde/?utm_source=toutiao&utm_medium=referral&utm_campaign=geo_toutiao_field_notes",
+        "https://hk.onyxdevslab.com/zh-cn/guides/enterprise-ai-pilot-charter/?utm_source=toutiao&utm_medium=referral&utm_campaign=geo_toutiao_field_notes"
+      ],
+      "publicUrl": null,
+      "anonymousAccessVerifiedAt": null,
+      "searchIndexedAt": null,
+      "aiCitationObservedAt": null,
+      "nonBrandRecommendationObservedAt": null,
+      "limitations": [
+        "No Toutiao account was created or used by this preparation step.",
+        "No publication, indexing, citation, recommendation, or referral is claimed while publicUrl is null."
+      ]
+    }
+  ]
+}
+
