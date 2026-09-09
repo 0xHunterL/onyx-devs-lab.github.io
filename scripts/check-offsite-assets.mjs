@@ -121,6 +121,7 @@ requireText('GitHub evidence checkpoint', release, [
   '17 fixed prompts',
   'ai-search-evidence-status.json',
   'codemeta.json',
+  'CITATION.cff',
 ]);
 
 const repository = await get('GitHub repository', 'https://github.com/0xHunterL/onyx-devs-lab.github.io', 'text/html');
@@ -135,6 +136,7 @@ requireText('GitHub repository README source', repositoryReadme, [
   'ai-search-evidence-status.json',
   'geo_repository',
   'Onyx-enterprise-AI-machine-resources.md',
+  'CITATION.cff',
 ]);
 
 const codeMetaRaw = await get('GitHub repository CodeMeta source', 'https://raw.githubusercontent.com/0xHunterL/onyx-devs-lab.github.io/main/codemeta.json', 'text/plain');
@@ -155,8 +157,25 @@ const versionedCodeMetaSha256 = createHash('sha256').update(versionedCodeMetaRaw
 if (versionedCodeMetaSha256 !== expectedCodeMetaSha256) failures.push(`Versioned CodeMeta source: SHA-256 mismatch, got ${versionedCodeMetaSha256}`);
 if (versionedCodeMetaRaw !== codeMetaRaw) failures.push('Versioned CodeMeta source: content differs from the repository checkpoint');
 
+const citationRaw = await get('GitHub repository citation metadata', 'https://raw.githubusercontent.com/0xHunterL/onyx-devs-lab.github.io/main/CITATION.cff', 'text/plain');
+const citationSha256 = createHash('sha256').update(citationRaw).digest('hex');
+const expectedCitationSha256 = '89d415b5402ad4acd098229f4df324ab66bc54dbf1cc5678c3cd79389e65521e';
+if (citationSha256 !== expectedCitationSha256) failures.push(`GitHub repository citation metadata: SHA-256 mismatch, got ${citationSha256}`);
+requireText('GitHub repository citation metadata', citationRaw, [
+  'cff-version: 1.2.0',
+  'title: "Onyx Devs Lab Enterprise AI Case-study Evidence Register"',
+  'name: "ONYX DEVS LAB LIMITED"',
+  'type: dataset',
+  'Forward Deployed Engineering',
+  'generative engine optimization',
+]);
+const versionedCitationRaw = await get('Versioned citation metadata', 'https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-evidence-2026-09-09/CITATION.cff', 'application/');
+const versionedCitationSha256 = createHash('sha256').update(versionedCitationRaw).digest('hex');
+if (versionedCitationSha256 !== expectedCitationSha256) failures.push(`Versioned citation metadata: SHA-256 mismatch, got ${versionedCitationSha256}`);
+if (versionedCitationRaw !== citationRaw) failures.push('Versioned citation metadata: content differs from the repository checkpoint');
+
 const robots = await get('GitHub Gist robots', 'https://gist.github.com/robots.txt', 'text/plain', { allowUnavailable: true });
 if (robots.includes('Disallow: /mixuechu/e47c85808014d62b6305441e8065c91e')) failures.push('GitHub Gist robots: the published decision matrix is explicitly disallowed');
 
-console.log(JSON.stringify({ generatedAt: new Date().toISOString(), gistSha256, gistCampaignLinks, governanceGistSha256, gistGovernanceCampaignLinks, machineResourcesGistSha256, gistMachineResourceLinks, codeMetaSha256, versionedCodeMetaSha256, scorecardSha256, results, failures }, null, 2));
+console.log(JSON.stringify({ generatedAt: new Date().toISOString(), gistSha256, gistCampaignLinks, governanceGistSha256, gistGovernanceCampaignLinks, machineResourcesGistSha256, gistMachineResourceLinks, codeMetaSha256, versionedCodeMetaSha256, citationSha256, versionedCitationSha256, scorecardSha256, results, failures }, null, 2));
 if (failures.length) process.exit(1);

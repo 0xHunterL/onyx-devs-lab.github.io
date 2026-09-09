@@ -14,6 +14,7 @@
     "geo:check-offsite": "node scripts/check-offsite-assets.mjs",
     "geo:check-distribution": "node scripts/check-distribution-manifest.mjs",
     "geo:check-codemeta": "node scripts/check-codemeta.mjs",
+    "geo:check-citation": "node scripts/check-citation.mjs",
     "geo:schema-validate-live": "node scripts/validate-schema-live.mjs",
     "geo:crawler-report": "node scripts/report-ai-crawlers.mjs",
     "geo:referral-report": "node scripts/report-geo-referrals.mjs",
@@ -44,6 +45,7 @@
     "eslint-plugin-react-refresh": "^0.4.16",
     "gh-pages": "^6.3.0",
     "globals": "^15.14.0",
+    "js-yaml": "^4.3.2",
     "postcss": "^8.4.49",
     "tailwindcss": "^3.4.17",
     "vite": "^6.0.5"

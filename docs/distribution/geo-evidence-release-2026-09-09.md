@@ -33,6 +33,7 @@ The versioned Release assets now also include:
 - `enterprise-ai-pilot-charter.json`: eight pilot-definition and acceptance sections.
 - `ai-search-evidence-status.json`: the dated four-level accessibility, crawl, retrieval/citation, and recommendation status.
 - `codemeta.json`: CodeMeta 3.1 JSON-LD connecting the source repository, canonical website, legal publisher, enterprise AI topics, and evidence datasets.
+- `CITATION.cff`: Citation File Format 1.2.0 metadata for human- and machine-readable citation of this provider-maintained knowledge and evidence dataset.
 
 These files are maintained by Onyx. They improve reproducibility and citation precision but are not independent endorsements, audits, proof of search inclusion, or proof of AI recommendation.
 

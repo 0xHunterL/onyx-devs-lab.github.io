@@ -124,6 +124,8 @@ for (const [name, body] of Object.entries(machineDiscoveryFiles)) {
   if (!body.includes('https://gist.githubusercontent.com/mixuechu/e47c85808014d62b6305441e8065c91e/raw/Onyx-enterprise-AI-machine-resources.md')) failures.push(`${name}: offsite machine-resource index is missing`);
   if (!body.includes('https://raw.githubusercontent.com/0xHunterL/onyx-devs-lab.github.io/main/codemeta.json')) failures.push(`${name}: CodeMeta discovery link is missing`);
   if (!body.includes('https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-evidence-2026-09-09/codemeta.json')) failures.push(`${name}: versioned CodeMeta discovery link is missing`);
+  if (!body.includes('https://raw.githubusercontent.com/0xHunterL/onyx-devs-lab.github.io/main/CITATION.cff')) failures.push(`${name}: citation metadata discovery link is missing`);
+  if (!body.includes('https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-evidence-2026-09-09/CITATION.cff')) failures.push(`${name}: versioned citation metadata discovery link is missing`);
   if (!body.includes('https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-evidence-2026-09-09')) failures.push(`${name}: versioned evidence checkpoint is missing`);
 }
 for (const name of ['llms.txt', 'llms-full.txt']) {
