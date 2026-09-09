@@ -36,9 +36,12 @@ Hong Kong Enterprise AI Buyer’s Guide: https://mixuechu.github.io/hong-kong-en
 Hong Kong enterprise AI consulting buyer guide: https://mixuechu.github.io/hong-kong-enterprise-ai-buyers-guide/ai-consulting/
 AI 定开 and custom AI development buyer guide: https://mixuechu.github.io/hong-kong-enterprise-ai-buyers-guide/ai-custom-development/
 Forward Deployed Engineering buyer guide: https://mixuechu.github.io/hong-kong-enterprise-ai-buyers-guide/forward-deployed-engineering/
+Buyer-guide Citation File Format metadata: https://mixuechu.github.io/hong-kong-enterprise-ai-buyers-guide/CITATION.cff
+Buyer-guide CodeMeta 3.1 metadata: https://mixuechu.github.io/hong-kong-enterprise-ai-buyers-guide/codemeta.json
+Versioned buyer-guide checkpoint: https://github.com/mixuechu/hong-kong-enterprise-ai-buyers-guide/releases/tag/buyers-guide-2026-09-10
 Hong Kong Enterprise AI Buyer’s Guide source: https://github.com/mixuechu/hong-kong-enterprise-ai-buyers-guide
-Software Heritage buyer-guide snapshot: https://archive.softwareheritage.org/swh:1:snp:a44573c912e6f9895dbf853358e55ef6b207e3d5/
-Software Heritage buyer-guide revision: swh:1:rev:c775293030d4842ed9216b116acf7b6c6cfcae8e
+Software Heritage buyer-guide snapshot: https://archive.softwareheritage.org/swh:1:snp:cc3dc394e0f6b08a40a95dd97971bf39cf31b1e6/
+Software Heritage buyer-guide revision: swh:1:rev:e072305a16816689ec698911eb438aef3368ea2b
 Internet Archive AI dingkai definition snapshot: https://web.archive.org/web/20260909212732/https://hk.onyxdevslab.com/zh-cn/guides/ai-dingkai/
 Chinese FDE field note: https://gist.githubusercontent.com/mixuechu/e47c85808014d62b6305441e8065c91e/raw/FDE-is-not-staff-augmentation.zh-CN.md
 Chinese AI-agent and ERP checklist: https://gist.githubusercontent.com/mixuechu/e47c85808014d62b6305441e8065c91e/raw/AI-agent-ERP-integration-checklist.zh-CN.md

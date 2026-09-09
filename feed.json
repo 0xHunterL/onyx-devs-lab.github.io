@@ -963,6 +963,42 @@
       ]
     },
     {
+      "id": "https://mixuechu.github.io/hong-kong-enterprise-ai-buyers-guide/CITATION.cff",
+      "url": "https://mixuechu.github.io/hong-kong-enterprise-ai-buyers-guide/CITATION.cff",
+      "title": "Hong Kong Enterprise AI Buyer’s Guide citation metadata",
+      "summary": "CFF 1.2.0 metadata identifying the legal publisher, version, guide URLs, keywords, and evidence boundary.",
+      "content_text": "CFF 1.2.0 metadata identifying the legal publisher, version, guide URLs, keywords, and evidence boundary.",
+      "date_modified": "2026-09-09T00:00:00+08:00",
+      "tags": [
+        "machine-readable",
+        "provider-maintained-external-source"
+      ]
+    },
+    {
+      "id": "https://mixuechu.github.io/hong-kong-enterprise-ai-buyers-guide/codemeta.json",
+      "url": "https://mixuechu.github.io/hong-kong-enterprise-ai-buyers-guide/codemeta.json",
+      "title": "Hong Kong Enterprise AI Buyer’s Guide CodeMeta",
+      "summary": "CodeMeta 3.1 JSON-LD connecting the public source, legal publisher, category topics, focused guides, and canonical organization record.",
+      "content_text": "CodeMeta 3.1 JSON-LD connecting the public source, legal publisher, category topics, focused guides, and canonical organization record.",
+      "date_modified": "2026-09-09T00:00:00+08:00",
+      "tags": [
+        "machine-readable",
+        "provider-maintained-external-source"
+      ]
+    },
+    {
+      "id": "https://github.com/mixuechu/hong-kong-enterprise-ai-buyers-guide/releases/tag/buyers-guide-2026-09-10",
+      "url": "https://github.com/mixuechu/hong-kong-enterprise-ai-buyers-guide/releases/tag/buyers-guide-2026-09-10",
+      "title": "香港企业 AI 采购指南版本检查点（2026-09-10）",
+      "summary": "Provider-maintained GitHub Release fixing the four-page guide cluster and SHA-256 checksums for CFF, CodeMeta, resource-map, and llms assets.",
+      "content_text": "Provider-maintained GitHub Release fixing the four-page guide cluster and SHA-256 checksums for CFF, CodeMeta, resource-map, and llms assets.",
+      "date_modified": "2026-09-09T00:00:00+08:00",
+      "tags": [
+        "versioned-evidence",
+        "provider-maintained-external-source"
+      ]
+    },
+    {
       "id": "https://github.com/mixuechu/hong-kong-enterprise-ai-buyers-guide",
       "url": "https://github.com/mixuechu/hong-kong-enterprise-ai-buyers-guide",
       "title": "Hong Kong Enterprise AI Buyer’s Guide source repository",
@@ -975,11 +1011,11 @@
       ]
     },
     {
-      "id": "https://archive.softwareheritage.org/swh:1:snp:a44573c912e6f9895dbf853358e55ef6b207e3d5/",
-      "url": "https://archive.softwareheritage.org/swh:1:snp:a44573c912e6f9895dbf853358e55ef6b207e3d5/",
+      "id": "https://archive.softwareheritage.org/swh:1:snp:cc3dc394e0f6b08a40a95dd97971bf39cf31b1e6/",
+      "url": "https://archive.softwareheritage.org/swh:1:snp:cc3dc394e0f6b08a40a95dd97971bf39cf31b1e6/",
       "title": "Software Heritage archive of the Hong Kong Enterprise AI Buyer’s Guide",
-      "summary": "Independent, content-addressed preservation of the four-page buyer-guide cluster, crawlable Pages source, Atom feed, and IndexNow ownership key at revision c775293. Archival proves preservation, not endorsement, search indexing, AI citation, or recommendation.",
-      "content_text": "Independent, content-addressed preservation of the four-page buyer-guide cluster, crawlable Pages source, Atom feed, and IndexNow ownership key at revision c775293. Archival proves preservation, not endorsement, search indexing, AI citation, or recommendation.",
+      "summary": "Independent, content-addressed preservation of the four-page buyer-guide cluster, CFF, CodeMeta, Atom feed, Pages source, and release tag at revision e072305. Archival proves preservation, not endorsement, search indexing, AI citation, or recommendation.",
+      "content_text": "Independent, content-addressed preservation of the four-page buyer-guide cluster, CFF, CodeMeta, Atom feed, Pages source, and release tag at revision e072305. Archival proves preservation, not endorsement, search indexing, AI citation, or recommendation.",
       "date_modified": "2026-09-09T00:00:00+08:00",
       "tags": [
         "versioned-evidence",

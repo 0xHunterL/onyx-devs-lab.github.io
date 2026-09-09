@@ -270,6 +270,7 @@ The published validation covers synchronisation, send verification, and workflow
           "description": "Provider-authored field-guide cluster covering AI advisory, AI 定开, custom AI development, FDE, vendor evaluation, and acceptance evidence.",
           "url": "https://mixuechu.github.io/hong-kong-enterprise-ai-buyers-guide/",
           "isBasedOn": "https://github.com/mixuechu/hong-kong-enterprise-ai-buyers-guide",
+          "sameAs": "https://github.com/mixuechu/hong-kong-enterprise-ai-buyers-guide/releases/tag/buyers-guide-2026-09-10",
           "hasPart": [
             {
               "@type": "CreativeWork",
@@ -306,10 +307,10 @@ The published validation covers synchronisation, send verification, and workflow
         {
           "@type": "SoftwareSourceCode",
           "name": "Software Heritage archive of the Hong Kong Enterprise AI Buyer’s Guide",
-          "identifier": "swh:1:snp:a44573c912e6f9895dbf853358e55ef6b207e3d5",
-          "url": "https://archive.softwareheritage.org/swh:1:snp:a44573c912e6f9895dbf853358e55ef6b207e3d5/",
+          "identifier": "swh:1:snp:cc3dc394e0f6b08a40a95dd97971bf39cf31b1e6",
+          "url": "https://archive.softwareheritage.org/swh:1:snp:cc3dc394e0f6b08a40a95dd97971bf39cf31b1e6/",
           "codeRepository": "https://github.com/mixuechu/hong-kong-enterprise-ai-buyers-guide",
-          "version": "c775293030d4842ed9216b116acf7b6c6cfcae8e"
+          "version": "e072305a16816689ec698911eb438aef3368ea2b"
         }
       ]
     },
