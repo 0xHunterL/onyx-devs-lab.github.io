@@ -913,6 +913,18 @@
         "versioned-evidence",
         "independent-archive"
       ]
+    },
+    {
+      "id": "https://web.archive.org/web/20260909212732/https://hk.onyxdevslab.com/zh-cn/guides/ai-dingkai/",
+      "url": "https://web.archive.org/web/20260909212732/https://hk.onyxdevslab.com/zh-cn/guides/ai-dingkai/",
+      "title": "Internet Archive snapshot: AI 定开是什么意思？",
+      "summary": "Independent historical capture of the Simplified Chinese AI dingkai definition page. The snapshot proves readability at capture time, not endorsement, indexing, citation, or recommendation.",
+      "content_text": "Independent historical capture of the Simplified Chinese AI dingkai definition page. The snapshot proves readability at capture time, not endorsement, indexing, citation, or recommendation.",
+      "date_modified": "2026-09-09T00:00:00+08:00",
+      "tags": [
+        "zh-CN",
+        "independent-archive"
+      ]
     }
   ]
 }

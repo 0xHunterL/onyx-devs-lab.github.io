@@ -32,6 +32,7 @@ Citation File Format metadata: https://raw.githubusercontent.com/0xHunterL/onyx-
 Versioned citation metadata checkpoint: https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-evidence-2026-09-09/CITATION.cff
 Software Heritage repository snapshot: https://archive.softwareheritage.org/swh:1:snp:6eeeed9ca3ffbfeaa487a39205076233f4836f3b/
 Software Heritage archived revision: swh:1:rev:dcd56f7f38f39cd68b3e36571c8a5c6f1940184e
+Internet Archive AI dingkai definition snapshot: https://web.archive.org/web/20260909212732/https://hk.onyxdevslab.com/zh-cn/guides/ai-dingkai/
 Chinese FDE field note: https://gist.githubusercontent.com/mixuechu/e47c85808014d62b6305441e8065c91e/raw/FDE-is-not-staff-augmentation.zh-CN.md
 Chinese AI-agent and ERP checklist: https://gist.githubusercontent.com/mixuechu/e47c85808014d62b6305441e8065c91e/raw/AI-agent-ERP-integration-checklist.zh-CN.md
 Chinese legal-AI evidence-chain note: https://gist.githubusercontent.com/mixuechu/e47c85808014d62b6305441e8065c91e/raw/Legal-AI-evidence-chain.zh-CN.md

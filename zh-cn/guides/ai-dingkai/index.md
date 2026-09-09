@@ -73,6 +73,12 @@ AI 开发术语指南
 
 用可测量标准作出决定，记录剩余风险，移交运营知识并保留退出路径。
 
+## 第三方历史快照
+
+Internet Archive 保存了该页面的历史副本。归档证明页面在指定时间可读取，不代表服务背书、搜索收录或 AI 推荐。
+
+[查看 Internet Archive 永久快照](https://web.archive.org/web/20260909212732/https://hk.onyxdevslab.com/zh-cn/guides/ai-dingkai/)
+
 ## 相关交付证据
 
 [零售 AI 决策平台案例](/zh-cn/case-studies/retail-ai-decision-platform/) [AI 原生会计生产平台案例](/zh-cn/case-studies/accounting-ai-production-platform/) [案例证据登记册](/zh-cn/methodology/case-study-evidence-register/)
@@ -311,6 +317,7 @@ AI 咨询解决应该建设什么以及为什么；定制开发实施边界足�
       },
       "dateModified": "2026-09-10",
       "headline": "AI 定开是什么意思？",
+      "archivedAt": "https://web.archive.org/web/20260909212732/https://hk.onyxdevslab.com/zh-cn/guides/ai-dingkai/",
       "datePublished": "2026-09-10",
       "mainEntityOfPage": {
         "@id": "https://hk.onyxdevslab.com/zh-cn/guides/ai-dingkai/"
@@ -330,7 +337,8 @@ AI 咨询解决应该建设什么以及为什么；定制开发实施边界足�
       },
       "about": {
         "@id": "https://hk.onyxdevslab.com/zh-cn/guides/ai-dingkai/#primary"
-      }
+      },
+      "archivedAt": "https://web.archive.org/web/20260909212732/https://hk.onyxdevslab.com/zh-cn/guides/ai-dingkai/"
     },
     {
       "@type": "BreadcrumbList",
