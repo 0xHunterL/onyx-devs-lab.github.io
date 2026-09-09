@@ -36,15 +36,25 @@ requireText('GitHub Gist decision matrix', gist, [
   'ONYX DEVS LAB LIMITED',
   '254900Z30CLK7HKE9H46',
   'geo_decision_matrix',
+  'Hong Kong enterprise AI governance: an implementation checklist',
+  'geo_governance_guide',
   '/zh-cn/guides/choose-enterprise-ai-partner/',
 ]);
 const gistCampaignLinks = [...gist.matchAll(/utm_campaign=geo_decision_matrix/g)].length;
 if (gistCampaignLinks < 13) failures.push(`GitHub Gist decision matrix: expected at least 13 tracked deep links, got ${gistCampaignLinks}`);
+const gistGovernanceCampaignLinks = [...gist.matchAll(/utm_campaign=geo_governance_guide/g)].length;
+if (gistGovernanceCampaignLinks < 3) failures.push(`GitHub Gist governance guide: expected at least 3 tracked deep links, got ${gistGovernanceCampaignLinks}`);
 
-const gistRaw = await get('GitHub Gist raw source', `${gistUrl}/raw/`, 'text/plain');
+const gistRaw = await get('GitHub Gist raw source', `${gistUrl}/raw/enterprise-ai-engagement-model.md`, 'text/plain');
 const gistSha256 = createHash('sha256').update(gistRaw).digest('hex');
 const expectedGistSha256 = '3aa09aed13f24c5af3b3a4a8921fb220ba612277cfa7ddc5145d2cce5da08b74';
 if (gistSha256 !== expectedGistSha256) failures.push(`GitHub Gist raw source: SHA-256 mismatch, got ${gistSha256}`);
+
+const governanceGistRawUrl = 'https://gist.githubusercontent.com/mixuechu/e47c85808014d62b6305441e8065c91e/raw/Hong-Kong-enterprise-AI-governance.md';
+const governanceGistRaw = await get('GitHub Gist governance source', governanceGistRawUrl, 'text/plain');
+const governanceGistSha256 = createHash('sha256').update(governanceGistRaw).digest('hex');
+const expectedGovernanceGistSha256 = '93f86e7aa6b036789049b355a232468e1f5b6a0ccdd95300103ba768940d01b5';
+if (governanceGistSha256 !== expectedGovernanceGistSha256) failures.push(`GitHub Gist governance source: SHA-256 mismatch, got ${governanceGistSha256}`);
 
 const scorecardUrl = 'https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-evidence-2026-09-09/enterprise-ai-partner-scorecard.json';
 const scorecardRaw = await get('Versioned enterprise AI partner scorecard', scorecardUrl, 'application/');
@@ -79,5 +89,5 @@ requireText('GitHub repository', repository, [
 const robots = await get('GitHub Gist robots', 'https://gist.github.com/robots.txt', 'text/plain');
 if (robots.includes('Disallow: /mixuechu/e47c85808014d62b6305441e8065c91e')) failures.push('GitHub Gist robots: the published decision matrix is explicitly disallowed');
 
-console.log(JSON.stringify({ generatedAt: new Date().toISOString(), gistSha256, gistCampaignLinks, scorecardSha256, results, failures }, null, 2));
+console.log(JSON.stringify({ generatedAt: new Date().toISOString(), gistSha256, gistCampaignLinks, governanceGistSha256, gistGovernanceCampaignLinks, scorecardSha256, results, failures }, null, 2));
 if (failures.length) process.exit(1);
