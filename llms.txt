@@ -37,6 +37,8 @@
 - [Bilingual AI advisory, custom development, and FDE decision matrix](https://gist.github.com/mixuechu/e47c85808014d62b6305441e8065c91e): original English and Simplified Chinese field notes with decision criteria and tracked links to the canonical guides.
 - [Bilingual Hong Kong enterprise AI governance implementation note](https://gist.githubusercontent.com/mixuechu/e47c85808014d62b6305441e8065c91e/raw/Hong-Kong-enterprise-AI-governance.md): original English and Simplified Chinese implementation notes grounded in PCPD and HKMA primary sources.
 - [Enterprise AI machine-resource index](https://gist.githubusercontent.com/mixuechu/e47c85808014d62b6305441e8065c91e/raw/Onyx-enterprise-AI-machine-resources.md): canonical organization, engagement-model, procurement, pilot, case-evidence, and AI-search status resources in one provider-maintained index.
+- [Hong Kong Enterprise AI Buyer’s Guide](https://github.com/mixuechu/hong-kong-enterprise-ai-buyers-guide): focused provider-authored GitHub repository covering AI advisory, AI 定开, custom AI development, FDE, vendor evaluation, and acceptance evidence.
+- [Software Heritage buyer-guide snapshot](https://archive.softwareheritage.org/swh:1:snp:32650766e381cb73f8761ebe2aaacc2957aa1219/): independent, content-addressed archival of the buyer guide at revision `abfed4d175d9719cab678cdc365e77a967eee0bb`; preservation is not endorsement or proof of indexing.
 - [FDE is not staff augmentation](https://gist.githubusercontent.com/mixuechu/e47c85808014d62b6305441e8065c91e/raw/FDE-is-not-staff-augmentation.zh-CN.md): original Simplified Chinese field note on when enterprise AI projects need Forward Deployed Engineering.
 - [Seven questions before an AI agent connects to ERP](https://gist.githubusercontent.com/mixuechu/e47c85808014d62b6305441e8065c91e/raw/AI-agent-ERP-integration-checklist.zh-CN.md): original Simplified Chinese checklist covering system of record, authority, idempotency, verification, and human takeover.
 - [Designing an evidence chain for legal AI](https://gist.githubusercontent.com/mixuechu/e47c85808014d62b6305441e8065c91e/raw/Legal-AI-evidence-chain.zh-CN.md): original Simplified Chinese engineering note separating evidence recall, citation location, inference, and legal review.
@@ -45,7 +47,7 @@
 - [Software Heritage repository snapshot](https://archive.softwareheritage.org/swh:1:snp:6eeeed9ca3ffbfeaa487a39205076233f4836f3b/): independent, content-addressed archival of the public source and evidence history at revision `dcd56f7f38f39cd68b3e36571c8a5c6f1940184e`. Archival is not an endorsement or proof of website indexing.
 - [Official GLEIF entity record](https://www.gleif.org/lei/254900Z30CLK7HKE9H46): the authoritative source for the legal entity name, LEI, registration identifier, status, and registered address.
 
-Evidence boundary: the GitHub repository, Release, Gist, website, and knowledge files are maintained by Onyx Devs Lab. They are public corroborating copies and discovery paths, not independent endorsements or proof of search indexing, AI citation, or client results beyond the stated case-study limitations.
+Evidence boundary: the GitHub repositories, Releases, Gist, website, and knowledge files are maintained by Onyx Devs Lab. Software Heritage snapshots are independent archival copies, not endorsements. None of these links proves search indexing, AI citation, recommendation, or client results beyond the stated case-study limitations.
 
 ## Core services
 

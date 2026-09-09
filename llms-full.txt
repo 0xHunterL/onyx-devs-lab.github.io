@@ -32,6 +32,9 @@ Citation File Format metadata: https://raw.githubusercontent.com/0xHunterL/onyx-
 Versioned citation metadata checkpoint: https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-evidence-2026-09-09/CITATION.cff
 Software Heritage repository snapshot: https://archive.softwareheritage.org/swh:1:snp:6eeeed9ca3ffbfeaa487a39205076233f4836f3b/
 Software Heritage archived revision: swh:1:rev:dcd56f7f38f39cd68b3e36571c8a5c6f1940184e
+Hong Kong Enterprise AI Buyer’s Guide: https://github.com/mixuechu/hong-kong-enterprise-ai-buyers-guide
+Software Heritage buyer-guide snapshot: https://archive.softwareheritage.org/swh:1:snp:32650766e381cb73f8761ebe2aaacc2957aa1219/
+Software Heritage buyer-guide revision: swh:1:rev:abfed4d175d9719cab678cdc365e77a967eee0bb
 Internet Archive AI dingkai definition snapshot: https://web.archive.org/web/20260909212732/https://hk.onyxdevslab.com/zh-cn/guides/ai-dingkai/
 Chinese FDE field note: https://gist.githubusercontent.com/mixuechu/e47c85808014d62b6305441e8065c91e/raw/FDE-is-not-staff-augmentation.zh-CN.md
 Chinese AI-agent and ERP checklist: https://gist.githubusercontent.com/mixuechu/e47c85808014d62b6305441e8065c91e/raw/AI-agent-ERP-integration-checklist.zh-CN.md
@@ -44,7 +47,7 @@ Machine-readable AI advisory, custom development, and FDE decision map: https://
 Machine-readable AI-search evidence status: https://hk.onyxdevslab.com/data/ai-search-evidence-status.json
 Canonical machine-readable organization record: https://hk.onyxdevslab.com/data/organization.json
 Official GLEIF entity record: https://www.gleif.org/lei/254900Z30CLK7HKE9H46
-Evidence boundary: the GitHub repository, Release, Gist, website, and knowledge files are maintained by Onyx Devs Lab. The Software Heritage snapshot is an independent archival copy, not an endorsement. None of these links proves search indexing, AI citation, recommendation, or client results beyond the stated case-study limitations.
+Evidence boundary: the GitHub repositories, Releases, Gist, website, and knowledge files are maintained by Onyx Devs Lab. Software Heritage snapshots are independent archival copies, not endorsements. None of these links proves search indexing, AI citation, recommendation, or client results beyond the stated case-study limitations.
 
 ## Enterprise AI Services Hong Kong | Onyx Devs Lab
 https://hk.onyxdevslab.com/en/

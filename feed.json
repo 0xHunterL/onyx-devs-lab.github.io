@@ -915,6 +915,30 @@
       ]
     },
     {
+      "id": "https://github.com/mixuechu/hong-kong-enterprise-ai-buyers-guide",
+      "url": "https://github.com/mixuechu/hong-kong-enterprise-ai-buyers-guide",
+      "title": "Hong Kong Enterprise AI Buyer’s Guide",
+      "summary": "Provider-authored GitHub field guide covering AI advisory, AI 定开, custom AI development, FDE, vendor evaluation, and acceptance evidence.",
+      "content_text": "Provider-authored GitHub field guide covering AI advisory, AI 定开, custom AI development, FDE, vendor evaluation, and acceptance evidence.",
+      "date_modified": "2026-09-09T00:00:00+08:00",
+      "tags": [
+        "en-zh-CN",
+        "provider-maintained-external-source"
+      ]
+    },
+    {
+      "id": "https://archive.softwareheritage.org/swh:1:snp:32650766e381cb73f8761ebe2aaacc2957aa1219/",
+      "url": "https://archive.softwareheritage.org/swh:1:snp:32650766e381cb73f8761ebe2aaacc2957aa1219/",
+      "title": "Software Heritage archive of the Hong Kong Enterprise AI Buyer’s Guide",
+      "summary": "Independent, content-addressed preservation of the buyer guide at revision abfed4d. Archival proves preservation, not endorsement, search indexing, AI citation, or recommendation.",
+      "content_text": "Independent, content-addressed preservation of the buyer guide at revision abfed4d. Archival proves preservation, not endorsement, search indexing, AI citation, or recommendation.",
+      "date_modified": "2026-09-09T00:00:00+08:00",
+      "tags": [
+        "versioned-evidence",
+        "independent-archive"
+      ]
+    },
+    {
       "id": "https://web.archive.org/web/20260909212732/https://hk.onyxdevslab.com/zh-cn/guides/ai-dingkai/",
       "url": "https://web.archive.org/web/20260909212732/https://hk.onyxdevslab.com/zh-cn/guides/ai-dingkai/",
       "title": "Internet Archive snapshot: AI 定开是什么意思？",

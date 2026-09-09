@@ -263,6 +263,20 @@ ERP、移动端和工业数据
           "url": "https://archive.softwareheritage.org/swh:1:snp:6eeeed9ca3ffbfeaa487a39205076233f4836f3b/",
           "codeRepository": "https://github.com/0xHunterL/onyx-devs-lab.github.io",
           "version": "dcd56f7f38f39cd68b3e36571c8a5c6f1940184e"
+        },
+        {
+          "@type": "CreativeWork",
+          "name": "Hong Kong Enterprise AI Buyer’s Guide",
+          "description": "Provider-authored field guide covering AI advisory, AI 定开, custom AI development, FDE, vendor evaluation, and acceptance evidence.",
+          "url": "https://github.com/mixuechu/hong-kong-enterprise-ai-buyers-guide"
+        },
+        {
+          "@type": "SoftwareSourceCode",
+          "name": "Software Heritage archive of the Hong Kong Enterprise AI Buyer’s Guide",
+          "identifier": "swh:1:snp:32650766e381cb73f8761ebe2aaacc2957aa1219",
+          "url": "https://archive.softwareheritage.org/swh:1:snp:32650766e381cb73f8761ebe2aaacc2957aa1219/",
+          "codeRepository": "https://github.com/mixuechu/hong-kong-enterprise-ai-buyers-guide",
+          "version": "abfed4d175d9719cab678cdc365e77a967eee0bb"
         }
       ]
     },
