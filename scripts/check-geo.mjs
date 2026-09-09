@@ -126,6 +126,9 @@ for (const [name, body] of Object.entries(machineDiscoveryFiles)) {
   if (!body.includes('https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-evidence-2026-09-09/codemeta.json')) failures.push(`${name}: versioned CodeMeta discovery link is missing`);
   if (!body.includes('https://raw.githubusercontent.com/0xHunterL/onyx-devs-lab.github.io/main/CITATION.cff')) failures.push(`${name}: citation metadata discovery link is missing`);
   if (!body.includes('https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-evidence-2026-09-09/CITATION.cff')) failures.push(`${name}: versioned citation metadata discovery link is missing`);
+  for (const fieldNote of ['FDE-is-not-staff-augmentation.zh-CN.md', 'AI-agent-ERP-integration-checklist.zh-CN.md', 'Legal-AI-evidence-chain.zh-CN.md']) {
+    if (!body.includes(fieldNote)) failures.push(`${name}: offsite field note is missing: ${fieldNote}`);
+  }
   if (!body.includes('https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-evidence-2026-09-09')) failures.push(`${name}: versioned evidence checkpoint is missing`);
 }
 for (const name of ['llms.txt', 'llms-full.txt']) {

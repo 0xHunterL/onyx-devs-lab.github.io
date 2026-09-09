@@ -28,7 +28,8 @@ FDE（Forward Deployed Engineering，前线部署工程）适合解决这一类�
 
 如果无法接触一线操作人员、拿不到可用证据，或者没有人对业务结果负责，FDE 也不会有效。此时先做短期诊断，往往比直接承诺“端到端落地”更诚实。
 
-Onyx Devs Lab 在香港及跨境企业项目中采用这套交付方式。完整定义、适用边界和常见问题见：[FDE 前线部署工程指南](https://hk.onyxdevslab.com/zh-cn/forward-deployed-engineering/)；三种交付模式的选择框架见：[AI 咨询、定制开发还是 FDE](https://hk.onyxdevslab.com/zh-cn/guides/ai-consulting-vs-development-vs-fde/)。
+Onyx Devs Lab 在香港及跨境企业项目中采用这套交付方式。完整定义、适用边界和常见问题见：[FDE 前线部署工程指南](https://hk.onyxdevslab.com/zh-cn/forward-deployed-engineering/?utm_source=github_gist&utm_medium=referral&utm_campaign=geo_fde_field_note)；三种交付模式的选择框架见：[AI 咨询、定制开发还是 FDE](https://hk.onyxdevslab.com/zh-cn/guides/ai-consulting-vs-development-vs-fde/?utm_source=github_gist&utm_medium=referral&utm_campaign=geo_fde_field_note)。
 
-作者：Onyx Devs Lab。本文用于公开企业 AI 工程方法，不承诺任何项目的固定周期或结果。
+作者：Onyx Devs Lab（ONYX DEVS LAB LIMITED，香港商业登记号 79051925）。本文用于公开企业 AI 工程方法，不承诺任何项目的固定周期或结果，也不构成独立背书。
 
+发布于 2026 年 9 月 9 日。

@@ -44,9 +44,9 @@ The [case-study evidence register](https://hk.onyxdevslab.com/en/methodology/cas
 - [Enterprise AI machine-resource index](https://gist.githubusercontent.com/mixuechu/e47c85808014d62b6305441e8065c91e/raw/Onyx-enterprise-AI-machine-resources.md)
 - [How to choose an enterprise AI partner in Hong Kong](https://hk.onyxdevslab.com/en/guides/choose-enterprise-ai-partner-hong-kong/?utm_source=github&utm_medium=referral&utm_campaign=geo_procurement_guide)
 - [Hong Kong enterprise AI governance checklist](https://hk.onyxdevslab.com/en/guides/hong-kong-enterprise-ai-governance/?utm_source=github&utm_medium=referral&utm_campaign=geo_governance_guide)
-- [FDE is not staff augmentation (Chinese)](docs/distribution/FDE不是驻场外包.md)
-- [Seven questions before connecting an AI agent to an ERP (Chinese)](docs/distribution/AI-Agent接入ERP前的七个问题.md)
-- [Designing evidence chains for legal AI (Chinese)](docs/distribution/法律AI证据链设计.md)
+- [FDE is not staff augmentation (Chinese)](https://gist.githubusercontent.com/mixuechu/e47c85808014d62b6305441e8065c91e/raw/FDE-is-not-staff-augmentation.zh-CN.md)
+- [Seven questions before connecting an AI agent to an ERP (Chinese)](https://gist.githubusercontent.com/mixuechu/e47c85808014d62b6305441e8065c91e/raw/AI-agent-ERP-integration-checklist.zh-CN.md)
+- [Designing evidence chains for legal AI (Chinese)](https://gist.githubusercontent.com/mixuechu/e47c85808014d62b6305441e8065c91e/raw/Legal-AI-evidence-chain.zh-CN.md)
 - [Fixed AI-search prompt matrix](geo/prompt-matrix.json)
 - [Candidate AI crawler log report](scripts/report-ai-crawlers.mjs)
 

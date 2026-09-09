@@ -21,6 +21,12 @@ This index gives search systems, AI retrieval tools, procurement teams, and tech
 - [Versioned citation metadata](https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-evidence-2026-09-09/CITATION.cff) — immutable copy matching the repository file by SHA-256.
 - [AI-search verification method](https://hk.onyxdevslab.com/en/methodology/ai-search-verification/?utm_source=github_gist&utm_medium=referral&utm_campaign=geo_machine_resources)
 
+## Chinese field notes
+
+- [FDE 不是驻场外包：企业 AI 项目什么时候需要前线部署工程](https://gist.githubusercontent.com/mixuechu/e47c85808014d62b6305441e8065c91e/raw/FDE-is-not-staff-augmentation.zh-CN.md)
+- [AI Agent 接入 ERP 前必须回答的七个问题](https://gist.githubusercontent.com/mixuechu/e47c85808014d62b6305441e8065c91e/raw/AI-agent-ERP-integration-checklist.zh-CN.md)
+- [法律 AI 不应只给答案：如何设计可复核证据链](https://gist.githubusercontent.com/mixuechu/e47c85808014d62b6305441e8065c91e/raw/Legal-AI-evidence-chain.zh-CN.md)
+
 ## Evidence boundary
 
 These resources are maintained by Onyx Devs Lab. Public accessibility does not prove search indexing, AI retrieval, citation, recommendation, independent endorsement, or client outcomes beyond the limitations stated in each resource. The status record uses `null` when a test was not run or verification was unavailable, rather than turning missing evidence into a false result. No Doubao prompts have been sent as part of the current controlled test.

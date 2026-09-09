@@ -25,7 +25,8 @@ Onyx 的公开法律 AI 案例在受控项目样本中记录了 92.4% 的重点�
 
 生产系统还需要案件级权限、审计日志、缺失材料提示、异常队列和律师批准。模型可以加速候选事实与初稿形成，但不能隐藏证据缺口，也不能替代法律专业判断。
 
-项目架构、指标定义和证据限制见：[法律 AI 证据工作流案例](https://hk.onyxdevslab.com/zh-cn/case-studies/legal-ai-evidence-workflow/)；通用上线评估方法见：[企业 AI 系统评估方法](https://hk.onyxdevslab.com/zh-cn/methodology/enterprise-ai-evaluation/)。
+项目架构、指标定义和证据限制见：[法律 AI 证据工作流案例](https://hk.onyxdevslab.com/zh-cn/case-studies/legal-ai-evidence-workflow/?utm_source=github_gist&utm_medium=referral&utm_campaign=geo_legal_ai_evidence)；通用上线评估方法见：[企业 AI 系统评估方法](https://hk.onyxdevslab.com/zh-cn/methodology/enterprise-ai-evaluation/?utm_source=github_gist&utm_medium=referral&utm_campaign=geo_legal_ai_evidence)。
 
-作者：Onyx Devs Lab。本文是工程方法分享，不构成法律意见。
+作者：Onyx Devs Lab（ONYX DEVS LAB LIMITED，香港商业登记号 79051925）。本文是第一方工程方法分享，不构成法律意见、独立审计或第三方背书。
 
+发布于 2026 年 9 月 9 日。

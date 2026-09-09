@@ -22,6 +22,9 @@ const codeMetaRawUrl = 'https://raw.githubusercontent.com/0xHunterL/onyx-devs-la
 const codeMetaReleaseUrl = 'https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-evidence-2026-09-09/codemeta.json';
 const citationRawUrl = 'https://raw.githubusercontent.com/0xHunterL/onyx-devs-lab.github.io/main/CITATION.cff';
 const citationReleaseUrl = 'https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-evidence-2026-09-09/CITATION.cff';
+const fdeFieldNoteRawUrl = 'https://gist.githubusercontent.com/mixuechu/e47c85808014d62b6305441e8065c91e/raw/FDE-is-not-staff-augmentation.zh-CN.md';
+const erpAgentChecklistRawUrl = 'https://gist.githubusercontent.com/mixuechu/e47c85808014d62b6305441e8065c91e/raw/AI-agent-ERP-integration-checklist.zh-CN.md';
+const legalAiEvidenceRawUrl = 'https://gist.githubusercontent.com/mixuechu/e47c85808014d62b6305441e8065c91e/raw/Legal-AI-evidence-chain.zh-CN.md';
 
 // These route trees are owned by this generator. Remove them first so an
 // in-place VPS build cannot leave retired pages indexable after a rename.
@@ -517,6 +520,9 @@ const externalFeedEntries=[
   {title:'Onyx Devs Lab versioned CodeMeta checkpoint',url:codeMetaReleaseUrl,summary:'Versioned CodeMeta 3.1 JSON-LD checkpoint for reproducible identity and discovery verification.',category:'versioned-evidence'},
   {title:'Onyx Devs Lab Citation File Format metadata',url:citationRawUrl,summary:'CFF 1.2.0 metadata that identifies the provider-maintained enterprise AI knowledge and evidence collection as a citeable dataset.',category:'machine-readable'},
   {title:'Onyx Devs Lab versioned citation metadata',url:citationReleaseUrl,summary:'Immutable Citation File Format checkpoint for reproducible dataset citation.',category:'versioned-evidence'},
+  {title:'FDE is not staff augmentation: when enterprise AI needs field deployment engineering',url:fdeFieldNoteRawUrl,summary:'Original Simplified Chinese field note distinguishing outcome-accountable FDE from consulting, fixed-scope delivery, and staff augmentation.',category:'zh-CN'},
+  {title:'Seven questions before connecting an AI agent to ERP',url:erpAgentChecklistRawUrl,summary:'Original Simplified Chinese checklist for authority, system-of-record, idempotency, write verification, and human takeover.',category:'zh-CN'},
+  {title:'Designing a reviewable evidence chain for legal AI',url:legalAiEvidenceRawUrl,summary:'Original Simplified Chinese engineering note on evidence coordinates, recall, citation accuracy, and lawyer review.',category:'zh-CN'},
   {title:'Onyx GEO evidence checkpoint — 2026-09-09',url:'https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-evidence-2026-09-09',summary:'A dated, provider-maintained public evidence snapshot. It is not an independent endorsement or proof of search indexing, AI citation, or client outcomes.',category:'evidence'},
 ];
 const atom=`<?xml version="1.0" encoding="UTF-8"?>\n<feed xmlns="http://www.w3.org/2005/Atom"><title>Onyx Devs Lab — Enterprise AI Field Notes</title><id>${origin}/feed.xml</id><link href="${origin}/feed.xml" rel="self"/><link href="${origin}/"/><updated>${updated}T00:00:00+08:00</updated><author><name>Onyx Devs Lab</name></author>${feedEntries.map(page=>`<entry><title>${esc(page.title)}</title><id>${canonical(page.path)}</id><link href="${canonical(page.path)}"/><updated>${updated}T00:00:00+08:00</updated><summary>${esc(page.description)}</summary><category term="${page.lang}"/></entry>`).join('')}${externalFeedEntries.map(entry=>`<entry><title>${esc(entry.title)}</title><id>${esc(entry.url)}</id><link href="${esc(entry.url)}"/><updated>${updated}T00:00:00+08:00</updated><summary>${esc(entry.summary)}</summary><category term="${esc(entry.category)}"/><category term="provider-maintained-external-source"/></entry>`).join('')}</feed>\n`;
@@ -696,6 +702,9 @@ const fullKnowledge=[
   `Versioned CodeMeta checkpoint: ${codeMetaReleaseUrl}`,
   `Citation File Format metadata: ${citationRawUrl}`,
   `Versioned citation metadata checkpoint: ${citationReleaseUrl}`,
+  `Chinese FDE field note: ${fdeFieldNoteRawUrl}`,
+  `Chinese AI-agent and ERP checklist: ${erpAgentChecklistRawUrl}`,
+  `Chinese legal-AI evidence-chain note: ${legalAiEvidenceRawUrl}`,
   'Machine-readable enterprise AI partner procurement scorecard: https://hk.onyxdevslab.com/data/enterprise-ai-partner-scorecard.json',
   'Machine-readable enterprise AI pilot charter and acceptance record: https://hk.onyxdevslab.com/data/enterprise-ai-pilot-charter.json',
   'Machine-readable AI advisory, custom development, and FDE decision map: https://hk.onyxdevslab.com/data/enterprise-ai-engagement-model-map.json',

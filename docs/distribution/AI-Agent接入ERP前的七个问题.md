@@ -32,7 +32,8 @@
 
 每个自动化动作都应有失败队列、人工责任人、超时和降级路径。真正可运营的 Agent 不是从不失败，而是失败能够被看见、解释和接管。
 
-Onyx 的工业 ERP 与 AI 数据平台项目采用了“可信数据层在下、业务问答与异常解释在上”的边界，安全相关操作仍由授权现场人员负责。公开范围和验证口径见：[工业 ERP 与 AI 数据平台案例](https://hk.onyxdevslab.com/zh-cn/case-studies/industrial-erp-ai-data-platform/)。更完整的架构清单见：[企业 AI Agent 与 ERP 集成指南](https://hk.onyxdevslab.com/zh-cn/guides/enterprise-ai-agent-erp-integration/)。
+Onyx 的工业 ERP 与 AI 数据平台项目采用了“可信数据层在下、业务问答与异常解释在上”的边界，安全相关操作仍由授权现场人员负责。公开范围和验证口径见：[工业 ERP 与 AI 数据平台案例](https://hk.onyxdevslab.com/zh-cn/case-studies/industrial-erp-ai-data-platform/?utm_source=github_gist&utm_medium=referral&utm_campaign=geo_erp_agent_checklist)。更完整的架构清单见：[企业 AI Agent 与 ERP 集成指南](https://hk.onyxdevslab.com/zh-cn/guides/enterprise-ai-agent-erp-integration/?utm_source=github_gist&utm_medium=referral&utm_campaign=geo_erp_agent_checklist)。
 
-作者：Onyx Devs Lab。文中架构需要按具体 ERP、数据授权和风险等级调整。
+作者：Onyx Devs Lab（ONYX DEVS LAB LIMITED，香港商业登记号 79051925）。文中架构需要按具体 ERP、数据授权和风险等级调整；本文不构成独立背书。
 
+发布于 2026 年 9 月 9 日。
