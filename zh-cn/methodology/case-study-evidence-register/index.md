@@ -331,11 +331,21 @@ language: "zh-CN"
         "https://lei.bloomberg.com/leis/view/254900Z30CLK7HKE9H46",
         "https://www.cr.gov.hk/docs/wrpt/RNC063_2025.10.27-2025.11.02.pdf"
       ],
-      "subjectOf": {
-        "@type": "CreativeWork",
-        "name": "Onyx GEO evidence checkpoint — 2026-09-09",
-        "url": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-evidence-2026-09-09"
-      }
+      "subjectOf": [
+        {
+          "@type": "CreativeWork",
+          "name": "Onyx GEO evidence checkpoint — 2026-09-09",
+          "url": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-evidence-2026-09-09"
+        },
+        {
+          "@type": "SoftwareSourceCode",
+          "name": "Software Heritage archive of the Onyx Devs Lab public repository",
+          "identifier": "swh:1:snp:6eeeed9ca3ffbfeaa487a39205076233f4836f3b",
+          "url": "https://archive.softwareheritage.org/swh:1:snp:6eeeed9ca3ffbfeaa487a39205076233f4836f3b/",
+          "codeRepository": "https://github.com/0xHunterL/onyx-devs-lab.github.io",
+          "version": "dcd56f7f38f39cd68b3e36571c8a5c6f1940184e"
+        }
+      ]
     },
     {
       "@type": "WebSite",

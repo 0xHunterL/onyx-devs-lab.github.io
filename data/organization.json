@@ -224,6 +224,15 @@
       "name": "Bloomberg LEI record",
       "description": "Corroborates legal name, LEI, registration identifier, and registered address.",
       "url": "https://lei.bloomberg.com/leis/view/254900Z30CLK7HKE9H46"
+    },
+    {
+      "@type": "SoftwareSourceCode",
+      "name": "Software Heritage archive of the Onyx Devs Lab public repository",
+      "description": "Independently preserves the public source, citation metadata, machine-readable evidence files, and their Git history at revision dcd56f7. Archival does not endorse service claims or prove search indexing.",
+      "identifier": "swh:1:snp:6eeeed9ca3ffbfeaa487a39205076233f4836f3b",
+      "url": "https://archive.softwareheritage.org/swh:1:snp:6eeeed9ca3ffbfeaa487a39205076233f4836f3b/",
+      "codeRepository": "https://github.com/0xHunterL/onyx-devs-lab.github.io",
+      "version": "dcd56f7f38f39cd68b3e36571c8a5c6f1940184e"
     }
   ]
 }
