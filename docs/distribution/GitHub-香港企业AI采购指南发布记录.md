@@ -34,7 +34,17 @@
 
 GitHub Pages 匿名访问返回 HTTP `200`；正文首屏包含品牌、法律主体、BRN、LEI、AI 定开、AI 咨询、定制开发与 FDE。桌面与 390px 移动宽度完成渲染检查；Lighthouse 本地复测 Performance、Accessibility、Best Practices 和 SEO 均为 `100`。
 
-Pages 路径已发布公开 IndexNow key，并用该路径作为 `keyLocation` 提交规范 URL；接口返回 HTTP `202`。随后以请求 `2469088` 归档最终发布源，得到当前永久快照 [`swh:1:snp:6c5c259a59148caefcf62e5f06aa5b640f6770b7`](https://archive.softwareheritage.org/swh:1:snp:6c5c259a59148caefcf62e5f06aa5b640f6770b7/)，其 `main` 指向 revision `7b948c532576f9cbba8b42ccd67441e2ce092f93`。IndexNow `202` 只证明通知被接收，不证明抓取或收录。
+Pages 路径已发布公开 IndexNow key，并用该路径作为 `keyLocation` 提交规范 URL；接口返回 HTTP `202`。随后以请求 `2469088` 归档该阶段发布源，得到阶段快照 [`swh:1:snp:6c5c259a59148caefcf62e5f06aa5b640f6770b7`](https://archive.softwareheritage.org/swh:1:snp:6c5c259a59148caefcf62e5f06aa5b640f6770b7/)，其 `main` 指向 revision `7b948c532576f9cbba8b42ccd67441e2ce092f93`。IndexNow `202` 只证明通知被接收，不证明抓取或收录。
+
+同日继续把单页合集扩展为 4 页主题簇，新增三个可独立抓取的专题入口：
+
+- [香港企业 AI 咨询怎么采购](https://mixuechu.github.io/hong-kong-enterprise-ai-buyers-guide/ai-consulting/)：用机会组合、现况基线、治理边界和下一关口验收咨询；
+- [AI 定开是什么：香港企业 AI 定制开发采购指南](https://mixuechu.github.io/hong-kong-enterprise-ai-buyers-guide/ai-custom-development/)：区分 SaaS、模型演示、定制开发与 FDE，并固定需求、评估、权限、运行和交接证据；
+- [FDE 是什么：前线部署工程与驻场外包的区别](https://mixuechu.github.io/hong-kong-enterprise-ai-buyers-guide/forward-deployed-engineering/)：以运营基线、迭代账本、生产控制、采用证据和能力转移界定 FDE。
+
+三个页面均提供独立 Canonical、Article／Organization／BreadcrumbList JSON-LD、移动端目录、跨专题内链和专用归因参数；Sitemap、`llms.txt`、机器资源图及新增 Atom Feed 同步发现全部四页。线上匿名请求均为 HTTP `200`，正文和实体标识出现在首次 HTML；代表性页面 Lighthouse 的 Performance、Accessibility、Best Practices、SEO 均为 `100`。四个规范 URL 的 IndexNow 提交返回 HTTP `200`，仅记为通知已接收。
+
+扩展提交为 `c775293030d4842ed9216b116acf7b6c6cfcae8e`。Software Heritage 请求 `2469101` 状态为 `succeeded`、访问为 `full`，当前快照为 [`swh:1:snp:a44573c912e6f9895dbf853358e55ef6b207e3d5`](https://archive.softwareheritage.org/swh:1:snp:a44573c912e6f9895dbf853358e55ef6b207e3d5/)，`refs/heads/main` 已核验指向该提交。
 
 ## 证据边界
 

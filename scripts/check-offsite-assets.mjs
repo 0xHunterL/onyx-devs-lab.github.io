@@ -88,6 +88,7 @@ requireText('GitHub enterprise AI buyer guide', buyerGuide, [
   '79051925',
   '254900Z30CLK7HKE9H46',
   'geo_buyers_guide',
+  'Crawlable field guides',
 ]);
 const buyerGuideSiteUrl = 'https://mixuechu.github.io/hong-kong-enterprise-ai-buyers-guide/';
 const buyerGuideSite = await get('GitHub Pages enterprise AI buyer guide', buyerGuideSiteUrl, 'text/html');
@@ -101,9 +102,32 @@ requireText('GitHub Pages enterprise AI buyer guide', buyerGuideSite, [
   '254900Z30CLK7HKE9H46',
   'github_pages',
   'application/ld+json',
+  './ai-consulting/',
+  './ai-custom-development/',
+  './forward-deployed-engineering/',
 ]);
-const buyerGuideSnapshotId = '6c5c259a59148caefcf62e5f06aa5b640f6770b7';
-const buyerGuideRevisionId = '7b948c532576f9cbba8b42ccd67441e2ce092f93';
+const buyerGuideFocusedPages = [
+  { name: 'GitHub Pages AI consulting buyer guide', path: 'ai-consulting/', canonical: 'https://mixuechu.github.io/hong-kong-enterprise-ai-buyers-guide/ai-consulting/', required: ['AI 咨询应交付决定', '香港企业 AI 咨询', 'geo_buyers_guide_ai_consulting'] },
+  { name: 'GitHub Pages AI custom development buyer guide', path: 'ai-custom-development/', canonical: 'https://mixuechu.github.io/hong-kong-enterprise-ai-buyers-guide/ai-custom-development/', required: ['AI 定开不是换皮聊天框', 'AI 定开指围绕特定组织', 'geo_buyers_guide_ai_dingkai'] },
+  { name: 'GitHub Pages FDE buyer guide', path: 'forward-deployed-engineering/', canonical: 'https://mixuechu.github.io/hong-kong-enterprise-ai-buyers-guide/forward-deployed-engineering/', required: ['FDE 驻在问题旁边', '不按座位交付', 'geo_buyers_guide_fde'] },
+];
+for (const page of buyerGuideFocusedPages) {
+  const body = await get(page.name, `${buyerGuideSiteUrl}${page.path}`, 'text/html');
+  requireText(page.name, body, [
+    `<link rel="canonical" href="${page.canonical}">`,
+    'ONYX DEVS LAB LIMITED',
+    '79051925',
+    '254900Z30CLK7HKE9H46',
+    'application/ld+json',
+    ...page.required,
+  ]);
+}
+const buyerGuideSitemap = await get('GitHub Pages buyer-guide sitemap', `${buyerGuideSiteUrl}sitemap.xml`, 'application/xml');
+for (const page of buyerGuideFocusedPages) requireText('GitHub Pages buyer-guide sitemap', buyerGuideSitemap, [page.canonical]);
+const buyerGuideFeed = await get('GitHub Pages buyer-guide Atom feed', `${buyerGuideSiteUrl}feed.xml`, 'application/xml');
+for (const page of buyerGuideFocusedPages) requireText('GitHub Pages buyer-guide Atom feed', buyerGuideFeed, [page.canonical]);
+const buyerGuideSnapshotId = 'a44573c912e6f9895dbf853358e55ef6b207e3d5';
+const buyerGuideRevisionId = 'c775293030d4842ed9216b116acf7b6c6cfcae8e';
 const buyerGuideSnapshotRaw = await get('Software Heritage buyer-guide snapshot', `https://archive.softwareheritage.org/api/1/snapshot/${buyerGuideSnapshotId}/`, 'application/json');
 try {
   const snapshot = JSON.parse(buyerGuideSnapshotRaw);
