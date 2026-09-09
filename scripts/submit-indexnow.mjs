@@ -16,6 +16,7 @@ const machineResourcePaths = [
   '/llms.txt',
   '/llms-full.txt',
   '/feed.xml',
+  '/feed.json',
   '/data/case-study-evidence.json',
   '/data/enterprise-ai-partner-scorecard.json',
   '/data/enterprise-ai-pilot-charter.json',

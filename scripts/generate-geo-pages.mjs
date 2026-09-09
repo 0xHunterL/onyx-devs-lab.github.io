@@ -473,7 +473,7 @@ function layout(page, body, type='Service'){
   const schema={"@context":"https://schema.org","@graph":graph};
   const alternates=translationsFor(page.path); const xDefaultPath=alternates[0]?.path==='/en/'?'/':alternates[0]?.path; const hreflangs=alternates.length?alternates.map(item=>`<link rel="alternate" hreflang="${item.lang}" href="${canonical(item.path)}">`).join('')+`<link rel="alternate" hreflang="x-default" href="${canonical(xDefaultPath)}">`:`<link rel="alternate" hreflang="${page.lang}" href="${canonical(page.path)}">`;
   const prefix=cn?'/zh-cn':(zh?'/zh-hk':'/en');
-  return `<!doctype html><html lang="${page.lang}"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>${esc(page.title)}</title><meta name="description" content="${esc(page.description)}"><link rel="canonical" href="${canonical(page.path)}">${hreflangs}<link rel="alternate" type="application/atom+xml" title="Onyx Devs Lab — Enterprise AI Field Notes" href="${origin}/feed.xml"><meta property="og:type" content="article"><meta property="og:site_name" content="Onyx Devs Lab"><meta property="og:title" content="${esc(page.title)}"><meta property="og:description" content="${esc(page.description)}"><meta property="og:url" content="${canonical(page.path)}"><link rel="stylesheet" href="/geo.css"><link rel="icon" href="/favicon.svg"><script type="application/ld+json">${JSON.stringify(schema)}</script></head><body><a class="skip" href="#content">${cn?'跳到主要内容':(zh?'跳至主要內容':'Skip to content')}</a><header class="nav"><div class="wrap"><a class="brand" href="${home}">ONYX DEVS LAB</a><nav class="navlinks" aria-label="${cn?'主要导航':(zh?'主要導航':'Primary')}"><a href="${prefix}/${zh?'ai-consulting':'ai-consulting-hong-kong'}/">${cn?'AI 咨询':(zh?'AI 顧問':'AI advisory')}</a><a href="${prefix}/${zh?'custom-ai-development':'custom-ai-development-hong-kong'}/">${cn?'定制开发':(zh?'定制開發':'Custom development')}</a><a href="${prefix}/forward-deployed-engineering/">FDE</a><a href="${prefix}/about/">${cn?'团队':(zh?'團隊':'Team')}</a><a href="mailto:info@onyxdevslab.com">${cn?'联系':(zh?'聯絡':'Contact')}</a></nav></div></header>${body}<footer class="footer"><div class="wrap">© 2026 Onyx Devs Lab · ${cn?'面向香港及跨境企业的 AI 咨询、定制开发与前线部署工程':(zh?'香港及跨境企業 AI 顧問、定制開發與前線部署工程':'AI advisory, custom development, and Forward Deployed Engineering for Hong Kong and cross-border enterprises')} · <a href="mailto:info@onyxdevslab.com">info@onyxdevslab.com</a></div></footer></body></html>`;
+  return `<!doctype html><html lang="${page.lang}"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>${esc(page.title)}</title><meta name="description" content="${esc(page.description)}"><link rel="canonical" href="${canonical(page.path)}">${hreflangs}<link rel="alternate" type="application/atom+xml" title="Onyx Devs Lab — Enterprise AI Field Notes" href="${origin}/feed.xml"><link rel="alternate" type="application/feed+json" title="Onyx Devs Lab — Enterprise AI Field Notes (JSON Feed)" href="${origin}/feed.json"><meta property="og:type" content="article"><meta property="og:site_name" content="Onyx Devs Lab"><meta property="og:title" content="${esc(page.title)}"><meta property="og:description" content="${esc(page.description)}"><meta property="og:url" content="${canonical(page.path)}"><link rel="stylesheet" href="/geo.css"><link rel="icon" href="/favicon.svg"><script type="application/ld+json">${JSON.stringify(schema)}</script></head><body><a class="skip" href="#content">${cn?'跳到主要内容':(zh?'跳至主要內容':'Skip to content')}</a><header class="nav"><div class="wrap"><a class="brand" href="${home}">ONYX DEVS LAB</a><nav class="navlinks" aria-label="${cn?'主要导航':(zh?'主要導航':'Primary')}"><a href="${prefix}/${zh?'ai-consulting':'ai-consulting-hong-kong'}/">${cn?'AI 咨询':(zh?'AI 顧問':'AI advisory')}</a><a href="${prefix}/${zh?'custom-ai-development':'custom-ai-development-hong-kong'}/">${cn?'定制开发':(zh?'定制開發':'Custom development')}</a><a href="${prefix}/forward-deployed-engineering/">FDE</a><a href="${prefix}/about/">${cn?'团队':(zh?'團隊':'Team')}</a><a href="mailto:info@onyxdevslab.com">${cn?'联系':(zh?'聯絡':'Contact')}</a></nav></div></header>${body}<footer class="footer"><div class="wrap">© 2026 Onyx Devs Lab · ${cn?'面向香港及跨境企业的 AI 咨询、定制开发与前线部署工程':(zh?'香港及跨境企業 AI 顧問、定制開發與前線部署工程':'AI advisory, custom development, and Forward Deployed Engineering for Hong Kong and cross-border enterprises')} · <a href="mailto:info@onyxdevslab.com">info@onyxdevslab.com</a></div></footer></body></html>`;
 }
 function relatedBody(p){const zh=p.lang.startsWith('zh');const cn=p.lang==='zh-CN';const prefix=cn?'/zh-cn':(zh?'/zh-hk':'/en');const external=p.externalReference?`<a rel="external" href="${p.externalReference[1]}">${esc(p.externalReference[0])}</a>`:'';return `<section class="related"><div class="wrap"><h2>${cn?'相关交付证据':(zh?'相關交付證據':'Related delivery evidence')}</h2><a href="${prefix}/case-studies/retail-ai-decision-platform/">${cn?'零售 AI 决策平台案例':(zh?'零售 AI 決策平台案例':'Retail AI decision platform case study')}</a><a href="${prefix}/case-studies/accounting-ai-production-platform/">${cn?'AI 原生会计生产平台案例':(zh?'AI 原生會計生產平台案例':'AI-native accounting production platform case study')}</a><a href="${prefix}/methodology/case-study-evidence-register/">${cn?'案例证据登记册':(zh?'案例證據登記冊':'Case-study evidence register')}</a>${zh?'':`<a href="/en/insights/what-is-forward-deployed-engineering/">What is Forward Deployed Engineering?</a>`}${external}</div></section>`;}
 function engagementComparisonBody(p){
@@ -578,6 +578,39 @@ const atom=`<?xml version="1.0" encoding="UTF-8"?>\n<feed xmlns="http://www.w3.o
 let accurateAtom=atom.replace(`<updated>${updated}T`,`<updated>${feedUpdated}T`);
 for(const entryId of [...updatedAiSearchPaths].map(canonical).concat(aiSearchStatusReleaseUrl))accurateAtom=accurateAtom.replace(`<id>${entryId}</id><link href="${entryId}"/><updated>${updated}T`,`<id>${entryId}</id><link href="${entryId}"/><updated>${feedUpdated}T`);
 fs.writeFileSync(path.join(dist,'feed.xml'),accurateAtom);
+const feedDate=(pathname)=>updatedAiSearchPaths.has(pathname)?feedUpdated:updated;
+const jsonFeed={
+  version:'https://jsonfeed.org/version/1.1',
+  title:'Onyx Devs Lab — Enterprise AI Field Notes',
+  home_page_url:`${origin}/`,
+  feed_url:`${origin}/feed.json`,
+  description:'Enterprise AI advisory, custom development, Forward Deployed Engineering, buyer guides, methods, and evidence resources from Onyx Devs Lab.',
+  user_comment:'Provider-maintained discovery feed. Accessibility does not prove search indexing, AI retrieval, citation, recommendation, independent endorsement, or client outcomes beyond each resource’s stated limitations.',
+  authors:[{name:'Onyx Devs Lab',url:`${origin}/`}],
+  language:'en',
+  items:[
+    ...feedEntries.map(page=>({
+      id:canonical(page.path),
+      url:canonical(page.path),
+      title:page.title,
+      summary:page.description,
+      content_text:page.description,
+      date_modified:`${feedDate(page.path)}T00:00:00+08:00`,
+      language:page.lang,
+      tags:[page.schemaType||'content',page.lang],
+    })),
+    ...externalFeedEntries.map(entry=>({
+      id:entry.url,
+      url:entry.url,
+      title:entry.title,
+      summary:entry.summary,
+      content_text:entry.summary,
+      date_modified:`${entry.url===aiSearchStatusReleaseUrl?feedUpdated:updated}T00:00:00+08:00`,
+      tags:[entry.category,'provider-maintained-external-source'],
+    })),
+  ],
+};
+fs.writeFileSync(path.join(dist,'feed.json'),`${JSON.stringify(jsonFeed,null,2)}\n`);
 
 const evidenceCases=cases.filter(page=>page.lang==='en').map(page=>{
   const metricKey=page.metricKey||(page.path.includes('retail-')?'retail':'accounting');
@@ -746,6 +779,7 @@ const fullKnowledge=[
   'Services: enterprise AI advisory, custom AI development, and Forward Deployed Engineering (FDE).',
   'Markets: Hong Kong, Greater China, cross-border, and global engagements.',
   'Contact: info@onyxdevslab.com',
+  'JSON Feed 1.1: https://hk.onyxdevslab.com/feed.json',
   '',
   '## External public evidence and field notes',
   'Versioned GEO evidence checkpoint: https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-evidence-2026-09-09',

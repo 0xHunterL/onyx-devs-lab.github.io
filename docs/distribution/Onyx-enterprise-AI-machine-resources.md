@@ -16,6 +16,7 @@ This index gives search systems, AI retrieval tools, procurement teams, and tech
 - [Concise AI discovery file](https://hk.onyxdevslab.com/llms.txt?utm_source=github_gist&utm_medium=referral&utm_campaign=geo_machine_resources)
 - [Full public knowledge file](https://hk.onyxdevslab.com/llms-full.txt?utm_source=github_gist&utm_medium=referral&utm_campaign=geo_machine_resources)
 - [Atom content feed](https://hk.onyxdevslab.com/feed.xml?utm_source=github_gist&utm_medium=referral&utm_campaign=geo_machine_resources)
+- [JSON Feed 1.1 content feed](https://hk.onyxdevslab.com/feed.json?utm_source=github_gist&utm_medium=referral&utm_campaign=geo_machine_resources)
 - [Versioned GitHub evidence checkpoint](https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-evidence-2026-09-09)
 - [Versioned agent-readiness evidence checkpoint](https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-readiness-2026-09-10) — dated technical-readiness and search-status evidence with an [immutable machine-readable asset](https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-readiness-2026-09-10/ai-search-evidence-status.json).
 - [Citation File Format metadata](https://raw.githubusercontent.com/0xHunterL/onyx-devs-lab.github.io/main/CITATION.cff) — CFF 1.2.0 metadata for citing the six-case, 31-metric evidence dataset.

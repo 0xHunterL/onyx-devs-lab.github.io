@@ -19,7 +19,7 @@ FDE 首次出现时必须同时写出全称。中文页面采用“前线部署�
 - 结构化数据只能描述页面上真实可见的内容，不添加未经证实的客户、认证、评价或结果。
 - 案例必须区分已交付范围、测量结果、项目目标和未公开数据。
 - `robots.txt` 使用 `Content-Signal: search=yes, ai-input=yes`，明确允许搜索索引及在查询时作为 AI grounding／RAG 输入；训练用途保持未声明，不能从前两项推断。Cloudflare 将 Content Signals 纳入 AI Agent Readiness，但它仍只是内容使用意图，不是任何平台已抓取、收录或引用的证据。
-- HTML 响应使用 RFC 8288 `Link` 头暴露 Sitemap、Atom Feed 和 `llms.txt`，让不解析页面导航的 Agent 也能从响应元数据发现公开知识入口。
+- HTML 响应使用 RFC 8288 `Link` 头暴露 Sitemap、Atom Feed、[JSON Feed 1.1](https://www.jsonfeed.org/version/1.1/) 和 `llms.txt`，让不解析页面导航的 Agent 也能从响应元数据发现公开知识入口。JSON Feed 是对 Atom 的补充，不是收录或引用证明。
 - 构建为 62 个规范 HTML 页面各生成一份对应的 `index.md` 表示：正文取自页面可见的 `<main>`，带 title、description、canonical 和 language 前置元数据，并保留页面 JSON-LD。Nginx 仅在同一规范 URL 收到 `Accept: text/markdown` 时返回 Markdown；普通浏览器仍收到 HTML，两种响应均带 `Vary: Accept`。Markdown 是同一内容的机器友好表示，不建立新的规范 URL，也不单独提交 IndexNow。
 
 ## 发布检查

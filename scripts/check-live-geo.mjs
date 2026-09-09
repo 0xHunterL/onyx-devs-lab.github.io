@@ -50,7 +50,7 @@ const root = await get('/', 'text/html');
 const rootLinkHeader = root.response?.headers.get('link') || '';
 if (!/(?:^|,)\s*Accept\s*(?:,|$)/i.test(root.response?.headers.get('vary') || '')) failures.push('/: Vary header does not include Accept');
 if (!/search=yes/.test(root.response?.headers.get('content-signal') || '') || !/ai-input=yes/.test(root.response?.headers.get('content-signal') || '')) failures.push('/: Content-Signal response header is incomplete');
-for (const resource of ['sitemap.xml', 'feed.xml', 'llms.txt']) {
+for (const resource of ['sitemap.xml', 'feed.xml', 'feed.json', 'llms.txt']) {
   if (!rootLinkHeader.includes(`https://hk.onyxdevslab.com/${resource}`)) failures.push(`/: Link discovery header is missing ${resource}`);
 }
 for (const required of ['ONYX DEVS LAB LIMITED', 'business registration number 79051925', 'href="/zh-cn/"', 'href="/en/guides/choose-enterprise-ai-partner-hong-kong/"', 'href="/en/methodology/ai-search-verification/"']) {
@@ -87,7 +87,19 @@ if (!llmsFull.body.includes('Registered office: 36-40 TAI LIN PAI ROAD, UNIT B53
 
 const feed = await get('/feed.xml', 'xml');
 if (!feed.body.includes('<feed xmlns="http://www.w3.org/2005/Atom">')) failures.push('/feed.xml: Atom feed root is missing');
-for (const [pathname, body] of [['/llms.txt', llms.body], ['/llms-full.txt', llmsFull.body], ['/feed.xml', feed.body]]) {
+const jsonFeedResponse = await get('/feed.json', 'application/feed+json');
+let jsonFeed = null;
+try {
+  jsonFeed = JSON.parse(jsonFeedResponse.body);
+  if (jsonFeed.version !== 'https://jsonfeed.org/version/1.1') failures.push('/feed.json: unexpected JSON Feed version');
+  if (jsonFeed.home_page_url !== `${canonicalOrigin}/` || jsonFeed.feed_url !== `${canonicalOrigin}/feed.json`) failures.push('/feed.json: canonical feed URLs are incomplete');
+  if (!jsonFeed.user_comment?.includes('does not prove search indexing, AI retrieval, citation, recommendation')) failures.push('/feed.json: evidence boundary is missing');
+  if (!jsonFeed.items?.length || !jsonFeed.items.every((item) => item.id && item.url && item.title && item.content_text && item.date_modified)) failures.push('/feed.json: item fields are incomplete');
+  if (!jsonFeed.items.some((item) => item.tags?.includes('provider-maintained-external-source'))) failures.push('/feed.json: external-source category is missing');
+} catch {
+  failures.push('/feed.json: invalid JSON');
+}
+for (const [pathname, body] of [['/llms.txt', llms.body], ['/llms-full.txt', llmsFull.body], ['/feed.xml', feed.body], ['/feed.json', jsonFeedResponse.body]]) {
   if (!body.includes('https://gist.github.com/mixuechu/e47c85808014d62b6305441e8065c91e')) failures.push(`${pathname}: offsite decision matrix is missing`);
   if (!body.includes('https://gist.githubusercontent.com/mixuechu/e47c85808014d62b6305441e8065c91e/raw/Hong-Kong-enterprise-AI-governance.md')) failures.push(`${pathname}: offsite governance note is missing`);
   if (!body.includes('https://gist.githubusercontent.com/mixuechu/e47c85808014d62b6305441e8065c91e/raw/Onyx-enterprise-AI-machine-resources.md')) failures.push(`${pathname}: offsite machine-resource index is missing`);
@@ -110,6 +122,7 @@ for (const [pathname, body] of [['/llms.txt', llms.body], ['/llms-full.txt', llm
   if (!body.includes('https://hk.onyxdevslab.com/data/organization.json')) failures.push(`${pathname}: canonical organization record discovery link is missing`);
 }
 if (!feed.body.includes('provider-maintained-external-source')) failures.push('/feed.xml: external-source category is missing');
+if (!root.body.includes('type="application/feed+json"') || !root.body.includes('href="https://hk.onyxdevslab.com/feed.json"')) failures.push('/: JSON Feed discovery link is missing');
 
 const evidenceDatasetResponse = await get('/data/case-study-evidence.json', 'application/json');
 try {
@@ -321,6 +334,7 @@ for (let index = 0; index < urls.length; index += 8) {
     if (!/<h1[ >][\s\S]*?<\/h1>/.test(page.body)) failures.push(`${url.pathname}: H1 is missing from response HTML`);
     if (!page.body.includes(`<link rel="canonical" href="${absoluteUrl}"`)) failures.push(`${url.pathname}: canonical does not match sitemap URL`);
     if (!page.body.includes('application/ld+json')) failures.push(`${url.pathname}: JSON-LD is missing`);
+    if (!page.body.includes('type="application/feed+json"') || !page.body.includes('href="https://hk.onyxdevslab.com/feed.json"')) failures.push(`${url.pathname}: JSON Feed discovery link is missing`);
     if (!page.body.includes('"address":{"@type":"PostalAddress","streetAddress":"36-40 TAI LIN PAI ROAD, UNIT B53, 2/F, KWAI CHUNG","addressLocality":"HONG KONG","postalCode":"999077","addressCountry":"HK"}')) failures.push(`${url.pathname}: verified registered-address JSON-LD is missing`);
     if (!page.body.includes('"hasOfferCatalog":{"@type":"OfferCatalog","name":"Onyx Devs Lab enterprise AI services"')) failures.push(`${url.pathname}: organization service offer catalog is missing`);
     for (const person of ['mi', 'lucas', 'hunter', 'jake', 'olivia']) if (!page.body.includes(`"@id":"https://hk.onyxdevslab.com/#person-${person}"`)) failures.push(`${url.pathname}: canonical team-member reference is missing: ${person}`);

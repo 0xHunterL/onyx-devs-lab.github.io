@@ -37,6 +37,7 @@ The [case-study evidence register](https://hk.onyxdevslab.com/en/methodology/cas
 - [Citation File Format metadata](CITATION.cff) ([versioned copy](https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-evidence-2026-09-09/CITATION.cff))
 - [XML sitemap](https://hk.onyxdevslab.com/sitemap.xml)
 - [Atom feed](https://hk.onyxdevslab.com/feed.xml)
+- [JSON Feed 1.1](https://hk.onyxdevslab.com/feed.json)
 
 ## Field notes and reproducible GEO checks
 

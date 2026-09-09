@@ -77,11 +77,12 @@ if (governanceGistSha256 !== expectedGovernanceGistSha256) failures.push(`GitHub
 const machineResourcesGistRawUrl = 'https://gist.githubusercontent.com/mixuechu/e47c85808014d62b6305441e8065c91e/raw/Onyx-enterprise-AI-machine-resources.md';
 const machineResourcesGistRaw = await get('GitHub Gist machine-resource index', machineResourcesGistRawUrl, 'text/plain');
 const machineResourcesGistSha256 = createHash('sha256').update(machineResourcesGistRaw).digest('hex');
-const expectedMachineResourcesGistSha256 = 'e2b3fdcc4cba7d87d176fce96ac0a51c460ffbe8ea015bb933929090e7a5a862';
+const expectedMachineResourcesGistSha256 = 'bff133712bea4b8c37cd1a86ec900af072117beb0168b27e6ec7afd8afc2a13d';
 if (machineResourcesGistSha256 !== expectedMachineResourcesGistSha256) failures.push(`GitHub Gist machine-resource index: SHA-256 mismatch, got ${machineResourcesGistSha256}`);
 requireText('GitHub Gist machine-resource index', machineResourcesGistRaw, [
   'data/organization.json?utm_source=github_gist',
   'data/ai-search-evidence-status.json?utm_source=github_gist',
+  'feed.json?utm_source=github_gist',
   'raw.githubusercontent.com/0xHunterL/onyx-devs-lab.github.io/main/CITATION.cff',
   'releases/download/geo-evidence-2026-09-09/CITATION.cff',
   'releases/tag/geo-readiness-2026-09-10',

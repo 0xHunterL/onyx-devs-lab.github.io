@@ -108,7 +108,7 @@ for (const file of htmlFiles.filter((candidate) => candidate.includes(`${path.se
   }
 }
 
-for (const file of ['robots.txt', 'sitemap.xml', 'feed.xml', 'llms.txt', 'llms-full.txt', 'data/case-study-evidence.json', 'data/enterprise-ai-partner-scorecard.json', 'data/enterprise-ai-pilot-charter.json', 'data/enterprise-ai-engagement-model-map.json', 'data/ai-search-evidence-status.json', 'data/organization.json', '.nojekyll']) {
+for (const file of ['robots.txt', 'sitemap.xml', 'feed.xml', 'feed.json', 'llms.txt', 'llms-full.txt', 'data/case-study-evidence.json', 'data/enterprise-ai-partner-scorecard.json', 'data/enterprise-ai-pilot-charter.json', 'data/enterprise-ai-engagement-model-map.json', 'data/ai-search-evidence-status.json', 'data/organization.json', '.nojekyll']) {
   if (!fs.existsSync(path.join(dist, file))) failures.push(`missing ${file}`);
 }
 
@@ -129,6 +129,7 @@ const machineDiscoveryFiles = {
   'llms.txt': fs.readFileSync(path.join(dist, 'llms.txt'), 'utf8'),
   'llms-full.txt': llmsFull,
   'feed.xml': fs.readFileSync(path.join(dist, 'feed.xml'), 'utf8'),
+  'feed.json': fs.readFileSync(path.join(dist, 'feed.json'), 'utf8'),
 };
 for (const [name, body] of Object.entries(machineDiscoveryFiles)) {
   if (!body.includes('https://gist.github.com/mixuechu/e47c85808014d62b6305441e8065c91e')) failures.push(`${name}: offsite decision matrix is missing`);
@@ -153,6 +154,17 @@ for (const name of ['llms.txt', 'llms-full.txt']) {
   if (!machineDiscoveryFiles[name].includes('https://hk.onyxdevslab.com/data/organization.json')) failures.push(`${name}: canonical organization record discovery link is missing`);
 }
 if (!machineDiscoveryFiles['feed.xml'].includes('provider-maintained-external-source')) failures.push('feed.xml: external-source category is missing');
+try {
+  const jsonFeed = JSON.parse(machineDiscoveryFiles['feed.json']);
+  if (jsonFeed.version !== 'https://jsonfeed.org/version/1.1') failures.push('feed.json: unexpected JSON Feed version');
+  if (jsonFeed.home_page_url !== 'https://hk.onyxdevslab.com/' || jsonFeed.feed_url !== 'https://hk.onyxdevslab.com/feed.json') failures.push('feed.json: canonical feed URLs are incomplete');
+  if (!jsonFeed.user_comment?.includes('does not prove search indexing, AI retrieval, citation, recommendation')) failures.push('feed.json: evidence boundary is missing');
+  if (!jsonFeed.items?.length || !jsonFeed.items.every((item) => item.id && item.url && item.title && item.content_text && item.date_modified)) failures.push('feed.json: item fields are incomplete');
+  if (!jsonFeed.items.some((item) => item.url === 'https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-readiness-2026-09-10' && item.date_modified === '2026-09-10T00:00:00+08:00')) failures.push('feed.json: readiness checkpoint entry is missing or stale');
+  if (!jsonFeed.items.some((item) => item.tags?.includes('provider-maintained-external-source'))) failures.push('feed.json: external-source category is missing');
+} catch {
+  failures.push('feed.json: invalid JSON');
+}
 for (const pathname of ['/en/about/', '/zh-hk/about/', '/zh-cn/about/']) {
   const html = fs.readFileSync(path.join(dist, pathname, 'index.html'), 'utf8');
   if (!html.includes('36-40 TAI LIN PAI ROAD, UNIT B53, 2/F, KWAI CHUNG, HONG KONG 999077')) failures.push(`${pathname}: visible registered address is missing`);
@@ -276,12 +288,13 @@ for (const agent of ['Claude-SearchBot', 'Claude-User', 'ClaudeBot', 'Googlebot'
 }
 
 const nginxConfig = fs.readFileSync(path.resolve('deploy/nginx-hk.conf'), 'utf8');
-for (const resource of ['sitemap.xml', 'feed.xml', 'llms.txt']) {
+for (const resource of ['sitemap.xml', 'feed.xml', 'feed.json', 'llms.txt']) {
   if (!nginxConfig.includes(`https://hk.onyxdevslab.com/${resource}`)) failures.push(`nginx: Link discovery header is missing ${resource}`);
 }
 for (const required of ['text/markdown', 'Vary "Accept"', 'Content-Signal "search=yes, ai-input=yes"']) {
   if (!nginxConfig.includes(required)) failures.push(`nginx: Markdown negotiation is missing ${required}`);
 }
+if (!nginxConfig.includes('application/feed+json json')) failures.push('nginx: JSON Feed MIME mapping is missing');
 
 const sitemap = fs.readFileSync(path.join(dist, 'sitemap.xml'), 'utf8');
 const urls = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map((match) => match[1]);
@@ -303,6 +316,7 @@ for (const file of htmlFiles) {
   const html = fs.readFileSync(file, 'utf8');
   const source = html.match(/<link rel="canonical" href="([^"]+)"/)?.[1];
   if (!source) continue;
+  if (!html.includes('type="application/feed+json"') || !html.includes('href="https://hk.onyxdevslab.com/feed.json"')) failures.push(`${path.relative(dist, file)}: JSON Feed discovery link is missing`);
   for (const match of html.matchAll(/<a\b[^>]*href="([^"]+)"/g)) {
     try {
       const target = new URL(match[1], source);
