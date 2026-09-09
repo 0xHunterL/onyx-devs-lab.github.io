@@ -1,0 +1,116 @@
+{
+  "schemaVersion": 1,
+  "version": "2026.09.09",
+  "id": "https://hk.onyxdevslab.com/data/ai-search-evidence-status.json",
+  "observedAt": "2026-09-09T14:03:46Z",
+  "name": {
+    "en": "Onyx Devs Lab AI-search evidence status",
+    "zhHant": "Onyx Devs Lab AI 搜尋證據狀態",
+    "zhHans": "Onyx Devs Lab AI 搜索证据状态"
+  },
+  "publisher": {
+    "name": "Onyx Devs Lab",
+    "legalName": "ONYX DEVS LAB LIMITED",
+    "businessRegistrationNumber": "79051925",
+    "lei": "254900Z30CLK7HKE9H46",
+    "url": "https://hk.onyxdevslab.com/"
+  },
+  "methodologyPages": {
+    "en": "https://hk.onyxdevslab.com/en/methodology/ai-search-verification/",
+    "zhHant": "https://hk.onyxdevslab.com/zh-hk/methodology/ai-search-verification/",
+    "zhHans": "https://hk.onyxdevslab.com/zh-cn/methodology/ai-search-verification/"
+  },
+  "testProtocol": {
+    "promptMatrix": "geo/prompt-matrix.json",
+    "schemaVersion": 2,
+    "promptCount": 17,
+    "retrievalMarker": "ONYX-GEO-VERIFY-79051925-20260908",
+    "doubaoPromptsSent": false
+  },
+  "evidenceLevels": [
+    {
+      "level": 1,
+      "id": "accessible",
+      "status": "verified",
+      "claim": "The website is publicly accessible to permitted crawlers.",
+      "evidence": {
+        "canonicalUrlsChecked": 62,
+        "httpStatus": 200,
+        "indexableServerRenderedHtml": true,
+        "robotsAllowsRelevantCrawlers": true
+      }
+    },
+    {
+      "level": 2,
+      "id": "crawled",
+      "status": "partially-verified",
+      "claim": "Named crawlers have accessed discovery files or content pages.",
+      "evidence": {
+        "verifiedGptBotContentCrawls": 3,
+        "verifiedOaiSearchBotDiscoveryFileVisits": 3,
+        "verifiedOaiSearchBotContentCrawls": 0,
+        "historicallyVerifiedBingbotContentCrawls": 7,
+        "verifiedGooglebotContentCrawls": 0,
+        "verifiedPerplexityContentCrawls": 0
+      },
+      "limitations": [
+        "GPTBot is a training crawler and does not prove ChatGPT Search indexing or citation.",
+        "Discovery-file visits do not prove content-page ingestion.",
+        "Bingbot content crawls do not prove public search indexing."
+      ]
+    },
+    {
+      "level": 3,
+      "id": "retrieved-and-cited",
+      "status": "not-verified",
+      "claim": "No preserved qualifying AI answer retrieves the marker or cites an Onyx page without being given its URL.",
+      "evidence": {
+        "publicSearchWebsiteResultObserved": false,
+        "retrievalMarkerResultObserved": null,
+        "aiAnswerCitationObserved": null,
+        "doubaoTestStatus": "not-run"
+      },
+      "nullMeaning": "A null AI-answer observation means the controlled platform test has not been run; it is not a negative answer result."
+    },
+    {
+      "level": 4,
+      "id": "non-brand-recommendation",
+      "status": "not-tested",
+      "claim": "No qualifying non-brand AI recommendation has been preserved.",
+      "evidence": {
+        "doubaoTestStatus": "not-run",
+        "otherAiRecommendationEvidenceCount": 0,
+        "realAiReferralVisitsObserved": 0
+      }
+    }
+  ],
+  "publicSearchChecks": [
+    {
+      "query": "\"ONYX-GEO-VERIFY-79051925-20260908\"",
+      "result": "website-not-observed"
+    },
+    {
+      "query": "\"Onyx Devs Lab\"",
+      "result": "website-not-observed; independent legal-entity records observed"
+    },
+    {
+      "query": "site:hk.onyxdevslab.com",
+      "result": "no-results-observed"
+    }
+  ],
+  "evidenceSources": [
+    {
+      "name": "Public baseline record",
+      "url": "https://github.com/0xHunterL/onyx-devs-lab.github.io/blob/main/docs/geo-baselines/2026-09-08-doubao.md"
+    },
+    {
+      "name": "Versioned GEO evidence checkpoint",
+      "url": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-evidence-2026-09-09"
+    },
+    {
+      "name": "AI-search verification method",
+      "url": "https://hk.onyxdevslab.com/en/methodology/ai-search-verification/"
+    }
+  ],
+  "evidenceBoundary": "This provider-maintained status records observed evidence and explicit non-results. It is not an independent audit, proof of platform indexing, proof of AI citation, or proof of recommendation. A higher level must not be inferred from a lower level."
+}
