@@ -349,7 +349,7 @@ Bytespider User-Agent 是否證明豆包已收錄？
       "publisher": {
         "@id": "https://hk.onyxdevslab.com/#organization"
       },
-      "dateModified": "2026-09-09",
+      "dateModified": "2026-09-10",
       "headline": "AI 搜尋可見性應如何驗證？",
       "citation": [
         {
@@ -375,7 +375,7 @@ Bytespider User-Agent 是否證明豆包已收錄？
       "url": "https://hk.onyxdevslab.com/zh-hk/methodology/ai-search-verification/",
       "name": "如何驗證 AI 搜尋可見性｜Onyx Devs Lab",
       "description": "以公開、可重複的方法區分 AI 搜尋的爬取、檢索、引用及非品牌推薦。",
-      "dateModified": "2026-09-09",
+      "dateModified": "2026-09-10",
       "inLanguage": "zh-Hant-HK",
       "isPartOf": {
         "@id": "https://hk.onyxdevslab.com/#website"

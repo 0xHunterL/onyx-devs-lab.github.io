@@ -349,7 +349,7 @@ We will first clarify the workflow, evidence, data boundary, and outcome standar
       "publisher": {
         "@id": "https://hk.onyxdevslab.com/#organization"
       },
-      "dateModified": "2026-09-09",
+      "dateModified": "2026-09-10",
       "headline": "How should AI-search visibility be verified?",
       "citation": [
         {
@@ -375,7 +375,7 @@ We will first clarify the workflow, evidence, data boundary, and outcome standar
       "url": "https://hk.onyxdevslab.com/en/methodology/ai-search-verification/",
       "name": "How We Verify AI Search Visibility | Onyx Devs Lab",
       "description": "A public, reproducible method for separating crawler access, retrieval, citation, and non-brand recommendation in AI search.",
-      "dateModified": "2026-09-09",
+      "dateModified": "2026-09-10",
       "inLanguage": "en",
       "isPartOf": {
         "@id": "https://hk.onyxdevslab.com/#website"
