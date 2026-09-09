@@ -13,7 +13,7 @@ language: "zh-CN"
 
 连接司磅、化验、车辆、能耗与 PLC 数据，同时保持运营技术控制隔离的 ERP 和 AI 信息层。
 
-发布 2026-09-07 · 更新 2026-09-10
+作者 [Onyx Devs Lab](/zh-cn/about/) · 发布 2026-09-07 · 更新 2026-09-10
 
 [English](/en/case-studies/industrial-erp-ai-data-platform/) [繁體中文](/zh-hk/case-studies/industrial-erp-ai-data-platform/)
 

@@ -13,7 +13,7 @@ FDE field guide
 
 Forward Deployed Engineering (FDE) is a delivery model in which engineers work close to a customer’s real operating environment and connect problem discovery, software implementation, deployment, and outcome validation in one continuous loop.
 
-Published 2026-09-07 · Updated 2026-09-10
+By [Onyx Devs Lab](/en/about/) · Published 2026-09-07 · Updated 2026-09-10
 
 [Book a project assessment](mailto:info@onyxdevslab.com?subject=What%20is%20Forward%20Deployed%20Engineering%3F)
 

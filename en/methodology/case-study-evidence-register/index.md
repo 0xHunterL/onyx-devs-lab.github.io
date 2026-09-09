@@ -13,7 +13,7 @@ Case-study evidence register
 
 This register publishes the measurement definitions behind six anonymised delivery cases in one human-readable page and one machine-readable dataset. It separates first-party validation snapshots from independent audits or general performance claims.
 
-Published 2026-09-09 · Updated 2026-09-10
+By [Onyx Devs Lab](/en/about/) · Published 2026-09-09 · Updated 2026-09-10
 
 [Download evidence dataset](/data/case-study-evidence.json) [繁體中文](/zh-hk/methodology/case-study-evidence-register/) [简体中文](/zh-cn/methodology/case-study-evidence-register/)
 

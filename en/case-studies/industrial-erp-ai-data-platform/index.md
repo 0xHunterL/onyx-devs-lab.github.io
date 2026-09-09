@@ -13,7 +13,7 @@ Case study · Delivery evidence
 
 An ERP and AI information layer connecting weighbridge, laboratory, vehicle, energy, and PLC data while keeping operational technology control separate.
 
-Published 2026-09-07 · Updated 2026-09-10
+By [Onyx Devs Lab](/en/about/) · Published 2026-09-07 · Updated 2026-09-10
 
 [繁體中文](/zh-hk/case-studies/industrial-erp-ai-data-platform/) [简体中文](/zh-cn/case-studies/industrial-erp-ai-data-platform/)
 

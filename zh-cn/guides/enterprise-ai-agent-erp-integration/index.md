@@ -13,7 +13,7 @@ language: "zh-CN"
 
 安全模式是保留 ERP 作为权威记录系统，只向 Agent 开放最小必要的数据和工具，并区分读取、建议、草拟和确认写入权限。
 
-发布 2026-09-07 · 更新 2026-09-10
+作者 [Onyx Devs Lab](/zh-cn/about/) · 发布 2026-09-07 · 更新 2026-09-10
 
 [预约项目评估](mailto:info@onyxdevslab.com?subject=AI%20Agent%20%E5%BA%94%E8%AF%A5%E6%80%8E%E6%A0%B7%E8%BF%9E%E6%8E%A5%20ERP%EF%BC%9F) [English](/en/guides/enterprise-ai-agent-erp-integration/) [繁體中文](/zh-hk/guides/enterprise-ai-agent-erp-integration/)
 

@@ -13,7 +13,7 @@ Enterprise AI procurement guide
 
 Compare providers by the operating problem they can own, the evidence they expose, and the controls they can run in production—not by a model demo or a long feature list.
 
-Published 2026-09-09 · Updated 2026-09-10
+By [Onyx Devs Lab](/en/about/) · Published 2026-09-09 · Updated 2026-09-10
 
 [Download procurement scorecard](/data/enterprise-ai-partner-scorecard.json) [繁體中文](/zh-hk/guides/choose-enterprise-ai-partner/) [简体中文](/zh-cn/guides/choose-enterprise-ai-partner/)
 

@@ -13,7 +13,7 @@ AI delivery decision guide
 
 Choose the engagement model by the uncertainty you need to resolve—not by which service label sounds most advanced.
 
-Published 2026-09-07 · Updated 2026-09-10
+By [Onyx Devs Lab](/en/about/) · Published 2026-09-07 · Updated 2026-09-10
 
 [Download decision map](/data/enterprise-ai-engagement-model-map.json) [繁體中文](/zh-hk/guides/ai-consulting-vs-development-vs-fde/) [简体中文](/zh-cn/guides/ai-consulting-vs-development-vs-fde/)
 

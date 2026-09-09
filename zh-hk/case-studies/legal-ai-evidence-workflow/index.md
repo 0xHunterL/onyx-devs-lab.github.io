@@ -13,7 +13,7 @@ language: "zh-Hant-HK"
 
 圍繞文件覆蓋、逐頁引用、案件權限及律師責任設計的律所營運與大型卷宗分析系統。
 
-發布 2026-09-07 · 更新 2026-09-10
+作者 [Onyx Devs Lab](/zh-hk/about/) · 發布 2026-09-07 · 更新 2026-09-10
 
 [English](/en/case-studies/legal-ai-evidence-workflow/) [简体中文](/zh-cn/case-studies/legal-ai-evidence-workflow/)
 

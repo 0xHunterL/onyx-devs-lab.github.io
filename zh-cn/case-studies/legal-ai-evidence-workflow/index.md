@@ -13,7 +13,7 @@ language: "zh-CN"
 
 围绕文件覆盖、逐页引用、案件权限和律师责任设计的律所运营与大型卷宗分析系统。
 
-发布 2026-09-07 · 更新 2026-09-10
+作者 [Onyx Devs Lab](/zh-cn/about/) · 发布 2026-09-07 · 更新 2026-09-10
 
 [English](/en/case-studies/legal-ai-evidence-workflow/) [繁體中文](/zh-hk/case-studies/legal-ai-evidence-workflow/)
 

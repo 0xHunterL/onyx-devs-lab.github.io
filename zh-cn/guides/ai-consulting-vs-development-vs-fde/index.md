@@ -13,7 +13,7 @@ language: "zh-CN"
 
 判断标准不是哪个服务名称听起来更先进，而是项目需要解决哪一种不确定性。
 
-发布 2026-09-07 · 更新 2026-09-10
+作者 [Onyx Devs Lab](/zh-cn/about/) · 发布 2026-09-07 · 更新 2026-09-10
 
 [下载决策图](/data/enterprise-ai-engagement-model-map.json) [English](/en/guides/ai-advisory-vs-custom-development-vs-fde/) [繁體中文](/zh-hk/guides/ai-consulting-vs-development-vs-fde/)
 

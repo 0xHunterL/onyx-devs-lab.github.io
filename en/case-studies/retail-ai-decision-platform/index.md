@@ -13,7 +13,7 @@ Case study · Delivery evidence
 
 A non-invasive analytics and AI layer designed around an existing SaaS ERP for an Italian-Chinese supermarket operation.
 
-Published 2026-09-07 · Updated 2026-09-10
+By [Onyx Devs Lab](/en/about/) · Published 2026-09-07 · Updated 2026-09-10
 
 [繁體中文](/zh-hk/case-studies/retail-ai-decision-platform/) [简体中文](/zh-cn/case-studies/retail-ai-decision-platform/)
 

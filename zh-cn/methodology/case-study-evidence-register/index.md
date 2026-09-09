@@ -13,7 +13,7 @@ language: "zh-CN"
 
 本登记册通过一个可阅读页面和一份机器可读数据集，集中公开六个匿名交付案例的测量定义，并把一方验证快照与独立审计或普遍效果主张分开。
 
-发布 2026-09-09 · 更新 2026-09-10
+作者 [Onyx Devs Lab](/zh-cn/about/) · 发布 2026-09-09 · 更新 2026-09-10
 
 [下载证据数据集](/data/case-study-evidence.json) [English](/en/methodology/case-study-evidence-register/) [繁體中文](/zh-hk/methodology/case-study-evidence-register/)
 

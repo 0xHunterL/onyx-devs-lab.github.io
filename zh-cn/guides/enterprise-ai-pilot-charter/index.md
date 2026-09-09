@@ -13,7 +13,7 @@ AI 试点决策工具
 
 把试点当作受控业务决策，而不是模型演示。测试开始前，先固定一条流程、当前基线、权限边界、证据集、验收门槛和决策负责人。
 
-发布 2026-09-09 · 更新 2026-09-10
+作者 [Onyx Devs Lab](/zh-cn/about/) · 发布 2026-09-09 · 更新 2026-09-10
 
 [下载试点章程](/data/enterprise-ai-pilot-charter.json) [English](/en/guides/enterprise-ai-pilot-charter-hong-kong/) [繁體中文](/zh-hk/guides/enterprise-ai-pilot-charter/)
 

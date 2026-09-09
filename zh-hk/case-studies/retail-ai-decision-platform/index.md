@@ -13,7 +13,7 @@ language: "zh-Hant-HK"
 
 為意大利華人超市業務設計的非侵入式分析與 AI 層，保留既有 SaaS ERP 作為營運系統。
 
-發布 2026-09-07 · 更新 2026-09-10
+作者 [Onyx Devs Lab](/zh-hk/about/) · 發布 2026-09-07 · 更新 2026-09-10
 
 [English](/en/case-studies/retail-ai-decision-platform/) [简体中文](/zh-cn/case-studies/retail-ai-decision-platform/)
 

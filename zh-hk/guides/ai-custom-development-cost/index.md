@@ -13,7 +13,7 @@ language: "zh-Hant-HK"
 
 可信估算主要不是由界面數量決定，而是由整合深度、數據狀況、評估、權限及系統需要承擔的營運責任決定。
 
-發布 2026-09-07 · 更新 2026-09-10
+作者 [Onyx Devs Lab](/zh-hk/about/) · 發布 2026-09-07 · 更新 2026-09-10
 
 [預約項目評估](mailto:info@onyxdevslab.com?subject=%E9%A6%99%E6%B8%AF%20AI%20%E5%AE%9A%E5%88%B6%E9%96%8B%E7%99%BC%E8%B2%BB%E7%94%A8%E7%94%B1%E7%94%9A%E9%BA%BC%E6%B1%BA%E5%AE%9A%EF%BC%9F) [English](/en/guides/custom-ai-development-cost-hong-kong/) [简体中文](/zh-cn/guides/custom-ai-development-cost/)
 

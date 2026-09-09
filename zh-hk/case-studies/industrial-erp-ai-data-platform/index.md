@@ -13,7 +13,7 @@ language: "zh-Hant-HK"
 
 連接司磅、化驗、車輛、能耗及 PLC 數據，同時保持營運技術控制隔離的 ERP 與 AI 信息層。
 
-發布 2026-09-07 · 更新 2026-09-10
+作者 [Onyx Devs Lab](/zh-hk/about/) · 發布 2026-09-07 · 更新 2026-09-10
 
 [English](/en/case-studies/industrial-erp-ai-data-platform/) [简体中文](/zh-cn/case-studies/industrial-erp-ai-data-platform/)
 

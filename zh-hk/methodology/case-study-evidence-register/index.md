@@ -13,7 +13,7 @@ language: "zh-Hant-HK"
 
 本登記冊以一個人可閱讀頁面及一份機器可讀數據集，集中公開六個匿名交付案例的量度定義，並把一方驗證快照與獨立審計或一般化成效主張分開。
 
-發布 2026-09-09 · 更新 2026-09-10
+作者 [Onyx Devs Lab](/zh-hk/about/) · 發布 2026-09-09 · 更新 2026-09-10
 
 [下載證據數據集](/data/case-study-evidence.json) [English](/en/methodology/case-study-evidence-register/) [简体中文](/zh-cn/methodology/case-study-evidence-register/)
 

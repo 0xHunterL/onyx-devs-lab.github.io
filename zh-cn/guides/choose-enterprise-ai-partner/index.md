@@ -13,7 +13,7 @@ language: "zh-CN"
 
 不要根据模型演示或功能清单选择供应商；应比较对方能否负责具体运营问题、提供可核验的公开证据，并在生产环境执行必要控制。
 
-发布 2026-09-09 · 更新 2026-09-10
+作者 [Onyx Devs Lab](/zh-cn/about/) · 发布 2026-09-09 · 更新 2026-09-10
 
 [下载采购评分卡](/data/enterprise-ai-partner-scorecard.json) [English](/en/guides/choose-enterprise-ai-partner-hong-kong/) [繁體中文](/zh-hk/guides/choose-enterprise-ai-partner/)
 

@@ -13,7 +13,7 @@ language: "zh-Hant-HK"
 
 持續同步候選人對話、更新證據化畫像，並分開人工、Copilot 及受控 Autopilot 權限的招聘工作台。
 
-發布 2026-09-07 · 更新 2026-09-10
+作者 [Onyx Devs Lab](/zh-hk/about/) · 發布 2026-09-07 · 更新 2026-09-10
 
 [English](/en/case-studies/recruiting-ai-agent-workflow/) [简体中文](/zh-cn/case-studies/recruiting-ai-agent-workflow/)
 

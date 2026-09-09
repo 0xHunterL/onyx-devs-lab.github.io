@@ -13,7 +13,7 @@ Evaluation methodology
 
 A model benchmark is not an acceptance test. Production readiness must be evaluated across evidence retrieval, output quality, tool behaviour, workflow reliability, human control, and operating outcomes.
 
-Published 2026-09-07 · Updated 2026-09-10
+By [Onyx Devs Lab](/en/about/) · Published 2026-09-07 · Updated 2026-09-10
 
 [Book a project assessment](mailto:info@onyxdevslab.com?subject=How%20do%20you%20know%20an%20enterprise%20AI%20system%20is%20ready%3F) [繁體中文](/zh-hk/methodology/enterprise-ai-evaluation/) [简体中文](/zh-cn/methodology/enterprise-ai-evaluation/)
 

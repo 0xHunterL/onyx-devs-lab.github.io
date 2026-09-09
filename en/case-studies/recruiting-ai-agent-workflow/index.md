@@ -13,7 +13,7 @@ Case study · Delivery evidence
 
 A recruiting workspace that synchronises candidate conversations, refreshes evidence-linked profiles, and separates manual, copilot, and controlled-autopilot authority.
 
-Published 2026-09-07 · Updated 2026-09-10
+By [Onyx Devs Lab](/en/about/) · Published 2026-09-07 · Updated 2026-09-10
 
 [繁體中文](/zh-hk/case-studies/recruiting-ai-agent-workflow/) [简体中文](/zh-cn/case-studies/recruiting-ai-agent-workflow/)
 

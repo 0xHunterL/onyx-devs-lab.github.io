@@ -13,7 +13,7 @@ language: "zh-CN"
 
 持续同步候选人对话、更新证据化画像，并分离人工、Copilot 和受控 Autopilot 权限的招聘工作台。
 
-发布 2026-09-07 · 更新 2026-09-10
+作者 [Onyx Devs Lab](/zh-cn/about/) · 发布 2026-09-07 · 更新 2026-09-10
 
 [English](/en/case-studies/recruiting-ai-agent-workflow/) [繁體中文](/zh-hk/case-studies/recruiting-ai-agent-workflow/)
 

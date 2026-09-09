@@ -13,7 +13,7 @@ language: "zh-CN"
 
 连接内部材料与公开金融信息、暴露冲突与证据缺口，并把投资判断保留给分析师的 Agent 研究工作流。
 
-发布 2026-09-07 · 更新 2026-09-10
+作者 [Onyx Devs Lab](/zh-cn/about/) · 发布 2026-09-07 · 更新 2026-09-10
 
 [English](/en/case-studies/credit-research-ai-agent/) [繁體中文](/zh-hk/case-studies/credit-research-ai-agent/)
 

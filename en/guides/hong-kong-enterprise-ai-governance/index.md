@@ -13,7 +13,7 @@ Hong Kong AI governance guide
 
 Start from the affected workflow and personal-data boundary. Then assign accountability, classify risk, set human authority, test the complete system, and keep evidence after launch.
 
-Published 2026-09-09 · Updated 2026-09-10
+By [Onyx Devs Lab](/en/about/) · Published 2026-09-09 · Updated 2026-09-10
 
 [Book a project assessment](mailto:info@onyxdevslab.com?subject=What%20governance%20does%20a%20Hong%20Kong%20enterprise%20need%20before%20deploying%20AI%3F) [繁體中文](/zh-hk/guides/enterprise-ai-governance/) [简体中文](/zh-cn/guides/enterprise-ai-governance/)
 

@@ -13,7 +13,7 @@ Case study · Delivery evidence
 
 A legal operations and dossier-analysis system designed around document coverage, page-level citations, matter permissions, and accountable lawyer review.
 
-Published 2026-09-07 · Updated 2026-09-10
+By [Onyx Devs Lab](/en/about/) · Published 2026-09-07 · Updated 2026-09-10
 
 [繁體中文](/zh-hk/case-studies/legal-ai-evidence-workflow/) [简体中文](/zh-cn/case-studies/legal-ai-evidence-workflow/)
 

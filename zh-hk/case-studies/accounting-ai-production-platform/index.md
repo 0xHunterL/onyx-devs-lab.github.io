@@ -13,7 +13,7 @@ language: "zh-Hant-HK"
 
 以每個客戶組合作為持續營運上下文，透過受控生產階段推進工作的多 Agent 平台。
 
-發布 2026-09-07 · 更新 2026-09-10
+作者 [Onyx Devs Lab](/zh-hk/about/) · 發布 2026-09-07 · 更新 2026-09-10
 
 [English](/en/case-studies/accounting-ai-production-platform/) [简体中文](/zh-cn/case-studies/accounting-ai-production-platform/)
 

@@ -13,7 +13,7 @@ language: "zh-CN"
 
 以每个客户组合作为持续运营上下文，通过受控生产阶段推进工作的多 Agent 平台。
 
-发布 2026-09-07 · 更新 2026-09-10
+作者 [Onyx Devs Lab](/zh-cn/about/) · 发布 2026-09-07 · 更新 2026-09-10
 
 [English](/en/case-studies/accounting-ai-production-platform/) [繁體中文](/zh-hk/case-studies/accounting-ai-production-platform/)
 

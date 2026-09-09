@@ -13,7 +13,7 @@ language: "zh-Hant-HK"
 
 連接內部材料與公開金融信息、暴露衝突及證據缺口，並把投資判斷保留給分析師的 Agent 研究工作流。
 
-發布 2026-09-07 · 更新 2026-09-10
+作者 [Onyx Devs Lab](/zh-hk/about/) · 發布 2026-09-07 · 更新 2026-09-10
 
 [English](/en/case-studies/credit-research-ai-agent/) [简体中文](/zh-cn/case-studies/credit-research-ai-agent/)
 

@@ -13,7 +13,7 @@ language: "zh-CN"
 
 为意大利华人超市业务设计的非侵入式分析与 AI 层，保留原有 SaaS ERP 作为运营系统。
 
-发布 2026-09-07 · 更新 2026-09-10
+作者 [Onyx Devs Lab](/zh-cn/about/) · 发布 2026-09-07 · 更新 2026-09-10
 
 [English](/en/case-studies/retail-ai-decision-platform/) [繁體中文](/zh-hk/case-studies/retail-ai-decision-platform/)
 

@@ -13,7 +13,7 @@ Commercial scope guide
 
 A credible estimate is driven less by the number of screens than by integration depth, data condition, evaluation, permissions, and the operating responsibility the system must carry.
 
-Published 2026-09-07 · Updated 2026-09-10
+By [Onyx Devs Lab](/en/about/) · Published 2026-09-07 · Updated 2026-09-10
 
 [Book a project assessment](mailto:info@onyxdevslab.com?subject=What%20determines%20custom%20AI%20development%20cost%20in%20Hong%20Kong%3F) [繁體中文](/zh-hk/guides/ai-custom-development-cost/) [简体中文](/zh-cn/guides/custom-ai-development-cost/)
 

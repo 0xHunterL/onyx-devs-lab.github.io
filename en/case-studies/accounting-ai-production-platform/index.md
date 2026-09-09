@@ -13,7 +13,7 @@ Case study · Delivery evidence
 
 A multi-agent workspace that treats each client portfolio as a persistent operating context and moves work through controlled production stages.
 
-Published 2026-09-07 · Updated 2026-09-10
+By [Onyx Devs Lab](/en/about/) · Published 2026-09-07 · Updated 2026-09-10
 
 [繁體中文](/zh-hk/case-studies/accounting-ai-production-platform/) [简体中文](/zh-cn/case-studies/accounting-ai-production-platform/)
 

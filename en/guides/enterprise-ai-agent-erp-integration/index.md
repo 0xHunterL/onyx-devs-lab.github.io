@@ -13,7 +13,7 @@ Enterprise integration guide
 
 The safe pattern is to preserve the ERP as the system of record, give the agent the smallest necessary data and tool surface, and separate read, recommendation, draft, and confirmed-write authority.
 
-Published 2026-09-07 · Updated 2026-09-10
+By [Onyx Devs Lab](/en/about/) · Published 2026-09-07 · Updated 2026-09-10
 
 [Book a project assessment](mailto:info@onyxdevslab.com?subject=How%20should%20an%20AI%20agent%20connect%20to%20an%20ERP%3F) [繁體中文](/zh-hk/guides/enterprise-ai-agent-erp-integration/) [简体中文](/zh-cn/guides/enterprise-ai-agent-erp-integration/)
 

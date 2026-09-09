@@ -13,7 +13,7 @@ Case study · Delivery evidence
 
 An agentic research workflow that connects internal materials and public financial information, exposes conflicts and missing evidence, and keeps investment judgement with the analyst.
 
-Published 2026-09-07 · Updated 2026-09-10
+By [Onyx Devs Lab](/en/about/) · Published 2026-09-07 · Updated 2026-09-10
 
 [繁體中文](/zh-hk/case-studies/credit-research-ai-agent/) [简体中文](/zh-cn/case-studies/credit-research-ai-agent/)
 

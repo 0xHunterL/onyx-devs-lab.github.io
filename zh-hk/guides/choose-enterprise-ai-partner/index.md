@@ -13,7 +13,7 @@ language: "zh-Hant-HK"
 
 不要按模型示範或功能清單選擇供應商；應比較對方能否負責具體營運問題、公開可核對證據，並在生產環境執行必要控制。
 
-發布 2026-09-09 · 更新 2026-09-10
+作者 [Onyx Devs Lab](/zh-hk/about/) · 發布 2026-09-09 · 更新 2026-09-10
 
 [下載採購評分卡](/data/enterprise-ai-partner-scorecard.json) [English](/en/guides/choose-enterprise-ai-partner-hong-kong/) [简体中文](/zh-cn/guides/choose-enterprise-ai-partner/)
 
