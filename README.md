@@ -47,7 +47,7 @@ The [case-study evidence register](https://hk.onyxdevslab.com/en/methodology/cas
 
 Public verification: [Hong Kong Companies Registry](https://www.cr.gov.hk/docs/wrpt/RNC063_2025.10.27-2025.11.02.pdf) · [Bloomberg LEI](https://lei.bloomberg.com/leis/view/254900Z30CLK7HKE9H46)
 
-AI-search measurement: [public GEO verification baseline](https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-baseline-2026-09-08) · [reproducible verification method](https://hk.onyxdevslab.com/en/methodology/ai-search-verification/)
+AI-search measurement: [public GEO verification baseline](https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-baseline-2026-09-08) · [2026-09-09 evidence checkpoint](https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-evidence-2026-09-09) · [reproducible verification method](https://hk.onyxdevslab.com/en/methodology/ai-search-verification/)
 
 ## Local development
 
