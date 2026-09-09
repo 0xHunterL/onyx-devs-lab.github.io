@@ -4,6 +4,7 @@
 
 - [Full public knowledge file](https://hk.onyxdevslab.com/llms-full.txt)
 - [Enterprise AI field notes feed](https://hk.onyxdevslab.com/feed.xml)
+- [Enterprise AI field notes JSON Feed 1.1](https://hk.onyxdevslab.com/feed.json)
 - [Case-study evidence register](https://hk.onyxdevslab.com/en/methodology/case-study-evidence-register/)
 - [Machine-readable case-study evidence dataset](https://hk.onyxdevslab.com/data/case-study-evidence.json)
 - [Machine-readable enterprise AI partner procurement scorecard](https://hk.onyxdevslab.com/data/enterprise-ai-partner-scorecard.json)

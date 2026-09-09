@@ -11,6 +11,7 @@ Registered-office source: https://www.gleif.org/lei/254900Z30CLK7HKE9H46
 Services: enterprise AI advisory, custom AI development, and Forward Deployed Engineering (FDE).
 Markets: Hong Kong, Greater China, cross-border, and global engagements.
 Contact: info@onyxdevslab.com
+JSON Feed 1.1: https://hk.onyxdevslab.com/feed.json
 
 ## External public evidence and field notes
 Versioned GEO evidence checkpoint: https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-evidence-2026-09-09

@@ -1,0 +1,759 @@
+{
+  "version": "https://jsonfeed.org/version/1.1",
+  "title": "Onyx Devs Lab — Enterprise AI Field Notes",
+  "home_page_url": "https://hk.onyxdevslab.com/",
+  "feed_url": "https://hk.onyxdevslab.com/feed.json",
+  "description": "Enterprise AI advisory, custom development, Forward Deployed Engineering, buyer guides, methods, and evidence resources from Onyx Devs Lab.",
+  "user_comment": "Provider-maintained discovery feed. Accessibility does not prove search indexing, AI retrieval, citation, recommendation, independent endorsement, or client outcomes beyond each resource’s stated limitations.",
+  "authors": [
+    {
+      "name": "Onyx Devs Lab",
+      "url": "https://hk.onyxdevslab.com/"
+    }
+  ],
+  "language": "en",
+  "items": [
+    {
+      "id": "https://hk.onyxdevslab.com/en/insights/what-is-forward-deployed-engineering/",
+      "url": "https://hk.onyxdevslab.com/en/insights/what-is-forward-deployed-engineering/",
+      "title": "What Is Forward Deployed Engineering (FDE)? | Onyx Devs Lab",
+      "summary": "A practical definition of Forward Deployed Engineering, how FDE differs from consulting and outsourcing, and when the model fits an enterprise AI project.",
+      "content_text": "A practical definition of Forward Deployed Engineering, how FDE differs from consulting and outsourcing, and when the model fits an enterprise AI project.",
+      "date_modified": "2026-09-09T00:00:00+08:00",
+      "language": "en",
+      "tags": [
+        "content",
+        "en"
+      ]
+    },
+    {
+      "id": "https://hk.onyxdevslab.com/en/guides/ai-advisory-vs-custom-development-vs-fde/",
+      "url": "https://hk.onyxdevslab.com/en/guides/ai-advisory-vs-custom-development-vs-fde/",
+      "title": "AI Advisory vs Custom Development vs FDE | Onyx Devs Lab",
+      "summary": "A decision guide for choosing AI advisory, custom development, or Forward Deployed Engineering based on problem clarity, evidence, and delivery ownership.",
+      "content_text": "A decision guide for choosing AI advisory, custom development, or Forward Deployed Engineering based on problem clarity, evidence, and delivery ownership.",
+      "date_modified": "2026-09-09T00:00:00+08:00",
+      "language": "en",
+      "tags": [
+        "Article",
+        "en"
+      ]
+    },
+    {
+      "id": "https://hk.onyxdevslab.com/zh-hk/guides/ai-consulting-vs-development-vs-fde/",
+      "url": "https://hk.onyxdevslab.com/zh-hk/guides/ai-consulting-vs-development-vs-fde/",
+      "title": "AI 顧問、定制開發與 FDE 如何選擇｜Onyx Devs Lab",
+      "summary": "按問題清晰度、證據與交付責任，選擇 AI 顧問、AI 定制開發或前線部署工程 FDE。",
+      "content_text": "按問題清晰度、證據與交付責任，選擇 AI 顧問、AI 定制開發或前線部署工程 FDE。",
+      "date_modified": "2026-09-09T00:00:00+08:00",
+      "language": "zh-Hant-HK",
+      "tags": [
+        "Article",
+        "zh-Hant-HK"
+      ]
+    },
+    {
+      "id": "https://hk.onyxdevslab.com/en/guides/custom-ai-development-cost-hong-kong/",
+      "url": "https://hk.onyxdevslab.com/en/guides/custom-ai-development-cost-hong-kong/",
+      "title": "Custom AI Development Cost in Hong Kong | Scope Guide",
+      "summary": "Understand what drives custom AI development cost in Hong Kong, what a credible estimate includes, and how to reduce risk before committing to a build.",
+      "content_text": "Understand what drives custom AI development cost in Hong Kong, what a credible estimate includes, and how to reduce risk before committing to a build.",
+      "date_modified": "2026-09-09T00:00:00+08:00",
+      "language": "en",
+      "tags": [
+        "Article",
+        "en"
+      ]
+    },
+    {
+      "id": "https://hk.onyxdevslab.com/zh-hk/guides/ai-custom-development-cost/",
+      "url": "https://hk.onyxdevslab.com/zh-hk/guides/ai-custom-development-cost/",
+      "title": "香港 AI 定制開發費用如何估算｜Onyx Devs Lab",
+      "summary": "了解香港 AI 定制開發的主要成本因素、可信報價應包含甚麼，以及如何在全面開發前降低風險。",
+      "content_text": "了解香港 AI 定制開發的主要成本因素、可信報價應包含甚麼，以及如何在全面開發前降低風險。",
+      "date_modified": "2026-09-09T00:00:00+08:00",
+      "language": "zh-Hant-HK",
+      "tags": [
+        "Article",
+        "zh-Hant-HK"
+      ]
+    },
+    {
+      "id": "https://hk.onyxdevslab.com/en/guides/enterprise-ai-agent-erp-integration/",
+      "url": "https://hk.onyxdevslab.com/en/guides/enterprise-ai-agent-erp-integration/",
+      "title": "Enterprise AI Agent and ERP Integration Guide | Onyx Devs Lab",
+      "summary": "A practical architecture and control guide for connecting enterprise AI agents to ERP data and actions without replacing the system of record.",
+      "content_text": "A practical architecture and control guide for connecting enterprise AI agents to ERP data and actions without replacing the system of record.",
+      "date_modified": "2026-09-09T00:00:00+08:00",
+      "language": "en",
+      "tags": [
+        "Article",
+        "en"
+      ]
+    },
+    {
+      "id": "https://hk.onyxdevslab.com/zh-hk/guides/enterprise-ai-agent-erp-integration/",
+      "url": "https://hk.onyxdevslab.com/zh-hk/guides/enterprise-ai-agent-erp-integration/",
+      "title": "企業 AI Agent 與 ERP 整合指南｜Onyx Devs Lab",
+      "summary": "在不更換記錄系統的情況下，把企業 AI Agent 安全連接至 ERP 數據與操作的架構及控制方法。",
+      "content_text": "在不更換記錄系統的情況下，把企業 AI Agent 安全連接至 ERP 數據與操作的架構及控制方法。",
+      "date_modified": "2026-09-09T00:00:00+08:00",
+      "language": "zh-Hant-HK",
+      "tags": [
+        "Article",
+        "zh-Hant-HK"
+      ]
+    },
+    {
+      "id": "https://hk.onyxdevslab.com/en/methodology/enterprise-ai-evaluation/",
+      "url": "https://hk.onyxdevslab.com/en/methodology/enterprise-ai-evaluation/",
+      "title": "Enterprise AI Evaluation Framework | Onyx Devs Lab",
+      "summary": "A practical enterprise AI evaluation framework covering retrieval, outputs, tool use, operational reliability, human review, and business outcomes.",
+      "content_text": "A practical enterprise AI evaluation framework covering retrieval, outputs, tool use, operational reliability, human review, and business outcomes.",
+      "date_modified": "2026-09-09T00:00:00+08:00",
+      "language": "en",
+      "tags": [
+        "Article",
+        "en"
+      ]
+    },
+    {
+      "id": "https://hk.onyxdevslab.com/zh-hk/methodology/enterprise-ai-evaluation/",
+      "url": "https://hk.onyxdevslab.com/zh-hk/methodology/enterprise-ai-evaluation/",
+      "title": "企業 AI 評估框架｜從模型到營運成果｜Onyx Devs Lab",
+      "summary": "企業 AI 評估框架，涵蓋檢索、輸出、工具操作、流程可靠性、人工覆核及業務成果。",
+      "content_text": "企業 AI 評估框架，涵蓋檢索、輸出、工具操作、流程可靠性、人工覆核及業務成果。",
+      "date_modified": "2026-09-09T00:00:00+08:00",
+      "language": "zh-Hant-HK",
+      "tags": [
+        "Article",
+        "zh-Hant-HK"
+      ]
+    },
+    {
+      "id": "https://hk.onyxdevslab.com/en/guides/choose-enterprise-ai-partner-hong-kong/",
+      "url": "https://hk.onyxdevslab.com/en/guides/choose-enterprise-ai-partner-hong-kong/",
+      "title": "How to Choose an Enterprise AI Partner in Hong Kong | Onyx Devs Lab",
+      "summary": "A practical procurement checklist for comparing Hong Kong enterprise AI consultancies and development partners using evidence, controls, ownership, and validation.",
+      "content_text": "A practical procurement checklist for comparing Hong Kong enterprise AI consultancies and development partners using evidence, controls, ownership, and validation.",
+      "date_modified": "2026-09-09T00:00:00+08:00",
+      "language": "en",
+      "tags": [
+        "Article",
+        "en"
+      ]
+    },
+    {
+      "id": "https://hk.onyxdevslab.com/zh-hk/guides/choose-enterprise-ai-partner/",
+      "url": "https://hk.onyxdevslab.com/zh-hk/guides/choose-enterprise-ai-partner/",
+      "title": "香港企業如何選擇 AI 服務商｜採購評估清單｜Onyx Devs Lab",
+      "summary": "以案例證據、生產控制、交付責任及驗證關口，比較香港企業 AI 顧問與定制開發團隊。",
+      "content_text": "以案例證據、生產控制、交付責任及驗證關口，比較香港企業 AI 顧問與定制開發團隊。",
+      "date_modified": "2026-09-09T00:00:00+08:00",
+      "language": "zh-Hant-HK",
+      "tags": [
+        "Article",
+        "zh-Hant-HK"
+      ]
+    },
+    {
+      "id": "https://hk.onyxdevslab.com/en/guides/hong-kong-enterprise-ai-governance/",
+      "url": "https://hk.onyxdevslab.com/en/guides/hong-kong-enterprise-ai-governance/",
+      "title": "Hong Kong Enterprise AI Governance Checklist | Onyx Devs Lab",
+      "summary": "A practical Hong Kong enterprise AI governance checklist grounded in PCPD guidance: accountability, risk assessment, human oversight, data, testing, monitoring, and communication.",
+      "content_text": "A practical Hong Kong enterprise AI governance checklist grounded in PCPD guidance: accountability, risk assessment, human oversight, data, testing, monitoring, and communication.",
+      "date_modified": "2026-09-09T00:00:00+08:00",
+      "language": "en",
+      "tags": [
+        "Article",
+        "en"
+      ]
+    },
+    {
+      "id": "https://hk.onyxdevslab.com/zh-hk/guides/enterprise-ai-governance/",
+      "url": "https://hk.onyxdevslab.com/zh-hk/guides/enterprise-ai-governance/",
+      "title": "香港企業 AI 管治清單｜私隱、風險與人工監督｜Onyx Devs Lab",
+      "summary": "以香港私隱專員公署框架為依據，把企業 AI 管治落實為責任、風險評估、人工監督、數據、測試、監控及溝通控制。",
+      "content_text": "以香港私隱專員公署框架為依據，把企業 AI 管治落實為責任、風險評估、人工監督、數據、測試、監控及溝通控制。",
+      "date_modified": "2026-09-09T00:00:00+08:00",
+      "language": "zh-Hant-HK",
+      "tags": [
+        "Article",
+        "zh-Hant-HK"
+      ]
+    },
+    {
+      "id": "https://hk.onyxdevslab.com/zh-cn/guides/ai-consulting-vs-development-vs-fde/",
+      "url": "https://hk.onyxdevslab.com/zh-cn/guides/ai-consulting-vs-development-vs-fde/",
+      "title": "AI 咨询、定制开发与 FDE 怎么选｜Onyx Devs Lab",
+      "summary": "根据问题清晰度、数据证据与交付责任，选择 AI 咨询、AI 定制开发或 FDE。",
+      "content_text": "根据问题清晰度、数据证据与交付责任，选择 AI 咨询、AI 定制开发或 FDE。",
+      "date_modified": "2026-09-09T00:00:00+08:00",
+      "language": "zh-CN",
+      "tags": [
+        "Article",
+        "zh-CN"
+      ]
+    },
+    {
+      "id": "https://hk.onyxdevslab.com/zh-cn/guides/custom-ai-development-cost/",
+      "url": "https://hk.onyxdevslab.com/zh-cn/guides/custom-ai-development-cost/",
+      "title": "香港 AI 定制开发费用怎么估算｜Onyx Devs Lab",
+      "summary": "了解香港 AI 定制开发的成本因素、可靠报价应包含什么，以及如何降低项目风险。",
+      "content_text": "了解香港 AI 定制开发的成本因素、可靠报价应包含什么，以及如何降低项目风险。",
+      "date_modified": "2026-09-09T00:00:00+08:00",
+      "language": "zh-CN",
+      "tags": [
+        "Article",
+        "zh-CN"
+      ]
+    },
+    {
+      "id": "https://hk.onyxdevslab.com/zh-cn/guides/enterprise-ai-agent-erp-integration/",
+      "url": "https://hk.onyxdevslab.com/zh-cn/guides/enterprise-ai-agent-erp-integration/",
+      "title": "企业 AI Agent 与 ERP 集成指南｜Onyx Devs Lab",
+      "summary": "在保留 ERP 作为记录系统的前提下，把企业 AI Agent 安全连接到数据与业务操作。",
+      "content_text": "在保留 ERP 作为记录系统的前提下，把企业 AI Agent 安全连接到数据与业务操作。",
+      "date_modified": "2026-09-09T00:00:00+08:00",
+      "language": "zh-CN",
+      "tags": [
+        "Article",
+        "zh-CN"
+      ]
+    },
+    {
+      "id": "https://hk.onyxdevslab.com/zh-cn/methodology/enterprise-ai-evaluation/",
+      "url": "https://hk.onyxdevslab.com/zh-cn/methodology/enterprise-ai-evaluation/",
+      "title": "企业 AI 系统评估框架｜Onyx Devs Lab",
+      "summary": "从检索证据、输出、工具调用、运营可靠性、人工复核和业务结果判断企业 AI 能否上线。",
+      "content_text": "从检索证据、输出、工具调用、运营可靠性、人工复核和业务结果判断企业 AI 能否上线。",
+      "date_modified": "2026-09-09T00:00:00+08:00",
+      "language": "zh-CN",
+      "tags": [
+        "Article",
+        "zh-CN"
+      ]
+    },
+    {
+      "id": "https://hk.onyxdevslab.com/zh-cn/guides/choose-enterprise-ai-partner/",
+      "url": "https://hk.onyxdevslab.com/zh-cn/guides/choose-enterprise-ai-partner/",
+      "title": "香港企业如何选择 AI 服务商｜采购评估清单｜Onyx Devs Lab",
+      "summary": "用案例证据、生产控制、交付责任和验证关口，比较香港企业 AI 咨询与定制开发团队。",
+      "content_text": "用案例证据、生产控制、交付责任和验证关口，比较香港企业 AI 咨询与定制开发团队。",
+      "date_modified": "2026-09-09T00:00:00+08:00",
+      "language": "zh-CN",
+      "tags": [
+        "Article",
+        "zh-CN"
+      ]
+    },
+    {
+      "id": "https://hk.onyxdevslab.com/zh-cn/guides/enterprise-ai-governance/",
+      "url": "https://hk.onyxdevslab.com/zh-cn/guides/enterprise-ai-governance/",
+      "title": "香港企业 AI 治理清单｜隐私、风险与人工监督｜Onyx Devs Lab",
+      "summary": "依据香港隐私专员公署框架，把企业 AI 治理落实为责任、风险评估、人工监督、数据、测试、监控和沟通控制。",
+      "content_text": "依据香港隐私专员公署框架，把企业 AI 治理落实为责任、风险评估、人工监督、数据、测试、监控和沟通控制。",
+      "date_modified": "2026-09-09T00:00:00+08:00",
+      "language": "zh-CN",
+      "tags": [
+        "Article",
+        "zh-CN"
+      ]
+    },
+    {
+      "id": "https://hk.onyxdevslab.com/en/guides/enterprise-ai-pilot-charter-hong-kong/",
+      "url": "https://hk.onyxdevslab.com/en/guides/enterprise-ai-pilot-charter-hong-kong/",
+      "title": "Enterprise AI Pilot Charter and Acceptance Template Hong Kong | Onyx Devs Lab",
+      "summary": "A downloadable Hong Kong enterprise AI pilot charter for defining scope, evidence, risk controls, acceptance thresholds, and scale, redesign, or stop decisions.",
+      "content_text": "A downloadable Hong Kong enterprise AI pilot charter for defining scope, evidence, risk controls, acceptance thresholds, and scale, redesign, or stop decisions.",
+      "date_modified": "2026-09-09T00:00:00+08:00",
+      "language": "en",
+      "tags": [
+        "Article",
+        "en"
+      ]
+    },
+    {
+      "id": "https://hk.onyxdevslab.com/zh-hk/guides/enterprise-ai-pilot-charter/",
+      "url": "https://hk.onyxdevslab.com/zh-hk/guides/enterprise-ai-pilot-charter/",
+      "title": "香港企業 AI 試點章程與驗收模板｜Onyx Devs Lab",
+      "summary": "可下載的香港企業 AI 試點章程，定義範圍、證據、風險控制、驗收門檻，以及擴大、重設或停止決策。",
+      "content_text": "可下載的香港企業 AI 試點章程，定義範圍、證據、風險控制、驗收門檻，以及擴大、重設或停止決策。",
+      "date_modified": "2026-09-09T00:00:00+08:00",
+      "language": "zh-Hant-HK",
+      "tags": [
+        "Article",
+        "zh-Hant-HK"
+      ]
+    },
+    {
+      "id": "https://hk.onyxdevslab.com/zh-cn/guides/enterprise-ai-pilot-charter/",
+      "url": "https://hk.onyxdevslab.com/zh-cn/guides/enterprise-ai-pilot-charter/",
+      "title": "香港企业 AI 试点章程与验收模板｜Onyx Devs Lab",
+      "summary": "可下载的香港企业 AI 试点章程，用于定义范围、证据、风险控制、验收门槛，以及扩大、重设或停止决策。",
+      "content_text": "可下载的香港企业 AI 试点章程，用于定义范围、证据、风险控制、验收门槛，以及扩大、重设或停止决策。",
+      "date_modified": "2026-09-09T00:00:00+08:00",
+      "language": "zh-CN",
+      "tags": [
+        "Article",
+        "zh-CN"
+      ]
+    },
+    {
+      "id": "https://hk.onyxdevslab.com/en/methodology/ai-search-verification/",
+      "url": "https://hk.onyxdevslab.com/en/methodology/ai-search-verification/",
+      "title": "How We Verify AI Search Visibility | Onyx Devs Lab",
+      "summary": "A public, reproducible method for separating crawler access, retrieval, citation, and non-brand recommendation in AI search.",
+      "content_text": "A public, reproducible method for separating crawler access, retrieval, citation, and non-brand recommendation in AI search.",
+      "date_modified": "2026-09-10T00:00:00+08:00",
+      "language": "en",
+      "tags": [
+        "Article",
+        "en"
+      ]
+    },
+    {
+      "id": "https://hk.onyxdevslab.com/zh-hk/methodology/ai-search-verification/",
+      "url": "https://hk.onyxdevslab.com/zh-hk/methodology/ai-search-verification/",
+      "title": "如何驗證 AI 搜尋可見性｜Onyx Devs Lab",
+      "summary": "以公開、可重複的方法區分 AI 搜尋的爬取、檢索、引用及非品牌推薦。",
+      "content_text": "以公開、可重複的方法區分 AI 搜尋的爬取、檢索、引用及非品牌推薦。",
+      "date_modified": "2026-09-10T00:00:00+08:00",
+      "language": "zh-Hant-HK",
+      "tags": [
+        "Article",
+        "zh-Hant-HK"
+      ]
+    },
+    {
+      "id": "https://hk.onyxdevslab.com/zh-cn/methodology/ai-search-verification/",
+      "url": "https://hk.onyxdevslab.com/zh-cn/methodology/ai-search-verification/",
+      "title": "如何验证 AI 搜索可见性｜Onyx Devs Lab",
+      "summary": "用公开、可重复的方法区分 AI 搜索中的爬取、检索、引用和非品牌推荐。",
+      "content_text": "用公开、可重复的方法区分 AI 搜索中的爬取、检索、引用和非品牌推荐。",
+      "date_modified": "2026-09-10T00:00:00+08:00",
+      "language": "zh-CN",
+      "tags": [
+        "Article",
+        "zh-CN"
+      ]
+    },
+    {
+      "id": "https://hk.onyxdevslab.com/en/methodology/case-study-evidence-register/",
+      "url": "https://hk.onyxdevslab.com/en/methodology/case-study-evidence-register/",
+      "title": "Enterprise AI Case Study Evidence Register | Onyx Devs Lab",
+      "summary": "A versioned register of the definitions, scope, source pages, and limitations behind Onyx enterprise AI case-study metrics.",
+      "content_text": "A versioned register of the definitions, scope, source pages, and limitations behind Onyx enterprise AI case-study metrics.",
+      "date_modified": "2026-09-09T00:00:00+08:00",
+      "language": "en",
+      "tags": [
+        "Dataset",
+        "en"
+      ]
+    },
+    {
+      "id": "https://hk.onyxdevslab.com/zh-hk/methodology/case-study-evidence-register/",
+      "url": "https://hk.onyxdevslab.com/zh-hk/methodology/case-study-evidence-register/",
+      "title": "企業 AI 案例證據登記冊｜Onyx Devs Lab",
+      "summary": "集中記錄 Onyx 企業 AI 案例指標的定義、範圍、來源頁及限制。",
+      "content_text": "集中記錄 Onyx 企業 AI 案例指標的定義、範圍、來源頁及限制。",
+      "date_modified": "2026-09-09T00:00:00+08:00",
+      "language": "zh-Hant-HK",
+      "tags": [
+        "Dataset",
+        "zh-Hant-HK"
+      ]
+    },
+    {
+      "id": "https://hk.onyxdevslab.com/zh-cn/methodology/case-study-evidence-register/",
+      "url": "https://hk.onyxdevslab.com/zh-cn/methodology/case-study-evidence-register/",
+      "title": "企业 AI 案例证据登记册｜Onyx Devs Lab",
+      "summary": "集中记录 Onyx 企业 AI 案例指标的定义、范围、来源页和限制。",
+      "content_text": "集中记录 Onyx 企业 AI 案例指标的定义、范围、来源页和限制。",
+      "date_modified": "2026-09-09T00:00:00+08:00",
+      "language": "zh-CN",
+      "tags": [
+        "Dataset",
+        "zh-CN"
+      ]
+    },
+    {
+      "id": "https://hk.onyxdevslab.com/en/case-studies/retail-ai-decision-platform/",
+      "url": "https://hk.onyxdevslab.com/en/case-studies/retail-ai-decision-platform/",
+      "title": "Retail AI Decision Platform Case Study | Onyx Devs Lab",
+      "summary": "How a non-invasive data layer over an existing ERP can support inventory, staffing, and merchandising decisions.",
+      "content_text": "How a non-invasive data layer over an existing ERP can support inventory, staffing, and merchandising decisions.",
+      "date_modified": "2026-09-09T00:00:00+08:00",
+      "language": "en",
+      "tags": [
+        "content",
+        "en"
+      ]
+    },
+    {
+      "id": "https://hk.onyxdevslab.com/en/case-studies/accounting-ai-production-platform/",
+      "url": "https://hk.onyxdevslab.com/en/case-studies/accounting-ai-production-platform/",
+      "title": "AI Accounting Production Platform Case Study | Onyx Devs Lab",
+      "summary": "A multi-agent accounting production system with workflow orchestration, evidence, exception handling, and human control.",
+      "content_text": "A multi-agent accounting production system with workflow orchestration, evidence, exception handling, and human control.",
+      "date_modified": "2026-09-09T00:00:00+08:00",
+      "language": "en",
+      "tags": [
+        "content",
+        "en"
+      ]
+    },
+    {
+      "id": "https://hk.onyxdevslab.com/zh-hk/case-studies/retail-ai-decision-platform/",
+      "url": "https://hk.onyxdevslab.com/zh-hk/case-studies/retail-ai-decision-platform/",
+      "title": "零售 AI 決策平台案例｜Onyx Devs Lab",
+      "summary": "在不更換既有 ERP 的前提下，建立支援庫存、人力及商品組合決策的數據與 AI 層。",
+      "content_text": "在不更換既有 ERP 的前提下，建立支援庫存、人力及商品組合決策的數據與 AI 層。",
+      "date_modified": "2026-09-09T00:00:00+08:00",
+      "language": "zh-Hant-HK",
+      "tags": [
+        "content",
+        "zh-Hant-HK"
+      ]
+    },
+    {
+      "id": "https://hk.onyxdevslab.com/zh-hk/case-studies/accounting-ai-production-platform/",
+      "url": "https://hk.onyxdevslab.com/zh-hk/case-studies/accounting-ai-production-platform/",
+      "title": "AI 原生會計生產平台案例｜Onyx Devs Lab",
+      "summary": "具備流程編排、證據鏈、異常處理及人工控制的多 Agent 會計生產系統。",
+      "content_text": "具備流程編排、證據鏈、異常處理及人工控制的多 Agent 會計生產系統。",
+      "date_modified": "2026-09-09T00:00:00+08:00",
+      "language": "zh-Hant-HK",
+      "tags": [
+        "content",
+        "zh-Hant-HK"
+      ]
+    },
+    {
+      "id": "https://hk.onyxdevslab.com/zh-cn/case-studies/retail-ai-decision-platform/",
+      "url": "https://hk.onyxdevslab.com/zh-cn/case-studies/retail-ai-decision-platform/",
+      "title": "零售 AI 决策平台案例｜Onyx Devs Lab",
+      "summary": "在不更换现有 ERP 的前提下，建立支持库存、人力和商品组合决策的数据与 AI 层。",
+      "content_text": "在不更换现有 ERP 的前提下，建立支持库存、人力和商品组合决策的数据与 AI 层。",
+      "date_modified": "2026-09-09T00:00:00+08:00",
+      "language": "zh-CN",
+      "tags": [
+        "content",
+        "zh-CN"
+      ]
+    },
+    {
+      "id": "https://hk.onyxdevslab.com/zh-cn/case-studies/accounting-ai-production-platform/",
+      "url": "https://hk.onyxdevslab.com/zh-cn/case-studies/accounting-ai-production-platform/",
+      "title": "AI 原生会计生产平台案例｜Onyx Devs Lab",
+      "summary": "具有流程编排、证据链、异常处理和人工控制的多 Agent 会计生产系统。",
+      "content_text": "具有流程编排、证据链、异常处理和人工控制的多 Agent 会计生产系统。",
+      "date_modified": "2026-09-09T00:00:00+08:00",
+      "language": "zh-CN",
+      "tags": [
+        "content",
+        "zh-CN"
+      ]
+    },
+    {
+      "id": "https://hk.onyxdevslab.com/en/case-studies/legal-ai-evidence-workflow/",
+      "url": "https://hk.onyxdevslab.com/en/case-studies/legal-ai-evidence-workflow/",
+      "title": "Legal AI Evidence Workflow Case Study | Onyx Devs Lab",
+      "summary": "A legal AI workflow that connects law-firm operations with large-dossier retrieval, page-level citations, permissions, and lawyer review.",
+      "content_text": "A legal AI workflow that connects law-firm operations with large-dossier retrieval, page-level citations, permissions, and lawyer review.",
+      "date_modified": "2026-09-09T00:00:00+08:00",
+      "language": "en",
+      "tags": [
+        "content",
+        "en"
+      ]
+    },
+    {
+      "id": "https://hk.onyxdevslab.com/zh-hk/case-studies/legal-ai-evidence-workflow/",
+      "url": "https://hk.onyxdevslab.com/zh-hk/case-studies/legal-ai-evidence-workflow/",
+      "title": "法律 AI 證據鏈工作流案例｜Onyx Devs Lab",
+      "summary": "把律所營運、大型卷宗檢索、逐頁引用、案件權限及律師覆核連接起來的法律 AI 工作流。",
+      "content_text": "把律所營運、大型卷宗檢索、逐頁引用、案件權限及律師覆核連接起來的法律 AI 工作流。",
+      "date_modified": "2026-09-09T00:00:00+08:00",
+      "language": "zh-Hant-HK",
+      "tags": [
+        "content",
+        "zh-Hant-HK"
+      ]
+    },
+    {
+      "id": "https://hk.onyxdevslab.com/zh-cn/case-studies/legal-ai-evidence-workflow/",
+      "url": "https://hk.onyxdevslab.com/zh-cn/case-studies/legal-ai-evidence-workflow/",
+      "title": "法律 AI 证据链工作流案例｜Onyx Devs Lab",
+      "summary": "把律所运营、大型卷宗检索、逐页引用、案件权限和律师复核连接起来的法律 AI 工作流。",
+      "content_text": "把律所运营、大型卷宗检索、逐页引用、案件权限和律师复核连接起来的法律 AI 工作流。",
+      "date_modified": "2026-09-09T00:00:00+08:00",
+      "language": "zh-CN",
+      "tags": [
+        "content",
+        "zh-CN"
+      ]
+    },
+    {
+      "id": "https://hk.onyxdevslab.com/en/case-studies/recruiting-ai-agent-workflow/",
+      "url": "https://hk.onyxdevslab.com/en/case-studies/recruiting-ai-agent-workflow/",
+      "title": "Recruiting AI Agent Workflow Case Study | Onyx Devs Lab",
+      "summary": "A controlled recruiting agent workflow for candidate sync, evidence-linked profiles, reply drafting, idempotent sending, and human takeover.",
+      "content_text": "A controlled recruiting agent workflow for candidate sync, evidence-linked profiles, reply drafting, idempotent sending, and human takeover.",
+      "date_modified": "2026-09-09T00:00:00+08:00",
+      "language": "en",
+      "tags": [
+        "content",
+        "en"
+      ]
+    },
+    {
+      "id": "https://hk.onyxdevslab.com/zh-hk/case-studies/recruiting-ai-agent-workflow/",
+      "url": "https://hk.onyxdevslab.com/zh-hk/case-studies/recruiting-ai-agent-workflow/",
+      "title": "香港招聘 AI Agent 工作流案例｜Onyx Devs Lab",
+      "summary": "涵蓋候選人同步、證據化畫像、回覆草擬、冪等發送及人工接管的受控招聘 Agent 工作流。",
+      "content_text": "涵蓋候選人同步、證據化畫像、回覆草擬、冪等發送及人工接管的受控招聘 Agent 工作流。",
+      "date_modified": "2026-09-09T00:00:00+08:00",
+      "language": "zh-Hant-HK",
+      "tags": [
+        "content",
+        "zh-Hant-HK"
+      ]
+    },
+    {
+      "id": "https://hk.onyxdevslab.com/zh-cn/case-studies/recruiting-ai-agent-workflow/",
+      "url": "https://hk.onyxdevslab.com/zh-cn/case-studies/recruiting-ai-agent-workflow/",
+      "title": "招聘 AI Agent 工作流案例｜Onyx Devs Lab",
+      "summary": "覆盖候选人同步、证据化画像、回复草拟、幂等发送和人工接管的受控招聘 Agent 工作流。",
+      "content_text": "覆盖候选人同步、证据化画像、回复草拟、幂等发送和人工接管的受控招聘 Agent 工作流。",
+      "date_modified": "2026-09-09T00:00:00+08:00",
+      "language": "zh-CN",
+      "tags": [
+        "content",
+        "zh-CN"
+      ]
+    },
+    {
+      "id": "https://hk.onyxdevslab.com/en/case-studies/industrial-erp-ai-data-platform/",
+      "url": "https://hk.onyxdevslab.com/en/case-studies/industrial-erp-ai-data-platform/",
+      "title": "Industrial ERP and AI Data Platform Case Study | Onyx Devs Lab",
+      "summary": "An industrial data platform connecting weighbridge, laboratory, vehicle, energy, ERP, and PLC information without handing safety control to AI.",
+      "content_text": "An industrial data platform connecting weighbridge, laboratory, vehicle, energy, ERP, and PLC information without handing safety control to AI.",
+      "date_modified": "2026-09-09T00:00:00+08:00",
+      "language": "en",
+      "tags": [
+        "content",
+        "en"
+      ]
+    },
+    {
+      "id": "https://hk.onyxdevslab.com/zh-hk/case-studies/industrial-erp-ai-data-platform/",
+      "url": "https://hk.onyxdevslab.com/zh-hk/case-studies/industrial-erp-ai-data-platform/",
+      "title": "工業 ERP 與 AI 數據平台案例｜Onyx Devs Lab",
+      "summary": "連接司磅、化驗、車輛、能耗、ERP 與 PLC 信息，同時不把安全控制交給 AI 的工業數據平台。",
+      "content_text": "連接司磅、化驗、車輛、能耗、ERP 與 PLC 信息，同時不把安全控制交給 AI 的工業數據平台。",
+      "date_modified": "2026-09-09T00:00:00+08:00",
+      "language": "zh-Hant-HK",
+      "tags": [
+        "content",
+        "zh-Hant-HK"
+      ]
+    },
+    {
+      "id": "https://hk.onyxdevslab.com/zh-cn/case-studies/industrial-erp-ai-data-platform/",
+      "url": "https://hk.onyxdevslab.com/zh-cn/case-studies/industrial-erp-ai-data-platform/",
+      "title": "工业 ERP 与 AI 数据平台案例｜Onyx Devs Lab",
+      "summary": "连接司磅、化验、车辆、能耗、ERP 与 PLC 信息，同时不把安全控制交给 AI 的工业数据平台。",
+      "content_text": "连接司磅、化验、车辆、能耗、ERP 与 PLC 信息，同时不把安全控制交给 AI 的工业数据平台。",
+      "date_modified": "2026-09-09T00:00:00+08:00",
+      "language": "zh-CN",
+      "tags": [
+        "content",
+        "zh-CN"
+      ]
+    },
+    {
+      "id": "https://hk.onyxdevslab.com/en/case-studies/credit-research-ai-agent/",
+      "url": "https://hk.onyxdevslab.com/en/case-studies/credit-research-ai-agent/",
+      "title": "Credit Research AI Agent Case Study | Onyx Devs Lab",
+      "summary": "A credit-research agent workflow combining internal material, current public information, source-linked conclusions, and analyst review.",
+      "content_text": "A credit-research agent workflow combining internal material, current public information, source-linked conclusions, and analyst review.",
+      "date_modified": "2026-09-09T00:00:00+08:00",
+      "language": "en",
+      "tags": [
+        "content",
+        "en"
+      ]
+    },
+    {
+      "id": "https://hk.onyxdevslab.com/zh-hk/case-studies/credit-research-ai-agent/",
+      "url": "https://hk.onyxdevslab.com/zh-hk/case-studies/credit-research-ai-agent/",
+      "title": "債權研究 AI Agent 案例｜Onyx Devs Lab",
+      "summary": "融合內部材料、最新公開信息、可回查結論與分析師覆核的債權研究 Agent 工作流。",
+      "content_text": "融合內部材料、最新公開信息、可回查結論與分析師覆核的債權研究 Agent 工作流。",
+      "date_modified": "2026-09-09T00:00:00+08:00",
+      "language": "zh-Hant-HK",
+      "tags": [
+        "content",
+        "zh-Hant-HK"
+      ]
+    },
+    {
+      "id": "https://hk.onyxdevslab.com/zh-cn/case-studies/credit-research-ai-agent/",
+      "url": "https://hk.onyxdevslab.com/zh-cn/case-studies/credit-research-ai-agent/",
+      "title": "债权研究 AI Agent 案例｜Onyx Devs Lab",
+      "summary": "融合内部材料、最新公开信息、可回查结论与分析师复核的债权研究 Agent 工作流。",
+      "content_text": "融合内部材料、最新公开信息、可回查结论与分析师复核的债权研究 Agent 工作流。",
+      "date_modified": "2026-09-09T00:00:00+08:00",
+      "language": "zh-CN",
+      "tags": [
+        "content",
+        "zh-CN"
+      ]
+    },
+    {
+      "id": "https://gist.github.com/mixuechu/e47c85808014d62b6305441e8065c91e",
+      "url": "https://gist.github.com/mixuechu/e47c85808014d62b6305441e8065c91e",
+      "title": "AI advisory, custom development, or FDE? A bilingual enterprise decision matrix",
+      "summary": "Provider-authored English and Simplified Chinese field notes with decision criteria and links to the canonical Onyx guides.",
+      "content_text": "Provider-authored English and Simplified Chinese field notes with decision criteria and links to the canonical Onyx guides.",
+      "date_modified": "2026-09-09T00:00:00+08:00",
+      "tags": [
+        "en-zh-CN",
+        "provider-maintained-external-source"
+      ]
+    },
+    {
+      "id": "https://gist.githubusercontent.com/mixuechu/e47c85808014d62b6305441e8065c91e/raw/Hong-Kong-enterprise-AI-governance.md",
+      "url": "https://gist.githubusercontent.com/mixuechu/e47c85808014d62b6305441e8065c91e/raw/Hong-Kong-enterprise-AI-governance.md",
+      "title": "Hong Kong enterprise AI governance: an implementation checklist",
+      "summary": "Provider-authored English and Simplified Chinese implementation notes grounded in Hong Kong PCPD and HKMA primary sources.",
+      "content_text": "Provider-authored English and Simplified Chinese implementation notes grounded in Hong Kong PCPD and HKMA primary sources.",
+      "date_modified": "2026-09-09T00:00:00+08:00",
+      "tags": [
+        "en-zh-CN",
+        "provider-maintained-external-source"
+      ]
+    },
+    {
+      "id": "https://gist.githubusercontent.com/mixuechu/e47c85808014d62b6305441e8065c91e/raw/Onyx-enterprise-AI-machine-resources.md",
+      "url": "https://gist.githubusercontent.com/mixuechu/e47c85808014d62b6305441e8065c91e/raw/Onyx-enterprise-AI-machine-resources.md",
+      "title": "Onyx Devs Lab enterprise AI machine resources",
+      "summary": "Provider-maintained index of canonical organization, engagement-model, procurement, pilot, case-evidence, and AI-search status resources.",
+      "content_text": "Provider-maintained index of canonical organization, engagement-model, procurement, pilot, case-evidence, and AI-search status resources.",
+      "date_modified": "2026-09-09T00:00:00+08:00",
+      "tags": [
+        "machine-readable",
+        "provider-maintained-external-source"
+      ]
+    },
+    {
+      "id": "https://raw.githubusercontent.com/0xHunterL/onyx-devs-lab.github.io/main/codemeta.json",
+      "url": "https://raw.githubusercontent.com/0xHunterL/onyx-devs-lab.github.io/main/codemeta.json",
+      "title": "Onyx Devs Lab CodeMeta software and publisher metadata",
+      "summary": "CodeMeta 3.1 JSON-LD connecting the public source repository, canonical website, legal publisher, enterprise AI topics, and evidence datasets.",
+      "content_text": "CodeMeta 3.1 JSON-LD connecting the public source repository, canonical website, legal publisher, enterprise AI topics, and evidence datasets.",
+      "date_modified": "2026-09-09T00:00:00+08:00",
+      "tags": [
+        "machine-readable",
+        "provider-maintained-external-source"
+      ]
+    },
+    {
+      "id": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-evidence-2026-09-09/codemeta.json",
+      "url": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-evidence-2026-09-09/codemeta.json",
+      "title": "Onyx Devs Lab versioned CodeMeta checkpoint",
+      "summary": "Versioned CodeMeta 3.1 JSON-LD checkpoint for reproducible identity and discovery verification.",
+      "content_text": "Versioned CodeMeta 3.1 JSON-LD checkpoint for reproducible identity and discovery verification.",
+      "date_modified": "2026-09-09T00:00:00+08:00",
+      "tags": [
+        "versioned-evidence",
+        "provider-maintained-external-source"
+      ]
+    },
+    {
+      "id": "https://raw.githubusercontent.com/0xHunterL/onyx-devs-lab.github.io/main/CITATION.cff",
+      "url": "https://raw.githubusercontent.com/0xHunterL/onyx-devs-lab.github.io/main/CITATION.cff",
+      "title": "Onyx Devs Lab Citation File Format metadata",
+      "summary": "CFF 1.2.0 metadata that identifies the provider-maintained enterprise AI knowledge and evidence collection as a citeable dataset.",
+      "content_text": "CFF 1.2.0 metadata that identifies the provider-maintained enterprise AI knowledge and evidence collection as a citeable dataset.",
+      "date_modified": "2026-09-09T00:00:00+08:00",
+      "tags": [
+        "machine-readable",
+        "provider-maintained-external-source"
+      ]
+    },
+    {
+      "id": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-evidence-2026-09-09/CITATION.cff",
+      "url": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-evidence-2026-09-09/CITATION.cff",
+      "title": "Onyx Devs Lab versioned citation metadata",
+      "summary": "Immutable Citation File Format checkpoint for reproducible dataset citation.",
+      "content_text": "Immutable Citation File Format checkpoint for reproducible dataset citation.",
+      "date_modified": "2026-09-09T00:00:00+08:00",
+      "tags": [
+        "versioned-evidence",
+        "provider-maintained-external-source"
+      ]
+    },
+    {
+      "id": "https://gist.githubusercontent.com/mixuechu/e47c85808014d62b6305441e8065c91e/raw/FDE-is-not-staff-augmentation.zh-CN.md",
+      "url": "https://gist.githubusercontent.com/mixuechu/e47c85808014d62b6305441e8065c91e/raw/FDE-is-not-staff-augmentation.zh-CN.md",
+      "title": "FDE is not staff augmentation: when enterprise AI needs field deployment engineering",
+      "summary": "Original Simplified Chinese field note distinguishing outcome-accountable FDE from consulting, fixed-scope delivery, and staff augmentation.",
+      "content_text": "Original Simplified Chinese field note distinguishing outcome-accountable FDE from consulting, fixed-scope delivery, and staff augmentation.",
+      "date_modified": "2026-09-09T00:00:00+08:00",
+      "tags": [
+        "zh-CN",
+        "provider-maintained-external-source"
+      ]
+    },
+    {
+      "id": "https://gist.githubusercontent.com/mixuechu/e47c85808014d62b6305441e8065c91e/raw/AI-agent-ERP-integration-checklist.zh-CN.md",
+      "url": "https://gist.githubusercontent.com/mixuechu/e47c85808014d62b6305441e8065c91e/raw/AI-agent-ERP-integration-checklist.zh-CN.md",
+      "title": "Seven questions before connecting an AI agent to ERP",
+      "summary": "Original Simplified Chinese checklist for authority, system-of-record, idempotency, write verification, and human takeover.",
+      "content_text": "Original Simplified Chinese checklist for authority, system-of-record, idempotency, write verification, and human takeover.",
+      "date_modified": "2026-09-09T00:00:00+08:00",
+      "tags": [
+        "zh-CN",
+        "provider-maintained-external-source"
+      ]
+    },
+    {
+      "id": "https://gist.githubusercontent.com/mixuechu/e47c85808014d62b6305441e8065c91e/raw/Legal-AI-evidence-chain.zh-CN.md",
+      "url": "https://gist.githubusercontent.com/mixuechu/e47c85808014d62b6305441e8065c91e/raw/Legal-AI-evidence-chain.zh-CN.md",
+      "title": "Designing a reviewable evidence chain for legal AI",
+      "summary": "Original Simplified Chinese engineering note on evidence coordinates, recall, citation accuracy, and lawyer review.",
+      "content_text": "Original Simplified Chinese engineering note on evidence coordinates, recall, citation accuracy, and lawyer review.",
+      "date_modified": "2026-09-09T00:00:00+08:00",
+      "tags": [
+        "zh-CN",
+        "provider-maintained-external-source"
+      ]
+    },
+    {
+      "id": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-evidence-2026-09-09",
+      "url": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-evidence-2026-09-09",
+      "title": "Onyx GEO evidence checkpoint — 2026-09-09",
+      "summary": "A dated, provider-maintained public evidence snapshot. It is not an independent endorsement or proof of search indexing, AI citation, or client outcomes.",
+      "content_text": "A dated, provider-maintained public evidence snapshot. It is not an independent endorsement or proof of search indexing, AI citation, or client outcomes.",
+      "date_modified": "2026-09-09T00:00:00+08:00",
+      "tags": [
+        "evidence",
+        "provider-maintained-external-source"
+      ]
+    },
+    {
+      "id": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-readiness-2026-09-10",
+      "url": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-readiness-2026-09-10",
+      "title": "Onyx GEO agent-readiness evidence — 2026-09-10",
+      "summary": "A versioned snapshot of accessibility, verified crawler activity, explicit search non-results, and the boundary between technical readiness and AI citation.",
+      "content_text": "A versioned snapshot of accessibility, verified crawler activity, explicit search non-results, and the boundary between technical readiness and AI citation.",
+      "date_modified": "2026-09-10T00:00:00+08:00",
+      "tags": [
+        "evidence",
+        "provider-maintained-external-source"
+      ]
+    }
+  ]
+}
