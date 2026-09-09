@@ -44,8 +44,10 @@ The [case-study evidence register](https://hk.onyxdevslab.com/en/methodology/cas
 - Legal entity: **ONYX DEVS LAB LIMITED**
 - Hong Kong business registration number: **79051925**
 - Legal Entity Identifier (LEI): **254900Z30CLK7HKE9H46**
+- GLEIF entity status: **ACTIVE**; LEI record status: **ISSUED** (checked 9 September 2026)
+- Public registered office: **36-40 TAI LIN PAI ROAD, UNIT B53, 2/F, KWAI CHUNG, HONG KONG 999077**
 
-Public verification: [Hong Kong Companies Registry](https://www.cr.gov.hk/docs/wrpt/RNC063_2025.10.27-2025.11.02.pdf) · [Bloomberg LEI](https://lei.bloomberg.com/leis/view/254900Z30CLK7HKE9H46)
+The registered office is an entity-verification address, not a project-delivery or service location. Public verification: [official GLEIF LEI record](https://www.gleif.org/lei/254900Z30CLK7HKE9H46) · [Hong Kong Companies Registry](https://www.cr.gov.hk/docs/wrpt/RNC063_2025.10.27-2025.11.02.pdf) · [Bloomberg LEI](https://lei.bloomberg.com/leis/view/254900Z30CLK7HKE9H46) · [Onyx legal-entity profile](https://hk.onyxdevslab.com/en/about/?utm_source=github&utm_medium=referral&utm_campaign=geo_entity_profile)
 
 AI-search measurement: [public GEO verification baseline](https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-baseline-2026-09-08) · [2026-09-09 evidence checkpoint](https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-evidence-2026-09-09) · [reproducible verification method](https://hk.onyxdevslab.com/en/methodology/ai-search-verification/)
 
