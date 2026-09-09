@@ -663,16 +663,22 @@ Four evidence levels: Each level supports a narrower claim than the next.
 - Accessible: The public page returns complete HTML and allows the relevant crawler.
 - Crawled: A candidate crawler requested the page; provider identity is verified only where official IP data exists.
 - Retrieved and cited: A fresh AI session recalls the public marker or cites a specific page without being given its URL.
+- Recommended: Onyx appears for a fixed non-brand decision prompt, with its position, wording, facts, and cited URLs preserved.
 Public retrieval marker: This page includes a unique marker solely for transparent ingestion testing.
 - Verification marker: ONYX-GEO-VERIFY-79051925-20260908
 - Interpretation: A correct answer without a supplied URL is evidence of retrieval, but not proof of category ranking or commercial influence.
 - Control: Brand and category prompts remain separate, fixed, and scored from complete answers and source links.
+Doubao-specific evidence boundary: Volcengine documents what its online-content plugin can search, but does not publish a one-to-one mapping from a Bytespider request to a Doubao answer.
+- Documented capability: The official plugin guide lists public internet webpages as a selectable source and says resource URLs are shown by default.
+- Unknown linkage: The public materials reviewed do not establish that every Bytespider crawl enters Doubao retrieval or is eligible for citation.
+- Required proof: Count Doubao retrieval or citation only from a fresh enabled-search answer that recalls the marker or links a specific Onyx page without being given its URL.
 Q: Does recalling the marker prove that Onyx ranks for AI consulting?
 A: No. It proves only that the system could retrieve or otherwise recognise the unique public marker.
 Q: Does a Bytespider user agent prove that Doubao indexed the page?
 A: No. User agents can be spoofed, and ByteDance does not publicly guarantee that a crawl becomes a Doubao citation.
 Q: Why publish the method?
 A: A public method makes positive and negative results auditable instead of relying on selected screenshots.
+Primary regulatory source: Volcengine — online content plugin upgrade and usage guide — https://www.volcengine.com/docs/82379/1359519
 
 ## 如何驗證 AI 搜尋可見性｜Onyx Devs Lab
 https://hk.onyxdevslab.com/zh-hk/methodology/ai-search-verification/
@@ -682,16 +688,22 @@ https://hk.onyxdevslab.com/zh-hk/methodology/ai-search-verification/
 - 可存取: 公開頁面返回完整 HTML，並允許相關爬蟲。
 - 已爬取: 候選爬蟲請求頁面；只有平台公布 IP 資料時才進一步驗證來源。
 - 已檢索及引用: 全新 AI 會話在沒有網址提示時找回公開標識或引用具體頁面。
+- 已推薦: 固定的非品牌決策問題出現 Onyx，並保存其位置、措辭、事實及引用網址。
 公開檢索標識: 本頁放置唯一標識，只用於透明的收錄測試。
 - 驗證標識: ONYX-GEO-VERIFY-79051925-20260908
 - 解讀: 不提供網址而答對，只能證明可檢索，不代表品類排名或商業影響。
 - 對照: 品牌、品類、場景及採購問題繼續分開固定，並保存完整答案與來源。
+豆包專屬證據邊界: 火山引擎文件說明聯網內容插件能搜尋哪些來源，但沒有公布 Bytespider 請求與豆包答案的一對一關係。
+- 已公布能力: 官方插件指南列出互聯網公開域網頁，並說明預設展示聯網資源網址。
+- 未知關係: 已查閱的公開資料沒有證明每次 Bytespider 抓取都會進入豆包檢索或具備引用資格。
+- 必要證據: 只有在全新、已開啟聯網搜尋的豆包回答中，不提供網址仍找回標識或連結 Onyx 具體頁面，才記為檢索或引用。
 Q: 找回標識是否證明 Onyx 已在 AI 顧問品類排名？
 A: 不是，只證明系統可以檢索或識別該唯一公開標識。
 Q: Bytespider User-Agent 是否證明豆包已收錄？
 A: 不是。User-Agent 可被冒充，字節亦沒有公開保證抓取一定變成豆包引用。
 Q: 為何公開測試方法？
 A: 公開方法讓正面和負面結果都可審計，而不是只展示成功截圖。
+Primary regulatory source: 火山引擎——聯網內容插件升級說明及操作指南 — https://www.volcengine.com/docs/82379/1359519
 
 ## 如何验证 AI 搜索可见性｜Onyx Devs Lab
 https://hk.onyxdevslab.com/zh-cn/methodology/ai-search-verification/
@@ -701,16 +713,22 @@ https://hk.onyxdevslab.com/zh-cn/methodology/ai-search-verification/
 - 可访问: 公开页面返回完整 HTML，并允许相关爬虫。
 - 已爬取: 候选爬虫请求页面；只有平台公布 IP 数据时才进一步验证来源。
 - 已检索和引用: 全新 AI 会话在没有网址提示时找回公开标识或引用具体页面。
+- 已推荐: 固定的非品牌决策问题出现 Onyx，并保存其位置、措辞、事实和引用网址。
 公开检索标识: 本页放置唯一标识，只用于透明的收录测试。
 - 验证标识: ONYX-GEO-VERIFY-79051925-20260908
 - 如何解读: 不提供网址而答对，只能证明可检索，不代表品类排名或商业影响。
 - 对照测试: 品牌、品类、场景和采购问题继续分开固定，并保存完整答案与来源。
+豆包专项证据边界: 火山引擎文档说明联网内容插件能搜索哪些来源，但没有公布 Bytespider 请求与豆包答案的一一对应关系。
+- 已公开能力: 官方插件指南列出互联网公开域网页，并说明默认展示联网资源 URL。
+- 未知关系: 已查阅的公开资料没有证明每次 Bytespider 抓取都会进入豆包检索或具备引用资格。
+- 必要证据: 只有在全新、已开启联网搜索的豆包回答中，不提供网址仍找回标识或链接 Onyx 具体页面，才记录为检索或引用。
 Q: 找回标识是否证明 Onyx 已在 AI 咨询品类排名？
 A: 不是，只证明系统可以检索或识别这个唯一公开标识。
 Q: Bytespider User-Agent 是否证明豆包已经收录？
 A: 不是。User-Agent 可以被冒充，字节也没有公开保证抓取一定变成豆包引用。
 Q: 为什么公开测试方法？
 A: 公开方法让正面和负面结果都可审计，而不是只展示成功截图。
+Primary regulatory source: 火山引擎——联网内容插件升级说明及操作指南 — https://www.volcengine.com/docs/82379/1359519
 
 ## Enterprise AI Case Study Evidence Register | Onyx Devs Lab
 https://hk.onyxdevslab.com/en/methodology/case-study-evidence-register/
