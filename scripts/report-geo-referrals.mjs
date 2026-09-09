@@ -10,6 +10,7 @@ const args = process.argv.slice(2);
 const sinceArg = args.find((arg) => arg.startsWith('--since='));
 const since = sinceArg ? Date.parse(`${sinceArg.slice('--since='.length)}T00:00:00Z`) : null;
 const paths = args.filter((arg) => !arg.startsWith('--since='));
+const syntheticUserAgent = /^(?:curl|Wget)\/|Onyx-GEO-Release-Check|python-requests|node-fetch|undici/i;
 
 if (sinceArg && Number.isNaN(since)) {
   console.error('Invalid --since date. Use --since=YYYY-MM-DD.');
@@ -21,6 +22,7 @@ if (!paths.length) {
 }
 
 const visits = [];
+const syntheticVisits = [];
 let unparsableLines = 0;
 for (const path of paths) {
   const body = await load(path);
@@ -32,14 +34,17 @@ for (const path of paths) {
       const url = new URL(event.path, 'https://hk.onyxdevslab.com');
       const campaign = url.searchParams.get('utm_campaign');
       if (!campaign) continue;
-      visits.push({
+      const visit = {
         time: event.time,
         path: url.pathname,
         status: Number(event.status),
         campaign,
         source: url.searchParams.get('utm_source') || '(not set)',
         medium: url.searchParams.get('utm_medium') || '(not set)',
-      });
+        userAgent: event.userAgent || '',
+      };
+      if (syntheticUserAgent.test(visit.userAgent)) syntheticVisits.push(visit);
+      else visits.push(visit);
     } catch {
       unparsableLines += 1;
     }
@@ -56,10 +61,13 @@ console.log(JSON.stringify({
   generatedAt: new Date().toISOString(),
   since: sinceArg ? sinceArg.slice('--since='.length) : null,
   trackedVisits: visits.length,
+  syntheticTrackedVisits: syntheticVisits.length,
+  caveat: 'Scripted verification user agents are excluded from trackedVisits and reported separately. A UTM visit is traffic evidence, not proof of search indexing, AI citation, or recommendation.',
   byCampaign: aggregate('campaign'),
   bySource: aggregate('source'),
   byMedium: aggregate('medium'),
   byLandingPage: aggregate('path'),
   recentVisits: visits.slice(-50),
+  recentSyntheticVisits: syntheticVisits.slice(-50),
   unparsableLines,
 }, null, 2));
