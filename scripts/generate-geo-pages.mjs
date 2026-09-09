@@ -12,6 +12,8 @@ const pilotCharterPath = '/data/enterprise-ai-pilot-charter.json';
 const organizationDataPath = '/data/organization.json';
 const engagementModelPath = '/data/enterprise-ai-engagement-model-map.json';
 const aiSearchEvidenceStatusPath = '/data/ai-search-evidence-status.json';
+const aiSearchStatusReleaseUrl = 'https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-readiness-2026-09-10';
+const aiSearchStatusReleaseAssetUrl = 'https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-readiness-2026-09-10/ai-search-evidence-status.json';
 const partnerScorecardReleaseUrl = 'https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-evidence-2026-09-09/enterprise-ai-partner-scorecard.json';
 const pcpdAiFrameworkEn = 'https://www.pcpd.org.hk/english/resources_centre/publications/files/ai_protection_framework.pdf';
 const pcpdAiFrameworkZh = 'https://www.pcpd.org.hk/tc_chi/resources_centre/publications/files/ai_protection_framework.pdf';
@@ -564,6 +566,7 @@ const externalFeedEntries=[
   {title:'Seven questions before connecting an AI agent to ERP',url:erpAgentChecklistRawUrl,summary:'Original Simplified Chinese checklist for authority, system-of-record, idempotency, write verification, and human takeover.',category:'zh-CN'},
   {title:'Designing a reviewable evidence chain for legal AI',url:legalAiEvidenceRawUrl,summary:'Original Simplified Chinese engineering note on evidence coordinates, recall, citation accuracy, and lawyer review.',category:'zh-CN'},
   {title:'Onyx GEO evidence checkpoint — 2026-09-09',url:'https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-evidence-2026-09-09',summary:'A dated, provider-maintained public evidence snapshot. It is not an independent endorsement or proof of search indexing, AI citation, or client outcomes.',category:'evidence'},
+  {title:'Onyx GEO agent-readiness evidence — 2026-09-10',url:aiSearchStatusReleaseUrl,summary:'A versioned snapshot of accessibility, verified crawler activity, explicit search non-results, and the boundary between technical readiness and AI citation.',category:'evidence'},
 ];
 const atom=`<?xml version="1.0" encoding="UTF-8"?>\n<feed xmlns="http://www.w3.org/2005/Atom"><title>Onyx Devs Lab — Enterprise AI Field Notes</title><id>${origin}/feed.xml</id><link href="${origin}/feed.xml" rel="self"/><link href="${origin}/"/><updated>${updated}T00:00:00+08:00</updated><author><name>Onyx Devs Lab</name></author>${feedEntries.map(page=>`<entry><title>${esc(page.title)}</title><id>${canonical(page.path)}</id><link href="${canonical(page.path)}"/><updated>${updated}T00:00:00+08:00</updated><summary>${esc(page.description)}</summary><category term="${page.lang}"/></entry>`).join('')}${externalFeedEntries.map(entry=>`<entry><title>${esc(entry.title)}</title><id>${esc(entry.url)}</id><link href="${esc(entry.url)}"/><updated>${updated}T00:00:00+08:00</updated><summary>${esc(entry.summary)}</summary><category term="${esc(entry.category)}"/><category term="provider-maintained-external-source"/></entry>`).join('')}</feed>\n`;
 fs.writeFileSync(path.join(dist,'feed.xml'),atom);
@@ -666,6 +669,7 @@ fs.writeFileSync(path.join(dist,'data','organization.json'),`${JSON.stringify(or
 
 const aiSearchEvidenceStatus={
   schemaVersion:2,version:'2026.09.10',id:canonical(aiSearchEvidenceStatusPath),observedAt:'2026-09-09T16:20:26Z',
+  sameAs:aiSearchStatusReleaseAssetUrl,
   name:{en:'Onyx Devs Lab AI-search evidence status',zhHant:'Onyx Devs Lab AI 搜尋證據狀態',zhHans:'Onyx Devs Lab AI 搜索证据状态'},
   publisher:{name:'Onyx Devs Lab',legalName:'ONYX DEVS LAB LIMITED',businessRegistrationNumber:'79051925',lei:'254900Z30CLK7HKE9H46',url:`${origin}/`},
   methodologyPages:{en:`${origin}/en/methodology/ai-search-verification/`,zhHant:`${origin}/zh-hk/methodology/ai-search-verification/`,zhHans:`${origin}/zh-cn/methodology/ai-search-verification/`},
@@ -685,6 +689,7 @@ const aiSearchEvidenceStatus={
   evidenceSources:[
     {name:'Public baseline record',url:'https://github.com/0xHunterL/onyx-devs-lab.github.io/blob/main/docs/geo-baselines/2026-09-08-doubao.md'},
     {name:'Versioned GEO evidence checkpoint',url:'https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-evidence-2026-09-09'},
+    {name:'Versioned agent-readiness evidence checkpoint',url:aiSearchStatusReleaseUrl},
     {name:'AI-search verification method',url:`${origin}/en/methodology/ai-search-verification/`},
   ],
   evidenceBoundary:'This provider-maintained status records observed evidence and explicit non-results. It is not an independent audit, proof of platform indexing, proof of AI citation, or proof of recommendation. A higher level must not be inferred from a lower level.',
@@ -736,6 +741,8 @@ const fullKnowledge=[
   '',
   '## External public evidence and field notes',
   'Versioned GEO evidence checkpoint: https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-evidence-2026-09-09',
+  `Versioned agent-readiness evidence checkpoint: ${aiSearchStatusReleaseUrl}`,
+  `Versioned AI-search evidence status asset: ${aiSearchStatusReleaseAssetUrl}`,
   'Bilingual AI advisory, custom development, and FDE decision matrix: https://gist.github.com/mixuechu/e47c85808014d62b6305441e8065c91e',
   `Bilingual Hong Kong enterprise AI governance implementation note: ${governanceGistRawUrl}`,
   `Enterprise AI machine-resource index: ${machineResourcesGistRawUrl}`,

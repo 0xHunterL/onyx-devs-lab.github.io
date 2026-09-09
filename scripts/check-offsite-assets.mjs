@@ -77,13 +77,15 @@ if (governanceGistSha256 !== expectedGovernanceGistSha256) failures.push(`GitHub
 const machineResourcesGistRawUrl = 'https://gist.githubusercontent.com/mixuechu/e47c85808014d62b6305441e8065c91e/raw/Onyx-enterprise-AI-machine-resources.md';
 const machineResourcesGistRaw = await get('GitHub Gist machine-resource index', machineResourcesGistRawUrl, 'text/plain');
 const machineResourcesGistSha256 = createHash('sha256').update(machineResourcesGistRaw).digest('hex');
-const expectedMachineResourcesGistSha256 = 'c9479bb1fd367aea57429c00172c1b1154f533845fea4c8712c98aa115dec499';
+const expectedMachineResourcesGistSha256 = 'e2b3fdcc4cba7d87d176fce96ac0a51c460ffbe8ea015bb933929090e7a5a862';
 if (machineResourcesGistSha256 !== expectedMachineResourcesGistSha256) failures.push(`GitHub Gist machine-resource index: SHA-256 mismatch, got ${machineResourcesGistSha256}`);
 requireText('GitHub Gist machine-resource index', machineResourcesGistRaw, [
   'data/organization.json?utm_source=github_gist',
   'data/ai-search-evidence-status.json?utm_source=github_gist',
   'raw.githubusercontent.com/0xHunterL/onyx-devs-lab.github.io/main/CITATION.cff',
   'releases/download/geo-evidence-2026-09-09/CITATION.cff',
+  'releases/tag/geo-readiness-2026-09-10',
+  'releases/download/geo-readiness-2026-09-10/ai-search-evidence-status.json',
   'FDE-is-not-staff-augmentation.zh-CN.md',
   'AI-agent-ERP-integration-checklist.zh-CN.md',
   'Legal-AI-evidence-chain.zh-CN.md',
@@ -148,6 +150,25 @@ requireText('GitHub evidence checkpoint', release, [
   'ai-search-evidence-status.json',
   'codemeta.json',
   'CITATION.cff',
+]);
+
+const readinessStatusUrl = 'https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-readiness-2026-09-10/ai-search-evidence-status.json';
+const readinessStatusRaw = await get('Versioned agent-readiness status', readinessStatusUrl, 'application/');
+const readinessStatusSha256 = createHash('sha256').update(readinessStatusRaw).digest('hex');
+if (readinessStatusSha256 !== '0f2d5fc6cd6f348bafb288c15c529af672fec6646aa700d3fd976e7f3138de59') failures.push(`Versioned agent-readiness status: SHA-256 mismatch, got ${readinessStatusSha256}`);
+try {
+  const readinessStatus = JSON.parse(readinessStatusRaw);
+  if (readinessStatus.schemaVersion !== 2 || readinessStatus.version !== '2026.09.10' || readinessStatus.technicalReadiness?.score !== 86 || readinessStatus.testProtocol?.doubaoPromptsSent !== false) failures.push('Versioned agent-readiness status: expected evidence structure is incomplete');
+} catch {
+  failures.push('Versioned agent-readiness status: invalid JSON');
+}
+const readinessRelease = await get('GitHub agent-readiness checkpoint', 'https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-readiness-2026-09-10', 'text/html');
+requireText('GitHub agent-readiness checkpoint', readinessRelease, [
+  'Onyx GEO evidence checkpoint',
+  '86/100',
+  '0f2d5fc6cd6f348bafb288c15c529af672fec6646aa700d3fd976e7f3138de59',
+  'No controlled prompts were sent to Doubao',
+  'ai-search-evidence-status.json',
 ]);
 
 const repository = await get('GitHub repository', 'https://github.com/0xHunterL/onyx-devs-lab.github.io', 'text/html');
