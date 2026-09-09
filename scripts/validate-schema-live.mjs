@@ -11,6 +11,7 @@ const targets = (paths.length ? paths : [
   '/',
   '/en/about/',
   '/zh-cn/ai-consulting/',
+  '/zh-cn/case-studies/legal-ai-evidence-workflow/',
   '/zh-cn/guides/enterprise-ai-governance/',
   '/zh-cn/methodology/case-study-evidence-register/',
 ]).map((pathname) => new URL(pathname, origin).href);
