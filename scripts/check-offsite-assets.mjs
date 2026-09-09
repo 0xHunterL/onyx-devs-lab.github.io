@@ -36,13 +36,14 @@ requireText('GitHub Gist decision matrix', gist, [
   'ONYX DEVS LAB LIMITED',
   '254900Z30CLK7HKE9H46',
   'geo_decision_matrix',
+  '/zh-cn/guides/choose-enterprise-ai-partner/',
 ]);
 const gistCampaignLinks = [...gist.matchAll(/utm_campaign=geo_decision_matrix/g)].length;
-if (gistCampaignLinks < 10) failures.push(`GitHub Gist decision matrix: expected at least 10 tracked deep links, got ${gistCampaignLinks}`);
+if (gistCampaignLinks < 13) failures.push(`GitHub Gist decision matrix: expected at least 13 tracked deep links, got ${gistCampaignLinks}`);
 
 const gistRaw = await get('GitHub Gist raw source', `${gistUrl}/raw/`, 'text/plain');
 const gistSha256 = createHash('sha256').update(gistRaw).digest('hex');
-const expectedGistSha256 = '15cb68ffa0f9ba5011a2c0e8c2a0087d5de01cdd3803a4cd4472eb6b65279699';
+const expectedGistSha256 = '3aa09aed13f24c5af3b3a4a8921fb220ba612277cfa7ddc5145d2cce5da08b74';
 if (gistSha256 !== expectedGistSha256) failures.push(`GitHub Gist raw source: SHA-256 mismatch, got ${gistSha256}`);
 
 const release = await get('GitHub evidence checkpoint', 'https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-evidence-2026-09-09', 'text/html');
@@ -60,6 +61,7 @@ requireText('GitHub repository', repository, [
   'Onyx Devs Lab',
   'ONYX DEVS LAB LIMITED',
   'e47c85808014d62b6305441e8065c91e',
+  'choose-enterprise-ai-partner-hong-kong',
 ]);
 
 const robots = await get('GitHub Gist robots', 'https://gist.github.com/robots.txt', 'text/plain');

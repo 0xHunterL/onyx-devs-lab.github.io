@@ -4,6 +4,7 @@ const targets = (paths.length ? paths : [
   '/',
   '/zh-cn/ai-consulting/',
   '/zh-cn/guides/enterprise-ai-agent-erp-integration/',
+  '/zh-cn/guides/choose-enterprise-ai-partner/',
   '/zh-cn/case-studies/legal-ai-evidence-workflow/',
   '/zh-cn/methodology/case-study-evidence-register/',
   '/zh-cn/about/',

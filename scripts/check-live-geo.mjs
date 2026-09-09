@@ -64,7 +64,7 @@ if (indexNowKey.body.trim() !== '9c37a18bd2044e1687f45c2e91ad603b') failures.pus
 
 const sitemap = await get('/sitemap.xml', 'xml');
 const urls = [...sitemap.body.matchAll(/<loc>([^<]+)<\/loc>/g)].map((match) => match[1]);
-if (urls.length < 53) failures.push(`/sitemap.xml: expected at least 53 URLs, got ${urls.length}`);
+if (urls.length < 56) failures.push(`/sitemap.xml: expected at least 56 URLs, got ${urls.length}`);
 if (new Set(urls).size !== urls.length) failures.push('/sitemap.xml: duplicate canonical URLs detected');
 for (const url of urls) {
   if (!url.startsWith(`${canonicalOrigin}/`)) failures.push(`/sitemap.xml: non-canonical origin: ${url}`);
@@ -87,6 +87,9 @@ const requiredPaths = [
   '/zh-cn/custom-ai-development/',
   '/zh-cn/forward-deployed-engineering/',
   '/zh-cn/guides/ai-consulting-vs-development-vs-fde/',
+  '/en/guides/choose-enterprise-ai-partner-hong-kong/',
+  '/zh-hk/guides/choose-enterprise-ai-partner/',
+  '/zh-cn/guides/choose-enterprise-ai-partner/',
   '/zh-cn/guides/custom-ai-development-cost/',
   '/zh-cn/guides/enterprise-ai-agent-erp-integration/',
   '/zh-cn/methodology/enterprise-ai-evaluation/',
