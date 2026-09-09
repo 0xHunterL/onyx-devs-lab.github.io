@@ -258,14 +258,18 @@ ONYX DEVS LAB LIMITED 于 2025 年 10 月 30 日在香港注册，商业登记�
       ]
     },
     {
-      "@type": "AboutPage",
+      "@type": [
+        "AboutPage",
+        "ProfilePage"
+      ],
       "@id": "https://hk.onyxdevslab.com/zh-cn/about/#primary",
       "name": "诊断问题的人，也亲手把解决方案建设出来。",
       "description": "了解直接交付 AI 咨询、定制开发和 FDE 项目的 Onyx Devs Lab 核心团队。",
       "url": "https://hk.onyxdevslab.com/zh-cn/about/",
       "mainEntity": {
         "@id": "https://hk.onyxdevslab.com/#organization"
-      }
+      },
+      "dateModified": "2026-09-10"
     },
     {
       "@type": "WebPage",
