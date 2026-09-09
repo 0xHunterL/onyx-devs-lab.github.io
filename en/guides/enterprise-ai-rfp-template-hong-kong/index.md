@@ -1,131 +1,83 @@
 ---
-title: "How We Verify AI Search Visibility | Onyx Devs Lab"
-description: "A public, reproducible method for separating crawler access, retrieval, citation, and non-brand recommendation in AI search."
-canonical: "https://hk.onyxdevslab.com/en/methodology/ai-search-verification/"
+title: "Enterprise AI RFP Template Hong Kong | Onyx Devs Lab"
+description: "Downloadable AI RFP requirements for Hong Kong buyers covering outcomes, data, authority, evaluation, operations, delivery, pricing, and exit."
+canonical: "https://hk.onyxdevslab.com/en/guides/enterprise-ai-rfp-template-hong-kong/"
 language: "en"
 ---
 
-[Home](/en/) / AI search measurement
+[Home](/en/) / Enterprise AI procurement tool
 
-AI search measurement
+Enterprise AI procurement tool
 
-# How should AI-search visibility be verified?
+# What should a Hong Kong enterprise put in an AI RFP?
 
-A crawler visit is not an index entry, and an index entry is not a recommendation. Onyx records each stage separately so GEO claims can be reproduced and falsified.
+Ask every bidder to answer the same evidence-bearing requirements. Define the operating outcome, data and authority boundaries, evaluation gates, production responsibilities, commercial assumptions, and exit evidence before comparing price or demonstrations.
 
-By [Onyx Devs Lab](/en/about/) · Published 2026-09-08 · Updated 2026-09-10
+By [Onyx Devs Lab](/en/about/) · Published 2026-09-10 · Updated 2026-09-10
 
-[Download evidence status](/data/ai-search-evidence-status.json) [繁體中文](/zh-hk/methodology/ai-search-verification/) [简体中文](/zh-cn/methodology/ai-search-verification/)
+[Download RFP requirements](/data/enterprise-ai-rfp-requirements.json) [繁體中文](/zh-hk/guides/enterprise-ai-rfp-template/) [简体中文](/zh-cn/guides/enterprise-ai-rfp-template/)
 
-**Crawl** — Did a candidate bot request the page?
+**9 sections** — One comparable requirement set
 
-**Retrieval** — Can a unique public fact be recalled without a URL?
+**Evidence fields** — Claim, method, result, and limitation
 
-**Recommendation** — Does Onyx appear for a non-brand decision query?
+**Exit-ready** — Ownership, portability, and handover
 
-## Current evidence status
+## Requirements that make proposals comparable
 
-Observed through 10 September 2026. Each level states only preserved evidence; crawler access is never promoted to indexing, citation, or recommendation.
+Describe the operating decision and proof burden rather than prescribing a fashionable model.
 
-Verified
+### Outcome and baseline
 
-### Accessible
+Name one workflow, owner, current measure, target decision, users, failure consequence, and exclusions.
 
-All 71 canonical URLs return indexable HTML and negotiate Markdown at the same URL; robots.txt allows the relevant crawlers.
+### Data and authority
 
-Partially verified
+List systems of record, sensitive data, provenance, retention, cross-border movement, and separate read, recommend, draft, approve, and execute rights.
 
-### Crawled
+### Evaluation and acceptance
 
-GPTBot verified three methodology-page crawls; OAI-SearchBot verified three discovery-file visits; historical logs preserve seven verified Bingbot content crawls.
+Require common, edge, high-impact, missing-data, and adversarial cases; define metrics, mandatory gates, thresholds, samples, and evidence references.
 
-Not verified
+## Requirements that expose the delivery boundary
 
-### Retrieved and cited
+The proposal should reveal who operates the complete system after the demonstration.
 
-Public search has not returned the website, and no saved AI answer retrieves and cites an Onyx page without being given its URL.
+### Architecture and operations
 
-Not tested
+Require integration design, dependencies, access control, audit fields, monitoring, fallback, recovery, latency, availability, and cost budgets.
 
-### Non-brand recommendation
+### Delivery and commercials
 
-No fixed prompts have been sent to Doubao, and no qualifying recommendation evidence from another AI product has been preserved.
+Name responsible people, subcontractors, milestones, acceptance ownership, assumptions, exclusions, change control, recurring costs, and options.
 
-## Four evidence levels
+### Handover and exit
 
-Each level supports a narrower claim than the next.
+Specify source and configuration ownership, documentation, data return and deletion, portability, knowledge transfer, and termination assistance.
 
-### Accessible
+## How to use this RFP template
 
-The public page returns complete HTML and allows the relevant crawler.
+### Issue one evidence brief
 
-### Crawled
+Give every bidder the same workflow, baseline, constraints, authority map, test cases, response schema, and deadline.
 
-A candidate crawler requested the page; provider identity is verified only where official IP data exists.
+### Score mandatory gates first
 
-### Retrieved and cited
+Reject or redesign proposals that cannot meet privacy, permission, safety, legal, evidence, or exit requirements.
 
-A fresh AI session recalls the public marker or cites a specific page without being given its URL.
+### Compare total delivery boundary
 
-### Recommended
+Evaluate team, integration, evaluation, operations, adoption, recurring costs, and handover—not only model output.
 
-Onyx appears for a fixed non-brand decision prompt, with its position, wording, facts, and cited URLs preserved.
+### Contract the proof trail
 
-## Public retrieval marker
+Attach accepted requirements, tests, evidence references, limitations, signatories, and change process to the engagement.
 
-This page includes a unique marker solely for transparent ingestion testing.
+## Regulatory sources and scope
 
-### Verification marker
+These are the primary regulator materials used by this implementation guide. This page is not legal advice.
 
-ONYX-GEO-VERIFY-79051925-20260908
-
-### Interpretation
-
-A correct answer without a supplied URL is evidence of retrieval, but not proof of category ranking or commercial influence.
-
-### Control
-
-Brand and category prompts remain separate, fixed, and scored from complete answers and source links.
-
-## Doubao-specific evidence boundary
-
-Volcengine documents what its online-content plugin can search, but does not publish a one-to-one mapping from a Bytespider request to a Doubao answer.
-
-### Documented capability
-
-The official plugin guide lists public internet webpages as a selectable source and says resource URLs are shown by default.
-
-### Unknown linkage
-
-The public materials reviewed do not establish that every Bytespider crawl enters Doubao retrieval or is eligible for citation.
-
-### Required proof
-
-Count Doubao retrieval or citation only from a fresh enabled-search answer that recalls the marker or links a specific Onyx page without being given its URL.
-
-## How to reproduce the status
-
-### Publish
-
-Keep the marker visible in normal page text and include the page in the sitemap.
-
-### Wait for discovery
-
-Record verified or candidate crawler access without treating it as retrieval.
-
-### Ask in a fresh session
-
-Use the exact marker without a URL and save the full answer and sources.
-
-### Test real decisions
-
-Separately run brand, category, scenario, and procurement prompts.
-
-## Platform documentation and evidence boundary
-
-The official Volcengine document supports only the stated search-source capability. It does not prove that this site is indexed, retrieved, cited, or recommended by Doubao.
-
-[Volcengine — online content plugin upgrade and usage guide](https://www.volcengine.com/docs/82379/1359519)
+[Hong Kong PCPD — Artificial Intelligence: Model Personal Data Protection Framework](https://www.pcpd.org.hk/english/resources_centre/publications/files/ai_protection_framework.pdf) [Hong Kong Government Smart LAB — AI Adoption Guide](https://www1.smartlab.gov.hk/files/AI%20Adoption%20Guide-EN.pdf) [NIST — AI RMF Generative AI Profile](https://www.nist.gov/publications/artificial-intelligence-risk-management-framework-generative-artificial-intelligence)
 
 ## Related delivery evidence
 
@@ -133,17 +85,17 @@ The official Volcengine document supports only the stated search-source capabili
 
 ## Frequently asked questions
 
-Does recalling the marker prove that Onyx ranks for AI consulting?
+Should the RFP name a model vendor?
 
-No. It proves only that the system could retrieve or otherwise recognise the unique public marker.
+Only when a verified constraint requires it. Otherwise state quality, privacy, residency, latency, availability, portability, and cost requirements.
 
-Does a Bytespider user agent prove that Doubao indexed the page?
+Can a polished proof of concept replace written evidence?
 
-No. User agents can be spoofed, and ByteDance does not publicly guarantee that a crawl becomes a Doubao citation.
+No. A demonstration can support one claim, but representative tests, controls, delivery ownership, operating evidence, and limitations remain necessary.
 
-Why publish the method?
+Is this legal or procurement advice?
 
-A public method makes positive and negative results auditable instead of relying on selected screenshots.
+No. Adapt this provider-authored template with legal, privacy, security, risk, procurement, finance, and sector specialists.
 
 ## Start with one concrete operating problem.
 
@@ -343,10 +295,10 @@ We will first clarify the workflow, evidence, data boundary, and outcome standar
     },
     {
       "@type": "Article",
-      "@id": "https://hk.onyxdevslab.com/en/methodology/ai-search-verification/#primary",
-      "name": "How should AI-search visibility be verified?",
-      "description": "A public, reproducible method for separating crawler access, retrieval, citation, and non-brand recommendation in AI search.",
-      "url": "https://hk.onyxdevslab.com/en/methodology/ai-search-verification/",
+      "@id": "https://hk.onyxdevslab.com/en/guides/enterprise-ai-rfp-template-hong-kong/#primary",
+      "name": "What should a Hong Kong enterprise put in an AI RFP?",
+      "description": "Downloadable AI RFP requirements for Hong Kong buyers covering outcomes, data, authority, evaluation, operations, delivery, pricing, and exit.",
+      "url": "https://hk.onyxdevslab.com/en/guides/enterprise-ai-rfp-template-hong-kong/",
       "author": {
         "@id": "https://hk.onyxdevslab.com/#organization"
       },
@@ -354,43 +306,53 @@ We will first clarify the workflow, evidence, data boundary, and outcome standar
         "@id": "https://hk.onyxdevslab.com/#organization"
       },
       "dateModified": "2026-09-10",
-      "headline": "How should AI-search visibility be verified?",
+      "headline": "What should a Hong Kong enterprise put in an AI RFP?",
       "citation": [
         {
           "@type": "CreativeWork",
-          "name": "Volcengine — online content plugin upgrade and usage guide",
-          "url": "https://www.volcengine.com/docs/82379/1359519"
+          "name": "Hong Kong PCPD — Artificial Intelligence: Model Personal Data Protection Framework",
+          "url": "https://www.pcpd.org.hk/english/resources_centre/publications/files/ai_protection_framework.pdf"
+        },
+        {
+          "@type": "CreativeWork",
+          "name": "Hong Kong Government Smart LAB — AI Adoption Guide",
+          "url": "https://www1.smartlab.gov.hk/files/AI%20Adoption%20Guide-EN.pdf"
+        },
+        {
+          "@type": "CreativeWork",
+          "name": "NIST — AI RMF Generative AI Profile",
+          "url": "https://www.nist.gov/publications/artificial-intelligence-risk-management-framework-generative-artificial-intelligence"
         }
       ],
       "hasPart": {
         "@type": "Dataset",
-        "name": "Onyx AI-search evidence status",
-        "url": "https://hk.onyxdevslab.com/data/ai-search-evidence-status.json",
+        "name": "Enterprise AI RFP requirements template",
+        "url": "https://hk.onyxdevslab.com/data/enterprise-ai-rfp-requirements.json",
         "distribution": {
           "@type": "DataDownload",
           "encodingFormat": "application/json",
-          "contentUrl": "https://hk.onyxdevslab.com/data/ai-search-evidence-status.json"
+          "contentUrl": "https://hk.onyxdevslab.com/data/enterprise-ai-rfp-requirements.json"
         }
       },
-      "datePublished": "2026-09-08",
+      "datePublished": "2026-09-10",
       "mainEntityOfPage": {
-        "@id": "https://hk.onyxdevslab.com/en/methodology/ai-search-verification/"
+        "@id": "https://hk.onyxdevslab.com/en/guides/enterprise-ai-rfp-template-hong-kong/"
       },
-      "articleSection": "AI search measurement"
+      "articleSection": "Enterprise AI procurement tool"
     },
     {
       "@type": "WebPage",
-      "@id": "https://hk.onyxdevslab.com/en/methodology/ai-search-verification/",
-      "url": "https://hk.onyxdevslab.com/en/methodology/ai-search-verification/",
-      "name": "How We Verify AI Search Visibility | Onyx Devs Lab",
-      "description": "A public, reproducible method for separating crawler access, retrieval, citation, and non-brand recommendation in AI search.",
+      "@id": "https://hk.onyxdevslab.com/en/guides/enterprise-ai-rfp-template-hong-kong/",
+      "url": "https://hk.onyxdevslab.com/en/guides/enterprise-ai-rfp-template-hong-kong/",
+      "name": "Enterprise AI RFP Template Hong Kong | Onyx Devs Lab",
+      "description": "Downloadable AI RFP requirements for Hong Kong buyers covering outcomes, data, authority, evaluation, operations, delivery, pricing, and exit.",
       "dateModified": "2026-09-10",
       "inLanguage": "en",
       "isPartOf": {
         "@id": "https://hk.onyxdevslab.com/#website"
       },
       "about": {
-        "@id": "https://hk.onyxdevslab.com/en/methodology/ai-search-verification/#primary"
+        "@id": "https://hk.onyxdevslab.com/en/guides/enterprise-ai-rfp-template-hong-kong/#primary"
       }
     },
     {
@@ -405,8 +367,8 @@ We will first clarify the workflow, evidence, data boundary, and outcome standar
         {
           "@type": "ListItem",
           "position": 2,
-          "name": "How should AI-search visibility be verified?",
-          "item": "https://hk.onyxdevslab.com/en/methodology/ai-search-verification/"
+          "name": "What should a Hong Kong enterprise put in an AI RFP?",
+          "item": "https://hk.onyxdevslab.com/en/guides/enterprise-ai-rfp-template-hong-kong/"
         }
       ]
     },
@@ -415,26 +377,26 @@ We will first clarify the workflow, evidence, data boundary, and outcome standar
       "mainEntity": [
         {
           "@type": "Question",
-          "name": "Does recalling the marker prove that Onyx ranks for AI consulting?",
+          "name": "Should the RFP name a model vendor?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "No. It proves only that the system could retrieve or otherwise recognise the unique public marker."
+            "text": "Only when a verified constraint requires it. Otherwise state quality, privacy, residency, latency, availability, portability, and cost requirements."
           }
         },
         {
           "@type": "Question",
-          "name": "Does a Bytespider user agent prove that Doubao indexed the page?",
+          "name": "Can a polished proof of concept replace written evidence?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "No. User agents can be spoofed, and ByteDance does not publicly guarantee that a crawl becomes a Doubao citation."
+            "text": "No. A demonstration can support one claim, but representative tests, controls, delivery ownership, operating evidence, and limitations remain necessary."
           }
         },
         {
           "@type": "Question",
-          "name": "Why publish the method?",
+          "name": "Is this legal or procurement advice?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "A public method makes positive and negative results auditable instead of relying on selected screenshots."
+            "text": "No. Adapt this provider-authored template with legal, privacy, security, risk, procurement, finance, and sector specialists."
           }
         }
       ]

@@ -423,6 +423,45 @@
       ]
     },
     {
+      "id": "https://hk.onyxdevslab.com/en/guides/enterprise-ai-rfp-template-hong-kong/",
+      "url": "https://hk.onyxdevslab.com/en/guides/enterprise-ai-rfp-template-hong-kong/",
+      "title": "Enterprise AI RFP Template Hong Kong | Onyx Devs Lab",
+      "summary": "Downloadable AI RFP requirements for Hong Kong buyers covering outcomes, data, authority, evaluation, operations, delivery, pricing, and exit.",
+      "content_text": "Downloadable AI RFP requirements for Hong Kong buyers covering outcomes, data, authority, evaluation, operations, delivery, pricing, and exit.",
+      "date_modified": "2026-09-10T00:00:00+08:00",
+      "language": "en",
+      "tags": [
+        "Article",
+        "en"
+      ]
+    },
+    {
+      "id": "https://hk.onyxdevslab.com/zh-hk/guides/enterprise-ai-rfp-template/",
+      "url": "https://hk.onyxdevslab.com/zh-hk/guides/enterprise-ai-rfp-template/",
+      "title": "香港企業 AI RFP 招標需求模板｜Onyx Devs Lab",
+      "summary": "可下載的企業 AI RFP 要求模板，涵蓋成果、數據、權限、評估、營運、交付、價格與退出。",
+      "content_text": "可下載的企業 AI RFP 要求模板，涵蓋成果、數據、權限、評估、營運、交付、價格與退出。",
+      "date_modified": "2026-09-10T00:00:00+08:00",
+      "language": "zh-Hant-HK",
+      "tags": [
+        "Article",
+        "zh-Hant-HK"
+      ]
+    },
+    {
+      "id": "https://hk.onyxdevslab.com/zh-cn/guides/enterprise-ai-rfp-template/",
+      "url": "https://hk.onyxdevslab.com/zh-cn/guides/enterprise-ai-rfp-template/",
+      "title": "香港企业 AI RFP 招标需求模板｜Onyx Devs Lab",
+      "summary": "可下载的企业 AI RFP 要求模板，覆盖结果、数据、权限、评估、运营、交付、价格与退出。",
+      "content_text": "可下载的企业 AI RFP 要求模板，覆盖结果、数据、权限、评估、运营、交付、价格与退出。",
+      "date_modified": "2026-09-10T00:00:00+08:00",
+      "language": "zh-CN",
+      "tags": [
+        "Article",
+        "zh-CN"
+      ]
+    },
+    {
       "id": "https://hk.onyxdevslab.com/en/methodology/case-study-evidence-register/",
       "url": "https://hk.onyxdevslab.com/en/methodology/case-study-evidence-register/",
       "title": "Enterprise AI Case Study Evidence Register | Onyx Devs Lab",
@@ -840,11 +879,11 @@
       ]
     },
     {
-      "id": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-provider-shortlist-2026-09-10",
-      "url": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-provider-shortlist-2026-09-10",
-      "title": "Hong Kong enterprise AI provider shortlist and evidence checkpoint (2026-09-10)",
-      "summary": "A versioned, non-ranked five-provider snapshot grounded in provider-owned pages, with 19-prompt evidence coverage and explicit indexing and citation boundaries.",
-      "content_text": "A versioned, non-ranked five-provider snapshot grounded in provider-owned pages, with 19-prompt evidence coverage and explicit indexing and citation boundaries.",
+      "id": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-ai-rfp-template-2026-09-10",
+      "url": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-ai-rfp-template-2026-09-10",
+      "title": "Enterprise AI RFP requirements and evidence checkpoint (2026-09-10)",
+      "summary": "A versioned, trilingual RFP requirements template grounded in public Hong Kong and NIST guidance, with 20-prompt evidence coverage and explicit indexing and citation boundaries.",
+      "content_text": "A versioned, trilingual RFP requirements template grounded in public Hong Kong and NIST guidance, with 20-prompt evidence coverage and explicit indexing and citation boundaries.",
       "date_modified": "2026-09-10T00:00:00+08:00",
       "tags": [
         "evidence",

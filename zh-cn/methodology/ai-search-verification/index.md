@@ -31,7 +31,7 @@ AI 搜索测量
 
 ### 可访问
 
-62 个规范 URL 返回可索引 HTML，并可在同一 URL 协商为 Markdown；robots.txt 允许相关爬虫。
+71 个规范 URL 返回可索引 HTML，并可在同一 URL 协商为 Markdown；robots.txt 允许相关爬虫。
 
 部分已验证
 

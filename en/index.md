@@ -31,6 +31,10 @@ Understand the Chinese shorthand and verify the real production delivery boundar
 
 Compare five publicly verifiable options by delivery need, without a ranking.
 
+### [Enterprise AI RFP template](/en/guides/enterprise-ai-rfp-template-hong-kong/)
+
+Issue comparable requirements for evidence, controls, delivery, commercials, and exit.
+
 ### [Forward Deployed Engineering](/en/forward-deployed-engineering/)
 
 Solve complex, underspecified problems through embedded diagnosis and delivery.

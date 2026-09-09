@@ -1,0 +1,235 @@
+{
+  "schemaVersion": 1,
+  "version": "2026.09.10",
+  "id": "https://hk.onyxdevslab.com/data/enterprise-ai-rfp-requirements.json",
+  "name": {
+    "en": "Enterprise AI RFP requirements template",
+    "zhHant": "企業 AI RFP 招標需求模板",
+    "zhHans": "企业 AI RFP 招标需求模板"
+  },
+  "publisher": {
+    "name": "Onyx Devs Lab",
+    "legalName": "ONYX DEVS LAB LIMITED",
+    "businessRegistrationNumber": "79051925",
+    "lei": "254900Z30CLK7HKE9H46",
+    "url": "https://hk.onyxdevslab.com/"
+  },
+  "dateModified": "2026-09-10",
+  "landingPages": {
+    "en": "https://hk.onyxdevslab.com/en/guides/enterprise-ai-rfp-template-hong-kong/",
+    "zhHant": "https://hk.onyxdevslab.com/zh-hk/guides/enterprise-ai-rfp-template/",
+    "zhHans": "https://hk.onyxdevslab.com/zh-cn/guides/enterprise-ai-rfp-template/"
+  },
+  "evidenceClass": "Provider-authored procurement requirements template grounded in public Hong Kong and NIST guidance",
+  "responseRule": "For every requirement, record the bidder claim, proposed method, named owner, evidence supplied, limitation, commercial assumption, and acceptance test. Missing evidence remains missing.",
+  "mandatoryGateRule": "A failed or unanswered privacy, permission, safety, legal, security, evidence-integrity, or exit gate cannot be offset by price or an average score.",
+  "sections": [
+    {
+      "id": "outcome-baseline",
+      "name": {
+        "en": "Operating outcome and baseline",
+        "zhHant": "營運成果與基線",
+        "zhHans": "运营结果与基线"
+      },
+      "fields": [
+        "workflow",
+        "decision_or_action",
+        "users",
+        "accountable_owner",
+        "current_baseline",
+        "baseline_definition",
+        "target_outcome",
+        "failure_consequence",
+        "included_scope",
+        "excluded_scope"
+      ]
+    },
+    {
+      "id": "data-privacy",
+      "name": {
+        "en": "Data, privacy, and location",
+        "zhHant": "數據、私隱與地區",
+        "zhHans": "数据、隐私与地区"
+      },
+      "fields": [
+        "systems_of_record",
+        "data_sources",
+        "data_provenance",
+        "personal_or_sensitive_data",
+        "lawful_and_permitted_use",
+        "retention",
+        "deletion",
+        "cross_border_movement",
+        "hosting_location",
+        "prohibited_uses"
+      ]
+    },
+    {
+      "id": "authority-security",
+      "name": {
+        "en": "Authority, identity, and security",
+        "zhHant": "權限、身份與安全",
+        "zhHans": "权限、身份与安全"
+      },
+      "fields": [
+        "read_rights",
+        "recommend_rights",
+        "draft_rights",
+        "approve_rights",
+        "execute_rights",
+        "identity_mapping",
+        "least_privilege",
+        "secrets",
+        "tenant_boundary",
+        "audit_fields",
+        "incident_route"
+      ]
+    },
+    {
+      "id": "evaluation-acceptance",
+      "name": {
+        "en": "Evaluation and acceptance",
+        "zhHant": "評估與驗收",
+        "zhHans": "评估与验收"
+      },
+      "fields": [
+        "common_cases",
+        "edge_cases",
+        "high_impact_cases",
+        "missing_data_cases",
+        "adversarial_cases",
+        "metric_definitions",
+        "mandatory_gates",
+        "minimum_thresholds",
+        "sample_size",
+        "evidence_reference",
+        "reviewer"
+      ]
+    },
+    {
+      "id": "architecture-operations",
+      "name": {
+        "en": "Architecture and operations",
+        "zhHant": "架構與營運",
+        "zhHans": "架构与运营"
+      },
+      "fields": [
+        "integration_design",
+        "model_dependencies",
+        "vendor_dependencies",
+        "portability",
+        "latency_budget",
+        "availability_target",
+        "cost_budget",
+        "monitoring",
+        "fallback",
+        "recovery_test",
+        "support_model"
+      ]
+    },
+    {
+      "id": "delivery-team",
+      "name": {
+        "en": "Delivery team and accountability",
+        "zhHant": "交付團隊與責任",
+        "zhHans": "交付团队与责任"
+      },
+      "fields": [
+        "named_lead",
+        "named_architect",
+        "named_engineers",
+        "subcontractors",
+        "role_allocation",
+        "decision_cadence",
+        "escalation",
+        "milestones",
+        "acceptance_owner",
+        "handover_owner"
+      ]
+    },
+    {
+      "id": "commercials",
+      "name": {
+        "en": "Commercial response",
+        "zhHant": "商務回應",
+        "zhHans": "商务回答"
+      },
+      "fields": [
+        "pricing_model",
+        "fixed_and_variable_fees",
+        "third_party_costs",
+        "recurring_costs",
+        "optional_costs",
+        "assumptions",
+        "excluded_work",
+        "change_control",
+        "payment_gates",
+        "warranty_or_remediation"
+      ]
+    },
+    {
+      "id": "handover-exit",
+      "name": {
+        "en": "Handover and exit",
+        "zhHant": "交接與退出",
+        "zhHans": "交接与退出"
+      },
+      "fields": [
+        "source_ownership",
+        "configuration_ownership",
+        "documentation",
+        "runbooks",
+        "knowledge_transfer",
+        "data_return",
+        "verified_deletion",
+        "export_formats",
+        "support_transition",
+        "termination_assistance"
+      ]
+    },
+    {
+      "id": "bidder-evidence",
+      "name": {
+        "en": "Bidder evidence schedule",
+        "zhHant": "候選團隊證據表",
+        "zhHans": "候选团队证据表"
+      },
+      "fields": [
+        "requirement_id",
+        "claim",
+        "method",
+        "named_owner",
+        "evidence_supplied",
+        "limitation",
+        "acceptance_test",
+        "commercial_assumption",
+        "status"
+      ]
+    }
+  ],
+  "statuses": [
+    "answered-with-evidence",
+    "answered-with-limitation",
+    "not-answered",
+    "not-applicable-with-reason"
+  ],
+  "limitations": [
+    "This template is not legal, privacy, security, risk, procurement, financial, or sector-specific advice.",
+    "Requirements and mandatory gates must be adapted to the workflow, jurisdiction, consequence, and organisation.",
+    "Completion does not prove that a bidder or system is compliant, safe, effective, or suitable."
+  ],
+  "sources": [
+    {
+      "name": "Hong Kong PCPD — Artificial Intelligence: Model Personal Data Protection Framework",
+      "url": "https://www.pcpd.org.hk/english/resources_centre/publications/files/ai_protection_framework.pdf"
+    },
+    {
+      "name": "Hong Kong Government Smart LAB — AI Adoption Guide",
+      "url": "https://www1.smartlab.gov.hk/files/AI%20Adoption%20Guide-EN.pdf"
+    },
+    {
+      "name": "NIST — AI Risk Management Framework: Generative AI Profile",
+      "url": "https://www.nist.gov/publications/artificial-intelligence-risk-management-framework-generative-artificial-intelligence"
+    }
+  ]
+}

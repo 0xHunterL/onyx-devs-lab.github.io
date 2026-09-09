@@ -31,6 +31,10 @@ language: "zh-CN"
 
 按交付需求比较五个可以公开核验的选项，不作排名。
 
+### [企业 AI RFP 模板](/zh-cn/guides/enterprise-ai-rfp-template/)
+
+用同一套证据、控制、交付、商务和退出要求比较方案。
+
 ### [FDE 前线部署工程](/zh-cn/forward-deployed-engineering/)
 
 通过现场诊断和嵌入式交付解决复杂问题。

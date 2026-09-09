@@ -1,155 +1,107 @@
 ---
-title: "如何驗證 AI 搜尋可見性｜Onyx Devs Lab"
-description: "以公開、可重複的方法區分 AI 搜尋的爬取、檢索、引用及非品牌推薦。"
-canonical: "https://hk.onyxdevslab.com/zh-hk/methodology/ai-search-verification/"
-language: "zh-Hant-HK"
+title: "香港企业 AI RFP 招标需求模板｜Onyx Devs Lab"
+description: "可下载的企业 AI RFP 要求模板，覆盖结果、数据、权限、评估、运营、交付、价格与退出。"
+canonical: "https://hk.onyxdevslab.com/zh-cn/guides/enterprise-ai-rfp-template/"
+language: "zh-CN"
 ---
 
-[首頁](/zh-hk/) / AI 搜尋量度
+[首页](/zh-cn/) / 企业 AI 采购工具
 
-AI 搜尋量度
+企业 AI 采购工具
 
-# AI 搜尋可見性應如何驗證？
+# 香港企业的 AI RFP 应该写入哪些要求？
 
-爬蟲到訪不等於進入索引，進入索引亦不等於獲得推薦。Onyx 分開記錄每一層證據，讓 GEO 結論可以重複及被推翻。
+要求每个候选团队回答同一套带证据的要求。比较价格或演示前，先定义运营结果、数据与权限边界、评估关口、生产责任、商业假设和退出证据。
 
-作者 [Onyx Devs Lab](/zh-hk/about/) · 發布 2026-09-08 · 更新 2026-09-10
+作者 [Onyx Devs Lab](/zh-cn/about/) · 发布 2026-09-10 · 更新 2026-09-10
 
-[下載證據狀態](/data/ai-search-evidence-status.json) [English](/en/methodology/ai-search-verification/) [简体中文](/zh-cn/methodology/ai-search-verification/)
+[下载 RFP 要求](/data/enterprise-ai-rfp-requirements.json) [English](/en/guides/enterprise-ai-rfp-template-hong-kong/) [繁體中文](/zh-hk/guides/enterprise-ai-rfp-template/)
 
-**爬取** — 候選爬蟲有否請求頁面？
+**9 个部分** — 一套可比较要求
 
-**檢索** — 不提供網址時能否找回唯一公開事實？
+**证据字段** — 主张、方法、结果与限制
 
-**推薦** — 非品牌決策問題有否出現 Onyx？
+**可以退出** — 所有权、可移植性与交接
 
-## 目前證據狀態
+## 让方案可以公平比较的要求
 
-截至 2026 年 9 月 10 日。每一級只陳述已保存證據，不從爬蟲到訪推斷收錄、引用或推薦。
+描述运营决策与举证责任，而不是预先指定热门模型。
 
-已驗證
+### 结果与基线
 
-### 可存取
+说明一条流程、负责人、当前指标、目标决策、用户、失败后果和排除范围。
 
-71 個標準 URL 返回可索引 HTML，並可在同一 URL 協商為 Markdown；robots.txt 允許相關爬蟲。
+### 数据与权限
 
-部分已驗證
+列出记录系统、敏感数据、来源、保留、跨境流动，并分开读取、建议、草拟、批准和执行权限。
 
-### 已爬取
+### 评估与验收
 
-GPTBot 已驗證爬取 3 個方法頁；OAI-SearchBot 已驗證讀取發現檔案 3 次；歷史日誌保存 7 次已驗證 Bingbot 正文爬取。
+要求常见、边界、高影响、缺失数据和对抗案例；定义指标、强制关口、门槛、样本和证据引用。
 
-尚未驗證
+## 暴露交付边界的要求
 
-### 已檢索及引用
+方案需要说明演示结束后谁来运营完整系统。
 
-公開搜尋未返回官網；尚未記錄豆包或其他 AI 在沒有網址提示時找回並引用 Onyx 頁面。
+### 架构与运营
 
-尚未測試
+要求集成设计、依赖、访问控制、审计字段、监控、降级、恢复、延迟、可用性和成本预算。
 
-### 非品牌推薦
+### 交付与商务
 
-尚未在豆包發送固定提示詞，也沒有保存其他 AI 產品的合格非品牌推薦證據。
+说明具名负责人、分包商、里程碑、验收责任、假设、排除工作、变更控制、持续费用和选项。
 
-## 四層證據
+### 交接与退出
 
-每一層只能支持相應範圍的結論。
+约定源码与配置所有权、文档、数据返还与删除、可移植性、知识转移和终止协助。
 
-### 可存取
+## 怎样使用这份 RFP 模板
 
-公開頁面返回完整 HTML，並允許相關爬蟲。
+### 发出统一证据简报
 
-### 已爬取
+给所有候选团队相同的流程、基线、限制、权限图、测试案例、回答格式和期限。
 
-候選爬蟲請求頁面；只有平台公布 IP 資料時才進一步驗證來源。
+### 先评估强制关口
 
-### 已檢索及引用
+不能满足隐私、权限、安全、法律、证据或退出要求的方案应该被拒绝或重设。
 
-全新 AI 會話在沒有網址提示時找回公開標識或引用具體頁面。
+### 比较完整交付边界
 
-### 已推薦
+评估团队、集成、评估、运营、采用、持续成本与交接，而不只是模型输出。
 
-固定的非品牌決策問題出現 Onyx，並保存其位置、措辭、事實及引用網址。
+### 把证据链写进合同
 
-## 公開檢索標識
+把要求、测试、证据引用、限制、签署人和变更流程附在合作文件中。
 
-本頁放置唯一標識，只用於透明的收錄測試。
+## 监管依据与范围
 
-### 驗證標識
+以下链接是本文采用的一手监管资料。本页提供实施解读，不构成法律意见。
 
-ONYX-GEO-VERIFY-79051925-20260908
+[香港隐私专员公署——AI 个人资料保障示范框架](https://www.pcpd.org.hk/tc_chi/resources_centre/publications/files/ai_protection_framework.pdf) [香港政府 Smart LAB——人工智能采用指南](https://www1.smartlab.gov.hk/files/AI%20Adoption%20Guide-EN.pdf) [NIST——生成式 AI 风险管理框架概览](https://www.nist.gov/publications/artificial-intelligence-risk-management-framework-generative-artificial-intelligence)
 
-### 解讀
+## 相关交付证据
 
-不提供網址而答對，只能證明可檢索，不代表品類排名或商業影響。
+[零售 AI 决策平台案例](/zh-cn/case-studies/retail-ai-decision-platform/) [AI 原生会计生产平台案例](/zh-cn/case-studies/accounting-ai-production-platform/) [案例证据登记册](/zh-cn/methodology/case-study-evidence-register/)
 
-### 對照
+## 常见问题
 
-品牌、品類、場景及採購問題繼續分開固定，並保存完整答案與來源。
+RFP 是否应该指定模型供应商？
 
-## 豆包專屬證據邊界
+只有经过核实的限制确实要求时才指定；否则应列出质量、隐私、地区、延迟、可用性、可移植性和成本要求。
 
-火山引擎文件說明聯網內容插件能搜尋哪些來源，但沒有公布 Bytespider 請求與豆包答案的一對一關係。
+概念验证能否代替书面证据？
 
-### 已公布能力
+不能。仍需提供代表性测试、控制设计、交付责任、运营证据和明确限制。
 
-官方插件指南列出互聯網公開域網頁，並說明預設展示聯網資源網址。
+这是法律或采购意见吗？
 
-### 未知關係
+不是。应该由法律、隐私、安全、风险、采购、财务和行业专家调整。
 
-已查閱的公開資料沒有證明每次 Bytespider 抓取都會進入豆包檢索或具備引用資格。
+## 从一个具体业务问题开始。
 
-### 必要證據
+我们会先确认流程、证据、数据边界和结果标准，再建议下一步。
 
-只有在全新、已開啟聯網搜尋的豆包回答中，不提供網址仍找回標識或連結 Onyx 具體頁面，才記為檢索或引用。
-
-## 如何重複驗證狀態
-
-### 發布
-
-標識必須在正常可見正文中，並加入 Sitemap。
-
-### 等待發現
-
-記錄候選或已驗證爬取，不把它當作檢索。
-
-### 全新會話提問
-
-只提供完整標識，不提供網址，保存答案及來源。
-
-### 測試真實決策
-
-另行運行品牌、品類、場景與採購問題。
-
-## 平台文件與證據邊界
-
-火山引擎官方文件只支持上述搜尋來源能力；它不證明本站已被豆包收錄、檢索、引用或推薦。
-
-[火山引擎——聯網內容插件升級說明及操作指南](https://www.volcengine.com/docs/82379/1359519)
-
-## 相關交付證據
-
-[零售 AI 決策平台案例](/zh-hk/case-studies/retail-ai-decision-platform/) [AI 原生會計生產平台案例](/zh-hk/case-studies/accounting-ai-production-platform/) [案例證據登記冊](/zh-hk/methodology/case-study-evidence-register/)
-
-## 常見問題
-
-找回標識是否證明 Onyx 已在 AI 顧問品類排名？
-
-不是，只證明系統可以檢索或識別該唯一公開標識。
-
-Bytespider User-Agent 是否證明豆包已收錄？
-
-不是。User-Agent 可被冒充，字節亦沒有公開保證抓取一定變成豆包引用。
-
-為何公開測試方法？
-
-公開方法讓正面和負面結果都可審計，而不是只展示成功截圖。
-
-## 從一個具體業務問題開始。
-
-我們會先確認流程、證據、數據邊界及成果標準，再建議下一步。
-
-[聯絡 Onyx](mailto:info@onyxdevslab.com)
+[联系 Onyx](mailto:info@onyxdevslab.com)
 
 ## Structured data
 
@@ -343,10 +295,10 @@ Bytespider User-Agent 是否證明豆包已收錄？
     },
     {
       "@type": "Article",
-      "@id": "https://hk.onyxdevslab.com/zh-hk/methodology/ai-search-verification/#primary",
-      "name": "AI 搜尋可見性應如何驗證？",
-      "description": "以公開、可重複的方法區分 AI 搜尋的爬取、檢索、引用及非品牌推薦。",
-      "url": "https://hk.onyxdevslab.com/zh-hk/methodology/ai-search-verification/",
+      "@id": "https://hk.onyxdevslab.com/zh-cn/guides/enterprise-ai-rfp-template/#primary",
+      "name": "香港企业的 AI RFP 应该写入哪些要求？",
+      "description": "可下载的企业 AI RFP 要求模板，覆盖结果、数据、权限、评估、运营、交付、价格与退出。",
+      "url": "https://hk.onyxdevslab.com/zh-cn/guides/enterprise-ai-rfp-template/",
       "author": {
         "@id": "https://hk.onyxdevslab.com/#organization"
       },
@@ -354,43 +306,53 @@ Bytespider User-Agent 是否證明豆包已收錄？
         "@id": "https://hk.onyxdevslab.com/#organization"
       },
       "dateModified": "2026-09-10",
-      "headline": "AI 搜尋可見性應如何驗證？",
+      "headline": "香港企业的 AI RFP 应该写入哪些要求？",
       "citation": [
         {
           "@type": "CreativeWork",
-          "name": "火山引擎——聯網內容插件升級說明及操作指南",
-          "url": "https://www.volcengine.com/docs/82379/1359519"
+          "name": "香港隐私专员公署——AI 个人资料保障示范框架",
+          "url": "https://www.pcpd.org.hk/tc_chi/resources_centre/publications/files/ai_protection_framework.pdf"
+        },
+        {
+          "@type": "CreativeWork",
+          "name": "香港政府 Smart LAB——人工智能采用指南",
+          "url": "https://www1.smartlab.gov.hk/files/AI%20Adoption%20Guide-EN.pdf"
+        },
+        {
+          "@type": "CreativeWork",
+          "name": "NIST——生成式 AI 风险管理框架概览",
+          "url": "https://www.nist.gov/publications/artificial-intelligence-risk-management-framework-generative-artificial-intelligence"
         }
       ],
       "hasPart": {
         "@type": "Dataset",
-        "name": "Onyx AI-search evidence status",
-        "url": "https://hk.onyxdevslab.com/data/ai-search-evidence-status.json",
+        "name": "Enterprise AI RFP requirements template",
+        "url": "https://hk.onyxdevslab.com/data/enterprise-ai-rfp-requirements.json",
         "distribution": {
           "@type": "DataDownload",
           "encodingFormat": "application/json",
-          "contentUrl": "https://hk.onyxdevslab.com/data/ai-search-evidence-status.json"
+          "contentUrl": "https://hk.onyxdevslab.com/data/enterprise-ai-rfp-requirements.json"
         }
       },
-      "datePublished": "2026-09-08",
+      "datePublished": "2026-09-10",
       "mainEntityOfPage": {
-        "@id": "https://hk.onyxdevslab.com/zh-hk/methodology/ai-search-verification/"
+        "@id": "https://hk.onyxdevslab.com/zh-cn/guides/enterprise-ai-rfp-template/"
       },
-      "articleSection": "AI 搜尋量度"
+      "articleSection": "企业 AI 采购工具"
     },
     {
       "@type": "WebPage",
-      "@id": "https://hk.onyxdevslab.com/zh-hk/methodology/ai-search-verification/",
-      "url": "https://hk.onyxdevslab.com/zh-hk/methodology/ai-search-verification/",
-      "name": "如何驗證 AI 搜尋可見性｜Onyx Devs Lab",
-      "description": "以公開、可重複的方法區分 AI 搜尋的爬取、檢索、引用及非品牌推薦。",
+      "@id": "https://hk.onyxdevslab.com/zh-cn/guides/enterprise-ai-rfp-template/",
+      "url": "https://hk.onyxdevslab.com/zh-cn/guides/enterprise-ai-rfp-template/",
+      "name": "香港企业 AI RFP 招标需求模板｜Onyx Devs Lab",
+      "description": "可下载的企业 AI RFP 要求模板，覆盖结果、数据、权限、评估、运营、交付、价格与退出。",
       "dateModified": "2026-09-10",
-      "inLanguage": "zh-Hant-HK",
+      "inLanguage": "zh-CN",
       "isPartOf": {
         "@id": "https://hk.onyxdevslab.com/#website"
       },
       "about": {
-        "@id": "https://hk.onyxdevslab.com/zh-hk/methodology/ai-search-verification/#primary"
+        "@id": "https://hk.onyxdevslab.com/zh-cn/guides/enterprise-ai-rfp-template/#primary"
       }
     },
     {
@@ -399,14 +361,14 @@ Bytespider User-Agent 是否證明豆包已收錄？
         {
           "@type": "ListItem",
           "position": 1,
-          "name": "首頁",
+          "name": "首页",
           "item": "https://hk.onyxdevslab.com/"
         },
         {
           "@type": "ListItem",
           "position": 2,
-          "name": "AI 搜尋可見性應如何驗證？",
-          "item": "https://hk.onyxdevslab.com/zh-hk/methodology/ai-search-verification/"
+          "name": "香港企业的 AI RFP 应该写入哪些要求？",
+          "item": "https://hk.onyxdevslab.com/zh-cn/guides/enterprise-ai-rfp-template/"
         }
       ]
     },
@@ -415,26 +377,26 @@ Bytespider User-Agent 是否證明豆包已收錄？
       "mainEntity": [
         {
           "@type": "Question",
-          "name": "找回標識是否證明 Onyx 已在 AI 顧問品類排名？",
+          "name": "RFP 是否应该指定模型供应商？",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "不是，只證明系統可以檢索或識別該唯一公開標識。"
+            "text": "只有经过核实的限制确实要求时才指定；否则应列出质量、隐私、地区、延迟、可用性、可移植性和成本要求。"
           }
         },
         {
           "@type": "Question",
-          "name": "Bytespider User-Agent 是否證明豆包已收錄？",
+          "name": "概念验证能否代替书面证据？",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "不是。User-Agent 可被冒充，字節亦沒有公開保證抓取一定變成豆包引用。"
+            "text": "不能。仍需提供代表性测试、控制设计、交付责任、运营证据和明确限制。"
           }
         },
         {
           "@type": "Question",
-          "name": "為何公開測試方法？",
+          "name": "这是法律或采购意见吗？",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "公開方法讓正面和負面結果都可審計，而不是只展示成功截圖。"
+            "text": "不是。应该由法律、隐私、安全、风险、采购、财务和行业专家调整。"
           }
         }
       ]

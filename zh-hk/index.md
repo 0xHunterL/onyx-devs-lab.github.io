@@ -31,6 +31,10 @@ language: "zh-Hant-HK"
 
 按交付需要比較五個可公開核對選項，不作排名。
 
+### [企業 AI RFP 模板](/zh-hk/guides/enterprise-ai-rfp-template/)
+
+用同一套證據、控制、交付、商務及退出要求比較方案。
+
 ### [前線部署工程 FDE](/zh-hk/forward-deployed-engineering/)
 
 以現場診斷和嵌入式交付處理難以預先定義的複雜問題。

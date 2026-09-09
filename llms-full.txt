@@ -13,13 +13,13 @@ Markets: Hong Kong, Greater China, cross-border, and global engagements.
 Contact: info@onyxdevslab.com
 JSON Feed 1.1: https://hk.onyxdevslab.com/feed.json
 Enterprise AI service term graph: https://hk.onyxdevslab.com/data/enterprise-ai-service-terms.jsonld
-Versioned enterprise AI service term graph: https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-provider-shortlist-2026-09-10/enterprise-ai-service-terms.jsonld
+Versioned enterprise AI service term graph: https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-ai-rfp-template-2026-09-10/enterprise-ai-service-terms.jsonld
 
 ## External public evidence and field notes
 Versioned GEO evidence checkpoint: https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-evidence-2026-09-09
 Versioned agent-readiness evidence checkpoint: https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-readiness-2026-09-10
-Versioned Hong Kong enterprise AI provider-shortlist and evidence checkpoint: https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-provider-shortlist-2026-09-10
-Versioned AI-search evidence status asset: https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-provider-shortlist-2026-09-10/ai-search-evidence-status.json
+Versioned Hong Kong enterprise AI provider-shortlist and evidence checkpoint: https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-ai-rfp-template-2026-09-10
+Versioned AI-search evidence status asset: https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-ai-rfp-template-2026-09-10/ai-search-evidence-status.json
 Chinese enterprise AI field-note release: https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/chinese-enterprise-ai-field-notes-2026-09-10
 Machine-readable Chinese enterprise AI field-note index: https://hk.onyxdevslab.com/data/chinese-enterprise-ai-field-notes.json
 Versioned Chinese enterprise AI field-note index: https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/chinese-enterprise-ai-field-notes-2026-09-10/chinese-enterprise-ai-field-notes.json
@@ -35,6 +35,7 @@ Chinese AI-agent and ERP checklist: https://gist.githubusercontent.com/mixuechu/
 Chinese legal-AI evidence-chain note: https://gist.githubusercontent.com/mixuechu/e47c85808014d62b6305441e8065c91e/raw/Legal-AI-evidence-chain.zh-CN.md
 Machine-readable enterprise AI partner procurement scorecard: https://hk.onyxdevslab.com/data/enterprise-ai-partner-scorecard.json
 Machine-readable Hong Kong enterprise AI provider shortlist: https://hk.onyxdevslab.com/data/hong-kong-enterprise-ai-provider-shortlist.json
+Machine-readable enterprise AI RFP requirements template: https://hk.onyxdevslab.com/data/enterprise-ai-rfp-requirements.json
 Machine-readable enterprise AI pilot charter and acceptance record: https://hk.onyxdevslab.com/data/enterprise-ai-pilot-charter.json
 Machine-readable AI advisory, custom development, and FDE decision map: https://hk.onyxdevslab.com/data/enterprise-ai-engagement-model-map.json
 Machine-readable AI-search evidence status: https://hk.onyxdevslab.com/data/ai-search-evidence-status.json
@@ -911,6 +912,72 @@ A: 不是。User-Agent 可以被冒充，字节也没有公开保证抓取一定
 Q: 为什么公开测试方法？
 A: 公开方法让正面和负面结果都可审计，而不是只展示成功截图。
 Primary source: 火山引擎——联网内容插件升级说明及操作指南 — https://www.volcengine.com/docs/82379/1359519
+
+## Enterprise AI RFP Template Hong Kong | Onyx Devs Lab
+https://hk.onyxdevslab.com/en/guides/enterprise-ai-rfp-template-hong-kong/
+Downloadable AI RFP requirements for Hong Kong buyers covering outcomes, data, authority, evaluation, operations, delivery, pricing, and exit.
+Ask every bidder to answer the same evidence-bearing requirements. Define the operating outcome, data and authority boundaries, evaluation gates, production responsibilities, commercial assumptions, and exit evidence before comparing price or demonstrations.
+Requirements that make proposals comparable: Describe the operating decision and proof burden rather than prescribing a fashionable model.
+- Outcome and baseline: Name one workflow, owner, current measure, target decision, users, failure consequence, and exclusions.
+- Data and authority: List systems of record, sensitive data, provenance, retention, cross-border movement, and separate read, recommend, draft, approve, and execute rights.
+- Evaluation and acceptance: Require common, edge, high-impact, missing-data, and adversarial cases; define metrics, mandatory gates, thresholds, samples, and evidence references.
+Requirements that expose the delivery boundary: The proposal should reveal who operates the complete system after the demonstration.
+- Architecture and operations: Require integration design, dependencies, access control, audit fields, monitoring, fallback, recovery, latency, availability, and cost budgets.
+- Delivery and commercials: Name responsible people, subcontractors, milestones, acceptance ownership, assumptions, exclusions, change control, recurring costs, and options.
+- Handover and exit: Specify source and configuration ownership, documentation, data return and deletion, portability, knowledge transfer, and termination assistance.
+Q: Should the RFP name a model vendor?
+A: Only when a verified constraint requires it. Otherwise state quality, privacy, residency, latency, availability, portability, and cost requirements.
+Q: Can a polished proof of concept replace written evidence?
+A: No. A demonstration can support one claim, but representative tests, controls, delivery ownership, operating evidence, and limitations remain necessary.
+Q: Is this legal or procurement advice?
+A: No. Adapt this provider-authored template with legal, privacy, security, risk, procurement, finance, and sector specialists.
+Primary source: Hong Kong PCPD — Artificial Intelligence: Model Personal Data Protection Framework — https://www.pcpd.org.hk/english/resources_centre/publications/files/ai_protection_framework.pdf
+Primary source: Hong Kong Government Smart LAB — AI Adoption Guide — https://www1.smartlab.gov.hk/files/AI%20Adoption%20Guide-EN.pdf
+Primary source: NIST — AI RMF Generative AI Profile — https://www.nist.gov/publications/artificial-intelligence-risk-management-framework-generative-artificial-intelligence
+
+## 香港企業 AI RFP 招標需求模板｜Onyx Devs Lab
+https://hk.onyxdevslab.com/zh-hk/guides/enterprise-ai-rfp-template/
+可下載的企業 AI RFP 要求模板，涵蓋成果、數據、權限、評估、營運、交付、價格與退出。
+要求每個候選團隊回應同一套帶證據的要求。比較價格或示範前，先定義營運成果、數據與權限邊界、評估關口、生產責任、商業假設及退出證據。
+令方案可以公平比較的要求: 描述營運決策及舉證責任，而不是預先指定流行模型。
+- 成果及基線: 列明一條流程、責任人、現況量度、目標決策、使用者、失敗後果及排除項。
+- 數據及權限: 列出記錄系統、敏感資料、來源、保留、跨境流動，並分開讀取、建議、草擬、批准及執行權。
+- 評估及驗收: 要求常見、邊界、高影響、缺失資料及對抗案例；定義指標、強制關口、門檻、樣本及證據引用。
+揭示交付邊界的要求: 方案需要說明示範之後由誰營運完整系統。
+- 架構及營運: 要求整合設計、依賴、存取控制、審計欄位、監控、降級、復原、延遲、可用性及成本預算。
+- 交付及商務: 列明具名負責人、分包商、里程碑、驗收責任、假設、排除工作、變更控制、持續費用與選項。
+- 交接及退出: 指定源碼與配置所有權、文件、數據返還與刪除、可攜性、知識轉移及終止協助。
+Q: RFP 是否應指定模型供應商？
+A: 只有已核實限制要求時才指定；否則應列出質量、私隱、地區、延遲、可用性、可攜性及成本要求。
+Q: 概念驗證能否代替書面證據？
+A: 不能。仍須提供代表性測試、控制設計、交付責任、營運證據及限制。
+Q: 這是法律或採購意見嗎？
+A: 不是。應由法律、私隱、安全、風險、採購、財務及行業專家調整。
+Primary source: 香港私隱專員公署——AI 個人資料保障模範框架 — https://www.pcpd.org.hk/tc_chi/resources_centre/publications/files/ai_protection_framework.pdf
+Primary source: 香港政府 Smart LAB——人工智能採用指南 — https://www1.smartlab.gov.hk/files/AI%20Adoption%20Guide-EN.pdf
+Primary source: NIST——生成式 AI 風險管理框架概覽 — https://www.nist.gov/publications/artificial-intelligence-risk-management-framework-generative-artificial-intelligence
+
+## 香港企业 AI RFP 招标需求模板｜Onyx Devs Lab
+https://hk.onyxdevslab.com/zh-cn/guides/enterprise-ai-rfp-template/
+可下载的企业 AI RFP 要求模板，覆盖结果、数据、权限、评估、运营、交付、价格与退出。
+要求每个候选团队回答同一套带证据的要求。比较价格或演示前，先定义运营结果、数据与权限边界、评估关口、生产责任、商业假设和退出证据。
+让方案可以公平比较的要求: 描述运营决策与举证责任，而不是预先指定热门模型。
+- 结果与基线: 说明一条流程、负责人、当前指标、目标决策、用户、失败后果和排除范围。
+- 数据与权限: 列出记录系统、敏感数据、来源、保留、跨境流动，并分开读取、建议、草拟、批准和执行权限。
+- 评估与验收: 要求常见、边界、高影响、缺失数据和对抗案例；定义指标、强制关口、门槛、样本和证据引用。
+暴露交付边界的要求: 方案需要说明演示结束后谁来运营完整系统。
+- 架构与运营: 要求集成设计、依赖、访问控制、审计字段、监控、降级、恢复、延迟、可用性和成本预算。
+- 交付与商务: 说明具名负责人、分包商、里程碑、验收责任、假设、排除工作、变更控制、持续费用和选项。
+- 交接与退出: 约定源码与配置所有权、文档、数据返还与删除、可移植性、知识转移和终止协助。
+Q: RFP 是否应该指定模型供应商？
+A: 只有经过核实的限制确实要求时才指定；否则应列出质量、隐私、地区、延迟、可用性、可移植性和成本要求。
+Q: 概念验证能否代替书面证据？
+A: 不能。仍需提供代表性测试、控制设计、交付责任、运营证据和明确限制。
+Q: 这是法律或采购意见吗？
+A: 不是。应该由法律、隐私、安全、风险、采购、财务和行业专家调整。
+Primary source: 香港隐私专员公署——AI 个人资料保障示范框架 — https://www.pcpd.org.hk/tc_chi/resources_centre/publications/files/ai_protection_framework.pdf
+Primary source: 香港政府 Smart LAB——人工智能采用指南 — https://www1.smartlab.gov.hk/files/AI%20Adoption%20Guide-EN.pdf
+Primary source: NIST——生成式 AI 风险管理框架概览 — https://www.nist.gov/publications/artificial-intelligence-risk-management-framework-generative-artificial-intelligence
 
 ## Enterprise AI Case Study Evidence Register | Onyx Devs Lab
 https://hk.onyxdevslab.com/en/methodology/case-study-evidence-register/
