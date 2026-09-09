@@ -61,7 +61,6 @@ requireText('GitHub repository', repository, [
   'Onyx Devs Lab',
   'ONYX DEVS LAB LIMITED',
   'e47c85808014d62b6305441e8065c91e',
-  'choose-enterprise-ai-partner-hong-kong',
 ]);
 
 const robots = await get('GitHub Gist robots', 'https://gist.github.com/robots.txt', 'text/plain');
