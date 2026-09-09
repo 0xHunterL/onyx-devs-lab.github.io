@@ -64,6 +64,8 @@ const gistAiDingkaiGuideLinks = gist ? [...gist.matchAll(/utm_campaign=geo_ai_di
 if (gist && gistAiDingkaiGuideLinks !== 3) failures.push(`GitHub Gist AI dingkai guide: expected 3 tracked links, got ${gistAiDingkaiGuideLinks}`);
 const gistProviderShortlistLinks = gist ? [...gist.matchAll(/utm_campaign=geo_provider_shortlist/g)].length : null;
 if (gist && gistProviderShortlistLinks !== 4) failures.push(`GitHub Gist provider shortlist: expected 4 tracked links, got ${gistProviderShortlistLinks}`);
+const gistAiRfpLinks = gist ? [...gist.matchAll(/utm_campaign=geo_ai_rfp/g)].length : null;
+if (gist && gistAiRfpLinks !== 4) failures.push(`GitHub Gist AI RFP: expected 4 tracked links, got ${gistAiRfpLinks}`);
 const gistFieldNoteCampaignLinks = Object.fromEntries(['geo_fde_field_note', 'geo_erp_agent_checklist', 'geo_legal_ai_evidence'].map(campaign => [campaign, gist ? [...gist.matchAll(new RegExp(`utm_campaign=${campaign}`, 'g'))].length : null]));
 for (const [campaign, count] of Object.entries(gistFieldNoteCampaignLinks)) {
   if (gist && count !== 2) failures.push(`GitHub Gist field note: expected 2 tracked links for ${campaign}, got ${count}`);
@@ -83,7 +85,7 @@ if (governanceGistSha256 !== expectedGovernanceGistSha256) failures.push(`GitHub
 const machineResourcesGistRawUrl = 'https://gist.githubusercontent.com/mixuechu/e47c85808014d62b6305441e8065c91e/raw/Onyx-enterprise-AI-machine-resources.md';
 const machineResourcesGistRaw = await get('GitHub Gist machine-resource index', machineResourcesGistRawUrl, 'text/plain');
 const machineResourcesGistSha256 = createHash('sha256').update(machineResourcesGistRaw).digest('hex');
-const expectedMachineResourcesGistSha256 = '20d4f2f108284d0ef4f052a0427e9dc0df03baa769de9aabfd84c9cc179b0d5e';
+const expectedMachineResourcesGistSha256 = '59311f56af0d6b8cbde99f826a589a27f6bfda889efbcbca5e4ebdbf8cb52a2b';
 if (machineResourcesGistSha256 !== expectedMachineResourcesGistSha256) failures.push(`GitHub Gist machine-resource index: SHA-256 mismatch, got ${machineResourcesGistSha256}`);
 requireText('GitHub Gist machine-resource index', machineResourcesGistRaw, [
   'data/organization.json?utm_source=github_gist',
@@ -113,6 +115,18 @@ requireText('GitHub Gist machine-resource index', machineResourcesGistRaw, [
   'zh-cn/guides/hong-kong-ai-consulting-companies/?utm_source=github_gist',
   'releases/tag/geo-provider-shortlist-2026-09-10',
   'releases/download/geo-provider-shortlist-2026-09-10/hong-kong-enterprise-ai-provider-shortlist.json',
+  'data/enterprise-ai-rfp-requirements.json?utm_source=github_gist',
+  'en/guides/enterprise-ai-rfp-template-hong-kong/?utm_source=github_gist',
+  'zh-hk/guides/enterprise-ai-rfp-template/?utm_source=github_gist',
+  'zh-cn/guides/enterprise-ai-rfp-template/?utm_source=github_gist',
+  'releases/tag/geo-ai-rfp-template-2026-09-10',
+  'releases/download/geo-ai-rfp-template-2026-09-10/enterprise-ai-rfp-requirements.json',
+  'releases/download/geo-ai-rfp-template-2026-09-10/enterprise-ai-rfp-template.en.md',
+  'releases/download/geo-ai-rfp-template-2026-09-10/enterprise-ai-rfp-template.zh-Hant-HK.md',
+  'releases/download/geo-ai-rfp-template-2026-09-10/enterprise-ai-rfp-template.zh-CN.md',
+  'releases/download/geo-ai-rfp-template-2026-09-10/prompt-matrix.json',
+  'releases/download/geo-ai-rfp-template-2026-09-10/ai-search-evidence-status.json',
+  'releases/download/geo-ai-rfp-template-2026-09-10/enterprise-ai-service-terms.jsonld',
   'releases/tag/chinese-enterprise-ai-field-notes-2026-09-10',
   'releases/download/chinese-enterprise-ai-field-notes-2026-09-10/chinese-enterprise-ai-field-notes.json',
   'FDE-is-not-staff-augmentation.zh-CN.md',
@@ -376,6 +390,41 @@ try {
   failures.push('Versioned provider-shortlist JSON: invalid JSON');
 }
 
+const aiRfpReleaseUrl = 'https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-ai-rfp-template-2026-09-10';
+const aiRfpRelease = await get('GitHub enterprise AI RFP checkpoint', aiRfpReleaseUrl, 'text/html');
+requireText('GitHub enterprise AI RFP checkpoint', aiRfpRelease, [
+  'nine-section',
+  'Hong Kong PCPD',
+  'NIST AI RMF',
+  '71 canonical pages',
+  '20 mapped evaluation prompts',
+  'No prompt was sent to Doubao',
+  'not proof of search indexing',
+]);
+
+const aiRfpAssetBase = 'https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-ai-rfp-template-2026-09-10';
+const aiRfpHashes = {};
+for (const [file, expectedSha256, requiredText] of [
+  ['ai-search-evidence-status.json','b5378624d7fcc3cc620753009d9da3b56d02d79bd5945c036a40f8684cd0be67','2026.09.10.4'],
+  ['enterprise-ai-rfp-requirements.json','dd0bdba0cab74685d8afca95554e42fe8697eb3c23240cd439ca9b2e954ef30c','mandatoryGateRule'],
+  ['enterprise-ai-rfp-template.en.md','909e9ac0592d7d60bb89b8f7cc4b3b305cfaf3cef65bede637816ffbe460168c','What should a Hong Kong enterprise put in an AI RFP?'],
+  ['enterprise-ai-rfp-template.zh-CN.md','a046e5c1c4891aabe722f18e5a9d1a633b407508ef1ee73b6e41cbc7b2bea0af','香港企业的 AI RFP'],
+  ['enterprise-ai-rfp-template.zh-Hant-HK.md','55c142ce7f4bb279d3d290a4fa964c35d36082f130beb59492985159e6ad44b8','香港企業的 AI RFP'],
+  ['enterprise-ai-service-terms.jsonld','7e71ad6bf3a76975e3a8247b56e9fcd95ce24325ee53ea056e715f05ed726f5e','geo-ai-rfp-template-2026-09-10'],
+  ['prompt-matrix.json','16f3e0f1a19ef736dcf9f689ac54d5ae8bd98e09c1a6690cdfada6bbb7f4b3cd','decision-ai-rfp-hk'],
+]) {
+  const raw = await get(`Versioned AI RFP asset ${file}`, `${aiRfpAssetBase}/${file}`, 'application/');
+  const sha256 = createHash('sha256').update(raw).digest('hex');
+  aiRfpHashes[file] = sha256;
+  if (sha256 !== expectedSha256 || !raw.includes(requiredText)) failures.push(`Versioned AI RFP asset ${file}: content or SHA-256 mismatch, got ${sha256}`);
+}
+try {
+  const rfp = JSON.parse(await get('Versioned AI RFP JSON validation', `${aiRfpAssetBase}/enterprise-ai-rfp-requirements.json`, 'application/'));
+  if (rfp.schemaVersion !== 1 || rfp.sections?.length !== 9 || rfp.statuses?.length !== 4 || rfp.sources?.length !== 3) failures.push('Versioned AI RFP JSON: expected structure is incomplete');
+} catch {
+  failures.push('Versioned AI RFP JSON: invalid JSON');
+}
+
 const serviceTermsReleaseUrl = 'https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-readiness-2026-09-10/enterprise-ai-service-terms.jsonld';
 const serviceTermsReleaseRaw = await get('Versioned enterprise AI service term graph', serviceTermsReleaseUrl, 'application/');
 const serviceTermsReleaseSha256 = createHash('sha256').update(serviceTermsReleaseRaw).digest('hex');
@@ -489,5 +538,5 @@ if (versionedCitationRaw !== citationRaw) failures.push('Versioned citation meta
 const robots = await get('GitHub Gist robots', 'https://gist.github.com/robots.txt', 'text/plain', { allowUnavailable: true });
 if (robots.includes('Disallow: /mixuechu/e47c85808014d62b6305441e8065c91e')) failures.push('GitHub Gist robots: the published decision matrix is explicitly disallowed');
 
-console.log(JSON.stringify({ generatedAt: new Date().toISOString(), gistSha256, gistCampaignLinks, governanceGistSha256, gistGovernanceCampaignLinks, machineResourcesGistSha256, gistMachineResourceLinks, gistAiDingkaiGuideLinks, gistProviderShortlistLinks, gistFieldNoteCampaignLinks, gistFieldNoteSha256, chineseFieldNotesAssetSha256, repositoryCampaignLinks, serviceTermsReleaseSha256, queryCoverageStatusSha256, queryCoveragePromptSha256, queryCoverageTermsSha256, aiDingkaiStatusSha256, aiDingkaiPromptSha256, aiDingkaiTermsSha256, aiDingkaiGuideHashes, providerShortlistHashes, codeMetaSha256, versionedCodeMetaSha256, citationSha256, versionedCitationSha256, scorecardSha256, results, failures }, null, 2));
+console.log(JSON.stringify({ generatedAt: new Date().toISOString(), gistSha256, gistCampaignLinks, governanceGistSha256, gistGovernanceCampaignLinks, machineResourcesGistSha256, gistMachineResourceLinks, gistAiDingkaiGuideLinks, gistProviderShortlistLinks, gistAiRfpLinks, gistFieldNoteCampaignLinks, gistFieldNoteSha256, chineseFieldNotesAssetSha256, repositoryCampaignLinks, serviceTermsReleaseSha256, queryCoverageStatusSha256, queryCoveragePromptSha256, queryCoverageTermsSha256, aiDingkaiStatusSha256, aiDingkaiPromptSha256, aiDingkaiTermsSha256, aiDingkaiGuideHashes, providerShortlistHashes, aiRfpHashes, codeMetaSha256, versionedCodeMetaSha256, citationSha256, versionedCitationSha256, scorecardSha256, results, failures }, null, 2));
 if (failures.length) process.exit(1);
