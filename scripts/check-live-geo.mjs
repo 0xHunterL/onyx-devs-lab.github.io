@@ -199,6 +199,24 @@ try {
 const logoResponse = await get('/favicon.svg', 'image/svg+xml');
 if (!logoResponse.body.includes('width="512" height="512" viewBox="0 0 100 100"')) failures.push('/favicon.svg: explicit 512px logo dimensions are missing');
 
+const servicePageGroups = [
+  { code: 'ai-advisory', names: ['AI advisory', 'AI 顧問', 'AI 咨询'], paths: ['/en/ai-consulting-hong-kong/', '/zh-hk/ai-consulting/', '/zh-cn/ai-consulting/'] },
+  { code: 'custom-ai-development', names: ['Custom AI development', 'AI 定制開發', 'AI 定制开发'], paths: ['/en/custom-ai-development-hong-kong/', '/zh-hk/custom-ai-development/', '/zh-cn/custom-ai-development/'] },
+  { code: 'forward-deployed-engineering', names: ['Forward Deployed Engineering (FDE)', '前線部署工程（FDE）', '前线部署工程（FDE）'], paths: ['/en/forward-deployed-engineering/', '/zh-hk/forward-deployed-engineering/', '/zh-cn/forward-deployed-engineering/'] },
+];
+for (const group of servicePageGroups) {
+  for (const pathname of group.paths) {
+    const page = await get(pathname, 'text/html');
+    if (!page.body.includes(`"serviceType":${JSON.stringify(group.names)}`)) failures.push(`${pathname}: canonical multilingual service type is missing`);
+    if (!page.body.includes(`"category":{"@id":"https://hk.onyxdevslab.com/data/enterprise-ai-service-terms.jsonld#${group.code}"}`)) failures.push(`${pathname}: service category term relation is missing`);
+  }
+}
+
+for (const pathname of ['/en/about/', '/zh-hk/about/', '/zh-cn/about/']) {
+  const page = await get(pathname, 'text/html');
+  if (!page.body.includes('"@type":"AboutPage"') || !page.body.includes('"mainEntity":{"@id":"https://hk.onyxdevslab.com/#organization"}')) failures.push(`${pathname}: AboutPage main organization entity is missing`);
+}
+
 const engagementModelResponse = await get('/data/enterprise-ai-engagement-model-map.json', 'application/json');
 try {
   const map = JSON.parse(engagementModelResponse.body);

@@ -110,6 +110,24 @@ for (const file of htmlFiles.filter((candidate) => candidate.includes(`${path.se
   }
 }
 
+const servicePageGroups = [
+  { code: 'ai-advisory', names: ['AI advisory', 'AI 顧問', 'AI 咨询'], paths: ['/en/ai-consulting-hong-kong/', '/zh-hk/ai-consulting/', '/zh-cn/ai-consulting/'] },
+  { code: 'custom-ai-development', names: ['Custom AI development', 'AI 定制開發', 'AI 定制开发'], paths: ['/en/custom-ai-development-hong-kong/', '/zh-hk/custom-ai-development/', '/zh-cn/custom-ai-development/'] },
+  { code: 'forward-deployed-engineering', names: ['Forward Deployed Engineering (FDE)', '前線部署工程（FDE）', '前线部署工程（FDE）'], paths: ['/en/forward-deployed-engineering/', '/zh-hk/forward-deployed-engineering/', '/zh-cn/forward-deployed-engineering/'] },
+];
+for (const group of servicePageGroups) {
+  for (const pathname of group.paths) {
+    const html = fs.readFileSync(path.join(dist, pathname, 'index.html'), 'utf8');
+    if (!html.includes(`"serviceType":${JSON.stringify(group.names)}`)) failures.push(`${pathname}: canonical multilingual service type is missing`);
+    if (!html.includes(`"category":{"@id":"https://hk.onyxdevslab.com/data/enterprise-ai-service-terms.jsonld#${group.code}"}`)) failures.push(`${pathname}: service category term relation is missing`);
+  }
+}
+
+for (const pathname of ['/en/about/', '/zh-hk/about/', '/zh-cn/about/']) {
+  const html = fs.readFileSync(path.join(dist, pathname, 'index.html'), 'utf8');
+  if (!html.includes('"@type":"AboutPage"') || !html.includes('"mainEntity":{"@id":"https://hk.onyxdevslab.com/#organization"}')) failures.push(`${pathname}: AboutPage main organization entity is missing`);
+}
+
 for (const file of ['robots.txt', 'sitemap.xml', 'feed.xml', 'feed.json', 'llms.txt', 'llms-full.txt', 'data/case-study-evidence.json', 'data/enterprise-ai-partner-scorecard.json', 'data/enterprise-ai-pilot-charter.json', 'data/enterprise-ai-engagement-model-map.json', 'data/enterprise-ai-service-terms.jsonld', 'data/ai-search-evidence-status.json', 'data/organization.json', '.nojekyll']) {
   if (!fs.existsSync(path.join(dist, file))) failures.push(`missing ${file}`);
 }

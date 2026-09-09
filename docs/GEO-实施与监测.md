@@ -23,6 +23,7 @@ FDE 首次出现时必须同时写出全称。中文页面采用“前线部署�
 - `robots.txt` 使用 `Content-Signal: search=yes, ai-input=yes`，明确允许搜索索引及在查询时作为 AI grounding／RAG 输入；训练用途保持未声明，不能从前两项推断。Cloudflare 将 Content Signals 纳入 AI Agent Readiness，但它仍只是内容使用意图，不是任何平台已抓取、收录或引用的证据。
 - HTML 响应使用 RFC 8288 `Link` 头暴露 Sitemap、Atom Feed、[JSON Feed 1.1](https://www.jsonfeed.org/version/1.1/) 和 `llms.txt`，让不解析页面导航的 Agent 也能从响应元数据发现公开知识入口。JSON Feed 是对 Atom 的补充，不是收录或引用证明。
 - HTML 与 HTTP `Link` 头同时暴露服务术语 JSON-LD。它使用 Schema.org 的 [`DefinedTermSet`](https://schema.org/DefinedTermSet)、[`DefinedTerm`](https://schema.org/DefinedTerm) 与 [`Service`](https://schema.org/Service)，把三语名称、定义、规范服务页、香港服务范围和 Onyx 提供者实体连成同一图；这属于 Onyx 自有实体声明，不是独立背书、收录或引用证据。
+- 9 个三语核心服务页在自身 `Service` 节点中声明统一的三语 `serviceType`，并通过 `category` 直接指向术语图中相应的 AI 顾问、定制开发或 FDE `DefinedTerm`；三语 AboutPage 通过 `mainEntity` 指回同一个 Onyx `Organization`，减少页面、服务类别与公司主体之间的歧义。
 - 构建为 62 个规范 HTML 页面各生成一份对应的 `index.md` 表示：正文取自页面可见的 `<main>`，带 title、description、canonical 和 language 前置元数据，并保留页面 JSON-LD。Nginx 仅在同一规范 URL 收到 `Accept: text/markdown` 时返回 Markdown；普通浏览器仍收到 HTML，两种响应均带 `Vary: Accept`。Markdown 是同一内容的机器友好表示，不建立新的规范 URL，也不单独提交 IndexNow。
 
 ## 发布检查
