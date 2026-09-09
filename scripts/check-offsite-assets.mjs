@@ -62,6 +62,8 @@ const gistMachineResourceLinks = gist ? [...gist.matchAll(/utm_campaign=geo_mach
 if (gist && gistMachineResourceLinks < 13) failures.push(`GitHub Gist machine resources: expected at least 13 tracked links, got ${gistMachineResourceLinks}`);
 const gistAiDingkaiGuideLinks = gist ? [...gist.matchAll(/utm_campaign=geo_ai_dingkai_guide/g)].length : null;
 if (gist && gistAiDingkaiGuideLinks !== 3) failures.push(`GitHub Gist AI dingkai guide: expected 3 tracked links, got ${gistAiDingkaiGuideLinks}`);
+const gistProviderShortlistLinks = gist ? [...gist.matchAll(/utm_campaign=geo_provider_shortlist/g)].length : null;
+if (gist && gistProviderShortlistLinks !== 4) failures.push(`GitHub Gist provider shortlist: expected 4 tracked links, got ${gistProviderShortlistLinks}`);
 const gistFieldNoteCampaignLinks = Object.fromEntries(['geo_fde_field_note', 'geo_erp_agent_checklist', 'geo_legal_ai_evidence'].map(campaign => [campaign, gist ? [...gist.matchAll(new RegExp(`utm_campaign=${campaign}`, 'g'))].length : null]));
 for (const [campaign, count] of Object.entries(gistFieldNoteCampaignLinks)) {
   if (gist && count !== 2) failures.push(`GitHub Gist field note: expected 2 tracked links for ${campaign}, got ${count}`);
@@ -81,7 +83,7 @@ if (governanceGistSha256 !== expectedGovernanceGistSha256) failures.push(`GitHub
 const machineResourcesGistRawUrl = 'https://gist.githubusercontent.com/mixuechu/e47c85808014d62b6305441e8065c91e/raw/Onyx-enterprise-AI-machine-resources.md';
 const machineResourcesGistRaw = await get('GitHub Gist machine-resource index', machineResourcesGistRawUrl, 'text/plain');
 const machineResourcesGistSha256 = createHash('sha256').update(machineResourcesGistRaw).digest('hex');
-const expectedMachineResourcesGistSha256 = '129412065acb25be346bff200b88822d5a18837f7170e2e5e77dd52e57602081';
+const expectedMachineResourcesGistSha256 = '20d4f2f108284d0ef4f052a0427e9dc0df03baa769de9aabfd84c9cc179b0d5e';
 if (machineResourcesGistSha256 !== expectedMachineResourcesGistSha256) failures.push(`GitHub Gist machine-resource index: SHA-256 mismatch, got ${machineResourcesGistSha256}`);
 requireText('GitHub Gist machine-resource index', machineResourcesGistRaw, [
   'data/organization.json?utm_source=github_gist',
@@ -105,6 +107,12 @@ requireText('GitHub Gist machine-resource index', machineResourcesGistRaw, [
   'releases/download/geo-ai-dingkai-guide-2026-09-10/ai-dingkai-guide.en.md',
   'releases/download/geo-ai-dingkai-guide-2026-09-10/ai-dingkai-guide.zh-Hant-HK.md',
   'releases/download/geo-ai-dingkai-guide-2026-09-10/ai-dingkai-guide.zh-CN.md',
+  'data/hong-kong-enterprise-ai-provider-shortlist.json?utm_source=github_gist',
+  'en/guides/hong-kong-ai-consulting-companies/?utm_source=github_gist',
+  'zh-hk/guides/hong-kong-ai-service-providers/?utm_source=github_gist',
+  'zh-cn/guides/hong-kong-ai-consulting-companies/?utm_source=github_gist',
+  'releases/tag/geo-provider-shortlist-2026-09-10',
+  'releases/download/geo-provider-shortlist-2026-09-10/hong-kong-enterprise-ai-provider-shortlist.json',
   'releases/tag/chinese-enterprise-ai-field-notes-2026-09-10',
   'releases/download/chinese-enterprise-ai-field-notes-2026-09-10/chinese-enterprise-ai-field-notes.json',
   'FDE-is-not-staff-augmentation.zh-CN.md',
@@ -331,6 +339,43 @@ for (const [file, expectedSha256, requiredText] of [
   if (sha256 !== expectedSha256 || !raw.includes(requiredText)) failures.push(`Versioned AI dingkai guide ${file}: content or SHA-256 mismatch, got ${sha256}`);
 }
 
+const providerShortlistReleaseUrl = 'https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-provider-shortlist-2026-09-10';
+const providerShortlistRelease = await get('GitHub provider-shortlist checkpoint', providerShortlistReleaseUrl, 'text/html');
+requireText('GitHub provider-shortlist checkpoint', providerShortlistRelease, [
+  'Hong Kong enterprise AI provider shortlist',
+  'Onyx Devs Lab',
+  'Accenture',
+  'Deloitte China',
+  'PwC Hong Kong',
+  'Hong Kong Productivity Council',
+  'non-ranked',
+  'No controlled prompts were sent to Doubao',
+  'does not prove search indexing',
+]);
+
+const providerShortlistAssetBase = 'https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-provider-shortlist-2026-09-10';
+const providerShortlistHashes = {};
+for (const [file, expectedSha256, requiredText] of [
+  ['ai-search-evidence-status.json','0f9b3161729b683f2a234ab4d687a0af9040430419b60aa39042a141c9776e52','2026.09.10.3'],
+  ['enterprise-ai-service-terms.jsonld','5027719e29acf1ec09322afb0e1825489ed1f78d83fbd2e6248cd4fa7e0163cf','geo-provider-shortlist-2026-09-10'],
+  ['hong-kong-enterprise-ai-provider-shortlist.json','155d8ead9fd7a6c8aa37f12f26a7e056fe41c14db639b46f0564466eb844a918','Hong Kong Productivity Council'],
+  ['prompt-matrix.json','3c5d38468452f9834cca870252e556946aa1b2ada302c06cb37889e66983119d','category-provider-shortlist-hk'],
+  ['hong-kong-ai-provider-shortlist.en.md','a7fb54cf8958b0a35fadfe3dd9c65e6cef18d4a5078860b32dd195a358372f62','Which Hong Kong AI consulting'],
+  ['hong-kong-ai-provider-shortlist.zh-Hant-HK.md','28ba3c2e02b3d149ca50a2a23266cb66a6aa4a89a53250af2348d5de60771bae','香港企業可把哪些 AI 顧問'],
+  ['hong-kong-ai-provider-shortlist.zh-CN.md','085755161e223ed2ef1f710a6affeff43faf9f13d8bec285e5347740e33ddddd','香港企业可以把哪些 AI 咨询'],
+]) {
+  const raw = await get(`Versioned provider-shortlist asset ${file}`, `${providerShortlistAssetBase}/${file}`, 'application/');
+  const sha256 = createHash('sha256').update(raw).digest('hex');
+  providerShortlistHashes[file] = sha256;
+  if (sha256 !== expectedSha256 || !raw.includes(requiredText)) failures.push(`Versioned provider-shortlist asset ${file}: content or SHA-256 mismatch, got ${sha256}`);
+}
+try {
+  const shortlist = JSON.parse(await get('Versioned provider-shortlist JSON validation', `${providerShortlistAssetBase}/hong-kong-enterprise-ai-provider-shortlist.json`, 'application/'));
+  if (shortlist.schemaVersion !== 1 || shortlist.providers?.length !== 5 || !shortlist.limitations?.some((item) => item.includes('not an endorsement'))) failures.push('Versioned provider-shortlist JSON: expected structure is incomplete');
+} catch {
+  failures.push('Versioned provider-shortlist JSON: invalid JSON');
+}
+
 const serviceTermsReleaseUrl = 'https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-readiness-2026-09-10/enterprise-ai-service-terms.jsonld';
 const serviceTermsReleaseRaw = await get('Versioned enterprise AI service term graph', serviceTermsReleaseUrl, 'application/');
 const serviceTermsReleaseSha256 = createHash('sha256').update(serviceTermsReleaseRaw).digest('hex');
@@ -444,5 +489,5 @@ if (versionedCitationRaw !== citationRaw) failures.push('Versioned citation meta
 const robots = await get('GitHub Gist robots', 'https://gist.github.com/robots.txt', 'text/plain', { allowUnavailable: true });
 if (robots.includes('Disallow: /mixuechu/e47c85808014d62b6305441e8065c91e')) failures.push('GitHub Gist robots: the published decision matrix is explicitly disallowed');
 
-console.log(JSON.stringify({ generatedAt: new Date().toISOString(), gistSha256, gistCampaignLinks, governanceGistSha256, gistGovernanceCampaignLinks, machineResourcesGistSha256, gistMachineResourceLinks, gistAiDingkaiGuideLinks, gistFieldNoteCampaignLinks, gistFieldNoteSha256, chineseFieldNotesAssetSha256, repositoryCampaignLinks, serviceTermsReleaseSha256, queryCoverageStatusSha256, queryCoveragePromptSha256, queryCoverageTermsSha256, aiDingkaiStatusSha256, aiDingkaiPromptSha256, aiDingkaiTermsSha256, aiDingkaiGuideHashes, codeMetaSha256, versionedCodeMetaSha256, citationSha256, versionedCitationSha256, scorecardSha256, results, failures }, null, 2));
+console.log(JSON.stringify({ generatedAt: new Date().toISOString(), gistSha256, gistCampaignLinks, governanceGistSha256, gistGovernanceCampaignLinks, machineResourcesGistSha256, gistMachineResourceLinks, gistAiDingkaiGuideLinks, gistProviderShortlistLinks, gistFieldNoteCampaignLinks, gistFieldNoteSha256, chineseFieldNotesAssetSha256, repositoryCampaignLinks, serviceTermsReleaseSha256, queryCoverageStatusSha256, queryCoveragePromptSha256, queryCoverageTermsSha256, aiDingkaiStatusSha256, aiDingkaiPromptSha256, aiDingkaiTermsSha256, aiDingkaiGuideHashes, providerShortlistHashes, codeMetaSha256, versionedCodeMetaSha256, citationSha256, versionedCitationSha256, scorecardSha256, results, failures }, null, 2));
 if (failures.length) process.exit(1);

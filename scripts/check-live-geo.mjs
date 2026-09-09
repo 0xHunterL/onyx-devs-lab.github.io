@@ -220,7 +220,7 @@ try {
   if (shortlist.schemaVersion !== 1 || shortlist.dateReviewed !== '2026-09-10') failures.push('/data/hong-kong-enterprise-ai-provider-shortlist.json: unexpected schema or review date');
   if (providerNames !== 'Onyx Devs Lab,Accenture,Deloitte China,PwC Hong Kong,Hong Kong Productivity Council') failures.push('/data/hong-kong-enterprise-ai-provider-shortlist.json: expected five providers are incomplete');
   if (!shortlist.providers?.every((provider) => provider.officialSources?.length && provider.deliveryScopes?.length)) failures.push('/data/hong-kong-enterprise-ai-provider-shortlist.json: official sources or delivery scopes are incomplete');
-  if (!shortlist.evidenceBoundary?.includes('non-ranked') || !shortlist.limitations?.some((item) => item.includes('not an endorsement'))) failures.push('/data/hong-kong-enterprise-ai-provider-shortlist.json: evidence boundary is incomplete');
+  if (!shortlist.limitations?.some((item) => item.includes('non-exhaustive')) || !shortlist.limitations?.some((item) => item.includes('not an endorsement'))) failures.push('/data/hong-kong-enterprise-ai-provider-shortlist.json: evidence boundary is incomplete');
 } catch {
   failures.push('/data/hong-kong-enterprise-ai-provider-shortlist.json: invalid JSON');
 }
