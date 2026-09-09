@@ -130,8 +130,21 @@ requireText('GitHub repository README source', repositoryReadme, [
   'Onyx-enterprise-AI-machine-resources.md',
 ]);
 
+const codeMetaRaw = await get('GitHub repository CodeMeta source', 'https://raw.githubusercontent.com/0xHunterL/onyx-devs-lab.github.io/main/codemeta.json', 'application/json');
+const codeMetaSha256 = createHash('sha256').update(codeMetaRaw).digest('hex');
+const expectedCodeMetaSha256 = '6a1dac65d2051c40cf2234542e9120109fa1b0ec23b4a88310f4b85154926def';
+if (codeMetaSha256 !== expectedCodeMetaSha256) failures.push(`GitHub repository CodeMeta source: SHA-256 mismatch, got ${codeMetaSha256}`);
+try {
+  const codeMeta = JSON.parse(codeMetaRaw);
+  if (codeMeta['@context'] !== 'https://w3id.org/codemeta/3.1' || codeMeta['@type'] !== 'SoftwareSourceCode') failures.push('GitHub repository CodeMeta source: unexpected context or type');
+  if (codeMeta.author?.legalName !== 'ONYX DEVS LAB LIMITED' || codeMeta.author?.leiCode !== '254900Z30CLK7HKE9H46') failures.push('GitHub repository CodeMeta source: publisher identity is incomplete');
+  if (!codeMeta.keywords?.includes('Forward Deployed Engineering') || !codeMeta.citation?.includes('https://hk.onyxdevslab.com/data/ai-search-evidence-status.json')) failures.push('GitHub repository CodeMeta source: discovery relationships are incomplete');
+} catch {
+  failures.push('GitHub repository CodeMeta source: invalid JSON');
+}
+
 const robots = await get('GitHub Gist robots', 'https://gist.github.com/robots.txt', 'text/plain');
 if (robots.includes('Disallow: /mixuechu/e47c85808014d62b6305441e8065c91e')) failures.push('GitHub Gist robots: the published decision matrix is explicitly disallowed');
 
-console.log(JSON.stringify({ generatedAt: new Date().toISOString(), gistSha256, gistCampaignLinks, governanceGistSha256, gistGovernanceCampaignLinks, machineResourcesGistSha256, gistMachineResourceLinks, scorecardSha256, results, failures }, null, 2));
+console.log(JSON.stringify({ generatedAt: new Date().toISOString(), gistSha256, gistCampaignLinks, governanceGistSha256, gistGovernanceCampaignLinks, machineResourcesGistSha256, gistMachineResourceLinks, codeMetaSha256, scorecardSha256, results, failures }, null, 2));
 if (failures.length) process.exit(1);
