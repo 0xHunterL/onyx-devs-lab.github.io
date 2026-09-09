@@ -33,6 +33,7 @@ The [case-study evidence register](https://hk.onyxdevslab.com/en/methodology/cas
 
 ## Field notes and reproducible GEO checks
 
+- [AI advisory, custom development, or FDE? Bilingual decision matrix](https://gist.github.com/mixuechu/e47c85808014d62b6305441e8065c91e)
 - [FDE is not staff augmentation (Chinese)](docs/distribution/FDE不是驻场外包.md)
 - [Seven questions before connecting an AI agent to an ERP (Chinese)](docs/distribution/AI-Agent接入ERP前的七个问题.md)
 - [Designing evidence chains for legal AI (Chinese)](docs/distribution/法律AI证据链设计.md)
