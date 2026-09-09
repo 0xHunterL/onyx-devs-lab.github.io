@@ -19,6 +19,9 @@ Versioned enterprise AI service term graph: https://github.com/0xHunterL/onyx-de
 Versioned GEO evidence checkpoint: https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-evidence-2026-09-09
 Versioned agent-readiness evidence checkpoint: https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-readiness-2026-09-10
 Versioned AI-search evidence status asset: https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-readiness-2026-09-10/ai-search-evidence-status.json
+Chinese enterprise AI field-note release: https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/chinese-enterprise-ai-field-notes-2026-09-10
+Machine-readable Chinese enterprise AI field-note index: https://hk.onyxdevslab.com/data/chinese-enterprise-ai-field-notes.json
+Versioned Chinese enterprise AI field-note index: https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/chinese-enterprise-ai-field-notes-2026-09-10/chinese-enterprise-ai-field-notes.json
 Bilingual AI advisory, custom development, and FDE decision matrix: https://gist.github.com/mixuechu/e47c85808014d62b6305441e8065c91e
 Bilingual Hong Kong enterprise AI governance implementation note: https://gist.githubusercontent.com/mixuechu/e47c85808014d62b6305441e8065c91e/raw/Hong-Kong-enterprise-AI-governance.md
 Enterprise AI machine-resource index: https://gist.githubusercontent.com/mixuechu/e47c85808014d62b6305441e8065c91e/raw/Onyx-enterprise-AI-machine-resources.md

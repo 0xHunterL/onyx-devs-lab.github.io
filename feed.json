@@ -754,6 +754,18 @@
         "evidence",
         "provider-maintained-external-source"
       ]
+    },
+    {
+      "id": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/chinese-enterprise-ai-field-notes-2026-09-10",
+      "url": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/chinese-enterprise-ai-field-notes-2026-09-10",
+      "title": "Onyx Devs Lab｜香港企业 AI 中文方法索引（2026-09-10）",
+      "summary": "Provider-maintained Chinese index connecting enterprise AI advisory, custom AI development, FDE, AI-agent ERP controls, and legal-AI evidence methods to canonical sources.",
+      "content_text": "Provider-maintained Chinese index connecting enterprise AI advisory, custom AI development, FDE, AI-agent ERP controls, and legal-AI evidence methods to canonical sources.",
+      "date_modified": "2026-09-10T00:00:00+08:00",
+      "tags": [
+        "zh-CN",
+        "provider-maintained-external-source"
+      ]
     }
   ]
 }
