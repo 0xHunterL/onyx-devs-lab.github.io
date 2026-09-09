@@ -124,6 +124,7 @@ for (const pathname of ['/en/about/', '/zh-hk/about/', '/zh-cn/about/']) {
   if (!html.includes('36-40 TAI LIN PAI ROAD, UNIT B53, 2/F, KWAI CHUNG, HONG KONG 999077')) failures.push(`${pathname}: visible registered address is missing`);
   if (!html.includes('ACTIVE') || !html.includes('ISSUED')) failures.push(`${pathname}: visible GLEIF status is missing`);
   if (!html.includes('https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-evidence-2026-09-09')) failures.push(`${pathname}: visible versioned evidence link is missing`);
+  if (!html.includes('href="/data/organization.json" type="application/json"')) failures.push(`${pathname}: visible canonical organization JSON link is missing`);
 }
 
 try {

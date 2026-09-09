@@ -167,6 +167,10 @@ for (const pathname of requiredPaths) {
   if (!urls.some((url) => new URL(url).pathname === pathname)) failures.push(`/sitemap.xml: required GEO URL missing: ${pathname}`);
 }
 
+for (const pathname of ['/en/about/', '/zh-hk/about/', '/zh-cn/about/']) {
+  const page = await get(pathname, 'text/html');
+  if (!page.body.includes('href="/data/organization.json" type="application/json"')) failures.push(`${pathname}: visible canonical organization JSON link is missing`);
+}
 
 const bytespiderAgent = 'Mozilla/5.0 (compatible; Bytespider; +https://zhanzhang.toutiao.com/) Onyx-GEO-Release-Check/1.0';
 for (const pathname of requiredPaths.filter((path) => path.startsWith('/zh-cn/'))) {
