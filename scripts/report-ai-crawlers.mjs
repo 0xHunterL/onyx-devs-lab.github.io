@@ -250,6 +250,18 @@ const verifiedGooglePages = pageCandidates.filter((event) => event.family === 'G
 const verifiedPerplexityPages = pageCandidates.filter(
   (event) => ['PerplexityBot', 'Perplexity-User'].includes(event.family) && event.providerVerified === true,
 );
+const verifiedOpenAiDiscoveryFiles = discoveryCandidates.filter(
+  (event) => ['GPTBot', 'OAI-SearchBot'].includes(event.family) && event.providerVerified === true,
+);
+const verifiedBingDiscoveryFiles = discoveryCandidates.filter(
+  (event) => event.family === 'Bingbot' && event.providerVerified === true,
+);
+const verifiedGoogleDiscoveryFiles = discoveryCandidates.filter(
+  (event) => event.family === 'Googlebot' && event.providerVerified === true,
+);
+const verifiedPerplexityDiscoveryFiles = discoveryCandidates.filter(
+  (event) => ['PerplexityBot', 'Perplexity-User'].includes(event.family) && event.providerVerified === true,
+);
 
 console.log(JSON.stringify({
   generatedAt: new Date().toISOString(),
@@ -270,6 +282,10 @@ console.log(JSON.stringify({
     verifiedBingPageCrawls: verifiedBingPages.length,
     verifiedGooglePageCrawls: verifiedGooglePages.length,
     verifiedPerplexityPageCrawls: verifiedPerplexityPages.length,
+    verifiedOpenAiDiscoveryFileCrawls: verifiedOpenAiDiscoveryFiles.length,
+    verifiedBingDiscoveryFileCrawls: verifiedBingDiscoveryFiles.length,
+    verifiedGoogleDiscoveryFileCrawls: verifiedGoogleDiscoveryFiles.length,
+    verifiedPerplexityDiscoveryFileCrawls: verifiedPerplexityDiscoveryFiles.length,
     unparsableLines,
   },
   byFamily,
@@ -280,5 +296,9 @@ console.log(JSON.stringify({
   recentVerifiedBingPageCrawls: verifiedBingPages.slice(-50),
   recentVerifiedGooglePageCrawls: verifiedGooglePages.slice(-50),
   recentVerifiedPerplexityPageCrawls: verifiedPerplexityPages.slice(-50),
+  recentVerifiedOpenAiDiscoveryFileCrawls: verifiedOpenAiDiscoveryFiles.slice(-30),
+  recentVerifiedBingDiscoveryFileCrawls: verifiedBingDiscoveryFiles.slice(-30),
+  recentVerifiedGoogleDiscoveryFileCrawls: verifiedGoogleDiscoveryFiles.slice(-30),
+  recentVerifiedPerplexityDiscoveryFileCrawls: verifiedPerplexityDiscoveryFiles.slice(-30),
   recentSuspiciousRequests: suspiciousCandidates.slice(-20),
 }, null, 2));
