@@ -59,7 +59,7 @@ if (gist && gistCampaignLinks < 13) failures.push(`GitHub Gist field notes: expe
 const gistGovernanceCampaignLinks = gist ? [...gist.matchAll(/utm_campaign=geo_governance_guide/g)].length : null;
 if (gist && gistGovernanceCampaignLinks < 3) failures.push(`GitHub Gist governance guide: expected at least 3 tracked deep links, got ${gistGovernanceCampaignLinks}`);
 const gistMachineResourceLinks = gist ? [...gist.matchAll(/utm_campaign=geo_machine_resources/g)].length : null;
-if (gist && gistMachineResourceLinks < 12) failures.push(`GitHub Gist machine resources: expected at least 12 tracked links, got ${gistMachineResourceLinks}`);
+if (gist && gistMachineResourceLinks < 13) failures.push(`GitHub Gist machine resources: expected at least 13 tracked links, got ${gistMachineResourceLinks}`);
 const gistFieldNoteCampaignLinks = Object.fromEntries(['geo_fde_field_note', 'geo_erp_agent_checklist', 'geo_legal_ai_evidence'].map(campaign => [campaign, gist ? [...gist.matchAll(new RegExp(`utm_campaign=${campaign}`, 'g'))].length : null]));
 for (const [campaign, count] of Object.entries(gistFieldNoteCampaignLinks)) {
   if (gist && count !== 2) failures.push(`GitHub Gist field note: expected 2 tracked links for ${campaign}, got ${count}`);
@@ -79,18 +79,21 @@ if (governanceGistSha256 !== expectedGovernanceGistSha256) failures.push(`GitHub
 const machineResourcesGistRawUrl = 'https://gist.githubusercontent.com/mixuechu/e47c85808014d62b6305441e8065c91e/raw/Onyx-enterprise-AI-machine-resources.md';
 const machineResourcesGistRaw = await get('GitHub Gist machine-resource index', machineResourcesGistRawUrl, 'text/plain');
 const machineResourcesGistSha256 = createHash('sha256').update(machineResourcesGistRaw).digest('hex');
-const expectedMachineResourcesGistSha256 = 'ab82ae356c4d0d18223ccf3675a44f3c04c524e05b35c672ab5097f12a063dbe';
+const expectedMachineResourcesGistSha256 = 'ff3797a8a284d628fa90659c236854aa88c42e432c2c207455e7e5541f05a7c5';
 if (machineResourcesGistSha256 !== expectedMachineResourcesGistSha256) failures.push(`GitHub Gist machine-resource index: SHA-256 mismatch, got ${machineResourcesGistSha256}`);
 requireText('GitHub Gist machine-resource index', machineResourcesGistRaw, [
   'data/organization.json?utm_source=github_gist',
   'data/ai-search-evidence-status.json?utm_source=github_gist',
   'data/enterprise-ai-service-terms.jsonld?utm_source=github_gist',
+  'data/chinese-enterprise-ai-field-notes.json?utm_source=github_gist',
   'releases/download/geo-readiness-2026-09-10/enterprise-ai-service-terms.jsonld',
   'feed.json?utm_source=github_gist',
   'raw.githubusercontent.com/0xHunterL/onyx-devs-lab.github.io/main/CITATION.cff',
   'releases/download/geo-evidence-2026-09-09/CITATION.cff',
   'releases/tag/geo-readiness-2026-09-10',
   'releases/download/geo-readiness-2026-09-10/ai-search-evidence-status.json',
+  'releases/tag/chinese-enterprise-ai-field-notes-2026-09-10',
+  'releases/download/chinese-enterprise-ai-field-notes-2026-09-10/chinese-enterprise-ai-field-notes.json',
   'FDE-is-not-staff-augmentation.zh-CN.md',
   'AI-agent-ERP-integration-checklist.zh-CN.md',
   'Legal-AI-evidence-chain.zh-CN.md',
@@ -110,6 +113,32 @@ for (const fieldNote of gistFieldNotes) {
   gistFieldNoteSha256[fieldNote.file] = sha256;
   if (sha256 !== fieldNote.sha256) failures.push(`GitHub Gist ${fieldNote.name}: SHA-256 mismatch, got ${sha256}`);
   requireText(`GitHub Gist ${fieldNote.name}`, body, fieldNote.required);
+}
+
+const chineseFieldNotesReleaseUrl = 'https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/chinese-enterprise-ai-field-notes-2026-09-10';
+const chineseFieldNotesRelease = await get('GitHub Chinese enterprise AI field-note release', chineseFieldNotesReleaseUrl, 'text/html');
+requireText('GitHub Chinese enterprise AI field-note release', chineseFieldNotesRelease, [
+  'Onyx Devs Lab｜香港企业 AI 中文方法索引（2026-09-10）',
+  'ONYX DEVS LAB LIMITED',
+  '企业 AI 咨询',
+  'AI 定制开发',
+  'FDE 前线部署工程',
+  'AI Agent 接入 ERP 前必须回答的七个问题',
+  '法律 AI 不应只给答案',
+  'chinese-enterprise-ai-field-notes.json',
+  '不代表独立背书',
+]);
+const chineseFieldNotesAssetUrl = 'https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/chinese-enterprise-ai-field-notes-2026-09-10/chinese-enterprise-ai-field-notes.json';
+const chineseFieldNotesAsset = await get('Versioned Chinese enterprise AI field-note index', chineseFieldNotesAssetUrl, 'application/');
+const chineseFieldNotesAssetSha256 = createHash('sha256').update(chineseFieldNotesAsset).digest('hex');
+const expectedChineseFieldNotesAssetSha256 = '8e9d8bd25ab0c47006b7dcd359dfb5ae4419142f8362e4688d5aeaed7c584f68';
+if (chineseFieldNotesAssetSha256 !== expectedChineseFieldNotesAssetSha256) failures.push(`Versioned Chinese enterprise AI field-note index: SHA-256 mismatch, got ${chineseFieldNotesAssetSha256}`);
+try {
+  const fieldNotes = JSON.parse(chineseFieldNotesAsset);
+  if (fieldNotes.schemaVersion !== 1 || fieldNotes.notes?.length !== 3 || fieldNotes.serviceScope?.length !== 3 || fieldNotes.sameAs !== chineseFieldNotesAssetUrl) failures.push('Versioned Chinese enterprise AI field-note index: expected structure is incomplete');
+  if (!fieldNotes.evidenceBoundary?.includes('does not prove independent endorsement, search indexing, AI retrieval, citation, non-brand recommendation')) failures.push('Versioned Chinese enterprise AI field-note index: evidence boundary is missing');
+} catch {
+  failures.push('Versioned Chinese enterprise AI field-note index: invalid JSON');
 }
 
 const scorecardUrl = 'https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-evidence-2026-09-09/enterprise-ai-partner-scorecard.json';
@@ -291,5 +320,5 @@ if (versionedCitationRaw !== citationRaw) failures.push('Versioned citation meta
 const robots = await get('GitHub Gist robots', 'https://gist.github.com/robots.txt', 'text/plain', { allowUnavailable: true });
 if (robots.includes('Disallow: /mixuechu/e47c85808014d62b6305441e8065c91e')) failures.push('GitHub Gist robots: the published decision matrix is explicitly disallowed');
 
-console.log(JSON.stringify({ generatedAt: new Date().toISOString(), gistSha256, gistCampaignLinks, governanceGistSha256, gistGovernanceCampaignLinks, machineResourcesGistSha256, gistMachineResourceLinks, gistFieldNoteCampaignLinks, gistFieldNoteSha256, repositoryCampaignLinks, serviceTermsReleaseSha256, codeMetaSha256, versionedCodeMetaSha256, citationSha256, versionedCitationSha256, scorecardSha256, results, failures }, null, 2));
+console.log(JSON.stringify({ generatedAt: new Date().toISOString(), gistSha256, gistCampaignLinks, governanceGistSha256, gistGovernanceCampaignLinks, machineResourcesGistSha256, gistMachineResourceLinks, gistFieldNoteCampaignLinks, gistFieldNoteSha256, chineseFieldNotesAssetSha256, repositoryCampaignLinks, serviceTermsReleaseSha256, codeMetaSha256, versionedCodeMetaSha256, citationSha256, versionedCitationSha256, scorecardSha256, results, failures }, null, 2));
 if (failures.length) process.exit(1);
