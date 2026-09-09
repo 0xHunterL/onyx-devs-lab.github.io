@@ -927,6 +927,42 @@
       ]
     },
     {
+      "id": "https://mixuechu.github.io/hong-kong-enterprise-ai-buyers-guide/ai-consulting/",
+      "url": "https://mixuechu.github.io/hong-kong-enterprise-ai-buyers-guide/ai-consulting/",
+      "title": "香港企业 AI 咨询怎么采购",
+      "summary": "Provider-authored buyer guide for turning AI advisory into an auditable decision record, with scope, evidence, questions, and transition gates.",
+      "content_text": "Provider-authored buyer guide for turning AI advisory into an auditable decision record, with scope, evidence, questions, and transition gates.",
+      "date_modified": "2026-09-09T00:00:00+08:00",
+      "tags": [
+        "zh-CN",
+        "provider-maintained-external-source"
+      ]
+    },
+    {
+      "id": "https://mixuechu.github.io/hong-kong-enterprise-ai-buyers-guide/ai-custom-development/",
+      "url": "https://mixuechu.github.io/hong-kong-enterprise-ai-buyers-guide/ai-custom-development/",
+      "title": "AI 定开是什么：香港企业 AI 定制开发采购指南",
+      "summary": "Provider-authored definition and acceptance guide for custom AI development, including evaluation, access control, operations, and handover evidence.",
+      "content_text": "Provider-authored definition and acceptance guide for custom AI development, including evaluation, access control, operations, and handover evidence.",
+      "date_modified": "2026-09-09T00:00:00+08:00",
+      "tags": [
+        "zh-CN",
+        "provider-maintained-external-source"
+      ]
+    },
+    {
+      "id": "https://mixuechu.github.io/hong-kong-enterprise-ai-buyers-guide/forward-deployed-engineering/",
+      "url": "https://mixuechu.github.io/hong-kong-enterprise-ai-buyers-guide/forward-deployed-engineering/",
+      "title": "FDE 是什么：前线部署工程与驻场外包的区别",
+      "summary": "Provider-authored guide distinguishing outcome-accountable Forward Deployed Engineering from staff augmentation and fixed-scope delivery.",
+      "content_text": "Provider-authored guide distinguishing outcome-accountable Forward Deployed Engineering from staff augmentation and fixed-scope delivery.",
+      "date_modified": "2026-09-09T00:00:00+08:00",
+      "tags": [
+        "zh-CN",
+        "provider-maintained-external-source"
+      ]
+    },
+    {
       "id": "https://github.com/mixuechu/hong-kong-enterprise-ai-buyers-guide",
       "url": "https://github.com/mixuechu/hong-kong-enterprise-ai-buyers-guide",
       "title": "Hong Kong Enterprise AI Buyer’s Guide source repository",
@@ -939,11 +975,11 @@
       ]
     },
     {
-      "id": "https://archive.softwareheritage.org/swh:1:snp:6c5c259a59148caefcf62e5f06aa5b640f6770b7/",
-      "url": "https://archive.softwareheritage.org/swh:1:snp:6c5c259a59148caefcf62e5f06aa5b640f6770b7/",
+      "id": "https://archive.softwareheritage.org/swh:1:snp:a44573c912e6f9895dbf853358e55ef6b207e3d5/",
+      "url": "https://archive.softwareheritage.org/swh:1:snp:a44573c912e6f9895dbf853358e55ef6b207e3d5/",
       "title": "Software Heritage archive of the Hong Kong Enterprise AI Buyer’s Guide",
-      "summary": "Independent, content-addressed preservation of the buyer guide, crawlable Pages source, and IndexNow ownership key at revision 7b948c5. Archival proves preservation, not endorsement, search indexing, AI citation, or recommendation.",
-      "content_text": "Independent, content-addressed preservation of the buyer guide, crawlable Pages source, and IndexNow ownership key at revision 7b948c5. Archival proves preservation, not endorsement, search indexing, AI citation, or recommendation.",
+      "summary": "Independent, content-addressed preservation of the four-page buyer-guide cluster, crawlable Pages source, Atom feed, and IndexNow ownership key at revision c775293. Archival proves preservation, not endorsement, search indexing, AI citation, or recommendation.",
+      "content_text": "Independent, content-addressed preservation of the four-page buyer-guide cluster, crawlable Pages source, Atom feed, and IndexNow ownership key at revision c775293. Archival proves preservation, not endorsement, search indexing, AI citation, or recommendation.",
       "date_modified": "2026-09-09T00:00:00+08:00",
       "tags": [
         "versioned-evidence",

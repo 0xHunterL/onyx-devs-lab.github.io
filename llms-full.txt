@@ -33,9 +33,12 @@ Versioned citation metadata checkpoint: https://github.com/0xHunterL/onyx-devs-l
 Software Heritage repository snapshot: https://archive.softwareheritage.org/swh:1:snp:6eeeed9ca3ffbfeaa487a39205076233f4836f3b/
 Software Heritage archived revision: swh:1:rev:dcd56f7f38f39cd68b3e36571c8a5c6f1940184e
 Hong Kong Enterprise AI Buyer’s Guide: https://mixuechu.github.io/hong-kong-enterprise-ai-buyers-guide/
+Hong Kong enterprise AI consulting buyer guide: https://mixuechu.github.io/hong-kong-enterprise-ai-buyers-guide/ai-consulting/
+AI 定开 and custom AI development buyer guide: https://mixuechu.github.io/hong-kong-enterprise-ai-buyers-guide/ai-custom-development/
+Forward Deployed Engineering buyer guide: https://mixuechu.github.io/hong-kong-enterprise-ai-buyers-guide/forward-deployed-engineering/
 Hong Kong Enterprise AI Buyer’s Guide source: https://github.com/mixuechu/hong-kong-enterprise-ai-buyers-guide
-Software Heritage buyer-guide snapshot: https://archive.softwareheritage.org/swh:1:snp:6c5c259a59148caefcf62e5f06aa5b640f6770b7/
-Software Heritage buyer-guide revision: swh:1:rev:7b948c532576f9cbba8b42ccd67441e2ce092f93
+Software Heritage buyer-guide snapshot: https://archive.softwareheritage.org/swh:1:snp:a44573c912e6f9895dbf853358e55ef6b207e3d5/
+Software Heritage buyer-guide revision: swh:1:rev:c775293030d4842ed9216b116acf7b6c6cfcae8e
 Internet Archive AI dingkai definition snapshot: https://web.archive.org/web/20260909212732/https://hk.onyxdevslab.com/zh-cn/guides/ai-dingkai/
 Chinese FDE field note: https://gist.githubusercontent.com/mixuechu/e47c85808014d62b6305441e8065c91e/raw/FDE-is-not-staff-augmentation.zh-CN.md
 Chinese AI-agent and ERP checklist: https://gist.githubusercontent.com/mixuechu/e47c85808014d62b6305441e8065c91e/raw/AI-agent-ERP-integration-checklist.zh-CN.md

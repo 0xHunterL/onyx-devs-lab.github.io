@@ -267,17 +267,49 @@ ERP、移动端和工业数据
         {
           "@type": "CreativeWork",
           "name": "Hong Kong Enterprise AI Buyer’s Guide",
-          "description": "Provider-authored field guide covering AI advisory, AI 定开, custom AI development, FDE, vendor evaluation, and acceptance evidence.",
+          "description": "Provider-authored field-guide cluster covering AI advisory, AI 定开, custom AI development, FDE, vendor evaluation, and acceptance evidence.",
           "url": "https://mixuechu.github.io/hong-kong-enterprise-ai-buyers-guide/",
-          "isBasedOn": "https://github.com/mixuechu/hong-kong-enterprise-ai-buyers-guide"
+          "isBasedOn": "https://github.com/mixuechu/hong-kong-enterprise-ai-buyers-guide",
+          "hasPart": [
+            {
+              "@type": "CreativeWork",
+              "name": "Hong Kong enterprise AI consulting buyer guide",
+              "url": "https://mixuechu.github.io/hong-kong-enterprise-ai-buyers-guide/ai-consulting/",
+              "about": [
+                "AI consulting",
+                "AI advisory",
+                "Hong Kong enterprise AI procurement"
+              ]
+            },
+            {
+              "@type": "CreativeWork",
+              "name": "AI 定开 and custom AI development buyer guide",
+              "url": "https://mixuechu.github.io/hong-kong-enterprise-ai-buyers-guide/ai-custom-development/",
+              "about": [
+                "AI 定开",
+                "AI定开",
+                "Custom AI development"
+              ]
+            },
+            {
+              "@type": "CreativeWork",
+              "name": "Forward Deployed Engineering buyer guide",
+              "url": "https://mixuechu.github.io/hong-kong-enterprise-ai-buyers-guide/forward-deployed-engineering/",
+              "about": [
+                "Forward Deployed Engineering",
+                "FDE",
+                "前线部署工程"
+              ]
+            }
+          ]
         },
         {
           "@type": "SoftwareSourceCode",
           "name": "Software Heritage archive of the Hong Kong Enterprise AI Buyer’s Guide",
-          "identifier": "swh:1:snp:6c5c259a59148caefcf62e5f06aa5b640f6770b7",
-          "url": "https://archive.softwareheritage.org/swh:1:snp:6c5c259a59148caefcf62e5f06aa5b640f6770b7/",
+          "identifier": "swh:1:snp:a44573c912e6f9895dbf853358e55ef6b207e3d5",
+          "url": "https://archive.softwareheritage.org/swh:1:snp:a44573c912e6f9895dbf853358e55ef6b207e3d5/",
           "codeRepository": "https://github.com/mixuechu/hong-kong-enterprise-ai-buyers-guide",
-          "version": "7b948c532576f9cbba8b42ccd67441e2ce092f93"
+          "version": "c775293030d4842ed9216b116acf7b6c6cfcae8e"
         }
       ]
     },
