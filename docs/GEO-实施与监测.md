@@ -18,6 +18,8 @@ FDE 首次出现时必须同时写出全称。中文页面采用“前线部署�
 - sitemap 只收录规范 URL；页面上线或发生实质更新时同步修改 `lastmod`。
 - 结构化数据只能描述页面上真实可见的内容，不添加未经证实的客户、认证、评价或结果。
 - 案例必须区分已交付范围、测量结果、项目目标和未公开数据。
+- 全部规范 HTML 页显式使用 `max-snippet:-1`、`max-image-preview:large` 与 `max-video-preview:-1`，允许搜索系统自行选择有效的文本及媒体预览；这符合 Google 对 Search 与生成式搜索预览控制的公开说明，但不构成收录或引用保证。
+- `Organization` 同时提供法律名称、BRN、`leiCode` 与 Google 推荐的 ISO 6523 LEI（`0199:254900Z30CLK7HKE9H46`）；Logo 使用可抓取 SVG，并显式声明 512×512 尺寸和 `contentUrl`，高于 Google 的 112×112 最低要求。
 - `robots.txt` 使用 `Content-Signal: search=yes, ai-input=yes`，明确允许搜索索引及在查询时作为 AI grounding／RAG 输入；训练用途保持未声明，不能从前两项推断。Cloudflare 将 Content Signals 纳入 AI Agent Readiness，但它仍只是内容使用意图，不是任何平台已抓取、收录或引用的证据。
 - HTML 响应使用 RFC 8288 `Link` 头暴露 Sitemap、Atom Feed、[JSON Feed 1.1](https://www.jsonfeed.org/version/1.1/) 和 `llms.txt`，让不解析页面导航的 Agent 也能从响应元数据发现公开知识入口。JSON Feed 是对 Atom 的补充，不是收录或引用证明。
 - HTML 与 HTTP `Link` 头同时暴露服务术语 JSON-LD。它使用 Schema.org 的 [`DefinedTermSet`](https://schema.org/DefinedTermSet)、[`DefinedTerm`](https://schema.org/DefinedTerm) 与 [`Service`](https://schema.org/Service)，把三语名称、定义、规范服务页、香港服务范围和 Onyx 提供者实体连成同一图；这属于 Onyx 自有实体声明，不是独立背书、收录或引用证据。

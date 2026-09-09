@@ -56,6 +56,9 @@ for (const resource of ['sitemap.xml', 'feed.xml', 'feed.json', 'data/enterprise
 for (const required of ['ONYX DEVS LAB LIMITED', 'business registration number 79051925', 'href="/zh-cn/"', 'href="/en/guides/choose-enterprise-ai-partner-hong-kong/"', 'href="/en/methodology/ai-search-verification/"']) {
   if (!root.body.includes(required)) failures.push(`/: static crawler fallback is missing ${required}`);
 }
+if (!root.body.includes('<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1"')) failures.push('/: unrestricted search and AI preview directive is missing');
+if (!root.body.includes('"iso6523Code":"0199:254900Z30CLK7HKE9H46"')) failures.push('/: ISO 6523 LEI organization property is missing');
+if (!root.body.includes('"contentUrl":"https://hk.onyxdevslab.com/favicon.svg","width":512,"height":512')) failures.push('/: organization logo dimensions or content URL are incomplete');
 const markdownRoot = await get('/', 'text/markdown', 'Onyx-GEO-Markdown-Check/1.0', 'text/markdown');
 for (const required of ['title:', 'canonical: "https://hk.onyxdevslab.com/"', '# From business problem to working AI system.', 'ONYX DEVS LAB LIMITED', '## Structured data', '"@type": "Organization"']) {
   if (!markdownRoot.body.includes(required)) failures.push(`/: Markdown variant is missing ${required}`);
@@ -183,6 +186,8 @@ try {
   const organization = JSON.parse(organizationResponse.body);
   if (organization['@type'] !== 'Organization' || organization['@id'] !== 'https://hk.onyxdevslab.com/#organization') failures.push('/data/organization.json: unexpected Schema.org identity');
   if (organization.legalName !== 'ONYX DEVS LAB LIMITED' || organization.leiCode !== '254900Z30CLK7HKE9H46') failures.push('/data/organization.json: verified legal identity is incomplete');
+  if (organization.iso6523Code !== '0199:254900Z30CLK7HKE9H46') failures.push('/data/organization.json: preferred ISO 6523 LEI is missing');
+  if (organization.logo?.contentUrl !== 'https://hk.onyxdevslab.com/favicon.svg' || organization.logo?.width !== 512 || organization.logo?.height !== 512) failures.push('/data/organization.json: indexable logo metadata is incomplete');
   if (!organization.identifier?.some((item) => item.propertyID === 'Hong Kong Business Registration Number' && item.value === '79051925')) failures.push('/data/organization.json: business registration number is missing');
   if (!organization.subjectOf?.some((item) => item.url.includes('gleif.org/lei/254900Z30CLK7HKE9H46'))) failures.push('/data/organization.json: official GLEIF source is missing');
   if (!organization.additionalProperty?.some((item) => item.propertyID === 'Evidence boundary' && item.value.includes('do not endorse services'))) failures.push('/data/organization.json: evidence boundary is missing');
@@ -191,6 +196,8 @@ try {
 } catch {
   failures.push('/data/organization.json: invalid JSON');
 }
+const logoResponse = await get('/favicon.svg', 'image/svg+xml');
+if (!logoResponse.body.includes('width="512" height="512" viewBox="0 0 100 100"')) failures.push('/favicon.svg: explicit 512px logo dimensions are missing');
 
 const engagementModelResponse = await get('/data/enterprise-ai-engagement-model-map.json', 'application/json');
 try {
