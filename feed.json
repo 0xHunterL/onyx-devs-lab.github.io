@@ -3,6 +3,12 @@
   "title": "Onyx Devs Lab — Enterprise AI Field Notes",
   "home_page_url": "https://hk.onyxdevslab.com/",
   "feed_url": "https://hk.onyxdevslab.com/feed.json",
+  "hubs": [
+    {
+      "type": "WebSub",
+      "url": "https://pubsubhubbub.appspot.com/"
+    }
+  ],
   "description": "Enterprise AI advisory, custom development, Forward Deployed Engineering, buyer guides, methods, and evidence resources from Onyx Devs Lab.",
   "user_comment": "Provider-maintained discovery feed. Accessibility does not prove search indexing, AI retrieval, citation, recommendation, independent endorsement, or client outcomes beyond each resource’s stated limitations.",
   "authors": [
