@@ -51,5 +51,5 @@ These files are maintained by Onyx. They improve reproducibility and citation pr
 - 17 fixed prompts map to 17 specific evidence pages with required answer terms.
 - Every embedded JSON-LD block parses successfully and the live checker verifies the Organization, Person, Service `OfferCatalog`, Article citation, and Dataset relations used by the templates.
 - The public Schema.org validator currently rate-limits or blocks automated validation, so its status is recorded as unavailable rather than as a markup pass or failure.
-- IndexNow accepted all 62 sitemap URLs.
+- IndexNow accepted the current batch of 62 canonical HTML URLs plus 9 machine discovery and evidence resources. Acceptance proves receipt only, not crawl, indexing, citation, or recommendation.
 - The dated AI-search status remains: accessibility verified; crawler evidence partially verified; retrieval/citation not verified; non-brand recommendation not tested.
