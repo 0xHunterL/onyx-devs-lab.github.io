@@ -8,6 +8,12 @@ const titles = new Map();
 const canonicals = new Map();
 const languageAlternates = new Map();
 
+function expectedPublishedDate(pathname) {
+  if (pathname.includes('/methodology/ai-search-verification/')) return '2026-09-08';
+  if (pathname.includes('/guides/choose-enterprise-ai-partner') || pathname.includes('/guides/enterprise-ai-governance') || pathname.includes('/guides/hong-kong-enterprise-ai-governance') || pathname.includes('/guides/enterprise-ai-pilot-charter') || pathname.includes('/methodology/case-study-evidence-register/')) return '2026-09-09';
+  return '2026-09-07';
+}
+
 function walk(directory) {
   for (const entry of fs.readdirSync(directory, { withFileTypes: true })) {
     const file = path.join(directory, entry.name);
@@ -62,6 +68,17 @@ for (const file of htmlFiles) {
   const title = html.match(/<title>([^<]+)<\/title>/)?.[1];
   const canonical = html.match(/<link rel="canonical" href="([^"]+)"/)?.[1];
   const lang = html.match(/<html lang="([^"]+)"/)?.[1];
+  const pathname = canonical ? new URL(canonical).pathname : '';
+  if (pathname.includes('/case-studies/') && !html.includes('"@type":"Article"')) failures.push(`${relative}: case study is not declared as Article`);
+  if (html.includes('"@type":"Article"')) {
+    const published = expectedPublishedDate(pathname);
+    for (const required of [`"datePublished":"${published}"`, '"dateModified":"2026-09-10"', `"mainEntityOfPage":{"@id":"${canonical}"}`, '"articleSection":', `<time datetime="${published}">${published}</time>`, '<time datetime="2026-09-10">2026-09-10</time>']) {
+      if (!html.includes(required)) failures.push(`${relative}: Article publication metadata is missing ${required}`);
+    }
+  }
+  if (pathname.includes('/methodology/case-study-evidence-register/')) {
+    if (!html.includes('<time datetime="2026-09-09">2026-09-09</time>') || !html.includes('<time datetime="2026-09-10">2026-09-10</time>')) failures.push(`${relative}: Dataset publication dates are not visible`);
+  }
   if (title) titles.set(title, [...(titles.get(title) || []), relative]);
   if (canonical) canonicals.set(canonical, [...(canonicals.get(canonical) || []), relative]);
   if (canonical && lang) {

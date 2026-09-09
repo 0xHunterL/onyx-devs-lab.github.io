@@ -450,6 +450,16 @@ function languageLinks(page){return translationsFor(page.path).filter(item=>item
 
 function esc(value=''){return String(value).replace(/[&<>\"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));}
 function canonical(p){return `${origin}${p}`;}
+function publishedDateFor(pathname){
+  if(pathname.includes('/methodology/ai-search-verification/'))return '2026-09-08';
+  if(pathname.includes('/guides/choose-enterprise-ai-partner')||pathname.includes('/guides/enterprise-ai-governance')||pathname.includes('/guides/hong-kong-enterprise-ai-governance')||pathname.includes('/guides/enterprise-ai-pilot-charter')||pathname.includes('/methodology/case-study-evidence-register/'))return '2026-09-09';
+  return '2026-09-07';
+}
+function publicationMeta(page){
+  const published=publishedDateFor(page.path);const zh=page.lang.startsWith('zh');const cn=page.lang==='zh-CN';
+  const publishedLabel=cn?'发布':(zh?'發布':'Published');const updatedLabel=cn?'更新':(zh?'更新':'Updated');
+  return `<p class="eyebrow content-dates">${publishedLabel} <time datetime="${published}">${published}</time> · ${updatedLabel} <time datetime="${pageUpdated}">${pageUpdated}</time></p>`;
+}
 const updatedAiSearchPaths=new Set(['/en/methodology/ai-search-verification/','/zh-hk/methodology/ai-search-verification/','/zh-cn/methodology/ai-search-verification/']);
 const registeredAddress={"@type":"PostalAddress",streetAddress:'36-40 TAI LIN PAI ROAD, UNIT B53, 2/F, KWAI CHUNG',addressLocality:'HONG KONG',postalCode:'999077',addressCountry:'HK'};
 const personId=(name)=>`${origin}/#person-${name.toLowerCase().replace(/[^a-z0-9]+/g,'-')}`;
@@ -463,6 +473,7 @@ const entityReferences=['https://github.com/0xHunterL/onyx-devs-lab.github.io','
 const entityEvidence={"@type":"CreativeWork",name:'Onyx GEO evidence checkpoint — 2026-09-09',url:'https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-evidence-2026-09-09'};
 function layout(page, body, type='Service'){
   const zh=page.lang.startsWith('zh'); const cn=page.lang==='zh-CN'; const home=cn?'/zh-cn/':(zh?'/?lang=zh':'/?lang=en');
+  if(['Article','CreativeWork','Dataset'].includes(type))body=body.replace('</p><div class="actions">',`</p>${publicationMeta(page)}<div class="actions">`);
   const primary={"@type":type,"@id":`${canonical(page.path)}#primary`,name:page.h1,description:page.description,url:canonical(page.path)};
   if(type==='Service'){
     const serviceCategory=page.path.includes('ai-consulting')
@@ -476,6 +487,7 @@ function layout(page, body, type='Service'){
     primary.category={"@id":`${canonical(topicEntityMapPath)}#${serviceCategory.code}`};
   }
   if(type==='Article'){primary.author={"@id":`${origin}/#organization`};primary.publisher={"@id":`${origin}/#organization`};primary.dateModified=updated;primary.headline=page.h1;if(page.sourceReferences)primary.citation=page.sourceReferences.map(([name,url])=>({"@type":"CreativeWork",name,url}));if(page.downloadUrl){primary.hasPart={"@type":"Dataset",name:page.downloadName||'Onyx enterprise AI partner procurement scorecard',url:canonical(page.downloadUrl),distribution:{"@type":"DataDownload",encodingFormat:'application/json',contentUrl:canonical(page.downloadUrl)}};if(page.downloadUrl===partnerScorecardPath)primary.hasPart.sameAs=partnerScorecardReleaseUrl;}}
+  if(type==='Article'){primary.datePublished=publishedDateFor(page.path);primary.mainEntityOfPage={"@id":canonical(page.path)};primary.articleSection=page.eyebrow||(cn?'案例研究':(zh?'案例研究':'Case studies'));}
   if(type==='Article'&&updatedAiSearchPaths.has(page.path))primary.dateModified=feedUpdated;
   if(type==='CreativeWork'){primary.creator={"@id":`${origin}/#organization`};primary.dateModified=updated;}
   if(type==='AboutPage'){primary['@type']=['AboutPage','ProfilePage'];primary.mainEntity={"@id":`${origin}/#organization`};primary.dateModified=pageUpdated;}
@@ -529,7 +541,7 @@ function hubBody(p){const zh=p.lang.startsWith('zh');const cn=p.lang==='zh-CN';c
 function aboutBody(p){const zh=p.lang.startsWith('zh');const cn=p.lang==='zh-CN';const home=cn?'/zh-cn/':(zh?'/zh-hk/':'/en/');const key=cn?'cn':(zh?'zh':'en');return `<main id="content"><div class="wrap breadcrumbs"><a href="${home}">${cn?'首页':(zh?'首頁':'Home')}</a> / ${cn?'团队':(zh?'團隊':'Team')}</div><section class="hero"><div class="wrap"><div class="eyebrow">${cn?'关于 Onyx':(zh?'關於 Onyx':'About Onyx')}</div><h1>${esc(p.h1)}</h1><p class="lede">${esc(p.lede)}</p><div class="actions">${languageLinks(p)}</div></div></section><section><div class="wrap"><h2>${cn?'公司主体核验':(zh?'公司實體核驗':'Legal entity verification')}</h2><p class="intro">${cn?'ONYX DEVS LAB LIMITED 于 2025 年 10 月 30 日在香港注册，商业登记号为 79051925，法律实体识别编码（LEI）为 254900Z30CLK7HKE9H46。GLEIF 当前将该实体标记为 ACTIVE、LEI 记录标记为 ISSUED；公开注册地址为 36-40 TAI LIN PAI ROAD, UNIT B53, 2/F, KWAI CHUNG, HONG KONG 999077。该地址是注册办事处，不是项目驻场或服务地点。':(zh?'ONYX DEVS LAB LIMITED 於 2025 年 10 月 30 日在香港註冊，商業登記號碼為 79051925，法律實體識別編碼（LEI）為 254900Z30CLK7HKE9H46。GLEIF 目前將該實體標記為 ACTIVE、LEI 記錄標記為 ISSUED；公開註冊地址為 36-40 TAI LIN PAI ROAD, UNIT B53, 2/F, KWAI CHUNG, HONG KONG 999077。該地址是註冊辦事處，不是項目駐場或服務地點。':'ONYX DEVS LAB LIMITED was incorporated in Hong Kong on 30 October 2025. Its business registration number is 79051925 and its Legal Entity Identifier (LEI) is 254900Z30CLK7HKE9H46. GLEIF currently lists the entity as ACTIVE and the LEI record as ISSUED. Its public registered address is 36-40 TAI LIN PAI ROAD, UNIT B53, 2/F, KWAI CHUNG, HONG KONG 999077. This is the registered office, not a project-delivery or service location.')}</p><div class="related"><a href="${organizationDataPath}" type="application/json">${cn?'规范化公司主体 JSON':(zh?'規範化公司實體 JSON':'Canonical organization JSON')}</a><a rel="external" href="https://www.cr.gov.hk/docs/wrpt/RNC063_2025.10.27-2025.11.02.pdf">${cn?'香港公司注册处登记记录':(zh?'香港公司註冊處登記記錄':'Hong Kong Companies Registry record')}</a><a rel="external" href="https://www.gleif.org/lei/254900Z30CLK7HKE9H46">${cn?'GLEIF 官方 LEI 记录':(zh?'GLEIF 官方 LEI 記錄':'Official GLEIF LEI entity record')}</a><a rel="external" href="https://lei.bloomberg.com/leis/view/254900Z30CLK7HKE9H46">${cn?'Bloomberg LEI 实体记录':(zh?'Bloomberg LEI 實體記錄':'Bloomberg LEI entity record')}</a><a rel="external" href="https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-evidence-2026-09-09">${cn?'GitHub 版本化证据检查点':(zh?'GitHub 版本化證據檢查點':'Versioned GitHub evidence checkpoint')}</a></div></div></section><section><div class="wrap"><h2>${cn?'核心团队':(zh?'核心團隊':'Core team')}</h2><div class="people-grid">${p.people.map(person=>`<article class="person"><img src="${person.image}" alt="${esc(person.name)}" width="96" height="96"><div><h3>${esc(person.name)}</h3><div class="eyebrow">${esc(person.role[key])}</div><p>${esc(person.summary[key])}</p></div></article>`).join('')}</div><div class="cta"><h2>${cn?'直接和负责交付的人讨论。':(zh?'直接與負責交付的人討論。':'Talk directly with the people responsible for delivery.')}</h2><a class="button" href="mailto:info@onyxdevslab.com">${cn?'预约项目评估':(zh?'預約項目評估':'Book a project assessment')}</a></div></div></section></main>`;}
 
 for(const p of pages){const out=path.join(dist,p.path,'index.html');fs.mkdirSync(path.dirname(out),{recursive:true});fs.writeFileSync(out,layout(p,p.dataUrl?evidenceRegisterBody(p):serviceBody(p),p.schemaType||(p.path.includes('/insights/')?'Article':'Service')));}
-for(const p of cases){const out=path.join(dist,p.path,'index.html');fs.mkdirSync(path.dirname(out),{recursive:true});fs.writeFileSync(out,layout(p,caseBody(p),'CreativeWork'));}
+for(const p of cases){const out=path.join(dist,p.path,'index.html');fs.mkdirSync(path.dirname(out),{recursive:true});fs.writeFileSync(out,layout(p,caseBody(p),'Article'));}
 for(const p of hubs){const out=path.join(dist,p.path,'index.html');fs.mkdirSync(path.dirname(out),{recursive:true});fs.writeFileSync(out,layout(p,hubBody(p),'CollectionPage'));}
 for(const p of aboutPages){const out=path.join(dist,p.path,'index.html');fs.mkdirSync(path.dirname(out),{recursive:true});fs.writeFileSync(out,layout(p,aboutBody(p),'AboutPage'));}
 

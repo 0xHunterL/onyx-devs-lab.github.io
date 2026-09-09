@@ -17,7 +17,7 @@
 - 为大陆中文查询建立独立 `zh-CN` 页面，不把繁体页面伪装成简体页面。
 - 英文、香港繁体和简体页面互相声明 `hreflang`，并提供 `x-default`。
 - 关键答案直接出现在首次返回的 HTML 中，不依赖 JavaScript 渲染正文。
-- 服务、指南、案例与团队分别使用 Service、Article、CreativeWork、Person 和 Organization 结构化数据。
+- 服务使用 Service；指南与案例使用 Article；团队页使用 AboutPage、ProfilePage、Person 和 Organization 结构化数据。文章及案例的 `datePublished` 按 Git 首次公开记录填写，并在正文显示发布和更新日期，而不是用统一日期制造虚假新鲜度。实现依据 [Google Article 结构化数据规范](https://developers.google.com/search/docs/appearance/structured-data/article) 与[署名日期指南](https://developers.google.com/search/docs/appearance/publication-dates)。
 - 案例同时写明数值、测量口径和证据边界，避免把范围数字误写成业务成果。
 - `robots.txt` 明确允许 Bytespider、Baiduspider、bingbot 和常见 AI 搜索爬虫。
 - 通过 XML Sitemap 和 IndexNow 推送新增或更新 URL。

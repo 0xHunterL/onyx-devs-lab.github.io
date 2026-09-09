@@ -5,6 +5,12 @@ const requestCache = new Map();
 let networkRequests = 0;
 let cacheHits = 0;
 
+function expectedPublishedDate(pathname) {
+  if (pathname.includes('/methodology/ai-search-verification/')) return '2026-09-08';
+  if (pathname.includes('/guides/choose-enterprise-ai-partner') || pathname.includes('/guides/enterprise-ai-governance') || pathname.includes('/guides/hong-kong-enterprise-ai-governance') || pathname.includes('/guides/enterprise-ai-pilot-charter')) return '2026-09-09';
+  return '2026-09-07';
+}
+
 async function probe(pathname, accept = '') {
   const response = await fetch(`${origin}${pathname}`, {
     headers: { 'user-agent': 'Onyx-GEO-Release-Check/1.0', ...(accept ? { accept } : {}) },
@@ -398,6 +404,14 @@ for (let index = 0; index < urls.length; index += 8) {
     if (!/<h1[ >][\s\S]*?<\/h1>/.test(page.body)) failures.push(`${url.pathname}: H1 is missing from response HTML`);
     if (!page.body.includes(`<link rel="canonical" href="${absoluteUrl}"`)) failures.push(`${url.pathname}: canonical does not match sitemap URL`);
     if (!page.body.includes('application/ld+json')) failures.push(`${url.pathname}: JSON-LD is missing`);
+    if (url.pathname.includes('/case-studies/') && !page.body.includes('"@type":"Article"')) failures.push(`${url.pathname}: case study is not declared as Article`);
+    if (page.body.includes('"@type":"Article"')) {
+      const published = expectedPublishedDate(url.pathname);
+      for (const required of [`"datePublished":"${published}"`, '"dateModified":"2026-09-10"', `"mainEntityOfPage":{"@id":"${absoluteUrl}"}`, '"articleSection":', `<time datetime="${published}">${published}</time>`, '<time datetime="2026-09-10">2026-09-10</time>']) {
+        if (!page.body.includes(required)) failures.push(`${url.pathname}: Article publication metadata is missing ${required}`);
+      }
+    }
+    if (url.pathname.includes('/methodology/case-study-evidence-register/') && (!page.body.includes('<time datetime="2026-09-09">2026-09-09</time>') || !page.body.includes('<time datetime="2026-09-10">2026-09-10</time>'))) failures.push(`${url.pathname}: Dataset publication dates are not visible`);
     if (url.pathname !== '/' && (!page.body.includes('"@type":"WebPage"') || !page.body.includes('"dateModified":"2026-09-10"'))) failures.push(`${url.pathname}: WebPage freshness is stale`);
     if (!page.body.includes('type="application/feed+json"') || !page.body.includes('href="https://hk.onyxdevslab.com/feed.json"')) failures.push(`${url.pathname}: JSON Feed discovery link is missing`);
     if (!page.body.includes('rel="describedby" type="application/ld+json"') || !page.body.includes('href="https://hk.onyxdevslab.com/data/enterprise-ai-service-terms.jsonld"')) failures.push(`${url.pathname}: service term graph discovery link is missing`);
