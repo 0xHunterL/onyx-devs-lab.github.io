@@ -120,8 +120,8 @@ AI 顧問決定應該建設甚麼、原因及限制；AI 開發則把已定義�
       },
       "logo": {
         "@type": "ImageObject",
-        "url": "https://hk.onyxdevslab.com/favicon.svg",
-        "contentUrl": "https://hk.onyxdevslab.com/favicon.svg",
+        "url": "https://hk.onyxdevslab.com/onyx-devs-lab-logo.svg",
+        "contentUrl": "https://hk.onyxdevslab.com/onyx-devs-lab-logo.svg",
         "width": 512,
         "height": 512
       },

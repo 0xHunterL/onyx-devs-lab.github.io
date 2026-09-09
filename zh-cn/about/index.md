@@ -92,8 +92,8 @@ ONYX DEVS LAB LIMITED 于 2025 年 10 月 30 日在香港注册，商业登记�
       },
       "logo": {
         "@type": "ImageObject",
-        "url": "https://hk.onyxdevslab.com/favicon.svg",
-        "contentUrl": "https://hk.onyxdevslab.com/favicon.svg",
+        "url": "https://hk.onyxdevslab.com/onyx-devs-lab-logo.svg",
+        "contentUrl": "https://hk.onyxdevslab.com/onyx-devs-lab-logo.svg",
         "width": 512,
         "height": 512
       },

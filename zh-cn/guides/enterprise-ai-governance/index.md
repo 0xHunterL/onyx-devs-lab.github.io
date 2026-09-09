@@ -132,8 +132,8 @@ language: "zh-CN"
       },
       "logo": {
         "@type": "ImageObject",
-        "url": "https://hk.onyxdevslab.com/favicon.svg",
-        "contentUrl": "https://hk.onyxdevslab.com/favicon.svg",
+        "url": "https://hk.onyxdevslab.com/onyx-devs-lab-logo.svg",
+        "contentUrl": "https://hk.onyxdevslab.com/onyx-devs-lab-logo.svg",
         "width": 512,
         "height": 512
       },
