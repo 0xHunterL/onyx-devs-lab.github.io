@@ -127,6 +127,7 @@ requireText('GitHub repository README source', repositoryReadme, [
   'ONYX DEVS LAB LIMITED',
   'ai-search-evidence-status.json',
   'geo_repository',
+  'Onyx-enterprise-AI-machine-resources.md',
 ]);
 
 const robots = await get('GitHub Gist robots', 'https://gist.github.com/robots.txt', 'text/plain');

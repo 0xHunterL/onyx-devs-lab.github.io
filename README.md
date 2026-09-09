@@ -39,6 +39,7 @@ The [case-study evidence register](https://hk.onyxdevslab.com/en/methodology/cas
 ## Field notes and reproducible GEO checks
 
 - [AI advisory, custom development, or FDE? Bilingual decision matrix](https://gist.github.com/mixuechu/e47c85808014d62b6305441e8065c91e)
+- [Enterprise AI machine-resource index](https://gist.githubusercontent.com/mixuechu/e47c85808014d62b6305441e8065c91e/raw/Onyx-enterprise-AI-machine-resources.md)
 - [How to choose an enterprise AI partner in Hong Kong](https://hk.onyxdevslab.com/en/guides/choose-enterprise-ai-partner-hong-kong/?utm_source=github&utm_medium=referral&utm_campaign=geo_procurement_guide)
 - [Hong Kong enterprise AI governance checklist](https://hk.onyxdevslab.com/en/guides/hong-kong-enterprise-ai-governance/?utm_source=github&utm_medium=referral&utm_campaign=geo_governance_guide)
 - [FDE is not staff augmentation (Chinese)](docs/distribution/FDE不是驻场外包.md)
