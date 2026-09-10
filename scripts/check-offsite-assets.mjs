@@ -181,9 +181,16 @@ try {
 } catch {
   failures.push('GitHub Pages buyer-guide CodeMeta: invalid JSON');
 }
-const buyerGuideSnapshotId = 'aed1c72273c6b77cb65c2971d21234104d02d060';
-const buyerGuideRevisionId = '4db47179362e5a7f23a10e4123c5c51a176f2944';
+const buyerGuideSnapshotId = '10f3eebf63fd650c5844f45a4953f976d98adfa9';
+const buyerGuideRevisionId = '0d2f08a1897b8d28ca917c269c985894d45d62f2';
 const buyerGuideReleaseRevisionId = 'e072305a16816689ec698911eb438aef3368ea2b';
+const buyerGuideSaveRequestRaw = await get('Software Heritage current buyer-guide save request', 'https://archive.softwareheritage.org/api/1/origin/save/2469703/', 'application/json');
+try {
+  const request = JSON.parse(buyerGuideSaveRequestRaw);
+  if (request.save_task_status !== 'succeeded' || request.visit_status !== 'full' || request.snapshot_swhid !== `swh:1:snp:${buyerGuideSnapshotId}`) failures.push('Software Heritage current buyer-guide save request: archive did not complete with the expected snapshot');
+} catch {
+  failures.push('Software Heritage current buyer-guide save request: invalid JSON');
+}
 const buyerGuideSnapshotRaw = await get('Software Heritage buyer-guide snapshot', `https://archive.softwareheritage.org/api/1/snapshot/${buyerGuideSnapshotId}/`, 'application/json');
 try {
   const snapshot = JSON.parse(buyerGuideSnapshotRaw);

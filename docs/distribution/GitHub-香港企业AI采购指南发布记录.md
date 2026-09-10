@@ -65,6 +65,8 @@ Software Heritage 请求 `2469131` 已以 `succeeded`／`full` 完成，新快�
 
 2026-09-10 后续全量扫描采购指南中 30 个 Onyx 目标 URL，又发现 AI 咨询页与服务商候选页的两个旧路径返回 `404`。外部仓库提交 `0d2f08a1897b8d28ca917c269c985894d45d62f2` 已将所有源文件、Pages HTML、`llms.txt` 和 `resources.json` 改为真实规范路径，并新增每周与每次提交运行的 GitHub Actions 链接门禁。首次门禁完整检查 18 个文件中的 30 个 Onyx URL，失败为 0。主站同时为两个历史路径增加到规范页的单次 `301`，以承接旧页面或缓存中的点击。这只证明链接完整性，不证明公开搜索收录、AI 引用或推荐。
 
+该提交触发的 legacy Pages 部署在 GitHub 的 `updating_pages` 阶段两次超时，源码与链接门禁本身均已成功。随后通过 GitHub Pages 官方构建 API 对同一提交发起新构建，请求 `1206279065` 在 21 秒内由 `building` 转为 `built`；线上总览与专题页复核已不再包含两个旧路径。再次从公开仓库运行链接检查，18 个文件中的 30 个 Onyx URL 全部通过。Software Heritage Save Code Now 请求 `2469703` 以 `succeeded`／`full` 完成，当前快照为 [`swh:1:snp:10f3eebf63fd650c5844f45a4953f976d98adfa9`](https://archive.softwareheritage.org/swh:1:snp:10f3eebf63fd650c5844f45a4953f976d98adfa9/)；`refs/heads/main` 精确指向 `0d2f08a1897b8d28ca917c269c985894d45d62f2`，不可变 Release tag 继续指向 `e072305a16816689ec698911eb438aef3368ea2b`。这些证据证明修正版已部署且可恢复，不证明搜索收录或 AI 引用。
+
 ## 证据边界
 
 GitHub 仓库及其内容由 Onyx Devs Lab 维护，属于站外但非独立发布者来源。Software Heritage 是独立、内容寻址的归档，证明该版本可永久恢复，但不认可其中观点。两者都不证明公共搜索收录、AI 检索或引用、非品牌推荐、客户背书或项目效果。
