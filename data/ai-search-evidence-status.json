@@ -1,9 +1,9 @@
 {
   "schemaVersion": 2,
-  "version": "2026.09.10.4",
+  "version": "2026.09.10.5",
   "id": "https://hk.onyxdevslab.com/data/ai-search-evidence-status.json",
-  "observedAt": "2026-09-09T20:18:19Z",
-  "sameAs": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-ai-rfp-template-2026-09-10/ai-search-evidence-status.json",
+  "observedAt": "2026-09-10T10:05:27Z",
+  "sameAs": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-crawler-evidence-2026-09-10/ai-search-evidence-status.json",
   "name": {
     "en": "Onyx Devs Lab AI-search evidence status",
     "zhHant": "Onyx Devs Lab AI 搜尋證據狀態",
@@ -59,8 +59,8 @@
       "status": "partially-verified",
       "claim": "Named crawlers have accessed discovery files or content pages.",
       "evidence": {
-        "verifiedGptBotContentCrawls": 3,
-        "verifiedOaiSearchBotDiscoveryFileVisits": 3,
+        "verifiedGptBotContentCrawls": 24,
+        "verifiedOaiSearchBotDiscoveryFileVisits": 5,
         "verifiedOaiSearchBotContentCrawls": 0,
         "historicallyVerifiedBingbotContentCrawls": 7,
         "verifiedGooglebotContentCrawls": 0,
@@ -93,28 +93,35 @@
       "evidence": {
         "doubaoTestStatus": "not-run",
         "otherAiRecommendationEvidenceCount": 0,
-        "realAiReferralVisitsObserved": 0
-      }
+        "realAiReferralVisitsObserved": 0,
+        "trackedAttributionRequests": 30,
+        "suspectedAutomatedTrackedRequests": 24,
+        "humanUnverifiedTrackedRequests": 6
+      },
+      "limitations": [
+        "High-velocity multi-page requests are classified as suspected automation.",
+        "The remaining attributed requests are not proven to be people or AI referrals because no source referrer was present."
+      ]
     }
   ],
   "publicSearchChecks": [
     {
-      "checkedAt": "2026-09-09T19:13:31Z",
+      "checkedAt": "2026-09-10T09:44:00Z",
       "query": "\"ONYX-GEO-VERIFY-79051925-20260908\"",
       "result": "website-not-observed"
     },
     {
-      "checkedAt": "2026-09-09T19:13:31Z",
+      "checkedAt": "2026-09-10T09:44:00Z",
       "query": "\"Onyx Devs Lab\"",
       "result": "website-not-observed; independent legal-entity records observed"
     },
     {
-      "checkedAt": "2026-09-09T19:13:31Z",
+      "checkedAt": "2026-09-10T09:44:00Z",
       "query": "site:hk.onyxdevslab.com",
       "result": "no-results-observed"
     },
     {
-      "checkedAt": "2026-09-09T19:13:31Z",
+      "checkedAt": "2026-09-10T09:44:00Z",
       "query": "\"AI 定开\" \"Onyx Devs Lab\"",
       "result": "website-not-observed"
     }
@@ -153,6 +160,14 @@
     {
       "name": "Versioned agent-readiness evidence checkpoint",
       "url": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-readiness-2026-09-10"
+    },
+    {
+      "name": "Versioned verified crawler evidence checkpoint",
+      "url": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-crawler-evidence-2026-09-10"
+    },
+    {
+      "name": "Versioned verified crawler evidence summary",
+      "url": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-crawler-evidence-2026-09-10/2026-09-10-crawler-evidence.json"
     },
     {
       "name": "Versioned enterprise AI RFP template and evidence checkpoint",

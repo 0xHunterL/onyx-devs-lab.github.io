@@ -37,7 +37,7 @@ AI 搜尋量度
 
 ### 已爬取
 
-GPTBot 已驗證爬取 3 個方法頁；OAI-SearchBot 已驗證讀取發現檔案 3 次；歷史日誌保存 7 次已驗證 Bingbot 正文爬取。
+GPTBot 已驗證爬取 24 個正文頁；OAI-SearchBot 已驗證讀取發現檔案 5 次但正文爬取仍為 0；歷史日誌保存 7 次已驗證 Bingbot 正文爬取。
 
 尚未驗證
 

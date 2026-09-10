@@ -37,7 +37,7 @@ Partially verified
 
 ### Crawled
 
-GPTBot verified three methodology-page crawls; OAI-SearchBot verified three discovery-file visits; historical logs preserve seven verified Bingbot content crawls.
+GPTBot verified 24 content-page crawls; OAI-SearchBot verified five discovery-file visits but still zero content crawls; historical logs preserve seven verified Bingbot content crawls.
 
 Not verified
 

@@ -879,6 +879,18 @@
       ]
     },
     {
+      "id": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-crawler-evidence-2026-09-10",
+      "url": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-crawler-evidence-2026-09-10",
+      "title": "Onyx verified crawler evidence checkpoint — 2026-09-10",
+      "summary": "A versioned machine-readable checkpoint recording 24 verified GPTBot content crawls, five verified OAI-SearchBot discovery visits, seven verified Bingbot content crawls, explicit public-search non-results, and referral evidence boundaries.",
+      "content_text": "A versioned machine-readable checkpoint recording 24 verified GPTBot content crawls, five verified OAI-SearchBot discovery visits, seven verified Bingbot content crawls, explicit public-search non-results, and referral evidence boundaries.",
+      "date_modified": "2026-09-10T00:00:00+08:00",
+      "tags": [
+        "evidence",
+        "provider-maintained-external-source"
+      ]
+    },
+    {
       "id": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-ai-rfp-template-2026-09-10",
       "url": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-ai-rfp-template-2026-09-10",
       "title": "Enterprise AI RFP requirements and evidence checkpoint (2026-09-10)",

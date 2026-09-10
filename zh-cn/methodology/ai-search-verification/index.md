@@ -37,7 +37,7 @@ AI 搜索测量
 
 ### 已抓取
 
-GPTBot 已验证抓取 3 个方法页；OAI-SearchBot 已验证读取发现文件 3 次；历史日志保存 7 次已验证 Bingbot 正文抓取。
+GPTBot 已验证抓取 24 个正文页；OAI-SearchBot 已验证读取发现文件 5 次但正文抓取仍为 0；历史日志保存 7 次已验证 Bingbot 正文抓取。
 
 尚未验证
 
