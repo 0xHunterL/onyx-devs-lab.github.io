@@ -57,6 +57,8 @@ const nginxRouteConfig = fs.readFileSync(path.resolve('deploy/nginx-hk.conf'), '
 if (!nginxRouteConfig.includes('absolute_redirect off;')) failures.push('nginx: directory redirects are not constrained to relative HTTPS-safe targets');
 if (!nginxRouteConfig.includes('if ($http_x_forwarded_proto = "http")') || !nginxRouteConfig.includes('return 301 https://hk.onyxdevslab.com$request_uri;')) failures.push('nginx: externally visible HTTP requests are not redirected to the canonical HTTPS origin');
 if (!nginxRouteConfig.includes('location = /zh-cn/custom-ai-development-hong-kong/') || !nginxRouteConfig.includes('return 301 /zh-cn/custom-ai-development/;')) failures.push('nginx: observed legacy custom-development URL is not redirected');
+if (!nginxRouteConfig.includes('location = /zh-cn/ai-consulting-hong-kong/') || !nginxRouteConfig.includes('return 301 /zh-cn/ai-consulting/;')) failures.push('nginx: observed legacy AI-consulting URL is not redirected');
+if (!nginxRouteConfig.includes('location = /zh-cn/guides/hong-kong-enterprise-ai-providers/') || !nginxRouteConfig.includes('return 301 /zh-cn/guides/hong-kong-ai-consulting-companies/;')) failures.push('nginx: observed legacy provider-guide URL is not redirected');
 if (!nginxRouteConfig.includes('try_files $uri $uri/ =404;')) failures.push('nginx: unknown routes do not return a real 404');
 if (!nginxRouteConfig.includes('if ($request_uri ~ ^/index\\.html(?:\\?|$))')) failures.push('nginx: duplicate /index.html homepage is not redirected');
 

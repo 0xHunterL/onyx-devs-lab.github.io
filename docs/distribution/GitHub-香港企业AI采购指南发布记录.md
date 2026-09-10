@@ -63,6 +63,8 @@ Software Heritage 请求 `2469131` 已以 `succeeded`／`full` 完成，新快�
 
 同日引荐日志暴露了 AI 定开专题中的一个错误深链：`/zh-cn/custom-ai-development-hong-kong/` 返回 `404`。页面已在提交 `4db47179362e5a7f23a10e4123c5c51a176f2944` 改为真实规范路径 `/zh-cn/custom-ai-development/`；GitHub Pages 发布成功，线上专题页可见新链接，目标含同一归因参数返回 `200`，专题页的 IndexNow 更新通知返回 `200`。Software Heritage 请求 `2469457` 随后以 `succeeded`／`full` 完成，当前快照为 [`swh:1:snp:aed1c72273c6b77cb65c2971d21234104d02d060`](https://archive.softwareheritage.org/swh:1:snp:aed1c72273c6b77cb65c2971d21234104d02d060/)，`refs/heads/main` 精确指向修复提交，Release tag 仍保持在不可变版本提交。
 
+2026-09-10 后续全量扫描采购指南中 30 个 Onyx 目标 URL，又发现 AI 咨询页与服务商候选页的两个旧路径返回 `404`。外部仓库提交 `0d2f08a1897b8d28ca917c269c985894d45d62f2` 已将所有源文件、Pages HTML、`llms.txt` 和 `resources.json` 改为真实规范路径，并新增每周与每次提交运行的 GitHub Actions 链接门禁。首次门禁完整检查 18 个文件中的 30 个 Onyx URL，失败为 0。主站同时为两个历史路径增加到规范页的单次 `301`，以承接旧页面或缓存中的点击。这只证明链接完整性，不证明公开搜索收录、AI 引用或推荐。
+
 ## 证据边界
 
 GitHub 仓库及其内容由 Onyx Devs Lab 维护，属于站外但非独立发布者来源。Software Heritage 是独立、内容寻址的归档，证明该版本可永久恢复，但不认可其中观点。两者都不证明公共搜索收录、AI 检索或引用、非品牌推荐、客户背书或项目效果。
