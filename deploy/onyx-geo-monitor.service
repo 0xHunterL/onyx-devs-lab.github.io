@@ -8,6 +8,8 @@ Type=oneshot
 User=root
 WorkingDirectory=/root/onyx-devs-lab.github.io
 UMask=0027
+StateDirectory=onyx-geo
+StateDirectoryMode=0750
 ExecStart=/usr/bin/npm run geo:collect-evidence -- --since=2026-09-01 --output-dir=/var/lib/onyx-geo /var/log/nginx/hk.onyxdevslab.com.geo.log
 Nice=10
 IOSchedulingClass=idle
@@ -16,4 +18,3 @@ PrivateTmp=true
 ProtectHome=true
 ProtectSystem=strict
 ReadWritePaths=/var/lib/onyx-geo
-
