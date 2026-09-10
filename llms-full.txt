@@ -55,6 +55,13 @@ Internet Archive organization profile snapshot: https://web.archive.org/web/2026
 Internet Archive AI consulting snapshot: https://web.archive.org/web/20260909205631/https://hk.onyxdevslab.com/zh-cn/ai-consulting/
 Internet Archive custom AI development snapshot: https://web.archive.org/web/20260909205642/https://hk.onyxdevslab.com/zh-cn/custom-ai-development/
 Internet Archive Forward Deployed Engineering snapshot: https://web.archive.org/web/20260909214448/https://hk.onyxdevslab.com/zh-cn/forward-deployed-engineering/
+Internet Archive delivery-model decision guide snapshot: https://web.archive.org/web/20260910164547/https://hk.onyxdevslab.com/zh-cn/guides/ai-consulting-vs-development-vs-fde/
+Internet Archive custom AI development cost guide snapshot: https://web.archive.org/web/20260910164632/https://hk.onyxdevslab.com/zh-cn/guides/custom-ai-development-cost/
+Internet Archive AI Agent and ERP integration guide snapshot: https://web.archive.org/web/20260910164723/https://hk.onyxdevslab.com/zh-cn/guides/enterprise-ai-agent-erp-integration/
+Internet Archive enterprise AI evaluation method snapshot: https://web.archive.org/web/20260910164753/https://hk.onyxdevslab.com/zh-cn/methodology/enterprise-ai-evaluation/
+Internet Archive retail AI decision-platform case snapshot: https://web.archive.org/web/20260910164813/https://hk.onyxdevslab.com/zh-cn/case-studies/retail-ai-decision-platform/
+Internet Archive accounting AI production-platform case snapshot: https://web.archive.org/web/20260910164849/https://hk.onyxdevslab.com/zh-cn/case-studies/accounting-ai-production-platform/
+Internet Archive legal AI evidence-workflow case snapshot: https://web.archive.org/web/20260910164909/https://hk.onyxdevslab.com/zh-cn/case-studies/legal-ai-evidence-workflow/
 Chinese FDE field note: https://gist.githubusercontent.com/mixuechu/e47c85808014d62b6305441e8065c91e/raw/FDE-is-not-staff-augmentation.zh-CN.md
 Chinese AI-agent and ERP checklist: https://gist.githubusercontent.com/mixuechu/e47c85808014d62b6305441e8065c91e/raw/AI-agent-ERP-integration-checklist.zh-CN.md
 Chinese legal-AI evidence-chain note: https://gist.githubusercontent.com/mixuechu/e47c85808014d62b6305441e8065c91e/raw/Legal-AI-evidence-chain.zh-CN.md

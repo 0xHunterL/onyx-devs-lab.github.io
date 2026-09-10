@@ -87,6 +87,12 @@ language: "zh-CN"
 
 [预约项目评估](mailto:info@onyxdevslab.com?subject=Case%20study%20enquiry)
 
+## 第三方历史快照
+
+Internet Archive 保存了该页面的历史副本。归档证明页面在指定时间可读取，不代表服务背书、搜索收录或 AI 推荐。
+
+[查看 Internet Archive 永久快照](https://web.archive.org/web/20260910164849/https://hk.onyxdevslab.com/zh-cn/case-studies/accounting-ai-production-platform/)
+
 ## Structured data
 
 ```json
@@ -320,8 +326,8 @@ language: "zh-CN"
         },
         {
           "@type": "CreativeWork",
-          "name": "Internet Archive snapshots of Onyx Devs Lab Simplified Chinese entity and core services",
-          "description": "Independent historical captures of the organization profile, AI consulting, custom AI development, and Forward Deployed Engineering pages. Archival proves readability at capture time, not endorsement, search indexing, AI citation, or recommendation.",
+          "name": "Internet Archive snapshots of Onyx Devs Lab Simplified Chinese entity, services, guides, and case studies",
+          "description": "Independent historical captures of the organization profile, core services, decision guides, implementation methods, and anonymised case studies. Archival proves readability at capture time, not endorsement, search indexing, AI citation, or recommendation.",
           "url": "https://web.archive.org/web/20260909233718/https://hk.onyxdevslab.com/zh-cn/about/",
           "hasPart": [
             {
@@ -347,6 +353,48 @@ language: "zh-CN"
               "name": "Onyx Devs Lab Forward Deployed Engineering service snapshot",
               "url": "https://web.archive.org/web/20260909214448/https://hk.onyxdevslab.com/zh-cn/forward-deployed-engineering/",
               "archivedAt": "https://web.archive.org/web/20260909214448/https://hk.onyxdevslab.com/zh-cn/forward-deployed-engineering/"
+            },
+            {
+              "@type": "WebPage",
+              "name": "Onyx enterprise AI delivery-model decision guide snapshot",
+              "url": "https://web.archive.org/web/20260910164547/https://hk.onyxdevslab.com/zh-cn/guides/ai-consulting-vs-development-vs-fde/",
+              "archivedAt": "https://web.archive.org/web/20260910164547/https://hk.onyxdevslab.com/zh-cn/guides/ai-consulting-vs-development-vs-fde/"
+            },
+            {
+              "@type": "WebPage",
+              "name": "Onyx custom AI development cost guide snapshot",
+              "url": "https://web.archive.org/web/20260910164632/https://hk.onyxdevslab.com/zh-cn/guides/custom-ai-development-cost/",
+              "archivedAt": "https://web.archive.org/web/20260910164632/https://hk.onyxdevslab.com/zh-cn/guides/custom-ai-development-cost/"
+            },
+            {
+              "@type": "WebPage",
+              "name": "Onyx enterprise AI Agent and ERP integration guide snapshot",
+              "url": "https://web.archive.org/web/20260910164723/https://hk.onyxdevslab.com/zh-cn/guides/enterprise-ai-agent-erp-integration/",
+              "archivedAt": "https://web.archive.org/web/20260910164723/https://hk.onyxdevslab.com/zh-cn/guides/enterprise-ai-agent-erp-integration/"
+            },
+            {
+              "@type": "WebPage",
+              "name": "Onyx enterprise AI production-evaluation method snapshot",
+              "url": "https://web.archive.org/web/20260910164753/https://hk.onyxdevslab.com/zh-cn/methodology/enterprise-ai-evaluation/",
+              "archivedAt": "https://web.archive.org/web/20260910164753/https://hk.onyxdevslab.com/zh-cn/methodology/enterprise-ai-evaluation/"
+            },
+            {
+              "@type": "WebPage",
+              "name": "Onyx retail AI decision-platform case snapshot",
+              "url": "https://web.archive.org/web/20260910164813/https://hk.onyxdevslab.com/zh-cn/case-studies/retail-ai-decision-platform/",
+              "archivedAt": "https://web.archive.org/web/20260910164813/https://hk.onyxdevslab.com/zh-cn/case-studies/retail-ai-decision-platform/"
+            },
+            {
+              "@type": "WebPage",
+              "name": "Onyx accounting AI production-platform case snapshot",
+              "url": "https://web.archive.org/web/20260910164849/https://hk.onyxdevslab.com/zh-cn/case-studies/accounting-ai-production-platform/",
+              "archivedAt": "https://web.archive.org/web/20260910164849/https://hk.onyxdevslab.com/zh-cn/case-studies/accounting-ai-production-platform/"
+            },
+            {
+              "@type": "WebPage",
+              "name": "Onyx legal AI evidence-workflow case snapshot",
+              "url": "https://web.archive.org/web/20260910164909/https://hk.onyxdevslab.com/zh-cn/case-studies/legal-ai-evidence-workflow/",
+              "archivedAt": "https://web.archive.org/web/20260910164909/https://hk.onyxdevslab.com/zh-cn/case-studies/legal-ai-evidence-workflow/"
             }
           ]
         }
@@ -381,6 +429,7 @@ language: "zh-CN"
       },
       "dateModified": "2026-09-10",
       "headline": "面向会计运营的 AI 原生生产线",
+      "archivedAt": "https://web.archive.org/web/20260910164849/https://hk.onyxdevslab.com/zh-cn/case-studies/accounting-ai-production-platform/",
       "datePublished": "2026-09-07",
       "mainEntityOfPage": {
         "@id": "https://hk.onyxdevslab.com/zh-cn/case-studies/accounting-ai-production-platform/"
@@ -400,7 +449,8 @@ language: "zh-CN"
       },
       "about": {
         "@id": "https://hk.onyxdevslab.com/zh-cn/case-studies/accounting-ai-production-platform/#primary"
-      }
+      },
+      "archivedAt": "https://web.archive.org/web/20260910164849/https://hk.onyxdevslab.com/zh-cn/case-studies/accounting-ai-production-platform/"
     },
     {
       "@type": "BreadcrumbList",
