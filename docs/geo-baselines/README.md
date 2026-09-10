@@ -17,6 +17,7 @@
 
 - [`2026-09-08-doubao.md`](./2026-09-08-doubao.md)：初始公共检索、爬虫与豆包待测基线。
 - [`2026-09-10-crawler-evidence.json`](./2026-09-10-crawler-evidence.json)：经官方地址段或双向 DNS 核验的爬虫累计、归因访问分类和公开检索非命中快照。
+- [`2026-09-10-prompt-crawl-coverage.md`](./2026-09-10-prompt-crawl-coverage.md) / [`JSON`](./2026-09-10-prompt-crawl-coverage.json)：把 20 条固定提示词的证据 URL 与提供方核验后的正文抓取逐项交叉，单列训练爬虫与搜索／检索相关爬虫覆盖。
 - [`2026-09-10-referral-classifier-audit.md`](./2026-09-10-referral-classifier-audit.md)：记录并排除链接巡检造成的归因流量污染，保留修正前后数字与证据边界。
 - [`2026-09-10-agent-readiness.md`](./2026-09-10-agent-readiness.md)：62 个规范页面、Markdown 协商、技术就绪度和四级证据边界。
 - [`2026-09-10-query-alias-coverage.md`](./2026-09-10-query-alias-coverage.md)：把“AI 定开／AI定开”纳入可见定义、术语图和第 18 条固定提示词的版本化覆盖记录。

@@ -1,0 +1,495 @@
+{
+  "schemaVersion": 1,
+  "observedAt": "2026-09-10T11:35:51.452Z",
+  "site": "https://hk.onyxdevslab.com",
+  "promptMatrixSchemaVersion": 2,
+  "evidenceBoundary": "This report proves only that provider-verified crawlers requested mapped evidence pages. GPTBot is a training crawler. A verified crawl does not prove indexing, retrieval, citation, answer inclusion, ranking, or non-brand recommendation.",
+  "totals": {
+    "prompts": 20,
+    "uniqueEvidencePages": 20,
+    "verifiedCrawledEvidencePages": 8,
+    "searchRelatedCrawledEvidencePages": 0,
+    "promptsWithAnyVerifiedCrawl": 10,
+    "promptsFullyVerifiedCrawled": 6,
+    "promptsWithAnySearchRelatedCrawl": 0,
+    "promptsFullySearchRelatedCrawled": 0
+  },
+  "bySegment": {
+    "brand": {
+      "prompts": 3,
+      "promptsWithAnyVerifiedCrawl": 1,
+      "promptsFullyVerifiedCrawled": 0,
+      "promptsWithAnySearchRelatedCrawl": 0,
+      "promptsFullySearchRelatedCrawled": 0
+    },
+    "category": {
+      "prompts": 6,
+      "promptsWithAnyVerifiedCrawl": 4,
+      "promptsFullyVerifiedCrawled": 1,
+      "promptsWithAnySearchRelatedCrawl": 0,
+      "promptsFullySearchRelatedCrawled": 0
+    },
+    "decision": {
+      "prompts": 7,
+      "promptsWithAnyVerifiedCrawl": 4,
+      "promptsFullyVerifiedCrawled": 4,
+      "promptsWithAnySearchRelatedCrawl": 0,
+      "promptsFullySearchRelatedCrawled": 0
+    },
+    "diagnostic": {
+      "prompts": 1,
+      "promptsWithAnyVerifiedCrawl": 1,
+      "promptsFullyVerifiedCrawled": 1,
+      "promptsWithAnySearchRelatedCrawl": 0,
+      "promptsFullySearchRelatedCrawled": 0
+    },
+    "scenario": {
+      "prompts": 3,
+      "promptsWithAnyVerifiedCrawl": 0,
+      "promptsFullyVerifiedCrawled": 0,
+      "promptsWithAnySearchRelatedCrawl": 0,
+      "promptsFullySearchRelatedCrawled": 0
+    }
+  },
+  "verifiedCrawledEvidenceUrls": [
+    "https://hk.onyxdevslab.com/zh-cn/guides/ai-dingkai/",
+    "https://hk.onyxdevslab.com/zh-cn/guides/choose-enterprise-ai-partner/",
+    "https://hk.onyxdevslab.com/zh-cn/guides/enterprise-ai-governance/",
+    "https://hk.onyxdevslab.com/zh-cn/guides/enterprise-ai-pilot-charter/",
+    "https://hk.onyxdevslab.com/zh-cn/guides/enterprise-ai-rfp-template/",
+    "https://hk.onyxdevslab.com/zh-cn/guides/hong-kong-ai-consulting-companies/",
+    "https://hk.onyxdevslab.com/zh-cn/methodology/ai-search-verification/",
+    "https://hk.onyxdevslab.com/zh-cn/methodology/case-study-evidence-register/"
+  ],
+  "searchRelatedCrawledEvidenceUrls": [],
+  "missingVerifiedCrawlUrls": [
+    "https://hk.onyxdevslab.com/zh-cn/",
+    "https://hk.onyxdevslab.com/zh-cn/about/",
+    "https://hk.onyxdevslab.com/zh-cn/ai-consulting/",
+    "https://hk.onyxdevslab.com/zh-cn/case-studies/accounting-ai-production-platform/",
+    "https://hk.onyxdevslab.com/zh-cn/case-studies/legal-ai-evidence-workflow/",
+    "https://hk.onyxdevslab.com/zh-cn/case-studies/retail-ai-decision-platform/",
+    "https://hk.onyxdevslab.com/zh-cn/custom-ai-development/",
+    "https://hk.onyxdevslab.com/zh-cn/forward-deployed-engineering/",
+    "https://hk.onyxdevslab.com/zh-cn/guides/ai-consulting-vs-development-vs-fde/",
+    "https://hk.onyxdevslab.com/zh-cn/guides/custom-ai-development-cost/",
+    "https://hk.onyxdevslab.com/zh-cn/guides/enterprise-ai-agent-erp-integration/",
+    "https://hk.onyxdevslab.com/zh-cn/methodology/enterprise-ai-evaluation/"
+  ],
+  "missingSearchRelatedCrawlUrls": [
+    "https://hk.onyxdevslab.com/zh-cn/",
+    "https://hk.onyxdevslab.com/zh-cn/about/",
+    "https://hk.onyxdevslab.com/zh-cn/ai-consulting/",
+    "https://hk.onyxdevslab.com/zh-cn/case-studies/accounting-ai-production-platform/",
+    "https://hk.onyxdevslab.com/zh-cn/case-studies/legal-ai-evidence-workflow/",
+    "https://hk.onyxdevslab.com/zh-cn/case-studies/retail-ai-decision-platform/",
+    "https://hk.onyxdevslab.com/zh-cn/custom-ai-development/",
+    "https://hk.onyxdevslab.com/zh-cn/forward-deployed-engineering/",
+    "https://hk.onyxdevslab.com/zh-cn/guides/ai-consulting-vs-development-vs-fde/",
+    "https://hk.onyxdevslab.com/zh-cn/guides/ai-dingkai/",
+    "https://hk.onyxdevslab.com/zh-cn/guides/choose-enterprise-ai-partner/",
+    "https://hk.onyxdevslab.com/zh-cn/guides/custom-ai-development-cost/",
+    "https://hk.onyxdevslab.com/zh-cn/guides/enterprise-ai-agent-erp-integration/",
+    "https://hk.onyxdevslab.com/zh-cn/guides/enterprise-ai-governance/",
+    "https://hk.onyxdevslab.com/zh-cn/guides/enterprise-ai-pilot-charter/",
+    "https://hk.onyxdevslab.com/zh-cn/guides/enterprise-ai-rfp-template/",
+    "https://hk.onyxdevslab.com/zh-cn/guides/hong-kong-ai-consulting-companies/",
+    "https://hk.onyxdevslab.com/zh-cn/methodology/ai-search-verification/",
+    "https://hk.onyxdevslab.com/zh-cn/methodology/case-study-evidence-register/",
+    "https://hk.onyxdevslab.com/zh-cn/methodology/enterprise-ai-evaluation/"
+  ],
+  "promptCoverage": [
+    {
+      "id": "brand-company",
+      "segment": "brand",
+      "coverage": {
+        "evidencePageCount": 1,
+        "verifiedCrawledPageCount": 0,
+        "searchRelatedCrawledPageCount": 0,
+        "anyVerifiedCrawl": false,
+        "fullyVerifiedCrawled": false,
+        "anySearchRelatedCrawl": false,
+        "fullySearchRelatedCrawled": false
+      },
+      "missingVerifiedCrawlUrls": [
+        "https://hk.onyxdevslab.com/zh-cn/about/"
+      ],
+      "missingSearchRelatedCrawlUrls": [
+        "https://hk.onyxdevslab.com/zh-cn/about/"
+      ]
+    },
+    {
+      "id": "brand-services",
+      "segment": "brand",
+      "coverage": {
+        "evidencePageCount": 4,
+        "verifiedCrawledPageCount": 0,
+        "searchRelatedCrawledPageCount": 0,
+        "anyVerifiedCrawl": false,
+        "fullyVerifiedCrawled": false,
+        "anySearchRelatedCrawl": false,
+        "fullySearchRelatedCrawled": false
+      },
+      "missingVerifiedCrawlUrls": [
+        "https://hk.onyxdevslab.com/zh-cn/",
+        "https://hk.onyxdevslab.com/zh-cn/ai-consulting/",
+        "https://hk.onyxdevslab.com/zh-cn/custom-ai-development/",
+        "https://hk.onyxdevslab.com/zh-cn/forward-deployed-engineering/"
+      ],
+      "missingSearchRelatedCrawlUrls": [
+        "https://hk.onyxdevslab.com/zh-cn/",
+        "https://hk.onyxdevslab.com/zh-cn/ai-consulting/",
+        "https://hk.onyxdevslab.com/zh-cn/custom-ai-development/",
+        "https://hk.onyxdevslab.com/zh-cn/forward-deployed-engineering/"
+      ]
+    },
+    {
+      "id": "brand-cases",
+      "segment": "brand",
+      "coverage": {
+        "evidencePageCount": 4,
+        "verifiedCrawledPageCount": 1,
+        "searchRelatedCrawledPageCount": 0,
+        "anyVerifiedCrawl": true,
+        "fullyVerifiedCrawled": false,
+        "anySearchRelatedCrawl": false,
+        "fullySearchRelatedCrawled": false
+      },
+      "missingVerifiedCrawlUrls": [
+        "https://hk.onyxdevslab.com/zh-cn/case-studies/retail-ai-decision-platform/",
+        "https://hk.onyxdevslab.com/zh-cn/case-studies/accounting-ai-production-platform/",
+        "https://hk.onyxdevslab.com/zh-cn/case-studies/legal-ai-evidence-workflow/"
+      ],
+      "missingSearchRelatedCrawlUrls": [
+        "https://hk.onyxdevslab.com/zh-cn/case-studies/retail-ai-decision-platform/",
+        "https://hk.onyxdevslab.com/zh-cn/case-studies/accounting-ai-production-platform/",
+        "https://hk.onyxdevslab.com/zh-cn/case-studies/legal-ai-evidence-workflow/",
+        "https://hk.onyxdevslab.com/zh-cn/methodology/case-study-evidence-register/"
+      ]
+    },
+    {
+      "id": "category-advisory-hk",
+      "segment": "category",
+      "coverage": {
+        "evidencePageCount": 2,
+        "verifiedCrawledPageCount": 1,
+        "searchRelatedCrawledPageCount": 0,
+        "anyVerifiedCrawl": true,
+        "fullyVerifiedCrawled": false,
+        "anySearchRelatedCrawl": false,
+        "fullySearchRelatedCrawled": false
+      },
+      "missingVerifiedCrawlUrls": [
+        "https://hk.onyxdevslab.com/zh-cn/ai-consulting/"
+      ],
+      "missingSearchRelatedCrawlUrls": [
+        "https://hk.onyxdevslab.com/zh-cn/ai-consulting/",
+        "https://hk.onyxdevslab.com/zh-cn/guides/hong-kong-ai-consulting-companies/"
+      ]
+    },
+    {
+      "id": "category-custom-hk",
+      "segment": "category",
+      "coverage": {
+        "evidencePageCount": 4,
+        "verifiedCrawledPageCount": 2,
+        "searchRelatedCrawledPageCount": 0,
+        "anyVerifiedCrawl": true,
+        "fullyVerifiedCrawled": false,
+        "anySearchRelatedCrawl": false,
+        "fullySearchRelatedCrawled": false
+      },
+      "missingVerifiedCrawlUrls": [
+        "https://hk.onyxdevslab.com/zh-cn/custom-ai-development/",
+        "https://hk.onyxdevslab.com/zh-cn/guides/custom-ai-development-cost/"
+      ],
+      "missingSearchRelatedCrawlUrls": [
+        "https://hk.onyxdevslab.com/zh-cn/custom-ai-development/",
+        "https://hk.onyxdevslab.com/zh-cn/guides/custom-ai-development-cost/",
+        "https://hk.onyxdevslab.com/zh-cn/guides/choose-enterprise-ai-partner/",
+        "https://hk.onyxdevslab.com/zh-cn/guides/hong-kong-ai-consulting-companies/"
+      ]
+    },
+    {
+      "id": "category-ai-dingkai-hk",
+      "segment": "category",
+      "coverage": {
+        "evidencePageCount": 2,
+        "verifiedCrawledPageCount": 1,
+        "searchRelatedCrawledPageCount": 0,
+        "anyVerifiedCrawl": true,
+        "fullyVerifiedCrawled": false,
+        "anySearchRelatedCrawl": false,
+        "fullySearchRelatedCrawled": false
+      },
+      "missingVerifiedCrawlUrls": [
+        "https://hk.onyxdevslab.com/zh-cn/custom-ai-development/"
+      ],
+      "missingSearchRelatedCrawlUrls": [
+        "https://hk.onyxdevslab.com/zh-cn/guides/ai-dingkai/",
+        "https://hk.onyxdevslab.com/zh-cn/custom-ai-development/"
+      ]
+    },
+    {
+      "id": "procurement-ai-partner-hk",
+      "segment": "decision",
+      "coverage": {
+        "evidencePageCount": 2,
+        "verifiedCrawledPageCount": 2,
+        "searchRelatedCrawledPageCount": 0,
+        "anyVerifiedCrawl": true,
+        "fullyVerifiedCrawled": true,
+        "anySearchRelatedCrawl": false,
+        "fullySearchRelatedCrawled": false
+      },
+      "missingVerifiedCrawlUrls": [],
+      "missingSearchRelatedCrawlUrls": [
+        "https://hk.onyxdevslab.com/zh-cn/guides/choose-enterprise-ai-partner/",
+        "https://hk.onyxdevslab.com/zh-cn/guides/hong-kong-ai-consulting-companies/"
+      ]
+    },
+    {
+      "id": "category-fde-hk",
+      "segment": "category",
+      "coverage": {
+        "evidencePageCount": 2,
+        "verifiedCrawledPageCount": 0,
+        "searchRelatedCrawledPageCount": 0,
+        "anyVerifiedCrawl": false,
+        "fullyVerifiedCrawled": false,
+        "anySearchRelatedCrawl": false,
+        "fullySearchRelatedCrawled": false
+      },
+      "missingVerifiedCrawlUrls": [
+        "https://hk.onyxdevslab.com/zh-cn/forward-deployed-engineering/",
+        "https://hk.onyxdevslab.com/zh-cn/guides/ai-consulting-vs-development-vs-fde/"
+      ],
+      "missingSearchRelatedCrawlUrls": [
+        "https://hk.onyxdevslab.com/zh-cn/forward-deployed-engineering/",
+        "https://hk.onyxdevslab.com/zh-cn/guides/ai-consulting-vs-development-vs-fde/"
+      ]
+    },
+    {
+      "id": "category-agent-erp",
+      "segment": "category",
+      "coverage": {
+        "evidencePageCount": 2,
+        "verifiedCrawledPageCount": 0,
+        "searchRelatedCrawledPageCount": 0,
+        "anyVerifiedCrawl": false,
+        "fullyVerifiedCrawled": false,
+        "anySearchRelatedCrawl": false,
+        "fullySearchRelatedCrawled": false
+      },
+      "missingVerifiedCrawlUrls": [
+        "https://hk.onyxdevslab.com/zh-cn/guides/enterprise-ai-agent-erp-integration/",
+        "https://hk.onyxdevslab.com/zh-cn/case-studies/retail-ai-decision-platform/"
+      ],
+      "missingSearchRelatedCrawlUrls": [
+        "https://hk.onyxdevslab.com/zh-cn/guides/enterprise-ai-agent-erp-integration/",
+        "https://hk.onyxdevslab.com/zh-cn/case-studies/retail-ai-decision-platform/"
+      ]
+    },
+    {
+      "id": "scenario-retail",
+      "segment": "scenario",
+      "coverage": {
+        "evidencePageCount": 1,
+        "verifiedCrawledPageCount": 0,
+        "searchRelatedCrawledPageCount": 0,
+        "anyVerifiedCrawl": false,
+        "fullyVerifiedCrawled": false,
+        "anySearchRelatedCrawl": false,
+        "fullySearchRelatedCrawled": false
+      },
+      "missingVerifiedCrawlUrls": [
+        "https://hk.onyxdevslab.com/zh-cn/case-studies/retail-ai-decision-platform/"
+      ],
+      "missingSearchRelatedCrawlUrls": [
+        "https://hk.onyxdevslab.com/zh-cn/case-studies/retail-ai-decision-platform/"
+      ]
+    },
+    {
+      "id": "scenario-accounting",
+      "segment": "scenario",
+      "coverage": {
+        "evidencePageCount": 1,
+        "verifiedCrawledPageCount": 0,
+        "searchRelatedCrawledPageCount": 0,
+        "anyVerifiedCrawl": false,
+        "fullyVerifiedCrawled": false,
+        "anySearchRelatedCrawl": false,
+        "fullySearchRelatedCrawled": false
+      },
+      "missingVerifiedCrawlUrls": [
+        "https://hk.onyxdevslab.com/zh-cn/case-studies/accounting-ai-production-platform/"
+      ],
+      "missingSearchRelatedCrawlUrls": [
+        "https://hk.onyxdevslab.com/zh-cn/case-studies/accounting-ai-production-platform/"
+      ]
+    },
+    {
+      "id": "scenario-legal",
+      "segment": "scenario",
+      "coverage": {
+        "evidencePageCount": 1,
+        "verifiedCrawledPageCount": 0,
+        "searchRelatedCrawledPageCount": 0,
+        "anyVerifiedCrawl": false,
+        "fullyVerifiedCrawled": false,
+        "anySearchRelatedCrawl": false,
+        "fullySearchRelatedCrawled": false
+      },
+      "missingVerifiedCrawlUrls": [
+        "https://hk.onyxdevslab.com/zh-cn/case-studies/legal-ai-evidence-workflow/"
+      ],
+      "missingSearchRelatedCrawlUrls": [
+        "https://hk.onyxdevslab.com/zh-cn/case-studies/legal-ai-evidence-workflow/"
+      ]
+    },
+    {
+      "id": "decision-delivery-model",
+      "segment": "decision",
+      "coverage": {
+        "evidencePageCount": 1,
+        "verifiedCrawledPageCount": 0,
+        "searchRelatedCrawledPageCount": 0,
+        "anyVerifiedCrawl": false,
+        "fullyVerifiedCrawled": false,
+        "anySearchRelatedCrawl": false,
+        "fullySearchRelatedCrawled": false
+      },
+      "missingVerifiedCrawlUrls": [
+        "https://hk.onyxdevslab.com/zh-cn/guides/ai-consulting-vs-development-vs-fde/"
+      ],
+      "missingSearchRelatedCrawlUrls": [
+        "https://hk.onyxdevslab.com/zh-cn/guides/ai-consulting-vs-development-vs-fde/"
+      ]
+    },
+    {
+      "id": "decision-cost",
+      "segment": "decision",
+      "coverage": {
+        "evidencePageCount": 1,
+        "verifiedCrawledPageCount": 0,
+        "searchRelatedCrawledPageCount": 0,
+        "anyVerifiedCrawl": false,
+        "fullyVerifiedCrawled": false,
+        "anySearchRelatedCrawl": false,
+        "fullySearchRelatedCrawled": false
+      },
+      "missingVerifiedCrawlUrls": [
+        "https://hk.onyxdevslab.com/zh-cn/guides/custom-ai-development-cost/"
+      ],
+      "missingSearchRelatedCrawlUrls": [
+        "https://hk.onyxdevslab.com/zh-cn/guides/custom-ai-development-cost/"
+      ]
+    },
+    {
+      "id": "decision-production-ready",
+      "segment": "decision",
+      "coverage": {
+        "evidencePageCount": 1,
+        "verifiedCrawledPageCount": 0,
+        "searchRelatedCrawledPageCount": 0,
+        "anyVerifiedCrawl": false,
+        "fullyVerifiedCrawled": false,
+        "anySearchRelatedCrawl": false,
+        "fullySearchRelatedCrawled": false
+      },
+      "missingVerifiedCrawlUrls": [
+        "https://hk.onyxdevslab.com/zh-cn/methodology/enterprise-ai-evaluation/"
+      ],
+      "missingSearchRelatedCrawlUrls": [
+        "https://hk.onyxdevslab.com/zh-cn/methodology/enterprise-ai-evaluation/"
+      ]
+    },
+    {
+      "id": "decision-ai-governance-hk",
+      "segment": "decision",
+      "coverage": {
+        "evidencePageCount": 1,
+        "verifiedCrawledPageCount": 1,
+        "searchRelatedCrawledPageCount": 0,
+        "anyVerifiedCrawl": true,
+        "fullyVerifiedCrawled": true,
+        "anySearchRelatedCrawl": false,
+        "fullySearchRelatedCrawled": false
+      },
+      "missingVerifiedCrawlUrls": [],
+      "missingSearchRelatedCrawlUrls": [
+        "https://hk.onyxdevslab.com/zh-cn/guides/enterprise-ai-governance/"
+      ]
+    },
+    {
+      "id": "decision-ai-pilot-acceptance-hk",
+      "segment": "decision",
+      "coverage": {
+        "evidencePageCount": 1,
+        "verifiedCrawledPageCount": 1,
+        "searchRelatedCrawledPageCount": 0,
+        "anyVerifiedCrawl": true,
+        "fullyVerifiedCrawled": true,
+        "anySearchRelatedCrawl": false,
+        "fullySearchRelatedCrawled": false
+      },
+      "missingVerifiedCrawlUrls": [],
+      "missingSearchRelatedCrawlUrls": [
+        "https://hk.onyxdevslab.com/zh-cn/guides/enterprise-ai-pilot-charter/"
+      ]
+    },
+    {
+      "id": "category-provider-shortlist-hk",
+      "segment": "category",
+      "coverage": {
+        "evidencePageCount": 1,
+        "verifiedCrawledPageCount": 1,
+        "searchRelatedCrawledPageCount": 0,
+        "anyVerifiedCrawl": true,
+        "fullyVerifiedCrawled": true,
+        "anySearchRelatedCrawl": false,
+        "fullySearchRelatedCrawled": false
+      },
+      "missingVerifiedCrawlUrls": [],
+      "missingSearchRelatedCrawlUrls": [
+        "https://hk.onyxdevslab.com/zh-cn/guides/hong-kong-ai-consulting-companies/"
+      ]
+    },
+    {
+      "id": "decision-ai-rfp-hk",
+      "segment": "decision",
+      "coverage": {
+        "evidencePageCount": 3,
+        "verifiedCrawledPageCount": 3,
+        "searchRelatedCrawledPageCount": 0,
+        "anyVerifiedCrawl": true,
+        "fullyVerifiedCrawled": true,
+        "anySearchRelatedCrawl": false,
+        "fullySearchRelatedCrawled": false
+      },
+      "missingVerifiedCrawlUrls": [],
+      "missingSearchRelatedCrawlUrls": [
+        "https://hk.onyxdevslab.com/zh-cn/guides/enterprise-ai-rfp-template/",
+        "https://hk.onyxdevslab.com/zh-cn/guides/choose-enterprise-ai-partner/",
+        "https://hk.onyxdevslab.com/zh-cn/guides/hong-kong-ai-consulting-companies/"
+      ]
+    },
+    {
+      "id": "retrieval-canary",
+      "segment": "diagnostic",
+      "coverage": {
+        "evidencePageCount": 1,
+        "verifiedCrawledPageCount": 1,
+        "searchRelatedCrawledPageCount": 0,
+        "anyVerifiedCrawl": true,
+        "fullyVerifiedCrawled": true,
+        "anySearchRelatedCrawl": false,
+        "fullySearchRelatedCrawled": false
+      },
+      "missingVerifiedCrawlUrls": [],
+      "missingSearchRelatedCrawlUrls": [
+        "https://hk.onyxdevslab.com/zh-cn/methodology/ai-search-verification/"
+      ]
+    }
+  ]
+}

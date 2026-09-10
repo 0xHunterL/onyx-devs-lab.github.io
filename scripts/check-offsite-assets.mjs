@@ -468,6 +468,40 @@ for (const [file, expectedSha256] of [
   }
 }
 
+const promptCrawlCoverageReleaseUrl = 'https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-prompt-crawl-coverage-2026-09-10';
+const promptCrawlCoverageRelease = await get('GitHub fixed-prompt crawler coverage checkpoint', promptCrawlCoverageReleaseUrl, 'text/html');
+requireText('GitHub fixed-prompt crawler coverage checkpoint', promptCrawlCoverageRelease, [
+  'Onyx fixed-prompt crawler coverage evidence',
+  '10 of 20',
+  '6 of 20',
+  '0 of 20',
+  'GPTBot is a training crawler',
+  'No prompt was sent to Doubao',
+  'does not prove indexing',
+]);
+const promptCrawlCoverageAssetBase = 'https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-prompt-crawl-coverage-2026-09-10';
+for (const [file, expectedSha256] of [
+  ['2026-09-10-prompt-crawl-coverage.json', 'fbdc860409a7e0a31276c6c3c3f1d581832c4e234468b9db9ec96e945187d79d'],
+  ['2026-09-10-verified-crawler-report.json', '673dbb1e3037c33782e8e24c65b966b9abd1cd3fcb99fd3a14c4e430205d5824'],
+  ['ai-search-evidence-status.json', 'e85f9e649d2aac647a138545ea88cb69ded88f38efc541ccd75b606aab35a983'],
+]) {
+  const raw = await get(`Versioned fixed-prompt crawl coverage ${file}`, `${promptCrawlCoverageAssetBase}/${file}`, 'application/');
+  const sha256 = createHash('sha256').update(raw).digest('hex');
+  if (sha256 !== expectedSha256) failures.push(`Versioned fixed-prompt crawl coverage ${file}: SHA-256 mismatch, got ${sha256}`);
+  try {
+    const value = JSON.parse(raw);
+    if (file === '2026-09-10-prompt-crawl-coverage.json') {
+      if (value.schemaVersion !== 1 || value.totals?.prompts !== 20 || value.totals?.promptsWithAnyVerifiedCrawl !== 10 || value.totals?.promptsFullyVerifiedCrawled !== 6 || value.totals?.promptsWithAnySearchRelatedCrawl !== 0 || value.bySegment?.scenario?.promptsWithAnyVerifiedCrawl !== 0 || !value.evidenceBoundary?.includes('does not prove indexing')) failures.push('Versioned fixed-prompt crawl coverage: expected matrix intersection or evidence boundary is incomplete');
+    } else if (file === '2026-09-10-verified-crawler-report.json') {
+      if (value.totals?.verifiedGptBotPageCrawls !== 24 || value.totals?.verifiedOaiSearchBotPageCrawls !== 0 || value.totals?.verifiedBingPageCrawls !== 7 || value.verifiedContentPathCoverage?.length !== 29 || value.verifyOpenAi !== true || value.verifyBing !== true || value.verifyGoogle !== true || value.verifyPerplexity !== true) failures.push('Versioned source crawler path report: provider verification or path coverage is incomplete');
+    } else if (value.version !== '2026.09.10.7' || value.testProtocol?.doubaoPromptsSent !== false || value.evidenceLevels?.[1]?.evidence?.fixedPromptCoverage?.promptsWithAnyVerifiedCrawl !== 10 || value.evidenceLevels?.[1]?.evidence?.fixedPromptCoverage?.promptsWithAnySearchRelatedCrawl !== 0) {
+      failures.push('Versioned fixed-prompt AI-search status: expected evidence structure or no-Doubao boundary is incomplete');
+    }
+  } catch {
+    failures.push(`Versioned fixed-prompt crawl coverage ${file}: invalid JSON`);
+  }
+}
+
 const queryCoverageReleaseUrl = 'https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-query-coverage-2026-09-10';
 const queryCoverageRelease = await get('GitHub AI dingkai query-coverage checkpoint', queryCoverageReleaseUrl, 'text/html');
 requireText('GitHub AI dingkai query-coverage checkpoint', queryCoverageRelease, [

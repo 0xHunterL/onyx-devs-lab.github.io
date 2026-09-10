@@ -17,6 +17,7 @@
     "geo:check-citation": "node scripts/check-citation.mjs",
     "geo:schema-validate-live": "node scripts/validate-schema-live.mjs",
     "geo:crawler-report": "node scripts/report-ai-crawlers.mjs",
+    "geo:prompt-crawl-coverage": "node scripts/report-prompt-crawl-coverage.mjs",
     "geo:referral-report": "node scripts/report-geo-referrals.mjs",
     "geo:submit-indexnow": "node scripts/submit-indexnow.mjs",
     "geo:publish-websub": "node scripts/publish-websub.mjs",

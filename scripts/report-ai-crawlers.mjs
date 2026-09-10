@@ -291,6 +291,30 @@ const dnsVerificationUnavailablePages = pageCandidates.filter(
 const dnsVerificationUnavailableDiscoveryFiles = discoveryCandidates.filter(
   (event) => event.providerVerification?.verificationUnavailable === true,
 );
+const verifiedContentPathMap = new Map();
+for (const event of [
+  ...verifiedOpenAiPages,
+  ...verifiedBingPages,
+  ...verifiedGooglePages,
+  ...verifiedPerplexityPages,
+]) {
+  const pathOnly = event.path.split('?')[0];
+  const current = verifiedContentPathMap.get(pathOnly) || {
+    path: pathOnly,
+    families: new Set(),
+    firstSeen: event.time,
+    lastSeen: event.time,
+    requests: 0,
+  };
+  current.families.add(event.family);
+  current.firstSeen = current.firstSeen < event.time ? current.firstSeen : event.time;
+  current.lastSeen = current.lastSeen > event.time ? current.lastSeen : event.time;
+  current.requests += 1;
+  verifiedContentPathMap.set(pathOnly, current);
+}
+const verifiedContentPathCoverage = [...verifiedContentPathMap.values()]
+  .map((entry) => ({ ...entry, families: [...entry.families].sort() }))
+  .sort((a, b) => a.path.localeCompare(b.path));
 
 console.log(JSON.stringify({
   generatedAt: new Date().toISOString(),
@@ -326,6 +350,7 @@ console.log(JSON.stringify({
   },
   byFamily,
   byClassification,
+  verifiedContentPathCoverage,
   recentCandidatePageCrawls: pageCandidates.slice(-50),
   recentCandidateDiscoveryFileCrawls: discoveryCandidates.slice(-30),
   recentVerifiedOpenAiPageCrawls: verifiedOpenAiPages.slice(-50),

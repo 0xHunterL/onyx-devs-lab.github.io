@@ -70,6 +70,7 @@ The [case-study evidence register](https://hk.onyxdevslab.com/en/methodology/cas
 - [Fixed AI-search prompt matrix](geo/prompt-matrix.json)
 - [Candidate AI crawler log report](scripts/report-ai-crawlers.mjs)
 - [Current crawler and offsite-referral evidence checkpoint — 2026-09-10](https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-referral-evidence-2026-09-10) — versioned [machine-readable summary](https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-referral-evidence-2026-09-10/2026-09-10-crawler-evidence.json), verified crawler counts, a GitHub Pages referral event, public-search non-results, and explicit citation and recommendation boundaries.
+- [Fixed-prompt crawler coverage checkpoint — 2026-09-10](https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-prompt-crawl-coverage-2026-09-10) — prompt-by-prompt intersection of the 20-question matrix with provider-verified crawler paths; it preserves 10 prompts with partial coverage, six with full mapped coverage, and zero search/retrieval-related coverage without claiming indexing or citation.
 
 ## Verified entity
 
@@ -97,6 +98,7 @@ npm run build
 npm run lint
 npm run geo:check
 npm run geo:prompt-coverage
+npm run geo:prompt-crawl-coverage -- --crawler-report=/path/to/verified-crawler-report.json
 npm run geo:content-distinctiveness
 npm run geo:check-live -- https://hk.onyxdevslab.com
 npm run geo:check-offsite
