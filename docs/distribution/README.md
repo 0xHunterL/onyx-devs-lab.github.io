@@ -20,6 +20,8 @@
 
 具体渠道、追踪链接和发布后记录要求见：[站外分发执行清单](./站外分发执行清单.md)。
 
+搜索引擎所有权、验证文件部署、Sitemap 回执和索引证据的操作边界见：[Google／Bing 站点所有权与 Sitemap 接入](./Google-Bing-站点所有权与Sitemap接入.md)。
+
 新增的主题知识仓库及不可变归档证据见：[GitHub 香港企业 AI 采购指南发布记录](./GitHub-香港企业AI采购指南发布记录.md)。
 
 发布状态以 [`geo/distribution-manifest.json`](../../geo/distribution-manifest.json) 为准。草稿只有在记录公开 URL 并完成未登录访问验证后才能改为 `published`；准备完成不等于已经产生站外信号。

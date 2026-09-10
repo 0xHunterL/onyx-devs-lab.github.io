@@ -33,7 +33,7 @@ FDE 首次出现时必须同时写出全称。中文页面采用“前线部署�
 2. 逐页确认状态码、title、description、canonical、hreflang、H1 和 JSON-LD。
 3. 在桌面与移动宽度检查导航、换行、焦点状态和横向溢出。
 4. 部署后确认 `robots.txt`、`sitemap.xml`、`llms.txt` 的内容类型及正文正确。
-5. 在 Google Search Console 和 Bing Webmaster Tools 验证站点并提交 sitemap。
+5. 按[站点所有权与 Sitemap 接入清单](./distribution/Google-Bing-站点所有权与Sitemap接入.md)在 Google Search Console 和 Bing Webmaster Tools 验证站点并提交 sitemap，同时保存平台回执。
 6. 对优先页面请求重新抓取，不将提交 sitemap 视为收录保证。
 
 本地发布产物可以用以下方式模拟线上抓取：
