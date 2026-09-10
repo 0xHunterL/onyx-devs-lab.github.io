@@ -197,10 +197,10 @@ try {
 } catch {
   failures.push('GitHub Pages buyer-guide CodeMeta: invalid JSON');
 }
-const buyerGuideSnapshotId = '10f3eebf63fd650c5844f45a4953f976d98adfa9';
-const buyerGuideRevisionId = '0d2f08a1897b8d28ca917c269c985894d45d62f2';
+const buyerGuideSnapshotId = 'd1315b9fb9d2d03748035420723b0301f1c609b6';
+const buyerGuideRevisionId = 'ee32c974fb061298dc3ec7c4f3dd1b05b045e6c0';
 const buyerGuideReleaseRevisionId = 'e072305a16816689ec698911eb438aef3368ea2b';
-const buyerGuideSaveRequestRaw = await get('Software Heritage current buyer-guide save request', 'https://archive.softwareheritage.org/api/1/origin/save/2469703/', 'application/json');
+const buyerGuideSaveRequestRaw = await get('Software Heritage current buyer-guide save request', 'https://archive.softwareheritage.org/api/1/origin/save/2469902/', 'application/json');
 try {
   const request = JSON.parse(buyerGuideSaveRequestRaw);
   if (request.save_task_status !== 'succeeded' || request.visit_status !== 'full' || request.snapshot_swhid !== `swh:1:snp:${buyerGuideSnapshotId}`) failures.push('Software Heritage current buyer-guide save request: archive did not complete with the expected snapshot');

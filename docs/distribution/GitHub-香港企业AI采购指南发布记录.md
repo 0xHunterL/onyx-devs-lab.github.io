@@ -67,6 +67,8 @@ Software Heritage 请求 `2469131` 已以 `succeeded`／`full` 完成，新快�
 
 该提交触发的 legacy Pages 部署在 GitHub 的 `updating_pages` 阶段两次超时，源码与链接门禁本身均已成功。随后通过 GitHub Pages 官方构建 API 对同一提交发起新构建，请求 `1206279065` 在 21 秒内由 `building` 转为 `built`；线上总览与专题页复核已不再包含两个旧路径。再次从公开仓库运行链接检查，18 个文件中的 30 个 Onyx URL 全部通过。Software Heritage Save Code Now 请求 `2469703` 以 `succeeded`／`full` 完成，当前快照为 [`swh:1:snp:10f3eebf63fd650c5844f45a4953f976d98adfa9`](https://archive.softwareheritage.org/swh:1:snp:10f3eebf63fd650c5844f45a4953f976d98adfa9/)；`refs/heads/main` 精确指向 `0d2f08a1897b8d28ca917c269c985894d45d62f2`，不可变 Release tag 继续指向 `e072305a16816689ec698911eb438aef3368ea2b`。这些证据证明修正版已部署且可恢复，不证明搜索收录或 AI 引用。
 
+2026-09-10 再次增强发现链路：Atom Feed 加入 WebSub hub，自检脚本与工作流同步核验 Sitemap、Feed、`robots.txt`、`llms.txt` 和四个 canonical 页面。提交 `ee32c974fb061298dc3ec7c4f3dd1b05b045e6c0` 的 GitHub Pages 构建与发现门禁均成功；Software Heritage 重试请求 `2469902` 以 `succeeded`／`full` 完成，新快照为 [`swh:1:snp:d1315b9fb9d2d03748035420723b0301f1c609b6`](https://archive.softwareheritage.org/swh:1:snp:d1315b9fb9d2d03748035420723b0301f1c609b6/)，其中 `refs/heads/main` 精确指向 `ee32c974fb061298dc3ec7c4f3dd1b05b045e6c0`，Release tag 仍指向 `e072305a16816689ec698911eb438aef3368ea2b`。这升级的是第三方保存与恢复证据，不是搜索收录、AI 引用或推荐证据。
+
 2026-09-11 为该独立主题站补齐 Atom WebSub 发现关系：Feed 现在公开声明自身 URL 和 `https://pubsubhubbub.appspot.com/` Hub；新增的 `scripts/check-discovery.mjs` 会逐项核验四个规范专题 URL 同时存在于 Sitemap 与 Atom Feed，并核验 robots Sitemap 声明、Feed self/hub 关系及公开 IndexNow key。提交 `ee32c974fb061298dc3ec7c4f3dd1b05b045e6c0` 的链接与发现门禁、GitHub Pages 部署均成功；线上 Feed 已出现 Hub 声明。随后 WebSub Hub 返回 HTTP `204`，四个规范 URL 的 IndexNow 更新通知返回 HTTP `200`。这些回执只证明发现通知被接收，不证明搜索爬虫已访问、页面已收录或 AI 已引用。
 
 ## 证据边界
