@@ -427,6 +427,39 @@ try {
   failures.push('Versioned verified crawler evidence summary: invalid JSON');
 }
 
+const referralEvidenceReleaseUrl = 'https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-referral-evidence-2026-09-10';
+const referralEvidenceRelease = await get('GitHub crawler and offsite-referral checkpoint', referralEvidenceReleaseUrl, 'text/html');
+requireText('GitHub crawler and offsite-referral checkpoint', referralEvidenceRelease, [
+  'Onyx crawler and offsite-referral evidence',
+  '31',
+  '24 suspected automation',
+  '7 human-unverified',
+  'mixuechu.github.io',
+  'Qualifying AI referrals remain 0',
+  'No prompt was sent to Doubao',
+  'does not claim search indexing',
+]);
+const referralEvidenceAssetBase = 'https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-referral-evidence-2026-09-10';
+for (const [file, expectedSha256] of [
+  ['ai-search-evidence-status.json', 'dc1013032ba6d0f27e9dfba7d1c5b5ebc4a44dd67eb3f1277217f5facfdd726d'],
+  ['2026-09-10-crawler-evidence.json', '1e3fcb80f2843b00ffb04628427557311cc1f4b6474333e3e3dd0c0ea107a3f6'],
+]) {
+  const raw = await get(`Versioned current referral evidence ${file}`, `${referralEvidenceAssetBase}/${file}`, 'application/');
+  const sha256 = createHash('sha256').update(raw).digest('hex');
+  if (sha256 !== expectedSha256) failures.push(`Versioned current referral evidence ${file}: SHA-256 mismatch, got ${sha256}`);
+  try {
+    const value = JSON.parse(raw);
+    const attribution = file === 'ai-search-evidence-status.json' ? value.evidenceLevels?.[3]?.evidence : value.attributionEvidence;
+    const tracked = attribution?.trackedAttributionRequests ?? attribution?.trackedRequests;
+    const suspected = attribution?.suspectedAutomatedTrackedRequests ?? attribution?.suspectedAutomatedRequests;
+    const humanUnverified = attribution?.humanUnverifiedTrackedRequests ?? attribution?.humanUnverifiedRequests;
+    const aiReferrals = attribution?.realAiReferralVisitsObserved ?? attribution?.qualifyingAiReferralVisits;
+    if (tracked !== 31 || suspected !== 24 || humanUnverified !== 7 || aiReferrals !== 0 || attribution?.latestVerifiedOffsiteReferral?.referrerHost !== 'mixuechu.github.io' || value.doubaoTestStatus === 'run' || value.testProtocol?.doubaoPromptsSent === true) failures.push(`Versioned current referral evidence ${file}: expected attribution structure or no-Doubao boundary is incomplete`);
+  } catch {
+    failures.push(`Versioned current referral evidence ${file}: invalid JSON`);
+  }
+}
+
 const queryCoverageReleaseUrl = 'https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-query-coverage-2026-09-10';
 const queryCoverageRelease = await get('GitHub AI dingkai query-coverage checkpoint', queryCoverageReleaseUrl, 'text/html');
 requireText('GitHub AI dingkai query-coverage checkpoint', queryCoverageRelease, [
