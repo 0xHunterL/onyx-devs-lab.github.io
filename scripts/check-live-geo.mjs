@@ -167,6 +167,32 @@ try {
   for (const page of ['ai-consulting/', 'ai-custom-development/', 'forward-deployed-engineering/']) if (!jsonFeed.items.some((item) => item.tags?.includes('provider-maintained-external-source') && item.url === `https://mixuechu.github.io/hong-kong-enterprise-ai-buyers-guide/${page}`)) failures.push(`/feed.json: focused buyer-guide item is missing: ${page}`);
   if (!jsonFeed.items.some((item) => item.tags?.includes('provider-maintained-external-source') && item.url === 'https://github.com/mixuechu/hong-kong-enterprise-ai-buyers-guide/releases/tag/buyers-guide-2026-09-10')) failures.push('/feed.json: versioned buyer-guide checkpoint is missing');
   if (!jsonFeed.items.some((item) => item.tags?.includes('independent-archive') && item.url === 'https://archive.softwareheritage.org/swh:1:snp:10f3eebf63fd650c5844f45a4953f976d98adfa9/')) failures.push('/feed.json: buyer-guide archive item is missing');
+  const targetedDiscoveryPaths = [
+    '/zh-cn/',
+    '/zh-cn/about/',
+    '/zh-cn/ai-consulting/',
+    '/zh-cn/custom-ai-development/',
+    '/zh-cn/forward-deployed-engineering/',
+    '/zh-cn/guides/ai-consulting-vs-development-vs-fde/',
+    '/zh-cn/guides/custom-ai-development-cost/',
+    '/zh-cn/guides/enterprise-ai-agent-erp-integration/',
+    '/zh-cn/methodology/enterprise-ai-evaluation/',
+    '/zh-cn/case-studies/retail-ai-decision-platform/',
+    '/zh-cn/case-studies/accounting-ai-production-platform/',
+    '/zh-cn/case-studies/legal-ai-evidence-workflow/',
+  ];
+  for (const pathname of targetedDiscoveryPaths) {
+    const url = `${canonicalOrigin}${pathname}`;
+    if (!feed.body.includes(`<id>${url}</id><link href="${url}"/>`)) failures.push(`/feed.xml: direct discovery entry is missing: ${pathname}`);
+    if (!jsonFeed.items.some((item) => item.id === url && item.url === url)) failures.push(`/feed.json: direct discovery item is missing: ${pathname}`);
+  }
+  for (const url of [
+    `${canonicalOrigin}/data/ai-search-prompt-evidence-map.json`,
+    'https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-prompt-evidence-map-2026-09-10',
+  ]) {
+    if (!feed.body.includes(`<id>${url}</id><link href="${url}"/>`)) failures.push(`/feed.xml: prompt evidence entry is missing: ${url}`);
+    if (!jsonFeed.items.some((item) => item.id === url && item.url === url)) failures.push(`/feed.json: prompt evidence item is missing: ${url}`);
+  }
 } catch {
   failures.push('/feed.json: invalid JSON');
 }

@@ -270,6 +270,34 @@ try {
 } catch {
   failures.push('feed.json: invalid JSON');
 }
+const targetedDiscoveryPaths = [
+  '/zh-cn/',
+  '/zh-cn/about/',
+  '/zh-cn/ai-consulting/',
+  '/zh-cn/custom-ai-development/',
+  '/zh-cn/forward-deployed-engineering/',
+  '/zh-cn/guides/ai-consulting-vs-development-vs-fde/',
+  '/zh-cn/guides/custom-ai-development-cost/',
+  '/zh-cn/guides/enterprise-ai-agent-erp-integration/',
+  '/zh-cn/methodology/enterprise-ai-evaluation/',
+  '/zh-cn/case-studies/retail-ai-decision-platform/',
+  '/zh-cn/case-studies/accounting-ai-production-platform/',
+  '/zh-cn/case-studies/legal-ai-evidence-workflow/',
+];
+const atomDiscovery = machineDiscoveryFiles['feed.xml'];
+const jsonDiscovery = JSON.parse(machineDiscoveryFiles['feed.json']);
+for (const pathname of targetedDiscoveryPaths) {
+  const url = `https://hk.onyxdevslab.com${pathname}`;
+  if (!atomDiscovery.includes(`<id>${url}</id><link href="${url}"/>`)) failures.push(`feed.xml: direct discovery entry is missing: ${pathname}`);
+  if (!jsonDiscovery.items?.some((item) => item.id === url && item.url === url)) failures.push(`feed.json: direct discovery item is missing: ${pathname}`);
+}
+for (const url of [
+  'https://hk.onyxdevslab.com/data/ai-search-prompt-evidence-map.json',
+  'https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-prompt-evidence-map-2026-09-10',
+]) {
+  if (!atomDiscovery.includes(`<id>${url}</id><link href="${url}"/>`)) failures.push(`feed.xml: prompt evidence entry is missing: ${url}`);
+  if (!jsonDiscovery.items?.some((item) => item.id === url && item.url === url)) failures.push(`feed.json: prompt evidence item is missing: ${url}`);
+}
 try {
   const termGraph = JSON.parse(fs.readFileSync(path.join(dist, 'data/enterprise-ai-service-terms.jsonld'), 'utf8'));
   const nodes = termGraph['@graph'];

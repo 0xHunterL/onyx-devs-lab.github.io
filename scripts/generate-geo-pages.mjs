@@ -746,8 +746,10 @@ writeMarkdownVariants(dist);
 const all=['/',...hubs.map(p=>p.path),...aboutPages.map(p=>p.path),...pages.map(p=>p.path),...cases.map(p=>p.path)];
 const sitemap=`<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">\n${all.map(p=>{const alternates=translationsFor(p).map(item=>`<xhtml:link rel="alternate" hreflang="${item.lang}" href="${canonical(item.path)}"/>`).join('');return `  <url><loc>${canonical(p)}</loc><lastmod>${pageUpdated}</lastmod>${alternates}</url>`}).join('\n')}\n</urlset>\n`;
 fs.writeFileSync(path.join(dist,'sitemap.xml'),sitemap);
-const feedEntries=[...pages.filter(page=>['Article','Dataset'].includes(page.schemaType)||page.path.includes('/insights/')),...cases];
+const feedEntries=[...hubs,...aboutPages,...pages,...cases];
 const externalFeedEntries=[
+  {title:'Onyx fixed AI-search prompt evidence map',url:canonical(aiSearchPromptEvidenceMapPath),summary:'Machine-readable map connecting 20 fixed Simplified Chinese AI-search prompts to 20 direct evidence pages and provider-verified crawler observations. It does not prove indexing, retrieval, citation, ranking, or recommendation.',category:'machine-readable'},
+  {title:'Onyx fixed AI-search prompt evidence map checkpoint — 2026-09-10',url:promptEvidenceMapReleaseUrl,summary:'Immutable GitHub Release checkpoint for the fixed prompt-to-page map. GPTBot observations are training-crawler evidence; search/retrieval crawler coverage remains zero, and no prompt was sent to Doubao.',category:'versioned-evidence'},
   {title:'AI advisory, custom development, or FDE? A bilingual enterprise decision matrix',url:'https://gist.github.com/mixuechu/e47c85808014d62b6305441e8065c91e',summary:'Provider-authored English and Simplified Chinese field notes with decision criteria and links to the canonical Onyx guides.',category:'en-zh-CN'},
   {title:'Hong Kong enterprise AI governance: an implementation checklist',url:governanceGistRawUrl,summary:'Provider-authored English and Simplified Chinese implementation notes grounded in Hong Kong PCPD and HKMA primary sources.',category:'en-zh-CN'},
   {title:'Onyx Devs Lab enterprise AI machine resources',url:machineResourcesGistRawUrl,summary:'Provider-maintained index of canonical organization, engagement-model, procurement, pilot, case-evidence, and AI-search status resources.',category:'machine-readable'},
@@ -783,7 +785,7 @@ const externalFeedEntries=[
 const atom=`<?xml version="1.0" encoding="UTF-8"?>\n<feed xmlns="http://www.w3.org/2005/Atom"><title>Onyx Devs Lab — Enterprise AI Field Notes</title><id>${origin}/feed.xml</id><link href="${origin}/feed.xml" rel="self"/><link href="${webSubHubUrl}" rel="hub"/><link href="${origin}/"/><updated>${updated}T00:00:00+08:00</updated><author><name>Onyx Devs Lab</name></author>${feedEntries.map(page=>`<entry><title>${esc(page.title)}</title><id>${canonical(page.path)}</id><link href="${canonical(page.path)}"/><updated>${updated}T00:00:00+08:00</updated><summary>${esc(page.description)}</summary><category term="${page.lang}"/></entry>`).join('')}${externalFeedEntries.map(entry=>`<entry><title>${esc(entry.title)}</title><id>${esc(entry.url)}</id><link href="${esc(entry.url)}"/><updated>${updated}T00:00:00+08:00</updated><summary>${esc(entry.summary)}</summary><category term="${esc(entry.category)}"/><category term="${esc(entry.ownership||'provider-maintained-external-source')}"/></entry>`).join('')}</feed>\n`;
 let accurateAtom=atom.replace(`<updated>${updated}T`,`<updated>${feedUpdated}T`);
 for(const page of feedEntries){const entryId=canonical(page.path);accurateAtom=accurateAtom.replace(`<id>${entryId}</id><link href="${entryId}"/><updated>${updated}T`,`<id>${entryId}</id><link href="${entryId}"/><updated>${pageUpdated}T`);}
-for(const entryId of [...updatedAiSearchPaths].map(canonical).concat(agentReadinessReleaseUrl,crawlerEvidenceReleaseUrl,promptCrawlCoverageReleaseUrl,aiSearchStatusReleaseUrl,chineseFieldNotesReleaseUrl))accurateAtom=accurateAtom.replace(`<id>${entryId}</id><link href="${entryId}"/><updated>${updated}T`,`<id>${entryId}</id><link href="${entryId}"/><updated>${feedUpdated}T`);
+for(const entryId of [...updatedAiSearchPaths].map(canonical).concat(canonical(aiSearchPromptEvidenceMapPath),agentReadinessReleaseUrl,crawlerEvidenceReleaseUrl,promptCrawlCoverageReleaseUrl,promptEvidenceMapReleaseUrl,aiSearchStatusReleaseUrl,chineseFieldNotesReleaseUrl))accurateAtom=accurateAtom.replace(`<id>${entryId}</id><link href="${entryId}"/><updated>${updated}T`,`<id>${entryId}</id><link href="${entryId}"/><updated>${feedUpdated}T`);
 fs.writeFileSync(path.join(dist,'feed.xml'),accurateAtom);
 const feedDate=()=>pageUpdated;
 const jsonFeed={
@@ -813,7 +815,7 @@ const jsonFeed={
       title:entry.title,
       summary:entry.summary,
       content_text:entry.summary,
-      date_modified:`${[agentReadinessReleaseUrl,crawlerEvidenceReleaseUrl,promptCrawlCoverageReleaseUrl,aiSearchStatusReleaseUrl,chineseFieldNotesReleaseUrl].includes(entry.url)?feedUpdated:updated}T00:00:00+08:00`,
+      date_modified:`${[canonical(aiSearchPromptEvidenceMapPath),agentReadinessReleaseUrl,crawlerEvidenceReleaseUrl,promptCrawlCoverageReleaseUrl,promptEvidenceMapReleaseUrl,aiSearchStatusReleaseUrl,chineseFieldNotesReleaseUrl].includes(entry.url)?feedUpdated:updated}T00:00:00+08:00`,
       tags:[entry.category,entry.ownership||'provider-maintained-external-source'],
     })),
   ],
