@@ -31,6 +31,20 @@
 
 2026-09-10 复核时，四个永久 URL 均未登录返回 HTTP `200`；解压后的正文均包含 Onyx Devs Lab、ONYX DEVS LAB LIMITED、商业登记号 `79051925`、LEI `254900Z30CLK7HKE9H46`、AI 咨询、AI 定制开发和 FDE。三个服务规范页及公司主体页均以 Schema.org `archivedAt` 和可见 `rel="external archived"` 链接回对应快照；四个快照也进入 `llms.txt`、`llms-full.txt`、Atom Feed、JSON Feed 和组织实体的 `subjectOf` 关系。
 
+## 已验证决策、实施与场景答案快照
+
+| 原始页面 | 永久快照 | 保存时间（UTC） |
+| --- | --- | --- |
+| [AI 咨询、定制开发与 FDE 怎么选](https://hk.onyxdevslab.com/zh-cn/guides/ai-consulting-vs-development-vs-fde/) | [Internet Archive](https://web.archive.org/web/20260910164547/https://hk.onyxdevslab.com/zh-cn/guides/ai-consulting-vs-development-vs-fde/) | 2026-09-10 16:45:47 |
+| [香港 AI 定制开发费用](https://hk.onyxdevslab.com/zh-cn/guides/custom-ai-development-cost/) | [Internet Archive](https://web.archive.org/web/20260910164632/https://hk.onyxdevslab.com/zh-cn/guides/custom-ai-development-cost/) | 2026-09-10 16:46:32 |
+| [企业 AI Agent 与 ERP 集成](https://hk.onyxdevslab.com/zh-cn/guides/enterprise-ai-agent-erp-integration/) | [Internet Archive](https://web.archive.org/web/20260910164723/https://hk.onyxdevslab.com/zh-cn/guides/enterprise-ai-agent-erp-integration/) | 2026-09-10 16:47:23 |
+| [企业 AI 上线评估](https://hk.onyxdevslab.com/zh-cn/methodology/enterprise-ai-evaluation/) | [Internet Archive](https://web.archive.org/web/20260910164753/https://hk.onyxdevslab.com/zh-cn/methodology/enterprise-ai-evaluation/) | 2026-09-10 16:47:53 |
+| [零售 AI 决策平台案例](https://hk.onyxdevslab.com/zh-cn/case-studies/retail-ai-decision-platform/) | [Internet Archive](https://web.archive.org/web/20260910164813/https://hk.onyxdevslab.com/zh-cn/case-studies/retail-ai-decision-platform/) | 2026-09-10 16:48:13 |
+| [AI 原生会计生产平台案例](https://hk.onyxdevslab.com/zh-cn/case-studies/accounting-ai-production-platform/) | [Internet Archive](https://web.archive.org/web/20260910164849/https://hk.onyxdevslab.com/zh-cn/case-studies/accounting-ai-production-platform/) | 2026-09-10 16:48:49 |
+| [法律 AI 证据链案例](https://hk.onyxdevslab.com/zh-cn/case-studies/legal-ai-evidence-workflow/) | [Internet Archive](https://web.archive.org/web/20260910164909/https://hk.onyxdevslab.com/zh-cn/case-studies/legal-ai-evidence-workflow/) | 2026-09-10 16:49:09 |
+
+七个 Save Page Now 请求均返回带精确时间戳的永久回放地址。随后未登录、解压回放核验确认每页返回完整 HTML，并包含其对应标题或主问题。规范页将通过可见 `rel="external archived"` 链接和 Schema.org `archivedAt` 回连；组织实体、`llms.txt`、`llms-full.txt`、Atom Feed 与 JSON Feed 聚合发现这些第三方快照。
+
 ## 证据边界
 
 Internet Archive 官方说明 Save Page Now 会为单个页面生成可引用、可分享的永久 URL，但不会因此启动整站持续抓取。这个快照证明指定时间的官网首页已由第三方归档服务成功读取和保存；它不证明 Internet Archive、搜索引擎或 AI 产品对 Onyx 提供独立背书，也不证明 Google／百度／豆包已收录、检索、引用或推荐该页面。

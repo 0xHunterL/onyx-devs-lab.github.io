@@ -341,7 +341,7 @@ try {
   if (!organization.subjectOf?.some((item) => item.url === 'https://mixuechu.github.io/hong-kong-enterprise-ai-buyers-guide/' && item.isBasedOn === 'https://github.com/mixuechu/hong-kong-enterprise-ai-buyers-guide')) failures.push('/data/organization.json: buyer-guide relation is missing');
   if (!organization.subjectOf?.some((item) => item.url === 'https://mixuechu.github.io/hong-kong-enterprise-ai-buyers-guide/' && item.sameAs === 'https://github.com/mixuechu/hong-kong-enterprise-ai-buyers-guide/releases/tag/buyers-guide-2026-09-10' && item.hasPart?.length === 3 && item.hasPart.every((part) => part.url?.startsWith('https://mixuechu.github.io/hong-kong-enterprise-ai-buyers-guide/')))) failures.push('/data/organization.json: focused buyer-guide relations are missing');
   if (!organization.subjectOf?.some((item) => item.identifier === 'swh:1:snp:10f3eebf63fd650c5844f45a4953f976d98adfa9' && item.version === '0d2f08a1897b8d28ca917c269c985894d45d62f2')) failures.push('/data/organization.json: buyer-guide archive relation is missing');
-  if (!organization.subjectOf?.some((item) => item.url === 'https://web.archive.org/web/20260909233718/https://hk.onyxdevslab.com/zh-cn/about/' && item.hasPart?.length === 4)) failures.push('/data/organization.json: Internet Archive entity and core-service snapshot cluster is missing');
+  if (!organization.subjectOf?.some((item) => item.url === 'https://web.archive.org/web/20260909233718/https://hk.onyxdevslab.com/zh-cn/about/' && item.hasPart?.length === 11)) failures.push('/data/organization.json: Internet Archive entity, service, guide, and case snapshot cluster is missing');
   if (!organization.additionalProperty?.some((item) => item.propertyID === 'Evidence boundary' && item.value.includes('do not endorse services'))) failures.push('/data/organization.json: evidence boundary is missing');
   if (organization.hasOfferCatalog?.itemListElement?.length !== 3 || !organization.hasOfferCatalog.itemListElement.every((offer) => offer.itemOffered?.['@type'] === 'Service' && offer.itemOffered?.url?.length === 3)) failures.push('/data/organization.json: trilingual service offer catalog is incomplete');
   if (organization.member?.length !== 5 || !organization.member.every((person) => person['@type'] === 'Person' && person['@id']?.startsWith('https://hk.onyxdevslab.com/#person-') && person.name && person.jobTitle && person.worksFor?.['@id'] === 'https://hk.onyxdevslab.com/#organization')) failures.push('/data/organization.json: canonical team members are incomplete');
@@ -600,11 +600,21 @@ for (let index = 0; index < urls.length; index += 8) {
       ['/zh-cn/ai-consulting/','20260909205631'],
       ['/zh-cn/custom-ai-development/','20260909205642'],
       ['/zh-cn/forward-deployed-engineering/','20260909214448'],
+      ['/zh-cn/guides/ai-consulting-vs-development-vs-fde/','20260910164547'],
+      ['/zh-cn/guides/custom-ai-development-cost/','20260910164632'],
+      ['/zh-cn/guides/enterprise-ai-agent-erp-integration/','20260910164723'],
+      ['/zh-cn/methodology/enterprise-ai-evaluation/','20260910164753'],
+      ['/zh-cn/case-studies/retail-ai-decision-platform/','20260910164813'],
+      ['/zh-cn/case-studies/accounting-ai-production-platform/','20260910164849'],
+      ['/zh-cn/case-studies/legal-ai-evidence-workflow/','20260910164909'],
     ]).get(url.pathname);
     if (coreArchive) {
       const archiveUrl = `https://web.archive.org/web/${coreArchive}/https://hk.onyxdevslab.com${url.pathname}`;
       if (!page.body.includes(`"archivedAt":"${archiveUrl}"`)) failures.push(`${url.pathname}: Schema.org archivedAt relation is missing`);
       if (!page.body.includes(`rel="external archived" href="${archiveUrl}"`)) failures.push(`${url.pathname}: visible archive link is missing`);
+      if (!feed.body.includes(`<id>${archiveUrl}</id><link href="${archiveUrl}"/>`)) failures.push(`/feed.xml: archived-page entry is missing: ${url.pathname}`);
+      if (!jsonFeed?.items?.some((item) => item.id === archiveUrl && item.url === archiveUrl && item.tags?.includes('independent-archive'))) failures.push(`/feed.json: archived-page entry is missing: ${url.pathname}`);
+      for (const [discoveryPath, body] of [['/llms.txt', llms.body], ['/llms-full.txt', llmsFull.body]]) if (!body.includes(archiveUrl)) failures.push(`${discoveryPath}: archived-page link is missing: ${url.pathname}`);
     }
     if (/<meta[^>]+(?:name|property)=["']robots["'][^>]+content=["'][^"']*\b(?:noindex|none)\b/i.test(page.body)) failures.push(`${url.pathname}: blocking robots meta detected`);
   }));
