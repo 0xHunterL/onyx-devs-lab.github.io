@@ -72,6 +72,37 @@ const aggregate = (key) => Object.fromEntries([...visits.reduce((counts, visit) 
   return counts;
 }, new Map())].sort((a, b) => b[1] - a[1]));
 
+const suspectedAutomatedVisitIndexes = new Set();
+const suspectedAutomatedBursts = [];
+const burstGroups = new Map();
+for (const [index, visit] of visits.entries()) {
+  const key = [visit.userAgent, visit.source, visit.campaign].join('\u0000');
+  if (!burstGroups.has(key)) burstGroups.set(key, []);
+  burstGroups.get(key).push({ index, visit, timestamp: Date.parse(visit.time) });
+}
+for (const group of burstGroups.values()) {
+  group.sort((a, b) => a.timestamp - b.timestamp);
+  for (let start = 0; start < group.length; start += 1) {
+    const window = [];
+    for (let end = start; end < group.length && group[end].timestamp - group[start].timestamp <= 60_000; end += 1) window.push(group[end]);
+    const distinctPaths = new Set(window.map((item) => item.visit.path));
+    if (window.length < 8 || distinctPaths.size < 5) continue;
+    for (const item of window) suspectedAutomatedVisitIndexes.add(item.index);
+    suspectedAutomatedBursts.push({
+      start: window[0].visit.time,
+      end: window.at(-1).visit.time,
+      source: window[0].visit.source,
+      campaign: window[0].visit.campaign,
+      requests: window.length,
+      distinctLandingPages: distinctPaths.size,
+      userAgent: window[0].visit.userAgent,
+      reason: 'at least 8 requests across at least 5 landing pages within 60 seconds',
+    });
+    start = group.findIndex((item) => item.index === window.at(-1).index);
+  }
+}
+const humanUnverifiedVisits = visits.filter((_, index) => !suspectedAutomatedVisitIndexes.has(index));
+
 console.log(JSON.stringify({
   generatedAt: new Date().toISOString(),
   since: sinceArg ? sinceArg.slice('--since='.length) : null,
@@ -79,13 +110,17 @@ console.log(JSON.stringify({
   includeRotated,
   trackedVisits: visits.length,
   syntheticTrackedVisits: syntheticVisits.length,
-  caveat: 'Scripted verification user agents are excluded from trackedVisits and reported separately. UTM or AI-referrer traffic is click evidence, not proof of search indexing, answer citation, or recommendation. Referrer headers may be omitted by the source application or browser policy.',
+  suspectedAutomatedTrackedVisits: suspectedAutomatedVisitIndexes.size,
+  humanUnverifiedTrackedVisits: humanUnverifiedVisits.length,
+  caveat: 'Scripted verification user agents are excluded from trackedVisits and reported separately. High-velocity multi-page bursts are flagged as suspected automation rather than human visits. Remaining requests are human-unverified: UTM or AI-referrer traffic is attribution evidence, not proof of a person, search indexing, answer citation, or recommendation. Referrer headers may be omitted by the source application or browser policy.',
   byCampaign: aggregate('campaign'),
   bySource: aggregate('source'),
   byMedium: aggregate('medium'),
   byLandingPage: aggregate('path'),
   byEvidenceType: aggregate('evidenceType'),
+  suspectedAutomatedBursts,
   recentVisits: visits.slice(-50),
+  recentHumanUnverifiedVisits: humanUnverifiedVisits.slice(-50),
   recentSyntheticVisits: syntheticVisits.slice(-50),
   unparsableLines,
 }, null, 2));

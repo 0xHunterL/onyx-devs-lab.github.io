@@ -61,6 +61,8 @@ Pages 路径已发布公开 IndexNow key，并用该路径作为 `keyLocation` �
 
 Software Heritage 请求 `2469131` 已以 `succeeded`／`full` 完成，新快照为 [`swh:1:snp:8feeee23b7a4b81de48b6d59ba9d9df3e037964b`](https://archive.softwareheritage.org/swh:1:snp:8feeee23b7a4b81de48b6d59ba9d9df3e037964b/)；其中 `refs/heads/main` 精确指向 `2c136be7aaeba5de8ea36b744478fdfa0f548a82`，版本标签 `buyers-guide-2026-09-10` 仍指向其不可变发布提交 `e072305a16816689ec698911eb438aef3368ea2b`。这证明最新预览元数据与旧版本检查点都可恢复，不证明公开搜索已重新抓取或收录。
 
+同日引荐日志暴露了 AI 定开专题中的一个错误深链：`/zh-cn/custom-ai-development-hong-kong/` 返回 `404`。页面已在提交 `4db4717152cef6c497f75a7e6c5db9df1a80addd` 改为真实规范路径 `/zh-cn/custom-ai-development/`；GitHub Pages 发布成功，线上专题页可见新链接，目标含同一归因参数返回 `200`，专题页的 IndexNow 更新通知返回 `200`。Software Heritage 请求 `2469457` 随后以 `succeeded`／`full` 完成，当前快照为 [`swh:1:snp:aed1c72273c6b77cb65c2971d21234104d02d060`](https://archive.softwareheritage.org/swh:1:snp:aed1c72273c6b77cb65c2971d21234104d02d060/)，`refs/heads/main` 精确指向修复提交，Release tag 仍保持在不可变版本提交。
+
 ## 证据边界
 
 GitHub 仓库及其内容由 Onyx Devs Lab 维护，属于站外但非独立发布者来源。Software Heritage 是独立、内容寻址的归档，证明该版本可永久恢复，但不认可其中观点。两者都不证明公共搜索收录、AI 检索或引用、非品牌推荐、客户背书或项目效果。

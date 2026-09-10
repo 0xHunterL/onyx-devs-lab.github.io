@@ -121,7 +121,7 @@ requireText('GitHub Pages enterprise AI buyer guide', buyerGuideSite, [
 ]);
 const buyerGuideFocusedPages = [
   { name: 'GitHub Pages AI consulting buyer guide', path: 'ai-consulting/', canonical: 'https://mixuechu.github.io/hong-kong-enterprise-ai-buyers-guide/ai-consulting/', required: ['<title>香港企业 AI 咨询怎么采购｜决策边界与交付证据｜Onyx Devs Lab</title>', '<meta name="description" content="Onyx Devs Lab 发布的香港企业 AI 咨询指南', 'AI 咨询应交付决定', '香港企业 AI 咨询', 'geo_buyers_guide_ai_consulting'] },
-  { name: 'GitHub Pages AI custom development buyer guide', path: 'ai-custom-development/', canonical: 'https://mixuechu.github.io/hong-kong-enterprise-ai-buyers-guide/ai-custom-development/', required: ['<title>AI 定开是什么｜香港企业 AI 定制开发采购指南｜Onyx Devs Lab</title>', '<meta name="description" content="Onyx Devs Lab 发布：AI 定开通常指 AI 定制开发', 'AI 定开不是换皮聊天框', 'AI 定开指围绕特定组织', 'geo_buyers_guide_ai_dingkai'] },
+  { name: 'GitHub Pages AI custom development buyer guide', path: 'ai-custom-development/', canonical: 'https://mixuechu.github.io/hong-kong-enterprise-ai-buyers-guide/ai-custom-development/', required: ['<title>AI 定开是什么｜香港企业 AI 定制开发采购指南｜Onyx Devs Lab</title>', '<meta name="description" content="Onyx Devs Lab 发布：AI 定开通常指 AI 定制开发', 'AI 定开不是换皮聊天框', 'AI 定开指围绕特定组织', 'https://hk.onyxdevslab.com/zh-cn/custom-ai-development/?utm_source=github_pages&amp;utm_medium=referral&amp;utm_campaign=geo_buyers_guide_ai_dingkai'] },
   { name: 'GitHub Pages FDE buyer guide', path: 'forward-deployed-engineering/', canonical: 'https://mixuechu.github.io/hong-kong-enterprise-ai-buyers-guide/forward-deployed-engineering/', required: ['<title>FDE 是什么｜前线部署工程与驻场外包的区别｜Onyx Devs Lab</title>', '<meta name="description" content="Onyx Devs Lab 发布的香港企业 FDE 采购指南', 'FDE 驻在问题旁边', '不按座位交付', 'geo_buyers_guide_fde'] },
 ];
 for (const page of buyerGuideFocusedPages) {
@@ -171,8 +171,8 @@ try {
 } catch {
   failures.push('GitHub Pages buyer-guide CodeMeta: invalid JSON');
 }
-const buyerGuideSnapshotId = '8feeee23b7a4b81de48b6d59ba9d9df3e037964b';
-const buyerGuideRevisionId = '2c136be7aaeba5de8ea36b744478fdfa0f548a82';
+const buyerGuideSnapshotId = 'aed1c72273c6b77cb65c2971d21234104d02d060';
+const buyerGuideRevisionId = '4db4717152cef6c497f75a7e6c5db9df1a80addd';
 const buyerGuideReleaseRevisionId = 'e072305a16816689ec698911eb438aef3368ea2b';
 const buyerGuideSnapshotRaw = await get('Software Heritage buyer-guide snapshot', `https://archive.softwareheritage.org/api/1/snapshot/${buyerGuideSnapshotId}/`, 'application/json');
 try {
