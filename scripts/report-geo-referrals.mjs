@@ -1,5 +1,6 @@
 import { readFile } from 'node:fs/promises';
 import { gunzipSync } from 'node:zlib';
+import { resolveLogPaths } from './resolve-log-paths.mjs';
 
 async function load(path) {
   const data = await readFile(path);
@@ -9,7 +10,9 @@ async function load(path) {
 const args = process.argv.slice(2);
 const sinceArg = args.find((arg) => arg.startsWith('--since='));
 const since = sinceArg ? Date.parse(`${sinceArg.slice('--since='.length)}T00:00:00Z`) : null;
-const paths = args.filter((arg) => !arg.startsWith('--since='));
+const includeRotated = args.includes('--include-rotated');
+const inputPaths = args.filter((arg) => !arg.startsWith('--since=') && arg !== '--include-rotated');
+const paths = await resolveLogPaths(inputPaths, includeRotated);
 const syntheticUserAgent = /^(?:curl|Wget)\/|Onyx-GEO-Release-Check|python-requests|node-fetch|undici/i;
 const aiReferrerFamilies = [
   ['doubao', /(^|\.)doubao\.com$/i],
@@ -25,7 +28,7 @@ if (sinceArg && Number.isNaN(since)) {
   process.exit(2);
 }
 if (!paths.length) {
-  console.error('Usage: npm run geo:referral-report -- [--since=YYYY-MM-DD] /var/log/nginx/hk.onyxdevslab.com.geo.log [...]');
+  console.error('Usage: npm run geo:referral-report -- [--since=YYYY-MM-DD] [--include-rotated] /var/log/nginx/hk.onyxdevslab.com.geo.log [...]');
   process.exit(2);
 }
 
@@ -72,6 +75,8 @@ const aggregate = (key) => Object.fromEntries([...visits.reduce((counts, visit) 
 console.log(JSON.stringify({
   generatedAt: new Date().toISOString(),
   since: sinceArg ? sinceArg.slice('--since='.length) : null,
+  files: paths,
+  includeRotated,
   trackedVisits: visits.length,
   syntheticTrackedVisits: syntheticVisits.length,
   caveat: 'Scripted verification user agents are excluded from trackedVisits and reported separately. UTM or AI-referrer traffic is click evidence, not proof of search indexing, answer citation, or recommendation. Referrer headers may be omitted by the source application or browser policy.',

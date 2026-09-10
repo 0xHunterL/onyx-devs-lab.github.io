@@ -1,6 +1,7 @@
 import { readFile } from 'node:fs/promises';
 import { lookup, reverse } from 'node:dns/promises';
 import { gunzipSync } from 'node:zlib';
+import { resolveLogPaths } from './resolve-log-paths.mjs';
 
 const crawlerFamilies = [
   ['Bytespider', /Bytespider/i],
@@ -167,15 +168,17 @@ const verifyOpenAi = args.includes('--verify-openai');
 const verifyBing = args.includes('--verify-bing');
 const verifyGoogle = args.includes('--verify-google');
 const verifyPerplexity = args.includes('--verify-perplexity');
+const includeRotated = args.includes('--include-rotated');
 const since = sinceArg ? Date.parse(`${sinceArg.slice('--since='.length)}T00:00:00Z`) : null;
 if (sinceArg && Number.isNaN(since)) {
   console.error('Invalid --since date. Use --since=YYYY-MM-DD.');
   process.exit(2);
 }
-const verificationFlags = ['--verify-openai', '--verify-bing', '--verify-google', '--verify-perplexity'];
-const paths = args.filter((arg) => !arg.startsWith('--since=') && !verificationFlags.includes(arg));
+const verificationFlags = ['--verify-openai', '--verify-bing', '--verify-google', '--verify-perplexity', '--include-rotated'];
+const inputPaths = args.filter((arg) => !arg.startsWith('--since=') && !verificationFlags.includes(arg));
+const paths = await resolveLogPaths(inputPaths, includeRotated);
 if (!paths.length) {
-  console.error('Usage: npm run geo:crawler-report -- [--since=YYYY-MM-DD] [--verify-openai] [--verify-bing] [--verify-google] [--verify-perplexity] /var/log/nginx/access.log [/var/log/nginx/access.log.1.gz ...]');
+  console.error('Usage: npm run geo:crawler-report -- [--since=YYYY-MM-DD] [--include-rotated] [--verify-openai] [--verify-bing] [--verify-google] [--verify-perplexity] /var/log/nginx/access.log [/var/log/nginx/access.log.1.gz ...]');
   process.exit(2);
 }
 
@@ -298,6 +301,7 @@ console.log(JSON.stringify({
   verifyBing,
   verifyGoogle,
   verifyPerplexity,
+  includeRotated,
   totals: {
     candidateCrawlerRequests: events.length,
     candidatePageCrawls: pageCandidates.length,
