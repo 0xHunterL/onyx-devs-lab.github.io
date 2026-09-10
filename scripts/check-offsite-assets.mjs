@@ -172,7 +172,7 @@ try {
   failures.push('GitHub Pages buyer-guide CodeMeta: invalid JSON');
 }
 const buyerGuideSnapshotId = 'aed1c72273c6b77cb65c2971d21234104d02d060';
-const buyerGuideRevisionId = '4db4717152cef6c497f75a7e6c5db9df1a80addd';
+const buyerGuideRevisionId = '4db47179362e5a7f23a10e4123c5c51a176f2944';
 const buyerGuideReleaseRevisionId = 'e072305a16816689ec698911eb438aef3368ea2b';
 const buyerGuideSnapshotRaw = await get('Software Heritage buyer-guide snapshot', `https://archive.softwareheritage.org/api/1/snapshot/${buyerGuideSnapshotId}/`, 'application/json');
 try {
@@ -685,5 +685,13 @@ if (versionedCitationRaw !== citationRaw) failures.push('Versioned citation meta
 const robots = await get('GitHub Gist robots', 'https://gist.github.com/robots.txt', 'text/plain', { allowUnavailable: true });
 if (robots.includes('Disallow: /mixuechu/e47c85808014d62b6305441e8065c91e')) failures.push('GitHub Gist robots: the published decision matrix is explicitly disallowed');
 
-console.log(JSON.stringify({ generatedAt: new Date().toISOString(), gistSha256, gistCampaignLinks, governanceGistSha256, gistGovernanceCampaignLinks, machineResourcesGistSha256, gistMachineResourceLinks, gistAiDingkaiGuideLinks, gistProviderShortlistLinks, gistAiRfpLinks, gistFieldNoteCampaignLinks, gistFieldNoteSha256, chineseFieldNotesAssetSha256, repositoryCampaignLinks, serviceTermsReleaseSha256, queryCoverageStatusSha256, queryCoveragePromptSha256, queryCoverageTermsSha256, aiDingkaiStatusSha256, aiDingkaiPromptSha256, aiDingkaiTermsSha256, aiDingkaiGuideHashes, providerShortlistHashes, aiRfpHashes, codeMetaSha256, versionedCodeMetaSha256, citationSha256, versionedCitationSha256, scorecardSha256, results, failures }, null, 2));
+const compactResults = results.map((result) => {
+  let finalUrl = result.finalUrl;
+  if (finalUrl) {
+    const parsed = new URL(finalUrl);
+    finalUrl = `${parsed.origin}${parsed.pathname}`;
+  }
+  return { ...result, finalUrl };
+});
+console.log(JSON.stringify({ generatedAt: new Date().toISOString(), failures, gistSha256, gistCampaignLinks, governanceGistSha256, gistGovernanceCampaignLinks, machineResourcesGistSha256, gistMachineResourceLinks, gistAiDingkaiGuideLinks, gistProviderShortlistLinks, gistAiRfpLinks, gistFieldNoteCampaignLinks, gistFieldNoteSha256, chineseFieldNotesAssetSha256, repositoryCampaignLinks, serviceTermsReleaseSha256, queryCoverageStatusSha256, queryCoveragePromptSha256, queryCoverageTermsSha256, aiDingkaiStatusSha256, aiDingkaiPromptSha256, aiDingkaiTermsSha256, aiDingkaiGuideHashes, providerShortlistHashes, aiRfpHashes, codeMetaSha256, versionedCodeMetaSha256, citationSha256, versionedCitationSha256, scorecardSha256, results: compactResults }, null, 2));
 if (failures.length) process.exit(1);

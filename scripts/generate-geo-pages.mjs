@@ -593,7 +593,7 @@ const entityEvidence=[
   {"@type":"CreativeWork",name:'Onyx GEO evidence checkpoint — 2026-09-09',url:'https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-evidence-2026-09-09'},
   {"@type":"SoftwareSourceCode",name:'Software Heritage archive of the Onyx Devs Lab public repository',identifier:'swh:1:snp:a704b39b0771635572eb9381b37db046ac9856c2',url:softwareHeritageSnapshotUrl,codeRepository:'https://github.com/0xHunterL/onyx-devs-lab.github.io',version:'5a1ae2018db115474ecba00facea8366bfef9bd8'},
   {"@type":"CreativeWork",name:'Hong Kong Enterprise AI Buyer’s Guide',description:'Provider-authored field-guide cluster covering AI advisory, AI 定开, custom AI development, FDE, vendor evaluation, and acceptance evidence.',url:buyerGuideSiteUrl,isBasedOn:buyerGuideRepositoryUrl,sameAs:buyerGuideReleaseUrl,hasPart:buyerGuideFocusedPages},
-  {"@type":"SoftwareSourceCode",name:'Software Heritage archive of the Hong Kong Enterprise AI Buyer’s Guide',identifier:'swh:1:snp:aed1c72273c6b77cb65c2971d21234104d02d060',url:buyerGuideArchiveUrl,codeRepository:buyerGuideRepositoryUrl,version:'4db4717152cef6c497f75a7e6c5db9df1a80addd'},
+  {"@type":"SoftwareSourceCode",name:'Software Heritage archive of the Hong Kong Enterprise AI Buyer’s Guide',identifier:'swh:1:snp:aed1c72273c6b77cb65c2971d21234104d02d060',url:buyerGuideArchiveUrl,codeRepository:buyerGuideRepositoryUrl,version:'4db47179362e5a7f23a10e4123c5c51a176f2944'},
   internetArchiveEvidence,
 ];
 function layout(page, body, type='Service'){
@@ -933,7 +933,7 @@ const organizationRecord={
     {'@type':'CreativeWork',name:'Bloomberg LEI record',description:'Corroborates legal name, LEI, registration identifier, and registered address.',url:'https://lei.bloomberg.com/leis/view/254900Z30CLK7HKE9H46'},
     {'@type':'SoftwareSourceCode',name:'Software Heritage archive of the Onyx Devs Lab public repository',description:'Independently preserves the public source, citation metadata, machine-readable evidence files, and their Git history at revision 5a1ae20. Archival does not endorse service claims or prove search indexing.',identifier:'swh:1:snp:a704b39b0771635572eb9381b37db046ac9856c2',url:softwareHeritageSnapshotUrl,codeRepository:'https://github.com/0xHunterL/onyx-devs-lab.github.io',version:'5a1ae2018db115474ecba00facea8366bfef9bd8'},
     {'@type':'CreativeWork',name:'Hong Kong Enterprise AI Buyer’s Guide',description:'Provider-authored field-guide cluster covering AI advisory, AI 定开, custom AI development, FDE, vendor evaluation, and acceptance evidence.',url:buyerGuideSiteUrl,isBasedOn:buyerGuideRepositoryUrl,sameAs:buyerGuideReleaseUrl,hasPart:buyerGuideFocusedPages},
-    {'@type':'SoftwareSourceCode',name:'Software Heritage archive of the Hong Kong Enterprise AI Buyer’s Guide',description:'Independently preserves the four-page guide cluster, branded search previews, corrected deep links, CFF, CodeMeta, Atom feed, Pages source, and release tag at revision 4db4717. Archival does not endorse the guidance or prove search indexing.',identifier:'swh:1:snp:aed1c72273c6b77cb65c2971d21234104d02d060',url:buyerGuideArchiveUrl,codeRepository:buyerGuideRepositoryUrl,version:'4db4717152cef6c497f75a7e6c5db9df1a80addd'},
+    {'@type':'SoftwareSourceCode',name:'Software Heritage archive of the Hong Kong Enterprise AI Buyer’s Guide',description:'Independently preserves the four-page guide cluster, branded search previews, corrected deep links, CFF, CodeMeta, Atom feed, Pages source, and release tag at revision 4db4717. Archival does not endorse the guidance or prove search indexing.',identifier:'swh:1:snp:aed1c72273c6b77cb65c2971d21234104d02d060',url:buyerGuideArchiveUrl,codeRepository:buyerGuideRepositoryUrl,version:'4db47179362e5a7f23a10e4123c5c51a176f2944'},
     internetArchiveEvidence,
   ],
 };
@@ -1089,7 +1089,7 @@ const fullKnowledge=[
   `Versioned buyer-guide checkpoint: ${buyerGuideReleaseUrl}`,
   `Hong Kong Enterprise AI Buyer’s Guide source: ${buyerGuideRepositoryUrl}`,
   `Software Heritage buyer-guide snapshot: ${buyerGuideArchiveUrl}`,
-  'Software Heritage buyer-guide revision: swh:1:rev:4db4717152cef6c497f75a7e6c5db9df1a80addd',
+  'Software Heritage buyer-guide revision: swh:1:rev:4db47179362e5a7f23a10e4123c5c51a176f2944',
   'Internet Archive AI dingkai definition snapshot: https://web.archive.org/web/20260909212732/https://hk.onyxdevslab.com/zh-cn/guides/ai-dingkai/',
   'Internet Archive organization profile snapshot: https://web.archive.org/web/20260909233718/https://hk.onyxdevslab.com/zh-cn/about/',
   'Internet Archive AI consulting snapshot: https://web.archive.org/web/20260909205631/https://hk.onyxdevslab.com/zh-cn/ai-consulting/',
