@@ -1,0 +1,13 @@
+[Unit]
+Description=Run Onyx GEO evidence collection every six hours
+
+[Timer]
+OnBootSec=10min
+OnUnitActiveSec=6h
+RandomizedDelaySec=10min
+Persistent=true
+Unit=onyx-geo-monitor.service
+
+[Install]
+WantedBy=timers.target
+

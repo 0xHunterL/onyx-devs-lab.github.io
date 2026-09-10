@@ -1,0 +1,113 @@
+import { spawn } from 'node:child_process';
+import { mkdir, readFile, rename, unlink, writeFile } from 'node:fs/promises';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
+
+const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
+const args = process.argv.slice(2);
+const valueArg = (name, fallback) => args.find((arg) => arg.startsWith(`${name}=`))?.slice(name.length + 1) || fallback;
+const outputDir = path.resolve(valueArg('--output-dir', '/var/lib/onyx-geo'));
+const since = valueArg('--since', '2026-09-01');
+const logPaths = args.filter((arg) => !arg.startsWith('--output-dir=') && !arg.startsWith('--since='));
+if (!/^\d{4}-\d{2}-\d{2}$/.test(since)) throw new Error('--since must use YYYY-MM-DD');
+if (!logPaths.length) logPaths.push('/var/log/nginx/hk.onyxdevslab.com.geo.log');
+
+async function runJson(script, scriptArgs) {
+  return new Promise((resolve, reject) => {
+    const child = spawn(process.execPath, [path.join(root, 'scripts', script), ...scriptArgs], {
+      cwd: root,
+      env: process.env,
+      stdio: ['ignore', 'pipe', 'pipe'],
+    });
+    let stdout = '';
+    let stderr = '';
+    child.stdout.setEncoding('utf8');
+    child.stderr.setEncoding('utf8');
+    child.stdout.on('data', (chunk) => { stdout += chunk; });
+    child.stderr.on('data', (chunk) => { stderr += chunk; });
+    child.on('error', reject);
+    child.on('close', (code) => {
+      if (code !== 0) return reject(new Error(`${script} exited ${code}: ${stderr.trim() || stdout.trim()}`));
+      try {
+        resolve(JSON.parse(stdout));
+      } catch (error) {
+        reject(new Error(`${script} returned invalid JSON: ${error.message}`));
+      }
+    });
+  });
+}
+
+async function readPreviousSummary() {
+  try {
+    return JSON.parse(await readFile(path.join(outputDir, 'summary.json'), 'utf8'));
+  } catch {
+    return null;
+  }
+}
+
+async function atomicJson(name, value) {
+  const target = path.join(outputDir, name);
+  const temporary = `${target}.tmp-${process.pid}`;
+  await writeFile(temporary, `${JSON.stringify(value, null, 2)}\n`, { mode: 0o640 });
+  await rename(temporary, target);
+}
+
+await mkdir(outputDir, { recursive: true, mode: 0o750 });
+const previous = await readPreviousSummary();
+const crawler = await runJson('report-ai-crawlers.mjs', [
+  `--since=${since}`,
+  '--include-rotated',
+  '--verify-openai',
+  '--verify-bing',
+  '--verify-google',
+  '--verify-perplexity',
+  ...logPaths,
+]);
+const referral = await runJson('report-geo-referrals.mjs', [`--since=${since}`, '--include-rotated', ...logPaths]);
+
+const crawlerTemporary = path.join(outputDir, `.crawler-report-${process.pid}.json`);
+await writeFile(crawlerTemporary, `${JSON.stringify(crawler, null, 2)}\n`, { mode: 0o640 });
+let promptCoverage;
+try {
+  promptCoverage = await runJson('report-prompt-crawl-coverage.mjs', [`--crawler-report=${crawlerTemporary}`]);
+} finally {
+  await unlink(crawlerTemporary).catch(() => {});
+}
+
+const counts = {
+  verifiedGptBotPageCrawls: crawler.totals.verifiedGptBotPageCrawls,
+  verifiedOaiSearchBotPageCrawls: crawler.totals.verifiedOaiSearchBotPageCrawls,
+  verifiedOaiSearchBotDiscoveryFileCrawls: crawler.totals.verifiedOaiSearchBotDiscoveryFileCrawls,
+  verifiedBingPageCrawls: crawler.totals.verifiedBingPageCrawls,
+  verifiedGooglePageCrawls: crawler.totals.verifiedGooglePageCrawls,
+  verifiedPerplexityPageCrawls: crawler.totals.verifiedPerplexityPageCrawls,
+  verifiedContentPaths: crawler.verifiedContentPathCoverage.length,
+  searchRelatedCrawledEvidencePages: promptCoverage.totals.searchRelatedCrawledEvidencePages,
+  promptsWithAnySearchRelatedCrawl: promptCoverage.totals.promptsWithAnySearchRelatedCrawl,
+  trackedVisits: referral.trackedVisits,
+  suspectedAutomatedTrackedVisits: referral.suspectedAutomatedTrackedVisits,
+  humanUnverifiedTrackedVisits: referral.humanUnverifiedTrackedVisits,
+  aiReferrerAttributedVisits: (referral.byEvidenceType['ai-referrer'] || 0) + (referral.byEvidenceType['utm-and-ai-referrer'] || 0),
+  humanUnverifiedAiReferrerVisits: referral.recentHumanUnverifiedVisits.filter((visit) => visit.evidenceType.includes('ai-referrer')).length,
+};
+const priorCounts = previous?.counts || {};
+const deltas = Object.fromEntries(Object.entries(counts).map(([key, value]) => [key, previous ? value - (Number(priorCounts[key]) || 0) : 0]));
+const newEvidence = Object.entries(deltas).filter(([, value]) => value > 0).map(([metric, delta]) => ({ metric, delta, current: counts[metric] }));
+const summary = {
+  schemaVersion: 1,
+  generatedAt: new Date().toISOString(),
+  since,
+  sourceLogs: crawler.files,
+  counts,
+  deltas,
+  newEvidence,
+  initialized: !previous,
+  changed: newEvidence.length > 0,
+  evidenceBoundary: 'Positive crawler deltas prove only provider-verified requests. Referral deltas prove only attributed requests. Neither proves indexing, retrieval, citation, ranking, a human visit, or non-brand recommendation.',
+};
+
+await atomicJson('crawler-report.json', crawler);
+await atomicJson('referral-report.json', referral);
+await atomicJson('prompt-crawl-coverage.json', promptCoverage);
+await atomicJson('summary.json', summary);
+console.log(JSON.stringify(summary, null, 2));
