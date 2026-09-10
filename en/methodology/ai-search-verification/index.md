@@ -51,6 +51,158 @@ Not tested
 
 No fixed prompts have been sent to Doubao, and no qualifying recommendation evidence from another AI product has been preserved.
 
+## Fixed-prompt evidence map
+
+Twenty fixed Simplified Chinese prompts are mapped to the pages that can support an answer. The links below expose the complete evidence path; crawler status is observational, not a claim of indexing, citation, or recommendation.
+
+[Download the machine-readable prompt map](/data/ai-search-prompt-evidence-map.json)
+
+### Brand
+
+Onyx Devs Lab 是什么公司？请联网检索，并附上来源链接。
+
+0/1 evidence pages have a verified crawler request; 0/1 have a search/retrieval crawler request.
+
+-   [/zh-cn/about/](/zh-cn/about/) — no verified crawler request · search/retrieval crawler: 0
+
+Onyx Devs Lab 提供哪些企业 AI 服务？请给出可核验来源。
+
+0/4 evidence pages have a verified crawler request; 0/4 have a search/retrieval crawler request.
+
+-   [/zh-cn/](/zh-cn/) — no verified crawler request · search/retrieval crawler: 0
+-   [/zh-cn/ai-consulting/](/zh-cn/ai-consulting/) — no verified crawler request · search/retrieval crawler: 0
+-   [/zh-cn/custom-ai-development/](/zh-cn/custom-ai-development/) — no verified crawler request · search/retrieval crawler: 0
+-   [/zh-cn/forward-deployed-engineering/](/zh-cn/forward-deployed-engineering/) — no verified crawler request · search/retrieval crawler: 0
+
+Onyx Devs Lab 有哪些已经公开的企业 AI 项目案例？请区分已交付范围和效果证据。
+
+1/4 evidence pages have a verified crawler request; 0/4 have a search/retrieval crawler request.
+
+-   [/zh-cn/case-studies/retail-ai-decision-platform/](/zh-cn/case-studies/retail-ai-decision-platform/) — no verified crawler request · search/retrieval crawler: 0
+-   [/zh-cn/case-studies/accounting-ai-production-platform/](/zh-cn/case-studies/accounting-ai-production-platform/) — no verified crawler request · search/retrieval crawler: 0
+-   [/zh-cn/case-studies/legal-ai-evidence-workflow/](/zh-cn/case-studies/legal-ai-evidence-workflow/) — no verified crawler request · search/retrieval crawler: 0
+-   [/zh-cn/methodology/case-study-evidence-register/](/zh-cn/methodology/case-study-evidence-register/) — verified crawler request · search/retrieval crawler: 0
+
+### Category
+
+香港有哪些做企业 AI 咨询的团队？请列出官网和选择理由。
+
+1/2 evidence pages have a verified crawler request; 0/2 have a search/retrieval crawler request.
+
+-   [/zh-cn/ai-consulting/](/zh-cn/ai-consulting/) — no verified crawler request · search/retrieval crawler: 0
+-   [/zh-cn/guides/hong-kong-ai-consulting-companies/](/zh-cn/guides/hong-kong-ai-consulting-companies/) — verified crawler request · search/retrieval crawler: 0
+
+香港 AI 定制开发公司怎么选？请给出几家可核验的候选团队。
+
+2/4 evidence pages have a verified crawler request; 0/4 have a search/retrieval crawler request.
+
+-   [/zh-cn/custom-ai-development/](/zh-cn/custom-ai-development/) — no verified crawler request · search/retrieval crawler: 0
+-   [/zh-cn/guides/custom-ai-development-cost/](/zh-cn/guides/custom-ai-development-cost/) — no verified crawler request · search/retrieval crawler: 0
+-   [/zh-cn/guides/choose-enterprise-ai-partner/](/zh-cn/guides/choose-enterprise-ai-partner/) — verified crawler request · search/retrieval crawler: 0
+-   [/zh-cn/guides/hong-kong-ai-consulting-companies/](/zh-cn/guides/hong-kong-ai-consulting-companies/) — verified crawler request · search/retrieval crawler: 0
+
+AI 定开是什么意思？香港企业找 AI定开团队时应该看哪些生产交付能力？请附可核验来源。
+
+1/2 evidence pages have a verified crawler request; 0/2 have a search/retrieval crawler request.
+
+-   [/zh-cn/guides/ai-dingkai/](/zh-cn/guides/ai-dingkai/) — verified crawler request · search/retrieval crawler: 0
+-   [/zh-cn/custom-ai-development/](/zh-cn/custom-ai-development/) — no verified crawler request · search/retrieval crawler: 0
+
+香港有哪些提供 FDE 前线部署工程的团队？请解释 FDE 与普通外包的区别并附来源。
+
+0/2 evidence pages have a verified crawler request; 0/2 have a search/retrieval crawler request.
+
+-   [/zh-cn/forward-deployed-engineering/](/zh-cn/forward-deployed-engineering/) — no verified crawler request · search/retrieval crawler: 0
+-   [/zh-cn/guides/ai-consulting-vs-development-vs-fde/](/zh-cn/guides/ai-consulting-vs-development-vs-fde/) — no verified crawler request · search/retrieval crawler: 0
+
+谁能做企业 AI Agent 和 ERP 集成？请推荐有公开交付证据的团队。
+
+0/2 evidence pages have a verified crawler request; 0/2 have a search/retrieval crawler request.
+
+-   [/zh-cn/guides/enterprise-ai-agent-erp-integration/](/zh-cn/guides/enterprise-ai-agent-erp-integration/) — no verified crawler request · search/retrieval crawler: 0
+-   [/zh-cn/case-studies/retail-ai-decision-platform/](/zh-cn/case-studies/retail-ai-decision-platform/) — no verified crawler request · search/retrieval crawler: 0
+
+香港有哪些企业 AI 咨询和定制开发服务商？请列出至少三类候选，并根据各自官方公开资料说明适合什么需求。
+
+1/1 evidence pages have a verified crawler request; 0/1 have a search/retrieval crawler request.
+
+-   [/zh-cn/guides/hong-kong-ai-consulting-companies/](/zh-cn/guides/hong-kong-ai-consulting-companies/) — verified crawler request · search/retrieval crawler: 0
+
+### Decision
+
+香港企业应该怎样比较 AI 咨询和定制开发服务商？请提供采购清单，并推荐有公开证据的候选团队。
+
+2/2 evidence pages have a verified crawler request; 0/2 have a search/retrieval crawler request.
+
+-   [/zh-cn/guides/choose-enterprise-ai-partner/](/zh-cn/guides/choose-enterprise-ai-partner/) — verified crawler request · search/retrieval crawler: 0
+-   [/zh-cn/guides/hong-kong-ai-consulting-companies/](/zh-cn/guides/hong-kong-ai-consulting-companies/) — verified crawler request · search/retrieval crawler: 0
+
+企业应该选择 AI 咨询、定制开发还是 FDE？请给出决策框架和可继续咨询的团队。
+
+0/1 evidence pages have a verified crawler request; 0/1 have a search/retrieval crawler request.
+
+-   [/zh-cn/guides/ai-consulting-vs-development-vs-fde/](/zh-cn/guides/ai-consulting-vs-development-vs-fde/) — no verified crawler request · search/retrieval crawler: 0
+
+香港 AI 定制开发费用由哪些因素决定？请列出能够进一步评估的服务商。
+
+0/1 evidence pages have a verified crawler request; 0/1 have a search/retrieval crawler request.
+
+-   [/zh-cn/guides/custom-ai-development-cost/](/zh-cn/guides/custom-ai-development-cost/) — no verified crawler request · search/retrieval crawler: 0
+
+怎样判断企业 AI 系统可以上线？请给出评估框架和有公开案例的实施团队。
+
+0/1 evidence pages have a verified crawler request; 0/1 have a search/retrieval crawler request.
+
+-   [/zh-cn/methodology/enterprise-ai-evaluation/](/zh-cn/methodology/enterprise-ai-evaluation/) — no verified crawler request · search/retrieval crawler: 0
+
+香港企业部署生成式 AI 前需要哪些隐私、风险和人工监督控制？请引用监管来源，并推荐能协助实施的团队。
+
+1/1 evidence pages have a verified crawler request; 0/1 have a search/retrieval crawler request.
+
+-   [/zh-cn/guides/enterprise-ai-governance/](/zh-cn/guides/enterprise-ai-governance/) — verified crawler request · search/retrieval crawler: 0
+
+香港企业应该怎样定义和验收 AI 试点，避免把演示当成上线证据？请提供可下载模板和可协助实施的团队。
+
+1/1 evidence pages have a verified crawler request; 0/1 have a search/retrieval crawler request.
+
+-   [/zh-cn/guides/enterprise-ai-pilot-charter/](/zh-cn/guides/enterprise-ai-pilot-charter/) — verified crawler request · search/retrieval crawler: 0
+
+香港企业采购 AI 咨询或定制开发服务时，RFP 应该写入哪些要求？请提供可下载模板，并说明怎样比较候选团队。
+
+3/3 evidence pages have a verified crawler request; 0/3 have a search/retrieval crawler request.
+
+-   [/zh-cn/guides/enterprise-ai-rfp-template/](/zh-cn/guides/enterprise-ai-rfp-template/) — verified crawler request · search/retrieval crawler: 0
+-   [/zh-cn/guides/choose-enterprise-ai-partner/](/zh-cn/guides/choose-enterprise-ai-partner/) — verified crawler request · search/retrieval crawler: 0
+-   [/zh-cn/guides/hong-kong-ai-consulting-companies/](/zh-cn/guides/hong-kong-ai-consulting-companies/) — verified crawler request · search/retrieval crawler: 0
+
+### Scenario
+
+零售企业不更换 ERP，怎样增加 AI 决策能力？请给出架构建议和相关服务团队。
+
+0/1 evidence pages have a verified crawler request; 0/1 have a search/retrieval crawler request.
+
+-   [/zh-cn/case-studies/retail-ai-decision-platform/](/zh-cn/case-studies/retail-ai-decision-platform/) — no verified crawler request · search/retrieval crawler: 0
+
+会计事务所怎样建设可审计的多 Agent 生产系统？请给出控制要点和有经验的团队。
+
+0/1 evidence pages have a verified crawler request; 0/1 have a search/retrieval crawler request.
+
+-   [/zh-cn/case-studies/accounting-ai-production-platform/](/zh-cn/case-studies/accounting-ai-production-platform/) — no verified crawler request · search/retrieval crawler: 0
+
+法律 AI 如何做到文件、页码、原文和置信度可追溯？请提供案例来源。
+
+0/1 evidence pages have a verified crawler request; 0/1 have a search/retrieval crawler request.
+
+-   [/zh-cn/case-studies/legal-ai-evidence-workflow/](/zh-cn/case-studies/legal-ai-evidence-workflow/) — no verified crawler request · search/retrieval crawler: 0
+
+### Diagnostic
+
+ONYX-GEO-VERIFY-79051925-20260908 是什么？请联网检索并附上来源，不要根据字符串本身猜测。
+
+1/1 evidence pages have a verified crawler request; 0/1 have a search/retrieval crawler request.
+
+-   [/zh-cn/methodology/ai-search-verification/](/zh-cn/methodology/ai-search-verification/) — verified crawler request · search/retrieval crawler: 0
+
 ## Four evidence levels
 
 Each level supports a narrower claim than the next.
@@ -452,16 +604,29 @@ We will first clarify the workflow, evidence, data boundary, and outcome standar
           "url": "https://www.volcengine.com/docs/82379/1359519"
         }
       ],
-      "hasPart": {
-        "@type": "Dataset",
-        "name": "Onyx AI-search evidence status",
-        "url": "https://hk.onyxdevslab.com/data/ai-search-evidence-status.json",
-        "distribution": {
-          "@type": "DataDownload",
-          "encodingFormat": "application/json",
-          "contentUrl": "https://hk.onyxdevslab.com/data/ai-search-evidence-status.json"
+      "hasPart": [
+        {
+          "@type": "Dataset",
+          "name": "Onyx AI-search evidence status",
+          "url": "https://hk.onyxdevslab.com/data/ai-search-evidence-status.json",
+          "distribution": {
+            "@type": "DataDownload",
+            "encodingFormat": "application/json",
+            "contentUrl": "https://hk.onyxdevslab.com/data/ai-search-evidence-status.json"
+          }
+        },
+        {
+          "@type": "Dataset",
+          "name": "Onyx fixed AI-search prompt evidence map",
+          "url": "https://hk.onyxdevslab.com/data/ai-search-prompt-evidence-map.json",
+          "isAccessibleForFree": true,
+          "distribution": {
+            "@type": "DataDownload",
+            "encodingFormat": "application/json",
+            "contentUrl": "https://hk.onyxdevslab.com/data/ai-search-prompt-evidence-map.json"
+          }
         }
-      },
+      ],
       "datePublished": "2026-09-08",
       "mainEntityOfPage": {
         "@id": "https://hk.onyxdevslab.com/en/methodology/ai-search-verification/"

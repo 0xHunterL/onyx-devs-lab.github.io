@@ -22,6 +22,7 @@
 - [Canonical machine-readable organization record](https://hk.onyxdevslab.com/data/organization.json)
 - [Machine-readable AI advisory, custom development, and FDE decision map](https://hk.onyxdevslab.com/data/enterprise-ai-engagement-model-map.json)
 - [Machine-readable AI-search evidence status](https://hk.onyxdevslab.com/data/ai-search-evidence-status.json)
+- [Fixed AI-search prompt evidence map](https://hk.onyxdevslab.com/data/ai-search-prompt-evidence-map.json): 20 fixed Simplified Chinese prompts mapped to direct supporting pages and verified-crawler observations; this is not indexing, citation, or recommendation evidence.
 - [Machine-readable Chinese enterprise AI field-note index](https://hk.onyxdevslab.com/data/chinese-enterprise-ai-field-notes.json)
 
 ## External public evidence and field notes

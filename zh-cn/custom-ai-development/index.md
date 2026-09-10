@@ -406,8 +406,7 @@ AI 定制开发费用如何确定？
       ],
       "category": {
         "@id": "https://hk.onyxdevslab.com/data/enterprise-ai-service-terms.jsonld#custom-ai-development"
-      },
-      "archivedAt": "https://web.archive.org/web/20260909205642/https://hk.onyxdevslab.com/zh-cn/custom-ai-development/"
+      }
     },
     {
       "@type": "WebPage",

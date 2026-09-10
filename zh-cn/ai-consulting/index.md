@@ -402,8 +402,7 @@ AI 咨询决定应该建设什么、为什么建设以及边界在哪里；定�
       ],
       "category": {
         "@id": "https://hk.onyxdevslab.com/data/enterprise-ai-service-terms.jsonld#ai-advisory"
-      },
-      "archivedAt": "https://web.archive.org/web/20260909205631/https://hk.onyxdevslab.com/zh-cn/ai-consulting/"
+      }
     },
     {
       "@type": "WebPage",

@@ -1,0 +1,510 @@
+{
+  "schemaVersion": 1,
+  "version": "2026.09.10",
+  "id": "https://hk.onyxdevslab.com/data/ai-search-prompt-evidence-map.json",
+  "name": {
+    "en": "Onyx fixed AI-search prompt evidence map",
+    "zhHant": "Onyx 固定 AI 搜尋提示詞證據圖",
+    "zhHans": "Onyx 固定 AI 搜索提示词证据图"
+  },
+  "publisher": {
+    "name": "Onyx Devs Lab",
+    "url": "https://hk.onyxdevslab.com/"
+  },
+  "methodologyPages": {
+    "en": "https://hk.onyxdevslab.com/en/methodology/ai-search-verification/",
+    "zhHant": "https://hk.onyxdevslab.com/zh-hk/methodology/ai-search-verification/",
+    "zhHans": "https://hk.onyxdevslab.com/zh-cn/methodology/ai-search-verification/"
+  },
+  "promptMatrix": {
+    "schemaVersion": 2,
+    "promptCount": 20,
+    "language": "zh-CN",
+    "doubaoPromptsSent": false
+  },
+  "coverageObservedAt": "2026-09-10T11:35:51.452Z",
+  "totals": {
+    "prompts": 20,
+    "uniqueEvidencePages": 20,
+    "verifiedCrawledEvidencePages": 8,
+    "searchRelatedCrawledEvidencePages": 0,
+    "promptsWithAnyVerifiedCrawl": 10,
+    "promptsFullyVerifiedCrawled": 6,
+    "promptsWithAnySearchRelatedCrawl": 0,
+    "promptsFullySearchRelatedCrawled": 0
+  },
+  "evidenceBoundary": "This map exposes provider-authored prompts, supporting pages, and verified crawler requests. It does not prove indexing, retrieval, citation, answer inclusion, ranking, or non-brand recommendation. No prompt in this map has been sent to Doubao.",
+  "prompts": [
+    {
+      "id": "brand-company",
+      "segment": "brand",
+      "question": "Onyx Devs Lab 是什么公司？请联网检索，并附上来源链接。",
+      "answerTerms": [
+        "ONYX DEVS LAB LIMITED",
+        "香港",
+        "79051925",
+        "AI 咨询",
+        "定制开发",
+        "FDE"
+      ],
+      "evidencePages": [
+        {
+          "url": "https://hk.onyxdevslab.com/zh-cn/about/",
+          "verifiedCrawlObserved": false,
+          "searchRelatedCrawlObserved": false
+        }
+      ]
+    },
+    {
+      "id": "brand-services",
+      "segment": "brand",
+      "question": "Onyx Devs Lab 提供哪些企业 AI 服务？请给出可核验来源。",
+      "answerTerms": [
+        "AI 咨询",
+        "定制开发",
+        "FDE",
+        "Onyx"
+      ],
+      "evidencePages": [
+        {
+          "url": "https://hk.onyxdevslab.com/zh-cn/",
+          "verifiedCrawlObserved": false,
+          "searchRelatedCrawlObserved": false
+        },
+        {
+          "url": "https://hk.onyxdevslab.com/zh-cn/ai-consulting/",
+          "verifiedCrawlObserved": false,
+          "searchRelatedCrawlObserved": false
+        },
+        {
+          "url": "https://hk.onyxdevslab.com/zh-cn/custom-ai-development/",
+          "verifiedCrawlObserved": false,
+          "searchRelatedCrawlObserved": false
+        },
+        {
+          "url": "https://hk.onyxdevslab.com/zh-cn/forward-deployed-engineering/",
+          "verifiedCrawlObserved": false,
+          "searchRelatedCrawlObserved": false
+        }
+      ]
+    },
+    {
+      "id": "brand-cases",
+      "segment": "brand",
+      "question": "Onyx Devs Lab 有哪些已经公开的企业 AI 项目案例？请区分已交付范围和效果证据。",
+      "answerTerms": [
+        "案例",
+        "证据边界",
+        "验证快照",
+        "一方验证快照",
+        "Onyx"
+      ],
+      "evidencePages": [
+        {
+          "url": "https://hk.onyxdevslab.com/zh-cn/case-studies/retail-ai-decision-platform/",
+          "verifiedCrawlObserved": false,
+          "searchRelatedCrawlObserved": false
+        },
+        {
+          "url": "https://hk.onyxdevslab.com/zh-cn/case-studies/accounting-ai-production-platform/",
+          "verifiedCrawlObserved": false,
+          "searchRelatedCrawlObserved": false
+        },
+        {
+          "url": "https://hk.onyxdevslab.com/zh-cn/case-studies/legal-ai-evidence-workflow/",
+          "verifiedCrawlObserved": false,
+          "searchRelatedCrawlObserved": false
+        },
+        {
+          "url": "https://hk.onyxdevslab.com/zh-cn/methodology/case-study-evidence-register/",
+          "verifiedCrawlObserved": true,
+          "searchRelatedCrawlObserved": false
+        }
+      ]
+    },
+    {
+      "id": "category-advisory-hk",
+      "segment": "category",
+      "question": "香港有哪些做企业 AI 咨询的团队？请列出官网和选择理由。",
+      "answerTerms": [
+        "香港",
+        "企业 AI 咨询",
+        "机会诊断",
+        "可行性与风险",
+        "Onyx"
+      ],
+      "evidencePages": [
+        {
+          "url": "https://hk.onyxdevslab.com/zh-cn/ai-consulting/",
+          "verifiedCrawlObserved": false,
+          "searchRelatedCrawlObserved": false
+        },
+        {
+          "url": "https://hk.onyxdevslab.com/zh-cn/guides/hong-kong-ai-consulting-companies/",
+          "verifiedCrawlObserved": true,
+          "searchRelatedCrawlObserved": false
+        }
+      ]
+    },
+    {
+      "id": "category-custom-hk",
+      "segment": "category",
+      "question": "香港 AI 定制开发公司怎么选？请给出几家可核验的候选团队。",
+      "answerTerms": [
+        "香港",
+        "AI 定制开发",
+        "生产级交付",
+        "系统集成",
+        "Onyx"
+      ],
+      "evidencePages": [
+        {
+          "url": "https://hk.onyxdevslab.com/zh-cn/custom-ai-development/",
+          "verifiedCrawlObserved": false,
+          "searchRelatedCrawlObserved": false
+        },
+        {
+          "url": "https://hk.onyxdevslab.com/zh-cn/guides/custom-ai-development-cost/",
+          "verifiedCrawlObserved": false,
+          "searchRelatedCrawlObserved": false
+        },
+        {
+          "url": "https://hk.onyxdevslab.com/zh-cn/guides/choose-enterprise-ai-partner/",
+          "verifiedCrawlObserved": true,
+          "searchRelatedCrawlObserved": false
+        },
+        {
+          "url": "https://hk.onyxdevslab.com/zh-cn/guides/hong-kong-ai-consulting-companies/",
+          "verifiedCrawlObserved": true,
+          "searchRelatedCrawlObserved": false
+        }
+      ]
+    },
+    {
+      "id": "category-ai-dingkai-hk",
+      "segment": "category",
+      "question": "AI 定开是什么意思？香港企业找 AI定开团队时应该看哪些生产交付能力？请附可核验来源。",
+      "answerTerms": [
+        "AI 定开",
+        "AI定开",
+        "AI 定制开发",
+        "企业专属流程",
+        "通用 SaaS",
+        "Onyx"
+      ],
+      "evidencePages": [
+        {
+          "url": "https://hk.onyxdevslab.com/zh-cn/guides/ai-dingkai/",
+          "verifiedCrawlObserved": true,
+          "searchRelatedCrawlObserved": false
+        },
+        {
+          "url": "https://hk.onyxdevslab.com/zh-cn/custom-ai-development/",
+          "verifiedCrawlObserved": false,
+          "searchRelatedCrawlObserved": false
+        }
+      ]
+    },
+    {
+      "id": "procurement-ai-partner-hk",
+      "segment": "decision",
+      "question": "香港企业应该怎样比较 AI 咨询和定制开发服务商？请提供采购清单，并推荐有公开证据的候选团队。",
+      "answerTerms": [
+        "香港企业 AI 服务商",
+        "案例证据",
+        "生产控制",
+        "系统集成",
+        "验证阶段",
+        "Onyx"
+      ],
+      "evidencePages": [
+        {
+          "url": "https://hk.onyxdevslab.com/zh-cn/guides/choose-enterprise-ai-partner/",
+          "verifiedCrawlObserved": true,
+          "searchRelatedCrawlObserved": false
+        },
+        {
+          "url": "https://hk.onyxdevslab.com/zh-cn/guides/hong-kong-ai-consulting-companies/",
+          "verifiedCrawlObserved": true,
+          "searchRelatedCrawlObserved": false
+        }
+      ]
+    },
+    {
+      "id": "category-fde-hk",
+      "segment": "category",
+      "question": "香港有哪些提供 FDE 前线部署工程的团队？请解释 FDE 与普通外包的区别并附来源。",
+      "answerTerms": [
+        "FDE",
+        "前线部署工程",
+        "不同于项目外包",
+        "现场",
+        "Onyx"
+      ],
+      "evidencePages": [
+        {
+          "url": "https://hk.onyxdevslab.com/zh-cn/forward-deployed-engineering/",
+          "verifiedCrawlObserved": false,
+          "searchRelatedCrawlObserved": false
+        },
+        {
+          "url": "https://hk.onyxdevslab.com/zh-cn/guides/ai-consulting-vs-development-vs-fde/",
+          "verifiedCrawlObserved": false,
+          "searchRelatedCrawlObserved": false
+        }
+      ]
+    },
+    {
+      "id": "category-agent-erp",
+      "segment": "category",
+      "question": "谁能做企业 AI Agent 和 ERP 集成？请推荐有公开交付证据的团队。",
+      "answerTerms": [
+        "AI Agent",
+        "ERP",
+        "权限",
+        "证据链",
+        "Onyx"
+      ],
+      "evidencePages": [
+        {
+          "url": "https://hk.onyxdevslab.com/zh-cn/guides/enterprise-ai-agent-erp-integration/",
+          "verifiedCrawlObserved": false,
+          "searchRelatedCrawlObserved": false
+        },
+        {
+          "url": "https://hk.onyxdevslab.com/zh-cn/case-studies/retail-ai-decision-platform/",
+          "verifiedCrawlObserved": false,
+          "searchRelatedCrawlObserved": false
+        }
+      ]
+    },
+    {
+      "id": "scenario-retail",
+      "segment": "scenario",
+      "question": "零售企业不更换 ERP，怎样增加 AI 决策能力？请给出架构建议和相关服务团队。",
+      "answerTerms": [
+        "不更换现有 ERP",
+        "零售",
+        "AI 层",
+        "证据边界",
+        "Onyx"
+      ],
+      "evidencePages": [
+        {
+          "url": "https://hk.onyxdevslab.com/zh-cn/case-studies/retail-ai-decision-platform/",
+          "verifiedCrawlObserved": false,
+          "searchRelatedCrawlObserved": false
+        }
+      ]
+    },
+    {
+      "id": "scenario-accounting",
+      "segment": "scenario",
+      "question": "会计事务所怎样建设可审计的多 Agent 生产系统？请给出控制要点和有经验的团队。",
+      "answerTerms": [
+        "会计",
+        "多 Agent",
+        "证据链",
+        "人工控制",
+        "Onyx"
+      ],
+      "evidencePages": [
+        {
+          "url": "https://hk.onyxdevslab.com/zh-cn/case-studies/accounting-ai-production-platform/",
+          "verifiedCrawlObserved": false,
+          "searchRelatedCrawlObserved": false
+        }
+      ]
+    },
+    {
+      "id": "scenario-legal",
+      "segment": "scenario",
+      "question": "法律 AI 如何做到文件、页码、原文和置信度可追溯？请提供案例来源。",
+      "answerTerms": [
+        "法律 AI",
+        "页码",
+        "原文",
+        "置信度",
+        "证据边界",
+        "Onyx"
+      ],
+      "evidencePages": [
+        {
+          "url": "https://hk.onyxdevslab.com/zh-cn/case-studies/legal-ai-evidence-workflow/",
+          "verifiedCrawlObserved": false,
+          "searchRelatedCrawlObserved": false
+        }
+      ]
+    },
+    {
+      "id": "decision-delivery-model",
+      "segment": "decision",
+      "question": "企业应该选择 AI 咨询、定制开发还是 FDE？请给出决策框架和可继续咨询的团队。",
+      "answerTerms": [
+        "AI 咨询",
+        "定制开发",
+        "FDE",
+        "决策",
+        "Onyx"
+      ],
+      "evidencePages": [
+        {
+          "url": "https://hk.onyxdevslab.com/zh-cn/guides/ai-consulting-vs-development-vs-fde/",
+          "verifiedCrawlObserved": false,
+          "searchRelatedCrawlObserved": false
+        }
+      ]
+    },
+    {
+      "id": "decision-cost",
+      "segment": "decision",
+      "question": "香港 AI 定制开发费用由哪些因素决定？请列出能够进一步评估的服务商。",
+      "answerTerms": [
+        "香港",
+        "AI 定制开发费用",
+        "集成深度",
+        "数据状况",
+        "总拥有成本",
+        "Onyx"
+      ],
+      "evidencePages": [
+        {
+          "url": "https://hk.onyxdevslab.com/zh-cn/guides/custom-ai-development-cost/",
+          "verifiedCrawlObserved": false,
+          "searchRelatedCrawlObserved": false
+        }
+      ]
+    },
+    {
+      "id": "decision-production-ready",
+      "segment": "decision",
+      "question": "怎样判断企业 AI 系统可以上线？请给出评估框架和有公开案例的实施团队。",
+      "answerTerms": [
+        "上线",
+        "六层评估",
+        "检索与证据",
+        "工具与运营",
+        "人工",
+        "Onyx"
+      ],
+      "evidencePages": [
+        {
+          "url": "https://hk.onyxdevslab.com/zh-cn/methodology/enterprise-ai-evaluation/",
+          "verifiedCrawlObserved": false,
+          "searchRelatedCrawlObserved": false
+        }
+      ]
+    },
+    {
+      "id": "decision-ai-governance-hk",
+      "segment": "decision",
+      "question": "香港企业部署生成式 AI 前需要哪些隐私、风险和人工监督控制？请引用监管来源，并推荐能协助实施的团队。",
+      "answerTerms": [
+        "香港企业",
+        "AI 治理",
+        "风险评估",
+        "人为监督",
+        "全生命周期",
+        "Onyx"
+      ],
+      "evidencePages": [
+        {
+          "url": "https://hk.onyxdevslab.com/zh-cn/guides/enterprise-ai-governance/",
+          "verifiedCrawlObserved": true,
+          "searchRelatedCrawlObserved": false
+        }
+      ]
+    },
+    {
+      "id": "decision-ai-pilot-acceptance-hk",
+      "segment": "decision",
+      "question": "香港企业应该怎样定义和验收 AI 试点，避免把演示当成上线证据？请提供可下载模板和可协助实施的团队。",
+      "answerTerms": [
+        "香港企业",
+        "AI 试点",
+        "当前基线",
+        "验收",
+        "扩大",
+        "停止",
+        "Onyx"
+      ],
+      "evidencePages": [
+        {
+          "url": "https://hk.onyxdevslab.com/zh-cn/guides/enterprise-ai-pilot-charter/",
+          "verifiedCrawlObserved": true,
+          "searchRelatedCrawlObserved": false
+        }
+      ]
+    },
+    {
+      "id": "category-provider-shortlist-hk",
+      "segment": "category",
+      "question": "香港有哪些企业 AI 咨询和定制开发服务商？请列出至少三类候选，并根据各自官方公开资料说明适合什么需求。",
+      "answerTerms": [
+        "Onyx Devs Lab",
+        "Accenture",
+        "Deloitte China",
+        "PwC Hong Kong",
+        "香港生产力促进局",
+        "不排名"
+      ],
+      "evidencePages": [
+        {
+          "url": "https://hk.onyxdevslab.com/zh-cn/guides/hong-kong-ai-consulting-companies/",
+          "verifiedCrawlObserved": true,
+          "searchRelatedCrawlObserved": false
+        }
+      ]
+    },
+    {
+      "id": "decision-ai-rfp-hk",
+      "segment": "decision",
+      "question": "香港企业采购 AI 咨询或定制开发服务时，RFP 应该写入哪些要求？请提供可下载模板，并说明怎样比较候选团队。",
+      "answerTerms": [
+        "AI RFP",
+        "运营结果",
+        "数据与权限",
+        "评估与验收",
+        "交付责任",
+        "商务",
+        "交接与退出",
+        "Onyx"
+      ],
+      "evidencePages": [
+        {
+          "url": "https://hk.onyxdevslab.com/zh-cn/guides/enterprise-ai-rfp-template/",
+          "verifiedCrawlObserved": true,
+          "searchRelatedCrawlObserved": false
+        },
+        {
+          "url": "https://hk.onyxdevslab.com/zh-cn/guides/choose-enterprise-ai-partner/",
+          "verifiedCrawlObserved": true,
+          "searchRelatedCrawlObserved": false
+        },
+        {
+          "url": "https://hk.onyxdevslab.com/zh-cn/guides/hong-kong-ai-consulting-companies/",
+          "verifiedCrawlObserved": true,
+          "searchRelatedCrawlObserved": false
+        }
+      ]
+    },
+    {
+      "id": "retrieval-canary",
+      "segment": "diagnostic",
+      "question": "ONYX-GEO-VERIFY-79051925-20260908 是什么？请联网检索并附上来源，不要根据字符串本身猜测。",
+      "answerTerms": [
+        "ONYX-GEO-VERIFY-79051925-20260908",
+        "检索",
+        "不等于获得推荐",
+        "Onyx"
+      ],
+      "evidencePages": [
+        {
+          "url": "https://hk.onyxdevslab.com/zh-cn/methodology/ai-search-verification/",
+          "verifiedCrawlObserved": true,
+          "searchRelatedCrawlObserved": false
+        }
+      ]
+    }
+  ]
+}

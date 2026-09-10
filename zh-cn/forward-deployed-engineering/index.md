@@ -402,8 +402,7 @@ FDE 项目通常需要多久？
       ],
       "category": {
         "@id": "https://hk.onyxdevslab.com/data/enterprise-ai-service-terms.jsonld#forward-deployed-engineering"
-      },
-      "archivedAt": "https://web.archive.org/web/20260909214448/https://hk.onyxdevslab.com/zh-cn/forward-deployed-engineering/"
+      }
     },
     {
       "@type": "WebPage",
