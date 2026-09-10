@@ -3,9 +3,9 @@ import { createHash } from 'node:crypto';
 const failures = [];
 const results = [];
 
-async function get(name, url, expectedType, { allowUnavailable = false } = {}) {
+async function get(name, url, expectedType, { allowUnavailable = false, attempts = 2, minimumBytes = 0 } = {}) {
   let lastError;
-  for (let attempt = 1; attempt <= 2; attempt += 1) {
+  for (let attempt = 1; attempt <= attempts; attempt += 1) {
     try {
       const response = await fetch(url, {
         headers: { 'user-agent': 'Onyx-GEO-Offsite-Check/1.0' },
@@ -15,18 +15,20 @@ async function get(name, url, expectedType, { allowUnavailable = false } = {}) {
       const body = await response.text();
       const contentType = response.headers.get('content-type') || '';
       const xRobotsTag = response.headers.get('x-robots-tag') || '';
+      const bytes = Buffer.byteLength(body);
+      if (bytes < minimumBytes) throw new Error(`${name}: response was only ${bytes} bytes; expected at least ${minimumBytes}`);
       if (!response.ok) failures.push(`${name}: HTTP ${response.status}`);
       if (!contentType.includes(expectedType)) failures.push(`${name}: expected ${expectedType}, got ${contentType || 'none'}`);
       if (/\b(?:noindex|none)\b/i.test(xRobotsTag)) failures.push(`${name}: blocking X-Robots-Tag: ${xRobotsTag}`);
       if (/<meta[^>]+(?:name|property)=["']robots["'][^>]+content=["'][^"']*\b(?:noindex|none)\b/i.test(body)) failures.push(`${name}: blocking robots meta`);
-      results.push({ name, requestedUrl: url, finalUrl: response.url, status: response.status, contentType, bytes: Buffer.byteLength(body), attempts: attempt });
+      results.push({ name, requestedUrl: url, finalUrl: response.url, status: response.status, contentType, bytes, attempts: attempt });
       return body;
     } catch (error) {
       lastError = error;
     }
   }
   const reason = lastError?.message || 'request failed';
-  if (allowUnavailable) results.push({ name, requestedUrl: url, status: 'unavailable', reason, attempts: 2 });
+  if (allowUnavailable) results.push({ name, requestedUrl: url, status: 'unavailable', reason, attempts });
   else failures.push(`${name}: ${reason}`);
   return '';
 }
@@ -66,7 +68,7 @@ const waybackCoreSnapshots = [
 ];
 for (const snapshot of waybackCoreSnapshots) {
   const url = `https://web.archive.org/web/${snapshot.timestamp}id_/https://hk.onyxdevslab.com/${snapshot.path}`;
-  const body = await get(`Internet Archive ${snapshot.name} snapshot`, url, 'text/html');
+  const body = await get(`Internet Archive ${snapshot.name} snapshot`, url, 'text/html', snapshot.name === 'custom AI development' ? { attempts: 4, minimumBytes: 12_000 } : undefined);
   requireText(`Internet Archive ${snapshot.name} snapshot`, body, ['Onyx Devs Lab','ONYX DEVS LAB LIMITED','79051925','254900Z30CLK7HKE9H46','AI 咨询','AI 定制开发','FDE']);
 }
 const softwareHeritageSnapshotId = 'a704b39b0771635572eb9381b37db046ac9856c2';
