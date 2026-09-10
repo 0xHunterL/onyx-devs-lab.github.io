@@ -1,9 +1,9 @@
 {
   "schemaVersion": 2,
-  "version": "2026.09.10.6",
+  "version": "2026.09.10.7",
   "id": "https://hk.onyxdevslab.com/data/ai-search-evidence-status.json",
-  "observedAt": "2026-09-10T10:31:02Z",
-  "sameAs": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-referral-evidence-2026-09-10/ai-search-evidence-status.json",
+  "observedAt": "2026-09-10T11:35:51Z",
+  "sameAs": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-prompt-crawl-coverage-2026-09-10/ai-search-evidence-status.json",
   "name": {
     "en": "Onyx Devs Lab AI-search evidence status",
     "zhHant": "Onyx Devs Lab AI 搜尋證據狀態",
@@ -64,12 +64,24 @@
         "verifiedOaiSearchBotContentCrawls": 0,
         "historicallyVerifiedBingbotContentCrawls": 7,
         "verifiedGooglebotContentCrawls": 0,
-        "verifiedPerplexityContentCrawls": 0
+        "verifiedPerplexityContentCrawls": 0,
+        "fixedPromptCoverage": {
+          "prompts": 20,
+          "uniqueEvidencePages": 20,
+          "verifiedCrawledEvidencePages": 8,
+          "promptsWithAnyVerifiedCrawl": 10,
+          "promptsFullyVerifiedCrawled": 6,
+          "searchRelatedCrawledEvidencePages": 0,
+          "promptsWithAnySearchRelatedCrawl": 0,
+          "promptsFullySearchRelatedCrawled": 0,
+          "scenarioPromptsWithAnyVerifiedCrawl": 0
+        }
       },
       "limitations": [
         "GPTBot is a training crawler and does not prove ChatGPT Search indexing or citation.",
         "Discovery-file visits do not prove content-page ingestion.",
-        "Bingbot content crawls do not prove public search indexing."
+        "Bingbot content crawls do not prove public search indexing.",
+        "Prompt-level crawl coverage does not prove prompt retrieval, citation, ranking, or recommendation."
       ]
     },
     {
@@ -176,6 +188,18 @@
     {
       "name": "Versioned verified crawler evidence summary",
       "url": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-referral-evidence-2026-09-10/2026-09-10-crawler-evidence.json"
+    },
+    {
+      "name": "Versioned fixed-prompt crawler coverage checkpoint",
+      "url": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-prompt-crawl-coverage-2026-09-10"
+    },
+    {
+      "name": "Versioned fixed-prompt crawler coverage report",
+      "url": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-prompt-crawl-coverage-2026-09-10/2026-09-10-prompt-crawl-coverage.json"
+    },
+    {
+      "name": "Versioned source crawler path report",
+      "url": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-prompt-crawl-coverage-2026-09-10/2026-09-10-verified-crawler-report.json"
     },
     {
       "name": "Versioned enterprise AI RFP template and evidence checkpoint",

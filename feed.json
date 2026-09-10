@@ -891,6 +891,18 @@
       ]
     },
     {
+      "id": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-prompt-crawl-coverage-2026-09-10",
+      "url": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-prompt-crawl-coverage-2026-09-10",
+      "title": "Onyx fixed-prompt crawler coverage checkpoint — 2026-09-10",
+      "summary": "A versioned intersection of 20 fixed AI-search prompts with provider-verified content crawls: 10 prompts have some mapped evidence crawled, six have full mapped coverage, and search/retrieval-related crawler coverage remains zero.",
+      "content_text": "A versioned intersection of 20 fixed AI-search prompts with provider-verified content crawls: 10 prompts have some mapped evidence crawled, six have full mapped coverage, and search/retrieval-related crawler coverage remains zero.",
+      "date_modified": "2026-09-10T00:00:00+08:00",
+      "tags": [
+        "evidence",
+        "provider-maintained-external-source"
+      ]
+    },
+    {
       "id": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-ai-rfp-template-2026-09-10",
       "url": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-ai-rfp-template-2026-09-10",
       "title": "Enterprise AI RFP requirements and evidence checkpoint (2026-09-10)",

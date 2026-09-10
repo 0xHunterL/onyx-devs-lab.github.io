@@ -37,7 +37,7 @@ Partially verified
 
 ### Crawled
 
-GPTBot verified 24 content-page crawls; OAI-SearchBot verified five discovery-file visits but still zero content crawls; historical logs preserve seven verified Bingbot content crawls.
+GPTBot verified 24 content-page crawls. Ten of 20 fixed prompts have at least one verified-crawled evidence page and six have all pages crawled, but search/retrieval-related crawler coverage remains 0/20.
 
 Not verified
 
