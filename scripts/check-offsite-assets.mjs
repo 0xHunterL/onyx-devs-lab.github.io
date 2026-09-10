@@ -391,6 +391,42 @@ requireText('GitHub agent-readiness checkpoint', readinessRelease, [
   '3da4a0be148d3dbb41188ba8b6dc40bb0da75bd484494de4e24d5b2d431baf44',
 ]);
 
+const crawlerEvidenceReleaseUrl = 'https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-crawler-evidence-2026-09-10';
+const crawlerEvidenceRelease = await get('GitHub verified crawler-evidence checkpoint', crawlerEvidenceReleaseUrl, 'text/html');
+requireText('GitHub verified crawler-evidence checkpoint', crawlerEvidenceRelease, [
+  'Onyx verified crawler evidence',
+  '24 GPTBot content crawls',
+  '5 OAI-SearchBot discovery-file visits',
+  '0 verified OAI-SearchBot content crawls',
+  '7 Bingbot content crawls',
+  '30 attributed requests',
+  'No prompt was sent to Doubao',
+  'does not claim search indexing',
+]);
+const crawlerEvidenceAssetBase = 'https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-crawler-evidence-2026-09-10';
+const crawlerEvidenceStatusUrl = `${crawlerEvidenceAssetBase}/ai-search-evidence-status.json`;
+const crawlerEvidenceStatusRaw = await get('Versioned current crawler evidence status', crawlerEvidenceStatusUrl, 'application/');
+const crawlerEvidenceStatusSha256 = createHash('sha256').update(crawlerEvidenceStatusRaw).digest('hex');
+if (crawlerEvidenceStatusSha256 !== '3cfe869874030e2b31b2bc4665375bf758ca040bbca90584e0534ec5642329f9') failures.push(`Versioned current crawler evidence status: SHA-256 mismatch, got ${crawlerEvidenceStatusSha256}`);
+try {
+  const status = JSON.parse(crawlerEvidenceStatusRaw);
+  const crawled = status.evidenceLevels?.[1]?.evidence;
+  const attribution = status.evidenceLevels?.[3]?.evidence;
+  if (status.schemaVersion !== 2 || status.version !== '2026.09.10.5' || status.sameAs !== crawlerEvidenceStatusUrl || status.testProtocol?.doubaoPromptsSent !== false || crawled?.verifiedGptBotContentCrawls !== 24 || crawled?.verifiedOaiSearchBotDiscoveryFileVisits !== 5 || crawled?.verifiedOaiSearchBotContentCrawls !== 0 || crawled?.historicallyVerifiedBingbotContentCrawls !== 7 || attribution?.trackedAttributionRequests !== 30 || attribution?.suspectedAutomatedTrackedRequests !== 24 || attribution?.humanUnverifiedTrackedRequests !== 6 || attribution?.realAiReferralVisitsObserved !== 0) failures.push('Versioned current crawler evidence status: expected evidence structure is incomplete');
+} catch {
+  failures.push('Versioned current crawler evidence status: invalid JSON');
+}
+const crawlerEvidenceSummaryUrl = `${crawlerEvidenceAssetBase}/2026-09-10-crawler-evidence.json`;
+const crawlerEvidenceSummaryRaw = await get('Versioned verified crawler evidence summary', crawlerEvidenceSummaryUrl, 'application/');
+const crawlerEvidenceSummarySha256 = createHash('sha256').update(crawlerEvidenceSummaryRaw).digest('hex');
+if (crawlerEvidenceSummarySha256 !== 'f7c35a147e0af49edb376c944cb465f4c253a69aeb79585c69400435aa596a55') failures.push(`Versioned verified crawler evidence summary: SHA-256 mismatch, got ${crawlerEvidenceSummarySha256}`);
+try {
+  const summary = JSON.parse(crawlerEvidenceSummaryRaw);
+  if (summary.schemaVersion !== 1 || summary.doubaoTestStatus !== 'not-run' || summary.verifiedCrawlerEvidence?.gptBotContentCrawls !== 24 || summary.verifiedCrawlerEvidence?.oaiSearchBotDiscoveryFileCrawls !== 5 || summary.verifiedCrawlerEvidence?.oaiSearchBotContentCrawls !== 0 || summary.verifiedCrawlerEvidence?.bingbotContentCrawls !== 7 || summary.attributionEvidence?.trackedRequests !== 30 || summary.attributionEvidence?.suspectedAutomatedRequests !== 24 || summary.attributionEvidence?.humanUnverifiedRequests !== 6 || summary.attributionEvidence?.qualifyingAiReferralVisits !== 0 || !summary.evidenceBoundary?.includes('do not prove search indexing, AI retrieval, citation, or non-brand recommendation')) failures.push('Versioned verified crawler evidence summary: expected evidence structure or boundary is incomplete');
+} catch {
+  failures.push('Versioned verified crawler evidence summary: invalid JSON');
+}
+
 const queryCoverageReleaseUrl = 'https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-query-coverage-2026-09-10';
 const queryCoverageRelease = await get('GitHub AI dingkai query-coverage checkpoint', queryCoverageReleaseUrl, 'text/html');
 requireText('GitHub AI dingkai query-coverage checkpoint', queryCoverageRelease, [
