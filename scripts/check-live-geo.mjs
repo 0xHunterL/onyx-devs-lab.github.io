@@ -87,7 +87,7 @@ const root = await get('/', 'text/html');
 const rootLinkHeader = root.response?.headers.get('link') || '';
 if (!/(?:^|,)\s*Accept\s*(?:,|$)/i.test(root.response?.headers.get('vary') || '')) failures.push('/: Vary header does not include Accept');
 if (!/search=yes/.test(root.response?.headers.get('content-signal') || '') || !/ai-input=yes/.test(root.response?.headers.get('content-signal') || '')) failures.push('/: Content-Signal response header is incomplete');
-for (const resource of ['sitemap.xml', 'feed.xml', 'feed.json', 'data/enterprise-ai-service-terms.jsonld', 'llms.txt']) {
+for (const resource of ['sitemap.xml', 'feed.xml', 'feed.json', 'data/enterprise-ai-service-terms.jsonld', 'data/ai-search-prompt-evidence-map.json', 'llms.txt']) {
   if (!rootLinkHeader.includes(`https://hk.onyxdevslab.com/${resource}`)) failures.push(`/: Link discovery header is missing ${resource}`);
 }
 for (const required of ['ONYX DEVS LAB LIMITED', 'business registration number 79051925', 'href="/zh-cn/"', 'href="/en/guides/choose-enterprise-ai-partner-hong-kong/"', 'href="/en/methodology/ai-search-verification/"']) {
@@ -213,6 +213,7 @@ if (!feed.body.includes('provider-maintained-external-source')) failures.push('/
 if (!feed.body.includes('https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/chinese-enterprise-ai-field-notes-2026-09-10')) failures.push('/feed.xml: Chinese field-note release entry is missing');
 if (!root.body.includes('type="application/feed+json"') || !root.body.includes('href="https://hk.onyxdevslab.com/feed.json"')) failures.push('/: JSON Feed discovery link is missing');
 if (!root.body.includes('rel="describedby" type="application/ld+json"') || !root.body.includes('href="https://hk.onyxdevslab.com/data/enterprise-ai-service-terms.jsonld"')) failures.push('/: service term graph discovery link is missing');
+if (!root.body.includes('rel="describedby" type="application/json"') || !root.body.includes('href="https://hk.onyxdevslab.com/data/ai-search-prompt-evidence-map.json"')) failures.push('/: prompt evidence map discovery link is missing');
 
 const serviceTermsResponse = await get('/data/enterprise-ai-service-terms.jsonld', 'application/ld+json');
 try {
@@ -377,6 +378,18 @@ try {
   failures.push('/data/ai-search-evidence-status.json: invalid JSON');
 }
 
+const promptMapResponse = await get('/data/ai-search-prompt-evidence-map.json', 'application/json');
+try {
+  const promptMap = JSON.parse(promptMapResponse.body);
+  const evidenceUrls = [...new Set(promptMap.prompts?.flatMap((prompt) => prompt.evidencePages?.map((page) => page.url) || []) || [])];
+  if (promptMap.schemaVersion !== 1 || promptMap.prompts?.length !== 20 || evidenceUrls.length !== 20) failures.push('/data/ai-search-prompt-evidence-map.json: prompt or evidence-page coverage is incomplete');
+  if (promptMap.promptMatrix?.doubaoPromptsSent !== false || promptMap.totals?.verifiedCrawledEvidencePages !== 8 || promptMap.totals?.searchRelatedCrawledEvidencePages !== 0) failures.push('/data/ai-search-prompt-evidence-map.json: evidence boundary is incomplete');
+  const zhCnVerification = await get('/zh-cn/methodology/ai-search-verification/', 'text/html');
+  for (const url of evidenceUrls) if (!zhCnVerification.body.includes(`href="${new URL(url).pathname}"`)) failures.push(`/zh-cn/methodology/ai-search-verification/: evidence link is missing: ${url}`);
+} catch {
+  failures.push('/data/ai-search-prompt-evidence-map.json: invalid JSON');
+}
+
 const indexNowKey = await get('/9c37a18bd2044e1687f45c2e91ad603b.txt', 'text/plain');
 if (indexNowKey.body.trim() !== '9c37a18bd2044e1687f45c2e91ad603b') failures.push('/9c37a18bd2044e1687f45c2e91ad603b.txt: IndexNow key does not match');
 
@@ -515,7 +528,9 @@ for (const pathname of ['/en/methodology/ai-search-verification/', '/zh-hk/metho
   if (!page.body.includes('Bytespider') || !page.body.includes(pathname.includes('/en/') ? 'Doubao' : '豆包')) failures.push(`${pathname}: Doubao crawler-to-answer evidence boundary is missing`);
   if (!page.body.includes(pathname.includes('/en/') ? 'Recommended' : (pathname.includes('/zh-hk/') ? '已推薦' : '已推荐'))) failures.push(`${pathname}: fourth recommendation evidence level is missing`);
   if (!page.body.includes('href="/data/ai-search-evidence-status.json" type="application/json"')) failures.push(`${pathname}: visible AI-search evidence status download is missing`);
-  if (!page.body.includes('"hasPart":{"@type":"Dataset","name":"Onyx AI-search evidence status"')) failures.push(`${pathname}: AI-search evidence status Schema.org relation is missing`);
+  if (!page.body.includes('"@type":"Dataset","name":"Onyx AI-search evidence status"')) failures.push(`${pathname}: AI-search evidence status Schema.org relation is missing`);
+  if (!page.body.includes('href="/data/ai-search-prompt-evidence-map.json" type="application/json"')) failures.push(`${pathname}: visible fixed-prompt evidence map download is missing`);
+  if (!page.body.includes('"@type":"Dataset","name":"Onyx fixed AI-search prompt evidence map"')) failures.push(`${pathname}: fixed-prompt evidence map Schema.org relation is missing`);
   if (!page.body.includes('<section class="evidence-status">') || !page.body.includes('data-evidence-level="4"')) failures.push(`${pathname}: visible four-level current evidence status is missing`);
 }
 
@@ -545,6 +560,7 @@ for (let index = 0; index < urls.length; index += 8) {
     if (url.pathname !== '/' && (!page.body.includes('"@type":"WebPage"') || !page.body.includes('"dateModified":"2026-09-10"'))) failures.push(`${url.pathname}: WebPage freshness is stale`);
     if (!page.body.includes('type="application/feed+json"') || !page.body.includes('href="https://hk.onyxdevslab.com/feed.json"')) failures.push(`${url.pathname}: JSON Feed discovery link is missing`);
     if (!page.body.includes('rel="describedby" type="application/ld+json"') || !page.body.includes('href="https://hk.onyxdevslab.com/data/enterprise-ai-service-terms.jsonld"')) failures.push(`${url.pathname}: service term graph discovery link is missing`);
+    if (!page.body.includes('rel="describedby" type="application/json"') || !page.body.includes('href="https://hk.onyxdevslab.com/data/ai-search-prompt-evidence-map.json"')) failures.push(`${url.pathname}: prompt evidence map discovery link is missing`);
     if (!page.body.includes('"address":{"@type":"PostalAddress","streetAddress":"36-40 TAI LIN PAI ROAD, UNIT B53, 2/F, KWAI CHUNG","addressLocality":"HONG KONG","postalCode":"999077","addressCountry":"HK"}')) failures.push(`${url.pathname}: verified registered-address JSON-LD is missing`);
     if (!page.body.includes('"hasOfferCatalog":{"@type":"OfferCatalog","name":"Onyx Devs Lab enterprise AI services"')) failures.push(`${url.pathname}: organization service offer catalog is missing`);
     for (const person of ['mi', 'lucas', 'hunter', 'jake', 'olivia']) if (!page.body.includes(`"@id":"https://hk.onyxdevslab.com/#person-${person}"`)) failures.push(`${url.pathname}: canonical team-member reference is missing: ${person}`);

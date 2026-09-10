@@ -178,7 +178,7 @@ for (const pathname of ['/en/about/', '/zh-hk/about/', '/zh-cn/about/']) {
   if (!html.includes('"@type":["AboutPage","ProfilePage"]') || !html.includes('"mainEntity":{"@id":"https://hk.onyxdevslab.com/#organization"}') || !html.includes('"dateModified":"2026-09-10"')) failures.push(`${pathname}: organization ProfilePage markup is incomplete`);
 }
 
-for (const file of ['robots.txt', 'sitemap.xml', 'feed.xml', 'feed.json', 'llms.txt', 'llms-full.txt', 'data/case-study-evidence.json', 'data/enterprise-ai-partner-scorecard.json', 'data/hong-kong-enterprise-ai-provider-shortlist.json', 'data/enterprise-ai-rfp-requirements.json', 'data/enterprise-ai-pilot-charter.json', 'data/enterprise-ai-engagement-model-map.json', 'data/enterprise-ai-service-terms.jsonld', 'data/chinese-enterprise-ai-field-notes.json', 'data/ai-search-evidence-status.json', 'data/organization.json', '.nojekyll']) {
+for (const file of ['robots.txt', 'sitemap.xml', 'feed.xml', 'feed.json', 'llms.txt', 'llms-full.txt', 'data/case-study-evidence.json', 'data/enterprise-ai-partner-scorecard.json', 'data/hong-kong-enterprise-ai-provider-shortlist.json', 'data/enterprise-ai-rfp-requirements.json', 'data/enterprise-ai-pilot-charter.json', 'data/enterprise-ai-engagement-model-map.json', 'data/enterprise-ai-service-terms.jsonld', 'data/chinese-enterprise-ai-field-notes.json', 'data/ai-search-evidence-status.json', 'data/ai-search-prompt-evidence-map.json', 'data/organization.json', '.nojekyll']) {
   if (!fs.existsSync(path.join(dist, file))) failures.push(`missing ${file}`);
 }
 
@@ -379,8 +379,24 @@ for (const pathname of aiSearchVerificationPaths) {
   if (!html.includes('Bytespider') || !html.includes(pathname.includes('/en/') ? 'Doubao' : '豆包')) failures.push(`${pathname}: Doubao crawler-to-answer evidence boundary is missing`);
   if (!html.includes(pathname.includes('/en/') ? 'Recommended' : (pathname.includes('/zh-hk/') ? '已推薦' : '已推荐'))) failures.push(`${pathname}: fourth recommendation evidence level is missing`);
   if (!html.includes('href="/data/ai-search-evidence-status.json" type="application/json"')) failures.push(`${pathname}: visible AI-search evidence status download is missing`);
-  if (!html.includes('"hasPart":{"@type":"Dataset","name":"Onyx AI-search evidence status"')) failures.push(`${pathname}: AI-search evidence status Schema.org relation is missing`);
+  if (!html.includes('"@type":"Dataset","name":"Onyx AI-search evidence status"')) failures.push(`${pathname}: AI-search evidence status Schema.org relation is missing`);
+  if (!html.includes('href="/data/ai-search-prompt-evidence-map.json" type="application/json"')) failures.push(`${pathname}: visible fixed-prompt evidence map download is missing`);
+  if (!html.includes('"@type":"Dataset","name":"Onyx fixed AI-search prompt evidence map"')) failures.push(`${pathname}: fixed-prompt evidence map Schema.org relation is missing`);
   if (!html.includes('<section class="evidence-status">') || !html.includes('data-evidence-level="4"')) failures.push(`${pathname}: visible four-level current evidence status is missing`);
+}
+try {
+  const promptMap = JSON.parse(fs.readFileSync(path.join(dist, 'data/ai-search-prompt-evidence-map.json'), 'utf8'));
+  const evidenceUrls = [...new Set(promptMap.prompts?.flatMap((prompt) => prompt.evidencePages?.map((page) => page.url) || []) || [])];
+  if (promptMap.schemaVersion !== 1 || promptMap.prompts?.length !== 20 || evidenceUrls.length !== 20) failures.push('AI-search prompt evidence map: prompt or evidence-page coverage is incomplete');
+  if (promptMap.promptMatrix?.doubaoPromptsSent !== false || promptMap.totals?.verifiedCrawledEvidencePages !== 8 || promptMap.totals?.searchRelatedCrawledEvidencePages !== 0) failures.push('AI-search prompt evidence map: evidence boundary is incomplete');
+  const sitemap = fs.readFileSync(path.join(dist, 'sitemap.xml'), 'utf8');
+  const zhCnPage = fs.readFileSync(path.join(dist, '/zh-cn/methodology/ai-search-verification/', 'index.html'), 'utf8');
+  for (const url of evidenceUrls) {
+    if (!sitemap.includes(`<loc>${url}</loc>`)) failures.push(`AI-search prompt evidence map: sitemap URL is missing: ${url}`);
+    if (!zhCnPage.includes(`href="${new URL(url).pathname}"`)) failures.push(`AI-search prompt evidence map: visible zh-CN evidence link is missing: ${url}`);
+  }
+} catch {
+  failures.push('AI-search prompt evidence map: invalid JSON');
 }
 const pilotGuidePaths = ['/en/guides/enterprise-ai-pilot-charter-hong-kong/', '/zh-hk/guides/enterprise-ai-pilot-charter/', '/zh-cn/guides/enterprise-ai-pilot-charter/'];
 for (const pathname of pilotGuidePaths) {
@@ -471,7 +487,7 @@ for (const agent of ['Claude-SearchBot', 'Claude-User', 'ClaudeBot', 'Googlebot'
 }
 
 const nginxConfig = fs.readFileSync(path.resolve('deploy/nginx-hk.conf'), 'utf8');
-for (const resource of ['sitemap.xml', 'feed.xml', 'feed.json', 'data/enterprise-ai-service-terms.jsonld', 'llms.txt']) {
+for (const resource of ['sitemap.xml', 'feed.xml', 'feed.json', 'data/enterprise-ai-service-terms.jsonld', 'data/ai-search-prompt-evidence-map.json', 'llms.txt']) {
   if (!nginxConfig.includes(`https://hk.onyxdevslab.com/${resource}`)) failures.push(`nginx: Link discovery header is missing ${resource}`);
 }
 for (const required of ['text/markdown', 'Vary "Accept"', 'Content-Signal "search=yes, ai-input=yes"', 'https://pubsubhubbub.appspot.com/', 'rel="hub"', 'rel="self"']) {
@@ -512,6 +528,7 @@ for (const file of htmlFiles) {
   if (!source) continue;
   if (!html.includes('type="application/feed+json"') || !html.includes('href="https://hk.onyxdevslab.com/feed.json"')) failures.push(`${path.relative(dist, file)}: JSON Feed discovery link is missing`);
   if (!html.includes('rel="describedby" type="application/ld+json"') || !html.includes('href="https://hk.onyxdevslab.com/data/enterprise-ai-service-terms.jsonld"')) failures.push(`${path.relative(dist, file)}: service term graph discovery link is missing`);
+  if (!html.includes('rel="describedby" type="application/json"') || !html.includes('href="https://hk.onyxdevslab.com/data/ai-search-prompt-evidence-map.json"')) failures.push(`${path.relative(dist, file)}: prompt evidence map discovery link is missing`);
   for (const match of html.matchAll(/<a\b[^>]*href="([^"]+)"/g)) {
     try {
       const target = new URL(match[1], source);
