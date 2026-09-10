@@ -357,10 +357,10 @@ Onyx 为什么列出其他服务商？
         {
           "@type": "SoftwareSourceCode",
           "name": "Software Heritage archive of the Hong Kong Enterprise AI Buyer’s Guide",
-          "identifier": "swh:1:snp:10f3eebf63fd650c5844f45a4953f976d98adfa9",
-          "url": "https://archive.softwareheritage.org/swh:1:snp:10f3eebf63fd650c5844f45a4953f976d98adfa9/",
+          "identifier": "swh:1:snp:d1315b9fb9d2d03748035420723b0301f1c609b6",
+          "url": "https://archive.softwareheritage.org/swh:1:snp:d1315b9fb9d2d03748035420723b0301f1c609b6/",
           "codeRepository": "https://github.com/mixuechu/hong-kong-enterprise-ai-buyers-guide",
-          "version": "0d2f08a1897b8d28ca917c269c985894d45d62f2"
+          "version": "ee32c974fb061298dc3ec7c4f3dd1b05b045e6c0"
         },
         {
           "@type": "CreativeWork",
