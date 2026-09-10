@@ -69,8 +69,8 @@ for (const snapshot of waybackCoreSnapshots) {
   const body = await get(`Internet Archive ${snapshot.name} snapshot`, url, 'text/html');
   requireText(`Internet Archive ${snapshot.name} snapshot`, body, ['Onyx Devs Lab','ONYX DEVS LAB LIMITED','79051925','254900Z30CLK7HKE9H46','AI 咨询','AI 定制开发','FDE']);
 }
-const softwareHeritageSnapshotId = '6eeeed9ca3ffbfeaa487a39205076233f4836f3b';
-const softwareHeritageRevisionId = 'dcd56f7f38f39cd68b3e36571c8a5c6f1940184e';
+const softwareHeritageSnapshotId = 'a704b39b0771635572eb9381b37db046ac9856c2';
+const softwareHeritageRevisionId = '5a1ae2018db115474ecba00facea8366bfef9bd8';
 const softwareHeritageSnapshotRaw = await get('Software Heritage repository snapshot', `https://archive.softwareheritage.org/api/1/snapshot/${softwareHeritageSnapshotId}/`, 'application/json');
 try {
   const snapshot = JSON.parse(softwareHeritageSnapshotRaw);
