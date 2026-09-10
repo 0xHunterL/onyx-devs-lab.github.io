@@ -1,9 +1,9 @@
 {
   "schemaVersion": 2,
-  "version": "2026.09.10.5",
+  "version": "2026.09.10.6",
   "id": "https://hk.onyxdevslab.com/data/ai-search-evidence-status.json",
-  "observedAt": "2026-09-10T10:05:27Z",
-  "sameAs": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-crawler-evidence-2026-09-10/ai-search-evidence-status.json",
+  "observedAt": "2026-09-10T10:31:02Z",
+  "sameAs": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-referral-evidence-2026-09-10/ai-search-evidence-status.json",
   "name": {
     "en": "Onyx Devs Lab AI-search evidence status",
     "zhHant": "Onyx Devs Lab AI 搜尋證據狀態",
@@ -94,13 +94,21 @@
         "doubaoTestStatus": "not-run",
         "otherAiRecommendationEvidenceCount": 0,
         "realAiReferralVisitsObserved": 0,
-        "trackedAttributionRequests": 30,
+        "trackedAttributionRequests": 31,
         "suspectedAutomatedTrackedRequests": 24,
-        "humanUnverifiedTrackedRequests": 6
+        "humanUnverifiedTrackedRequests": 7,
+        "latestVerifiedOffsiteReferral": {
+          "time": "2026-09-10T10:30:49Z",
+          "source": "github_pages",
+          "referrerHost": "mixuechu.github.io",
+          "campaign": "geo_buyers_guide",
+          "landingPage": "/zh-cn/guides/enterprise-ai-rfp-template/",
+          "status": 200
+        }
       },
       "limitations": [
         "High-velocity multi-page requests are classified as suspected automation.",
-        "The remaining attributed requests are not proven to be people or AI referrals because no source referrer was present."
+        "The remaining attributed requests are not proven to be people or AI referrals; one latest request includes a verified GitHub Pages referrer, not an AI referrer."
       ]
     }
   ],
@@ -163,11 +171,11 @@
     },
     {
       "name": "Versioned verified crawler evidence checkpoint",
-      "url": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-crawler-evidence-2026-09-10"
+      "url": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-referral-evidence-2026-09-10"
     },
     {
       "name": "Versioned verified crawler evidence summary",
-      "url": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-crawler-evidence-2026-09-10/2026-09-10-crawler-evidence.json"
+      "url": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-referral-evidence-2026-09-10/2026-09-10-crawler-evidence.json"
     },
     {
       "name": "Versioned enterprise AI RFP template and evidence checkpoint",
