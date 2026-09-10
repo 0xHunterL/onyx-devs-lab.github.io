@@ -1,0 +1,72 @@
+{
+  "schemaVersion": 1,
+  "observedAt": "2026-09-10T10:05:27Z",
+  "logScope": {
+    "host": "hk.onyxdevslab.com",
+    "since": "2026-09-01T00:00:00Z",
+    "includedRotatedLogs": true
+  },
+  "verification": {
+    "openAi": "Published GPTBot and OAI-SearchBot IPv4 prefixes",
+    "bing": "Reverse DNS under search.msn.com followed by forward confirmation of the original IP",
+    "google": "Reverse DNS under googlebot.com followed by forward confirmation of the original IP",
+    "perplexity": "Published PerplexityBot and Perplexity-User IPv4 prefixes"
+  },
+  "verifiedCrawlerEvidence": {
+    "gptBotContentCrawls": 24,
+    "gptBotDiscoveryFileCrawls": 2,
+    "oaiSearchBotContentCrawls": 0,
+    "oaiSearchBotDiscoveryFileCrawls": 5,
+    "bingbotContentCrawls": 7,
+    "bingbotDiscoveryFileCrawls": 1,
+    "googlebotContentCrawls": 0,
+    "googlebotDiscoveryFileCrawls": 0,
+    "perplexityContentCrawls": 0,
+    "perplexityDiscoveryFileCrawls": 0
+  },
+  "latestVerifiedEvents": [
+    {
+      "time": "2026-09-10T06:10:58Z",
+      "family": "GPTBot",
+      "path": "/en/guides/what-is-ai-dingkai/",
+      "status": 200,
+      "sourceIp": "74.7.227.63",
+      "evidenceType": "verified-content-crawl"
+    },
+    {
+      "time": "2026-09-10T09:34:20Z",
+      "family": "OAI-SearchBot",
+      "path": "/robots.txt",
+      "status": 200,
+      "sourceIp": "51.8.102.150",
+      "evidenceType": "verified-discovery-file-crawl"
+    },
+    {
+      "time": "2026-09-09T10:40:54Z",
+      "family": "Bingbot",
+      "path": "/zh-hk/methodology/case-study-evidence-register/",
+      "status": 200,
+      "sourceIp": "52.167.144.159",
+      "evidenceType": "verified-content-crawl"
+    }
+  ],
+  "attributionEvidence": {
+    "trackedRequests": 30,
+    "suspectedAutomatedRequests": 24,
+    "humanUnverifiedRequests": 6,
+    "qualifyingAiReferralVisits": 0,
+    "burstRule": "At least 8 requests across at least 5 landing pages within 60 seconds for the same User-Agent, source, and campaign"
+  },
+  "publicSearchEvidence": {
+    "checkedAt": "2026-09-10T09:44:00Z",
+    "websiteObserved": false,
+    "queries": [
+      "\"ONYX-GEO-VERIFY-79051925-20260908\"",
+      "\"Onyx Devs Lab\"",
+      "site:hk.onyxdevslab.com",
+      "\"AI 定开\" \"Onyx Devs Lab\""
+    ]
+  },
+  "doubaoTestStatus": "not-run",
+  "evidenceBoundary": "Verified crawler access proves only the stated request. GPTBot is a training crawler. Discovery-file access is not content ingestion. IndexNow receipt, attributed requests, crawler access, and public files do not prove search indexing, AI retrieval, citation, or non-brand recommendation. No prompt was sent to Doubao for this checkpoint."
+}
