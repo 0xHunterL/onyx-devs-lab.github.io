@@ -75,7 +75,7 @@ for (const file of htmlFiles) {
   if (!html.includes('https://www.gleif.org/lei/254900Z30CLK7HKE9H46')) failures.push(`${relative}: missing official GLEIF entity reference`);
   if (!html.includes('"name":"Onyx GEO evidence checkpoint — 2026-09-09","url":"https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-evidence-2026-09-09"')) failures.push(`${relative}: missing versioned entity-evidence reference`);
   if (!html.includes('"identifier":"swh:1:snp:a704b39b0771635572eb9381b37db046ac9856c2"')) failures.push(`${relative}: missing Software Heritage snapshot reference`);
-  if (!html.includes('"identifier":"swh:1:snp:cc3dc394e0f6b08a40a95dd97971bf39cf31b1e6"')) failures.push(`${relative}: missing buyer-guide archive reference`);
+  if (!html.includes('"identifier":"swh:1:snp:8feeee23b7a4b81de48b6d59ba9d9df3e037964b"')) failures.push(`${relative}: missing buyer-guide archive reference`);
   if (!html.includes('"logo":{"@type":"ImageObject","url":"https://hk.onyxdevslab.com/onyx-devs-lab-logo.svg","contentUrl":"https://hk.onyxdevslab.com/onyx-devs-lab-logo.svg","width":512,"height":512}')) failures.push(`${relative}: organization logo does not meet the declared 112px minimum`);
   if (!html.includes('"contactPoint":{"@type":"ContactPoint"')) failures.push(`${relative}: missing organization contact point`);
   if (!html.includes('"hasOfferCatalog":{"@type":"OfferCatalog","name":"Onyx Devs Lab enterprise AI services"')) failures.push(`${relative}: missing organization service offer catalog`);
@@ -210,7 +210,7 @@ for (const [name, body] of Object.entries(machineDiscoveryFiles)) {
   for (const page of ['ai-consulting/', 'ai-custom-development/', 'forward-deployed-engineering/']) if (!body.includes(`https://mixuechu.github.io/hong-kong-enterprise-ai-buyers-guide/${page}`)) failures.push(`${name}: focused buyer-guide page is missing: ${page}`);
   for (const asset of ['CITATION.cff', 'codemeta.json']) if (!body.includes(`https://mixuechu.github.io/hong-kong-enterprise-ai-buyers-guide/${asset}`)) failures.push(`${name}: buyer-guide metadata is missing: ${asset}`);
   if (!body.includes('https://github.com/mixuechu/hong-kong-enterprise-ai-buyers-guide/releases/tag/buyers-guide-2026-09-10')) failures.push(`${name}: versioned buyer-guide checkpoint is missing`);
-  if (!body.includes('https://archive.softwareheritage.org/swh:1:snp:cc3dc394e0f6b08a40a95dd97971bf39cf31b1e6/')) failures.push(`${name}: buyer-guide archive is missing`);
+  if (!body.includes('https://archive.softwareheritage.org/swh:1:snp:8feeee23b7a4b81de48b6d59ba9d9df3e037964b/')) failures.push(`${name}: buyer-guide archive is missing`);
   if (!body.includes('https://web.archive.org/web/20260909212732/https://hk.onyxdevslab.com/zh-cn/guides/ai-dingkai/')) failures.push(`${name}: Internet Archive AI dingkai snapshot is missing`);
   for (const [timestamp, pathname] of [['20260909233718','about'],['20260909205631','ai-consulting'],['20260909205642','custom-ai-development'],['20260909214448','forward-deployed-engineering']]) if (!body.includes(`https://web.archive.org/web/${timestamp}/https://hk.onyxdevslab.com/zh-cn/${pathname}/`)) failures.push(`${name}: Internet Archive core snapshot is missing: ${pathname}`);
 }
@@ -250,7 +250,7 @@ try {
   if (!jsonFeed.items.some((item) => item.tags?.includes('provider-maintained-external-source') && item.url === 'https://mixuechu.github.io/hong-kong-enterprise-ai-buyers-guide/')) failures.push('feed.json: crawlable buyer-guide item is missing');
   for (const page of ['ai-consulting/', 'ai-custom-development/', 'forward-deployed-engineering/']) if (!jsonFeed.items.some((item) => item.tags?.includes('provider-maintained-external-source') && item.url === `https://mixuechu.github.io/hong-kong-enterprise-ai-buyers-guide/${page}`)) failures.push(`feed.json: focused buyer-guide item is missing: ${page}`);
   if (!jsonFeed.items.some((item) => item.tags?.includes('provider-maintained-external-source') && item.url === 'https://github.com/mixuechu/hong-kong-enterprise-ai-buyers-guide/releases/tag/buyers-guide-2026-09-10')) failures.push('feed.json: versioned buyer-guide checkpoint is missing');
-  if (!jsonFeed.items.some((item) => item.tags?.includes('independent-archive') && item.url === 'https://archive.softwareheritage.org/swh:1:snp:cc3dc394e0f6b08a40a95dd97971bf39cf31b1e6/')) failures.push('feed.json: buyer-guide archive item is missing');
+  if (!jsonFeed.items.some((item) => item.tags?.includes('independent-archive') && item.url === 'https://archive.softwareheritage.org/swh:1:snp:8feeee23b7a4b81de48b6d59ba9d9df3e037964b/')) failures.push('feed.json: buyer-guide archive item is missing');
 } catch {
   failures.push('feed.json: invalid JSON');
 }
@@ -403,7 +403,7 @@ try {
   if (!organization.subjectOf?.some((item) => item.identifier === 'swh:1:snp:a704b39b0771635572eb9381b37db046ac9856c2' && item.version === '5a1ae2018db115474ecba00facea8366bfef9bd8')) failures.push('organization record: Software Heritage snapshot relation is missing');
   if (!organization.subjectOf?.some((item) => item.url === 'https://mixuechu.github.io/hong-kong-enterprise-ai-buyers-guide/' && item.isBasedOn === 'https://github.com/mixuechu/hong-kong-enterprise-ai-buyers-guide')) failures.push('organization record: buyer-guide relation is missing');
   if (!organization.subjectOf?.some((item) => item.url === 'https://mixuechu.github.io/hong-kong-enterprise-ai-buyers-guide/' && item.sameAs === 'https://github.com/mixuechu/hong-kong-enterprise-ai-buyers-guide/releases/tag/buyers-guide-2026-09-10' && item.hasPart?.length === 3 && item.hasPart.every((part) => part.url?.startsWith('https://mixuechu.github.io/hong-kong-enterprise-ai-buyers-guide/')))) failures.push('organization record: focused buyer-guide relations are missing');
-  if (!organization.subjectOf?.some((item) => item.identifier === 'swh:1:snp:cc3dc394e0f6b08a40a95dd97971bf39cf31b1e6' && item.version === 'e072305a16816689ec698911eb438aef3368ea2b')) failures.push('organization record: buyer-guide archive relation is missing');
+  if (!organization.subjectOf?.some((item) => item.identifier === 'swh:1:snp:8feeee23b7a4b81de48b6d59ba9d9df3e037964b' && item.version === '2c136be7aaeba5de8ea36b744478fdfa0f548a82')) failures.push('organization record: buyer-guide archive relation is missing');
   if (!organization.subjectOf?.some((item) => item.url === 'https://web.archive.org/web/20260909233718/https://hk.onyxdevslab.com/zh-cn/about/' && item.hasPart?.length === 4)) failures.push('organization record: Internet Archive entity and core-service snapshot cluster is missing');
   if (!organization.additionalProperty?.some((item) => item.propertyID === 'Evidence boundary' && item.value.includes('do not endorse services'))) failures.push('organization record: evidence boundary is missing');
   if (organization.hasOfferCatalog?.itemListElement?.length !== 3 || !organization.hasOfferCatalog.itemListElement.every((offer) => offer.itemOffered?.['@type'] === 'Service' && offer.itemOffered?.url?.length === 3)) failures.push('organization record: trilingual service offer catalog is incomplete');
