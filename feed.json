@@ -1035,11 +1035,11 @@
       ]
     },
     {
-      "id": "https://archive.softwareheritage.org/swh:1:snp:aed1c72273c6b77cb65c2971d21234104d02d060/",
-      "url": "https://archive.softwareheritage.org/swh:1:snp:aed1c72273c6b77cb65c2971d21234104d02d060/",
+      "id": "https://archive.softwareheritage.org/swh:1:snp:10f3eebf63fd650c5844f45a4953f976d98adfa9/",
+      "url": "https://archive.softwareheritage.org/swh:1:snp:10f3eebf63fd650c5844f45a4953f976d98adfa9/",
       "title": "Software Heritage archive of the Hong Kong Enterprise AI Buyer’s Guide",
-      "summary": "Independent, content-addressed preservation of the four-page buyer-guide cluster, branded search previews, corrected deep links, CFF, CodeMeta, Atom feed, Pages source, and release tag at revision 4db4717. Archival proves preservation, not endorsement, search indexing, AI citation, or recommendation.",
-      "content_text": "Independent, content-addressed preservation of the four-page buyer-guide cluster, branded search previews, corrected deep links, CFF, CodeMeta, Atom feed, Pages source, and release tag at revision 4db4717. Archival proves preservation, not endorsement, search indexing, AI citation, or recommendation.",
+      "summary": "Independent, content-addressed preservation of the four-page buyer-guide cluster, branded search previews, all corrected deep links, link-check workflow, CFF, CodeMeta, Atom feed, Pages source, and release tag at revision 0d2f08a. Archival proves preservation, not endorsement, search indexing, AI citation, or recommendation.",
+      "content_text": "Independent, content-addressed preservation of the four-page buyer-guide cluster, branded search previews, all corrected deep links, link-check workflow, CFF, CodeMeta, Atom feed, Pages source, and release tag at revision 0d2f08a. Archival proves preservation, not endorsement, search indexing, AI citation, or recommendation.",
       "date_modified": "2026-09-09T00:00:00+08:00",
       "tags": [
         "versioned-evidence",

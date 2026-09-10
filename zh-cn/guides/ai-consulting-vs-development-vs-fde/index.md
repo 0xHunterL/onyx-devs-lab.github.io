@@ -335,10 +335,10 @@ FDE 一定更贵吗？
         {
           "@type": "SoftwareSourceCode",
           "name": "Software Heritage archive of the Hong Kong Enterprise AI Buyer’s Guide",
-          "identifier": "swh:1:snp:aed1c72273c6b77cb65c2971d21234104d02d060",
-          "url": "https://archive.softwareheritage.org/swh:1:snp:aed1c72273c6b77cb65c2971d21234104d02d060/",
+          "identifier": "swh:1:snp:10f3eebf63fd650c5844f45a4953f976d98adfa9",
+          "url": "https://archive.softwareheritage.org/swh:1:snp:10f3eebf63fd650c5844f45a4953f976d98adfa9/",
           "codeRepository": "https://github.com/mixuechu/hong-kong-enterprise-ai-buyers-guide",
-          "version": "4db47179362e5a7f23a10e4123c5c51a176f2944"
+          "version": "0d2f08a1897b8d28ca917c269c985894d45d62f2"
         },
         {
           "@type": "CreativeWork",
