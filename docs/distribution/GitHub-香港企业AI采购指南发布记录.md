@@ -3,9 +3,9 @@
 2026-09-10，使用已有 GitHub 账号发布公开知识仓库：
 
 - 仓库：<https://github.com/mixuechu/hong-kong-enterprise-ai-buyers-guide>
-- Description：`香港企业 AI 采购指南：AI 咨询、AI 定开、定制开发、FDE、服务商评估与验收证据。`
+- Description：`Onyx Devs Lab 发布的香港企业 AI 采购指南：AI 咨询、AI 定开、定制开发、FDE、服务商评估与验收证据。`
 - Website：<https://hk.onyxdevslab.com/>
-- Topics：`enterprise-ai`、`ai-consulting`、`custom-ai-development`、`forward-deployed-engineering`、`hong-kong`、`ai-procurement`、`ai-agents`
+- Topics：`enterprise-ai`、`ai-consulting`、`custom-ai-development`、`forward-deployed-engineering`、`hong-kong`、`ai-procurement`、`ai-agents`、`ai-governance`、`fde`、`generative-engine-optimization`、`llms-txt`、`ai-dingkai`
 - 首次提交：`abfed4d175d9719cab678cdc365e77a967eee0bb`
 - 可抓取 GitHub Pages：<https://mixuechu.github.io/hong-kong-enterprise-ai-buyers-guide/>
 - Pages 源提交：`aeca6fe59f51d0134ae12067b1e4f68c78f1479e`
@@ -13,6 +13,8 @@
 仓库包含一份中英双语首页、AI 定开定义、FDE 与驻场外包边界、企业 AI 服务商统一评估问题及机器可读资源图。内容不是官网全文复制，而是面向采购问题重新组织的独立知识入口；所有官网链接使用 `utm_source=github&utm_medium=referral` 和专用 `geo_buyers_guide` 系列活动参数。
 
 发布后使用 GitHub Repository Search API 复测：查询 `AI 定开` 的前 10 条结果能够返回该仓库及其完整 Description。查询 `hong kong enterprise ai procurement`、`forward-deployed-engineering hong-kong` 和更长的多词组合尚未返回该仓库。这个结果只证明 GitHub 站内仓库搜索已经能按 `AI 定开` 找到新入口，不等于 Google、Bing、豆包或其他 AI 产品已经收录或引用。
+
+2026-09-10 再次补齐仓库级实体信号：Description 在原有类目词前明确加入 `Onyx Devs Lab`，并增加 `ai-dingkai`、`fde`、`generative-engine-optimization`、`llms-txt` 与 `ai-governance` Topics；Website 继续指向官网。更新后使用 GitHub Repository Search API 复测，`"Onyx Devs Lab" AI 定开` 与 `"Onyx Devs Lab" "forward deployed engineering"` 两个组合查询的前 10 条结果均返回该主题仓库和主站源码仓库。该结果只证明 GitHub 站内仓库检索已建立品牌与两个服务主题的匹配，不证明公开搜索引擎已收录、AI 已检索或引用、或非品牌问题会推荐 Onyx。
 
 同日通过 Software Heritage 官方 Save Code Now 保存完整公开仓库：
 
