@@ -574,7 +574,7 @@ const serviceOfferCatalog={"@type":"OfferCatalog",name:'Onyx Devs Lab enterprise
   {"@type":"Offer",itemOffered:{"@type":"Service","@id":`${origin}/#service-forward-deployed-engineering`,name:['Forward Deployed Engineering (FDE)','前線部署工程（FDE）','前线部署工程（FDE）'],url:[`${origin}/en/forward-deployed-engineering/`,`${origin}/zh-hk/forward-deployed-engineering/`,`${origin}/zh-cn/forward-deployed-engineering/`],provider:{"@id":`${origin}/#organization`},areaServed:['Hong Kong','Greater China','Global']}},
 ]};
 const entityReferences=['https://github.com/0xHunterL/onyx-devs-lab.github.io','https://www.gleif.org/lei/254900Z30CLK7HKE9H46','https://lei.bloomberg.com/leis/view/254900Z30CLK7HKE9H46','https://www.cr.gov.hk/docs/wrpt/RNC063_2025.10.27-2025.11.02.pdf'];
-const softwareHeritageSnapshotUrl='https://archive.softwareheritage.org/swh:1:snp:a704b39b0771635572eb9381b37db046ac9856c2/';
+const softwareHeritageSnapshotUrl='https://archive.softwareheritage.org/swh:1:snp:947880d501d459884fefdaf1bc95a9978599727a/';
 const buyerGuideRepositoryUrl='https://github.com/mixuechu/hong-kong-enterprise-ai-buyers-guide';
 const buyerGuideSiteUrl='https://mixuechu.github.io/hong-kong-enterprise-ai-buyers-guide/';
 const buyerGuideReleaseUrl='https://github.com/mixuechu/hong-kong-enterprise-ai-buyers-guide/releases/tag/buyers-guide-2026-09-10';
@@ -594,7 +594,7 @@ const internetArchiveEvidence={"@type":"CreativeWork",name:'Internet Archive sna
 ]};
 const entityEvidence=[
   {"@type":"CreativeWork",name:'Onyx GEO evidence checkpoint — 2026-09-09',url:'https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-evidence-2026-09-09'},
-  {"@type":"SoftwareSourceCode",name:'Software Heritage archive of the Onyx Devs Lab public repository',identifier:'swh:1:snp:a704b39b0771635572eb9381b37db046ac9856c2',url:softwareHeritageSnapshotUrl,codeRepository:'https://github.com/0xHunterL/onyx-devs-lab.github.io',version:'5a1ae2018db115474ecba00facea8366bfef9bd8'},
+  {"@type":"SoftwareSourceCode",name:'Software Heritage archive of the Onyx Devs Lab public repository',identifier:'swh:1:snp:947880d501d459884fefdaf1bc95a9978599727a',url:softwareHeritageSnapshotUrl,codeRepository:'https://github.com/0xHunterL/onyx-devs-lab.github.io',version:'fe91aae7bb44331aac110650d1af4cfebf6364d3'},
   {"@type":"CreativeWork",name:'Hong Kong Enterprise AI Buyer’s Guide',description:'Provider-authored field-guide cluster covering AI advisory, AI 定开, custom AI development, FDE, vendor evaluation, and acceptance evidence.',url:buyerGuideSiteUrl,isBasedOn:buyerGuideRepositoryUrl,sameAs:buyerGuideReleaseUrl,hasPart:buyerGuideFocusedPages},
   {"@type":"SoftwareSourceCode",name:'Software Heritage archive of the Hong Kong Enterprise AI Buyer’s Guide',identifier:'swh:1:snp:aed1c72273c6b77cb65c2971d21234104d02d060',url:buyerGuideArchiveUrl,codeRepository:buyerGuideRepositoryUrl,version:'4db47179362e5a7f23a10e4123c5c51a176f2944'},
   internetArchiveEvidence,
@@ -935,7 +935,7 @@ const organizationRecord={
     {'@type':'CreativeWork',name:'Hong Kong Companies Registry incorporation record',description:'Corroborates legal name, business registration number, and founding date.',url:'https://www.cr.gov.hk/docs/wrpt/RNC063_2025.10.27-2025.11.02.pdf'},
     {'@type':'CreativeWork',name:'GLEIF LEI record',description:'Corroborates legal name, LEI, entity status, registration status, and registered address.',url:'https://www.gleif.org/lei/254900Z30CLK7HKE9H46'},
     {'@type':'CreativeWork',name:'Bloomberg LEI record',description:'Corroborates legal name, LEI, registration identifier, and registered address.',url:'https://lei.bloomberg.com/leis/view/254900Z30CLK7HKE9H46'},
-    {'@type':'SoftwareSourceCode',name:'Software Heritage archive of the Onyx Devs Lab public repository',description:'Independently preserves the public source, citation metadata, machine-readable evidence files, and their Git history at revision 5a1ae20. Archival does not endorse service claims or prove search indexing.',identifier:'swh:1:snp:a704b39b0771635572eb9381b37db046ac9856c2',url:softwareHeritageSnapshotUrl,codeRepository:'https://github.com/0xHunterL/onyx-devs-lab.github.io',version:'5a1ae2018db115474ecba00facea8366bfef9bd8'},
+    {'@type':'SoftwareSourceCode',name:'Software Heritage archive of the Onyx Devs Lab public repository',description:'Independently preserves the public source, citation metadata, current crawler/referral checkpoints, machine-readable evidence files, and their Git history at revision fe91aae. Archival does not endorse service claims or prove search indexing.',identifier:'swh:1:snp:947880d501d459884fefdaf1bc95a9978599727a',url:softwareHeritageSnapshotUrl,codeRepository:'https://github.com/0xHunterL/onyx-devs-lab.github.io',version:'fe91aae7bb44331aac110650d1af4cfebf6364d3'},
     {'@type':'CreativeWork',name:'Hong Kong Enterprise AI Buyer’s Guide',description:'Provider-authored field-guide cluster covering AI advisory, AI 定开, custom AI development, FDE, vendor evaluation, and acceptance evidence.',url:buyerGuideSiteUrl,isBasedOn:buyerGuideRepositoryUrl,sameAs:buyerGuideReleaseUrl,hasPart:buyerGuideFocusedPages},
     {'@type':'SoftwareSourceCode',name:'Software Heritage archive of the Hong Kong Enterprise AI Buyer’s Guide',description:'Independently preserves the four-page guide cluster, branded search previews, corrected deep links, CFF, CodeMeta, Atom feed, Pages source, and release tag at revision 4db4717. Archival does not endorse the guidance or prove search indexing.',identifier:'swh:1:snp:aed1c72273c6b77cb65c2971d21234104d02d060',url:buyerGuideArchiveUrl,codeRepository:buyerGuideRepositoryUrl,version:'4db47179362e5a7f23a10e4123c5c51a176f2944'},
     internetArchiveEvidence,
@@ -1088,7 +1088,7 @@ const fullKnowledge=[
   `Citation File Format metadata: ${citationRawUrl}`,
   `Versioned citation metadata checkpoint: ${citationReleaseUrl}`,
   `Software Heritage repository snapshot: ${softwareHeritageSnapshotUrl}`,
-  'Software Heritage archived revision: swh:1:rev:5a1ae2018db115474ecba00facea8366bfef9bd8',
+  'Software Heritage archived revision: swh:1:rev:fe91aae7bb44331aac110650d1af4cfebf6364d3',
   `Hong Kong Enterprise AI Buyer’s Guide: ${buyerGuideSiteUrl}`,
   `Hong Kong enterprise AI consulting buyer guide: ${buyerGuideSiteUrl}ai-consulting/`,
   `AI 定开 and custom AI development buyer guide: ${buyerGuideSiteUrl}ai-custom-development/`,
