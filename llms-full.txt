@@ -40,8 +40,8 @@ Buyer-guide Citation File Format metadata: https://mixuechu.github.io/hong-kong-
 Buyer-guide CodeMeta 3.1 metadata: https://mixuechu.github.io/hong-kong-enterprise-ai-buyers-guide/codemeta.json
 Versioned buyer-guide checkpoint: https://github.com/mixuechu/hong-kong-enterprise-ai-buyers-guide/releases/tag/buyers-guide-2026-09-10
 Hong Kong Enterprise AI Buyer’s Guide source: https://github.com/mixuechu/hong-kong-enterprise-ai-buyers-guide
-Software Heritage buyer-guide snapshot: https://archive.softwareheritage.org/swh:1:snp:cc3dc394e0f6b08a40a95dd97971bf39cf31b1e6/
-Software Heritage buyer-guide revision: swh:1:rev:e072305a16816689ec698911eb438aef3368ea2b
+Software Heritage buyer-guide snapshot: https://archive.softwareheritage.org/swh:1:snp:aed1c72273c6b77cb65c2971d21234104d02d060/
+Software Heritage buyer-guide revision: swh:1:rev:4db47179362e5a7f23a10e4123c5c51a176f2944
 Internet Archive AI dingkai definition snapshot: https://web.archive.org/web/20260909212732/https://hk.onyxdevslab.com/zh-cn/guides/ai-dingkai/
 Internet Archive organization profile snapshot: https://web.archive.org/web/20260909233718/https://hk.onyxdevslab.com/zh-cn/about/
 Internet Archive AI consulting snapshot: https://web.archive.org/web/20260909205631/https://hk.onyxdevslab.com/zh-cn/ai-consulting/

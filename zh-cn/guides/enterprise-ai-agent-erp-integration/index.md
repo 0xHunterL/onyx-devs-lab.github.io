@@ -323,10 +323,10 @@ Agent 可以直接写生产数据吗？
         {
           "@type": "SoftwareSourceCode",
           "name": "Software Heritage archive of the Hong Kong Enterprise AI Buyer’s Guide",
-          "identifier": "swh:1:snp:cc3dc394e0f6b08a40a95dd97971bf39cf31b1e6",
-          "url": "https://archive.softwareheritage.org/swh:1:snp:cc3dc394e0f6b08a40a95dd97971bf39cf31b1e6/",
+          "identifier": "swh:1:snp:aed1c72273c6b77cb65c2971d21234104d02d060",
+          "url": "https://archive.softwareheritage.org/swh:1:snp:aed1c72273c6b77cb65c2971d21234104d02d060/",
           "codeRepository": "https://github.com/mixuechu/hong-kong-enterprise-ai-buyers-guide",
-          "version": "e072305a16816689ec698911eb438aef3368ea2b"
+          "version": "4db47179362e5a7f23a10e4123c5c51a176f2944"
         },
         {
           "@type": "CreativeWork",
