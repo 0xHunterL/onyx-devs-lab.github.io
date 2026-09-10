@@ -29,6 +29,8 @@ const promptCrawlCoverageReleaseUrl = 'https://github.com/0xHunterL/onyx-devs-la
 const promptCrawlCoverageAssetUrl = 'https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-prompt-crawl-coverage-2026-09-10/2026-09-10-prompt-crawl-coverage.json';
 const promptCrawlSourceAssetUrl = 'https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-prompt-crawl-coverage-2026-09-10/2026-09-10-verified-crawler-report.json';
 const promptCrawlStatusAssetUrl = 'https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-prompt-crawl-coverage-2026-09-10/ai-search-evidence-status.json';
+const promptEvidenceMapReleaseUrl = 'https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-prompt-evidence-map-2026-09-10';
+const promptEvidenceMapReleaseAssetUrl = 'https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-prompt-evidence-map-2026-09-10/ai-search-prompt-evidence-map.json';
 const aiSearchStatusReleaseUrl = 'https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-ai-rfp-template-2026-09-10';
 const aiSearchStatusReleaseAssetUrl = 'https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-ai-rfp-template-2026-09-10/ai-search-evidence-status.json';
 const serviceTermsReleaseAssetUrl = 'https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-ai-rfp-template-2026-09-10/enterprise-ai-service-terms.jsonld';
@@ -622,7 +624,7 @@ function layout(page, body, type='Service'){
     primary.category={"@id":`${canonical(topicEntityMapPath)}#${serviceCategory.code}`};
   }
   if(type==='Article'){primary.author={"@id":`${origin}/#organization`};primary.publisher={"@id":`${origin}/#organization`};primary.dateModified=updated;primary.headline=page.h1;if(page.sourceReferences)primary.citation=page.sourceReferences.map(([name,url])=>({"@type":"CreativeWork",name,url}));if(page.downloadUrl){primary.hasPart={"@type":"Dataset",name:page.downloadName||'Onyx enterprise AI partner procurement scorecard',url:canonical(page.downloadUrl),distribution:{"@type":"DataDownload",encodingFormat:'application/json',contentUrl:canonical(page.downloadUrl)}};if(page.downloadUrl===partnerScorecardPath)primary.hasPart.sameAs=partnerScorecardReleaseUrl;}}
-  if(page.downloadName==='Onyx AI-search evidence status')primary.hasPart=[primary.hasPart,{"@type":"Dataset",name:'Onyx fixed AI-search prompt evidence map',url:canonical(aiSearchPromptEvidenceMapPath),isAccessibleForFree:true,distribution:{"@type":"DataDownload",encodingFormat:'application/json',contentUrl:canonical(aiSearchPromptEvidenceMapPath)}}];
+  if(page.downloadName==='Onyx AI-search evidence status')primary.hasPart=[primary.hasPart,{"@type":"Dataset",name:'Onyx fixed AI-search prompt evidence map',url:canonical(aiSearchPromptEvidenceMapPath),sameAs:promptEvidenceMapReleaseAssetUrl,isAccessibleForFree:true,distribution:{"@type":"DataDownload",encodingFormat:'application/json',contentUrl:canonical(aiSearchPromptEvidenceMapPath)}}];
   if(page.archiveUrl&&type!=='Service')primary.archivedAt=page.archiveUrl;
   if(type==='Article'){primary.datePublished=publishedDateFor(page.path);primary.mainEntityOfPage={"@id":canonical(page.path)};primary.articleSection=page.eyebrow||(cn?'案例研究':(zh?'案例研究':'Case studies'));}
   if(type==='Article'&&updatedAiSearchPaths.has(page.path))primary.dateModified=feedUpdated;
@@ -1007,6 +1009,7 @@ const aiSearchPromptEvidenceMap={
   schemaVersion:1,
   version:'2026.09.10',
   id:canonical(aiSearchPromptEvidenceMapPath),
+  sameAs:promptEvidenceMapReleaseAssetUrl,
   name:{en:'Onyx fixed AI-search prompt evidence map',zhHant:'Onyx 固定 AI 搜尋提示詞證據圖',zhHans:'Onyx 固定 AI 搜索提示词证据图'},
   publisher:{name:'Onyx Devs Lab',url:`${origin}/`},
   methodologyPages:{en:`${origin}/en/methodology/ai-search-verification/`,zhHant:`${origin}/zh-hk/methodology/ai-search-verification/`,zhHans:`${origin}/zh-cn/methodology/ai-search-verification/`},
@@ -1119,6 +1122,8 @@ const fullKnowledge=[
   `Versioned verified crawler evidence summary: ${crawlerEvidenceSummaryAssetUrl}`,
   `Versioned fixed-prompt crawler coverage checkpoint: ${promptCrawlCoverageReleaseUrl}`,
   `Versioned fixed-prompt crawler coverage report: ${promptCrawlCoverageAssetUrl}`,
+  `Versioned fixed-prompt evidence map checkpoint: ${promptEvidenceMapReleaseUrl}`,
+  `Versioned fixed-prompt evidence map: ${promptEvidenceMapReleaseAssetUrl}`,
   `Versioned current AI-search evidence status asset: ${promptCrawlStatusAssetUrl}`,
   `Versioned Hong Kong enterprise AI provider-shortlist and evidence checkpoint: ${aiSearchStatusReleaseUrl}`,
   `Versioned AI-search evidence status asset: ${aiSearchStatusReleaseAssetUrl}`,

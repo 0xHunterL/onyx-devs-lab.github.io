@@ -383,6 +383,7 @@ try {
   const promptMap = JSON.parse(promptMapResponse.body);
   const evidenceUrls = [...new Set(promptMap.prompts?.flatMap((prompt) => prompt.evidencePages?.map((page) => page.url) || []) || [])];
   if (promptMap.schemaVersion !== 1 || promptMap.prompts?.length !== 20 || evidenceUrls.length !== 20) failures.push('/data/ai-search-prompt-evidence-map.json: prompt or evidence-page coverage is incomplete');
+  if (promptMap.sameAs !== 'https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-prompt-evidence-map-2026-09-10/ai-search-prompt-evidence-map.json') failures.push('/data/ai-search-prompt-evidence-map.json: immutable checkpoint is missing');
   if (promptMap.promptMatrix?.doubaoPromptsSent !== false || promptMap.totals?.verifiedCrawledEvidencePages !== 8 || promptMap.totals?.searchRelatedCrawledEvidencePages !== 0) failures.push('/data/ai-search-prompt-evidence-map.json: evidence boundary is incomplete');
   const zhCnVerification = await get('/zh-cn/methodology/ai-search-verification/', 'text/html');
   for (const url of evidenceUrls) if (!zhCnVerification.body.includes(`href="${new URL(url).pathname}"`)) failures.push(`/zh-cn/methodology/ai-search-verification/: evidence link is missing: ${url}`);

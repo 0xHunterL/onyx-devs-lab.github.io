@@ -388,6 +388,7 @@ try {
   const promptMap = JSON.parse(fs.readFileSync(path.join(dist, 'data/ai-search-prompt-evidence-map.json'), 'utf8'));
   const evidenceUrls = [...new Set(promptMap.prompts?.flatMap((prompt) => prompt.evidencePages?.map((page) => page.url) || []) || [])];
   if (promptMap.schemaVersion !== 1 || promptMap.prompts?.length !== 20 || evidenceUrls.length !== 20) failures.push('AI-search prompt evidence map: prompt or evidence-page coverage is incomplete');
+  if (promptMap.sameAs !== 'https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-prompt-evidence-map-2026-09-10/ai-search-prompt-evidence-map.json') failures.push('AI-search prompt evidence map: immutable checkpoint is missing');
   if (promptMap.promptMatrix?.doubaoPromptsSent !== false || promptMap.totals?.verifiedCrawledEvidencePages !== 8 || promptMap.totals?.searchRelatedCrawledEvidencePages !== 0) failures.push('AI-search prompt evidence map: evidence boundary is incomplete');
   const sitemap = fs.readFileSync(path.join(dist, 'sitemap.xml'), 'utf8');
   const zhCnPage = fs.readFileSync(path.join(dist, '/zh-cn/methodology/ai-search-verification/', 'index.html'), 'utf8');
