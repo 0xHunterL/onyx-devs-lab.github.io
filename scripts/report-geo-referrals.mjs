@@ -13,7 +13,7 @@ const since = sinceArg ? Date.parse(`${sinceArg.slice('--since='.length)}T00:00:
 const includeRotated = args.includes('--include-rotated');
 const inputPaths = args.filter((arg) => !arg.startsWith('--since=') && arg !== '--include-rotated');
 const paths = await resolveLogPaths(inputPaths, includeRotated);
-const syntheticUserAgent = /^(?:curl|Wget)\/|Onyx-GEO-Release-Check|python-requests|node-fetch|undici/i;
+const syntheticUserAgent = /^(?:curl|Wget)\/|Onyx-(?:GEO-Release-Check|Buyer-Guide-Link-Check)|python-requests|node-fetch|undici/i;
 const aiReferrerFamilies = [
   ['doubao', /(^|\.)doubao\.com$/i],
   ['chatgpt', /(^|\.)(?:chatgpt\.com|chat\.openai\.com)$/i],

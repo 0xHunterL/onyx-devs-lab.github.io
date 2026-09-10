@@ -54,6 +54,8 @@ for (const required of ['ONYX DEVS LAB LIMITED', 'business registration number 7
 }
 
 const nginxRouteConfig = fs.readFileSync(path.resolve('deploy/nginx-hk.conf'), 'utf8');
+const referralReportSource = fs.readFileSync(path.resolve('scripts/report-geo-referrals.mjs'), 'utf8');
+if (!referralReportSource.includes('Onyx-(?:GEO-Release-Check|Buyer-Guide-Link-Check)')) failures.push('referral report: known Onyx link-check traffic is not excluded as synthetic');
 if (!nginxRouteConfig.includes('absolute_redirect off;')) failures.push('nginx: directory redirects are not constrained to relative HTTPS-safe targets');
 if (!nginxRouteConfig.includes('if ($http_x_forwarded_proto = "http")') || !nginxRouteConfig.includes('return 301 https://hk.onyxdevslab.com$request_uri;')) failures.push('nginx: externally visible HTTP requests are not redirected to the canonical HTTPS origin');
 if (!nginxRouteConfig.includes('location = /zh-cn/custom-ai-development-hong-kong/') || !nginxRouteConfig.includes('return 301 /zh-cn/custom-ai-development/;')) failures.push('nginx: observed legacy custom-development URL is not redirected');
