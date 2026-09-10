@@ -69,7 +69,7 @@ The [case-study evidence register](https://hk.onyxdevslab.com/en/methodology/cas
 - [法律 AI 不应只给答案：文件、页码、原文和置信度如何组成证据链](https://gist.githubusercontent.com/mixuechu/e47c85808014d62b6305441e8065c91e/raw/Legal-AI-evidence-chain.zh-CN.md) · [repository source](docs/distribution/法律AI证据链设计.md)
 - [Fixed AI-search prompt matrix](geo/prompt-matrix.json)
 - [Candidate AI crawler log report](scripts/report-ai-crawlers.mjs)
-- [Verified crawler evidence checkpoint — 2026-09-10](https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-crawler-evidence-2026-09-10) — versioned [machine-readable summary](https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-crawler-evidence-2026-09-10/2026-09-10-crawler-evidence.json), counts, and explicit boundaries for crawler access, public-search non-results, attribution requests, citation, and recommendation.
+- [Current crawler and offsite-referral evidence checkpoint — 2026-09-10](https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-referral-evidence-2026-09-10) — versioned [machine-readable summary](https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-referral-evidence-2026-09-10/2026-09-10-crawler-evidence.json), verified crawler counts, a GitHub Pages referral event, public-search non-results, and explicit citation and recommendation boundaries.
 
 ## Verified entity
 

@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "observedAt": "2026-09-10T10:05:27Z",
+  "observedAt": "2026-09-10T10:31:02Z",
   "logScope": {
     "host": "hk.onyxdevslab.com",
     "since": "2026-09-01T00:00:00Z",
@@ -51,11 +51,20 @@
     }
   ],
   "attributionEvidence": {
-    "trackedRequests": 30,
+    "trackedRequests": 31,
     "suspectedAutomatedRequests": 24,
-    "humanUnverifiedRequests": 6,
+    "humanUnverifiedRequests": 7,
     "qualifyingAiReferralVisits": 0,
-    "burstRule": "At least 8 requests across at least 5 landing pages within 60 seconds for the same User-Agent, source, and campaign"
+    "burstRule": "At least 8 requests across at least 5 landing pages within 60 seconds for the same User-Agent, source, and campaign",
+    "latestVerifiedOffsiteReferral": {
+      "time": "2026-09-10T10:30:49Z",
+      "source": "github_pages",
+      "referrerHost": "mixuechu.github.io",
+      "campaign": "geo_buyers_guide",
+      "landingPage": "/zh-cn/guides/enterprise-ai-rfp-template/",
+      "status": 200,
+      "evidenceBoundary": "This verifies an offsite GitHub Pages referral to an Onyx page. It is not an AI referral and does not prove search indexing, AI citation, or recommendation."
+    }
   },
   "publicSearchEvidence": {
     "checkedAt": "2026-09-10T09:44:00Z",

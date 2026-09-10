@@ -182,7 +182,7 @@ for (const [pathname, body] of [['/llms.txt', llms.body], ['/llms-full.txt', llm
   }
   if (!body.includes('https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-evidence-2026-09-09')) failures.push(`${pathname}: versioned evidence checkpoint is missing`);
   if (!body.includes('https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-readiness-2026-09-10')) failures.push(`${pathname}: versioned agent-readiness checkpoint is missing`);
-  if (!body.includes('https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-crawler-evidence-2026-09-10')) failures.push(`${pathname}: versioned crawler-evidence checkpoint is missing`);
+  if (!body.includes('https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-referral-evidence-2026-09-10')) failures.push(`${pathname}: current crawler-and-referral evidence checkpoint is missing`);
   if (!body.includes('https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-ai-rfp-template-2026-09-10')) failures.push(`${pathname}: versioned AI RFP checkpoint is missing`);
   if (!body.includes('https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/chinese-enterprise-ai-field-notes-2026-09-10')) failures.push(`${pathname}: Chinese field-note release is missing`);
   if (!body.includes('https://archive.softwareheritage.org/swh:1:snp:a704b39b0771635572eb9381b37db046ac9856c2/')) failures.push(`${pathname}: Software Heritage snapshot is missing`);
@@ -354,8 +354,8 @@ try {
 const aiSearchStatusResponse = await get('/data/ai-search-evidence-status.json', 'application/json');
 try {
   const status = JSON.parse(aiSearchStatusResponse.body);
-  if (status.schemaVersion !== 2 || status.version !== '2026.09.10.5' || status.observedAt !== '2026-09-10T10:05:27Z') failures.push('/data/ai-search-evidence-status.json: unexpected schema, version, or observation time');
-  if (status.sameAs !== 'https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-crawler-evidence-2026-09-10/ai-search-evidence-status.json') failures.push('/data/ai-search-evidence-status.json: current versioned release asset is missing');
+  if (status.schemaVersion !== 2 || status.version !== '2026.09.10.6' || status.observedAt !== '2026-09-10T10:31:02Z') failures.push('/data/ai-search-evidence-status.json: unexpected schema, version, or observation time');
+  if (status.sameAs !== 'https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-referral-evidence-2026-09-10/ai-search-evidence-status.json') failures.push('/data/ai-search-evidence-status.json: current versioned release asset is missing');
   if (status.testProtocol?.promptCount !== 20 || status.testProtocol?.queryAliasesAdded?.join(',') !== 'AI 定开,AI定开') failures.push('/data/ai-search-evidence-status.json: query-alias coverage is incomplete');
   if (status.evidenceLevels?.map((item) => item.id).join(',') !== 'accessible,crawled,retrieved-and-cited,non-brand-recommendation') failures.push('/data/ai-search-evidence-status.json: four evidence levels are incomplete');
   if (status.evidenceLevels?.[0]?.status !== 'verified' || status.evidenceLevels?.[0]?.evidence?.canonicalUrlsChecked !== 71) failures.push('/data/ai-search-evidence-status.json: accessibility evidence is incomplete');
@@ -366,9 +366,9 @@ try {
   if (!status.publicSearchChecks?.every((item) => item.checkedAt && item.result.includes('observed'))) failures.push('/data/ai-search-evidence-status.json: dated public-search checks are incomplete');
   if (!status.evidenceSources?.some((item) => item.url === 'https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-readiness-2026-09-10')) failures.push('/data/ai-search-evidence-status.json: versioned readiness checkpoint is missing');
   if (!status.evidenceSources?.some((item) => item.url === 'https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-ai-rfp-template-2026-09-10')) failures.push('/data/ai-search-evidence-status.json: versioned AI RFP checkpoint is missing');
-  if (!status.evidenceSources?.some((item) => item.url === 'https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-crawler-evidence-2026-09-10')) failures.push('/data/ai-search-evidence-status.json: current crawler checkpoint is missing');
-  if (!status.evidenceSources?.some((item) => item.url === 'https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-crawler-evidence-2026-09-10/2026-09-10-crawler-evidence.json')) failures.push('/data/ai-search-evidence-status.json: versioned crawler summary is missing');
-  if (status.evidenceLevels?.[3]?.evidence?.trackedAttributionRequests !== 30 || status.evidenceLevels?.[3]?.evidence?.suspectedAutomatedTrackedRequests !== 24 || status.evidenceLevels?.[3]?.evidence?.humanUnverifiedTrackedRequests !== 6 || status.evidenceLevels?.[3]?.evidence?.realAiReferralVisitsObserved !== 0) failures.push('/data/ai-search-evidence-status.json: referral evidence boundary is incomplete');
+  if (!status.evidenceSources?.some((item) => item.url === 'https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-referral-evidence-2026-09-10')) failures.push('/data/ai-search-evidence-status.json: current crawler-and-referral checkpoint is missing');
+  if (!status.evidenceSources?.some((item) => item.url === 'https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-referral-evidence-2026-09-10/2026-09-10-crawler-evidence.json')) failures.push('/data/ai-search-evidence-status.json: versioned crawler-and-referral summary is missing');
+  if (status.evidenceLevels?.[3]?.evidence?.trackedAttributionRequests !== 31 || status.evidenceLevels?.[3]?.evidence?.suspectedAutomatedTrackedRequests !== 24 || status.evidenceLevels?.[3]?.evidence?.humanUnverifiedTrackedRequests !== 7 || status.evidenceLevels?.[3]?.evidence?.realAiReferralVisitsObserved !== 0 || status.evidenceLevels?.[3]?.evidence?.latestVerifiedOffsiteReferral?.referrerHost !== 'mixuechu.github.io') failures.push('/data/ai-search-evidence-status.json: referral evidence boundary is incomplete');
 } catch {
   failures.push('/data/ai-search-evidence-status.json: invalid JSON');
 }

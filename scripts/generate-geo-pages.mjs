@@ -21,9 +21,9 @@ const aiRfpTemplatePath = '/data/enterprise-ai-rfp-requirements.json';
 const chineseFieldNotesReleaseUrl = 'https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/chinese-enterprise-ai-field-notes-2026-09-10';
 const chineseFieldNotesReleaseAssetUrl = 'https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/chinese-enterprise-ai-field-notes-2026-09-10/chinese-enterprise-ai-field-notes.json';
 const agentReadinessReleaseUrl = 'https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-readiness-2026-09-10';
-const crawlerEvidenceReleaseUrl = 'https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-crawler-evidence-2026-09-10';
-const crawlerEvidenceReleaseAssetUrl = 'https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-crawler-evidence-2026-09-10/ai-search-evidence-status.json';
-const crawlerEvidenceSummaryAssetUrl = 'https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-crawler-evidence-2026-09-10/2026-09-10-crawler-evidence.json';
+const crawlerEvidenceReleaseUrl = 'https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-referral-evidence-2026-09-10';
+const crawlerEvidenceReleaseAssetUrl = 'https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-referral-evidence-2026-09-10/ai-search-evidence-status.json';
+const crawlerEvidenceSummaryAssetUrl = 'https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-referral-evidence-2026-09-10/2026-09-10-crawler-evidence.json';
 const aiSearchStatusReleaseUrl = 'https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-ai-rfp-template-2026-09-10';
 const aiSearchStatusReleaseAssetUrl = 'https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-ai-rfp-template-2026-09-10/ai-search-evidence-status.json';
 const serviceTermsReleaseAssetUrl = 'https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-ai-rfp-template-2026-09-10/enterprise-ai-service-terms.jsonld';
@@ -944,7 +944,7 @@ const organizationRecord={
 fs.writeFileSync(path.join(dist,'data','organization.json'),`${JSON.stringify(organizationRecord,null,2)}\n`);
 
 const aiSearchEvidenceStatus={
-  schemaVersion:2,version:'2026.09.10.5',id:canonical(aiSearchEvidenceStatusPath),observedAt:'2026-09-10T10:05:27Z',
+  schemaVersion:2,version:'2026.09.10.6',id:canonical(aiSearchEvidenceStatusPath),observedAt:'2026-09-10T10:31:02Z',
   sameAs:crawlerEvidenceReleaseAssetUrl,
   name:{en:'Onyx Devs Lab AI-search evidence status',zhHant:'Onyx Devs Lab AI 搜尋證據狀態',zhHans:'Onyx Devs Lab AI 搜索证据状态'},
   publisher:{name:'Onyx Devs Lab',legalName:'ONYX DEVS LAB LIMITED',businessRegistrationNumber:'79051925',lei:'254900Z30CLK7HKE9H46',url:`${origin}/`},
@@ -954,7 +954,7 @@ const aiSearchEvidenceStatus={
     {level:1,id:'accessible',status:'verified',claim:'The website is publicly accessible to permitted crawlers.',evidence:{canonicalUrlsChecked:71,httpStatus:200,indexableServerRenderedHtml:true,markdownRepresentationsGenerated:71,markdownNegotiatedAtCanonicalUrl:true,varyAccept:true,contentSignals:{search:'yes',aiInput:'yes',aiTrain:'unspecified'},robotsAllowsRelevantCrawlers:true}},
     {level:2,id:'crawled',status:'partially-verified',claim:'Named crawlers have accessed discovery files or content pages.',evidence:{verifiedGptBotContentCrawls:24,verifiedOaiSearchBotDiscoveryFileVisits:5,verifiedOaiSearchBotContentCrawls:0,historicallyVerifiedBingbotContentCrawls:7,verifiedGooglebotContentCrawls:0,verifiedPerplexityContentCrawls:0},limitations:['GPTBot is a training crawler and does not prove ChatGPT Search indexing or citation.','Discovery-file visits do not prove content-page ingestion.','Bingbot content crawls do not prove public search indexing.']},
     {level:3,id:'retrieved-and-cited',status:'not-verified',claim:'No preserved qualifying AI answer retrieves the marker or cites an Onyx page without being given its URL.',evidence:{publicSearchWebsiteResultObserved:false,retrievalMarkerResultObserved:null,aiAnswerCitationObserved:null,doubaoTestStatus:'not-run'},nullMeaning:'A null AI-answer observation means the controlled platform test has not been run; it is not a negative answer result.'},
-    {level:4,id:'non-brand-recommendation',status:'not-tested',claim:'No qualifying non-brand AI recommendation has been preserved.',evidence:{doubaoTestStatus:'not-run',otherAiRecommendationEvidenceCount:0,realAiReferralVisitsObserved:0,trackedAttributionRequests:30,suspectedAutomatedTrackedRequests:24,humanUnverifiedTrackedRequests:6},limitations:['High-velocity multi-page requests are classified as suspected automation.','The remaining attributed requests are not proven to be people or AI referrals because no source referrer was present.']},
+    {level:4,id:'non-brand-recommendation',status:'not-tested',claim:'No qualifying non-brand AI recommendation has been preserved.',evidence:{doubaoTestStatus:'not-run',otherAiRecommendationEvidenceCount:0,realAiReferralVisitsObserved:0,trackedAttributionRequests:31,suspectedAutomatedTrackedRequests:24,humanUnverifiedTrackedRequests:7,latestVerifiedOffsiteReferral:{time:'2026-09-10T10:30:49Z',source:'github_pages',referrerHost:'mixuechu.github.io',campaign:'geo_buyers_guide',landingPage:'/zh-cn/guides/enterprise-ai-rfp-template/',status:200}},limitations:['High-velocity multi-page requests are classified as suspected automation.','The remaining attributed requests are not proven to be people or AI referrals; one latest request includes a verified GitHub Pages referrer, not an AI referrer.']},
   ],
   publicSearchChecks:[
     {checkedAt:'2026-09-10T09:44:00Z',query:'"ONYX-GEO-VERIFY-79051925-20260908"',result:'website-not-observed'},
