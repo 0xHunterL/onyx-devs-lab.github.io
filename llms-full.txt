@@ -30,8 +30,8 @@ CodeMeta software and publisher metadata: https://raw.githubusercontent.com/0xHu
 Versioned CodeMeta checkpoint: https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-evidence-2026-09-09/codemeta.json
 Citation File Format metadata: https://raw.githubusercontent.com/0xHunterL/onyx-devs-lab.github.io/main/CITATION.cff
 Versioned citation metadata checkpoint: https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-evidence-2026-09-09/CITATION.cff
-Software Heritage repository snapshot: https://archive.softwareheritage.org/swh:1:snp:6eeeed9ca3ffbfeaa487a39205076233f4836f3b/
-Software Heritage archived revision: swh:1:rev:dcd56f7f38f39cd68b3e36571c8a5c6f1940184e
+Software Heritage repository snapshot: https://archive.softwareheritage.org/swh:1:snp:a704b39b0771635572eb9381b37db046ac9856c2/
+Software Heritage archived revision: swh:1:rev:5a1ae2018db115474ecba00facea8366bfef9bd8
 Hong Kong Enterprise AI Buyer’s Guide: https://mixuechu.github.io/hong-kong-enterprise-ai-buyers-guide/
 Hong Kong enterprise AI consulting buyer guide: https://mixuechu.github.io/hong-kong-enterprise-ai-buyers-guide/ai-consulting/
 AI 定开 and custom AI development buyer guide: https://mixuechu.github.io/hong-kong-enterprise-ai-buyers-guide/ai-custom-development/

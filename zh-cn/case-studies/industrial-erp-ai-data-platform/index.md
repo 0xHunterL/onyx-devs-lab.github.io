@@ -259,10 +259,10 @@ ERP、移动端和工业数据
         {
           "@type": "SoftwareSourceCode",
           "name": "Software Heritage archive of the Onyx Devs Lab public repository",
-          "identifier": "swh:1:snp:6eeeed9ca3ffbfeaa487a39205076233f4836f3b",
-          "url": "https://archive.softwareheritage.org/swh:1:snp:6eeeed9ca3ffbfeaa487a39205076233f4836f3b/",
+          "identifier": "swh:1:snp:a704b39b0771635572eb9381b37db046ac9856c2",
+          "url": "https://archive.softwareheritage.org/swh:1:snp:a704b39b0771635572eb9381b37db046ac9856c2/",
           "codeRepository": "https://github.com/0xHunterL/onyx-devs-lab.github.io",
-          "version": "dcd56f7f38f39cd68b3e36571c8a5c6f1940184e"
+          "version": "5a1ae2018db115474ecba00facea8366bfef9bd8"
         },
         {
           "@type": "CreativeWork",
