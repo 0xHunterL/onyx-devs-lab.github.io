@@ -619,6 +619,7 @@ We will first clarify the workflow, evidence, data boundary, and outcome standar
           "@type": "Dataset",
           "name": "Onyx fixed AI-search prompt evidence map",
           "url": "https://hk.onyxdevslab.com/data/ai-search-prompt-evidence-map.json",
+          "sameAs": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-prompt-evidence-map-2026-09-10/ai-search-prompt-evidence-map.json",
           "isAccessibleForFree": true,
           "distribution": {
             "@type": "DataDownload",
