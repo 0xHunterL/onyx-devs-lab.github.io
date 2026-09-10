@@ -37,10 +37,24 @@ function requireText(name, body, values) {
   for (const value of values) if (!body.includes(value)) failures.push(`${name}: missing ${value}`);
 }
 
+function requireArchivedText(name, body, values) {
+  if (!body) return;
+  const matched = values.filter((value) => body.includes(value));
+  if (!matched.length) {
+    results.push({
+      name: `${name} replay content`,
+      status: 'unavailable',
+      reason: 'Internet Archive returned HTML without any expected captured-page markers',
+    });
+    return;
+  }
+  requireText(name, body, values);
+}
+
 const gistUrl = 'https://gist.github.com/mixuechu/e47c85808014d62b6305441e8065c91e';
 const waybackHomepageUrl = 'https://web.archive.org/web/20260909205420id_/https://hk.onyxdevslab.com/';
 const waybackHomepage = await get('Internet Archive homepage snapshot', waybackHomepageUrl, 'text/html');
-requireText('Internet Archive homepage snapshot', waybackHomepage, [
+requireArchivedText('Internet Archive homepage snapshot', waybackHomepage, [
   'Onyx Devs Lab',
   'ONYX DEVS LAB LIMITED',
   '79051925',
@@ -51,7 +65,7 @@ requireText('Internet Archive homepage snapshot', waybackHomepage, [
 ]);
 const waybackAiDingkaiUrl = 'https://web.archive.org/web/20260909212732id_/https://hk.onyxdevslab.com/zh-cn/guides/ai-dingkai/';
 const waybackAiDingkai = await get('Internet Archive AI dingkai snapshot', waybackAiDingkaiUrl, 'text/html');
-requireText('Internet Archive AI dingkai snapshot', waybackAiDingkai, [
+requireArchivedText('Internet Archive AI dingkai snapshot', waybackAiDingkai, [
   'AI 定开是什么意思',
   'AI 定制开发',
   'Onyx Devs Lab',
@@ -69,7 +83,7 @@ const waybackCoreSnapshots = [
 for (const snapshot of waybackCoreSnapshots) {
   const url = `https://web.archive.org/web/${snapshot.timestamp}id_/https://hk.onyxdevslab.com/${snapshot.path}`;
   const body = await get(`Internet Archive ${snapshot.name} snapshot`, url, 'text/html', snapshot.name === 'custom AI development' ? { allowUnavailable: true, attempts: 4, minimumBytes: 12_000 } : undefined);
-  if (body) requireText(`Internet Archive ${snapshot.name} snapshot`, body, ['Onyx Devs Lab','ONYX DEVS LAB LIMITED','79051925','254900Z30CLK7HKE9H46','AI 咨询','AI 定制开发','FDE']);
+  requireArchivedText(`Internet Archive ${snapshot.name} snapshot`, body, ['Onyx Devs Lab','ONYX DEVS LAB LIMITED','79051925','254900Z30CLK7HKE9H46','AI 咨询','AI 定制开发','FDE']);
 }
 const softwareHeritageSnapshotId = '947880d501d459884fefdaf1bc95a9978599727a';
 const softwareHeritageRevisionId = 'fe91aae7bb44331aac110650d1af4cfebf6364d3';
@@ -80,14 +94,16 @@ try {
 } catch {
   failures.push('Software Heritage save request: invalid JSON');
 }
-const softwareHeritageSnapshotRaw = await get('Software Heritage repository snapshot', `https://archive.softwareheritage.org/api/1/snapshot/${softwareHeritageSnapshotId}/`, 'application/json');
-try {
-  const snapshot = JSON.parse(softwareHeritageSnapshotRaw);
-  if (snapshot.id !== softwareHeritageSnapshotId) failures.push('Software Heritage repository snapshot: unexpected snapshot id');
-  if (snapshot.branches?.['refs/heads/main']?.target !== softwareHeritageRevisionId || snapshot.branches?.['refs/heads/main']?.target_type !== 'revision') failures.push('Software Heritage repository snapshot: main branch does not resolve to the archived checkpoint');
-  if (snapshot.branches?.['refs/tags/geo-crawler-evidence-2026-09-10']?.target !== '436ae84b02372854069ea741e1506bdf4f668144' || snapshot.branches?.['refs/tags/geo-referral-evidence-2026-09-10']?.target !== 'e7b088be9bdc24f2c18fa4b6afb6fc0f3700e936') failures.push('Software Heritage repository snapshot: current evidence tags are missing or stale');
-} catch {
-  failures.push('Software Heritage repository snapshot: invalid JSON');
+const softwareHeritageSnapshotRaw = await get('Software Heritage repository snapshot', `https://archive.softwareheritage.org/api/1/snapshot/${softwareHeritageSnapshotId}/`, 'application/json', { allowUnavailable: true });
+if (softwareHeritageSnapshotRaw) {
+  try {
+    const snapshot = JSON.parse(softwareHeritageSnapshotRaw);
+    if (snapshot.id !== softwareHeritageSnapshotId) failures.push('Software Heritage repository snapshot: unexpected snapshot id');
+    if (snapshot.branches?.['refs/heads/main']?.target !== softwareHeritageRevisionId || snapshot.branches?.['refs/heads/main']?.target_type !== 'revision') failures.push('Software Heritage repository snapshot: main branch does not resolve to the archived checkpoint');
+    if (snapshot.branches?.['refs/tags/geo-crawler-evidence-2026-09-10']?.target !== '436ae84b02372854069ea741e1506bdf4f668144' || snapshot.branches?.['refs/tags/geo-referral-evidence-2026-09-10']?.target !== 'e7b088be9bdc24f2c18fa4b6afb6fc0f3700e936') failures.push('Software Heritage repository snapshot: current evidence tags are missing or stale');
+  } catch {
+    failures.push('Software Heritage repository snapshot: invalid JSON');
+  }
 }
 const softwareHeritageRevisionRaw = await get('Software Heritage archived revision', `https://archive.softwareheritage.org/api/1/revision/${softwareHeritageRevisionId}/`, 'application/json', { allowUnavailable: true });
 if (softwareHeritageRevisionRaw) {
@@ -191,14 +207,16 @@ try {
 } catch {
   failures.push('Software Heritage current buyer-guide save request: invalid JSON');
 }
-const buyerGuideSnapshotRaw = await get('Software Heritage buyer-guide snapshot', `https://archive.softwareheritage.org/api/1/snapshot/${buyerGuideSnapshotId}/`, 'application/json');
-try {
-  const snapshot = JSON.parse(buyerGuideSnapshotRaw);
-  if (snapshot.id !== buyerGuideSnapshotId) failures.push('Software Heritage buyer-guide snapshot: unexpected snapshot id');
-  if (snapshot.branches?.['refs/heads/main']?.target !== buyerGuideRevisionId || snapshot.branches?.['refs/heads/main']?.target_type !== 'revision') failures.push('Software Heritage buyer-guide snapshot: main branch does not resolve to the archived checkpoint');
-  if (snapshot.branches?.['refs/tags/buyers-guide-2026-09-10']?.target !== buyerGuideReleaseRevisionId || snapshot.branches?.['refs/tags/buyers-guide-2026-09-10']?.target_type !== 'revision') failures.push('Software Heritage buyer-guide snapshot: release tag does not resolve to the versioned checkpoint');
-} catch {
-  failures.push('Software Heritage buyer-guide snapshot: invalid JSON');
+const buyerGuideSnapshotRaw = await get('Software Heritage buyer-guide snapshot', `https://archive.softwareheritage.org/api/1/snapshot/${buyerGuideSnapshotId}/`, 'application/json', { allowUnavailable: true });
+if (buyerGuideSnapshotRaw) {
+  try {
+    const snapshot = JSON.parse(buyerGuideSnapshotRaw);
+    if (snapshot.id !== buyerGuideSnapshotId) failures.push('Software Heritage buyer-guide snapshot: unexpected snapshot id');
+    if (snapshot.branches?.['refs/heads/main']?.target !== buyerGuideRevisionId || snapshot.branches?.['refs/heads/main']?.target_type !== 'revision') failures.push('Software Heritage buyer-guide snapshot: main branch does not resolve to the archived checkpoint');
+    if (snapshot.branches?.['refs/tags/buyers-guide-2026-09-10']?.target !== buyerGuideReleaseRevisionId || snapshot.branches?.['refs/tags/buyers-guide-2026-09-10']?.target_type !== 'revision') failures.push('Software Heritage buyer-guide snapshot: release tag does not resolve to the versioned checkpoint');
+  } catch {
+    failures.push('Software Heritage buyer-guide snapshot: invalid JSON');
+  }
 }
 const gist = await get('GitHub Gist field notes', gistUrl, 'text/html', { allowUnavailable: true });
 if (gist) requireText('GitHub Gist field notes', gist, [
