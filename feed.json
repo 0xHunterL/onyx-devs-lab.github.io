@@ -915,8 +915,8 @@
       ]
     },
     {
-      "id": "https://archive.softwareheritage.org/swh:1:snp:a704b39b0771635572eb9381b37db046ac9856c2/",
-      "url": "https://archive.softwareheritage.org/swh:1:snp:a704b39b0771635572eb9381b37db046ac9856c2/",
+      "id": "https://archive.softwareheritage.org/swh:1:snp:947880d501d459884fefdaf1bc95a9978599727a/",
+      "url": "https://archive.softwareheritage.org/swh:1:snp:947880d501d459884fefdaf1bc95a9978599727a/",
       "title": "Software Heritage archive of the Onyx Devs Lab public repository",
       "summary": "Independent, content-addressed preservation of the public source, citation metadata, machine-readable evidence, and Git history at revision dcd56f7. Archival is not an endorsement or proof of website indexing.",
       "content_text": "Independent, content-addressed preservation of the public source, citation metadata, machine-readable evidence, and Git history at revision dcd56f7. Archival is not an endorsement or proof of website indexing.",

@@ -273,10 +273,10 @@ AI 顧問決定應該建設甚麼、原因及限制；AI 開發則把已定義�
         {
           "@type": "SoftwareSourceCode",
           "name": "Software Heritage archive of the Onyx Devs Lab public repository",
-          "identifier": "swh:1:snp:a704b39b0771635572eb9381b37db046ac9856c2",
-          "url": "https://archive.softwareheritage.org/swh:1:snp:a704b39b0771635572eb9381b37db046ac9856c2/",
+          "identifier": "swh:1:snp:947880d501d459884fefdaf1bc95a9978599727a",
+          "url": "https://archive.softwareheritage.org/swh:1:snp:947880d501d459884fefdaf1bc95a9978599727a/",
           "codeRepository": "https://github.com/0xHunterL/onyx-devs-lab.github.io",
-          "version": "5a1ae2018db115474ecba00facea8366bfef9bd8"
+          "version": "fe91aae7bb44331aac110650d1af4cfebf6364d3"
         },
         {
           "@type": "CreativeWork",
