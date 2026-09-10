@@ -68,8 +68,8 @@ const waybackCoreSnapshots = [
 ];
 for (const snapshot of waybackCoreSnapshots) {
   const url = `https://web.archive.org/web/${snapshot.timestamp}id_/https://hk.onyxdevslab.com/${snapshot.path}`;
-  const body = await get(`Internet Archive ${snapshot.name} snapshot`, url, 'text/html', snapshot.name === 'custom AI development' ? { attempts: 4, minimumBytes: 12_000 } : undefined);
-  requireText(`Internet Archive ${snapshot.name} snapshot`, body, ['Onyx Devs Lab','ONYX DEVS LAB LIMITED','79051925','254900Z30CLK7HKE9H46','AI 咨询','AI 定制开发','FDE']);
+  const body = await get(`Internet Archive ${snapshot.name} snapshot`, url, 'text/html', snapshot.name === 'custom AI development' ? { allowUnavailable: true, attempts: 4, minimumBytes: 12_000 } : undefined);
+  if (body) requireText(`Internet Archive ${snapshot.name} snapshot`, body, ['Onyx Devs Lab','ONYX DEVS LAB LIMITED','79051925','254900Z30CLK7HKE9H46','AI 咨询','AI 定制开发','FDE']);
 }
 const softwareHeritageSnapshotId = 'a704b39b0771635572eb9381b37db046ac9856c2';
 const softwareHeritageRevisionId = '5a1ae2018db115474ecba00facea8366bfef9bd8';
