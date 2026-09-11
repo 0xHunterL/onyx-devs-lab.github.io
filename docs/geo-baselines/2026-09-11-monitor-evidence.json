@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "publicStatusVersion": "2026.09.11.25",
-  "generatedAt": "2026-09-11T15:44:03.841Z",
+  "publicStatusVersion": "2026.09.11.26",
+  "generatedAt": "2026-09-11T16:01:43.357Z",
   "windowStart": "2026-09-01",
   "site": "https://hk.onyxdevslab.com/",
   "sourceLogs": [
@@ -25,7 +25,7 @@
     "yandexbotContentRequests": 71,
     "yandexbotDiscoveryFileRequests": 64,
     "ahrefsbotContentRequests": 0,
-    "ahrefsbotDiscoveryFileRequests": 67,
+    "ahrefsbotDiscoveryFileRequests": 69,
     "distinctVerifiedContentPaths": 44,
     "historicalReclassification": {
       "homepageContentRequestsAdded": 3,
@@ -40,12 +40,12 @@
     },
     "ahrefsHistoricalRecognition": {
       "firstSeen": "2026-09-08T13:53:09Z",
-      "lastSeen": "2026-09-11T14:24:40Z",
-      "robotsTxtRequests": 17,
-      "sitemapRequests": 50,
-      "distinctClientAddresses": 61,
+      "lastSeen": "2026-09-11T15:49:47Z",
+      "robotsTxtRequests": 18,
+      "sitemapRequests": 51,
+      "distinctClientAddresses": 63,
       "verificationSource": "https://api.ahrefs.com/v3/public/crawler-ip-ranges",
-      "meaning": "All 67 discovery-file requests matched the official Ahrefs crawler IP ranges. AhrefsBot serves both the Ahrefs database and Yep, so these requests prove external crawler discovery only; they do not prove Yep indexing, ranking, retrieval, citation, or AI recommendation."
+      "meaning": "All 69 discovery-file requests matched the official Ahrefs crawler IP ranges. AhrefsBot serves both the Ahrefs database and Yep, so these requests prove external crawler discovery only; they do not prove Yep indexing, ranking, retrieval, citation, or AI recommendation."
     }
   },
   "identityUnverifiedCrawlerEvidence": {
@@ -112,7 +112,7 @@
     ]
   },
   "commonCrawlEvidence": {
-    "checkedAt": "2026-09-11T15:44:03.841Z",
+    "checkedAt": "2026-09-11T16:01:37.022Z",
     "status": "available",
     "capturesObservedInAvailableIndexes": 0,
     "availableIndexes": ["CC-MAIN-2026-34", "CC-MAIN-2026-30"],
@@ -120,7 +120,7 @@
     "meaning": "Both selected indexes returned usable responses with zero observed captures. This complete result covers only the selected indexes and must not be interpreted as proof of zero captures across all Common Crawl history."
   },
   "waybackEvidence": {
-    "checkedAt": "2026-09-11T15:44:03.841Z",
+    "checkedAt": "2026-09-11T16:01:42.376Z",
     "status": "available",
     "captures": 93,
     "distinctUrls": 43,
@@ -148,7 +148,7 @@
     "manifestItems": 8,
     "publishedItems": 7,
     "readyNotPublishedItems": 1,
-    "checkedAt": "2026-09-11T15:44:03.841Z",
+    "checkedAt": "2026-09-11T16:01:43.285Z",
     "publicUrlsChecked": 7,
     "trackedTargetsChecked": 17,
     "availableSources": 24,
