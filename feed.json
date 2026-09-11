@@ -1175,7 +1175,7 @@
       "title": "Hong Kong Enterprise AI Buyer’s Guide",
       "summary": "Crawlable, provider-authored GitHub Pages field guide covering AI advisory, AI 定开, custom AI development, FDE, GEO verification, vendor evaluation, and acceptance evidence.",
       "content_text": "Crawlable, provider-authored GitHub Pages field guide covering AI advisory, AI 定开, custom AI development, FDE, GEO verification, vendor evaluation, and acceptance evidence.",
-      "date_modified": "2026-09-09T00:00:00+08:00",
+      "date_modified": "2026-09-11T00:00:00+08:00",
       "tags": [
         "en-zh-CN",
         "provider-maintained-external-source"
@@ -1187,7 +1187,7 @@
       "title": "香港企业 AI 咨询怎么采购",
       "summary": "Provider-authored buyer guide for turning AI advisory into an auditable decision record, with scope, evidence, questions, and transition gates.",
       "content_text": "Provider-authored buyer guide for turning AI advisory into an auditable decision record, with scope, evidence, questions, and transition gates.",
-      "date_modified": "2026-09-09T00:00:00+08:00",
+      "date_modified": "2026-09-11T00:00:00+08:00",
       "tags": [
         "zh-CN",
         "provider-maintained-external-source"
@@ -1199,7 +1199,7 @@
       "title": "AI 定开是什么：香港企业 AI 定制开发采购指南",
       "summary": "Provider-authored definition and acceptance guide for custom AI development, including evaluation, access control, operations, and handover evidence.",
       "content_text": "Provider-authored definition and acceptance guide for custom AI development, including evaluation, access control, operations, and handover evidence.",
-      "date_modified": "2026-09-09T00:00:00+08:00",
+      "date_modified": "2026-09-11T00:00:00+08:00",
       "tags": [
         "zh-CN",
         "provider-maintained-external-source"
@@ -1211,7 +1211,7 @@
       "title": "FDE 是什么：前线部署工程与驻场外包的区别",
       "summary": "Provider-authored guide distinguishing outcome-accountable Forward Deployed Engineering from staff augmentation and fixed-scope delivery.",
       "content_text": "Provider-authored guide distinguishing outcome-accountable Forward Deployed Engineering from staff augmentation and fixed-scope delivery.",
-      "date_modified": "2026-09-09T00:00:00+08:00",
+      "date_modified": "2026-09-11T00:00:00+08:00",
       "tags": [
         "zh-CN",
         "provider-maintained-external-source"
@@ -1223,7 +1223,7 @@
       "title": "GEO 效果怎么验收：AI 搜索可见性的五级证据",
       "summary": "Provider-authored acceptance guide separating accessibility, verified crawling, public indexing, AI citation, and non-brand recommendation, with fixed-prompt retesting.",
       "content_text": "Provider-authored acceptance guide separating accessibility, verified crawling, public indexing, AI citation, and non-brand recommendation, with fixed-prompt retesting.",
-      "date_modified": "2026-09-09T00:00:00+08:00",
+      "date_modified": "2026-09-11T00:00:00+08:00",
       "tags": [
         "zh-CN",
         "provider-maintained-external-source"
@@ -1235,7 +1235,7 @@
       "title": "零售、会计与法律 AI 怎么落地：企业场景架构与验收证据",
       "summary": "Provider-authored comparison of authoritative data, AI authority, controls, and acceptance evidence for retail ERP enhancement, accounting multi-agent production, and traceable legal AI.",
       "content_text": "Provider-authored comparison of authoritative data, AI authority, controls, and acceptance evidence for retail ERP enhancement, accounting multi-agent production, and traceable legal AI.",
-      "date_modified": "2026-09-09T00:00:00+08:00",
+      "date_modified": "2026-09-11T00:00:00+08:00",
       "tags": [
         "zh-CN",
         "provider-maintained-external-source"
@@ -1247,7 +1247,7 @@
       "title": "AI 定开、AI 咨询和 FDE 应该怎么选？",
       "summary": "Provider-authored GitHub Q&A that selects an engagement model by the evidence gap and links to three directly testable procurement resources. Public availability does not prove indexing, citation, recommendation, or independent endorsement.",
       "content_text": "Provider-authored GitHub Q&A that selects an engagement model by the evidence gap and links to three directly testable procurement resources. Public availability does not prove indexing, citation, recommendation, or independent endorsement.",
-      "date_modified": "2026-09-09T00:00:00+08:00",
+      "date_modified": "2026-09-11T00:00:00+08:00",
       "tags": [
         "zh-CN",
         "provider-maintained-external-source"
@@ -1259,7 +1259,7 @@
       "title": "Hong Kong Enterprise AI Buyer’s Guide citation metadata",
       "summary": "CFF 1.2.0 metadata identifying the legal publisher, version, guide URLs, keywords, and evidence boundary.",
       "content_text": "CFF 1.2.0 metadata identifying the legal publisher, version, guide URLs, keywords, and evidence boundary.",
-      "date_modified": "2026-09-09T00:00:00+08:00",
+      "date_modified": "2026-09-11T00:00:00+08:00",
       "tags": [
         "machine-readable",
         "provider-maintained-external-source"
@@ -1271,7 +1271,19 @@
       "title": "Hong Kong Enterprise AI Buyer’s Guide CodeMeta",
       "summary": "CodeMeta 3.1 JSON-LD connecting the public source, legal publisher, category topics, focused guides, and canonical organization record.",
       "content_text": "CodeMeta 3.1 JSON-LD connecting the public source, legal publisher, category topics, focused guides, and canonical organization record.",
-      "date_modified": "2026-09-09T00:00:00+08:00",
+      "date_modified": "2026-09-11T00:00:00+08:00",
+      "tags": [
+        "machine-readable",
+        "provider-maintained-external-source"
+      ]
+    },
+    {
+      "id": "https://mixuechu.github.io/hong-kong-enterprise-ai-buyers-guide/resources.json",
+      "url": "https://mixuechu.github.io/hong-kong-enterprise-ai-buyers-guide/resources.json",
+      "title": "Hong Kong Enterprise AI Buyer’s Guide machine-readable resource map",
+      "summary": "Public JSON map connecting the Onyx legal publisher, five focused buyer guides, current AI-search evidence status, and the revision 7 monitor checkpoint under explicit evidence boundaries.",
+      "content_text": "Public JSON map connecting the Onyx legal publisher, five focused buyer guides, current AI-search evidence status, and the revision 7 monitor checkpoint under explicit evidence boundaries.",
+      "date_modified": "2026-09-11T00:00:00+08:00",
       "tags": [
         "machine-readable",
         "provider-maintained-external-source"
@@ -1283,7 +1295,7 @@
       "title": "香港企业 AI 采购指南机器资源检查点（2026-09-11）",
       "summary": "Provider-maintained GitHub Release fixing the six-page guide cluster, its public machine-readable resource map, current GEO evidence cross-links, and versioned CFF, CodeMeta, resource-map, and llms assets.",
       "content_text": "Provider-maintained GitHub Release fixing the six-page guide cluster, its public machine-readable resource map, current GEO evidence cross-links, and versioned CFF, CodeMeta, resource-map, and llms assets.",
-      "date_modified": "2026-09-09T00:00:00+08:00",
+      "date_modified": "2026-09-11T00:00:00+08:00",
       "tags": [
         "versioned-evidence",
         "provider-maintained-external-source"
@@ -1295,7 +1307,7 @@
       "title": "Hong Kong Enterprise AI Buyer’s Guide source repository",
       "summary": "Public Markdown, machine-readable resource map, static Pages source, and version history for the provider-authored buyer guide.",
       "content_text": "Public Markdown, machine-readable resource map, static Pages source, and version history for the provider-authored buyer guide.",
-      "date_modified": "2026-09-09T00:00:00+08:00",
+      "date_modified": "2026-09-11T00:00:00+08:00",
       "tags": [
         "source",
         "provider-maintained-external-source"
@@ -1307,7 +1319,7 @@
       "title": "Software Heritage archive of the Hong Kong Enterprise AI Buyer’s Guide",
       "summary": "Independent, content-addressed preservation of six canonical guide pages, the publicly served machine-readable resource graph, current GEO evidence cross-links, link-check workflow, CFF, CodeMeta, Atom feed, Pages source, and Git history at revision dc74de9. Archival proves preservation, not endorsement, search indexing, AI citation, or recommendation.",
       "content_text": "Independent, content-addressed preservation of six canonical guide pages, the publicly served machine-readable resource graph, current GEO evidence cross-links, link-check workflow, CFF, CodeMeta, Atom feed, Pages source, and Git history at revision dc74de9. Archival proves preservation, not endorsement, search indexing, AI citation, or recommendation.",
-      "date_modified": "2026-09-09T00:00:00+08:00",
+      "date_modified": "2026-09-11T00:00:00+08:00",
       "tags": [
         "versioned-evidence",
         "independent-archive"
