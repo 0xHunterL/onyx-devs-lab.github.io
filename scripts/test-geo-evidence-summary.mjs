@@ -1,5 +1,5 @@
 import assert from 'node:assert/strict';
-import { buildCommonCrawlAvailability, buildEvidenceCounts, buildEvidenceDeltas } from './geo-evidence-summary.mjs';
+import { buildAvailabilityChanges, buildCommonCrawlAvailability, buildEvidenceCounts, buildEvidenceDeltas, selectEvidenceEventKind } from './geo-evidence-summary.mjs';
 
 const crawlerTotals = {
   verifiedGptBotPageCrawls: 24,
@@ -80,4 +80,19 @@ assert.equal(availableCommonCrawl.status, 'available');
 const unavailableCommonCrawl = buildCommonCrawlAvailability({ collectionIndexStatus: 'unavailable', results: [] });
 assert.equal(unavailableCommonCrawl.status, 'unavailable');
 
-console.log(JSON.stringify({ tests: 23, failures: [] }, null, 2));
+assert.deepEqual(buildAvailabilityChanges(
+  { commonCrawl: partialCommonCrawl },
+  { commonCrawl: availableCommonCrawl },
+), [{ source: 'commonCrawl', previousStatus: 'available', currentStatus: 'partial' }]);
+assert.deepEqual(buildAvailabilityChanges(
+  { commonCrawl: { ...partialCommonCrawl, unavailable: [{ id: 'different' }] } },
+  { commonCrawl: partialCommonCrawl },
+), []);
+assert.deepEqual(buildAvailabilityChanges({ commonCrawl: partialCommonCrawl }, null), []);
+assert.equal(selectEvidenceEventKind({ initializing: true, evidenceChanged: false, availabilityChanged: false }), 'baseline');
+assert.equal(selectEvidenceEventKind({ initializing: false, evidenceChanged: true, availabilityChanged: true }), 'evidence-and-availability-change');
+assert.equal(selectEvidenceEventKind({ initializing: false, evidenceChanged: true, availabilityChanged: false }), 'evidence-change');
+assert.equal(selectEvidenceEventKind({ initializing: false, evidenceChanged: false, availabilityChanged: true }), 'availability-change');
+assert.equal(selectEvidenceEventKind({ initializing: false, evidenceChanged: false, availabilityChanged: false }), null);
+
+console.log(JSON.stringify({ tests: 31, failures: [] }, null, 2));

@@ -65,3 +65,24 @@ export function buildCommonCrawlAvailability(commonCrawl) {
       : 'Capture counts are incomplete and must not be interpreted as a verified zero across the selected indexes.',
   };
 }
+
+export function buildAvailabilityChanges(currentAvailability, previousAvailability) {
+  if (!previousAvailability) return [];
+  return Object.entries(currentAvailability).flatMap(([source, current]) => {
+    const previous = previousAvailability[source];
+    if (!previous || previous.status === current.status) return [];
+    return [{
+      source,
+      previousStatus: previous.status || 'unknown',
+      currentStatus: current.status || 'unknown',
+    }];
+  });
+}
+
+export function selectEvidenceEventKind({ initializing, evidenceChanged, availabilityChanged }) {
+  if (initializing) return 'baseline';
+  if (evidenceChanged && availabilityChanged) return 'evidence-and-availability-change';
+  if (evidenceChanged) return 'evidence-change';
+  if (availabilityChanged) return 'availability-change';
+  return null;
+}

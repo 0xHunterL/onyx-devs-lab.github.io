@@ -2,7 +2,7 @@ import { spawn } from 'node:child_process';
 import { mkdir, readFile, readdir, rename, unlink, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { buildCommonCrawlAvailability, buildEvidenceCounts, buildEvidenceDeltas } from './geo-evidence-summary.mjs';
+import { buildAvailabilityChanges, buildCommonCrawlAvailability, buildEvidenceCounts, buildEvidenceDeltas, selectEvidenceEventKind } from './geo-evidence-summary.mjs';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const args = process.argv.slice(2);
@@ -99,6 +99,8 @@ try {
 
 const counts = buildEvidenceCounts(crawler, referral, commonCrawl, promptCoverage);
 const commonCrawlAvailability = buildCommonCrawlAvailability(commonCrawl);
+const availability = { commonCrawl: commonCrawlAvailability };
+const availabilityChanges = buildAvailabilityChanges(availability, previous?.availability);
 const priorCounts = previous?.counts || {};
 const deltas = buildEvidenceDeltas(counts, previous ? priorCounts : null);
 const metricForCrawlerObservation = (observation) => {
@@ -139,7 +141,11 @@ const newEvidenceByMetric = newEvidenceObservations.reduce((result, observation)
 const newEvidence = [...newEvidenceByMetric].map(([metric, delta]) => ({ metric, delta, current: counts[metric] ?? null }));
 const allSeenFingerprints = [...new Set([...(previousSeenEvidence?.fingerprints || []), ...currentEvidenceObservations.map((observation) => observation.fingerprint)])].sort();
 const generatedAt = new Date().toISOString();
-const eventKind = !previous || !eventHistoryExists ? 'baseline' : newEvidence.length ? 'evidence-change' : null;
+const eventKind = selectEvidenceEventKind({
+  initializing: !previous || !eventHistoryExists,
+  evidenceChanged: newEvidence.length > 0,
+  availabilityChanged: availabilityChanges.length > 0,
+});
 const eventFile = eventKind ? `events/${generatedAt.replaceAll(':', '-')}-${eventKind}.json` : null;
 const summary = {
   schemaVersion: 1,
@@ -147,14 +153,16 @@ const summary = {
   since,
   sourceLogs: crawler.files,
   counts,
-  availability: { commonCrawl: commonCrawlAvailability },
+  availability,
+  availabilityChanges,
   deltas,
   newEvidence,
   initialized: !previous,
   changed: newEvidence.length > 0,
+  availabilityChanged: availabilityChanges.length > 0,
   eventFile,
   newEvidenceObservations,
-  evidenceBoundary: 'New provider-verified crawler fingerprints prove only previously unseen requests by the named crawler. Bytespider fingerprints are separately labeled user-agent-only and identity-unverified; they do not prove Doubao or ByteDance access. New referral fingerprints exclude suspected automation and prove only previously unseen attributed requests whose visitor type is not verified. Common Crawl fingerprints prove only appearance in the named public crawl index; partial or unavailable index queries make a zero capture count incomplete. None proves search indexing, retrieval, citation, ranking, a human visit, or non-brand recommendation.',
+  evidenceBoundary: 'New provider-verified crawler fingerprints prove only previously unseen requests by the named crawler. Bytespider fingerprints are separately labeled user-agent-only and identity-unverified; they do not prove Doubao or ByteDance access. New referral fingerprints exclude suspected automation and prove only previously unseen attributed requests whose visitor type is not verified. Common Crawl fingerprints prove only appearance in the named public crawl index; partial or unavailable index queries make a zero capture count incomplete. Availability-change events preserve monitoring-source status transitions and are not visibility evidence. None proves search indexing, retrieval, citation, ranking, a human visit, or non-brand recommendation.',
 };
 
 if (eventFile) await atomicJson(eventFile, {
