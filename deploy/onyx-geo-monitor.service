@@ -11,6 +11,7 @@ UMask=0027
 StateDirectory=onyx-geo
 StateDirectoryMode=0750
 ExecStart=/usr/bin/npm run geo:collect-evidence -- --since=2026-09-01 --output-dir=/var/lib/onyx-geo /var/log/nginx/hk.onyxdevslab.com.geo.log
+ExecStartPost=/usr/bin/npm run geo:check-evidence-publication-drift -- --summary=/var/lib/onyx-geo/summary.json --output=/var/lib/onyx-geo/publication-drift.json
 Nice=10
 IOSchedulingClass=idle
 NoNewPrivileges=true

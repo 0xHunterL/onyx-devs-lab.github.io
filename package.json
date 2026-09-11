@@ -25,6 +25,7 @@
     "geo:test-crawler-report": "node scripts/test-report-ai-crawlers.mjs",
     "geo:test-build": "node scripts/test-build-site.mjs",
     "geo:collect-evidence": "node scripts/collect-geo-evidence.mjs",
+    "geo:check-evidence-publication-drift": "node scripts/check-geo-evidence-publication-drift.mjs",
     "geo:common-crawl-report": "node scripts/report-common-crawl.mjs",
     "geo:submit-indexnow": "node scripts/submit-indexnow.mjs",
     "geo:publish-websub": "node scripts/publish-websub.mjs",
