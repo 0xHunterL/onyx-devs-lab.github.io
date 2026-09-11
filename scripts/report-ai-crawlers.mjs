@@ -20,6 +20,7 @@ const crawlerFamilies = [
   ['ClaudeBot', /ClaudeBot/i],
   ['Applebot', /Applebot/i],
   ['Googlebot', /Googlebot/i],
+  ['YandexBot', /YandexBot/i],
 ];
 
 const suspiciousPath = /(?:^|\/)(?:\.env(?:\.|$)|\.git(?:\/|$)|wp-admin|wp-login|phpmyadmin|server-status|actuator|cgi-bin)|(?:passwd|shadow|id_rsa|authorized_keys|credentials?|secrets?|backup\.sql|169\.254\.169\.254)/i;
@@ -112,17 +113,18 @@ const verifyGoogle = args.includes('--verify-google');
 const verifyPerplexity = args.includes('--verify-perplexity');
 const verifyCommonCrawl = args.includes('--verify-common-crawl');
 const verifyApple = args.includes('--verify-apple');
+const verifyYandex = args.includes('--verify-yandex');
 const includeRotated = args.includes('--include-rotated');
 const since = sinceArg ? Date.parse(`${sinceArg.slice('--since='.length)}T00:00:00Z`) : null;
 if (sinceArg && Number.isNaN(since)) {
   console.error('Invalid --since date. Use --since=YYYY-MM-DD.');
   process.exit(2);
 }
-const verificationFlags = ['--verify-openai', '--verify-bing', '--verify-baidu', '--verify-google', '--verify-perplexity', '--verify-common-crawl', '--verify-apple', '--include-rotated'];
+const verificationFlags = ['--verify-openai', '--verify-bing', '--verify-baidu', '--verify-google', '--verify-perplexity', '--verify-common-crawl', '--verify-apple', '--verify-yandex', '--include-rotated'];
 const inputPaths = args.filter((arg) => !arg.startsWith('--since=') && !verificationFlags.includes(arg));
 const paths = await resolveLogPaths(inputPaths, includeRotated);
 if (!paths.length) {
-  console.error('Usage: npm run geo:crawler-report -- [--since=YYYY-MM-DD] [--include-rotated] [--verify-openai] [--verify-bing] [--verify-baidu] [--verify-google] [--verify-perplexity] [--verify-common-crawl] [--verify-apple] /var/log/nginx/access.log [/var/log/nginx/access.log.1.gz ...]');
+  console.error('Usage: npm run geo:crawler-report -- [--since=YYYY-MM-DD] [--include-rotated] [--verify-openai] [--verify-bing] [--verify-baidu] [--verify-google] [--verify-perplexity] [--verify-common-crawl] [--verify-apple] [--verify-yandex] /var/log/nginx/access.log [/var/log/nginx/access.log.1.gz ...]');
   process.exit(2);
 }
 
@@ -221,6 +223,23 @@ if (verifyGoogle) {
   }
 }
 
+if (verifyYandex) {
+  const yandexIps = [...new Set(events.filter((event) => event.family === 'YandexBot').map((event) => event.ip))];
+  const yandexVerifications = new Map(
+    await Promise.all(yandexIps.map(async (ip) => [ip, await verifyDnsIp(ip, ['.yandex.ru', '.yandex.net', '.yandex.com'])])),
+  );
+  for (const event of events) {
+    if (event.family !== 'YandexBot') continue;
+    const verification = yandexVerifications.get(event.ip);
+    event.providerVerified = verification.verified;
+    event.providerVerification = {
+      method: 'official-reverse-dns-suffix-plus-forward-confirmation',
+      allowedReverseDnsSuffixes: ['.yandex.ru', '.yandex.net', '.yandex.com'],
+      ...verification,
+    };
+  }
+}
+
 const byFamily = {};
 const byClassification = {};
 for (const event of events) {
@@ -249,6 +268,7 @@ const verifiedPerplexityPages = pageCandidates.filter(
 );
 const verifiedCommonCrawlPages = pageCandidates.filter((event) => event.family === 'CCBot' && event.providerVerified === true);
 const verifiedApplePages = pageCandidates.filter((event) => event.family === 'Applebot' && event.providerVerified === true);
+const verifiedYandexPages = pageCandidates.filter((event) => event.family === 'YandexBot' && event.providerVerified === true);
 const verifiedOpenAiDiscoveryFiles = discoveryCandidates.filter(
   (event) => ['GPTBot', 'OAI-SearchBot'].includes(event.family) && event.providerVerified === true,
 );
@@ -270,6 +290,7 @@ const verifiedPerplexityDiscoveryFiles = discoveryCandidates.filter(
 );
 const verifiedCommonCrawlDiscoveryFiles = discoveryCandidates.filter((event) => event.family === 'CCBot' && event.providerVerified === true);
 const verifiedAppleDiscoveryFiles = discoveryCandidates.filter((event) => event.family === 'Applebot' && event.providerVerified === true);
+const verifiedYandexDiscoveryFiles = discoveryCandidates.filter((event) => event.family === 'YandexBot' && event.providerVerified === true);
 const dnsVerificationUnavailablePages = pageCandidates.filter(
   (event) => event.providerVerification?.verificationUnavailable === true,
 );
@@ -285,6 +306,7 @@ for (const event of [
   ...verifiedPerplexityPages,
   ...verifiedCommonCrawlPages,
   ...verifiedApplePages,
+  ...verifiedYandexPages,
 ]) {
   const pathOnly = event.path.split('?')[0];
   const current = verifiedContentPathMap.get(pathOnly) || {
@@ -312,6 +334,7 @@ const verifiedEvidenceObservations = buildVerifiedCrawlerEvidenceObservations({
     perplexity: verifiedPerplexityPages,
     commonCrawl: verifiedCommonCrawlPages,
     apple: verifiedApplePages,
+    yandex: verifiedYandexPages,
   },
   discoveryFiles: {
     openAi: verifiedOpenAiDiscoveryFiles,
@@ -321,6 +344,7 @@ const verifiedEvidenceObservations = buildVerifiedCrawlerEvidenceObservations({
     perplexity: verifiedPerplexityDiscoveryFiles,
     commonCrawl: verifiedCommonCrawlDiscoveryFiles,
     apple: verifiedAppleDiscoveryFiles,
+    yandex: verifiedYandexDiscoveryFiles,
   },
 });
 const userAgentOnlyEvidenceObservations = buildUserAgentOnlyCrawlerEvidenceObservations([
@@ -340,6 +364,7 @@ console.log(JSON.stringify({
   verifyPerplexity,
   verifyCommonCrawl,
   verifyApple,
+  verifyYandex,
   includeRotated,
   verificationSources: Object.fromEntries(Object.entries(verificationSources).map(([id, source]) => [id, {
     url: source.url,
@@ -367,6 +392,7 @@ console.log(JSON.stringify({
     verifiedPerplexityPageCrawls: verifiedPerplexityPages.length,
     verifiedCommonCrawlPageCrawls: verifiedCommonCrawlPages.length,
     verifiedApplePageCrawls: verifiedApplePages.length,
+    verifiedYandexPageCrawls: verifiedYandexPages.length,
     verifiedOpenAiDiscoveryFileCrawls: verifiedOpenAiDiscoveryFiles.length,
     verifiedGptBotDiscoveryFileCrawls: verifiedGptBotDiscoveryFiles.length,
     verifiedOaiSearchBotDiscoveryFileCrawls: verifiedOaiSearchBotDiscoveryFiles.length,
@@ -376,6 +402,7 @@ console.log(JSON.stringify({
     verifiedPerplexityDiscoveryFileCrawls: verifiedPerplexityDiscoveryFiles.length,
     verifiedCommonCrawlDiscoveryFileCrawls: verifiedCommonCrawlDiscoveryFiles.length,
     verifiedAppleDiscoveryFileCrawls: verifiedAppleDiscoveryFiles.length,
+    verifiedYandexDiscoveryFileCrawls: verifiedYandexDiscoveryFiles.length,
     dnsVerificationUnavailablePageCrawls: dnsVerificationUnavailablePages.length,
     dnsVerificationUnavailableDiscoveryFileCrawls: dnsVerificationUnavailableDiscoveryFiles.length,
     unparsableLines,
@@ -396,6 +423,7 @@ console.log(JSON.stringify({
   recentVerifiedPerplexityPageCrawls: verifiedPerplexityPages.slice(-50),
   recentVerifiedCommonCrawlPageCrawls: verifiedCommonCrawlPages.slice(-50),
   recentVerifiedApplePageCrawls: verifiedApplePages.slice(-50),
+  recentVerifiedYandexPageCrawls: verifiedYandexPages.slice(-50),
   recentVerifiedOpenAiDiscoveryFileCrawls: verifiedOpenAiDiscoveryFiles.slice(-30),
   recentVerifiedGptBotDiscoveryFileCrawls: verifiedGptBotDiscoveryFiles.slice(-30),
   recentVerifiedOaiSearchBotDiscoveryFileCrawls: verifiedOaiSearchBotDiscoveryFiles.slice(-30),
@@ -405,6 +433,7 @@ console.log(JSON.stringify({
   recentVerifiedPerplexityDiscoveryFileCrawls: verifiedPerplexityDiscoveryFiles.slice(-30),
   recentVerifiedCommonCrawlDiscoveryFileCrawls: verifiedCommonCrawlDiscoveryFiles.slice(-30),
   recentVerifiedAppleDiscoveryFileCrawls: verifiedAppleDiscoveryFiles.slice(-30),
+  recentVerifiedYandexDiscoveryFileCrawls: verifiedYandexDiscoveryFiles.slice(-30),
   recentDnsVerificationUnavailablePageCrawls: dnsVerificationUnavailablePages.slice(-50),
   recentDnsVerificationUnavailableDiscoveryFileCrawls: dnsVerificationUnavailableDiscoveryFiles.slice(-30),
   recentSuspiciousRequests: suspiciousCandidates.slice(-20),

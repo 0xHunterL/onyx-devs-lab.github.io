@@ -97,6 +97,13 @@ try {
   assert.equal(unavailableBaiduDns.verified, null);
   assert.equal(unavailableBaiduDns.verificationUnavailable, true);
 
+  const verifiedYandexDns = await verifyDnsIp('213.180.203.81', ['.yandex.ru', '.yandex.net', '.yandex.com'], {
+    reverse: async () => ['213-180-203-81.spider.yandex.com.'],
+    lookup: async () => [{ address: '213.180.203.81', family: 4 }],
+  });
+  assert.equal(verifiedYandexDns.verified, true);
+  assert.equal(verifiedYandexDns.reason, 'forward-confirmed-original-ip');
+
   let failedFetchAttempts = 0;
   const unavailableSource = await fetchPublishedIpPrefixes('https://provider.invalid/prefixes.json', {
     fetchImpl: async () => {
@@ -140,7 +147,7 @@ try {
   assert.equal(verifiedEvents[1].providerVerified, false);
   assert.equal('providerVerified' in verifiedEvents[2], false);
 
-  console.log(JSON.stringify({ tests: 44, failures: [] }, null, 2));
+  console.log(JSON.stringify({ tests: 46, failures: [] }, null, 2));
 } finally {
   await rm(directory, { recursive: true, force: true });
 }

@@ -20,7 +20,7 @@ const [report, matrix] = await Promise.all([
   readFile(matrixPath, 'utf8').then(JSON.parse),
 ]);
 
-const requiredVerificationFlags = ['verifyOpenAi', 'verifyBing', 'verifyGoogle', 'verifyPerplexity'];
+const requiredVerificationFlags = ['verifyOpenAi', 'verifyBing', 'verifyGoogle', 'verifyPerplexity', 'verifyYandex'];
 const missingVerificationFlags = requiredVerificationFlags.filter((flag) => report[flag] !== true);
 if (missingVerificationFlags.length) {
   console.error(`Crawler report must enable provider verification: ${missingVerificationFlags.join(', ')}`);
@@ -32,7 +32,7 @@ if (!Array.isArray(report.verifiedContentPathCoverage)) {
   process.exit(2);
 }
 
-const searchRelatedFamilies = new Set(['OAI-SearchBot', 'Bingbot', 'Googlebot', 'PerplexityBot', 'Perplexity-User']);
+const searchRelatedFamilies = new Set(['OAI-SearchBot', 'Bingbot', 'Googlebot', 'PerplexityBot', 'Perplexity-User', 'YandexBot']);
 const pathEvidence = new Map();
 
 for (const entry of report.verifiedContentPathCoverage) {
