@@ -128,6 +128,7 @@ if (/^Content-Signal:.*ai-train=/im.test(robots.body)) failures.push('/robots.tx
 if (!robots.body.includes('OAI-SearchBot')) failures.push('/robots.txt: OAI-SearchBot policy is missing');
 if (!robots.body.includes('Bytespider')) failures.push('/robots.txt: Bytespider policy is missing');
 if (!robots.body.includes('PerplexityBot')) failures.push('/robots.txt: PerplexityBot policy is missing');
+if (!robots.body.includes('User-agent: CCBot\nAllow: /')) failures.push('/robots.txt: CCBot allow policy is missing');
 if (!robots.body.includes('Perplexity-User')) failures.push('/robots.txt: Perplexity-User policy is missing');
 for (const agent of ['Claude-SearchBot', 'Claude-User', 'ClaudeBot', 'Googlebot', 'Google-Extended', 'Applebot', 'Applebot-Extended']) {
   if (!robots.body.includes(`User-agent: ${agent}`)) failures.push(`/robots.txt: ${agent} policy is missing`);

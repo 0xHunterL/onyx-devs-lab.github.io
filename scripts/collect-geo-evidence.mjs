@@ -81,6 +81,7 @@ const crawler = await runJson('report-ai-crawlers.mjs', [
   '--verify-bing',
   '--verify-google',
   '--verify-perplexity',
+  '--verify-common-crawl',
   ...logPaths,
 ]);
 const referral = await runJson('report-geo-referrals.mjs', [`--since=${since}`, '--include-rotated', ...logPaths]);
@@ -103,6 +104,8 @@ const counts = {
   verifiedBingDiscoveryFileCrawls: crawler.totals.verifiedBingDiscoveryFileCrawls,
   verifiedGoogleDiscoveryFileCrawls: crawler.totals.verifiedGoogleDiscoveryFileCrawls,
   verifiedPerplexityDiscoveryFileCrawls: crawler.totals.verifiedPerplexityDiscoveryFileCrawls,
+  verifiedCommonCrawlPageCrawls: crawler.totals.verifiedCommonCrawlPageCrawls,
+  verifiedCommonCrawlDiscoveryFileCrawls: crawler.totals.verifiedCommonCrawlDiscoveryFileCrawls,
   verifiedBingPageCrawls: crawler.totals.verifiedBingPageCrawls,
   verifiedGooglePageCrawls: crawler.totals.verifiedGooglePageCrawls,
   verifiedPerplexityPageCrawls: crawler.totals.verifiedPerplexityPageCrawls,
@@ -127,6 +130,7 @@ const metricForCrawlerObservation = (observation) => {
     Googlebot: 'Google',
     PerplexityBot: 'Perplexity',
     'Perplexity-User': 'Perplexity',
+    CCBot: 'CommonCrawl',
   }[observation.family];
   if (!provider) throw new Error(`Unsupported verified crawler family: ${observation.family}`);
   return `verified${provider}${observation.classification === 'candidate-page-crawl' ? 'Page' : 'DiscoveryFile'}Crawls`;

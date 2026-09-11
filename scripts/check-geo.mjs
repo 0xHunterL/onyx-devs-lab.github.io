@@ -535,7 +535,7 @@ try {
 const robotsText = fs.readFileSync(path.join(dist, 'robots.txt'), 'utf8');
 if (!/^Content-Signal:\s*search=yes,\s*ai-input=yes\s*$/im.test(robotsText)) failures.push('robots.txt: search and AI-input content signals are missing');
 if (/^Content-Signal:.*ai-train=/im.test(robotsText)) failures.push('robots.txt: AI-training preference must remain unspecified unless explicitly approved');
-for (const agent of ['Claude-SearchBot', 'Claude-User', 'ClaudeBot', 'Googlebot', 'Google-Extended', 'Applebot', 'Applebot-Extended']) {
+for (const agent of ['CCBot', 'Claude-SearchBot', 'Claude-User', 'ClaudeBot', 'Googlebot', 'Google-Extended', 'Applebot', 'Applebot-Extended']) {
   if (!robotsText.includes(`User-agent: ${agent}`)) failures.push(`robots.txt: ${agent} policy is missing`);
 }
 

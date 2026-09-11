@@ -43,7 +43,7 @@ npm run geo:submit-indexnow
 nginx -t
 npm run geo:check-live -- https://hk.onyxdevslab.com
 npm run geo:schema-validate-live -- https://hk.onyxdevslab.com
-npm run geo:crawler-report -- --since=2026-09-01 --include-rotated --verify-openai --verify-bing --verify-google --verify-perplexity /var/log/nginx/hk.onyxdevslab.com.geo.log
+npm run geo:crawler-report -- --since=2026-09-01 --include-rotated --verify-openai --verify-bing --verify-google --verify-perplexity --verify-common-crawl /var/log/nginx/hk.onyxdevslab.com.geo.log
 npm run geo:referral-report -- --since=2026-09-01 --include-rotated /var/log/nginx/hk.onyxdevslab.com.geo.log
 ```
 

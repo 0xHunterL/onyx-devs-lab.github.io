@@ -7,6 +7,7 @@ import { resolveLogPaths } from './resolve-log-paths.mjs';
 const crawlerFamilies = [
   ['Bytespider', /Bytespider/i],
   ['Baiduspider', /Baiduspider/i],
+  ['CCBot', /CCBot/i],
   ['Bingbot', /bingbot/i],
   ['OAI-SearchBot', /OAI-SearchBot/i],
   ['GPTBot', /GPTBot/i],
@@ -169,17 +170,18 @@ const verifyOpenAi = args.includes('--verify-openai');
 const verifyBing = args.includes('--verify-bing');
 const verifyGoogle = args.includes('--verify-google');
 const verifyPerplexity = args.includes('--verify-perplexity');
+const verifyCommonCrawl = args.includes('--verify-common-crawl');
 const includeRotated = args.includes('--include-rotated');
 const since = sinceArg ? Date.parse(`${sinceArg.slice('--since='.length)}T00:00:00Z`) : null;
 if (sinceArg && Number.isNaN(since)) {
   console.error('Invalid --since date. Use --since=YYYY-MM-DD.');
   process.exit(2);
 }
-const verificationFlags = ['--verify-openai', '--verify-bing', '--verify-google', '--verify-perplexity', '--include-rotated'];
+const verificationFlags = ['--verify-openai', '--verify-bing', '--verify-google', '--verify-perplexity', '--verify-common-crawl', '--include-rotated'];
 const inputPaths = args.filter((arg) => !arg.startsWith('--since=') && !verificationFlags.includes(arg));
 const paths = await resolveLogPaths(inputPaths, includeRotated);
 if (!paths.length) {
-  console.error('Usage: npm run geo:crawler-report -- [--since=YYYY-MM-DD] [--include-rotated] [--verify-openai] [--verify-bing] [--verify-google] [--verify-perplexity] /var/log/nginx/access.log [/var/log/nginx/access.log.1.gz ...]');
+  console.error('Usage: npm run geo:crawler-report -- [--since=YYYY-MM-DD] [--include-rotated] [--verify-openai] [--verify-bing] [--verify-google] [--verify-perplexity] [--verify-common-crawl] /var/log/nginx/access.log [/var/log/nginx/access.log.1.gz ...]');
   process.exit(2);
 }
 
@@ -219,6 +221,15 @@ if (verifyPerplexity) {
   for (const event of events) {
     if (event.family === 'PerplexityBot') event.providerVerified = botPrefixes.some((prefix) => isInIpv4Prefix(event.ip, prefix));
     if (event.family === 'Perplexity-User') event.providerVerified = userPrefixes.some((prefix) => isInIpv4Prefix(event.ip, prefix));
+  }
+}
+
+if (verifyCommonCrawl) {
+  const prefixes = await publishedIpv4Prefixes('https://index.commoncrawl.org/ccbot.json');
+  for (const event of events) {
+    if (event.family !== 'CCBot') continue;
+    event.providerVerified = prefixes.some((prefix) => isInIpv4Prefix(event.ip, prefix));
+    event.providerVerification = { method: 'published-ipv4-prefix', verified: event.providerVerified, reason: event.providerVerified ? 'official-common-crawl-ipv4-range' : 'not-in-official-common-crawl-ipv4-range' };
   }
 }
 
@@ -270,6 +281,7 @@ const verifiedGooglePages = pageCandidates.filter((event) => event.family === 'G
 const verifiedPerplexityPages = pageCandidates.filter(
   (event) => ['PerplexityBot', 'Perplexity-User'].includes(event.family) && event.providerVerified === true,
 );
+const verifiedCommonCrawlPages = pageCandidates.filter((event) => event.family === 'CCBot' && event.providerVerified === true);
 const verifiedOpenAiDiscoveryFiles = discoveryCandidates.filter(
   (event) => ['GPTBot', 'OAI-SearchBot'].includes(event.family) && event.providerVerified === true,
 );
@@ -286,6 +298,7 @@ const verifiedGoogleDiscoveryFiles = discoveryCandidates.filter(
 const verifiedPerplexityDiscoveryFiles = discoveryCandidates.filter(
   (event) => ['PerplexityBot', 'Perplexity-User'].includes(event.family) && event.providerVerified === true,
 );
+const verifiedCommonCrawlDiscoveryFiles = discoveryCandidates.filter((event) => event.family === 'CCBot' && event.providerVerified === true);
 const dnsVerificationUnavailablePages = pageCandidates.filter(
   (event) => event.providerVerification?.verificationUnavailable === true,
 );
@@ -298,6 +311,7 @@ for (const event of [
   ...verifiedBingPages,
   ...verifiedGooglePages,
   ...verifiedPerplexityPages,
+  ...verifiedCommonCrawlPages,
 ]) {
   const pathOnly = event.path.split('?')[0];
   const current = verifiedContentPathMap.get(pathOnly) || {
@@ -334,6 +348,7 @@ const verifiedEvidenceObservations = [
   ...verifiedBingDiscoveryFiles,
   ...verifiedGoogleDiscoveryFiles,
   ...verifiedPerplexityDiscoveryFiles,
+  ...verifiedCommonCrawlDiscoveryFiles,
 ].map((event) => ({
   fingerprint: fingerprint(event),
   family: event.family,
@@ -353,6 +368,7 @@ console.log(JSON.stringify({
   verifyBing,
   verifyGoogle,
   verifyPerplexity,
+  verifyCommonCrawl,
   includeRotated,
   totals: {
     candidateCrawlerRequests: events.length,
@@ -366,12 +382,14 @@ console.log(JSON.stringify({
     verifiedBingPageCrawls: verifiedBingPages.length,
     verifiedGooglePageCrawls: verifiedGooglePages.length,
     verifiedPerplexityPageCrawls: verifiedPerplexityPages.length,
+    verifiedCommonCrawlPageCrawls: verifiedCommonCrawlPages.length,
     verifiedOpenAiDiscoveryFileCrawls: verifiedOpenAiDiscoveryFiles.length,
     verifiedGptBotDiscoveryFileCrawls: verifiedGptBotDiscoveryFiles.length,
     verifiedOaiSearchBotDiscoveryFileCrawls: verifiedOaiSearchBotDiscoveryFiles.length,
     verifiedBingDiscoveryFileCrawls: verifiedBingDiscoveryFiles.length,
     verifiedGoogleDiscoveryFileCrawls: verifiedGoogleDiscoveryFiles.length,
     verifiedPerplexityDiscoveryFileCrawls: verifiedPerplexityDiscoveryFiles.length,
+    verifiedCommonCrawlDiscoveryFileCrawls: verifiedCommonCrawlDiscoveryFiles.length,
     dnsVerificationUnavailablePageCrawls: dnsVerificationUnavailablePages.length,
     dnsVerificationUnavailableDiscoveryFileCrawls: dnsVerificationUnavailableDiscoveryFiles.length,
     unparsableLines,
@@ -388,12 +406,14 @@ console.log(JSON.stringify({
   recentVerifiedBingPageCrawls: verifiedBingPages.slice(-50),
   recentVerifiedGooglePageCrawls: verifiedGooglePages.slice(-50),
   recentVerifiedPerplexityPageCrawls: verifiedPerplexityPages.slice(-50),
+  recentVerifiedCommonCrawlPageCrawls: verifiedCommonCrawlPages.slice(-50),
   recentVerifiedOpenAiDiscoveryFileCrawls: verifiedOpenAiDiscoveryFiles.slice(-30),
   recentVerifiedGptBotDiscoveryFileCrawls: verifiedGptBotDiscoveryFiles.slice(-30),
   recentVerifiedOaiSearchBotDiscoveryFileCrawls: verifiedOaiSearchBotDiscoveryFiles.slice(-30),
   recentVerifiedBingDiscoveryFileCrawls: verifiedBingDiscoveryFiles.slice(-30),
   recentVerifiedGoogleDiscoveryFileCrawls: verifiedGoogleDiscoveryFiles.slice(-30),
   recentVerifiedPerplexityDiscoveryFileCrawls: verifiedPerplexityDiscoveryFiles.slice(-30),
+  recentVerifiedCommonCrawlDiscoveryFileCrawls: verifiedCommonCrawlDiscoveryFiles.slice(-30),
   recentDnsVerificationUnavailablePageCrawls: dnsVerificationUnavailablePages.slice(-50),
   recentDnsVerificationUnavailableDiscoveryFileCrawls: dnsVerificationUnavailableDiscoveryFiles.slice(-30),
   recentSuspiciousRequests: suspiciousCandidates.slice(-20),
