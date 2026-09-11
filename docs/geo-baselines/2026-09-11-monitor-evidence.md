@@ -20,4 +20,9 @@
 - 生产验证中，待旧 Nginx worker 完成优雅退出后，从本机直连并伪造 GPTBot 地址的请求被记录为本机客户端与本机代理地址，没有采用伪造头。经公开 HTTPS 正常进入 Cloudflare 的合成请求，则记录到属于受信 Cloudflare `172.64.0.0/13` 地址段的代理；向公开入口附加伪造地址头的请求由 Cloudflare 返回 403，未进入源站日志。所有合成请求均带 `Onyx-GEO-Release-Check` 标记并被证据统计排除。
 - 加固后重新汇总历史生产日志，GPTBot、OAI-SearchBot、Bingbot、Bytespider 和归因请求计数均保持不变。这说明现有基线不依赖可伪造的直连请求头；本项只提高证据真实性，不构成新的抓取、收录、引用或推荐证据。
 
+## 监测源故障隔离
+
+- 2026-09-11T10:59Z 的生产采集因 Common Crawl 官方 CCBot 前缀清单连接超时而失败。报告器现会对 OpenAI、Perplexity 与 Common Crawl 的五个官方前缀源分别重试和记录可用性；单一来源仍失败时，依赖它的候选请求保持 `providerVerified: null`，其余爬虫、归因、提示词覆盖和公开语料库报告继续生成，不能把未核验候选升级为官方访问。
+- 2026-09-11T11:03:02Z 用同一个 systemd 服务生产复测成功，五个前缀源均为 `available`，Common Crawl 两个所选索引也全部可用；永久可用性事件为 `events/2026-09-11T11-03-02.897Z-availability-change.json`。GPTBot 27 次正文、OAI-SearchBot 8 次发现文件、Bingbot 7 次正文、Bytespider 0 次非合成候选以及 70 次归因请求的基线均未变化，AI Referrer 仍为 0。
+
 机器可读数据见 [`2026-09-11-monitor-evidence.json`](./2026-09-11-monitor-evidence.json)。这些数字只区分可访问、已核验抓取候选及归因请求，不证明搜索收录、AI 检索、引用、排名、真人访问或非品牌推荐。
