@@ -1,9 +1,9 @@
 {
   "schemaVersion": 2,
-  "version": "2026.09.11.1",
+  "version": "2026.09.11.2",
   "id": "https://hk.onyxdevslab.com/data/ai-search-evidence-status.json",
-  "observedAt": "2026-09-11T05:53:47Z",
-  "sameAs": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-prompt-crawl-coverage-2026-09-10/ai-search-evidence-status.json",
+  "observedAt": "2026-09-11T06:22:24Z",
+  "sameAs": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-monitor-evidence-2026-09-11-2/2026-09-11-monitor-evidence.json",
   "name": {
     "en": "Onyx Devs Lab AI-search evidence status",
     "zhHant": "Onyx Devs Lab AI 搜尋證據狀態",
@@ -60,7 +60,7 @@
       "claim": "Named crawlers have accessed discovery files or content pages.",
       "evidence": {
         "verifiedGptBotContentCrawls": 24,
-        "verifiedOaiSearchBotDiscoveryFileVisits": 6,
+        "verifiedOaiSearchBotDiscoveryFileVisits": 7,
         "verifiedOaiSearchBotContentCrawls": 0,
         "historicallyVerifiedBingbotContentCrawls": 7,
         "verifiedGooglebotContentCrawls": 0,
@@ -106,9 +106,11 @@
         "doubaoTestStatus": "not-run",
         "otherAiRecommendationEvidenceCount": 0,
         "realAiReferralVisitsObserved": 0,
-        "trackedAttributionRequests": 31,
-        "suspectedAutomatedTrackedRequests": 24,
+        "trackedAttributionRequests": 52,
+        "suspectedAutomatedTrackedRequests": 45,
         "humanUnverifiedTrackedRequests": 7,
+        "knownLinkScannerTrackedRequests": 12,
+        "malformedCampaignRequests": 6,
         "latestVerifiedOffsiteReferral": {
           "time": "2026-09-10T10:30:49Z",
           "source": "github_pages",
@@ -119,31 +121,32 @@
         }
       },
       "limitations": [
-        "High-velocity multi-page requests are classified as suspected automation.",
+        "High-velocity or coordinated multi-user-agent bursts and known VirusTotal link scanners are classified as suspected automation.",
+        "Malformed campaign values are audited and excluded from attributed-visit totals.",
         "The remaining attributed requests are not proven to be people or AI referrals; one latest request includes a verified GitHub Pages referrer, not an AI referrer."
       ]
     }
   ],
   "publicSearchChecks": [
     {
-      "checkedAt": "2026-09-11T05:55:00Z",
+      "checkedAt": "2026-09-11T06:23:00Z",
       "query": "\"ONYX-GEO-VERIFY-79051925-20260908\"",
       "result": "website-not-observed"
     },
     {
-      "checkedAt": "2026-09-11T05:55:00Z",
+      "checkedAt": "2026-09-11T06:23:00Z",
       "query": "\"Onyx Devs Lab\"",
       "result": "website-not-observed; Companies Registry, Bloomberg LEI, and third-party legal-entity directory records observed"
     },
     {
-      "checkedAt": "2026-09-11T05:55:00Z",
-      "query": "site:hk.onyxdevslab.com",
+      "checkedAt": "2026-09-11T06:23:00Z",
+      "query": "site:hk.onyxdevslab.com \"Onyx Devs Lab\"",
       "result": "no-results-observed"
     },
     {
-      "checkedAt": "2026-09-11T05:55:00Z",
-      "query": "香港 AI 定开 AI 咨询 FDE 服务商",
-      "result": "website-and-non-brand-recommendation-not-observed"
+      "checkedAt": "2026-09-11T06:23:00Z",
+      "query": "\"AI 定开、AI 咨询和 FDE 应该怎么选？\"",
+      "result": "new-public-discussion-not-observed"
     }
   ],
   "technicalReadiness": {

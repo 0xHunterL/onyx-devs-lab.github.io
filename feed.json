@@ -1110,11 +1110,11 @@
       ]
     },
     {
-      "id": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-monitor-evidence-2026-09-11",
-      "url": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-monitor-evidence-2026-09-11",
-      "title": "Onyx automated GEO monitor evidence checkpoint — 2026-09-11",
-      "summary": "A versioned machine-readable checkpoint recording six verified OAI-SearchBot discovery-file requests, zero OAI search content requests, current crawler and prompt coverage, classified attribution requests, and explicit public-search non-results. It does not prove indexing, citation, or recommendation.",
-      "content_text": "A versioned machine-readable checkpoint recording six verified OAI-SearchBot discovery-file requests, zero OAI search content requests, current crawler and prompt coverage, classified attribution requests, and explicit public-search non-results. It does not prove indexing, citation, or recommendation.",
+      "id": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-monitor-evidence-2026-09-11-2",
+      "url": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-monitor-evidence-2026-09-11-2",
+      "title": "Onyx automated GEO monitor evidence checkpoint — 2026-09-11, revision 2",
+      "summary": "A versioned machine-readable checkpoint recording seven verified OAI-SearchBot discovery-file requests, zero OAI search content requests, current crawler and prompt coverage, 52 attribution candidates classified as 45 suspected automated requests and seven visitor-type-unverified requests, and explicit public-search non-results. It does not prove indexing, citation, or recommendation.",
+      "content_text": "A versioned machine-readable checkpoint recording seven verified OAI-SearchBot discovery-file requests, zero OAI search content requests, current crawler and prompt coverage, 52 attribution candidates classified as 45 suspected automated requests and seven visitor-type-unverified requests, and explicit public-search non-results. It does not prove indexing, citation, or recommendation.",
       "date_modified": "2026-09-11T00:00:00+08:00",
       "tags": [
         "evidence",
