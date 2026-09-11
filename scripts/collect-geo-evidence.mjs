@@ -86,6 +86,7 @@ const crawler = await runJson('report-ai-crawlers.mjs', [
   '--verify-common-crawl',
   '--verify-apple',
   '--verify-yandex',
+  '--verify-ahrefs',
   ...logPaths,
 ]);
 const referral = await runJson('report-geo-referrals.mjs', [`--since=${since}`, '--include-rotated', ...logPaths]);
@@ -121,6 +122,7 @@ const metricForCrawlerObservation = (observation) => {
     CCBot: 'CommonCrawl',
     Applebot: 'Apple',
     YandexBot: 'Yandex',
+    AhrefsBot: 'Ahrefs',
   }[observation.family];
   if (!provider) throw new Error(`Unsupported verified crawler family: ${observation.family}`);
   return `verified${provider}${observation.classification === 'candidate-page-crawl' ? 'Page' : 'DiscoveryFile'}Crawls`;

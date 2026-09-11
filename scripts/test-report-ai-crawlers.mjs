@@ -34,6 +34,10 @@ const records = [
     time: '2026-09-11T09:00:04+00:00', clientIp: '203.0.113.22', method: 'HEAD',
     path: '/zh-cn/methodology/ai-search-verification/', status: 200, userAgent: 'Bytespider',
   },
+  {
+    time: '2026-09-11T09:00:05+00:00', clientIp: '51.89.69.107', method: 'GET',
+    path: '/sitemap.xml', status: 200, userAgent: 'Mozilla/5.0 (compatible; AhrefsBot/7.0; +http://ahrefs.com/robot/)',
+  },
 ];
 
 try {
@@ -43,6 +47,7 @@ try {
   ], { cwd: path.resolve('.') });
   const report = JSON.parse(stdout);
   assert.equal(report.byFamily.Bytespider, 5);
+  assert.equal(report.byFamily.AhrefsBot, 1);
   assert.deepEqual(report.verificationSources, {});
   assert.equal(report.totals.syntheticReleaseChecks, 1);
   assert.equal(report.totals.nonContentMethodRequests, 1);
@@ -73,6 +78,7 @@ try {
   assert.equal(isInIpPrefix('2600:1f28:365:80ff::1', '2600:1f28:365:8000::/56'), true);
   assert.equal(isInIpPrefix('2600:1f28:365:8100::1', '2600:1f28:365:8000::/56'), false);
   assert.equal(isInIpPrefix('::ffff:3.41.188.39', '3.41.188.32/29'), true);
+  assert.equal(isInIpPrefix('51.89.69.107', '51.89.69.96/28'), true);
   assert.equal(isInIpPrefix('not-an-ip', '2600:1f28:365:8000::/56'), false);
   assert.equal(cloudflareProxyPrefixes.length, 22);
   assert.deepEqual(selectTrustedClientIp('18.97.14.80', '173.245.48.1'), { ip: '18.97.14.80', trustedProxy: true });
@@ -147,7 +153,7 @@ try {
   assert.equal(verifiedEvents[1].providerVerified, false);
   assert.equal('providerVerified' in verifiedEvents[2], false);
 
-  console.log(JSON.stringify({ tests: 46, failures: [] }, null, 2));
+  console.log(JSON.stringify({ tests: 48, failures: [] }, null, 2));
 } finally {
   await rm(directory, { recursive: true, force: true });
 }

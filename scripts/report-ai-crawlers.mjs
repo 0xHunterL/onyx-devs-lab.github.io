@@ -21,6 +21,7 @@ const crawlerFamilies = [
   ['Applebot', /Applebot/i],
   ['Googlebot', /Googlebot/i],
   ['YandexBot', /YandexBot/i],
+  ['AhrefsBot', /AhrefsBot/i],
 ];
 
 const suspiciousPath = /(?:^|\/)(?:\.env(?:\.|$)|\.git(?:\/|$)|wp-admin|wp-login|phpmyadmin|server-status|actuator|cgi-bin)|(?:passwd|shadow|id_rsa|authorized_keys|credentials?|secrets?|backup\.sql|169\.254\.169\.254)/i;
@@ -114,17 +115,18 @@ const verifyPerplexity = args.includes('--verify-perplexity');
 const verifyCommonCrawl = args.includes('--verify-common-crawl');
 const verifyApple = args.includes('--verify-apple');
 const verifyYandex = args.includes('--verify-yandex');
+const verifyAhrefs = args.includes('--verify-ahrefs');
 const includeRotated = args.includes('--include-rotated');
 const since = sinceArg ? Date.parse(`${sinceArg.slice('--since='.length)}T00:00:00Z`) : null;
 if (sinceArg && Number.isNaN(since)) {
   console.error('Invalid --since date. Use --since=YYYY-MM-DD.');
   process.exit(2);
 }
-const verificationFlags = ['--verify-openai', '--verify-bing', '--verify-baidu', '--verify-google', '--verify-perplexity', '--verify-common-crawl', '--verify-apple', '--verify-yandex', '--include-rotated'];
+const verificationFlags = ['--verify-openai', '--verify-bing', '--verify-baidu', '--verify-google', '--verify-perplexity', '--verify-common-crawl', '--verify-apple', '--verify-yandex', '--verify-ahrefs', '--include-rotated'];
 const inputPaths = args.filter((arg) => !arg.startsWith('--since=') && !verificationFlags.includes(arg));
 const paths = await resolveLogPaths(inputPaths, includeRotated);
 if (!paths.length) {
-  console.error('Usage: npm run geo:crawler-report -- [--since=YYYY-MM-DD] [--include-rotated] [--verify-openai] [--verify-bing] [--verify-baidu] [--verify-google] [--verify-perplexity] [--verify-common-crawl] [--verify-apple] [--verify-yandex] /var/log/nginx/access.log [/var/log/nginx/access.log.1.gz ...]');
+  console.error('Usage: npm run geo:crawler-report -- [--since=YYYY-MM-DD] [--include-rotated] [--verify-openai] [--verify-bing] [--verify-baidu] [--verify-google] [--verify-perplexity] [--verify-common-crawl] [--verify-apple] [--verify-yandex] [--verify-ahrefs] /var/log/nginx/access.log [/var/log/nginx/access.log.1.gz ...]');
   process.exit(2);
 }
 
@@ -178,6 +180,12 @@ if (verifyApple) {
   const source = await fetchPublishedIpPrefixes('https://search.developer.apple.com/applebot.json');
   verificationSources.appleBot = source;
   applyPublishedPrefixVerification(events, 'Applebot', source, 'official-applebot-ip-range');
+}
+
+if (verifyAhrefs) {
+  const source = await fetchPublishedIpPrefixes('https://api.ahrefs.com/v3/public/crawler-ip-ranges');
+  verificationSources.ahrefsBot = source;
+  applyPublishedPrefixVerification(events, 'AhrefsBot', source, 'official-ahrefs-ip-range');
 }
 
 if (verifyBing) {
@@ -269,6 +277,7 @@ const verifiedPerplexityPages = pageCandidates.filter(
 const verifiedCommonCrawlPages = pageCandidates.filter((event) => event.family === 'CCBot' && event.providerVerified === true);
 const verifiedApplePages = pageCandidates.filter((event) => event.family === 'Applebot' && event.providerVerified === true);
 const verifiedYandexPages = pageCandidates.filter((event) => event.family === 'YandexBot' && event.providerVerified === true);
+const verifiedAhrefsPages = pageCandidates.filter((event) => event.family === 'AhrefsBot' && event.providerVerified === true);
 const verifiedOpenAiDiscoveryFiles = discoveryCandidates.filter(
   (event) => ['GPTBot', 'OAI-SearchBot'].includes(event.family) && event.providerVerified === true,
 );
@@ -291,6 +300,7 @@ const verifiedPerplexityDiscoveryFiles = discoveryCandidates.filter(
 const verifiedCommonCrawlDiscoveryFiles = discoveryCandidates.filter((event) => event.family === 'CCBot' && event.providerVerified === true);
 const verifiedAppleDiscoveryFiles = discoveryCandidates.filter((event) => event.family === 'Applebot' && event.providerVerified === true);
 const verifiedYandexDiscoveryFiles = discoveryCandidates.filter((event) => event.family === 'YandexBot' && event.providerVerified === true);
+const verifiedAhrefsDiscoveryFiles = discoveryCandidates.filter((event) => event.family === 'AhrefsBot' && event.providerVerified === true);
 const dnsVerificationUnavailablePages = pageCandidates.filter(
   (event) => event.providerVerification?.verificationUnavailable === true,
 );
@@ -307,6 +317,7 @@ for (const event of [
   ...verifiedCommonCrawlPages,
   ...verifiedApplePages,
   ...verifiedYandexPages,
+  ...verifiedAhrefsPages,
 ]) {
   const pathOnly = event.path.split('?')[0];
   const current = verifiedContentPathMap.get(pathOnly) || {
@@ -335,6 +346,7 @@ const verifiedEvidenceObservations = buildVerifiedCrawlerEvidenceObservations({
     commonCrawl: verifiedCommonCrawlPages,
     apple: verifiedApplePages,
     yandex: verifiedYandexPages,
+    ahrefs: verifiedAhrefsPages,
   },
   discoveryFiles: {
     openAi: verifiedOpenAiDiscoveryFiles,
@@ -345,6 +357,7 @@ const verifiedEvidenceObservations = buildVerifiedCrawlerEvidenceObservations({
     commonCrawl: verifiedCommonCrawlDiscoveryFiles,
     apple: verifiedAppleDiscoveryFiles,
     yandex: verifiedYandexDiscoveryFiles,
+    ahrefs: verifiedAhrefsDiscoveryFiles,
   },
 });
 const userAgentOnlyEvidenceObservations = buildUserAgentOnlyCrawlerEvidenceObservations([
@@ -354,7 +367,7 @@ const userAgentOnlyEvidenceObservations = buildUserAgentOnlyCrawlerEvidenceObser
 
 console.log(JSON.stringify({
   generatedAt: new Date().toISOString(),
-  caveat: 'User-Agent strings are self-declared. Only successful GET requests can be classified as candidate page or discovery-file crawls; HEAD and other methods do not retrieve the representation and are kept as non-content request observations. Candidate content crawls do not prove platform identity unless providerVerified is true under an enabled provider verification method. Bytespider page and discovery requests are exposed separately as user-agent-only, identity-unverified observations after synthetic release checks are excluded; they do not prove Doubao or ByteDance access. A null providerVerified value with verificationUnavailable means the required DNS or published-prefix source was unavailable, so identity could not be tested and must not be reported as failed. GPTBot is reported separately from OAI-SearchBot because a verified training crawl is not evidence of search indexing or citation.',
+  caveat: 'User-Agent strings are self-declared. Only successful GET requests can be classified as candidate page or discovery-file crawls; HEAD and other methods do not retrieve the representation and are kept as non-content request observations. Candidate content crawls do not prove platform identity unless providerVerified is true under an enabled provider verification method. Bytespider page and discovery requests are exposed separately as user-agent-only, identity-unverified observations after synthetic release checks are excluded; they do not prove Doubao or ByteDance access. A null providerVerified value with verificationUnavailable means the required DNS or published-prefix source was unavailable, so identity could not be tested and must not be reported as failed. GPTBot is reported separately from OAI-SearchBot because a verified training crawl is not evidence of search indexing or citation. AhrefsBot is reported as a provider-verified external discovery crawler; because it serves both Ahrefs and Yep, a request does not by itself prove Yep indexing, ranking, retrieval, or citation.',
   files: paths,
   since: sinceArg ? sinceArg.slice('--since='.length) : null,
   verifyOpenAi,
@@ -365,6 +378,7 @@ console.log(JSON.stringify({
   verifyCommonCrawl,
   verifyApple,
   verifyYandex,
+  verifyAhrefs,
   includeRotated,
   verificationSources: Object.fromEntries(Object.entries(verificationSources).map(([id, source]) => [id, {
     url: source.url,
@@ -393,6 +407,7 @@ console.log(JSON.stringify({
     verifiedCommonCrawlPageCrawls: verifiedCommonCrawlPages.length,
     verifiedApplePageCrawls: verifiedApplePages.length,
     verifiedYandexPageCrawls: verifiedYandexPages.length,
+    verifiedAhrefsPageCrawls: verifiedAhrefsPages.length,
     verifiedOpenAiDiscoveryFileCrawls: verifiedOpenAiDiscoveryFiles.length,
     verifiedGptBotDiscoveryFileCrawls: verifiedGptBotDiscoveryFiles.length,
     verifiedOaiSearchBotDiscoveryFileCrawls: verifiedOaiSearchBotDiscoveryFiles.length,
@@ -403,6 +418,7 @@ console.log(JSON.stringify({
     verifiedCommonCrawlDiscoveryFileCrawls: verifiedCommonCrawlDiscoveryFiles.length,
     verifiedAppleDiscoveryFileCrawls: verifiedAppleDiscoveryFiles.length,
     verifiedYandexDiscoveryFileCrawls: verifiedYandexDiscoveryFiles.length,
+    verifiedAhrefsDiscoveryFileCrawls: verifiedAhrefsDiscoveryFiles.length,
     dnsVerificationUnavailablePageCrawls: dnsVerificationUnavailablePages.length,
     dnsVerificationUnavailableDiscoveryFileCrawls: dnsVerificationUnavailableDiscoveryFiles.length,
     unparsableLines,
@@ -424,6 +440,7 @@ console.log(JSON.stringify({
   recentVerifiedCommonCrawlPageCrawls: verifiedCommonCrawlPages.slice(-50),
   recentVerifiedApplePageCrawls: verifiedApplePages.slice(-50),
   recentVerifiedYandexPageCrawls: verifiedYandexPages.slice(-50),
+  recentVerifiedAhrefsPageCrawls: verifiedAhrefsPages.slice(-50),
   recentVerifiedOpenAiDiscoveryFileCrawls: verifiedOpenAiDiscoveryFiles.slice(-30),
   recentVerifiedGptBotDiscoveryFileCrawls: verifiedGptBotDiscoveryFiles.slice(-30),
   recentVerifiedOaiSearchBotDiscoveryFileCrawls: verifiedOaiSearchBotDiscoveryFiles.slice(-30),
@@ -434,6 +451,7 @@ console.log(JSON.stringify({
   recentVerifiedCommonCrawlDiscoveryFileCrawls: verifiedCommonCrawlDiscoveryFiles.slice(-30),
   recentVerifiedAppleDiscoveryFileCrawls: verifiedAppleDiscoveryFiles.slice(-30),
   recentVerifiedYandexDiscoveryFileCrawls: verifiedYandexDiscoveryFiles.slice(-30),
+  recentVerifiedAhrefsDiscoveryFileCrawls: verifiedAhrefsDiscoveryFiles.slice(-30),
   recentDnsVerificationUnavailablePageCrawls: dnsVerificationUnavailablePages.slice(-50),
   recentDnsVerificationUnavailableDiscoveryFileCrawls: dnsVerificationUnavailableDiscoveryFiles.slice(-30),
   recentSuspiciousRequests: suspiciousCandidates.slice(-20),
