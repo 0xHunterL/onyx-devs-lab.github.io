@@ -2,6 +2,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import {
   currentAttributionEvidence,
+  currentCommonCrawlEvidence,
   currentMonitorEvidence,
   currentPromptCoverage,
   currentProviderEvidence,
@@ -559,6 +560,7 @@ try {
   if (status.evidenceLevels?.[0]?.status !== 'verified' || status.evidenceLevels?.[0]?.evidence?.canonicalUrlsChecked !== 71) failures.push('AI-search evidence status: accessibility evidence is incomplete');
   if (status.evidenceLevels?.[0]?.evidence?.markdownRepresentationsGenerated !== 71 || status.evidenceLevels?.[0]?.evidence?.markdownNegotiatedAtCanonicalUrl !== true || status.evidenceLevels?.[0]?.evidence?.contentSignals?.aiTrain !== 'unspecified') failures.push('AI-search evidence status: agent-readable representation evidence is incomplete');
   if (status.evidenceLevels?.[1]?.evidence?.verifiedGptBotContentCrawls !== currentProviderEvidence.gptBotContentRequests || status.evidenceLevels?.[1]?.evidence?.verifiedGptBotDiscoveryFileCrawls !== currentProviderEvidence.gptBotDiscoveryFileRequests || status.evidenceLevels?.[1]?.evidence?.verifiedDistinctContentPaths !== currentProviderEvidence.distinctVerifiedContentPaths || status.evidenceLevels?.[1]?.evidence?.verifiedOaiSearchBotDiscoveryFileVisits !== currentProviderEvidence.oaiSearchBotDiscoveryFileRequests || status.evidenceLevels?.[1]?.evidence?.verifiedOaiSearchBotContentCrawls !== currentProviderEvidence.oaiSearchBotContentRequests || status.evidenceLevels?.[1]?.evidence?.historicallyVerifiedBingbotContentCrawls !== currentProviderEvidence.bingbotContentRequests) failures.push('AI-search evidence status: crawler evidence is incomplete');
+  if (JSON.stringify(status.evidenceLevels?.[1]?.evidence?.commonCrawlIndexObservation) !== JSON.stringify(currentCommonCrawlEvidence)) failures.push('AI-search evidence status: Common Crawl index observation is missing or stale');
   if (status.evidenceLevels?.[1]?.evidence?.fixedPromptCoverage?.promptsWithAnyVerifiedCrawl !== currentPromptCoverage.promptsWithAnyVerifiedCrawl || status.evidenceLevels?.[1]?.evidence?.fixedPromptCoverage?.promptsFullyVerifiedCrawled !== currentPromptCoverage.promptsFullyVerifiedCrawled || status.evidenceLevels?.[1]?.evidence?.fixedPromptCoverage?.promptsWithAnySearchRelatedCrawl !== currentPromptCoverage.promptsWithAnySearchRelatedCrawl || status.evidenceLevels?.[1]?.evidence?.fixedPromptCoverage?.scenarioPromptsWithAnyVerifiedCrawl !== currentPromptCoverage.scenarioPromptsWithAnyVerifiedCrawl) failures.push('AI-search evidence status: fixed-prompt crawl coverage is incomplete');
   if (status.evidenceLevels?.[2]?.status !== 'not-verified' || status.evidenceLevels?.[3]?.status !== 'not-tested' || status.testProtocol?.doubaoPromptsSent !== false) failures.push('AI-search evidence status: negative evidence boundary is incomplete');
   if (!status.evidenceBoundary?.includes('must not be inferred from a lower level')) failures.push('AI-search evidence status: inference boundary is missing');

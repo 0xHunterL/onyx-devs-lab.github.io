@@ -11,3 +11,4 @@ export const currentUnverifiedCrawlerEvidence = currentMonitorEvidence.identityU
 export const currentPromptCoverage = currentMonitorEvidence.fixedPromptCoverage;
 export const currentAttributionEvidence = currentMonitorEvidence.attributionEvidence;
 export const currentPublicSearchRetest = currentMonitorEvidence.publicSearchRetest;
+export const currentCommonCrawlEvidence = currentMonitorEvidence.commonCrawlEvidence;
