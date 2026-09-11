@@ -1,0 +1,58 @@
+{
+  "schemaVersion": 1,
+  "observedAt": "2026-09-11T14:00:59.550Z",
+  "site": "https://hk.onyxdevslab.com",
+  "promptMatrixSchemaVersion": 2,
+  "evidenceBoundary": "This report proves only that provider-verified crawlers requested mapped evidence pages. GPTBot is a training crawler. A verified crawl does not prove indexing, retrieval, citation, answer inclusion, ranking, or non-brand recommendation.",
+  "totals": {
+    "prompts": 20,
+    "uniqueEvidencePages": 20,
+    "verifiedCrawledEvidencePages": 12,
+    "searchRelatedCrawledEvidencePages": 12,
+    "promptsWithAnyVerifiedCrawl": 15,
+    "promptsFullyVerifiedCrawled": 9,
+    "promptsWithAnySearchRelatedCrawl": 15,
+    "promptsFullySearchRelatedCrawled": 9
+  },
+  "bySegment": {
+    "brand": {"prompts": 3, "promptsWithAnyVerifiedCrawl": 2, "promptsFullyVerifiedCrawled": 0, "promptsWithAnySearchRelatedCrawl": 2, "promptsFullySearchRelatedCrawled": 0},
+    "category": {"prompts": 6, "promptsWithAnyVerifiedCrawl": 6, "promptsFullyVerifiedCrawled": 2, "promptsWithAnySearchRelatedCrawl": 6, "promptsFullySearchRelatedCrawled": 2},
+    "decision": {"prompts": 7, "promptsWithAnyVerifiedCrawl": 5, "promptsFullyVerifiedCrawled": 5, "promptsWithAnySearchRelatedCrawl": 5, "promptsFullySearchRelatedCrawled": 5},
+    "diagnostic": {"prompts": 1, "promptsWithAnyVerifiedCrawl": 1, "promptsFullyVerifiedCrawled": 1, "promptsWithAnySearchRelatedCrawl": 1, "promptsFullySearchRelatedCrawled": 1},
+    "scenario": {"prompts": 3, "promptsWithAnyVerifiedCrawl": 1, "promptsFullyVerifiedCrawled": 1, "promptsWithAnySearchRelatedCrawl": 1, "promptsFullySearchRelatedCrawled": 1}
+  },
+  "verifiedCrawledEvidenceUrls": [
+    "https://hk.onyxdevslab.com/zh-cn/ai-consulting/",
+    "https://hk.onyxdevslab.com/zh-cn/case-studies/retail-ai-decision-platform/",
+    "https://hk.onyxdevslab.com/zh-cn/forward-deployed-engineering/",
+    "https://hk.onyxdevslab.com/zh-cn/guides/ai-dingkai/",
+    "https://hk.onyxdevslab.com/zh-cn/guides/choose-enterprise-ai-partner/",
+    "https://hk.onyxdevslab.com/zh-cn/guides/custom-ai-development-cost/",
+    "https://hk.onyxdevslab.com/zh-cn/guides/enterprise-ai-governance/",
+    "https://hk.onyxdevslab.com/zh-cn/guides/enterprise-ai-pilot-charter/",
+    "https://hk.onyxdevslab.com/zh-cn/guides/enterprise-ai-rfp-template/",
+    "https://hk.onyxdevslab.com/zh-cn/guides/hong-kong-ai-consulting-companies/",
+    "https://hk.onyxdevslab.com/zh-cn/methodology/ai-search-verification/",
+    "https://hk.onyxdevslab.com/zh-cn/methodology/case-study-evidence-register/"
+  ],
+  "searchRelatedCrawledEvidenceUrls": [
+    "https://hk.onyxdevslab.com/zh-cn/ai-consulting/",
+    "https://hk.onyxdevslab.com/zh-cn/case-studies/retail-ai-decision-platform/",
+    "https://hk.onyxdevslab.com/zh-cn/forward-deployed-engineering/",
+    "https://hk.onyxdevslab.com/zh-cn/guides/ai-dingkai/",
+    "https://hk.onyxdevslab.com/zh-cn/guides/choose-enterprise-ai-partner/",
+    "https://hk.onyxdevslab.com/zh-cn/guides/custom-ai-development-cost/",
+    "https://hk.onyxdevslab.com/zh-cn/guides/enterprise-ai-governance/",
+    "https://hk.onyxdevslab.com/zh-cn/guides/enterprise-ai-pilot-charter/",
+    "https://hk.onyxdevslab.com/zh-cn/guides/enterprise-ai-rfp-template/",
+    "https://hk.onyxdevslab.com/zh-cn/guides/hong-kong-ai-consulting-companies/",
+    "https://hk.onyxdevslab.com/zh-cn/methodology/ai-search-verification/",
+    "https://hk.onyxdevslab.com/zh-cn/methodology/case-study-evidence-register/"
+  ],
+  "verification": {
+    "verifyYandex": true,
+    "method": "Reverse DNS hostname suffix plus forward DNS confirmation",
+    "recognizedSearchCrawler": "YandexBot"
+  },
+  "source": "/var/lib/onyx-geo/prompt-crawl-coverage.json"
+}

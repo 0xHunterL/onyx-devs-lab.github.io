@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "publicStatusVersion": "2026.09.11.18",
-  "generatedAt": "2026-09-11T13:39:45.783Z",
+  "publicStatusVersion": "2026.09.11.19",
+  "generatedAt": "2026-09-11T14:00:59.577Z",
   "windowStart": "2026-09-01",
   "site": "https://hk.onyxdevslab.com/",
   "sourceLogs": [
@@ -22,11 +22,19 @@
     "perplexityContentRequests": 0,
     "applebotContentRequests": 0,
     "applebotDiscoveryFileRequests": 0,
-    "distinctVerifiedContentPaths": 30,
+    "yandexbotContentRequests": 69,
+    "yandexbotDiscoveryFileRequests": 63,
+    "distinctVerifiedContentPaths": 43,
     "historicalReclassification": {
       "homepageContentRequestsAdded": 3,
       "machineResourceDiscoveryRequestsAdded": 10,
       "meaning": "These requests occurred on 2026-09-09 and 2026-09-10 and were newly recognized by the corrected path classifier; they are not newly occurring crawls."
+    },
+    "yandexHistoricalRecognition": {
+      "firstSeen": "2026-09-08T12:45:20Z",
+      "lastSeen": "2026-09-11T13:52:34Z",
+      "verifiedContentPaths": 40,
+      "meaning": "YandexBot monitoring was added after the latest requests exposed the missing family. Most of these provider-verified requests are historical observations newly recognized in current and rotated logs; they are not all newly occurring crawls."
     }
   },
   "identityUnverifiedCrawlerEvidence": {
@@ -39,13 +47,13 @@
   "fixedPromptCoverage": {
     "prompts": 20,
     "uniqueEvidencePages": 20,
-    "verifiedCrawledEvidencePages": 8,
-    "searchRelatedCrawledEvidencePages": 0,
-    "promptsWithAnyVerifiedCrawl": 10,
-    "promptsFullyVerifiedCrawled": 6,
-    "promptsWithAnySearchRelatedCrawl": 0,
-    "promptsFullySearchRelatedCrawled": 0,
-    "scenarioPromptsWithAnyVerifiedCrawl": 0
+    "verifiedCrawledEvidencePages": 12,
+    "searchRelatedCrawledEvidencePages": 12,
+    "promptsWithAnyVerifiedCrawl": 15,
+    "promptsFullyVerifiedCrawled": 9,
+    "promptsWithAnySearchRelatedCrawl": 15,
+    "promptsFullySearchRelatedCrawled": 9,
+    "scenarioPromptsWithAnyVerifiedCrawl": 1
   },
   "attributionEvidence": {
     "trackedRequests": 80,
@@ -93,18 +101,20 @@
     ]
   },
   "commonCrawlEvidence": {
-    "checkedAt": "2026-09-11T13:39:45.783Z",
-    "status": "available",
+    "checkedAt": "2026-09-11T14:00:59.577Z",
+    "status": "partial",
     "capturesObservedInAvailableIndexes": 0,
-    "availableIndexes": ["CC-MAIN-2026-34", "CC-MAIN-2026-30"],
-    "unavailableIndexes": [],
-    "meaning": "Both selected indexes returned usable responses with zero observed captures. This complete result covers only the selected indexes and must not be interpreted as proof of zero captures across all Common Crawl history."
+    "availableIndexes": ["CC-MAIN-2026-30"],
+    "unavailableIndexes": [
+      { "id": "CC-MAIN-2026-34", "httpStatus": 502, "reason": "HTTP 502" }
+    ],
+    "meaning": "One selected index returned a usable zero-capture response while CC-MAIN-2026-34 returned HTTP 502. This result is incomplete and must not be interpreted as a verified zero across the selected indexes or all Common Crawl history."
   },
   "distributionEvidence": {
     "manifestItems": 8,
     "publishedItems": 7,
     "readyNotPublishedItems": 1,
-    "checkedAt": "2026-09-11T13:39:45.783Z",
+    "checkedAt": "2026-09-11T14:00:59.577Z",
     "publicUrlsChecked": 7,
     "trackedTargetsChecked": 17,
     "availableSources": 24,

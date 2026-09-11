@@ -23,6 +23,8 @@ const summary = {
     verifiedPerplexityPageCrawls: provider.perplexityContentRequests,
     verifiedApplePageCrawls: provider.applebotContentRequests,
     verifiedAppleDiscoveryFileCrawls: provider.applebotDiscoveryFileRequests,
+    verifiedYandexPageCrawls: provider.yandexbotContentRequests,
+    verifiedYandexDiscoveryFileCrawls: provider.yandexbotDiscoveryFileRequests,
     verifiedContentPaths: provider.distinctVerifiedContentPaths,
     searchRelatedCrawledEvidencePages: prompt.searchRelatedCrawledEvidencePages,
     promptsWithAnySearchRelatedCrawl: prompt.promptsWithAnySearchRelatedCrawl,
@@ -74,7 +76,7 @@ crawlerDrift.counts.verifiedGptBotPageCrawls += 1;
 assert.equal(buildPublicationDrift(baseline, crawlerDrift).mismatches[0].field, 'providerVerifiedCrawlerEvidence.gptBotContentRequests');
 
 const commonCrawlDrift = structuredClone(summary);
-commonCrawlDrift.availability.commonCrawl.status = 'partial';
+commonCrawlDrift.availability.commonCrawl.status = commonCrawl.status === 'partial' ? 'available' : 'partial';
 commonCrawlDrift.availability.commonCrawl.indexes[0].status = 'unavailable';
 const commonCrawlFields = buildPublicationDrift(baseline, commonCrawlDrift).mismatches.map((item) => item.field);
 assert.deepEqual(commonCrawlFields, ['commonCrawlEvidence.status', 'commonCrawlEvidence.availableIndexes', 'commonCrawlEvidence.unavailableIndexes']);
