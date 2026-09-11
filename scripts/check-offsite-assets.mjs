@@ -200,10 +200,10 @@ try {
 } catch {
   failures.push('GitHub Pages buyer-guide CodeMeta: invalid JSON');
 }
-const buyerGuideSnapshotId = 'd1315b9fb9d2d03748035420723b0301f1c609b6';
-const buyerGuideRevisionId = 'ee32c974fb061298dc3ec7c4f3dd1b05b045e6c0';
-const buyerGuideReleaseRevisionId = 'e072305a16816689ec698911eb438aef3368ea2b';
-const buyerGuideSaveRequestRaw = await get('Software Heritage current buyer-guide save request', 'https://archive.softwareheritage.org/api/1/origin/save/2469902/', 'application/json');
+const buyerGuideSnapshotId = '45a57c93314db28331263c9449dd86ab8519b585';
+const buyerGuideRevisionId = 'd490ec3ca459eb4aaccb803e8bb29188763dabee';
+const buyerGuideReleaseRevisionId = 'd490ec3ca459eb4aaccb803e8bb29188763dabee';
+const buyerGuideSaveRequestRaw = await get('Software Heritage current buyer-guide save request', 'https://archive.softwareheritage.org/api/1/origin/save/2470629/', 'application/json');
 try {
   const request = JSON.parse(buyerGuideSaveRequestRaw);
   if (request.save_task_status !== 'succeeded' || request.visit_status !== 'full' || request.snapshot_swhid !== `swh:1:snp:${buyerGuideSnapshotId}`) failures.push('Software Heritage current buyer-guide save request: archive did not complete with the expected snapshot');
@@ -216,7 +216,7 @@ if (buyerGuideSnapshotRaw) {
     const snapshot = JSON.parse(buyerGuideSnapshotRaw);
     if (snapshot.id !== buyerGuideSnapshotId) failures.push('Software Heritage buyer-guide snapshot: unexpected snapshot id');
     if (snapshot.branches?.['refs/heads/main']?.target !== buyerGuideRevisionId || snapshot.branches?.['refs/heads/main']?.target_type !== 'revision') failures.push('Software Heritage buyer-guide snapshot: main branch does not resolve to the archived checkpoint');
-    if (snapshot.branches?.['refs/tags/buyers-guide-2026-09-10']?.target !== buyerGuideReleaseRevisionId || snapshot.branches?.['refs/tags/buyers-guide-2026-09-10']?.target_type !== 'revision') failures.push('Software Heritage buyer-guide snapshot: release tag does not resolve to the versioned checkpoint');
+    if (snapshot.branches?.['refs/tags/buyers-guide-geo-evidence-2026-09-11']?.target !== buyerGuideReleaseRevisionId || snapshot.branches?.['refs/tags/buyers-guide-geo-evidence-2026-09-11']?.target_type !== 'revision') failures.push('Software Heritage buyer-guide snapshot: release tag does not resolve to the versioned checkpoint');
   } catch {
     failures.push('Software Heritage buyer-guide snapshot: invalid JSON');
   }
