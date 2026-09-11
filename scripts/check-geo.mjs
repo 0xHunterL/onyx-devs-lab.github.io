@@ -539,9 +539,11 @@ try {
 
 try {
   const status = JSON.parse(fs.readFileSync(path.join(dist, 'data/ai-search-evidence-status.json'), 'utf8'));
-  if (status.schemaVersion !== 2 || status.version !== '2026.09.11.7' || status.observedAt !== '2026-09-11T09:12:38Z') failures.push('AI-search evidence status: unexpected schema, version, or observation time');
+  if (status.schemaVersion !== 2 || status.version !== '2026.09.11.8' || status.observedAt !== '2026-09-11T11:32:57.980Z') failures.push('AI-search evidence status: unexpected schema, version, or observation time');
   if (status.evidenceLevels?.[1]?.evidence?.verifiedOaiSearchBotDiscoveryFileVisits !== 8) failures.push('AI-search evidence status: current OAI-SearchBot discovery count is stale');
-  if (status.sameAs !== 'https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-monitor-evidence-2026-09-11-7/2026-09-11-monitor-evidence.json') failures.push('AI-search evidence status: current versioned release asset is missing');
+  if (status.sameAs !== 'https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-search-monitoring-compliance-2026-09-11/ai-search-evidence-status.json') failures.push('AI-search evidence status: current versioned release asset is missing');
+  if (status.evidenceLevels?.[1]?.evidence?.verifiedBaiduspiderContentCrawls !== 0 || status.evidenceLevels?.[1]?.evidence?.verifiedBaiduspiderDiscoveryFileCrawls !== 0 || status.evidenceLevels?.[1]?.evidence?.verifiedApplebotContentCrawls !== 0 || status.evidenceLevels?.[1]?.evidence?.verifiedApplebotDiscoveryFileCrawls !== 0) failures.push('AI-search evidence status: Baiduspider or Applebot verified baseline is missing');
+  if (status.publicSearchMonitoring?.bing?.status !== 'account-verification-required' || !status.publicSearchMonitoring?.bing?.restrictedPathExcluded?.includes('personal, non-commercial') || !status.evidenceSources?.some((item) => item.url === 'https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-search-monitoring-compliance-2026-09-11')) failures.push('AI-search evidence status: compliant Bing monitoring boundary is incomplete');
   if (status.testProtocol?.promptCount !== 20 || status.testProtocol?.queryAliasesAdded?.join(',') !== 'AI 定开,AI定开') failures.push('AI-search evidence status: prompt coverage is incomplete');
   if (status.evidenceLevels?.map((item) => item.id).join(',') !== 'accessible,crawled,retrieved-and-cited,non-brand-recommendation') failures.push('AI-search evidence status: four evidence levels are incomplete');
   if (status.evidenceLevels?.[0]?.status !== 'verified' || status.evidenceLevels?.[0]?.evidence?.canonicalUrlsChecked !== 71) failures.push('AI-search evidence status: accessibility evidence is incomplete');
