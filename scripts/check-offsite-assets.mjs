@@ -85,9 +85,9 @@ for (const snapshot of waybackCoreSnapshots) {
   const body = await get(`Internet Archive ${snapshot.name} snapshot`, url, 'text/html', snapshot.name === 'custom AI development' ? { allowUnavailable: true, attempts: 4, minimumBytes: 12_000 } : undefined);
   requireArchivedText(`Internet Archive ${snapshot.name} snapshot`, body, ['Onyx Devs Lab','ONYX DEVS LAB LIMITED','79051925','254900Z30CLK7HKE9H46','AI 咨询','AI 定制开发','FDE']);
 }
-const softwareHeritageSnapshotId = '947880d501d459884fefdaf1bc95a9978599727a';
-const softwareHeritageRevisionId = 'fe91aae7bb44331aac110650d1af4cfebf6364d3';
-const softwareHeritageSaveRequestRaw = await get('Software Heritage save request', 'https://archive.softwareheritage.org/api/1/origin/save/2469587/', 'application/json');
+const softwareHeritageSnapshotId = 'df2409f12f9b01e665ae896d0492aa09148b9c1b';
+const softwareHeritageRevisionId = 'f17606cf302d4e1368eae3f2a76c295af61384ad';
+const softwareHeritageSaveRequestRaw = await get('Software Heritage save request', 'https://archive.softwareheritage.org/api/1/origin/save/2470710/', 'application/json');
 try {
   const request = JSON.parse(softwareHeritageSaveRequestRaw);
   if (request.save_task_status !== 'succeeded' || request.visit_status !== 'full' || request.snapshot_swhid !== `swh:1:snp:${softwareHeritageSnapshotId}`) failures.push('Software Heritage save request: archive did not complete with the expected snapshot');
