@@ -7,12 +7,14 @@ const crawlerTotals = {
   verifiedOaiSearchBotDiscoveryFileCrawls: 8,
   verifiedGptBotDiscoveryFileCrawls: 3,
   verifiedBingDiscoveryFileCrawls: 1,
+  verifiedBaiduDiscoveryFileCrawls: 0,
   verifiedGoogleDiscoveryFileCrawls: 0,
   verifiedPerplexityDiscoveryFileCrawls: 0,
   verifiedCommonCrawlPageCrawls: 0,
   verifiedCommonCrawlDiscoveryFileCrawls: 0,
   verifiedAppleDiscoveryFileCrawls: 0,
   verifiedBingPageCrawls: 7,
+  verifiedBaiduPageCrawls: 0,
   verifiedGooglePageCrawls: 0,
   verifiedPerplexityPageCrawls: 0,
   verifiedApplePageCrawls: 0,
@@ -50,6 +52,8 @@ assert.equal(counts.userAgentOnlyBytespiderPageCrawls, 0);
 assert.equal(counts.userAgentOnlyBytespiderDiscoveryFileCrawls, 0);
 assert.equal(counts.verifiedApplePageCrawls, 0);
 assert.equal(counts.verifiedAppleDiscoveryFileCrawls, 0);
+assert.equal(counts.verifiedBaiduPageCrawls, 0);
+assert.equal(counts.verifiedBaiduDiscoveryFileCrawls, 0);
 
 const deltas = buildEvidenceDeltas(counts, {
   trackedVisits: 69,

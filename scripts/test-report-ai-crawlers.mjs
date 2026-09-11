@@ -5,6 +5,7 @@ import { tmpdir } from 'node:os';
 import path from 'node:path';
 import { promisify } from 'node:util';
 import { buildVerifiedCrawlerEvidenceObservations } from './crawler-evidence-observations.mjs';
+import { verifyDnsIp } from './dns-crawler-verification.mjs';
 import { isInIpPrefix } from './ip-prefix.mjs';
 import { applyPublishedPrefixVerification, fetchPublishedIpPrefixes } from './published-prefix-verification.mjs';
 import { cloudflareProxyPrefixes, selectTrustedClientIp } from './trusted-client-ip.mjs';
@@ -77,6 +78,25 @@ try {
   assert.deepEqual(selectTrustedClientIp('18.97.14.80', '173.245.48.1'), { ip: '18.97.14.80', trustedProxy: true });
   assert.deepEqual(selectTrustedClientIp('18.97.14.80', '203.0.113.50'), { ip: '203.0.113.50', trustedProxy: false });
 
+  const verifiedBaiduDns = await verifyDnsIp('180.101.49.12', ['.baidu.com', '.baidu.jp'], {
+    reverse: async () => ['baiduspider-180-101-49-12.crawl.baidu.com.'],
+    lookup: async () => [{ address: '180.101.49.12', family: 4 }],
+  });
+  assert.equal(verifiedBaiduDns.verified, true);
+  assert.equal(verifiedBaiduDns.reason, 'forward-confirmed-original-ip');
+  const spoofedBaiduDns = await verifyDnsIp('203.0.113.44', ['.baidu.com', '.baidu.jp'], {
+    reverse: async () => ['attacker.example'],
+    lookup: async () => [{ address: '203.0.113.44', family: 4 }],
+  });
+  assert.equal(spoofedBaiduDns.verified, false);
+  assert.equal(spoofedBaiduDns.reason, 'reverse-dns-provider-domain-mismatch');
+  const unavailableBaiduDns = await verifyDnsIp('203.0.113.45', ['.baidu.com', '.baidu.jp'], {
+    reverse: async () => { const error = new Error('simulated DNS timeout'); error.code = 'ETIMEOUT'; throw error; },
+    lookup: async () => [],
+  });
+  assert.equal(unavailableBaiduDns.verified, null);
+  assert.equal(unavailableBaiduDns.verificationUnavailable, true);
+
   let failedFetchAttempts = 0;
   const unavailableSource = await fetchPublishedIpPrefixes('https://provider.invalid/prefixes.json', {
     fetchImpl: async () => {
@@ -120,7 +140,7 @@ try {
   assert.equal(verifiedEvents[1].providerVerified, false);
   assert.equal('providerVerified' in verifiedEvents[2], false);
 
-  console.log(JSON.stringify({ tests: 38, failures: [] }, null, 2));
+  console.log(JSON.stringify({ tests: 44, failures: [] }, null, 2));
 } finally {
   await rm(directory, { recursive: true, force: true });
 }
