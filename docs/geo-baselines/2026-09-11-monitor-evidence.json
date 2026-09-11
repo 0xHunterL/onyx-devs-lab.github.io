@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-09-11T09:12:38.711Z",
+  "generatedAt": "2026-09-11T11:57:29.192Z",
   "windowStart": "2026-09-01",
   "site": "https://hk.onyxdevslab.com/",
   "sourceLogs": [
@@ -14,8 +14,13 @@
     "oaiSearchBotContentRequests": 0,
     "oaiSearchBotDiscoveryFileRequests": 8,
     "bingbotContentRequests": 7,
+    "bingbotDiscoveryFileRequests": 1,
+    "baiduspiderContentRequests": 0,
+    "baiduspiderDiscoveryFileRequests": 0,
     "googlebotContentRequests": 0,
     "perplexityContentRequests": 0,
+    "applebotContentRequests": 0,
+    "applebotDiscoveryFileRequests": 0,
     "distinctVerifiedContentPaths": 30,
     "historicalReclassification": {
       "homepageContentRequestsAdded": 3,
@@ -40,9 +45,9 @@
     "promptsWithAnySearchRelatedCrawl": 0
   },
   "attributionEvidence": {
-    "trackedRequests": 70,
+    "trackedRequests": 73,
     "suspectedAutomatedRequests": 61,
-    "visitorTypeUnverifiedRequests": 9,
+    "visitorTypeUnverifiedRequests": 12,
     "knownLinkScannerRequests": 14,
     "knownLinkScannerUserAgentRequests": 12,
     "knownLinkScannerNetworkRequests": 2,
@@ -53,9 +58,23 @@
       "geo_decision_matrix": 24,
       "geo_engagement_model_qa": 39,
       "geo_buyers_guide_ai_dingkai": 4,
+      "geo_buyers_guide_scenarios": 3,
       "geo_buyers_guide_fde": 2,
       "geo_buyers_guide": 1
     }
+  },
+  "distributionEvidence": {
+    "manifestItems": 8,
+    "publishedItems": 7,
+    "readyNotPublishedItems": 1,
+    "checkedAt": "2026-09-11T11:57:29.112Z",
+    "publicUrlsChecked": 7,
+    "trackedTargetsChecked": 17,
+    "availableSources": 24,
+    "unavailableSources": 0,
+    "availabilityStatus": "available",
+    "eventFile": "events/2026-09-11T11-57-29.192Z-evidence-and-availability-change.json",
+    "meaning": "All declared published URLs and tracked targets passed anonymous availability, destination, and content-marker checks. This does not prove indexing, AI retrieval, citation, recommendation, a human visit, or independent endorsement."
   },
   "publicSearchRetest": {
     "testedAt": "2026-09-11T08:15:00Z",

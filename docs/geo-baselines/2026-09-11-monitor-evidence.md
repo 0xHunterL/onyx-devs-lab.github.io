@@ -10,7 +10,7 @@
 - 经双向 DNS 核验的 Bingbot 正文请求 7 次；Googlebot 与 Perplexity 正文请求均为 0。
 - 排除 2,368 次带 `Onyx-GEO-Release-Check` 标记的发布自测后，Bytespider 正文与发现文件候选均为 0。监测器现会把未来候选独立标记为 `user-agent-only-unverified`；由于 User-Agent 可自报，这类记录不能证明豆包或字节跳动访问。
 - 固定 20 条提示词对应 20 个证据页，其中 8 页曾被已核验爬虫请求；与搜索／答案检索相关的已核验正文覆盖仍为 0。
-- 归因请求 70 次，其中 61 次属于高速／多 User-Agent 协同批量访问、内部矛盾的浏览器身份或已知链接扫描，9 次访问者类型未验证；另有 6 个被 Cloudflare 邮箱解码路径污染的异常 campaign 值被审计并从归因总量排除。两条携带 `bing.com` Referer 的请求来自 ARIN RDAP 标记为 `LOANED-SPACE-TO-PALO-ALTO` 的 `205.169.39.0/24`，现已按 Palo Alto URL 扫描网段归入疑似自动化，不再误认为未验证的 Bing 搜索点击。AI Referrer 为 0。
+- 归因请求 73 次，其中 61 次属于高速／多 User-Agent 协同批量访问、内部矛盾的浏览器身份或已知链接扫描，12 次访问者类型未验证；另有 6 个被 Cloudflare 邮箱解码路径污染的异常 campaign 值被审计并从归因总量排除。两条携带 `bing.com` Referer 的请求来自 ARIN RDAP 标记为 `LOANED-SPACE-TO-PALO-ALTO` 的 `205.169.39.0/24`，现已按 Palo Alto URL 扫描网段归入疑似自动化，不再误认为未验证的 Bing 搜索点击。AI Referrer 为 0。
 - 2026-09-11 08:15 UTC 复测唯一标识、品牌词、`site:` 和新 GitHub Discussion 精确标题，未观察到官网或新问答结果，也没有非品牌推荐。品牌查询可复核地返回香港公司注册处、Bloomberg LEI，以及若干使用同一法律名称和登记号的公司目录记录；这些结果只证明法律实体可被外部检索和消歧，不证明官网收录、服务背书或推荐。
 - 未向豆包发送提示词。
 
@@ -29,8 +29,9 @@
 
 ## 站外分发账本复核
 
-- 版本化分发清单现登记 7 项资产：6 项为已发布并经过匿名核验的 GitHub Gist、GitHub Pages 或 GitHub Discussion 资产，1 项今日头条原稿保持 `ready-not-published`。所有已发布条目的搜索收录、AI 引用和非品牌推荐字段仍为 `null`。
+- 版本化分发清单现登记 8 项资产：7 项为已发布并经过匿名核验的 GitHub Gist、GitHub Pages、GitHub Discussion 或 GitHub Release 资产，1 项今日头条原稿保持 `ready-not-published`。所有已发布条目的搜索收录、AI 引用和非品牌推荐字段仍为 `null`。
 - 2026-09-11T11:15:50Z 的清单驱动线上门禁请求了 6 个站外公开 URL 和 16 个带归因参数的官网目标；全部返回 HTTP `200`，跳转后地址均未偏离声明目标，公开正文中的品牌、法律主体、主题或活动标记均完整。两轮共 32 次分发门禁请求在生产日志中均被识别为合成访问；11:16 UTC 重新汇总后，有效归因仍为 70 次，其中 61 次疑似自动化、9 次访问者类型未验证，AI Referrer 为 0。该结果证明当前已登记发布物与链接可达且自测未污染基线，不证明搜索收录、AI 引用、推荐或真人访问。
 - 2026-09-11T11:19:48Z，正式 `onyx-geo-monitor.service` 首次把同一检查纳入六小时证据采集。`availability.distribution` 为 `available`，22 个来源全部可用，`distribution-live-report.json` 以 `0640 root:root` 持久化；`changed` 与 `availabilityChanged` 均为 `false`，`newEvidence` 为空，有效归因仍为 70、AI Referrer 仍为 0。首次接入只建立站外可用性基线；以后发布物、目标地址或内容标记的状态集合变化才会生成可用性事件，且不会被解释成搜索或 AI 效果证据。
+- 2026-09-11T11:57:29Z，生产监测纳入新的搜索监测合规 GitHub Release；分发覆盖从 22 个来源增至 24 个（7 个站外公开 URL、17 个官网归因目标），全部返回 HTTP `200`、未偏离声明目标且内容标记完整。事件 `events/2026-09-11T11-57-29.192Z-evidence-and-availability-change.json` 记录 `coverageChanged:true`、`statusChanged:false`。同次采集新增 3 次带 `geo_buyers_guide_scenarios` 参数、无 Referrer 的请求，有效归因因此增至 73，其中 12 次仅能标为“访问者类型未验证”。这 3 次请求不证明真人访问、搜索点击、AI 引用或非品牌推荐；AI Referrer 仍为 0。
 
 机器可读数据见 [`2026-09-11-monitor-evidence.json`](./2026-09-11-monitor-evidence.json)。这些数字只区分可访问、已核验抓取候选及归因请求，不证明搜索收录、AI 检索、引用、排名、真人访问或非品牌推荐。
