@@ -1110,11 +1110,11 @@
       ]
     },
     {
-      "id": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-monitor-evidence-2026-09-11-6",
-      "url": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-monitor-evidence-2026-09-11-6",
-      "title": "Onyx automated GEO monitor evidence checkpoint — 2026-09-11, revision 6",
-      "summary": "A versioned machine-readable checkpoint recording eight verified OAI-SearchBot discovery-file requests, zero OAI search content requests, zero non-synthetic Bytespider candidates under a user-agent-only identity boundary, and 70 attribution candidates classified as 61 suspected automated requests and nine visitor-type-unverified requests. It does not prove indexing, citation, or recommendation.",
-      "content_text": "A versioned machine-readable checkpoint recording eight verified OAI-SearchBot discovery-file requests, zero OAI search content requests, zero non-synthetic Bytespider candidates under a user-agent-only identity boundary, and 70 attribution candidates classified as 61 suspected automated requests and nine visitor-type-unverified requests. It does not prove indexing, citation, or recommendation.",
+      "id": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-monitor-evidence-2026-09-11-7",
+      "url": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-monitor-evidence-2026-09-11-7",
+      "title": "Onyx automated GEO monitor evidence checkpoint — 2026-09-11, revision 7",
+      "summary": "A versioned machine-readable checkpoint recording 27 provider-verified GPTBot content requests, 13 GPTBot discovery-resource requests after a historical path-classification correction, eight OAI-SearchBot discovery-file requests, zero OAI search content requests, zero non-synthetic Bytespider candidates, and 70 classified attribution requests. It does not prove indexing, citation, or recommendation.",
+      "content_text": "A versioned machine-readable checkpoint recording 27 provider-verified GPTBot content requests, 13 GPTBot discovery-resource requests after a historical path-classification correction, eight OAI-SearchBot discovery-file requests, zero OAI search content requests, zero non-synthetic Bytespider candidates, and 70 classified attribution requests. It does not prove indexing, citation, or recommendation.",
       "date_modified": "2026-09-11T00:00:00+08:00",
       "tags": [
         "evidence",

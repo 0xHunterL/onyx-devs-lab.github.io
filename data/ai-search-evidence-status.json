@@ -1,9 +1,9 @@
 {
   "schemaVersion": 2,
-  "version": "2026.09.11.6",
+  "version": "2026.09.11.7",
   "id": "https://hk.onyxdevslab.com/data/ai-search-evidence-status.json",
-  "observedAt": "2026-09-11T09:03:06Z",
-  "sameAs": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-monitor-evidence-2026-09-11-6/2026-09-11-monitor-evidence.json",
+  "observedAt": "2026-09-11T09:12:38Z",
+  "sameAs": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-monitor-evidence-2026-09-11-7/2026-09-11-monitor-evidence.json",
   "name": {
     "en": "Onyx Devs Lab AI-search evidence status",
     "zhHant": "Onyx Devs Lab AI 搜尋證據狀態",
@@ -59,7 +59,9 @@
       "status": "partially-verified",
       "claim": "Named crawlers have accessed discovery files or content pages.",
       "evidence": {
-        "verifiedGptBotContentCrawls": 24,
+        "verifiedGptBotContentCrawls": 27,
+        "verifiedGptBotDiscoveryFileCrawls": 13,
+        "verifiedDistinctContentPaths": 30,
         "verifiedOaiSearchBotDiscoveryFileVisits": 8,
         "verifiedOaiSearchBotContentCrawls": 0,
         "historicallyVerifiedBingbotContentCrawls": 7,
@@ -81,6 +83,7 @@
         }
       },
       "limitations": [
+        "The corrected path classifier newly recognized three homepage requests and ten machine-resource requests that occurred on 2026-09-09 and 2026-09-10; this is historical reclassification, not new crawler activity.",
         "GPTBot is a training crawler and does not prove ChatGPT Search indexing or citation.",
         "Bytespider candidates are labeled user-agent-only and identity-unverified; they do not prove Doubao or ByteDance access.",
         "Discovery-file visits do not prove content-page ingestion.",
