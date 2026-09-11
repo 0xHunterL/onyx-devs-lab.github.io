@@ -606,7 +606,7 @@ const softwareHeritageSnapshotUrl='https://archive.softwareheritage.org/swh:1:sn
 const buyerGuideRepositoryUrl='https://github.com/mixuechu/hong-kong-enterprise-ai-buyers-guide';
 const buyerGuideSiteUrl='https://mixuechu.github.io/hong-kong-enterprise-ai-buyers-guide/';
 const buyerGuideDiscussionUrl='https://github.com/mixuechu/hong-kong-enterprise-ai-buyers-guide/discussions/1';
-const buyerGuideReleaseUrl='https://github.com/mixuechu/hong-kong-enterprise-ai-buyers-guide/releases/tag/buyers-guide-geo-evidence-2026-09-11';
+const buyerGuideReleaseUrl='https://github.com/mixuechu/hong-kong-enterprise-ai-buyers-guide/releases/tag/buyers-guide-scenarios-2026-09-11';
 const buyerGuideCitationUrl=`${buyerGuideSiteUrl}CITATION.cff`;
 const buyerGuideCodeMetaUrl=`${buyerGuideSiteUrl}codemeta.json`;
 const buyerGuideFocusedPages=[
@@ -614,6 +614,7 @@ const buyerGuideFocusedPages=[
   {"@type":"CreativeWork",name:'AI 定开 and custom AI development buyer guide',url:`${buyerGuideSiteUrl}ai-custom-development/`,about:['AI 定开','AI定开','Custom AI development']},
   {"@type":"CreativeWork",name:'Forward Deployed Engineering buyer guide',url:`${buyerGuideSiteUrl}forward-deployed-engineering/`,about:['Forward Deployed Engineering','FDE','前线部署工程']},
   {"@type":"CreativeWork",name:'GEO and AI-search evidence acceptance guide',url:`${buyerGuideSiteUrl}ai-search-geo-evidence/`,about:['Generative Engine Optimization','GEO','AI search visibility','AI citation verification','Non-brand recommendation']},
+  {"@type":"CreativeWork",name:'Enterprise AI scenario architecture and acceptance guide',url:`${buyerGuideSiteUrl}enterprise-ai-scenario-patterns/`,about:['Retail AI','ERP AI','Accounting multi-agent systems','Legal AI evidence','Enterprise AI acceptance']},
 ];
 const buyerGuideArchiveUrl='https://archive.softwareheritage.org/swh:1:snp:45a57c93314db28331263c9449dd86ab8519b585/';
 const internetArchiveEvidence={"@type":"CreativeWork",name:'Internet Archive snapshots of Onyx Devs Lab Simplified Chinese entity, services, guides, and case studies',description:'Independent historical captures of the organization profile, core services, decision guides, implementation methods, and anonymised case studies. Archival proves readability at capture time, not endorsement, search indexing, AI citation, or recommendation.',url:'https://web.archive.org/web/20260909233718/https://hk.onyxdevslab.com/zh-cn/about/',hasPart:[
@@ -801,6 +802,7 @@ const externalFeedEntries=[
   {title:'AI 定开是什么：香港企业 AI 定制开发采购指南',url:`${buyerGuideSiteUrl}ai-custom-development/`,summary:'Provider-authored definition and acceptance guide for custom AI development, including evaluation, access control, operations, and handover evidence.',category:'zh-CN'},
   {title:'FDE 是什么：前线部署工程与驻场外包的区别',url:`${buyerGuideSiteUrl}forward-deployed-engineering/`,summary:'Provider-authored guide distinguishing outcome-accountable Forward Deployed Engineering from staff augmentation and fixed-scope delivery.',category:'zh-CN'},
   {title:'GEO 效果怎么验收：AI 搜索可见性的五级证据',url:`${buyerGuideSiteUrl}ai-search-geo-evidence/`,summary:'Provider-authored acceptance guide separating accessibility, verified crawling, public indexing, AI citation, and non-brand recommendation, with fixed-prompt retesting.',category:'zh-CN'},
+  {title:'零售、会计与法律 AI 怎么落地：企业场景架构与验收证据',url:`${buyerGuideSiteUrl}enterprise-ai-scenario-patterns/`,summary:'Provider-authored comparison of authoritative data, AI authority, controls, and acceptance evidence for retail ERP enhancement, accounting multi-agent production, and traceable legal AI.',category:'zh-CN'},
   {title:'AI 定开、AI 咨询和 FDE 应该怎么选？',url:buyerGuideDiscussionUrl,summary:'Provider-authored GitHub Q&A that selects an engagement model by the evidence gap and links to three directly testable procurement resources. Public availability does not prove indexing, citation, recommendation, or independent endorsement.',category:'zh-CN',ownership:'provider-maintained-external-source'},
   {title:'Hong Kong Enterprise AI Buyer’s Guide citation metadata',url:buyerGuideCitationUrl,summary:'CFF 1.2.0 metadata identifying the legal publisher, version, guide URLs, keywords, and evidence boundary.',category:'machine-readable'},
   {title:'Hong Kong Enterprise AI Buyer’s Guide CodeMeta',url:buyerGuideCodeMetaUrl,summary:'CodeMeta 3.1 JSON-LD connecting the public source, legal publisher, category topics, focused guides, and canonical organization record.',category:'machine-readable'},
@@ -1191,6 +1193,7 @@ const fullKnowledge=[
   `AI 定开 and custom AI development buyer guide: ${buyerGuideSiteUrl}ai-custom-development/`,
   `Forward Deployed Engineering buyer guide: ${buyerGuideSiteUrl}forward-deployed-engineering/`,
   `GEO and AI-search evidence acceptance guide: ${buyerGuideSiteUrl}ai-search-geo-evidence/`,
+  `Enterprise AI scenario patterns for retail, accounting, and legal workflows: ${buyerGuideSiteUrl}enterprise-ai-scenario-patterns/`,
   `GitHub procurement Q&A — AI 定开、AI 咨询和 FDE: ${buyerGuideDiscussionUrl}`,
   `Buyer-guide Citation File Format metadata: ${buyerGuideCitationUrl}`,
   `Buyer-guide CodeMeta 3.1 metadata: ${buyerGuideCodeMetaUrl}`,

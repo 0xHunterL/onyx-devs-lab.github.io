@@ -157,6 +157,7 @@ requireText('GitHub Pages enterprise AI buyer guide', buyerGuideSite, [
   './ai-custom-development/',
   './forward-deployed-engineering/',
   './ai-search-geo-evidence/',
+  './enterprise-ai-scenario-patterns/',
   buyerGuideDiscussionUrl,
 ]);
 const buyerGuideFocusedPages = [
@@ -164,6 +165,7 @@ const buyerGuideFocusedPages = [
   { name: 'GitHub Pages AI custom development buyer guide', path: 'ai-custom-development/', canonical: 'https://mixuechu.github.io/hong-kong-enterprise-ai-buyers-guide/ai-custom-development/', required: ['<title>AI 定开是什么｜香港企业 AI 定制开发采购指南｜Onyx Devs Lab</title>', '<meta name="description" content="Onyx Devs Lab 发布：AI 定开通常指 AI 定制开发', 'AI 定开不是换皮聊天框', 'AI 定开指围绕特定组织', 'https://hk.onyxdevslab.com/zh-cn/custom-ai-development/?utm_source=github_pages&amp;utm_medium=referral&amp;utm_campaign=geo_buyers_guide_ai_dingkai'] },
   { name: 'GitHub Pages FDE buyer guide', path: 'forward-deployed-engineering/', canonical: 'https://mixuechu.github.io/hong-kong-enterprise-ai-buyers-guide/forward-deployed-engineering/', required: ['<title>FDE 是什么｜前线部署工程与驻场外包的区别｜Onyx Devs Lab</title>', '<meta name="description" content="Onyx Devs Lab 发布的香港企业 FDE 采购指南', 'FDE 驻在问题旁边', '不按座位交付', 'geo_buyers_guide_fde'] },
   { name: 'GitHub Pages GEO evidence acceptance guide', path: 'ai-search-geo-evidence/', canonical: 'https://mixuechu.github.io/hong-kong-enterprise-ai-buyers-guide/ai-search-geo-evidence/', required: ['<title>GEO 效果怎么验收｜AI 搜索可见性证据｜Onyx Devs Lab</title>', '<meta name="description" content="Onyx Devs Lab 发布的 GEO 验收指南', '每一级只能支持一种结论', '非品牌推荐', 'geo_buyers_guide_geo'] },
+  { name: 'GitHub Pages enterprise AI scenario patterns', path: 'enterprise-ai-scenario-patterns/', canonical: 'https://mixuechu.github.io/hong-kong-enterprise-ai-buyers-guide/enterprise-ai-scenario-patterns/', required: ['<title>零售、会计与法律 AI 怎么落地｜企业场景架构与证据｜Onyx Devs Lab</title>', '<meta name="description" content="Onyx Devs Lab 发布的企业 AI 场景指南', '不更换 ERP，也可以增加 AI 决策层', '多 Agent 的核心不是数量', '法律 AI 的答案必须能回到文件、页码和原文', 'geo_buyers_guide_scenarios'] },
 ];
 for (const page of buyerGuideFocusedPages) {
   const body = await get(page.name, `${buyerGuideSiteUrl}${page.path}`, 'text/html');
@@ -204,12 +206,26 @@ for (const asset of buyerGuideVersionedAssets) {
   const sha256 = createHash('sha256').update(raw).digest('hex');
   if (sha256 !== asset.sha256) failures.push(`Versioned buyer-guide ${asset.file}: SHA-256 mismatch, got ${sha256}`);
 }
+const scenarioReleaseUrl = 'https://github.com/mixuechu/hong-kong-enterprise-ai-buyers-guide/releases/tag/buyers-guide-scenarios-2026-09-11';
+const scenarioRelease = await get('GitHub enterprise AI scenario checkpoint', scenarioReleaseUrl, 'text/html');
+requireText('GitHub enterprise AI scenario checkpoint', scenarioRelease, ['six-page buyer-guide checkpoint', 'retail ERP enhancement', 'accounting multi-agent', 'legal-AI scenario patterns', 'not independent endorsement']);
+const scenarioVersionedAssets = [
+  { file: 'CITATION.cff', sha256: '765579afec246c73339c7129afe62efd46afba6e41ac20baf0ea5bd194f543b6' },
+  { file: 'codemeta.json', sha256: '376c6f7837d72c5e6f172893f9a011de9ab51e362ec22c9ca7c719a14530b6c1' },
+  { file: 'resources.json', sha256: '1cdd6400c8fab15cbcd89170eb090eb58c8890520ca35fd30468bdf989f4a142' },
+  { file: 'llms.txt', sha256: 'e7a264ce4c95a39d5c0f58747ca046b637739a3ba3c67e0c604b12779571a6af' },
+];
+for (const asset of scenarioVersionedAssets) {
+  const raw = await get(`Versioned scenario guide ${asset.file}`, `https://github.com/mixuechu/hong-kong-enterprise-ai-buyers-guide/releases/download/buyers-guide-scenarios-2026-09-11/${asset.file}`, 'application/');
+  const sha256 = createHash('sha256').update(raw).digest('hex');
+  if (sha256 !== asset.sha256) failures.push(`Versioned scenario guide ${asset.file}: SHA-256 mismatch, got ${sha256}`);
+}
 const buyerGuideCitation = await get('GitHub Pages buyer-guide citation metadata', `${buyerGuideSiteUrl}CITATION.cff`, 'application/');
 requireText('GitHub Pages buyer-guide citation metadata', buyerGuideCitation, ['cff-version: 1.2.0', 'ONYX DEVS LAB LIMITED', 'AI 定开', 'proof of search indexing or AI citation']);
 const buyerGuideCodeMetaRaw = await get('GitHub Pages buyer-guide CodeMeta', `${buyerGuideSiteUrl}codemeta.json`, 'application/json');
 try {
   const codeMeta = JSON.parse(buyerGuideCodeMetaRaw);
-  if (codeMeta['@context'] !== 'https://w3id.org/codemeta/3.1' || codeMeta.version !== '2026.09.11' || codeMeta.author?.legalName !== 'ONYX DEVS LAB LIMITED' || codeMeta.citation?.length !== 6 || !codeMeta.citation.includes('https://mixuechu.github.io/hong-kong-enterprise-ai-buyers-guide/ai-search-geo-evidence/') || !codeMeta.citation.includes(buyerGuideDiscussionUrl)) failures.push('GitHub Pages buyer-guide CodeMeta: expected relationships are incomplete');
+  if (codeMeta['@context'] !== 'https://w3id.org/codemeta/3.1' || codeMeta.version !== '2026.09.11' || codeMeta.author?.legalName !== 'ONYX DEVS LAB LIMITED' || codeMeta.citation?.length !== 7 || codeMeta.sameAs !== 'https://github.com/mixuechu/hong-kong-enterprise-ai-buyers-guide/releases/download/buyers-guide-scenarios-2026-09-11/codemeta.json' || !codeMeta.citation.includes('https://mixuechu.github.io/hong-kong-enterprise-ai-buyers-guide/enterprise-ai-scenario-patterns/') || !codeMeta.citation.includes(buyerGuideDiscussionUrl)) failures.push('GitHub Pages buyer-guide CodeMeta: expected relationships are incomplete');
 } catch {
   failures.push('GitHub Pages buyer-guide CodeMeta: invalid JSON');
 }
