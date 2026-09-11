@@ -9,7 +9,10 @@ const origin = 'https://hk.onyxdevslab.com';
 const updated = '2026-09-09';
 const feedUpdated = '2026-09-11';
 const evidenceContentUpdated = '2026-09-10';
-const pageUpdated = '2026-09-10';
+// Keep this aligned with the latest significant site-wide content, structured
+// data, or discovery-link change. Search engines may ignore lastmod when it is
+// routinely inaccurate, so this must not be bumped for build-only changes.
+const pageUpdated = '2026-09-11';
 const partnerScorecardPath = '/data/enterprise-ai-partner-scorecard.json';
 const pilotCharterPath = '/data/enterprise-ai-pilot-charter.json';
 const organizationDataPath = '/data/organization.json';
