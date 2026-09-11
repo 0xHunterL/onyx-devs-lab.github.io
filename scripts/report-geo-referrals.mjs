@@ -15,6 +15,7 @@ const includeRotated = args.includes('--include-rotated');
 const inputPaths = args.filter((arg) => !arg.startsWith('--since=') && arg !== '--include-rotated');
 const paths = await resolveLogPaths(inputPaths, includeRotated);
 const syntheticUserAgent = /^(?:curl|Wget)\/|Onyx-(?:GEO-Release-Check|Buyer-Guide-Link-Check)|python-requests|node-fetch|undici/i;
+const knownLinkScannerUserAgent = /AppEngine-Google;\s*\(\+http:\/\/code\.google\.com\/appengine;\s*appid:\s*s~virustotalcloud\)/i;
 const aiReferrerFamilies = [
   ['doubao', /(^|\.)doubao\.com$/i],
   ['chatgpt', /(^|\.)(?:chatgpt\.com|chat\.openai\.com)$/i],
@@ -35,6 +36,7 @@ if (!paths.length) {
 
 const visits = [];
 const syntheticVisits = [];
+const malformedCampaignVisits = [];
 let unparsableLines = 0;
 for (const path of paths) {
   const body = await load(path);
@@ -44,9 +46,13 @@ for (const path of paths) {
       const event = JSON.parse(line);
       if (since && Date.parse(event.time) < since) continue;
       const url = new URL(event.path, 'https://hk.onyxdevslab.com');
-      const campaign = url.searchParams.get('utm_campaign');
+      const rawCampaign = url.searchParams.get('utm_campaign');
+      const campaign = rawCampaign && /^[a-z0-9_-]{1,100}$/i.test(rawCampaign) ? rawCampaign : null;
       const referrerHost = String(event.referrerHost || '').toLowerCase().replace(/^www\./, '');
       const aiReferrer = aiReferrerFamilies.find(([, pattern]) => pattern.test(referrerHost))?.[0] || null;
+      if (rawCampaign && !campaign) {
+        malformedCampaignVisits.push({ time: event.time, path: url.pathname, rawCampaign, userAgent: event.userAgent || '' });
+      }
       if (!campaign && !aiReferrer) continue;
       const visit = {
         time: event.time,
@@ -77,6 +83,7 @@ const suspectedAutomatedVisitIndexes = new Set();
 const suspectedAutomatedBursts = [];
 const burstGroups = new Map();
 for (const [index, visit] of visits.entries()) {
+  if (knownLinkScannerUserAgent.test(visit.userAgent)) suspectedAutomatedVisitIndexes.add(index);
   const key = [visit.userAgent, visit.source, visit.campaign].join('\u0000');
   if (!burstGroups.has(key)) burstGroups.set(key, []);
   burstGroups.get(key).push({ index, visit, timestamp: Date.parse(visit.time) });
@@ -98,6 +105,34 @@ for (const group of burstGroups.values()) {
       distinctLandingPages: distinctPaths.size,
       userAgent: window[0].visit.userAgent,
       reason: 'at least 8 requests across at least 5 landing pages within 60 seconds',
+    });
+    start = group.findIndex((item) => item.index === window.at(-1).index);
+  }
+}
+const coordinatedGroups = new Map();
+for (const [index, visit] of visits.entries()) {
+  const key = [visit.source, visit.campaign].join('\u0000');
+  if (!coordinatedGroups.has(key)) coordinatedGroups.set(key, []);
+  coordinatedGroups.get(key).push({ index, visit, timestamp: Date.parse(visit.time) });
+}
+for (const group of coordinatedGroups.values()) {
+  group.sort((a, b) => a.timestamp - b.timestamp);
+  for (let start = 0; start < group.length; start += 1) {
+    const window = [];
+    for (let end = start; end < group.length && group[end].timestamp - group[start].timestamp <= 60_000; end += 1) window.push(group[end]);
+    const distinctPaths = new Set(window.map((item) => item.visit.path));
+    const distinctUserAgents = new Set(window.map((item) => item.visit.userAgent));
+    if (window.length < 8 || distinctPaths.size < 3 || distinctUserAgents.size < 2) continue;
+    for (const item of window) suspectedAutomatedVisitIndexes.add(item.index);
+    suspectedAutomatedBursts.push({
+      start: window[0].visit.time,
+      end: window.at(-1).visit.time,
+      source: window[0].visit.source,
+      campaign: window[0].visit.campaign,
+      requests: window.length,
+      distinctLandingPages: distinctPaths.size,
+      distinctUserAgents: distinctUserAgents.size,
+      reason: 'at least 8 requests from multiple user agents across at least 3 landing pages within 60 seconds',
     });
     start = group.findIndex((item) => item.index === window.at(-1).index);
   }
@@ -141,6 +176,8 @@ console.log(JSON.stringify({
   byLandingPage: aggregate('path'),
   byEvidenceType: aggregate('evidenceType'),
   suspectedAutomatedBursts,
+  knownLinkScannerTrackedVisits: visits.filter((visit) => knownLinkScannerUserAgent.test(visit.userAgent)).length,
+  malformedCampaignVisits,
   recentVisits: visits.slice(-50),
   recentHumanUnverifiedVisits: humanUnverifiedVisits.slice(-50),
   humanUnverifiedEvidenceObservations,

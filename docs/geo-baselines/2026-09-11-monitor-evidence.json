@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-09-11T05:55:00.000Z",
+  "generatedAt": "2026-09-11T06:23:00.000Z",
   "windowStart": "2026-09-01",
   "site": "https://hk.onyxdevslab.com/",
   "sourceLogs": [
@@ -11,7 +11,7 @@
   "providerVerifiedCrawlerEvidence": {
     "gptBotContentRequests": 24,
     "oaiSearchBotContentRequests": 0,
-    "oaiSearchBotDiscoveryFileRequests": 6,
+    "oaiSearchBotDiscoveryFileRequests": 7,
     "bingbotContentRequests": 7,
     "googlebotContentRequests": 0,
     "perplexityContentRequests": 0,
@@ -27,12 +27,15 @@
     "promptsWithAnySearchRelatedCrawl": 0
   },
   "attributionEvidence": {
-    "trackedRequests": 31,
-    "suspectedAutomatedRequests": 24,
+    "trackedRequests": 52,
+    "suspectedAutomatedRequests": 45,
     "visitorTypeUnverifiedRequests": 7,
+    "knownLinkScannerRequests": 12,
+    "malformedCampaignRequestsExcluded": 6,
     "aiReferrerAttributedRequests": 0,
     "campaigns": {
       "geo_decision_matrix": 24,
+      "geo_engagement_model_qa": 21,
       "geo_buyers_guide_ai_dingkai": 4,
       "geo_buyers_guide_fde": 2,
       "geo_buyers_guide": 1
@@ -44,7 +47,8 @@
       "\"ONYX-GEO-VERIFY-79051925-20260908\"",
       "\"Onyx Devs Lab\"",
       "site:hk.onyxdevslab.com",
-      "AI 定开 AI 咨询 FDE Onyx Devs Lab"
+      "AI 定开 AI 咨询 FDE Onyx Devs Lab",
+      "\"AI 定开、AI 咨询和 FDE 应该怎么选？\""
     ],
     "officialSiteObserved": false,
     "thirdPartyEntityRecordsObserved": true,
@@ -55,7 +59,8 @@
       "https://hkg.databasesets.com/zh-hant/gongsimingdan/number/79051925"
     ],
     "entityRecordMeaning": "These records make the legal entity externally discoverable and disambiguatable. They do not prove official-site indexing, website ownership, service verification, endorsement, AI citation, or recommendation.",
-    "categoryRecommendationObserved": false
+    "categoryRecommendationObserved": false,
+    "newPublicDiscussionObserved": false
   },
   "doubaoTestStatus": "not-run",
   "evidenceBoundary": "Provider-verified requests prove only access by the named crawler. Discovery-file access is not content ingestion. Attributed requests do not prove a human visitor. Public-search non-results are observations for the stated queries and date. None of this proves indexing, retrieval, citation, ranking, or non-brand recommendation. No prompt was sent to Doubao."
