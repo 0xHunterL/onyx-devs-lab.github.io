@@ -26,6 +26,15 @@ const events = [
     referrerHost: '',
     userAgent: 'Mozilla/5.0 Chrome/117.0.5938.132 Safari/537.36',
   },
+  {
+    time: '2026-09-11T08:23:34+00:00',
+    clientIp: '205.169.39.15',
+    proxyIp: '203.0.113.50',
+    path: campaignPath,
+    status: 200,
+    referrerHost: '',
+    userAgent: 'Mozilla/5.0 Chrome/117.0.5938.132 Safari/537.36',
+  },
 ];
 
 try {
@@ -36,15 +45,16 @@ try {
     logPath,
   ], { cwd: path.resolve('.') });
   const report = JSON.parse(stdout);
-  assert.equal(report.trackedVisits, 2);
+  assert.equal(report.trackedVisits, 3);
   assert.equal(report.suspectedAutomatedTrackedVisits, 1);
-  assert.equal(report.humanUnverifiedTrackedVisits, 1);
+  assert.equal(report.humanUnverifiedTrackedVisits, 2);
   assert.equal(report.knownLinkScannerTrackedVisits, 1);
   assert.equal(report.knownLinkScannerUserAgentVisits, 0);
   assert.equal(report.knownLinkScannerNetworkVisits, 1);
   assert.equal(report.recentHumanUnverifiedVisits[0].scannerNetwork, null);
   assert.equal(report.recentVisits[0].scannerNetwork, 'Palo Alto Networks URL scanner');
-  console.log(JSON.stringify({ tests: 8, failures: [] }, null, 2));
+  assert.equal(report.recentVisits[2].scannerNetwork, null);
+  console.log(JSON.stringify({ tests: 9, failures: [] }, null, 2));
 } finally {
   await rm(directory, { recursive: true, force: true });
 }

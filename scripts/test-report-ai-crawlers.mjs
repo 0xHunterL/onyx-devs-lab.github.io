@@ -6,6 +6,7 @@ import path from 'node:path';
 import { promisify } from 'node:util';
 import { buildVerifiedCrawlerEvidenceObservations } from './crawler-evidence-observations.mjs';
 import { isInIpPrefix } from './ip-prefix.mjs';
+import { cloudflareProxyPrefixes, selectTrustedClientIp } from './trusted-client-ip.mjs';
 
 const execFileAsync = promisify(execFile);
 const directory = await mkdtemp(path.join(tmpdir(), 'onyx-geo-crawler-test-'));
@@ -70,7 +71,10 @@ try {
   assert.equal(isInIpPrefix('2600:1f28:365:8100::1', '2600:1f28:365:8000::/56'), false);
   assert.equal(isInIpPrefix('::ffff:3.41.188.39', '3.41.188.32/29'), true);
   assert.equal(isInIpPrefix('not-an-ip', '2600:1f28:365:8000::/56'), false);
-  console.log(JSON.stringify({ tests: 22, failures: [] }, null, 2));
+  assert.equal(cloudflareProxyPrefixes.length, 22);
+  assert.deepEqual(selectTrustedClientIp('18.97.14.80', '173.245.48.1'), { ip: '18.97.14.80', trustedProxy: true });
+  assert.deepEqual(selectTrustedClientIp('18.97.14.80', '203.0.113.50'), { ip: '203.0.113.50', trustedProxy: false });
+  console.log(JSON.stringify({ tests: 25, failures: [] }, null, 2));
 } finally {
   await rm(directory, { recursive: true, force: true });
 }

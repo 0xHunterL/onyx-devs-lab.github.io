@@ -2,6 +2,7 @@ import { readFile } from 'node:fs/promises';
 import { createHash } from 'node:crypto';
 import { gunzipSync } from 'node:zlib';
 import { resolveLogPaths } from './resolve-log-paths.mjs';
+import { selectTrustedClientIp } from './trusted-client-ip.mjs';
 
 async function load(path) {
   const data = await readFile(path);
@@ -53,7 +54,8 @@ for (const path of paths) {
       const campaign = rawCampaign && /^[a-z0-9_-]{1,100}$/i.test(rawCampaign) ? rawCampaign : null;
       const referrerHost = String(event.referrerHost || '').toLowerCase().replace(/^www\./, '');
       const aiReferrer = aiReferrerFamilies.find(([, pattern]) => pattern.test(referrerHost))?.[0] || null;
-      const scannerNetwork = knownLinkScannerNetworks.find((network) => network.matches(String(event.clientIp || '')))?.name || null;
+      const selectedClient = selectTrustedClientIp(String(event.clientIp || ''), String(event.proxyIp || ''));
+      const scannerNetwork = knownLinkScannerNetworks.find((network) => network.matches(selectedClient.ip))?.name || null;
       if (rawCampaign && !campaign) {
         malformedCampaignVisits.push({ time: event.time, path: url.pathname, rawCampaign, userAgent: event.userAgent || '' });
       }

@@ -4,6 +4,7 @@ import { gunzipSync } from 'node:zlib';
 import { resolveLogPaths } from './resolve-log-paths.mjs';
 import { buildUserAgentOnlyCrawlerEvidenceObservations, buildVerifiedCrawlerEvidenceObservations } from './crawler-evidence-observations.mjs';
 import { isInIpPrefix } from './ip-prefix.mjs';
+import { selectTrustedClientIp } from './trusted-client-ip.mjs';
 
 const crawlerFamilies = [
   ['Bytespider', /Bytespider/i],
@@ -44,9 +45,12 @@ function parseGeoJsonLog(line) {
   try {
     const entry = JSON.parse(line);
     if (!entry.path || !entry.status) return null;
+    const proxyIp = entry.proxyIp || '';
+    const selected = selectTrustedClientIp(entry.clientIp || '', proxyIp);
     return {
-      ip: entry.clientIp || entry.proxyIp || '',
-      proxyIp: entry.proxyIp || '',
+      ip: selected.ip,
+      proxyIp,
+      trustedProxy: selected.trustedProxy,
       time: entry.time,
       method: entry.method,
       path: entry.path,
