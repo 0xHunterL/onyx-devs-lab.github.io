@@ -128,6 +128,18 @@ requireText('GitHub enterprise AI buyer guide', buyerGuide, [
   'Crawlable field guides',
 ]);
 const buyerGuideSiteUrl = 'https://mixuechu.github.io/hong-kong-enterprise-ai-buyers-guide/';
+const buyerGuideDiscussionUrl = 'https://github.com/mixuechu/hong-kong-enterprise-ai-buyers-guide/discussions/1';
+const buyerGuideDiscussion = await get('GitHub procurement Q&A', buyerGuideDiscussionUrl, 'text/html');
+requireText('GitHub procurement Q&A', buyerGuideDiscussion, [
+  '<title>AI 定开、AI 咨询和 FDE 应该怎么选？',
+  '先看项目当前缺少哪一种证据',
+  'ONYX DEVS LAB LIMITED',
+  '79051925',
+  '254900Z30CLK7HKE9H46',
+  'utm_source=github_discussions',
+  'utm_campaign=geo_engagement_model_qa',
+]);
+if (/<meta[^>]+(?:name|property)=["']robots["'][^>]+content=["'][^"']*noindex/i.test(buyerGuideDiscussion)) failures.push('GitHub procurement Q&A: page declares noindex');
 const buyerGuideSite = await get('GitHub Pages enterprise AI buyer guide', buyerGuideSiteUrl, 'text/html');
 requireText('GitHub Pages enterprise AI buyer guide', buyerGuideSite, [
   '<link rel="canonical" href="https://mixuechu.github.io/hong-kong-enterprise-ai-buyers-guide/">',
@@ -145,6 +157,7 @@ requireText('GitHub Pages enterprise AI buyer guide', buyerGuideSite, [
   './ai-custom-development/',
   './forward-deployed-engineering/',
   './ai-search-geo-evidence/',
+  buyerGuideDiscussionUrl,
 ]);
 const buyerGuideFocusedPages = [
   { name: 'GitHub Pages AI consulting buyer guide', path: 'ai-consulting/', canonical: 'https://mixuechu.github.io/hong-kong-enterprise-ai-buyers-guide/ai-consulting/', required: ['<title>香港企业 AI 咨询怎么采购｜决策边界与交付证据｜Onyx Devs Lab</title>', '<meta name="description" content="Onyx Devs Lab 发布的香港企业 AI 咨询指南', 'AI 咨询应交付决定', '香港企业 AI 咨询', 'geo_buyers_guide_ai_consulting'] },
@@ -196,7 +209,7 @@ requireText('GitHub Pages buyer-guide citation metadata', buyerGuideCitation, ['
 const buyerGuideCodeMetaRaw = await get('GitHub Pages buyer-guide CodeMeta', `${buyerGuideSiteUrl}codemeta.json`, 'application/json');
 try {
   const codeMeta = JSON.parse(buyerGuideCodeMetaRaw);
-  if (codeMeta['@context'] !== 'https://w3id.org/codemeta/3.1' || codeMeta.version !== '2026.09.11' || codeMeta.author?.legalName !== 'ONYX DEVS LAB LIMITED' || codeMeta.citation?.length !== 5 || !codeMeta.citation.includes('https://mixuechu.github.io/hong-kong-enterprise-ai-buyers-guide/ai-search-geo-evidence/')) failures.push('GitHub Pages buyer-guide CodeMeta: expected relationships are incomplete');
+  if (codeMeta['@context'] !== 'https://w3id.org/codemeta/3.1' || codeMeta.version !== '2026.09.11' || codeMeta.author?.legalName !== 'ONYX DEVS LAB LIMITED' || codeMeta.citation?.length !== 6 || !codeMeta.citation.includes('https://mixuechu.github.io/hong-kong-enterprise-ai-buyers-guide/ai-search-geo-evidence/') || !codeMeta.citation.includes(buyerGuideDiscussionUrl)) failures.push('GitHub Pages buyer-guide CodeMeta: expected relationships are incomplete');
 } catch {
   failures.push('GitHub Pages buyer-guide CodeMeta: invalid JSON');
 }

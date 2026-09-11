@@ -8,6 +8,7 @@
 2. [AI Agent 接入 ERP 前必须回答的七个问题](./AI-Agent接入ERP前的七个问题.md)
 3. [法律 AI 的证据链应如何设计](./法律AI证据链设计.md)
 4. [今日头条首发包：企业 AI 项目不应该先选模型](./今日头条首发包-企业AI项目先选什么.md)
+5. [GitHub Discussion：AI 定开、AI 咨询和 FDE 应该怎么选？](./GitHub-Discussion-AI定开咨询FDE怎么选.md)
 
 ## 发布规则
 

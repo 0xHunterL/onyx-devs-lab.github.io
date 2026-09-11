@@ -605,6 +605,7 @@ const entityReferences=['https://github.com/0xHunterL/onyx-devs-lab.github.io','
 const softwareHeritageSnapshotUrl='https://archive.softwareheritage.org/swh:1:snp:947880d501d459884fefdaf1bc95a9978599727a/';
 const buyerGuideRepositoryUrl='https://github.com/mixuechu/hong-kong-enterprise-ai-buyers-guide';
 const buyerGuideSiteUrl='https://mixuechu.github.io/hong-kong-enterprise-ai-buyers-guide/';
+const buyerGuideDiscussionUrl='https://github.com/mixuechu/hong-kong-enterprise-ai-buyers-guide/discussions/1';
 const buyerGuideReleaseUrl='https://github.com/mixuechu/hong-kong-enterprise-ai-buyers-guide/releases/tag/buyers-guide-geo-evidence-2026-09-11';
 const buyerGuideCitationUrl=`${buyerGuideSiteUrl}CITATION.cff`;
 const buyerGuideCodeMetaUrl=`${buyerGuideSiteUrl}codemeta.json`;
@@ -631,7 +632,7 @@ const internetArchiveEvidence={"@type":"CreativeWork",name:'Internet Archive sna
 const entityEvidence=[
   {"@type":"CreativeWork",name:'Onyx GEO evidence checkpoint — 2026-09-09',url:'https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-evidence-2026-09-09'},
   {"@type":"SoftwareSourceCode",name:'Software Heritage archive of the Onyx Devs Lab public repository',identifier:'swh:1:snp:947880d501d459884fefdaf1bc95a9978599727a',url:softwareHeritageSnapshotUrl,codeRepository:'https://github.com/0xHunterL/onyx-devs-lab.github.io',version:'fe91aae7bb44331aac110650d1af4cfebf6364d3'},
-  {"@type":"CreativeWork",name:'Hong Kong Enterprise AI Buyer’s Guide',description:'Provider-authored field-guide cluster covering AI advisory, AI 定开, custom AI development, FDE, GEO verification, vendor evaluation, and acceptance evidence.',url:buyerGuideSiteUrl,isBasedOn:buyerGuideRepositoryUrl,sameAs:buyerGuideReleaseUrl,hasPart:buyerGuideFocusedPages},
+  {"@type":"CreativeWork",name:'Hong Kong Enterprise AI Buyer’s Guide',description:'Provider-authored field-guide cluster covering AI advisory, AI 定开, custom AI development, FDE, GEO verification, vendor evaluation, and acceptance evidence.',url:buyerGuideSiteUrl,isBasedOn:buyerGuideRepositoryUrl,sameAs:buyerGuideReleaseUrl,discussionUrl:buyerGuideDiscussionUrl,hasPart:buyerGuideFocusedPages},
   {"@type":"SoftwareSourceCode",name:'Software Heritage archive of the Hong Kong Enterprise AI Buyer’s Guide',identifier:'swh:1:snp:45a57c93314db28331263c9449dd86ab8519b585',url:buyerGuideArchiveUrl,codeRepository:buyerGuideRepositoryUrl,version:'d490ec3ca459eb4aaccb803e8bb29188763dabee'},
   internetArchiveEvidence,
 ];
@@ -800,6 +801,7 @@ const externalFeedEntries=[
   {title:'AI 定开是什么：香港企业 AI 定制开发采购指南',url:`${buyerGuideSiteUrl}ai-custom-development/`,summary:'Provider-authored definition and acceptance guide for custom AI development, including evaluation, access control, operations, and handover evidence.',category:'zh-CN'},
   {title:'FDE 是什么：前线部署工程与驻场外包的区别',url:`${buyerGuideSiteUrl}forward-deployed-engineering/`,summary:'Provider-authored guide distinguishing outcome-accountable Forward Deployed Engineering from staff augmentation and fixed-scope delivery.',category:'zh-CN'},
   {title:'GEO 效果怎么验收：AI 搜索可见性的五级证据',url:`${buyerGuideSiteUrl}ai-search-geo-evidence/`,summary:'Provider-authored acceptance guide separating accessibility, verified crawling, public indexing, AI citation, and non-brand recommendation, with fixed-prompt retesting.',category:'zh-CN'},
+  {title:'AI 定开、AI 咨询和 FDE 应该怎么选？',url:buyerGuideDiscussionUrl,summary:'Provider-authored GitHub Q&A that selects an engagement model by the evidence gap and links to three directly testable procurement resources. Public availability does not prove indexing, citation, recommendation, or independent endorsement.',category:'zh-CN',ownership:'provider-maintained-external-source'},
   {title:'Hong Kong Enterprise AI Buyer’s Guide citation metadata',url:buyerGuideCitationUrl,summary:'CFF 1.2.0 metadata identifying the legal publisher, version, guide URLs, keywords, and evidence boundary.',category:'machine-readable'},
   {title:'Hong Kong Enterprise AI Buyer’s Guide CodeMeta',url:buyerGuideCodeMetaUrl,summary:'CodeMeta 3.1 JSON-LD connecting the public source, legal publisher, category topics, focused guides, and canonical organization record.',category:'machine-readable'},
   {title:'香港企业 AI 采购指南 GEO 证据检查点（2026-09-11）',url:buyerGuideReleaseUrl,summary:'Provider-maintained GitHub Release fixing the five-page guide cluster and its GEO evidence acceptance method, with versioned CFF, CodeMeta, resource-map, and llms assets.',category:'versioned-evidence'},
@@ -1003,7 +1005,8 @@ const organizationRecord={
     {'@type':'CreativeWork',name:'Hong Kong registration-number directory record at databasesets.com',description:'Third-party directory record matching the legal name, business registration number, and incorporation date. It is entity-disambiguation evidence only, not service verification or endorsement.',url:'https://hkg.databasesets.com/zh-hant/gongsimingdan/number/79051925'},
     {'@type':'Dataset',name:'Onyx automated GEO monitor evidence checkpoint — 2026-09-11',description:'Provider-maintained snapshot of provider-verified crawler requests, fixed-prompt crawl coverage, classified attribution requests, and dated public-search observations. It does not prove indexing, citation, or recommendation.',url:monitorEvidenceReleaseUrl,sameAs:monitorEvidenceAssetUrl,dateModified:'2026-09-11'},
     {'@type':'SoftwareSourceCode',name:'Software Heritage archive of the Onyx Devs Lab public repository',description:'Independently preserves the public source, citation metadata, current crawler/referral checkpoints, machine-readable evidence files, and their Git history at revision fe91aae. Archival does not endorse service claims or prove search indexing.',identifier:'swh:1:snp:947880d501d459884fefdaf1bc95a9978599727a',url:softwareHeritageSnapshotUrl,codeRepository:'https://github.com/0xHunterL/onyx-devs-lab.github.io',version:'fe91aae7bb44331aac110650d1af4cfebf6364d3'},
-    {'@type':'CreativeWork',name:'Hong Kong Enterprise AI Buyer’s Guide',description:'Provider-authored field-guide cluster covering AI advisory, AI 定开, custom AI development, FDE, GEO verification, vendor evaluation, and acceptance evidence.',url:buyerGuideSiteUrl,isBasedOn:buyerGuideRepositoryUrl,sameAs:buyerGuideReleaseUrl,hasPart:buyerGuideFocusedPages},
+    {'@type':'CreativeWork',name:'Hong Kong Enterprise AI Buyer’s Guide',description:'Provider-authored field-guide cluster covering AI advisory, AI 定开, custom AI development, FDE, GEO verification, vendor evaluation, and acceptance evidence.',url:buyerGuideSiteUrl,isBasedOn:buyerGuideRepositoryUrl,sameAs:buyerGuideReleaseUrl,discussionUrl:buyerGuideDiscussionUrl,hasPart:buyerGuideFocusedPages},
+    {'@type':'DiscussionForumPosting',name:'AI 定开、AI 咨询和 FDE 应该怎么选？',description:'Provider-authored public procurement Q&A selecting an engagement model by the current evidence gap. It is not an independent recommendation.',url:buyerGuideDiscussionUrl,author:{'@id':`${origin}/#organization`},datePublished:'2026-09-11',about:['AI consulting','AI 定开','Forward Deployed Engineering','FDE']},
     {'@type':'SoftwareSourceCode',name:'Software Heritage archive of the Hong Kong Enterprise AI Buyer’s Guide',description:'Independently preserves the five-page guide cluster, GEO evidence guide, link-check workflow, CFF, CodeMeta, Atom WebSub feed, Pages source, and release tag at revision d490ec3. Archival does not endorse the guidance or prove search indexing.',identifier:'swh:1:snp:45a57c93314db28331263c9449dd86ab8519b585',url:buyerGuideArchiveUrl,codeRepository:buyerGuideRepositoryUrl,version:'d490ec3ca459eb4aaccb803e8bb29188763dabee'},
     internetArchiveEvidence,
   ],
@@ -1188,6 +1191,7 @@ const fullKnowledge=[
   `AI 定开 and custom AI development buyer guide: ${buyerGuideSiteUrl}ai-custom-development/`,
   `Forward Deployed Engineering buyer guide: ${buyerGuideSiteUrl}forward-deployed-engineering/`,
   `GEO and AI-search evidence acceptance guide: ${buyerGuideSiteUrl}ai-search-geo-evidence/`,
+  `GitHub procurement Q&A — AI 定开、AI 咨询和 FDE: ${buyerGuideDiscussionUrl}`,
   `Buyer-guide Citation File Format metadata: ${buyerGuideCitationUrl}`,
   `Buyer-guide CodeMeta 3.1 metadata: ${buyerGuideCodeMetaUrl}`,
   `Versioned buyer-guide checkpoint: ${buyerGuideReleaseUrl}`,

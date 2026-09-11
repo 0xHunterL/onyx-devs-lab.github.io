@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updated": "2026-09-09",
+  "updated": "2026-09-11",
   "publisher": {
     "brand": "Onyx Devs Lab",
     "legalName": "ONYX DEVS LAB LIMITED",
@@ -31,7 +31,30 @@
         "No Toutiao account was created or used by this preparation step.",
         "No publication, indexing, citation, recommendation, or referral is claimed while publicUrl is null."
       ]
+    },
+    {
+      "id": "github-discussion-engagement-model-2026-09-11",
+      "channel": "github_discussions",
+      "format": "question-and-answer",
+      "language": "zh-CN",
+      "status": "published",
+      "sourceFile": "docs/distribution/GitHub-Discussion-AI定开咨询FDE怎么选.md",
+      "title": "AI 定开、AI 咨询和 FDE 应该怎么选？",
+      "campaign": "geo_engagement_model_qa",
+      "trackedTargets": [
+        "https://hk.onyxdevslab.com/zh-cn/guides/ai-consulting-vs-development-vs-fde/?utm_source=github_discussions&utm_medium=referral&utm_campaign=geo_engagement_model_qa",
+        "https://hk.onyxdevslab.com/zh-cn/guides/ai-dingkai/?utm_source=github_discussions&utm_medium=referral&utm_campaign=geo_engagement_model_qa",
+        "https://hk.onyxdevslab.com/zh-cn/guides/enterprise-ai-pilot-charter/?utm_source=github_discussions&utm_medium=referral&utm_campaign=geo_engagement_model_qa"
+      ],
+      "publicUrl": "https://github.com/mixuechu/hong-kong-enterprise-ai-buyers-guide/discussions/1",
+      "anonymousAccessVerifiedAt": "2026-09-11T06:09:00Z",
+      "searchIndexedAt": null,
+      "aiCitationObservedAt": null,
+      "nonBrandRecommendationObservedAt": null,
+      "limitations": [
+        "The Q&A is published by Onyx Devs Lab in a public repository it controls.",
+        "Anonymous HTTP 200 and crawlable server-rendered text prove publication only, not search indexing, AI citation, recommendation, or independent endorsement."
+      ]
     }
   ]
 }
-
