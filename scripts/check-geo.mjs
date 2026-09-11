@@ -215,6 +215,7 @@ for (const [name, body] of Object.entries(machineDiscoveryFiles)) {
   if (!body.includes('https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-evidence-2026-09-09')) failures.push(`${name}: versioned evidence checkpoint is missing`);
   if (!body.includes('https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-readiness-2026-09-10')) failures.push(`${name}: versioned agent-readiness checkpoint is missing`);
   if (!body.includes('https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-referral-evidence-2026-09-10')) failures.push(`${name}: current crawler-and-referral evidence checkpoint is missing`);
+  if (!body.includes('https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-monitor-evidence-2026-09-11')) failures.push(`${name}: automated GEO monitor evidence checkpoint is missing`);
   if (!body.includes('https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-prompt-crawl-coverage-2026-09-10')) failures.push(`${name}: fixed-prompt crawl coverage checkpoint is missing`);
   if (!body.includes('https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-ai-rfp-template-2026-09-10')) failures.push(`${name}: versioned AI RFP checkpoint is missing`);
   if (!body.includes('https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/chinese-enterprise-ai-field-notes-2026-09-10')) failures.push(`${name}: Chinese field-note release is missing`);
@@ -275,6 +276,7 @@ try {
   if (jsonFeed.hubs?.length !== 1 || jsonFeed.hubs[0]?.type !== 'WebSub' || jsonFeed.hubs[0]?.url !== 'https://pubsubhubbub.appspot.com/') failures.push('feed.json: WebSub hub discovery is missing');
   if (!jsonFeed.items.some((item) => item.url === 'https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-readiness-2026-09-10' && item.date_modified === '2026-09-10T00:00:00+08:00')) failures.push('feed.json: readiness checkpoint entry is missing or stale');
   if (!jsonFeed.items.some((item) => item.url === 'https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-referral-evidence-2026-09-10' && item.date_modified === '2026-09-10T00:00:00+08:00')) failures.push('feed.json: crawler-and-referral evidence checkpoint entry is missing or stale');
+  if (!jsonFeed.items.some((item) => item.url === 'https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-monitor-evidence-2026-09-11' && item.date_modified === '2026-09-11T00:00:00+08:00')) failures.push('feed.json: automated monitor evidence checkpoint entry is missing or stale');
   if (!jsonFeed.items.some((item) => item.url === 'https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-prompt-crawl-coverage-2026-09-10' && item.date_modified === '2026-09-10T00:00:00+08:00')) failures.push('feed.json: fixed-prompt crawl coverage checkpoint entry is missing or stale');
   if (!jsonFeed.items.some((item) => item.url === 'https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-ai-rfp-template-2026-09-10' && item.date_modified === '2026-09-10T00:00:00+08:00')) failures.push('feed.json: AI RFP checkpoint entry is missing or stale');
   if (!jsonFeed.items.some((item) => item.url === 'https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/chinese-enterprise-ai-field-notes-2026-09-10' && item.date_modified === '2026-09-10T00:00:00+08:00')) failures.push('feed.json: Chinese field-note release entry is missing or stale');
@@ -378,6 +380,7 @@ try {
   const organization = JSON.parse(fs.readFileSync(path.join(dist, 'data/organization.json'), 'utf8'));
   if (organization.iso6523Code !== '0199:254900Z30CLK7HKE9H46') failures.push('organization record: preferred ISO 6523 LEI is missing');
   if (organization.logo?.contentUrl !== 'https://hk.onyxdevslab.com/onyx-devs-lab-logo.svg' || organization.logo?.width !== 512 || organization.logo?.height !== 512) failures.push('organization record: indexable logo metadata is incomplete');
+  if (!organization.subjectOf?.some((item) => item.url === 'https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-monitor-evidence-2026-09-11' && item.sameAs === 'https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-monitor-evidence-2026-09-11/2026-09-11-monitor-evidence.json')) failures.push('organization record: automated GEO monitor evidence relation is missing');
 } catch {
   failures.push('organization record: invalid JSON');
 }
@@ -555,11 +558,12 @@ for (const pathname of ['/en/methodology/ai-search-verification/', '/zh-hk/metho
   const html = fs.readFileSync(path.join(dist, pathname, 'index.html'), 'utf8');
   if ((html.match(/"dateModified":"2026-09-10"/g) || []).length < 2) failures.push(`${pathname}: Article and WebPage dateModified are stale`);
 }
-if (!machineDiscoveryFiles['feed.xml'].includes('<updated>2026-09-10T00:00:00+08:00</updated>')) failures.push('feed.xml: feed update date is stale');
+if (!machineDiscoveryFiles['feed.xml'].includes('<updated>2026-09-11T00:00:00+08:00</updated>')) failures.push('feed.xml: feed update date is stale');
 if (!machineDiscoveryFiles['feed.xml'].includes('<link href="https://hk.onyxdevslab.com/feed.xml" rel="self"/>') || !machineDiscoveryFiles['feed.xml'].includes('<link href="https://pubsubhubbub.appspot.com/" rel="hub"/>')) failures.push('feed.xml: WebSub self or hub discovery is missing');
 if (!machineDiscoveryFiles['feed.xml'].includes(`<id>https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-readiness-2026-09-10</id><link href="https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-readiness-2026-09-10"/><updated>2026-09-10T00:00:00+08:00</updated>`)) failures.push('feed.xml: readiness checkpoint entry date is stale');
 if (!machineDiscoveryFiles['feed.xml'].includes(`<id>https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-ai-rfp-template-2026-09-10</id><link href="https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-ai-rfp-template-2026-09-10"/><updated>2026-09-10T00:00:00+08:00</updated>`)) failures.push('feed.xml: AI RFP checkpoint entry date is stale');
 if (!machineDiscoveryFiles['feed.xml'].includes(`<id>https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-referral-evidence-2026-09-10</id><link href="https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-referral-evidence-2026-09-10"/><updated>2026-09-10T00:00:00+08:00</updated>`)) failures.push('feed.xml: crawler-and-referral evidence checkpoint entry date is stale');
+if (!machineDiscoveryFiles['feed.xml'].includes(`<id>https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-monitor-evidence-2026-09-11</id><link href="https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-monitor-evidence-2026-09-11"/><updated>2026-09-11T00:00:00+08:00</updated>`)) failures.push('feed.xml: automated monitor evidence checkpoint entry date is stale');
 if (!machineDiscoveryFiles['feed.xml'].includes(`<id>https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-prompt-crawl-coverage-2026-09-10</id><link href="https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-prompt-crawl-coverage-2026-09-10"/><updated>2026-09-10T00:00:00+08:00</updated>`)) failures.push('feed.xml: fixed-prompt crawl coverage checkpoint entry date is stale');
 for (const url of urls) {
   const pathname = new URL(url).pathname;

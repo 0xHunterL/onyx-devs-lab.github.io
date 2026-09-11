@@ -7,7 +7,8 @@ const root = process.cwd();
 const dist = path.join(root, 'dist');
 const origin = 'https://hk.onyxdevslab.com';
 const updated = '2026-09-09';
-const feedUpdated = '2026-09-10';
+const feedUpdated = '2026-09-11';
+const evidenceContentUpdated = '2026-09-10';
 const pageUpdated = '2026-09-10';
 const partnerScorecardPath = '/data/enterprise-ai-partner-scorecard.json';
 const pilotCharterPath = '/data/enterprise-ai-pilot-charter.json';
@@ -25,6 +26,8 @@ const agentReadinessReleaseUrl = 'https://github.com/0xHunterL/onyx-devs-lab.git
 const crawlerEvidenceReleaseUrl = 'https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-referral-evidence-2026-09-10';
 const crawlerEvidenceReleaseAssetUrl = 'https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-referral-evidence-2026-09-10/ai-search-evidence-status.json';
 const crawlerEvidenceSummaryAssetUrl = 'https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-referral-evidence-2026-09-10/2026-09-10-crawler-evidence.json';
+const monitorEvidenceReleaseUrl = 'https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-monitor-evidence-2026-09-11';
+const monitorEvidenceAssetUrl = 'https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-monitor-evidence-2026-09-11/2026-09-11-monitor-evidence.json';
 const promptCrawlCoverageReleaseUrl = 'https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-prompt-crawl-coverage-2026-09-10';
 const promptCrawlCoverageAssetUrl = 'https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-prompt-crawl-coverage-2026-09-10/2026-09-10-prompt-crawl-coverage.json';
 const promptCrawlSourceAssetUrl = 'https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-prompt-crawl-coverage-2026-09-10/2026-09-10-verified-crawler-report.json';
@@ -647,7 +650,7 @@ function layout(page, body, type='Service'){
   if(page.downloadName==='Onyx AI-search evidence status')primary.hasPart=[primary.hasPart,{"@type":"Dataset",name:'Onyx fixed AI-search prompt evidence map',url:canonical(aiSearchPromptEvidenceMapPath),sameAs:promptEvidenceMapReleaseAssetUrl,isAccessibleForFree:true,distribution:{"@type":"DataDownload",encodingFormat:'application/json',contentUrl:canonical(aiSearchPromptEvidenceMapPath)}}];
   if(page.archiveUrl&&type!=='Service')primary.archivedAt=page.archiveUrl;
   if(type==='Article'){primary.datePublished=publishedDateFor(page.path);primary.mainEntityOfPage={"@id":canonical(page.path)};primary.articleSection=page.eyebrow||(cn?'案例研究':(zh?'案例研究':'Case studies'));}
-  if(type==='Article'&&updatedAiSearchPaths.has(page.path))primary.dateModified=feedUpdated;
+  if(type==='Article'&&updatedAiSearchPaths.has(page.path))primary.dateModified=evidenceContentUpdated;
   if(type==='CreativeWork'){primary.creator={"@id":`${origin}/#organization`};primary.dateModified=updated;}
   if(type==='AboutPage'){primary['@type']=['AboutPage','ProfilePage'];primary.mainEntity={"@id":`${origin}/#organization`};primary.dateModified=pageUpdated;}
   if(type==='Dataset'){primary.name=cn?'Onyx Devs Lab 企业 AI 案例证据登记册':(zh?'Onyx Devs Lab 企業 AI 案例證據登記冊':'Onyx Devs Lab Enterprise AI Case-study Evidence Register');primary.alternateName=['Onyx enterprise AI evidence dataset','Onyx case-study metrics dataset'];primary.creator={"@id":`${origin}/#organization`};primary.publisher={"@id":`${origin}/#organization`};primary.datePublished=updated;primary.dateModified=updated;primary.version='2026.09.09';primary.identifier=canonical(page.dataUrl);primary.isAccessibleForFree=true;primary.keywords=['enterprise AI','AI consulting','custom AI development','Forward Deployed Engineering','case studies','validation metrics','Hong Kong'];primary.measurementTechnique='Project-specific first-party validation methods documented with each metric';primary.variableMeasured=[...new Set(Object.values(caseValidation).flatMap(entry=>entry.en.map(metric=>metric[1])))];primary.sameAs='https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-evidence-2026-09-09/case-study-evidence.json';primary.distribution={"@type":"DataDownload",name:'Onyx case-study evidence register JSON',encodingFormat:'application/json',contentUrl:canonical(page.dataUrl)};}
@@ -655,7 +658,7 @@ function layout(page, body, type='Service'){
   if(type==='Article'||type==='CreativeWork')primary.dateModified=pageUpdated;
   const graph=[{"@type":"Organization","@id":`${origin}/#organization`,name:'Onyx Devs Lab',legalName:'ONYX DEVS LAB LIMITED',url:`${origin}/`,email:'info@onyxdevslab.com',foundingDate:'2025-10-30',leiCode:'254900Z30CLK7HKE9H46',iso6523Code:'0199:254900Z30CLK7HKE9H46',address:registeredAddress,logo:{"@type":"ImageObject",url:`${origin}/onyx-devs-lab-logo.svg`,contentUrl:`${origin}/onyx-devs-lab-logo.svg`,width:512,height:512},contactPoint:{"@type":"ContactPoint",contactType:'sales',email:'info@onyxdevslab.com',availableLanguage:['English','Chinese']},areaServed:['Hong Kong','Greater China','Global'],knowsAbout:['Enterprise AI','AI advisory','Custom AI development','AI agents','Retrieval-augmented generation','Forward Deployed Engineering','ERP integration'],identifier:[{"@type":"PropertyValue",propertyID:'Hong Kong Business Registration Number',value:'79051925'},{"@type":"PropertyValue",propertyID:'LEI',value:'254900Z30CLK7HKE9H46'}],hasOfferCatalog:serviceOfferCatalog,member:teamMemberReferences,sameAs:entityReferences,subjectOf:entityEvidence},{"@type":"WebSite","@id":`${origin}/#website`,url:`${origin}/`,name:'Onyx Devs Lab',alternateName:'ONYX DEVS LAB LIMITED',publisher:{"@id":`${origin}/#organization`},inLanguage:['en','zh-Hant-HK','zh-CN']},primary,{"@type":"WebPage","@id":canonical(page.path),url:canonical(page.path),name:page.title,description:page.description,dateModified:updated,inLanguage:page.lang,isPartOf:{"@id":`${origin}/#website`},about:{"@id":`${canonical(page.path)}#primary`}},{"@type":"BreadcrumbList",itemListElement:[{"@type":"ListItem",position:1,name:cn?'首页':(zh?'首頁':'Home'),item:`${origin}/`},{"@type":"ListItem",position:2,name:page.h1,item:canonical(page.path)}]}];
   if(page.archiveUrl)graph.find(item=>item['@type']==='WebPage').archivedAt=page.archiveUrl;
-  if(updatedAiSearchPaths.has(page.path))graph.find(item=>item['@type']==='WebPage').dateModified=feedUpdated;
+  if(updatedAiSearchPaths.has(page.path))graph.find(item=>item['@type']==='WebPage').dateModified=evidenceContentUpdated;
   graph.find(item=>item['@type']==='WebPage').dateModified=pageUpdated;
   if(page.faqs)graph.push({"@type":"FAQPage",mainEntity:page.faqs.map(([question,answer])=>({"@type":"Question",name:question,acceptedAnswer:{"@type":"Answer",text:answer}}))});
   if(page.people)graph.push(...page.people.map(person=>({"@type":"Person","@id":personId(person.name),name:person.name,jobTitle:person.role[cn?'cn':(zh?'zh':'en')],description:person.summary[cn?'cn':(zh?'zh':'en')],image:canonical(person.image),worksFor:{"@id":`${origin}/#organization`}})));
@@ -783,6 +786,7 @@ const externalFeedEntries=[
   {title:'Onyx GEO evidence checkpoint — 2026-09-09',url:'https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-evidence-2026-09-09',summary:'A dated, provider-maintained public evidence snapshot. It is not an independent endorsement or proof of search indexing, AI citation, or client outcomes.',category:'evidence'},
   {title:'Onyx GEO agent-readiness evidence — 2026-09-10',url:agentReadinessReleaseUrl,summary:'A versioned snapshot of accessibility, verified crawler activity, explicit search non-results, and the boundary between technical readiness and AI citation.',category:'evidence'},
   {title:'Onyx verified crawler evidence checkpoint — 2026-09-10',url:crawlerEvidenceReleaseUrl,summary:'A versioned machine-readable checkpoint recording 24 verified GPTBot content crawls, five verified OAI-SearchBot discovery visits, seven verified Bingbot content crawls, explicit public-search non-results, and referral evidence boundaries.',category:'evidence'},
+  {title:'Onyx automated GEO monitor evidence checkpoint — 2026-09-11',url:monitorEvidenceReleaseUrl,summary:'A versioned machine-readable checkpoint recording six verified OAI-SearchBot discovery-file requests, zero OAI search content requests, current crawler and prompt coverage, classified attribution requests, and explicit public-search non-results. It does not prove indexing, citation, or recommendation.',category:'evidence'},
   {title:'Onyx fixed-prompt crawler coverage checkpoint — 2026-09-10',url:promptCrawlCoverageReleaseUrl,summary:'A versioned intersection of 20 fixed AI-search prompts with provider-verified content crawls: 10 prompts have some mapped evidence crawled, six have full mapped coverage, and search/retrieval-related crawler coverage remains zero.',category:'evidence'},
   {title:'Enterprise AI RFP requirements and evidence checkpoint (2026-09-10)',url:aiSearchStatusReleaseUrl,summary:'A versioned, trilingual RFP requirements template grounded in public Hong Kong and NIST guidance, with 20-prompt evidence coverage and explicit indexing and citation boundaries.',category:'evidence'},
   {title:'Onyx Devs Lab｜香港企业 AI 中文方法索引（2026-09-10）',url:chineseFieldNotesReleaseUrl,summary:'Provider-maintained Chinese index connecting enterprise AI advisory, custom AI development, FDE, AI-agent ERP controls, and legal-AI evidence methods to canonical sources.',category:'zh-CN'},
@@ -812,7 +816,8 @@ const externalFeedEntries=[
 const atom=`<?xml version="1.0" encoding="UTF-8"?>\n<feed xmlns="http://www.w3.org/2005/Atom"><title>Onyx Devs Lab — Enterprise AI Field Notes</title><id>${origin}/feed.xml</id><link href="${origin}/feed.xml" rel="self"/><link href="${webSubHubUrl}" rel="hub"/><link href="${origin}/"/><updated>${updated}T00:00:00+08:00</updated><author><name>Onyx Devs Lab</name></author>${feedEntries.map(page=>`<entry><title>${esc(page.title)}</title><id>${canonical(page.path)}</id><link href="${canonical(page.path)}"/><updated>${updated}T00:00:00+08:00</updated><summary>${esc(page.description)}</summary><category term="${page.lang}"/></entry>`).join('')}${externalFeedEntries.map(entry=>`<entry><title>${esc(entry.title)}</title><id>${esc(entry.url)}</id><link href="${esc(entry.url)}"/><updated>${updated}T00:00:00+08:00</updated><summary>${esc(entry.summary)}</summary><category term="${esc(entry.category)}"/><category term="${esc(entry.ownership||'provider-maintained-external-source')}"/></entry>`).join('')}</feed>\n`;
 let accurateAtom=atom.replace(`<updated>${updated}T`,`<updated>${feedUpdated}T`);
 for(const page of feedEntries){const entryId=canonical(page.path);accurateAtom=accurateAtom.replace(`<id>${entryId}</id><link href="${entryId}"/><updated>${updated}T`,`<id>${entryId}</id><link href="${entryId}"/><updated>${pageUpdated}T`);}
-for(const entryId of [...updatedAiSearchPaths].map(canonical).concat(canonical(aiSearchPromptEvidenceMapPath),agentReadinessReleaseUrl,crawlerEvidenceReleaseUrl,promptCrawlCoverageReleaseUrl,promptEvidenceMapReleaseUrl,aiSearchStatusReleaseUrl,chineseFieldNotesReleaseUrl,[...archivedAnswerPages.values()]))accurateAtom=accurateAtom.replace(`<id>${entryId}</id><link href="${entryId}"/><updated>${updated}T`,`<id>${entryId}</id><link href="${entryId}"/><updated>${feedUpdated}T`);
+for(const entryId of [...updatedAiSearchPaths].map(canonical).concat(canonical(aiSearchPromptEvidenceMapPath),agentReadinessReleaseUrl,crawlerEvidenceReleaseUrl,promptCrawlCoverageReleaseUrl,promptEvidenceMapReleaseUrl,aiSearchStatusReleaseUrl,chineseFieldNotesReleaseUrl,[...archivedAnswerPages.values()]))accurateAtom=accurateAtom.replace(`<id>${entryId}</id><link href="${entryId}"/><updated>${updated}T`,`<id>${entryId}</id><link href="${entryId}"/><updated>${evidenceContentUpdated}T`);
+accurateAtom=accurateAtom.replace(`<id>${monitorEvidenceReleaseUrl}</id><link href="${monitorEvidenceReleaseUrl}"/><updated>${updated}T`,`<id>${monitorEvidenceReleaseUrl}</id><link href="${monitorEvidenceReleaseUrl}"/><updated>${feedUpdated}T`);
 fs.writeFileSync(path.join(dist,'feed.xml'),accurateAtom);
 const feedDate=()=>pageUpdated;
 const jsonFeed={
@@ -842,7 +847,7 @@ const jsonFeed={
       title:entry.title,
       summary:entry.summary,
       content_text:entry.summary,
-      date_modified:`${[canonical(aiSearchPromptEvidenceMapPath),agentReadinessReleaseUrl,crawlerEvidenceReleaseUrl,promptCrawlCoverageReleaseUrl,promptEvidenceMapReleaseUrl,aiSearchStatusReleaseUrl,chineseFieldNotesReleaseUrl,...archivedAnswerPages.values()].includes(entry.url)?feedUpdated:updated}T00:00:00+08:00`,
+      date_modified:`${entry.url===monitorEvidenceReleaseUrl?feedUpdated:[canonical(aiSearchPromptEvidenceMapPath),agentReadinessReleaseUrl,crawlerEvidenceReleaseUrl,promptCrawlCoverageReleaseUrl,promptEvidenceMapReleaseUrl,aiSearchStatusReleaseUrl,chineseFieldNotesReleaseUrl,...archivedAnswerPages.values()].includes(entry.url)?evidenceContentUpdated:updated}T00:00:00+08:00`,
       tags:[entry.category,entry.ownership||'provider-maintained-external-source'],
     })),
   ],
@@ -989,6 +994,7 @@ const organizationRecord={
     {'@type':'CreativeWork',name:'Hong Kong Companies Registry incorporation record',description:'Corroborates legal name, business registration number, and founding date.',url:'https://www.cr.gov.hk/docs/wrpt/RNC063_2025.10.27-2025.11.02.pdf'},
     {'@type':'CreativeWork',name:'GLEIF LEI record',description:'Corroborates legal name, LEI, entity status, registration status, and registered address.',url:'https://www.gleif.org/lei/254900Z30CLK7HKE9H46'},
     {'@type':'CreativeWork',name:'Bloomberg LEI record',description:'Corroborates legal name, LEI, registration identifier, and registered address.',url:'https://lei.bloomberg.com/leis/view/254900Z30CLK7HKE9H46'},
+    {'@type':'Dataset',name:'Onyx automated GEO monitor evidence checkpoint — 2026-09-11',description:'Provider-maintained snapshot of provider-verified crawler requests, fixed-prompt crawl coverage, classified attribution requests, and dated public-search observations. It does not prove indexing, citation, or recommendation.',url:monitorEvidenceReleaseUrl,sameAs:monitorEvidenceAssetUrl,dateModified:'2026-09-11'},
     {'@type':'SoftwareSourceCode',name:'Software Heritage archive of the Onyx Devs Lab public repository',description:'Independently preserves the public source, citation metadata, current crawler/referral checkpoints, machine-readable evidence files, and their Git history at revision fe91aae. Archival does not endorse service claims or prove search indexing.',identifier:'swh:1:snp:947880d501d459884fefdaf1bc95a9978599727a',url:softwareHeritageSnapshotUrl,codeRepository:'https://github.com/0xHunterL/onyx-devs-lab.github.io',version:'fe91aae7bb44331aac110650d1af4cfebf6364d3'},
     {'@type':'CreativeWork',name:'Hong Kong Enterprise AI Buyer’s Guide',description:'Provider-authored field-guide cluster covering AI advisory, AI 定开, custom AI development, FDE, vendor evaluation, and acceptance evidence.',url:buyerGuideSiteUrl,isBasedOn:buyerGuideRepositoryUrl,sameAs:buyerGuideReleaseUrl,hasPart:buyerGuideFocusedPages},
     {'@type':'SoftwareSourceCode',name:'Software Heritage archive of the Hong Kong Enterprise AI Buyer’s Guide',description:'Independently preserves the four-page guide cluster, branded search previews, corrected deep links, link-check workflow, CFF, CodeMeta, Atom WebSub feed, Pages source, and release tag at revision ee32c97. Archival does not endorse the guidance or prove search indexing.',identifier:'swh:1:snp:d1315b9fb9d2d03748035420723b0301f1c609b6',url:buyerGuideArchiveUrl,codeRepository:buyerGuideRepositoryUrl,version:'ee32c974fb061298dc3ec7c4f3dd1b05b045e6c0'},
@@ -1091,7 +1097,7 @@ const topicEntityMap={
       '@type':'DefinedTermSet','@id':serviceTermSetId,
       name:languageValues('Onyx enterprise AI service terms','Onyx 企業 AI 服務術語','Onyx 企业 AI 服务术语'),
       description:languageValues('A provider-maintained vocabulary connecting AI advisory, custom AI development, and Forward Deployed Engineering to canonical definitions and service pages.','由服務商維護的術語集，把 AI 顧問、AI 定制開發及前線部署工程連接至規範定義與服務頁。','由服务商维护的术语集，把 AI 咨询、AI 定制开发和前线部署工程连接到规范定义与服务页。'),
-      dateModified:feedUpdated,
+      dateModified:evidenceContentUpdated,
       sameAs:serviceTermsReleaseAssetUrl,
       creator:{'@id':`${origin}/#organization`},
       about:{'@id':`${origin}/#organization`},
@@ -1149,6 +1155,8 @@ const fullKnowledge=[
   `Versioned verified crawler evidence checkpoint: ${crawlerEvidenceReleaseUrl}`,
   `Previous crawler-and-referral AI-search evidence status asset: ${crawlerEvidenceReleaseAssetUrl}`,
   `Versioned verified crawler evidence summary: ${crawlerEvidenceSummaryAssetUrl}`,
+  `Automated GEO monitor evidence checkpoint: ${monitorEvidenceReleaseUrl}`,
+  `Automated GEO monitor machine-readable snapshot: ${monitorEvidenceAssetUrl}`,
   `Versioned fixed-prompt crawler coverage checkpoint: ${promptCrawlCoverageReleaseUrl}`,
   `Versioned fixed-prompt crawler coverage report: ${promptCrawlCoverageAssetUrl}`,
   `Versioned fixed-prompt evidence map checkpoint: ${promptEvidenceMapReleaseUrl}`,
