@@ -16,7 +16,7 @@
 版本化检查点：
 
 - [`2026-09-11-monitor-evidence.md`](./2026-09-11-monitor-evidence.md) / [`JSON`](./2026-09-11-monitor-evidence.json)：当前及轮转日志的自动监测检查点，记录第 8 次 OAI-SearchBot 发现文件访问、当前爬虫／提示词覆盖、链接扫描归因修正和公开搜索复测边界。
-- [`2026-09-11-bing-public-search.md`](./2026-09-11-bing-public-search.md) / [`JSON`](./2026-09-11-bing-public-search.json)：Bing 公开 RSS 搜索的四项固定查询检查点，只保存目标命中状态、结果数量和 URL 集合指纹，不复制结果内容。
+- [`2026-09-11-bing-search-compliance-audit.md`](./2026-09-11-bing-search-compliance-audit.md)：撤回不适合企业监测的 Bing RSS 路径，记录 Bing Webmaster Tools/API 的合规替代方案与当前账户验证缺口。
 - [`2026-09-11-common-crawl.md`](./2026-09-11-common-crawl.md)：Common Crawl 最近两个官方月度索引的零捕获基线，以及未来捕获事件的自动指纹监测边界。
 - [`2026-09-08-doubao.md`](./2026-09-08-doubao.md)：初始公共检索、爬虫与豆包待测基线。
 - [`2026-09-10-crawler-evidence.json`](./2026-09-10-crawler-evidence.json)：经官方地址段或双向 DNS 核验的爬虫累计、归因访问分类和公开检索非命中快照。

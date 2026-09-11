@@ -49,7 +49,6 @@ npm run geo:check-live -- https://hk.onyxdevslab.com
 npm run geo:schema-validate-live -- https://hk.onyxdevslab.com
 npm run geo:crawler-report -- --since=2026-09-01 --include-rotated --verify-openai --verify-bing --verify-baidu --verify-google --verify-perplexity --verify-common-crawl --verify-apple /var/log/nginx/hk.onyxdevslab.com.geo.log
 npm run geo:referral-report -- --since=2026-09-01 --include-rotated /var/log/nginx/hk.onyxdevslab.com.geo.log
-npm run geo:public-search-report
 ```
 
 生产机通过 `onyx-geo-monitor.timer` 每六小时自动执行一次 `geo:collect-evidence`。它读取当前及数字轮转日志，启用 OpenAI、Bing、Google 和 Perplexity 的提供方核验，查询 Common Crawl 官方列表中的最近两个月度索引，并匿名复核版本化清单中的站外发布物及归因目标；依次生成 `/var/lib/onyx-geo/crawler-report.json`、`referral-report.json`、`common-crawl-report.json`、`distribution-live-report.json`、`prompt-crawl-coverage.json` 和 `summary.json`。每个已核验爬虫请求、非疑似自动化归因请求及 Common Crawl 捕获都会生成不含 IP 和 User-Agent 的 SHA-256 事件指纹，已见集合保存在 `/var/lib/onyx-geo/seen-evidence.json`；因此旧轮转日志退出保留期、累计计数下降时，也不会掩盖或重复报告后来出现的新请求。`changed: true` 仅表示出现此前未见的已核验爬虫、可关联的非疑似自动化请求或公开语料库捕获，发布自测和疑似自动化 UTM 流量不会触发该标记。这不等于搜索收录、检索、引用、真人访问或非品牌推荐。第一次运行只建立已见集合并把所有差值置零，避免把已有累计证据误报为新变化。初始化基线、每次 `changed: true` 的完整报告，以及爬虫核验源、Common Crawl 或站外分发的可用性等级和覆盖集合发生变化时的 `availability-change` 报告，都会原子写入 `/var/lib/onyx-geo/events/`，因此下一轮覆盖当前报告后，新增证据与监测源可用性转换仍有不可覆盖的事件文件可供心跳复核。`availabilityChanged: true` 仅代表监测源状态或可核验覆盖范围改变，不是可发现性效果证据。Common Crawl 查询不可用时会明确标为 `unavailable`；部分索引失败时，`summary.json` 的 `availability.commonCrawl.status` 必须为 `partial`，并列出所选索引、成功与失败数量及失败原因；即使总体仍为 `partial`，失败索引发生替换也必须留存事件，不得把不完整或已变化的查询范围解释为零捕获。站外检查的个别网络失败同样只降低 `availability.distribution`，不会阻断其余证据采集，也不能在没有独立复测时直接断言发布物已经消失。
@@ -58,7 +57,7 @@ npm run geo:public-search-report
 
 生产采集器同时启用 Baiduspider 的 DNS 身份核验与 Applebot 的官方前缀核验；前者没有静态“来源可用性”项，只有日志中出现候选 IP 时才实际执行 DNS 校验。
 
-Bing 公开搜索复测使用 RSS 响应，只保存查询回显、结果数量、目标 URL 是否出现及结果 URL 集合指纹；不得复制搜索结果标题、摘要或 URL 清单。不同查询得到相同指纹时必须明确记录结果面缺乏区分度，不能把一次匿名 RSS 观察扩大解释为全局索引结论。
+Bing 搜索收录与表现监测只使用已验证站点的 Bing Webmaster Tools 或经 OAuth 授权的官方 Webmaster API。不得把限制为个人、非商业用途的公开 RSS 结果接口接入企业监测或证据快照。IndexNow 仍用于内容变更通知，但接收成功和 Bingbot 抓取都不能替代站长工具中的索引证据。
 
 CCBot 使用 Common Crawl 公开 IP 地址段核验，IPv4 与 IPv6 前缀均纳入匹配。经核验的 CCBot 正文与发现文件请求都必须进入同一指纹流程；累计计数、路径覆盖和永久事件不得出现只更新前两者的不一致。
 

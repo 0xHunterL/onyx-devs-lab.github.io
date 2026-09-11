@@ -23,8 +23,6 @@
     "geo:test-referral-report": "node scripts/test-report-geo-referrals.mjs",
     "geo:test-evidence-summary": "node scripts/test-geo-evidence-summary.mjs",
     "geo:test-crawler-report": "node scripts/test-report-ai-crawlers.mjs",
-    "geo:public-search-report": "node scripts/report-bing-public-search.mjs",
-    "geo:test-public-search-report": "node scripts/test-report-bing-public-search.mjs",
     "geo:collect-evidence": "node scripts/collect-geo-evidence.mjs",
     "geo:common-crawl-report": "node scripts/report-common-crawl.mjs",
     "geo:submit-indexnow": "node scripts/submit-indexnow.mjs",
