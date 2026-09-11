@@ -1110,11 +1110,11 @@
       ]
     },
     {
-      "id": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-monitor-evidence-2026-09-11-5",
-      "url": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-monitor-evidence-2026-09-11-5",
-      "title": "Onyx automated GEO monitor evidence checkpoint — 2026-09-11, revision 5",
-      "summary": "A versioned machine-readable checkpoint recording eight verified OAI-SearchBot discovery-file requests, zero OAI search content requests, current crawler and prompt coverage, and 69 attribution candidates classified as 60 suspected automated requests and nine visitor-type-unverified requests after identifying a Palo Alto URL-scanner network. It does not prove indexing, citation, or recommendation.",
-      "content_text": "A versioned machine-readable checkpoint recording eight verified OAI-SearchBot discovery-file requests, zero OAI search content requests, current crawler and prompt coverage, and 69 attribution candidates classified as 60 suspected automated requests and nine visitor-type-unverified requests after identifying a Palo Alto URL-scanner network. It does not prove indexing, citation, or recommendation.",
+      "id": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-monitor-evidence-2026-09-11-6",
+      "url": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-monitor-evidence-2026-09-11-6",
+      "title": "Onyx automated GEO monitor evidence checkpoint — 2026-09-11, revision 6",
+      "summary": "A versioned machine-readable checkpoint recording eight verified OAI-SearchBot discovery-file requests, zero OAI search content requests, zero non-synthetic Bytespider candidates under a user-agent-only identity boundary, and 70 attribution candidates classified as 61 suspected automated requests and nine visitor-type-unverified requests. It does not prove indexing, citation, or recommendation.",
+      "content_text": "A versioned machine-readable checkpoint recording eight verified OAI-SearchBot discovery-file requests, zero OAI search content requests, zero non-synthetic Bytespider candidates under a user-agent-only identity boundary, and 70 attribution candidates classified as 61 suspected automated requests and nine visitor-type-unverified requests. It does not prove indexing, citation, or recommendation.",
       "date_modified": "2026-09-11T00:00:00+08:00",
       "tags": [
         "evidence",
