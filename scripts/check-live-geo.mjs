@@ -33,35 +33,64 @@ function expectedPublishedDate(pathname) {
   return '2026-09-07';
 }
 
+async function fetchWithRetry(url, options, label) {
+  let lastError;
+  for (let attempt = 1; attempt <= 2; attempt += 1) {
+    try {
+      networkRequests += 1;
+      return await fetch(url, { ...options, signal: AbortSignal.timeout(15_000) });
+    } catch (error) {
+      lastError = error;
+    }
+  }
+  failures.push(`${label}: request failed or timed out after 2 attempts: ${lastError?.message || 'unknown error'}`);
+  return null;
+}
+
+async function fetchTextWithRetry(url, options, label) {
+  let lastError;
+  for (let attempt = 1; attempt <= 2; attempt += 1) {
+    try {
+      networkRequests += 1;
+      const response = await fetch(url, { ...options, signal: AbortSignal.timeout(15_000) });
+      const body = await response.text();
+      return { response, body };
+    } catch (error) {
+      lastError = error;
+    }
+  }
+  failures.push(`${label}: request failed or timed out after 2 attempts: ${lastError?.message || 'unknown error'}`);
+  return null;
+}
+
 async function probe(pathname, accept = '') {
-  const response = await fetch(`${origin}${pathname}`, {
+  const result = await fetchTextWithRetry(`${origin}${pathname}`, {
     headers: { 'user-agent': 'Onyx-GEO-Release-Check/1.0', ...(accept ? { accept } : {}) },
     redirect: 'manual',
-    signal: AbortSignal.timeout(15_000),
-  });
-  return { status: response.status, location: response.headers.get('location') || '', body: await response.text() };
+  }, pathname);
+  if (!result) return { status: 0, location: '', body: '' };
+  return { status: result.response.status, location: result.response.headers.get('location') || '', body: result.body };
 }
 
 async function probeAbsolute(url) {
-  const response = await fetch(url, {
+  const response = await fetchWithRetry(url, {
     headers: { 'user-agent': 'Onyx-GEO-Release-Check/1.0' },
     redirect: 'manual',
-    signal: AbortSignal.timeout(15_000),
-  });
+  }, url);
+  if (!response) return { status: 0, location: '' };
   return { status: response.status, location: response.headers.get('location') || '' };
 }
 
 async function probeConditional(pathname, validatorHeaders, accept = '') {
-  networkRequests += 1;
-  const response = await fetch(`${origin}${pathname}`, {
+  const response = await fetchWithRetry(`${origin}${pathname}`, {
     headers: {
       'user-agent': 'Onyx-GEO-Release-Check/1.0',
       ...(accept ? { accept } : {}),
       ...validatorHeaders,
     },
     redirect: 'follow',
-    signal: AbortSignal.timeout(15_000),
-  });
+  }, `${pathname} conditional request`);
+  if (!response) return 0;
   await response.body?.cancel();
   return response.status;
 }
@@ -73,28 +102,16 @@ async function get(pathname, expectedType, userAgent = 'Onyx-GEO-Release-Check/1
     cacheHits += 1;
     return requestCache.get(cacheKey);
   }
-  let response;
-  let lastError;
-  for (let attempt = 1; attempt <= 2; attempt += 1) {
-    try {
-      networkRequests += 1;
-      response = await fetch(requestedUrl, {
-        headers: { 'user-agent': userAgent, ...(accept?{ accept }: {}) },
-        redirect: 'follow',
-        signal: AbortSignal.timeout(15_000),
-      });
-      break;
-    } catch (error) {
-      lastError = error;
-    }
-  }
-  if (!response) {
-    failures.push(`${pathname}: request failed or timed out after 2 attempts: ${lastError?.message || 'unknown error'}`);
+  const fetched = await fetchTextWithRetry(requestedUrl, {
+    headers: { 'user-agent': userAgent, ...(accept?{ accept }: {}) },
+    redirect: 'follow',
+  }, pathname);
+  if (!fetched) {
     const result = { response: null, body: '', contentType: '' };
     requestCache.set(cacheKey, result);
     return result;
   }
-  const rawBody = await response.text();
+  const { response, body: rawBody } = fetched;
   const contentType = response.headers.get('content-type') || '';
   const body = contentType.includes('text/html') ? normalizeHtmlForChecks(rawBody) : rawBody;
   if (!response.ok) failures.push(`${pathname}: HTTP ${response.status}`);
