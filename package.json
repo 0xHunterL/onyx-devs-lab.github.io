@@ -20,6 +20,7 @@
     "geo:prompt-crawl-coverage": "node scripts/report-prompt-crawl-coverage.mjs",
     "geo:referral-report": "node scripts/report-geo-referrals.mjs",
     "geo:collect-evidence": "node scripts/collect-geo-evidence.mjs",
+    "geo:common-crawl-report": "node scripts/report-common-crawl.mjs",
     "geo:submit-indexnow": "node scripts/submit-indexnow.mjs",
     "geo:publish-websub": "node scripts/publish-websub.mjs",
     "lint": "eslint .",

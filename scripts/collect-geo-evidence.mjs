@@ -84,6 +84,7 @@ const crawler = await runJson('report-ai-crawlers.mjs', [
   ...logPaths,
 ]);
 const referral = await runJson('report-geo-referrals.mjs', [`--since=${since}`, '--include-rotated', ...logPaths]);
+const commonCrawl = await runJson('report-common-crawl.mjs', ['--host=hk.onyxdevslab.com', '--indexes=2']);
 
 const crawlerTemporary = path.join(outputDir, `.crawler-report-${process.pid}.json`);
 await writeFile(crawlerTemporary, `${JSON.stringify(crawler, null, 2)}\n`, { mode: 0o640 });
@@ -113,6 +114,8 @@ const counts = {
   humanUnverifiedTrackedVisits: referral.humanUnverifiedTrackedVisits,
   aiReferrerAttributedVisits: (referral.byEvidenceType['ai-referrer'] || 0) + (referral.byEvidenceType['utm-and-ai-referrer'] || 0),
   humanUnverifiedAiReferrerVisits: referral.recentHumanUnverifiedVisits.filter((visit) => visit.evidenceType.includes('ai-referrer')).length,
+  commonCrawlCaptures: commonCrawl.totals.captures,
+  commonCrawlDistinctUrls: commonCrawl.totals.distinctUrls,
 };
 const priorCounts = previous?.counts || {};
 const deltas = Object.fromEntries(Object.entries(counts).map(([key, value]) => [key, previous ? value - (Number(priorCounts[key]) || 0) : 0]));
@@ -135,6 +138,7 @@ const currentEvidenceObservations = [
     metric: observation.evidenceType.includes('ai-referrer') ? 'humanUnverifiedAiReferrerVisits' : 'humanUnverifiedTrackedVisits',
     evidenceClass: 'attributed-request-visitor-type-unverified',
   })),
+  ...(commonCrawl.captures || []).map((observation) => ({ ...observation, metric: 'commonCrawlCaptures', evidenceClass: 'common-crawl-index-capture' })),
 ];
 const previouslySeen = new Set(previousSeenEvidence?.fingerprints || []);
 const newEvidenceObservations = previousSeenEvidence
@@ -161,7 +165,7 @@ const summary = {
   changed: newEvidence.length > 0,
   eventFile,
   newEvidenceObservations,
-  evidenceBoundary: 'New crawler fingerprints prove only previously unseen provider-verified requests. New referral fingerprints exclude suspected automation and prove only previously unseen attributed requests whose visitor type is not verified. Neither proves indexing, retrieval, citation, ranking, a human visit, or non-brand recommendation.',
+  evidenceBoundary: 'New crawler fingerprints prove only previously unseen provider-verified requests. New referral fingerprints exclude suspected automation and prove only previously unseen attributed requests whose visitor type is not verified. Common Crawl fingerprints prove only appearance in the named public crawl index. None proves search indexing, retrieval, citation, ranking, a human visit, or non-brand recommendation.',
 };
 
 if (eventFile) await atomicJson(eventFile, {
@@ -170,6 +174,7 @@ if (eventFile) await atomicJson(eventFile, {
   summary,
   crawler,
   referral,
+  commonCrawl,
   promptCoverage,
 });
 await atomicJson('seen-evidence.json', {
@@ -179,6 +184,7 @@ await atomicJson('seen-evidence.json', {
 });
 await atomicJson('crawler-report.json', crawler);
 await atomicJson('referral-report.json', referral);
+await atomicJson('common-crawl-report.json', commonCrawl);
 await atomicJson('prompt-crawl-coverage.json', promptCoverage);
 await atomicJson('summary.json', summary);
 console.log(JSON.stringify(summary, null, 2));
