@@ -28,6 +28,7 @@ const summary = {
     promptsWithAnySearchRelatedCrawl: prompt.promptsWithAnySearchRelatedCrawl,
     trackedVisits: attribution.trackedRequests,
     suspectedAutomatedTrackedVisits: attribution.suspectedAutomatedRequests,
+    periodicRotatingClientTrackedVisits: attribution.periodicRotatingClientRequests,
     humanUnverifiedTrackedVisits: attribution.visitorTypeUnverifiedRequests,
     knownLinkScannerTrackedVisits: attribution.knownLinkScannerRequests,
     knownLinkScannerUserAgentVisits: attribution.knownLinkScannerUserAgentRequests,

@@ -33,6 +33,7 @@ export function buildPublicationDrift(baseline, summary) {
     ['fixedPromptCoverage.promptsWithAnySearchRelatedCrawl', prompt.promptsWithAnySearchRelatedCrawl, counts.promptsWithAnySearchRelatedCrawl],
     ['attributionEvidence.trackedRequests', attribution.trackedRequests, counts.trackedVisits],
     ['attributionEvidence.suspectedAutomatedRequests', attribution.suspectedAutomatedRequests, counts.suspectedAutomatedTrackedVisits],
+    ['attributionEvidence.periodicRotatingClientRequests', attribution.periodicRotatingClientRequests, counts.periodicRotatingClientTrackedVisits],
     ['attributionEvidence.visitorTypeUnverifiedRequests', attribution.visitorTypeUnverifiedRequests, counts.humanUnverifiedTrackedVisits],
     ['attributionEvidence.knownLinkScannerRequests', attribution.knownLinkScannerRequests, counts.knownLinkScannerTrackedVisits],
     ['attributionEvidence.knownLinkScannerUserAgentRequests', attribution.knownLinkScannerUserAgentRequests, counts.knownLinkScannerUserAgentVisits],

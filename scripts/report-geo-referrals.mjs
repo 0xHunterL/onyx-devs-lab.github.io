@@ -89,6 +89,7 @@ const aggregate = (key) => Object.fromEntries([...visits.reduce((counts, visit) 
 }, new Map())].sort((a, b) => b[1] - a[1]));
 
 const suspectedAutomatedVisitIndexes = new Set();
+const periodicAutomatedVisitIndexes = new Set();
 const suspectedAutomatedBursts = [];
 const suspectedPeriodicAutomation = [];
 const internallyInconsistentUserAgentVisits = [];
@@ -185,7 +186,10 @@ for (const group of periodicGroups.values()) {
     const periodicIntervals = intervals.filter((duration) => duration >= 4 * 60_000 && duration <= 25 * 60_000).length;
     const allReferrersMissing = window.every((item) => !item.visit.referrerHost);
     if (distinctPaths.size < 6 || distinctClients.size < 6 || periodicIntervals < Math.ceil(intervals.length * 0.8) || !allReferrersMissing) continue;
-    for (const item of window) suspectedAutomatedVisitIndexes.add(item.index);
+    for (const item of window) {
+      suspectedAutomatedVisitIndexes.add(item.index);
+      periodicAutomatedVisitIndexes.add(item.index);
+    }
     suspectedPeriodicAutomation.push({
       start: window[0].visit.time,
       end: window.at(-1).visit.time,
@@ -232,6 +236,7 @@ console.log(JSON.stringify({
   trackedVisits: visits.length,
   syntheticTrackedVisits: syntheticVisits.length,
   suspectedAutomatedTrackedVisits: suspectedAutomatedVisitIndexes.size,
+  periodicRotatingClientTrackedVisits: periodicAutomatedVisitIndexes.size,
   humanUnverifiedTrackedVisits: humanUnverifiedVisits.length,
   caveat: 'Scripted verification user agents are excluded from trackedVisits and reported separately. Known link-scanner user agents and documented scanner networks, internally inconsistent browser identities, high-velocity multi-page bursts, and conservative periodic rotating-client patterns are flagged as suspected automation rather than human visits. Remaining requests are human-unverified: UTM or AI-referrer traffic is attribution evidence, not proof of a person, search indexing, answer citation, or recommendation. Referrer headers may be omitted by the source application or browser policy.',
   byCampaign: aggregate('campaign'),

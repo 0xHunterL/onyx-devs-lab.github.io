@@ -23,6 +23,7 @@ export function buildEvidenceCounts(crawler, referral, commonCrawl, promptCovera
     promptsWithAnySearchRelatedCrawl: promptCoverage.totals.promptsWithAnySearchRelatedCrawl,
     trackedVisits: referral.trackedVisits,
     suspectedAutomatedTrackedVisits: referral.suspectedAutomatedTrackedVisits,
+    periodicRotatingClientTrackedVisits: referral.periodicRotatingClientTrackedVisits || 0,
     humanUnverifiedTrackedVisits: referral.humanUnverifiedTrackedVisits,
     knownLinkScannerTrackedVisits: referral.knownLinkScannerTrackedVisits,
     knownLinkScannerUserAgentVisits: referral.knownLinkScannerUserAgentVisits,

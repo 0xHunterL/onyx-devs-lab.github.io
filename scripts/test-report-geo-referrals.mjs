@@ -87,8 +87,9 @@ try {
   assert.equal(report.suspectedPeriodicAutomation[0].distinctLandingPages, 8);
   assert.equal(report.suspectedPeriodicAutomation[0].distinctClients, 8);
   assert.equal(report.suspectedPeriodicAutomation[0].periodicIntervals, 7);
+  assert.equal(report.periodicRotatingClientTrackedVisits, 8);
   assert.match(report.caveat, /periodic rotating-client patterns/);
-  console.log(JSON.stringify({ tests: 15, failures: [] }, null, 2));
+  console.log(JSON.stringify({ tests: 16, failures: [] }, null, 2));
 } finally {
   await rm(directory, { recursive: true, force: true });
 }

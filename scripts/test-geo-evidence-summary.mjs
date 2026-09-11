@@ -26,6 +26,7 @@ const counts = buildEvidenceCounts(
   {
     trackedVisits: 70,
     suspectedAutomatedTrackedVisits: 61,
+    periodicRotatingClientTrackedVisits: 9,
     humanUnverifiedTrackedVisits: 9,
     knownLinkScannerTrackedVisits: 14,
     knownLinkScannerUserAgentVisits: 12,
@@ -41,6 +42,7 @@ const counts = buildEvidenceCounts(
 
 assert.equal(counts.trackedVisits, 70);
 assert.equal(counts.suspectedAutomatedTrackedVisits, 61);
+assert.equal(counts.periodicRotatingClientTrackedVisits, 9);
 assert.equal(counts.humanUnverifiedTrackedVisits, 9);
 assert.equal(counts.knownLinkScannerTrackedVisits, 14);
 assert.equal(counts.knownLinkScannerUserAgentVisits, 12);
@@ -162,4 +164,4 @@ assert.equal(selectEvidenceEventKind({ initializing: false, evidenceChanged: tru
 assert.equal(selectEvidenceEventKind({ initializing: false, evidenceChanged: false, availabilityChanged: true }), 'availability-change');
 assert.equal(selectEvidenceEventKind({ initializing: false, evidenceChanged: false, availabilityChanged: false }), null);
 
-console.log(JSON.stringify({ tests: 54, failures: [] }, null, 2));
+console.log(JSON.stringify({ tests: 55, failures: [] }, null, 2));
