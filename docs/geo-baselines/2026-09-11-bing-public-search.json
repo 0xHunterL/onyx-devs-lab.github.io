@@ -58,5 +58,20 @@
     "unavailable": 0,
     "targetsObserved": 0
   },
+  "productionRecheck": {
+    "environment": "mxc-new",
+    "generatedAt": "2026-09-11T11:40:30.196Z",
+    "checks": 4,
+    "available": 4,
+    "unavailable": 0,
+    "targetsObserved": 0,
+    "resultUrlSetSha256ByCheck": {
+      "retrieval-marker": "3f84520931b92f28e1a1dd712e48379e25e4cc0a341e3ed9a0600444218e4cf4",
+      "brand": "3f84520931b92f28e1a1dd712e48379e25e4cc0a341e3ed9a0600444218e4cf4",
+      "site-brand": "3f84520931b92f28e1a1dd712e48379e25e4cc0a341e3ed9a0600444218e4cf4",
+      "offsite-discussion": "ea3eba830024a882771d5da8fdd49869aed4018c771e9757ce6ec8be326cd792"
+    },
+    "interpretation": "The production egress observed different result-set fingerprints from the local run but the same zero-target outcome. This confirms location/time sensitivity and prevents a single observation from being treated as a global indexing conclusion."
+  },
   "evidenceBoundary": "Each available check proves only that the declared target URL was or was not present in the observed Bing RSS result set at the recorded time. It does not prove complete indexing, de-indexing, ranking stability, AI retrieval, citation, recommendation, or the absence of results in other locales, interfaces, accounts, or times. Result titles, snippets, and URL lists are not republished; the sorted result URL set is represented only by a SHA-256 fingerprint."
 }
