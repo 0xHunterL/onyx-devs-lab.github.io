@@ -456,22 +456,22 @@ requireText('GitHub agent-readiness checkpoint', readinessRelease, [
   '3da4a0be148d3dbb41188ba8b6dc40bb0da75bd484494de4e24d5b2d431baf44',
 ]);
 
-const monitorEvidenceV3Base = 'https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-monitor-evidence-2026-09-11-3';
-const monitorEvidenceV3Release = await get('GitHub GEO monitor evidence revision 3', 'https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-monitor-evidence-2026-09-11-3', 'text/html');
-requireText('GitHub GEO monitor evidence revision 3', monitorEvidenceV3Release, [
-  'seven provider-verified OAI-SearchBot discovery-file requests',
+const monitorEvidenceV4Base = 'https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-monitor-evidence-2026-09-11-4';
+const monitorEvidenceV4Release = await get('GitHub GEO monitor evidence revision 4', 'https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-monitor-evidence-2026-09-11-4', 'text/html');
+requireText('GitHub GEO monitor evidence revision 4', monitorEvidenceV4Release, [
+  'eight provider-verified OAI-SearchBot discovery-file requests',
   '68 attribution candidates',
   '59 suspected automated requests',
   'No prompt was sent to Doubao',
 ]);
-const monitorEvidenceV3Raw = await get('Versioned GEO monitor evidence revision 3', `${monitorEvidenceV3Base}/2026-09-11-monitor-evidence.json`, 'application/');
-const monitorEvidenceV3Sha256 = createHash('sha256').update(monitorEvidenceV3Raw).digest('hex');
-if (monitorEvidenceV3Sha256 !== '08c320eaff1e83fdb98a158c386705a7e1f890f4788c889921100714b178a7e1') failures.push(`Versioned GEO monitor evidence revision 3: SHA-256 mismatch, got ${monitorEvidenceV3Sha256}`);
+const monitorEvidenceV4Raw = await get('Versioned GEO monitor evidence revision 4', `${monitorEvidenceV4Base}/2026-09-11-monitor-evidence.json`, 'application/');
+const monitorEvidenceV4Sha256 = createHash('sha256').update(monitorEvidenceV4Raw).digest('hex');
+if (monitorEvidenceV4Sha256 !== '75d89a72ed975be1216f4b2a183b725d374b94f4dc9290a7c38920a6082b3605') failures.push(`Versioned GEO monitor evidence revision 4: SHA-256 mismatch, got ${monitorEvidenceV4Sha256}`);
 try {
-  const monitor = JSON.parse(monitorEvidenceV3Raw);
-  if (monitor.providerVerifiedCrawlerEvidence?.oaiSearchBotDiscoveryFileRequests !== 7 || monitor.providerVerifiedCrawlerEvidence?.oaiSearchBotContentRequests !== 0 || monitor.attributionEvidence?.trackedRequests !== 68 || monitor.attributionEvidence?.suspectedAutomatedRequests !== 59 || monitor.attributionEvidence?.visitorTypeUnverifiedRequests !== 9 || monitor.attributionEvidence?.internallyInconsistentUserAgentRequests !== 4 || monitor.attributionEvidence?.aiReferrerAttributedRequests !== 0 || monitor.publicSearchRetest?.officialSiteObserved !== false || monitor.publicSearchRetest?.newPublicDiscussionObserved !== false || monitor.doubaoTestStatus !== 'not-run') failures.push('Versioned GEO monitor evidence revision 3: expected evidence structure or boundary is incomplete');
+  const monitor = JSON.parse(monitorEvidenceV4Raw);
+  if (monitor.providerVerifiedCrawlerEvidence?.oaiSearchBotDiscoveryFileRequests !== 8 || monitor.providerVerifiedCrawlerEvidence?.oaiSearchBotContentRequests !== 0 || monitor.attributionEvidence?.trackedRequests !== 68 || monitor.attributionEvidence?.suspectedAutomatedRequests !== 59 || monitor.attributionEvidence?.visitorTypeUnverifiedRequests !== 9 || monitor.attributionEvidence?.internallyInconsistentUserAgentRequests !== 4 || monitor.attributionEvidence?.aiReferrerAttributedRequests !== 0 || monitor.publicSearchRetest?.officialSiteObserved !== false || monitor.publicSearchRetest?.newPublicDiscussionObserved !== false || monitor.doubaoTestStatus !== 'not-run') failures.push('Versioned GEO monitor evidence revision 4: expected evidence structure or boundary is incomplete');
 } catch {
-  failures.push('Versioned GEO monitor evidence revision 3: invalid JSON');
+  failures.push('Versioned GEO monitor evidence revision 4: invalid JSON');
 }
 
 const crawlerEvidenceReleaseUrl = 'https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-crawler-evidence-2026-09-10';

@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-09-11T07:31:00.000Z",
+  "generatedAt": "2026-09-11T08:15:00.000Z",
   "windowStart": "2026-09-01",
   "site": "https://hk.onyxdevslab.com/",
   "sourceLogs": [
@@ -11,7 +11,7 @@
   "providerVerifiedCrawlerEvidence": {
     "gptBotContentRequests": 24,
     "oaiSearchBotContentRequests": 0,
-    "oaiSearchBotDiscoveryFileRequests": 7,
+    "oaiSearchBotDiscoveryFileRequests": 8,
     "bingbotContentRequests": 7,
     "googlebotContentRequests": 0,
     "perplexityContentRequests": 0,
@@ -43,7 +43,7 @@
     }
   },
   "publicSearchRetest": {
-    "testedAt": "2026-09-11T07:31:00Z",
+    "testedAt": "2026-09-11T08:15:00Z",
     "queries": [
       "\"ONYX-GEO-VERIFY-79051925-20260908\"",
       "\"Onyx Devs Lab\"",
