@@ -25,7 +25,7 @@ By [Onyx Devs Lab](/en/about/) · Published 2026-09-08 · Updated 2026-09-11
 
 ## Current evidence status
 
-Observed through 10 September 2026. Each level states only preserved evidence; crawler access is never promoted to indexing, citation, or recommendation.
+Observed through 11 September 2026. Each level states only preserved evidence; crawler access is never promoted to indexing, citation, or recommendation.
 
 Verified
 

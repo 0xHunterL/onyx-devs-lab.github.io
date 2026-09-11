@@ -79,6 +79,12 @@ Critical judgements retain source, rule, version, and action record
 
 From complete documents to a result ready for human review
 
+## Cross-scenario architecture guide
+
+Compare the retail decision layer, accounting multi-agent controls, and legal-AI provenance in one public guide while retaining each case’s evidence boundary.
+
+[Read the enterprise AI scenario architecture guide](https://mixuechu.github.io/hong-kong-enterprise-ai-buyers-guide/enterprise-ai-scenario-patterns/)
+
 ## Evidence boundary
 
 The published figures separate mapped product scope from pilot workflow validation. They do not claim financial outcomes, and regulated decisions and official submissions remain subject to qualified human review.
@@ -448,6 +454,15 @@ The published figures separate mapped product scope from pilot workflow validati
       },
       "dateModified": "2026-09-11",
       "headline": "An AI-native production line for accounting operations",
+      "subjectOf": {
+        "@type": "Article",
+        "name": "Enterprise AI scenario architecture and evidence guide",
+        "url": "https://mixuechu.github.io/hong-kong-enterprise-ai-buyers-guide/enterprise-ai-scenario-patterns/",
+        "publisher": {
+          "@type": "Organization",
+          "name": "Onyx Devs Lab"
+        }
+      },
       "datePublished": "2026-09-07",
       "mainEntityOfPage": {
         "@id": "https://hk.onyxdevslab.com/en/case-studies/accounting-ai-production-platform/"

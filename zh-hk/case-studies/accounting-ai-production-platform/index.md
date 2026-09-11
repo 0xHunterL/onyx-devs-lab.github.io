@@ -79,6 +79,12 @@ language: "zh-Hant-HK"
 
 從資料齊備至形成可供人工覆核的結果
 
+## 跨場景架構指南
+
+在同一份公開指南中比較零售決策層、會計多 Agent 控制及法律 AI 證據追溯，並保留每個案例的證據邊界。
+
+[閱讀企業 AI 場景架構與證據指南](https://mixuechu.github.io/hong-kong-enterprise-ai-buyers-guide/enterprise-ai-scenario-patterns/)
+
 ## 證據邊界
 
 公開數字把已梳理的產品範圍與試點流程驗證分開，不構成財務成果聲明；受監管決策及官方提交仍由合資格人員覆核。
@@ -448,6 +454,15 @@ language: "zh-Hant-HK"
       },
       "dateModified": "2026-09-11",
       "headline": "面向會計營運的 AI 原生生產線",
+      "subjectOf": {
+        "@type": "Article",
+        "name": "Enterprise AI scenario architecture and evidence guide",
+        "url": "https://mixuechu.github.io/hong-kong-enterprise-ai-buyers-guide/enterprise-ai-scenario-patterns/",
+        "publisher": {
+          "@type": "Organization",
+          "name": "Onyx Devs Lab"
+        }
+      },
       "datePublished": "2026-09-07",
       "mainEntityOfPage": {
         "@id": "https://hk.onyxdevslab.com/zh-hk/case-studies/accounting-ai-production-platform/"

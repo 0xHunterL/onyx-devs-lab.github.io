@@ -79,6 +79,12 @@ language: "zh-CN"
 
 从资料齐备到形成可供人工复核的结果
 
+## 跨场景架构指南
+
+在同一份公开指南中比较零售决策层、会计多 Agent 控制和法律 AI 证据追溯，并保留每个案例的证据边界。
+
+[阅读企业 AI 场景架构与证据指南](https://mixuechu.github.io/hong-kong-enterprise-ai-buyers-guide/enterprise-ai-scenario-patterns/)
+
 ## 证据边界
 
 公开数字同时区分产品范围与试点验证结果。受监管决策和官方提交仍由具备相应资格的人员复核。
@@ -454,6 +460,15 @@ Internet Archive 保存了该页面的历史副本。归档证明页面在指定
       },
       "dateModified": "2026-09-11",
       "headline": "面向会计运营的 AI 原生生产线",
+      "subjectOf": {
+        "@type": "Article",
+        "name": "Enterprise AI scenario architecture and evidence guide",
+        "url": "https://mixuechu.github.io/hong-kong-enterprise-ai-buyers-guide/enterprise-ai-scenario-patterns/",
+        "publisher": {
+          "@type": "Organization",
+          "name": "Onyx Devs Lab"
+        }
+      },
       "archivedAt": "https://web.archive.org/web/20260910164849/https://hk.onyxdevslab.com/zh-cn/case-studies/accounting-ai-production-platform/",
       "datePublished": "2026-09-07",
       "mainEntityOfPage": {

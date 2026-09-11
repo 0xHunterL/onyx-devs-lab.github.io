@@ -73,6 +73,12 @@ Lawyer-labelled key facts entered the candidate set
 
 Effective work time to the first issue list; 18.5 h before
 
+## Cross-scenario architecture guide
+
+Compare the retail decision layer, accounting multi-agent controls, and legal-AI provenance in one public guide while retaining each case’s evidence boundary.
+
+[Read the enterprise AI scenario architecture guide](https://mixuechu.github.io/hong-kong-enterprise-ai-buyers-guide/enterprise-ai-scenario-patterns/)
+
 ## Evidence boundary
 
 The validation figures come from a controlled project sample and lawyer-labelled reference set. They demonstrate the tested workflow, not legal accuracy for every jurisdiction or matter.
@@ -442,6 +448,15 @@ The validation figures come from a controlled project sample and lawyer-labelled
       },
       "dateModified": "2026-09-11",
       "headline": "Legal AI that returns every conclusion to its evidence",
+      "subjectOf": {
+        "@type": "Article",
+        "name": "Enterprise AI scenario architecture and evidence guide",
+        "url": "https://mixuechu.github.io/hong-kong-enterprise-ai-buyers-guide/enterprise-ai-scenario-patterns/",
+        "publisher": {
+          "@type": "Organization",
+          "name": "Onyx Devs Lab"
+        }
+      },
       "datePublished": "2026-09-07",
       "mainEntityOfPage": {
         "@id": "https://hk.onyxdevslab.com/en/case-studies/legal-ai-evidence-workflow/"

@@ -73,6 +73,12 @@ Alerts followed by replenishment, transfer, or stock-reduction action
 
 From a cross-store question to a reviewable answer
 
+## Cross-scenario architecture guide
+
+Compare the retail decision layer, accounting multi-agent controls, and legal-AI provenance in one public guide while retaining each case’s evidence boundary.
+
+[Read the enterprise AI scenario architecture guide](https://mixuechu.github.io/hong-kong-enterprise-ai-buyers-guide/enterprise-ai-scenario-patterns/)
+
 ## Evidence boundary
 
 The published metrics come from project records and describe the delivered scope and pilot validation. They should not be extrapolated as expected results for another organisation.
@@ -442,6 +448,15 @@ The published metrics come from project records and describe the delivered scope
       },
       "dateModified": "2026-09-11",
       "headline": "Turning retail transaction data into operating decisions",
+      "subjectOf": {
+        "@type": "Article",
+        "name": "Enterprise AI scenario architecture and evidence guide",
+        "url": "https://mixuechu.github.io/hong-kong-enterprise-ai-buyers-guide/enterprise-ai-scenario-patterns/",
+        "publisher": {
+          "@type": "Organization",
+          "name": "Onyx Devs Lab"
+        }
+      },
       "datePublished": "2026-09-07",
       "mainEntityOfPage": {
         "@id": "https://hk.onyxdevslab.com/en/case-studies/retail-ai-decision-platform/"

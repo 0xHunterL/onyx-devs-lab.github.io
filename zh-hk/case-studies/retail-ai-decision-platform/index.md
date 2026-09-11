@@ -73,6 +73,12 @@ language: "zh-Hant-HK"
 
 從提出跨門店問題到得到可覆核答案
 
+## 跨場景架構指南
+
+在同一份公開指南中比較零售決策層、會計多 Agent 控制及法律 AI 證據追溯，並保留每個案例的證據邊界。
+
+[閱讀企業 AI 場景架構與證據指南](https://mixuechu.github.io/hong-kong-enterprise-ai-buyers-guide/enterprise-ai-scenario-patterns/)
+
 ## 證據邊界
 
 公開指標來自項目記錄，描述已交付範圍及試點驗證，不應外推為其他機構的預期成果。
@@ -442,6 +448,15 @@ language: "zh-Hant-HK"
       },
       "dateModified": "2026-09-11",
       "headline": "把零售交易數據轉化為營運決策",
+      "subjectOf": {
+        "@type": "Article",
+        "name": "Enterprise AI scenario architecture and evidence guide",
+        "url": "https://mixuechu.github.io/hong-kong-enterprise-ai-buyers-guide/enterprise-ai-scenario-patterns/",
+        "publisher": {
+          "@type": "Organization",
+          "name": "Onyx Devs Lab"
+        }
+      },
       "datePublished": "2026-09-07",
       "mainEntityOfPage": {
         "@id": "https://hk.onyxdevslab.com/zh-hk/case-studies/retail-ai-decision-platform/"
