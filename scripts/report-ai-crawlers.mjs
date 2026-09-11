@@ -99,10 +99,54 @@ function parseNginxTime(value) {
 }
 
 async function publishedIpPrefixes(url) {
-  const response = await fetch(url);
-  if (!response.ok) throw new Error(`Unable to fetch ${url}: HTTP ${response.status}`);
-  const body = await response.json();
-  return body.prefixes.flatMap((entry) => [entry.ipv4Prefix, entry.ipv6Prefix]).filter(Boolean);
+  let lastFailure = null;
+  for (let attempt = 1; attempt <= 2; attempt += 1) {
+    try {
+      const response = await fetch(url, {
+        signal: AbortSignal.timeout(10_000),
+        headers: { 'User-Agent': 'Onyx-GEO-Crawler-Verifier/1.0' },
+      });
+      if (!response.ok) {
+        lastFailure = { httpStatus: response.status, reason: `HTTP ${response.status}` };
+        continue;
+      }
+      const body = await response.json();
+      const prefixes = Array.isArray(body.prefixes)
+        ? body.prefixes.flatMap((entry) => [entry.ipv4Prefix, entry.ipv6Prefix]).filter(Boolean)
+        : [];
+      if (!prefixes.length) {
+        lastFailure = { httpStatus: response.status, reason: 'published prefix list is empty or malformed' };
+        continue;
+      }
+      return { url, status: 'available', httpStatus: response.status, attempts: attempt, prefixCount: prefixes.length, prefixes };
+    } catch (error) {
+      lastFailure = { httpStatus: null, reason: error.message };
+    }
+  }
+  return { url, status: 'unavailable', attempts: 2, prefixCount: 0, prefixes: [], ...lastFailure };
+}
+
+function applyPublishedPrefixVerification(events, family, source, verifiedReason) {
+  for (const event of events) {
+    if (event.family !== family) continue;
+    if (source.status !== 'available') {
+      event.providerVerified = null;
+      event.providerVerification = {
+        method: 'published-ip-prefix',
+        verified: null,
+        verificationUnavailable: true,
+        reason: 'published-ip-prefix-list-unavailable',
+        sourceReason: source.reason,
+      };
+      continue;
+    }
+    event.providerVerified = source.prefixes.some((prefix) => isInIpPrefix(event.ip, prefix));
+    event.providerVerification = {
+      method: 'published-ip-prefix',
+      verified: event.providerVerified,
+      reason: event.providerVerified ? verifiedReason : 'not-in-official-provider-ip-range',
+    };
+  }
 }
 
 function normalizeIp(ip) {
@@ -178,6 +222,7 @@ if (!paths.length) {
 }
 
 const events = [];
+const verificationSources = {};
 let unparsableLines = 0;
 for (const path of paths) {
   const body = await load(path);
@@ -195,34 +240,31 @@ for (const path of paths) {
 }
 
 if (verifyOpenAi) {
-  const [gptBotPrefixes, searchBotPrefixes] = await Promise.all([
+  const [gptBotSource, searchBotSource] = await Promise.all([
     publishedIpPrefixes('https://openai.com/gptbot.json'),
     publishedIpPrefixes('https://openai.com/searchbot.json'),
   ]);
-  for (const event of events) {
-    if (event.family === 'GPTBot') event.providerVerified = gptBotPrefixes.some((prefix) => isInIpPrefix(event.ip, prefix));
-    if (event.family === 'OAI-SearchBot') event.providerVerified = searchBotPrefixes.some((prefix) => isInIpPrefix(event.ip, prefix));
-  }
+  verificationSources.gptBot = gptBotSource;
+  verificationSources.oaiSearchBot = searchBotSource;
+  applyPublishedPrefixVerification(events, 'GPTBot', gptBotSource, 'official-openai-ip-range');
+  applyPublishedPrefixVerification(events, 'OAI-SearchBot', searchBotSource, 'official-openai-ip-range');
 }
 
 if (verifyPerplexity) {
-  const [botPrefixes, userPrefixes] = await Promise.all([
+  const [botSource, userSource] = await Promise.all([
     publishedIpPrefixes('https://www.perplexity.com/perplexitybot.json'),
     publishedIpPrefixes('https://www.perplexity.com/perplexity-user.json'),
   ]);
-  for (const event of events) {
-    if (event.family === 'PerplexityBot') event.providerVerified = botPrefixes.some((prefix) => isInIpPrefix(event.ip, prefix));
-    if (event.family === 'Perplexity-User') event.providerVerified = userPrefixes.some((prefix) => isInIpPrefix(event.ip, prefix));
-  }
+  verificationSources.perplexityBot = botSource;
+  verificationSources.perplexityUser = userSource;
+  applyPublishedPrefixVerification(events, 'PerplexityBot', botSource, 'official-perplexity-ip-range');
+  applyPublishedPrefixVerification(events, 'Perplexity-User', userSource, 'official-perplexity-ip-range');
 }
 
 if (verifyCommonCrawl) {
-  const prefixes = await publishedIpPrefixes('https://index.commoncrawl.org/ccbot.json');
-  for (const event of events) {
-    if (event.family !== 'CCBot') continue;
-    event.providerVerified = prefixes.some((prefix) => isInIpPrefix(event.ip, prefix));
-    event.providerVerification = { method: 'published-ip-prefix', verified: event.providerVerified, reason: event.providerVerified ? 'official-common-crawl-ip-range' : 'not-in-official-common-crawl-ip-range' };
-  }
+  const source = await publishedIpPrefixes('https://index.commoncrawl.org/ccbot.json');
+  verificationSources.commonCrawlBot = source;
+  applyPublishedPrefixVerification(events, 'CCBot', source, 'official-common-crawl-ip-range');
 }
 
 if (verifyBing) {
@@ -348,7 +390,7 @@ const userAgentOnlyEvidenceObservations = buildUserAgentOnlyCrawlerEvidenceObser
 
 console.log(JSON.stringify({
   generatedAt: new Date().toISOString(),
-  caveat: 'User-Agent strings are self-declared. Only successful GET requests can be classified as candidate page or discovery-file crawls; HEAD and other methods do not retrieve the representation and are kept as non-content request observations. Candidate content crawls do not prove platform identity unless providerVerified is true under an enabled provider verification method. Bytespider page and discovery requests are exposed separately as user-agent-only, identity-unverified observations after synthetic release checks are excluded; they do not prove Doubao or ByteDance access. A null providerVerified value with verificationUnavailable means the resolver returned only RFC 2544 benchmark addresses, so identity could not be tested and must not be reported as failed. GPTBot is reported separately from OAI-SearchBot because a verified training crawl is not evidence of search indexing or citation.',
+  caveat: 'User-Agent strings are self-declared. Only successful GET requests can be classified as candidate page or discovery-file crawls; HEAD and other methods do not retrieve the representation and are kept as non-content request observations. Candidate content crawls do not prove platform identity unless providerVerified is true under an enabled provider verification method. Bytespider page and discovery requests are exposed separately as user-agent-only, identity-unverified observations after synthetic release checks are excluded; they do not prove Doubao or ByteDance access. A null providerVerified value with verificationUnavailable means the required DNS or published-prefix source was unavailable, so identity could not be tested and must not be reported as failed. GPTBot is reported separately from OAI-SearchBot because a verified training crawl is not evidence of search indexing or citation.',
   files: paths,
   since: sinceArg ? sinceArg.slice('--since='.length) : null,
   verifyOpenAi,
@@ -357,6 +399,14 @@ console.log(JSON.stringify({
   verifyPerplexity,
   verifyCommonCrawl,
   includeRotated,
+  verificationSources: Object.fromEntries(Object.entries(verificationSources).map(([id, source]) => [id, {
+    url: source.url,
+    status: source.status,
+    httpStatus: source.httpStatus,
+    attempts: source.attempts,
+    prefixCount: source.prefixCount,
+    reason: source.reason || null,
+  }])),
   totals: {
     candidateCrawlerRequests: events.length,
     candidatePageCrawls: pageCandidates.length,

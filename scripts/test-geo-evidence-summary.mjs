@@ -1,5 +1,5 @@
 import assert from 'node:assert/strict';
-import { buildAvailabilityChanges, buildCommonCrawlAvailability, buildEvidenceCounts, buildEvidenceDeltas, selectEvidenceEventKind } from './geo-evidence-summary.mjs';
+import { buildAvailabilityChanges, buildCommonCrawlAvailability, buildCrawlerVerificationAvailability, buildEvidenceCounts, buildEvidenceDeltas, selectEvidenceEventKind } from './geo-evidence-summary.mjs';
 
 const crawlerTotals = {
   verifiedGptBotPageCrawls: 24,
@@ -84,6 +84,25 @@ assert.equal(availableCommonCrawl.status, 'available');
 const unavailableCommonCrawl = buildCommonCrawlAvailability({ collectionIndexStatus: 'unavailable', results: [] });
 assert.equal(unavailableCommonCrawl.status, 'unavailable');
 
+const partialCrawlerVerification = buildCrawlerVerificationAvailability({
+  verificationSources: {
+    gptBot: { status: 'available', httpStatus: 200 },
+    commonCrawlBot: { status: 'unavailable', reason: 'fetch failed' },
+  },
+});
+assert.equal(partialCrawlerVerification.status, 'partial');
+assert.equal(partialCrawlerVerification.availableSources, 1);
+assert.equal(partialCrawlerVerification.unavailableSources, 1);
+assert.equal(buildCrawlerVerificationAvailability({ verificationSources: {} }).status, 'unavailable');
+
+const crawlerSourceRecovered = buildAvailabilityChanges(
+  { crawlerVerification: { ...partialCrawlerVerification, status: 'available', sources: partialCrawlerVerification.sources.map((source) => ({ ...source, status: 'available' })) } },
+  { crawlerVerification: partialCrawlerVerification },
+);
+assert.equal(crawlerSourceRecovered.length, 1);
+assert.equal(crawlerSourceRecovered[0].statusChanged, true);
+assert.equal(crawlerSourceRecovered[0].coverageChanged, true);
+
 const statusAndCoverageChange = buildAvailabilityChanges(
   { commonCrawl: partialCommonCrawl },
   { commonCrawl: availableCommonCrawl },
@@ -122,4 +141,4 @@ assert.equal(selectEvidenceEventKind({ initializing: false, evidenceChanged: tru
 assert.equal(selectEvidenceEventKind({ initializing: false, evidenceChanged: false, availabilityChanged: true }), 'availability-change');
 assert.equal(selectEvidenceEventKind({ initializing: false, evidenceChanged: false, availabilityChanged: false }), null);
 
-console.log(JSON.stringify({ tests: 40, failures: [] }, null, 2));
+console.log(JSON.stringify({ tests: 47, failures: [] }, null, 2));

@@ -49,6 +49,8 @@ npm run geo:referral-report -- --since=2026-09-01 --include-rotated /var/log/ngi
 
 生产机通过 `onyx-geo-monitor.timer` 每六小时自动执行一次 `geo:collect-evidence`。它读取当前及数字轮转日志，启用 OpenAI、Bing、Google 和 Perplexity 的提供方核验，同时查询 Common Crawl 官方列表中的最近两个月度索引；依次生成 `/var/lib/onyx-geo/crawler-report.json`、`referral-report.json`、`common-crawl-report.json`、`prompt-crawl-coverage.json` 和 `summary.json`。每个已核验爬虫请求、非疑似自动化归因请求及 Common Crawl 捕获都会生成不含 IP 和 User-Agent 的 SHA-256 事件指纹，已见集合保存在 `/var/lib/onyx-geo/seen-evidence.json`；因此旧轮转日志退出保留期、累计计数下降时，也不会掩盖或重复报告后来出现的新请求。`changed: true` 仅表示出现此前未见的已核验爬虫、可关联的非疑似自动化请求或公开语料库捕获，发布自测和疑似自动化 UTM 流量不会触发该标记。这不等于搜索收录、检索、引用、真人访问或非品牌推荐。第一次运行只建立已见集合并把所有差值置零，避免把已有累计证据误报为新变化。初始化基线、每次 `changed: true` 的完整报告，以及可用性等级或所选索引覆盖集合发生变化时的 `availability-change` 报告，都会原子写入 `/var/lib/onyx-geo/events/`，因此下一轮覆盖当前报告后，新增证据与监测源可用性转换仍有不可覆盖的事件文件可供心跳复核。`availabilityChanged: true` 仅代表监测源状态或可核验覆盖范围改变，不是可发现性效果证据。Common Crawl 查询不可用时会明确标为 `unavailable`；部分索引失败时，`summary.json` 的 `availability.commonCrawl.status` 必须为 `partial`，并列出所选索引、成功与失败数量及失败原因；即使总体仍为 `partial`，失败索引发生替换也必须留存事件，不得把不完整或已变化的查询范围解释为零捕获。
 
+用于 OpenAI、Perplexity 与 Common Crawl 身份核验的官方 IP 前缀清单分别记录在爬虫报告的 `verificationSources` 与摘要的 `availability.crawlerVerification` 中。远端清单超时、返回错误或格式无效时，报告器会重试并把依赖该清单的候选请求标为 `providerVerified: null` 与 `verificationUnavailable: true`；它不会把候选误判为官方，也不会让单一来源故障阻断其余爬虫、归因、提示词覆盖和 Common Crawl 捕获报告。清单恢复或可用来源集合改变时会产生可用性事件，但这不是新的抓取或可见性证据。
+
 CCBot 使用 Common Crawl 公开 IP 地址段核验，IPv4 与 IPv6 前缀均纳入匹配。经核验的 CCBot 正文与发现文件请求都必须进入同一指纹流程；累计计数、路径覆盖和永久事件不得出现只更新前两者的不一致。
 
 ```bash

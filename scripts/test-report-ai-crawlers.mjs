@@ -41,6 +41,7 @@ try {
   ], { cwd: path.resolve('.') });
   const report = JSON.parse(stdout);
   assert.equal(report.byFamily.Bytespider, 5);
+  assert.deepEqual(report.verificationSources, {});
   assert.equal(report.totals.syntheticReleaseChecks, 1);
   assert.equal(report.totals.nonContentMethodRequests, 1);
   assert.equal(report.totals.userAgentOnlyBytespiderPageCrawls, 1);
@@ -74,7 +75,7 @@ try {
   assert.equal(cloudflareProxyPrefixes.length, 22);
   assert.deepEqual(selectTrustedClientIp('18.97.14.80', '173.245.48.1'), { ip: '18.97.14.80', trustedProxy: true });
   assert.deepEqual(selectTrustedClientIp('18.97.14.80', '203.0.113.50'), { ip: '203.0.113.50', trustedProxy: false });
-  console.log(JSON.stringify({ tests: 25, failures: [] }, null, 2));
+  console.log(JSON.stringify({ tests: 26, failures: [] }, null, 2));
 } finally {
   await rm(directory, { recursive: true, force: true });
 }

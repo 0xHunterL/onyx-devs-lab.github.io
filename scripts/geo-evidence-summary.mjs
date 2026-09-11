@@ -70,6 +70,34 @@ export function buildCommonCrawlAvailability(commonCrawl) {
   };
 }
 
+export function buildCrawlerVerificationAvailability(crawler) {
+  const sources = Object.entries(crawler?.verificationSources || {})
+    .map(([id, source]) => ({
+      id,
+      status: source.status === 'available' ? 'available' : 'unavailable',
+      httpStatus: source.httpStatus ?? null,
+      reason: source.reason || null,
+    }))
+    .sort((left, right) => left.id.localeCompare(right.id));
+  const availableSources = sources.filter((source) => source.status === 'available').length;
+  const unavailableSources = sources.length - availableSources;
+  const status = !sources.length || !availableSources
+    ? 'unavailable'
+    : unavailableSources
+      ? 'partial'
+      : 'available';
+  return {
+    status,
+    sourcesChecked: sources.length,
+    availableSources,
+    unavailableSources,
+    sources,
+    interpretation: status === 'available'
+      ? 'All requested published IP-prefix sources were available for crawler identity verification.'
+      : 'Crawler identity verification is incomplete; events relying on unavailable sources remain unverified.',
+  };
+}
+
 function availabilityCoverage(value, useDetailedIndexes) {
   if (useDetailedIndexes) {
     return {
@@ -93,8 +121,14 @@ export function buildAvailabilityChanges(currentAvailability, previousAvailabili
     if (!previous) return [];
     const statusChanged = previous.status !== current.status;
     const useDetailedIndexes = Array.isArray(previous.indexes) && Array.isArray(current.indexes);
-    const previousCoverage = availabilityCoverage(previous, useDetailedIndexes);
-    const currentCoverage = availabilityCoverage(current, useDetailedIndexes);
+    const useDetailedSources = Array.isArray(previous.sources) && Array.isArray(current.sources);
+    const sourceCoverage = (value) => ({
+      sources: value.sources
+        .map((entry) => ({ id: entry.id || null, status: entry.status || 'unavailable' }))
+        .sort((left, right) => `${left.id}:${left.status}`.localeCompare(`${right.id}:${right.status}`)),
+    });
+    const previousCoverage = useDetailedSources ? sourceCoverage(previous) : availabilityCoverage(previous, useDetailedIndexes);
+    const currentCoverage = useDetailedSources ? sourceCoverage(current) : availabilityCoverage(current, useDetailedIndexes);
     const coverageChanged = JSON.stringify(previousCoverage) !== JSON.stringify(currentCoverage);
     if (!statusChanged && !coverageChanged) return [];
     return [{

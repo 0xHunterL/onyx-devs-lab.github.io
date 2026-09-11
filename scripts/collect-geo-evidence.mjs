@@ -2,7 +2,7 @@ import { spawn } from 'node:child_process';
 import { mkdir, readFile, readdir, rename, unlink, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { buildAvailabilityChanges, buildCommonCrawlAvailability, buildEvidenceCounts, buildEvidenceDeltas, selectEvidenceEventKind } from './geo-evidence-summary.mjs';
+import { buildAvailabilityChanges, buildCommonCrawlAvailability, buildCrawlerVerificationAvailability, buildEvidenceCounts, buildEvidenceDeltas, selectEvidenceEventKind } from './geo-evidence-summary.mjs';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const args = process.argv.slice(2);
@@ -99,7 +99,8 @@ try {
 
 const counts = buildEvidenceCounts(crawler, referral, commonCrawl, promptCoverage);
 const commonCrawlAvailability = buildCommonCrawlAvailability(commonCrawl);
-const availability = { commonCrawl: commonCrawlAvailability };
+const crawlerVerificationAvailability = buildCrawlerVerificationAvailability(crawler);
+const availability = { commonCrawl: commonCrawlAvailability, crawlerVerification: crawlerVerificationAvailability };
 const availabilityChanges = buildAvailabilityChanges(availability, previous?.availability);
 const priorCounts = previous?.counts || {};
 const deltas = buildEvidenceDeltas(counts, previous ? priorCounts : null);
