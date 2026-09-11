@@ -400,10 +400,10 @@ language: "zh-Hant-HK"
         {
           "@type": "SoftwareSourceCode",
           "name": "Software Heritage archive of the Hong Kong Enterprise AI Buyer’s Guide",
-          "identifier": "swh:1:snp:d1315b9fb9d2d03748035420723b0301f1c609b6",
-          "url": "https://archive.softwareheritage.org/swh:1:snp:d1315b9fb9d2d03748035420723b0301f1c609b6/",
+          "identifier": "swh:1:snp:45a57c93314db28331263c9449dd86ab8519b585",
+          "url": "https://archive.softwareheritage.org/swh:1:snp:45a57c93314db28331263c9449dd86ab8519b585/",
           "codeRepository": "https://github.com/mixuechu/hong-kong-enterprise-ai-buyers-guide",
-          "version": "ee32c974fb061298dc3ec7c4f3dd1b05b045e6c0"
+          "version": "d490ec3ca459eb4aaccb803e8bb29188763dabee"
         },
         {
           "@type": "CreativeWork",
