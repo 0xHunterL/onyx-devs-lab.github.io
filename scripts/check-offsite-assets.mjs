@@ -158,6 +158,7 @@ requireText('GitHub Pages enterprise AI buyer guide', buyerGuideSite, [
   './forward-deployed-engineering/',
   './ai-search-geo-evidence/',
   './enterprise-ai-scenario-patterns/',
+  '<link rel="alternate" type="application/json" href="./resources.json"',
   buyerGuideDiscussionUrl,
 ]);
 const buyerGuideFocusedPages = [
@@ -171,6 +172,7 @@ for (const page of buyerGuideFocusedPages) {
   const body = await get(page.name, `${buyerGuideSiteUrl}${page.path}`, 'text/html');
   requireText(page.name, body, [
     `<link rel="canonical" href="${page.canonical}">`,
+    '<link rel="alternate" type="application/json" href="../resources.json"',
     'ONYX DEVS LAB LIMITED',
     '79051925',
     '254900Z30CLK7HKE9H46',
@@ -182,27 +184,29 @@ const buyerGuideSitemap = await get('GitHub Pages buyer-guide sitemap', `${buyer
 for (const page of buyerGuideFocusedPages) requireText('GitHub Pages buyer-guide sitemap', buyerGuideSitemap, [page.canonical]);
 const buyerGuideFeed = await get('GitHub Pages buyer-guide Atom feed', `${buyerGuideSiteUrl}feed.xml`, 'application/xml');
 for (const page of buyerGuideFocusedPages) requireText('GitHub Pages buyer-guide Atom feed', buyerGuideFeed, [page.canonical]);
-const buyerGuideReleaseUrl = 'https://github.com/mixuechu/hong-kong-enterprise-ai-buyers-guide/releases/tag/buyers-guide-geo-evidence-2026-09-11';
+const buyerGuideResourceMapRaw = await get('GitHub Pages buyer-guide resource map', `${buyerGuideSiteUrl}resources.json`, 'application/json');
+try {
+  const resourceMap = JSON.parse(buyerGuideResourceMapRaw);
+  if (resourceMap.publisher?.legalName !== 'ONYX DEVS LAB LIMITED' || resourceMap.publisher?.businessRegistrationNumber !== '79051925' || resourceMap.publisher?.lei !== '254900Z30CLK7HKE9H46' || resourceMap.resources?.length !== 13 || !resourceMap.resources.some((item) => item.canonical === 'https://hk.onyxdevslab.com/data/ai-search-evidence-status.json') || !resourceMap.resources.some((item) => item.canonical === 'https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-monitor-evidence-2026-09-11-7/2026-09-11-monitor-evidence.json')) failures.push('GitHub Pages buyer-guide resource map: expected publisher and evidence relations are incomplete');
+} catch {
+  failures.push('GitHub Pages buyer-guide resource map: invalid JSON');
+}
+const buyerGuideReleaseUrl = 'https://github.com/mixuechu/hong-kong-enterprise-ai-buyers-guide/releases/tag/buyers-guide-machine-resources-2026-09-11';
 const buyerGuideRelease = await get('GitHub buyer-guide citation checkpoint', buyerGuideReleaseUrl, 'text/html');
 requireText('GitHub buyer-guide citation checkpoint', buyerGuideRelease, [
-  '香港企业 AI 采购指南',
-  'AI 咨询',
-  'AI 定开',
-  'FDE',
-  'GEO',
-  'ONYX DEVS LAB LIMITED',
-  '79051925',
-  '254900Z30CLK7HKE9H46',
-  '7373fe74fe710c8f4a5226fd991bba8a72fe5effc549868cac80fab80d3fb5d0',
+  'machine resources',
+  'resource map directly on GitHub Pages',
+  'all six canonical guide pages',
+  'No prompt was sent to Doubao',
 ]);
 const buyerGuideVersionedAssets = [
-  { file: 'CITATION.cff', sha256: '7373fe74fe710c8f4a5226fd991bba8a72fe5effc549868cac80fab80d3fb5d0' },
-  { file: 'codemeta.json', sha256: 'f359e41e22571645f512f328022f5fcbe91eff09471d5d53089e5d384f3ce1f6' },
-  { file: 'resources.json', sha256: '37bb29525aa5bd02fa0070887fcd007f4a9534bb7f4b68279953dfa6916bdba3' },
-  { file: 'llms.txt', sha256: 'a3d108ed86e0fc62e9446f50b1ac9f463361192ded6728bdae7e0c8b9241bd0f' },
+  { file: 'CITATION.cff', sha256: 'e7aaf2871bfdf964d8d8d69198db895b2408280b52cb976a868ec3e4f291a2b5' },
+  { file: 'codemeta.json', sha256: '853321a01ea0ef85ec4f12091cd6a23a0c04e423143187d15f2e752f09a5427c' },
+  { file: 'resources.json', sha256: '40168d3f82c8dc477cab15e34aa4ac99f4e02cbfbf0e0a79fe4e9b1aaefe9772' },
+  { file: 'llms.txt', sha256: 'e1a8c6968c6e0b972119c158658a1073a3059c2c24fd61c266fc240e1eedd7aa' },
 ];
 for (const asset of buyerGuideVersionedAssets) {
-  const raw = await get(`Versioned buyer-guide ${asset.file}`, `https://github.com/mixuechu/hong-kong-enterprise-ai-buyers-guide/releases/download/buyers-guide-geo-evidence-2026-09-11/${asset.file}`, 'application/');
+  const raw = await get(`Versioned buyer-guide ${asset.file}`, `https://github.com/mixuechu/hong-kong-enterprise-ai-buyers-guide/releases/download/buyers-guide-machine-resources-2026-09-11/${asset.file}`, 'application/');
   const sha256 = createHash('sha256').update(raw).digest('hex');
   if (sha256 !== asset.sha256) failures.push(`Versioned buyer-guide ${asset.file}: SHA-256 mismatch, got ${sha256}`);
 }
@@ -225,14 +229,14 @@ requireText('GitHub Pages buyer-guide citation metadata', buyerGuideCitation, ['
 const buyerGuideCodeMetaRaw = await get('GitHub Pages buyer-guide CodeMeta', `${buyerGuideSiteUrl}codemeta.json`, 'application/json');
 try {
   const codeMeta = JSON.parse(buyerGuideCodeMetaRaw);
-  if (codeMeta['@context'] !== 'https://w3id.org/codemeta/3.1' || codeMeta.version !== '2026.09.11' || codeMeta.author?.legalName !== 'ONYX DEVS LAB LIMITED' || codeMeta.citation?.length !== 7 || codeMeta.sameAs !== 'https://github.com/mixuechu/hong-kong-enterprise-ai-buyers-guide/releases/download/buyers-guide-scenarios-2026-09-11/codemeta.json' || !codeMeta.citation.includes('https://mixuechu.github.io/hong-kong-enterprise-ai-buyers-guide/enterprise-ai-scenario-patterns/') || !codeMeta.citation.includes(buyerGuideDiscussionUrl)) failures.push('GitHub Pages buyer-guide CodeMeta: expected relationships are incomplete');
+  if (codeMeta['@context'] !== 'https://w3id.org/codemeta/3.1' || codeMeta.version !== '2026.09.11.2' || codeMeta.author?.legalName !== 'ONYX DEVS LAB LIMITED' || codeMeta.citation?.length !== 8 || codeMeta.sameAs !== 'https://github.com/mixuechu/hong-kong-enterprise-ai-buyers-guide/releases/download/buyers-guide-machine-resources-2026-09-11/codemeta.json' || !codeMeta.citation.includes('https://mixuechu.github.io/hong-kong-enterprise-ai-buyers-guide/enterprise-ai-scenario-patterns/') || !codeMeta.citation.includes('https://mixuechu.github.io/hong-kong-enterprise-ai-buyers-guide/resources.json') || !codeMeta.citation.includes(buyerGuideDiscussionUrl)) failures.push('GitHub Pages buyer-guide CodeMeta: expected relationships are incomplete');
 } catch {
   failures.push('GitHub Pages buyer-guide CodeMeta: invalid JSON');
 }
-const buyerGuideSnapshotId = '8368f6ceb7c7514e2273e3f28d44dbfca11aaddc';
-const buyerGuideRevisionId = '166c3519613bd5b3b8d405858450b4dcfbe97ed2';
-const buyerGuideReleaseRevisionId = 'd490ec3ca459eb4aaccb803e8bb29188763dabee';
-const buyerGuideSaveRequestRaw = await get('Software Heritage current buyer-guide save request', 'https://archive.softwareheritage.org/api/1/origin/save/2470942/', 'application/json');
+const buyerGuideSnapshotId = '7258af88334a1d2c00a25ab0bbb9330b4936d863';
+const buyerGuideRevisionId = 'dc74de940666e09194798447d0f9a525c890cdb9';
+const buyerGuideReleaseRevisionId = 'dc74de940666e09194798447d0f9a525c890cdb9';
+const buyerGuideSaveRequestRaw = await get('Software Heritage current buyer-guide save request', 'https://archive.softwareheritage.org/api/1/origin/save/2470959/', 'application/json');
 try {
   const request = JSON.parse(buyerGuideSaveRequestRaw);
   if (request.save_task_status !== 'succeeded' || request.visit_status !== 'full' || request.snapshot_swhid !== `swh:1:snp:${buyerGuideSnapshotId}`) failures.push('Software Heritage current buyer-guide save request: archive did not complete with the expected snapshot');
@@ -245,7 +249,7 @@ if (buyerGuideSnapshotRaw) {
     const snapshot = JSON.parse(buyerGuideSnapshotRaw);
     if (snapshot.id !== buyerGuideSnapshotId) failures.push('Software Heritage buyer-guide snapshot: unexpected snapshot id');
     if (snapshot.branches?.['refs/heads/main']?.target !== buyerGuideRevisionId || snapshot.branches?.['refs/heads/main']?.target_type !== 'revision') failures.push('Software Heritage buyer-guide snapshot: main branch does not resolve to the archived checkpoint');
-    if (snapshot.branches?.['refs/tags/buyers-guide-geo-evidence-2026-09-11']?.target !== buyerGuideReleaseRevisionId || snapshot.branches?.['refs/tags/buyers-guide-geo-evidence-2026-09-11']?.target_type !== 'revision') failures.push('Software Heritage buyer-guide snapshot: release tag does not resolve to the versioned checkpoint');
+    if (snapshot.branches?.['refs/tags/buyers-guide-machine-resources-2026-09-11']?.target !== buyerGuideReleaseRevisionId || snapshot.branches?.['refs/tags/buyers-guide-machine-resources-2026-09-11']?.target_type !== 'revision') failures.push('Software Heritage buyer-guide snapshot: release tag does not resolve to the versioned checkpoint');
   } catch {
     failures.push('Software Heritage buyer-guide snapshot: invalid JSON');
   }
