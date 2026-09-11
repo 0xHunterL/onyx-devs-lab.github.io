@@ -541,7 +541,7 @@ try {
 
 try {
   const status = JSON.parse(fs.readFileSync(path.join(dist, 'data/ai-search-evidence-status.json'), 'utf8'));
-  if (status.schemaVersion !== 2 || status.version !== '2026.09.11.9' || status.observedAt !== '2026-09-11T11:57:29.192Z') failures.push('AI-search evidence status: unexpected schema, version, or observation time');
+  if (status.schemaVersion !== 2 || status.version !== '2026.09.11.10' || status.observedAt !== '2026-09-11T12:16:01Z') failures.push('AI-search evidence status: unexpected schema, version, or observation time');
   if (status.evidenceLevels?.[1]?.evidence?.verifiedOaiSearchBotDiscoveryFileVisits !== 8) failures.push('AI-search evidence status: current OAI-SearchBot discovery count is stale');
   if (status.sameAs !== 'https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-search-monitoring-compliance-2026-09-11/ai-search-evidence-status.json') failures.push('AI-search evidence status: current versioned release asset is missing');
   if (status.evidenceLevels?.[1]?.evidence?.verifiedBaiduspiderContentCrawls !== 0 || status.evidenceLevels?.[1]?.evidence?.verifiedBaiduspiderDiscoveryFileCrawls !== 0 || status.evidenceLevels?.[1]?.evidence?.verifiedApplebotContentCrawls !== 0 || status.evidenceLevels?.[1]?.evidence?.verifiedApplebotDiscoveryFileCrawls !== 0) failures.push('AI-search evidence status: Baiduspider or Applebot verified baseline is missing');

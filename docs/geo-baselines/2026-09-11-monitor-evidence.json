@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-09-11T11:57:29.192Z",
+  "generatedAt": "2026-09-11T12:16:01Z",
   "windowStart": "2026-09-01",
   "site": "https://hk.onyxdevslab.com/",
   "sourceLogs": [
@@ -77,7 +77,7 @@
     "meaning": "All declared published URLs and tracked targets passed anonymous availability, destination, and content-marker checks. This does not prove indexing, AI retrieval, citation, recommendation, a human visit, or independent endorsement."
   },
   "publicSearchRetest": {
-    "testedAt": "2026-09-11T08:15:00Z",
+    "testedAt": "2026-09-11T12:16:01Z",
     "queries": [
       "\"ONYX-GEO-VERIFY-79051925-20260908\"",
       "\"Onyx Devs Lab\"",
