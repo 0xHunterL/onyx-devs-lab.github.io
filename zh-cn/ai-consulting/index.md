@@ -279,10 +279,10 @@ AI 咨询决定应该建设什么、为什么建设以及边界在哪里；定�
         {
           "@type": "SoftwareSourceCode",
           "name": "Software Heritage archive of the Onyx Devs Lab public repository",
-          "identifier": "swh:1:snp:947880d501d459884fefdaf1bc95a9978599727a",
-          "url": "https://archive.softwareheritage.org/swh:1:snp:947880d501d459884fefdaf1bc95a9978599727a/",
+          "identifier": "swh:1:snp:df2409f12f9b01e665ae896d0492aa09148b9c1b",
+          "url": "https://archive.softwareheritage.org/swh:1:snp:df2409f12f9b01e665ae896d0492aa09148b9c1b/",
           "codeRepository": "https://github.com/0xHunterL/onyx-devs-lab.github.io",
-          "version": "fe91aae7bb44331aac110650d1af4cfebf6364d3"
+          "version": "f17606cf302d4e1368eae3f2a76c295af61384ad"
         },
         {
           "@type": "CreativeWork",

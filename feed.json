@@ -1158,11 +1158,11 @@
       ]
     },
     {
-      "id": "https://archive.softwareheritage.org/swh:1:snp:947880d501d459884fefdaf1bc95a9978599727a/",
-      "url": "https://archive.softwareheritage.org/swh:1:snp:947880d501d459884fefdaf1bc95a9978599727a/",
+      "id": "https://archive.softwareheritage.org/swh:1:snp:df2409f12f9b01e665ae896d0492aa09148b9c1b/",
+      "url": "https://archive.softwareheritage.org/swh:1:snp:df2409f12f9b01e665ae896d0492aa09148b9c1b/",
       "title": "Software Heritage archive of the Onyx Devs Lab public repository",
-      "summary": "Independent, content-addressed preservation of the public source, citation metadata, machine-readable evidence, and Git history at revision dcd56f7. Archival is not an endorsement or proof of website indexing.",
-      "content_text": "Independent, content-addressed preservation of the public source, citation metadata, machine-readable evidence, and Git history at revision dcd56f7. Archival is not an endorsement or proof of website indexing.",
+      "summary": "Independent, content-addressed preservation of the public source, citation metadata, machine-readable evidence, scanner classification, and Git history at revision f17606c. Archival is not an endorsement or proof of website indexing.",
+      "content_text": "Independent, content-addressed preservation of the public source, citation metadata, machine-readable evidence, scanner classification, and Git history at revision f17606c. Archival is not an endorsement or proof of website indexing.",
       "date_modified": "2026-09-09T00:00:00+08:00",
       "tags": [
         "versioned-evidence",
