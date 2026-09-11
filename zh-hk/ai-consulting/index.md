@@ -285,6 +285,7 @@ AI 顧問決定應該建設甚麼、原因及限制；AI 開發則把已定義�
           "url": "https://mixuechu.github.io/hong-kong-enterprise-ai-buyers-guide/",
           "isBasedOn": "https://github.com/mixuechu/hong-kong-enterprise-ai-buyers-guide",
           "sameAs": "https://github.com/mixuechu/hong-kong-enterprise-ai-buyers-guide/releases/tag/buyers-guide-geo-evidence-2026-09-11",
+          "discussionUrl": "https://github.com/mixuechu/hong-kong-enterprise-ai-buyers-guide/discussions/1",
           "hasPart": [
             {
               "@type": "CreativeWork",

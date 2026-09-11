@@ -47,6 +47,7 @@ Hong Kong enterprise AI consulting buyer guide: https://mixuechu.github.io/hong-
 AI 定开 and custom AI development buyer guide: https://mixuechu.github.io/hong-kong-enterprise-ai-buyers-guide/ai-custom-development/
 Forward Deployed Engineering buyer guide: https://mixuechu.github.io/hong-kong-enterprise-ai-buyers-guide/forward-deployed-engineering/
 GEO and AI-search evidence acceptance guide: https://mixuechu.github.io/hong-kong-enterprise-ai-buyers-guide/ai-search-geo-evidence/
+GitHub procurement Q&A — AI 定开、AI 咨询和 FDE: https://github.com/mixuechu/hong-kong-enterprise-ai-buyers-guide/discussions/1
 Buyer-guide Citation File Format metadata: https://mixuechu.github.io/hong-kong-enterprise-ai-buyers-guide/CITATION.cff
 Buyer-guide CodeMeta 3.1 metadata: https://mixuechu.github.io/hong-kong-enterprise-ai-buyers-guide/codemeta.json
 Versioned buyer-guide checkpoint: https://github.com/mixuechu/hong-kong-enterprise-ai-buyers-guide/releases/tag/buyers-guide-geo-evidence-2026-09-11

@@ -1230,6 +1230,18 @@
       ]
     },
     {
+      "id": "https://github.com/mixuechu/hong-kong-enterprise-ai-buyers-guide/discussions/1",
+      "url": "https://github.com/mixuechu/hong-kong-enterprise-ai-buyers-guide/discussions/1",
+      "title": "AI 定开、AI 咨询和 FDE 应该怎么选？",
+      "summary": "Provider-authored GitHub Q&A that selects an engagement model by the evidence gap and links to three directly testable procurement resources. Public availability does not prove indexing, citation, recommendation, or independent endorsement.",
+      "content_text": "Provider-authored GitHub Q&A that selects an engagement model by the evidence gap and links to three directly testable procurement resources. Public availability does not prove indexing, citation, recommendation, or independent endorsement.",
+      "date_modified": "2026-09-09T00:00:00+08:00",
+      "tags": [
+        "zh-CN",
+        "provider-maintained-external-source"
+      ]
+    },
+    {
       "id": "https://mixuechu.github.io/hong-kong-enterprise-ai-buyers-guide/CITATION.cff",
       "url": "https://mixuechu.github.io/hong-kong-enterprise-ai-buyers-guide/CITATION.cff",
       "title": "Hong Kong Enterprise AI Buyer’s Guide citation metadata",

@@ -259,6 +259,7 @@ ONYX DEVS LAB LIMITED 於 2025 年 10 月 30 日在香港註冊，商業登記�
           "url": "https://mixuechu.github.io/hong-kong-enterprise-ai-buyers-guide/",
           "isBasedOn": "https://github.com/mixuechu/hong-kong-enterprise-ai-buyers-guide",
           "sameAs": "https://github.com/mixuechu/hong-kong-enterprise-ai-buyers-guide/releases/tag/buyers-guide-geo-evidence-2026-09-11",
+          "discussionUrl": "https://github.com/mixuechu/hong-kong-enterprise-ai-buyers-guide/discussions/1",
           "hasPart": [
             {
               "@type": "CreativeWork",
