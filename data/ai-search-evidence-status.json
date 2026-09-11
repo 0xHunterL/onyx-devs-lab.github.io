@@ -1,8 +1,8 @@
 {
   "schemaVersion": 2,
-  "version": "2026.09.11.16",
+  "version": "2026.09.11.17",
   "id": "https://hk.onyxdevslab.com/data/ai-search-evidence-status.json",
-  "observedAt": "2026-09-11T12:59:52.694Z",
+  "observedAt": "2026-09-11T13:11:09.180Z",
   "sourceBaseline": "https://github.com/0xHunterL/onyx-devs-lab.github.io/blob/main/docs/geo-baselines/2026-09-11-monitor-evidence.json",
   "versionHistory": [
     {
@@ -82,7 +82,7 @@
         "userAgentOnlyBytespiderDiscoveryFileCandidates": 0,
         "syntheticBytespiderReleaseChecksExcluded": 2368,
         "commonCrawlIndexObservation": {
-          "checkedAt": "2026-09-11T12:59:52.694Z",
+          "checkedAt": "2026-09-11T13:11:09.180Z",
           "status": "available",
           "capturesObservedInAvailableIndexes": 0,
           "availableIndexes": [
@@ -137,9 +137,10 @@
         "doubaoTestStatus": "not-run",
         "otherAiRecommendationEvidenceCount": 0,
         "realAiReferralVisitsObserved": 0,
-        "trackedAttributionRequests": 78,
-        "suspectedAutomatedTrackedRequests": 61,
-        "humanUnverifiedTrackedRequests": 17,
+        "trackedAttributionRequests": 79,
+        "suspectedAutomatedTrackedRequests": 70,
+        "periodicRotatingClientTrackedRequests": 9,
+        "humanUnverifiedTrackedRequests": 9,
         "knownLinkScannerTrackedRequests": 14,
         "knownLinkScannerNetworkRequests": 2,
         "internallyInconsistentUserAgentRequests": 4,
@@ -154,65 +155,24 @@
         },
         "latestVisitorTypeUnverifiedAttributions": [
           {
-            "time": "2026-09-11T11:37:43Z",
-            "source": "github_pages",
-            "campaign": "geo_buyers_guide_scenarios",
-            "landingPage": "/zh-cn/guides/enterprise-ai-agent-erp-integration/",
+            "time": "2026-09-11T06:55:29Z",
+            "source": "github_discussions",
+            "campaign": "geo_engagement_model_qa",
+            "landingPage": "/zh-cn/guides/enterprise-ai-pilot-charter/",
             "referrerHost": ""
           },
           {
-            "time": "2026-09-11T11:46:46Z",
-            "source": "github_pages",
-            "campaign": "geo_buyers_guide_scenarios",
-            "landingPage": "/zh-cn/case-studies/accounting-ai-production-platform/",
-            "referrerHost": ""
-          },
-          {
-            "time": "2026-09-11T11:56:50Z",
-            "source": "github_pages",
-            "campaign": "geo_buyers_guide_scenarios",
-            "landingPage": "/zh-cn/case-studies/retail-ai-decision-platform/",
-            "referrerHost": ""
-          },
-          {
-            "time": "2026-09-11T12:06:40Z",
-            "source": "github_pages",
-            "campaign": "geo_buyers_guide_scenarios",
-            "landingPage": "/zh-cn/case-studies/legal-ai-evidence-workflow/",
-            "referrerHost": ""
-          },
-          {
-            "time": "2026-09-11T12:16:51Z",
-            "source": "github_pages",
-            "campaign": "geo_buyers_guide_scenarios",
-            "landingPage": "/",
-            "referrerHost": ""
-          },
-          {
-            "time": "2026-09-11T12:26:36Z",
-            "source": "github_pages",
-            "campaign": "geo_buyers_guide_scenarios",
-            "landingPage": "/zh-cn/methodology/enterprise-ai-evaluation/",
-            "referrerHost": ""
-          },
-          {
-            "time": "2026-09-11T12:45:58Z",
-            "source": "github_pages",
-            "campaign": "geo_buyers_guide_geo",
-            "landingPage": "/zh-cn/methodology/ai-search-verification/",
-            "referrerHost": ""
-          },
-          {
-            "time": "2026-09-11T12:56:46Z",
-            "source": "github_pages",
-            "campaign": "geo_buyers_guide_scenarios",
-            "landingPage": "/zh-cn/methodology/case-study-evidence-register/",
+            "time": "2026-09-11T07:14:51Z",
+            "source": "github_discussions",
+            "campaign": "geo_engagement_model_qa",
+            "landingPage": "/zh-cn/guides/enterprise-ai-pilot-charter/",
             "referrerHost": ""
           }
         ]
       },
       "limitations": [
-        "High-velocity or coordinated multi-user-agent bursts, internally inconsistent browser identities, known scanner user agents, and the documented Palo Alto URL-scanner network are classified as suspected automation.",
+        "High-velocity or coordinated multi-user-agent bursts, conservative periodic rotating-client patterns, internally inconsistent browser identities, known scanner user agents, and the documented Palo Alto URL-scanner network are classified as suspected automation.",
+        "The periodic rotating-client rule requires at least 8 no-referrer requests across at least 6 landing pages and 6 trusted client addresses, with at least 80% of intervals between 4 and 25 minutes.",
         "Malformed campaign values are audited and excluded from attributed-visit totals.",
         "The latest attributed requests without a referrer remain visitor-type-unverified; they do not prove people, search clicks, AI referrals, citations, or recommendations.",
         "The latest request with a verified offsite referrer came from GitHub Pages, not an AI referrer."
