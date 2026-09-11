@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-09-11T04:40:46.028Z",
+  "generatedAt": "2026-09-11T05:55:00.000Z",
   "windowStart": "2026-09-01",
   "site": "https://hk.onyxdevslab.com/",
   "sourceLogs": [
@@ -48,6 +48,13 @@
     ],
     "officialSiteObserved": false,
     "thirdPartyEntityRecordsObserved": true,
+    "thirdPartyEntityRecords": [
+      "https://www.cr.gov.hk/docs/wrpt/RNC063_2025.10.27-2025.11.02.pdf",
+      "https://lei.bloomberg.com/leis/view/254900Z30CLK7HKE9H46",
+      "https://www.tempb.com/companies/onyx-devs-lab-limited/",
+      "https://hkg.databasesets.com/zh-hant/gongsimingdan/number/79051925"
+    ],
+    "entityRecordMeaning": "These records make the legal entity externally discoverable and disambiguatable. They do not prove official-site indexing, website ownership, service verification, endorsement, AI citation, or recommendation.",
     "categoryRecommendationObserved": false
   },
   "doubaoTestStatus": "not-run",
