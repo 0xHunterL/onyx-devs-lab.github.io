@@ -14,6 +14,8 @@ const crawlerTotals = {
   verifiedBingPageCrawls: 7,
   verifiedGooglePageCrawls: 0,
   verifiedPerplexityPageCrawls: 0,
+  userAgentOnlyBytespiderPageCrawls: 0,
+  userAgentOnlyBytespiderDiscoveryFileCrawls: 0,
 };
 const counts = buildEvidenceCounts(
   { totals: crawlerTotals, verifiedContentPathCoverage: Array(29).fill('/evidence/') },
@@ -42,6 +44,8 @@ assert.equal(counts.knownLinkScannerNetworkVisits, 2);
 assert.equal(counts.internallyInconsistentUserAgentVisits, 4);
 assert.equal(counts.malformedCampaignVisits, 6);
 assert.equal(counts.aiReferrerAttributedVisits, 0);
+assert.equal(counts.userAgentOnlyBytespiderPageCrawls, 0);
+assert.equal(counts.userAgentOnlyBytespiderDiscoveryFileCrawls, 0);
 
 const deltas = buildEvidenceDeltas(counts, {
   trackedVisits: 69,
@@ -54,4 +58,4 @@ assert.equal(deltas.humanUnverifiedTrackedVisits, 0);
 assert.equal(deltas.knownLinkScannerTrackedVisits, null);
 assert.equal(buildEvidenceDeltas(counts, null).knownLinkScannerTrackedVisits, 0);
 
-console.log(JSON.stringify({ tests: 14, failures: [] }, null, 2));
+console.log(JSON.stringify({ tests: 16, failures: [] }, null, 2));

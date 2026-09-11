@@ -271,6 +271,8 @@ const pageCandidates = events.filter((event) => event.classification === 'candid
 const discoveryCandidates = events.filter((event) => event.classification === 'candidate-discovery-file-crawl');
 const suspiciousCandidates = events.filter((event) => event.classification === 'suspicious-spoof-or-scan');
 const syntheticChecks = events.filter((event) => event.classification === 'synthetic-release-check');
+const userAgentOnlyBytespiderPages = pageCandidates.filter((event) => event.family === 'Bytespider');
+const userAgentOnlyBytespiderDiscoveryFiles = discoveryCandidates.filter((event) => event.family === 'Bytespider');
 const verifiedOpenAiPages = pageCandidates.filter(
   (event) => ['GPTBot', 'OAI-SearchBot'].includes(event.family) && event.providerVerified === true,
 );
@@ -358,10 +360,23 @@ const verifiedEvidenceObservations = [
   path: event.path,
   status: event.status,
 })).sort((a, b) => a.time.localeCompare(b.time) || a.fingerprint.localeCompare(b.fingerprint));
+const userAgentOnlyEvidenceObservations = [
+  ...userAgentOnlyBytespiderPages,
+  ...userAgentOnlyBytespiderDiscoveryFiles,
+].map((event) => ({
+  fingerprint: fingerprint(event),
+  family: event.family,
+  classification: event.classification,
+  time: event.time,
+  method: event.method,
+  path: event.path,
+  status: event.status,
+  identityStatus: 'user-agent-only-unverified',
+})).sort((a, b) => a.time.localeCompare(b.time) || a.fingerprint.localeCompare(b.fingerprint));
 
 console.log(JSON.stringify({
   generatedAt: new Date().toISOString(),
-  caveat: 'User-Agent strings are self-declared. Candidate content crawls do not prove platform identity unless providerVerified is true under an enabled provider verification method. A null providerVerified value with verificationUnavailable means the resolver returned only RFC 2544 benchmark addresses, so identity could not be tested and must not be reported as failed. GPTBot is reported separately from OAI-SearchBot because a verified training crawl is not evidence of search indexing or citation.',
+  caveat: 'User-Agent strings are self-declared. Candidate content crawls do not prove platform identity unless providerVerified is true under an enabled provider verification method. Bytespider page and discovery requests are exposed separately as user-agent-only, identity-unverified observations after synthetic release checks are excluded; they do not prove Doubao or ByteDance access. A null providerVerified value with verificationUnavailable means the resolver returned only RFC 2544 benchmark addresses, so identity could not be tested and must not be reported as failed. GPTBot is reported separately from OAI-SearchBot because a verified training crawl is not evidence of search indexing or citation.',
   files: paths,
   since: sinceArg ? sinceArg.slice('--since='.length) : null,
   verifyOpenAi,
@@ -376,6 +391,8 @@ console.log(JSON.stringify({
     candidateDiscoveryFileCrawls: discoveryCandidates.length,
     suspiciousSpoofOrScanRequests: suspiciousCandidates.length,
     syntheticReleaseChecks: syntheticChecks.length,
+    userAgentOnlyBytespiderPageCrawls: userAgentOnlyBytespiderPages.length,
+    userAgentOnlyBytespiderDiscoveryFileCrawls: userAgentOnlyBytespiderDiscoveryFiles.length,
     verifiedOpenAiPageCrawls: verifiedOpenAiPages.length,
     verifiedGptBotPageCrawls: verifiedGptBotPages.length,
     verifiedOaiSearchBotPageCrawls: verifiedOaiSearchBotPages.length,
@@ -398,6 +415,7 @@ console.log(JSON.stringify({
   byClassification,
   verifiedContentPathCoverage,
   verifiedEvidenceObservations,
+  userAgentOnlyEvidenceObservations,
   recentCandidatePageCrawls: pageCandidates.slice(-50),
   recentCandidateDiscoveryFileCrawls: discoveryCandidates.slice(-30),
   recentVerifiedOpenAiPageCrawls: verifiedOpenAiPages.slice(-50),

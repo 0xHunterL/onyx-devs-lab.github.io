@@ -12,6 +12,8 @@ export function buildEvidenceCounts(crawler, referral, commonCrawl, promptCovera
     verifiedBingPageCrawls: crawler.totals.verifiedBingPageCrawls,
     verifiedGooglePageCrawls: crawler.totals.verifiedGooglePageCrawls,
     verifiedPerplexityPageCrawls: crawler.totals.verifiedPerplexityPageCrawls,
+    userAgentOnlyBytespiderPageCrawls: crawler.totals.userAgentOnlyBytespiderPageCrawls,
+    userAgentOnlyBytespiderDiscoveryFileCrawls: crawler.totals.userAgentOnlyBytespiderDiscoveryFileCrawls,
     verifiedContentPaths: crawler.verifiedContentPathCoverage.length,
     searchRelatedCrawledEvidencePages: promptCoverage.totals.searchRelatedCrawledEvidencePages,
     promptsWithAnySearchRelatedCrawl: promptCoverage.totals.promptsWithAnySearchRelatedCrawl,

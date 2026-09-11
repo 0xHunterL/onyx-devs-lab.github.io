@@ -115,6 +115,11 @@ const metricForCrawlerObservation = (observation) => {
 };
 const currentEvidenceObservations = [
   ...(crawler.verifiedEvidenceObservations || []).map((observation) => ({ ...observation, metric: metricForCrawlerObservation(observation), evidenceClass: 'provider-verified-crawler' })),
+  ...(crawler.userAgentOnlyEvidenceObservations || []).map((observation) => ({
+    ...observation,
+    metric: observation.classification === 'candidate-page-crawl' ? 'userAgentOnlyBytespiderPageCrawls' : 'userAgentOnlyBytespiderDiscoveryFileCrawls',
+    evidenceClass: 'crawler-user-agent-only-identity-unverified',
+  })),
   ...(referral.humanUnverifiedEvidenceObservations || []).map((observation) => ({
     ...observation,
     metric: observation.evidenceType.includes('ai-referrer') ? 'humanUnverifiedAiReferrerVisits' : 'humanUnverifiedTrackedVisits',
@@ -147,7 +152,7 @@ const summary = {
   changed: newEvidence.length > 0,
   eventFile,
   newEvidenceObservations,
-  evidenceBoundary: 'New crawler fingerprints prove only previously unseen provider-verified requests. New referral fingerprints exclude suspected automation and prove only previously unseen attributed requests whose visitor type is not verified. Common Crawl fingerprints prove only appearance in the named public crawl index. None proves search indexing, retrieval, citation, ranking, a human visit, or non-brand recommendation.',
+  evidenceBoundary: 'New provider-verified crawler fingerprints prove only previously unseen requests by the named crawler. Bytespider fingerprints are separately labeled user-agent-only and identity-unverified; they do not prove Doubao or ByteDance access. New referral fingerprints exclude suspected automation and prove only previously unseen attributed requests whose visitor type is not verified. Common Crawl fingerprints prove only appearance in the named public crawl index. None proves search indexing, retrieval, citation, ranking, a human visit, or non-brand recommendation.',
 };
 
 if (eventFile) await atomicJson(eventFile, {
