@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "publicStatusVersion": "2026.09.11.17",
-  "generatedAt": "2026-09-11T13:11:09.180Z",
+  "publicStatusVersion": "2026.09.11.18",
+  "generatedAt": "2026-09-11T13:39:45.783Z",
   "windowStart": "2026-09-01",
   "site": "https://hk.onyxdevslab.com/",
   "sourceLogs": [
@@ -48,9 +48,9 @@
     "scenarioPromptsWithAnyVerifiedCrawl": 0
   },
   "attributionEvidence": {
-    "trackedRequests": 79,
-    "suspectedAutomatedRequests": 70,
-    "periodicRotatingClientRequests": 9,
+    "trackedRequests": 80,
+    "suspectedAutomatedRequests": 71,
+    "periodicRotatingClientRequests": 10,
     "visitorTypeUnverifiedRequests": 9,
     "knownLinkScannerRequests": 14,
     "knownLinkScannerUserAgentRequests": 12,
@@ -63,7 +63,7 @@
       "geo_engagement_model_qa": 39,
       "geo_buyers_guide_ai_dingkai": 4,
       "geo_buyers_guide_scenarios": 8,
-      "geo_buyers_guide_geo": 1,
+      "geo_buyers_guide_geo": 2,
       "geo_buyers_guide_fde": 2,
       "geo_buyers_guide": 1
     },
@@ -93,7 +93,7 @@
     ]
   },
   "commonCrawlEvidence": {
-    "checkedAt": "2026-09-11T13:11:09.180Z",
+    "checkedAt": "2026-09-11T13:39:45.783Z",
     "status": "available",
     "capturesObservedInAvailableIndexes": 0,
     "availableIndexes": ["CC-MAIN-2026-34", "CC-MAIN-2026-30"],
@@ -104,7 +104,7 @@
     "manifestItems": 8,
     "publishedItems": 7,
     "readyNotPublishedItems": 1,
-    "checkedAt": "2026-09-11T11:57:29.112Z",
+    "checkedAt": "2026-09-11T13:39:45.783Z",
     "publicUrlsChecked": 7,
     "trackedTargetsChecked": 17,
     "availableSources": 24,
