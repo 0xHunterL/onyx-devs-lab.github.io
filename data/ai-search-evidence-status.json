@@ -1,8 +1,8 @@
 {
   "schemaVersion": 2,
-  "version": "2026.09.11.18",
+  "version": "2026.09.11.19",
   "id": "https://hk.onyxdevslab.com/data/ai-search-evidence-status.json",
-  "observedAt": "2026-09-11T13:39:45.783Z",
+  "observedAt": "2026-09-11T14:00:59.577Z",
   "sourceBaseline": "https://github.com/0xHunterL/onyx-devs-lab.github.io/blob/main/docs/geo-baselines/2026-09-11-monitor-evidence.json",
   "versionHistory": [
     {
@@ -68,7 +68,7 @@
       "evidence": {
         "verifiedGptBotContentCrawls": 27,
         "verifiedGptBotDiscoveryFileCrawls": 13,
-        "verifiedDistinctContentPaths": 30,
+        "verifiedDistinctContentPaths": 43,
         "verifiedOaiSearchBotDiscoveryFileVisits": 8,
         "verifiedOaiSearchBotContentCrawls": 0,
         "historicallyVerifiedBingbotContentCrawls": 7,
@@ -76,38 +76,45 @@
         "verifiedBaiduspiderDiscoveryFileCrawls": 0,
         "verifiedApplebotContentCrawls": 0,
         "verifiedApplebotDiscoveryFileCrawls": 0,
+        "verifiedYandexbotContentCrawls": 69,
+        "verifiedYandexbotDiscoveryFileCrawls": 63,
         "verifiedGooglebotContentCrawls": 0,
         "verifiedPerplexityContentCrawls": 0,
         "userAgentOnlyBytespiderContentCrawlCandidates": 0,
         "userAgentOnlyBytespiderDiscoveryFileCandidates": 0,
         "syntheticBytespiderReleaseChecksExcluded": 2368,
         "commonCrawlIndexObservation": {
-          "checkedAt": "2026-09-11T13:39:45.783Z",
-          "status": "available",
+          "checkedAt": "2026-09-11T14:00:59.577Z",
+          "status": "partial",
           "capturesObservedInAvailableIndexes": 0,
           "availableIndexes": [
-            "CC-MAIN-2026-34",
             "CC-MAIN-2026-30"
           ],
-          "unavailableIndexes": [],
-          "meaning": "Both selected indexes returned usable responses with zero observed captures. This complete result covers only the selected indexes and must not be interpreted as proof of zero captures across all Common Crawl history."
+          "unavailableIndexes": [
+            {
+              "id": "CC-MAIN-2026-34",
+              "httpStatus": 502,
+              "reason": "HTTP 502"
+            }
+          ],
+          "meaning": "One selected index returned a usable zero-capture response while CC-MAIN-2026-34 returned HTTP 502. This result is incomplete and must not be interpreted as a verified zero across the selected indexes or all Common Crawl history."
         },
         "fixedPromptCoverage": {
           "prompts": 20,
           "uniqueEvidencePages": 20,
-          "verifiedCrawledEvidencePages": 8,
-          "searchRelatedCrawledEvidencePages": 0,
-          "promptsWithAnyVerifiedCrawl": 10,
-          "promptsFullyVerifiedCrawled": 6,
-          "promptsWithAnySearchRelatedCrawl": 0,
-          "promptsFullySearchRelatedCrawled": 0,
-          "scenarioPromptsWithAnyVerifiedCrawl": 0
+          "verifiedCrawledEvidencePages": 12,
+          "searchRelatedCrawledEvidencePages": 12,
+          "promptsWithAnyVerifiedCrawl": 15,
+          "promptsFullyVerifiedCrawled": 9,
+          "promptsWithAnySearchRelatedCrawl": 15,
+          "promptsFullySearchRelatedCrawled": 9,
+          "scenarioPromptsWithAnyVerifiedCrawl": 1
         }
       },
       "limitations": [
         "The corrected path classifier newly recognized three homepage requests and ten machine-resource requests that occurred on 2026-09-09 and 2026-09-10; this is historical reclassification, not new crawler activity.",
         "GPTBot is a training crawler and does not prove ChatGPT Search indexing or citation.",
-        "Baiduspider uses Baidu official reverse-DNS suffixes plus forward confirmation; Applebot uses the official published CIDR list. Their zero counts mean no verified request was observed in the checked current and rotated logs.",
+        "Baiduspider and YandexBot use their providers’ official reverse-DNS suffixes plus forward confirmation; Applebot uses the official published CIDR list. Verified YandexBot crawling proves access by that search crawler, not public indexing, ranking, AI retrieval, or citation.",
         "Bytespider candidates are labeled user-agent-only and identity-unverified; they do not prove Doubao or ByteDance access.",
         "Common Crawl index observations cover only the named selected indexes; they do not prove search indexing, retrieval, citation, or absence across all crawl history.",
         "Discovery-file visits do not prove content-page ingestion.",
