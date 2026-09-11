@@ -20,6 +20,7 @@
     "geo:prompt-crawl-coverage": "node scripts/report-prompt-crawl-coverage.mjs",
     "geo:referral-report": "node scripts/report-geo-referrals.mjs",
     "geo:test-referral-report": "node scripts/test-report-geo-referrals.mjs",
+    "geo:test-evidence-summary": "node scripts/test-geo-evidence-summary.mjs",
     "geo:collect-evidence": "node scripts/collect-geo-evidence.mjs",
     "geo:common-crawl-report": "node scripts/report-common-crawl.mjs",
     "geo:submit-indexnow": "node scripts/submit-indexnow.mjs",

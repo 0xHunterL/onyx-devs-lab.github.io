@@ -2,6 +2,7 @@ import { spawn } from 'node:child_process';
 import { mkdir, readFile, readdir, rename, unlink, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { buildEvidenceCounts } from './geo-evidence-summary.mjs';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const args = process.argv.slice(2);
@@ -96,30 +97,7 @@ try {
   await unlink(crawlerTemporary).catch(() => {});
 }
 
-const counts = {
-  verifiedGptBotPageCrawls: crawler.totals.verifiedGptBotPageCrawls,
-  verifiedOaiSearchBotPageCrawls: crawler.totals.verifiedOaiSearchBotPageCrawls,
-  verifiedOaiSearchBotDiscoveryFileCrawls: crawler.totals.verifiedOaiSearchBotDiscoveryFileCrawls,
-  verifiedGptBotDiscoveryFileCrawls: crawler.totals.verifiedGptBotDiscoveryFileCrawls,
-  verifiedBingDiscoveryFileCrawls: crawler.totals.verifiedBingDiscoveryFileCrawls,
-  verifiedGoogleDiscoveryFileCrawls: crawler.totals.verifiedGoogleDiscoveryFileCrawls,
-  verifiedPerplexityDiscoveryFileCrawls: crawler.totals.verifiedPerplexityDiscoveryFileCrawls,
-  verifiedCommonCrawlPageCrawls: crawler.totals.verifiedCommonCrawlPageCrawls,
-  verifiedCommonCrawlDiscoveryFileCrawls: crawler.totals.verifiedCommonCrawlDiscoveryFileCrawls,
-  verifiedBingPageCrawls: crawler.totals.verifiedBingPageCrawls,
-  verifiedGooglePageCrawls: crawler.totals.verifiedGooglePageCrawls,
-  verifiedPerplexityPageCrawls: crawler.totals.verifiedPerplexityPageCrawls,
-  verifiedContentPaths: crawler.verifiedContentPathCoverage.length,
-  searchRelatedCrawledEvidencePages: promptCoverage.totals.searchRelatedCrawledEvidencePages,
-  promptsWithAnySearchRelatedCrawl: promptCoverage.totals.promptsWithAnySearchRelatedCrawl,
-  trackedVisits: referral.trackedVisits,
-  suspectedAutomatedTrackedVisits: referral.suspectedAutomatedTrackedVisits,
-  humanUnverifiedTrackedVisits: referral.humanUnverifiedTrackedVisits,
-  aiReferrerAttributedVisits: (referral.byEvidenceType['ai-referrer'] || 0) + (referral.byEvidenceType['utm-and-ai-referrer'] || 0),
-  humanUnverifiedAiReferrerVisits: referral.recentHumanUnverifiedVisits.filter((visit) => visit.evidenceType.includes('ai-referrer')).length,
-  commonCrawlCaptures: commonCrawl.totals.captures,
-  commonCrawlDistinctUrls: commonCrawl.totals.distinctUrls,
-};
+const counts = buildEvidenceCounts(crawler, referral, commonCrawl, promptCoverage);
 const priorCounts = previous?.counts || {};
 const deltas = Object.fromEntries(Object.entries(counts).map(([key, value]) => [key, previous ? value - (Number(priorCounts[key]) || 0) : 0]));
 const metricForCrawlerObservation = (observation) => {
