@@ -203,6 +203,33 @@
         "The Q&A is published by Onyx Devs Lab in a public repository it controls.",
         "Anonymous HTTP 200 and crawlable server-rendered text prove publication only, not search indexing, AI citation, recommendation, or independent endorsement."
       ]
+    },
+    {
+      "id": "github-release-search-monitoring-compliance-2026-09-11",
+      "channel": "github_releases",
+      "format": "versioned-evidence-checkpoint",
+      "language": "en-zh-CN",
+      "status": "published",
+      "sourceFile": "docs/geo-baselines/2026-09-11-bing-search-compliance-audit.md",
+      "title": "Search monitoring compliance checkpoint — 2026-09-11",
+      "campaign": "geo_search_monitoring_compliance",
+      "trackedTargets": [
+        "https://hk.onyxdevslab.com/data/ai-search-evidence-status.json?utm_source=github_releases&utm_medium=referral&utm_campaign=geo_search_monitoring_compliance"
+      ],
+      "publicUrl": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-search-monitoring-compliance-2026-09-11",
+      "anonymousAccessVerifiedAt": "2026-09-11T11:45:56Z",
+      "publicContentMarkers": [
+        "Search monitoring compliance checkpoint — 2026-09-11",
+        "Baiduspider and Applebot zero baselines",
+        "Bing indexing evidence remains account-gated"
+      ],
+      "searchIndexedAt": null,
+      "aiCitationObservedAt": null,
+      "nonBrandRecommendationObservedAt": null,
+      "limitations": [
+        "The Release and its assets are published and maintained by Onyx Devs Lab.",
+        "Anonymous availability and matching content markers do not prove independent endorsement, search indexing, AI citation, recommendation, or a human visit."
+      ]
     }
   ]
 }

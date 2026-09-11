@@ -13,3 +13,11 @@
 截至本审计，仓库和生产环境没有 Bing Webmaster OAuth 凭据，也没有可证明 `hk.onyxdevslab.com` 已加入并验证到站长账户的记录。因此不能在无人授权的情况下读取官方索引或搜索表现数据。现有 IndexNow 接收记录与已核验 Bingbot 抓取仍只证明提交和抓取，不证明收录、排名、Copilot 引用或非品牌推荐。
 
 本轮没有向豆包发送提示词，也没有处理验证码。
+
+## Release distribution record
+
+The public checkpoint is titled **Search monitoring compliance checkpoint — 2026-09-11**. It records the Baiduspider and Applebot zero baselines and states that Bing indexing evidence remains account-gated. Its tracked canonical status target is:
+
+<https://hk.onyxdevslab.com/data/ai-search-evidence-status.json?utm_source=github_releases&utm_medium=referral&utm_campaign=geo_search_monitoring_compliance>
+
+The Release is maintained by Onyx Devs Lab. Public availability and a working tracked link do not prove independent endorsement, search indexing, AI citation, recommendation, or a human visit.
