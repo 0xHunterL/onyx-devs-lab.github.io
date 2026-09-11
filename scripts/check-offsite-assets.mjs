@@ -440,6 +440,23 @@ requireText('GitHub agent-readiness checkpoint', readinessRelease, [
   '3da4a0be148d3dbb41188ba8b6dc40bb0da75bd484494de4e24d5b2d431baf44',
 ]);
 
+const monitorEvidenceV2Base = 'https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-monitor-evidence-2026-09-11-2';
+const monitorEvidenceV2Release = await get('GitHub GEO monitor evidence revision 2', 'https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-monitor-evidence-2026-09-11-2', 'text/html');
+requireText('GitHub GEO monitor evidence revision 2', monitorEvidenceV2Release, [
+  'seven provider-verified OAI-SearchBot discovery-file requests',
+  'corrected referral automation classification',
+  'No prompt was sent to Doubao',
+]);
+const monitorEvidenceV2Raw = await get('Versioned GEO monitor evidence revision 2', `${monitorEvidenceV2Base}/2026-09-11-monitor-evidence.json`, 'application/');
+const monitorEvidenceV2Sha256 = createHash('sha256').update(monitorEvidenceV2Raw).digest('hex');
+if (monitorEvidenceV2Sha256 !== 'c7005323de4e62692c34e2fd593d443535daebb8eb1647ebbe00f0676d87a281') failures.push(`Versioned GEO monitor evidence revision 2: SHA-256 mismatch, got ${monitorEvidenceV2Sha256}`);
+try {
+  const monitor = JSON.parse(monitorEvidenceV2Raw);
+  if (monitor.providerVerifiedCrawlerEvidence?.oaiSearchBotDiscoveryFileRequests !== 7 || monitor.providerVerifiedCrawlerEvidence?.oaiSearchBotContentRequests !== 0 || monitor.attributionEvidence?.trackedRequests !== 52 || monitor.attributionEvidence?.suspectedAutomatedRequests !== 45 || monitor.attributionEvidence?.visitorTypeUnverifiedRequests !== 7 || monitor.attributionEvidence?.aiReferrerAttributedRequests !== 0 || monitor.publicSearchRetest?.officialSiteObserved !== false || monitor.publicSearchRetest?.newPublicDiscussionObserved !== false || monitor.doubaoTestStatus !== 'not-run') failures.push('Versioned GEO monitor evidence revision 2: expected evidence structure or boundary is incomplete');
+} catch {
+  failures.push('Versioned GEO monitor evidence revision 2: invalid JSON');
+}
+
 const crawlerEvidenceReleaseUrl = 'https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-crawler-evidence-2026-09-10';
 const crawlerEvidenceRelease = await get('GitHub verified crawler-evidence checkpoint', crawlerEvidenceReleaseUrl, 'text/html');
 requireText('GitHub verified crawler-evidence checkpoint', crawlerEvidenceRelease, [
