@@ -3,6 +3,8 @@ import fs from 'node:fs';
 const manifestPath = 'geo/distribution-manifest.json';
 const failures = [];
 const manifest = JSON.parse(fs.readFileSync(manifestPath, 'utf8'));
+const ids = new Set();
+const publicUrls = new Set();
 
 if (manifest.schemaVersion !== 1) failures.push('unexpected schemaVersion');
 if (manifest.publisher?.legalName !== 'ONYX DEVS LAB LIMITED') failures.push('legal publisher is missing');
@@ -10,6 +12,8 @@ if (manifest.publisher?.businessRegistrationNumber !== '79051925') failures.push
 if (!manifest.evidenceRule?.includes('draft is not a published source')) failures.push('draft evidence boundary is missing');
 
 for (const item of manifest.items || []) {
+  if (ids.has(item.id)) failures.push(`${item.id}: duplicate id`);
+  ids.add(item.id);
   if (!fs.existsSync(item.sourceFile)) failures.push(`${item.id}: source file is missing`);
   const source = fs.existsSync(item.sourceFile) ? fs.readFileSync(item.sourceFile, 'utf8') : '';
   if (!source.includes(item.title)) failures.push(`${item.id}: title is not present in source`);
@@ -28,8 +32,18 @@ for (const item of manifest.items || []) {
     }
   } else if (item.status === 'published') {
     if (!item.publicUrl || !item.anonymousAccessVerifiedAt) failures.push(`${item.id}: published status requires a public URL and anonymous-access verification`);
+    if (item.publicUrl) {
+      const publicUrl = new URL(item.publicUrl);
+      if (publicUrl.hostname === 'hk.onyxdevslab.com') failures.push(`${item.id}: publicUrl must be an offsite URL`);
+      if (publicUrls.has(publicUrl.href)) failures.push(`${item.id}: duplicate publicUrl`);
+      publicUrls.add(publicUrl.href);
+    }
+    if (Number.isNaN(Date.parse(item.anonymousAccessVerifiedAt))) failures.push(`${item.id}: anonymousAccessVerifiedAt must be an ISO timestamp`);
   } else {
     failures.push(`${item.id}: unsupported status ${item.status}`);
+  }
+  for (const field of ['searchIndexedAt', 'aiCitationObservedAt', 'nonBrandRecommendationObservedAt']) {
+    if (item[field] !== null && Number.isNaN(Date.parse(item[field]))) failures.push(`${item.id}: ${field} must be null or an ISO timestamp`);
   }
 }
 
@@ -41,4 +55,3 @@ console.log(JSON.stringify({
   failures,
 }, null, 2));
 if (failures.length) process.exit(1);
-

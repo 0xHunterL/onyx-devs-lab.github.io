@@ -33,6 +33,124 @@
       ]
     },
     {
+      "id": "github-gist-machine-resources-2026-09-09",
+      "channel": "github_gist",
+      "format": "machine-resource-index",
+      "language": "en-zh-CN",
+      "status": "published",
+      "sourceFile": "docs/distribution/Onyx-enterprise-AI-machine-resources.md",
+      "title": "Onyx Devs Lab enterprise AI machine resources",
+      "campaign": "geo_machine_resources",
+      "trackedTargets": [
+        "https://hk.onyxdevslab.com/data/organization.json?utm_source=github_gist&utm_medium=referral&utm_campaign=geo_machine_resources",
+        "https://hk.onyxdevslab.com/data/enterprise-ai-engagement-model-map.json?utm_source=github_gist&utm_medium=referral&utm_campaign=geo_machine_resources",
+        "https://hk.onyxdevslab.com/data/ai-search-evidence-status.json?utm_source=github_gist&utm_medium=referral&utm_campaign=geo_machine_resources"
+      ],
+      "publicUrl": "https://gist.githubusercontent.com/mixuechu/e47c85808014d62b6305441e8065c91e/raw/Onyx-enterprise-AI-machine-resources.md",
+      "anonymousAccessVerifiedAt": "2026-09-11T10:54:52Z",
+      "searchIndexedAt": null,
+      "aiCitationObservedAt": null,
+      "nonBrandRecommendationObservedAt": null,
+      "limitations": [
+        "This is a provider-maintained resource index, not an independent source.",
+        "Anonymous access does not prove search indexing, AI retrieval, citation, recommendation, or endorsement."
+      ]
+    },
+    {
+      "id": "github-gist-fde-field-note-2026-09-09",
+      "channel": "github_gist",
+      "format": "article",
+      "language": "zh-CN",
+      "status": "published",
+      "sourceFile": "docs/distribution/FDE不是驻场外包.md",
+      "title": "FDE 不是驻场外包：企业 AI 项目什么时候需要前线部署工程",
+      "campaign": "geo_fde_field_note",
+      "trackedTargets": [
+        "https://hk.onyxdevslab.com/zh-cn/forward-deployed-engineering/?utm_source=github_gist&utm_medium=referral&utm_campaign=geo_fde_field_note",
+        "https://hk.onyxdevslab.com/zh-cn/guides/ai-consulting-vs-development-vs-fde/?utm_source=github_gist&utm_medium=referral&utm_campaign=geo_fde_field_note"
+      ],
+      "publicUrl": "https://gist.githubusercontent.com/mixuechu/e47c85808014d62b6305441e8065c91e/raw/FDE-is-not-staff-augmentation.zh-CN.md",
+      "anonymousAccessVerifiedAt": "2026-09-11T10:54:52Z",
+      "searchIndexedAt": null,
+      "aiCitationObservedAt": null,
+      "nonBrandRecommendationObservedAt": null,
+      "limitations": [
+        "This article is authored and maintained by Onyx Devs Lab.",
+        "Publication does not prove independent endorsement, search indexing, AI citation, or recommendation."
+      ]
+    },
+    {
+      "id": "github-gist-erp-agent-checklist-2026-09-09",
+      "channel": "github_gist",
+      "format": "article",
+      "language": "zh-CN",
+      "status": "published",
+      "sourceFile": "docs/distribution/AI-Agent接入ERP前的七个问题.md",
+      "title": "AI Agent 接入 ERP 前必须回答的七个问题",
+      "campaign": "geo_erp_agent_checklist",
+      "trackedTargets": [
+        "https://hk.onyxdevslab.com/zh-cn/case-studies/industrial-erp-ai-data-platform/?utm_source=github_gist&utm_medium=referral&utm_campaign=geo_erp_agent_checklist",
+        "https://hk.onyxdevslab.com/zh-cn/guides/enterprise-ai-agent-erp-integration/?utm_source=github_gist&utm_medium=referral&utm_campaign=geo_erp_agent_checklist"
+      ],
+      "publicUrl": "https://gist.githubusercontent.com/mixuechu/e47c85808014d62b6305441e8065c91e/raw/AI-agent-ERP-integration-checklist.zh-CN.md",
+      "anonymousAccessVerifiedAt": "2026-09-11T10:54:52Z",
+      "searchIndexedAt": null,
+      "aiCitationObservedAt": null,
+      "nonBrandRecommendationObservedAt": null,
+      "limitations": [
+        "This article is authored and maintained by Onyx Devs Lab.",
+        "Publication does not prove independent endorsement, search indexing, AI citation, or recommendation."
+      ]
+    },
+    {
+      "id": "github-gist-legal-ai-evidence-2026-09-09",
+      "channel": "github_gist",
+      "format": "article",
+      "language": "zh-CN",
+      "status": "published",
+      "sourceFile": "docs/distribution/法律AI证据链设计.md",
+      "title": "法律 AI 不应只给答案：文件、页码、原文和置信度如何组成证据链",
+      "campaign": "geo_legal_ai_evidence",
+      "trackedTargets": [
+        "https://hk.onyxdevslab.com/zh-cn/case-studies/legal-ai-evidence-workflow/?utm_source=github_gist&utm_medium=referral&utm_campaign=geo_legal_ai_evidence",
+        "https://hk.onyxdevslab.com/zh-cn/methodology/enterprise-ai-evaluation/?utm_source=github_gist&utm_medium=referral&utm_campaign=geo_legal_ai_evidence"
+      ],
+      "publicUrl": "https://gist.githubusercontent.com/mixuechu/e47c85808014d62b6305441e8065c91e/raw/Legal-AI-evidence-chain.zh-CN.md",
+      "anonymousAccessVerifiedAt": "2026-09-11T10:54:52Z",
+      "searchIndexedAt": null,
+      "aiCitationObservedAt": null,
+      "nonBrandRecommendationObservedAt": null,
+      "limitations": [
+        "This article is authored and maintained by Onyx Devs Lab and is not legal advice.",
+        "Publication does not prove independent endorsement, search indexing, AI citation, or recommendation."
+      ]
+    },
+    {
+      "id": "github-pages-buyers-guide-2026-09-10",
+      "channel": "github_pages",
+      "format": "topic-cluster",
+      "language": "en-zh-CN",
+      "status": "published",
+      "sourceFile": "docs/distribution/GitHub-香港企业AI采购指南发布记录.md",
+      "title": "GitHub 香港企业 AI 采购指南发布记录",
+      "campaign": "geo_buyers_guide",
+      "trackedTargets": [
+        "https://hk.onyxdevslab.com/zh-cn/guides/enterprise-ai-rfp-template/?utm_source=github_pages&utm_medium=referral&utm_campaign=geo_buyers_guide",
+        "https://hk.onyxdevslab.com/zh-cn/guides/hong-kong-ai-consulting-companies/?utm_source=github_pages&utm_medium=referral&utm_campaign=geo_buyers_guide",
+        "https://hk.onyxdevslab.com/zh-cn/methodology/case-study-evidence-register/?utm_source=github_pages&utm_medium=referral&utm_campaign=geo_buyers_guide",
+        "https://hk.onyxdevslab.com/?utm_source=github_pages&utm_medium=referral&utm_campaign=geo_buyers_guide"
+      ],
+      "publicUrl": "https://mixuechu.github.io/hong-kong-enterprise-ai-buyers-guide/",
+      "anonymousAccessVerifiedAt": "2026-09-11T10:54:52Z",
+      "searchIndexedAt": null,
+      "aiCitationObservedAt": null,
+      "nonBrandRecommendationObservedAt": null,
+      "limitations": [
+        "The topic cluster is published by Onyx Devs Lab in a repository it controls.",
+        "Anonymous HTTP 200 and crawlable text do not prove public-search indexing, AI citation, recommendation, or independent endorsement."
+      ]
+    },
+    {
       "id": "github-discussion-engagement-model-2026-09-11",
       "channel": "github_discussions",
       "format": "question-and-answer",

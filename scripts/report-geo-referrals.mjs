@@ -15,7 +15,7 @@ const since = sinceArg ? Date.parse(`${sinceArg.slice('--since='.length)}T00:00:
 const includeRotated = args.includes('--include-rotated');
 const inputPaths = args.filter((arg) => !arg.startsWith('--since=') && arg !== '--include-rotated');
 const paths = await resolveLogPaths(inputPaths, includeRotated);
-const syntheticUserAgent = /^(?:curl|Wget)\/|Onyx-(?:GEO-Release-Check|Buyer-Guide-Link-Check)|python-requests|node-fetch|undici/i;
+const syntheticUserAgent = /^(?:curl|Wget)\/|Onyx-(?:GEO-Release-Check|GEO-Distribution-Check|Buyer-Guide-Link-Check)|python-requests|node-fetch|undici/i;
 const knownLinkScannerUserAgent = /AppEngine-Google;\s*\(\+http:\/\/code\.google\.com\/appengine;\s*appid:\s*s~virustotalcloud\)/i;
 const knownLinkScannerNetworks = [
   { name: 'Palo Alto Networks URL scanner', matches: (ip) => /^205\.169\.39\./.test(ip) },

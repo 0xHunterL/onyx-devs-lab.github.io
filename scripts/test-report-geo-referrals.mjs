@@ -35,6 +35,14 @@ const events = [
     referrerHost: '',
     userAgent: 'Mozilla/5.0 Chrome/117.0.5938.132 Safari/537.36',
   },
+  {
+    time: '2026-09-11T08:24:34+00:00',
+    clientIp: '203.0.113.10',
+    path: campaignPath,
+    status: 200,
+    referrerHost: '',
+    userAgent: 'Onyx-GEO-Distribution-Check/1.0',
+  },
 ];
 
 try {
@@ -51,10 +59,11 @@ try {
   assert.equal(report.knownLinkScannerTrackedVisits, 1);
   assert.equal(report.knownLinkScannerUserAgentVisits, 0);
   assert.equal(report.knownLinkScannerNetworkVisits, 1);
+  assert.equal(report.syntheticTrackedVisits, 1);
   assert.equal(report.recentHumanUnverifiedVisits[0].scannerNetwork, null);
   assert.equal(report.recentVisits[0].scannerNetwork, 'Palo Alto Networks URL scanner');
   assert.equal(report.recentVisits[2].scannerNetwork, null);
-  console.log(JSON.stringify({ tests: 9, failures: [] }, null, 2));
+  console.log(JSON.stringify({ tests: 10, failures: [] }, null, 2));
 } finally {
   await rm(directory, { recursive: true, force: true });
 }
