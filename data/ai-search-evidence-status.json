@@ -1,8 +1,8 @@
 {
   "schemaVersion": 2,
-  "version": "2026.09.11.21",
+  "version": "2026.09.11.22",
   "id": "https://hk.onyxdevslab.com/data/ai-search-evidence-status.json",
-  "observedAt": "2026-09-11T14:32:05.739Z",
+  "observedAt": "2026-09-11T15:12:09.669Z",
   "sourceBaseline": "https://github.com/0xHunterL/onyx-devs-lab.github.io/blob/main/docs/geo-baselines/2026-09-11-monitor-evidence.json",
   "versionHistory": [
     {
@@ -64,7 +64,7 @@
       "level": 2,
       "id": "crawled",
       "status": "partially-verified",
-      "claim": "Named crawlers have accessed discovery files or content pages.",
+      "claim": "Named crawlers have accessed discovery files or content pages, and public archives expose historical captures.",
       "evidence": {
         "verifiedGptBotContentCrawls": 27,
         "verifiedGptBotDiscoveryFileCrawls": 13,
@@ -96,6 +96,16 @@
           "unavailableIndexes": [],
           "meaning": "Both selected indexes returned usable responses with zero observed captures. This complete result covers only the selected indexes and must not be interpreted as proof of zero captures across all Common Crawl history."
         },
+        "waybackArchiveObservation": {
+          "checkedAt": "2026-09-11T15:12:09.669Z",
+          "status": "available",
+          "captures": 93,
+          "distinctUrls": 43,
+          "firstCaptureAt": "20260909205420",
+          "lastCaptureAt": "20260910164924",
+          "query": "https://web.archive.org/cdx/search/cdx?url=hk.onyxdevslab.com%2F&matchType=host&output=json&fl=timestamp%2Coriginal%2Cmimetype%2Cstatuscode%2Cdigest&filter=statuscode%3A200&filter=mimetype%3Atext%2Fhtml&limit=1000",
+          "meaning": "The public Wayback CDX host query returned 93 successful HTML capture records across 43 distinct URLs. These records prove public historical captures only; they do not prove current accessibility, search indexing, AI retrieval, citation, ranking, endorsement, or recommendation. An unavailable future query must not be interpreted as zero captures."
+        },
         "fixedPromptCoverage": {
           "prompts": 20,
           "uniqueEvidencePages": 20,
@@ -115,6 +125,7 @@
         "AhrefsBot uses the official Ahrefs published CIDR list. Because it serves both Ahrefs and Yep, verified discovery-file requests do not prove Yep indexing, ranking, retrieval, citation, or AI recommendation and are excluded from fixed-prompt search coverage.",
         "Bytespider candidates are labeled user-agent-only and identity-unverified; they do not prove Doubao or ByteDance access.",
         "Common Crawl index observations cover only the named selected indexes; they do not prove search indexing, retrieval, citation, or absence across all crawl history.",
+        "Wayback CDX records prove public historical captures only; they do not prove current accessibility, search indexing, AI retrieval, citation, ranking, endorsement, or recommendation.",
         "Discovery-file visits do not prove content-page ingestion.",
         "Bingbot content crawls do not prove public search indexing.",
         "Prompt-level crawl coverage does not prove prompt retrieval, citation, ranking, or recommendation."

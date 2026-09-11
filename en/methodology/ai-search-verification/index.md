@@ -37,7 +37,7 @@ Partially verified
 
 ### Crawled
 
-GPTBot made 27 provider-verified content requests; all verified crawlers together covered 43 canonical content paths. 15 of 20 fixed prompts have at least one verified-crawled evidence page and 9 have all pages crawled; search/retrieval-related crawler coverage is 15/20.
+GPTBot made 27 provider-verified content requests; all verified crawlers together covered 43 canonical content paths. The public Wayback CDX separately exposes 93 successful HTML captures across 43 URLs. 15 of 20 fixed prompts have at least one verified-crawled evidence page and 9 have all pages crawled; search/retrieval-related crawler coverage is 15/20.
 
 Not verified
 
