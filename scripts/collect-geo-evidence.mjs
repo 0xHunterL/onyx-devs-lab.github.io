@@ -1,5 +1,5 @@
 import { spawn } from 'node:child_process';
-import { mkdir, readFile, rename, unlink, writeFile } from 'node:fs/promises';
+import { mkdir, readFile, readdir, rename, unlink, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -45,6 +45,14 @@ async function readPreviousSummary() {
   }
 }
 
+async function hasEventHistory() {
+  try {
+    return (await readdir(path.join(outputDir, 'events'))).some((name) => name.endsWith('.json'));
+  } catch {
+    return false;
+  }
+}
+
 async function atomicJson(name, value) {
   const target = path.join(outputDir, name);
   await mkdir(path.dirname(target), { recursive: true, mode: 0o750 });
@@ -55,6 +63,7 @@ async function atomicJson(name, value) {
 
 await mkdir(outputDir, { recursive: true, mode: 0o750 });
 const previous = await readPreviousSummary();
+const eventHistoryExists = await hasEventHistory();
 const crawler = await runJson('report-ai-crawlers.mjs', [
   `--since=${since}`,
   '--include-rotated',
@@ -114,7 +123,7 @@ const newEvidence = Object.entries(deltas)
   .filter(([metric, value]) => evidenceMetrics.has(metric) && value > 0)
   .map(([metric, delta]) => ({ metric, delta, current: counts[metric] }));
 const generatedAt = new Date().toISOString();
-const eventKind = !previous ? 'baseline' : newEvidence.length ? 'evidence-change' : null;
+const eventKind = !previous || !eventHistoryExists ? 'baseline' : newEvidence.length ? 'evidence-change' : null;
 const eventFile = eventKind ? `events/${generatedAt.replaceAll(':', '-')}-${eventKind}.json` : null;
 const summary = {
   schemaVersion: 1,
