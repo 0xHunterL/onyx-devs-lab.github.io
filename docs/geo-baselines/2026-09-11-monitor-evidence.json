@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "publicStatusVersion": "2026.09.11.23",
-  "generatedAt": "2026-09-11T15:18:24.259Z",
+  "publicStatusVersion": "2026.09.11.24",
+  "generatedAt": "2026-09-11T15:44:03.841Z",
   "windowStart": "2026-09-01",
   "site": "https://hk.onyxdevslab.com/",
   "sourceLogs": [
@@ -22,7 +22,7 @@
     "perplexityContentRequests": 0,
     "applebotContentRequests": 0,
     "applebotDiscoveryFileRequests": 0,
-    "yandexbotContentRequests": 70,
+    "yandexbotContentRequests": 71,
     "yandexbotDiscoveryFileRequests": 64,
     "ahrefsbotContentRequests": 0,
     "ahrefsbotDiscoveryFileRequests": 67,
@@ -34,7 +34,7 @@
     },
     "yandexHistoricalRecognition": {
       "firstSeen": "2026-09-08T12:45:20Z",
-      "lastSeen": "2026-09-11T15:15:15Z",
+      "lastSeen": "2026-09-11T15:31:06Z",
       "verifiedContentPaths": 41,
       "meaning": "YandexBot monitoring was added after the latest requests exposed the missing family. Most of these provider-verified requests are historical observations newly recognized in current and rotated logs; they are not all newly occurring crawls."
     },
@@ -51,7 +51,7 @@
   "identityUnverifiedCrawlerEvidence": {
     "bytespiderContentRequestCandidates": 0,
     "bytespiderDiscoveryFileRequestCandidates": 0,
-    "syntheticBytespiderReleaseChecksExcluded": 2368,
+    "syntheticBytespiderReleaseChecksExcluded": 3019,
     "identityStatus": "user-agent-only-unverified",
     "meaning": "No non-synthetic Bytespider request was observed. Future candidates are tracked separately by self-declared User-Agent and do not prove Doubao or ByteDance access."
   },
@@ -112,7 +112,7 @@
     ]
   },
   "commonCrawlEvidence": {
-    "checkedAt": "2026-09-11T14:32:05.739Z",
+    "checkedAt": "2026-09-11T15:44:03.841Z",
     "status": "available",
     "capturesObservedInAvailableIndexes": 0,
     "availableIndexes": ["CC-MAIN-2026-34", "CC-MAIN-2026-30"],
@@ -120,7 +120,7 @@
     "meaning": "Both selected indexes returned usable responses with zero observed captures. This complete result covers only the selected indexes and must not be interpreted as proof of zero captures across all Common Crawl history."
   },
   "waybackEvidence": {
-    "checkedAt": "2026-09-11T15:18:24.259Z",
+    "checkedAt": "2026-09-11T15:44:03.841Z",
     "status": "available",
     "captures": 93,
     "distinctUrls": 43,
@@ -133,7 +133,7 @@
     "manifestItems": 8,
     "publishedItems": 7,
     "readyNotPublishedItems": 1,
-    "checkedAt": "2026-09-11T14:32:05.739Z",
+    "checkedAt": "2026-09-11T15:44:03.841Z",
     "publicUrlsChecked": 7,
     "trackedTargetsChecked": 17,
     "availableSources": 24,
