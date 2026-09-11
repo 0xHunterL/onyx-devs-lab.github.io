@@ -44,6 +44,9 @@ const summary = {
     commonCrawlCaptures: commonCrawl.capturesObservedInAvailableIndexes,
     waybackCaptures: wayback.captures,
     waybackDistinctUrls: wayback.distinctUrls,
+    waybackArchivedEvidencePages: wayback.fixedPromptArchiveCoverage.archivedEvidencePages,
+    promptsWithAnyWaybackArchive: wayback.fixedPromptArchiveCoverage.promptsWithAnyArchivedEvidence,
+    promptsFullyWaybackArchived: wayback.fixedPromptArchiveCoverage.promptsFullyArchived,
   },
   availability: {
     commonCrawl: {
@@ -98,4 +101,8 @@ const waybackDrift = structuredClone(summary);
 waybackDrift.counts.waybackDistinctUrls += 1;
 assert.equal(buildPublicationDrift(baseline, waybackDrift).mismatches[0].field, 'waybackEvidence.distinctUrls');
 
-console.log(JSON.stringify({ tests: 7, failures: [] }, null, 2));
+const waybackPromptDrift = structuredClone(summary);
+waybackPromptDrift.counts.promptsFullyWaybackArchived += 1;
+assert.equal(buildPublicationDrift(baseline, waybackPromptDrift).mismatches[0].field, 'waybackEvidence.fixedPromptArchiveCoverage.promptsFullyArchived');
+
+console.log(JSON.stringify({ tests: 8, failures: [] }, null, 2));

@@ -42,7 +42,7 @@ const counts = buildEvidenceCounts(
   },
   { totals: { captures: 0, distinctUrls: 0 } },
   { totals: { searchRelatedCrawledEvidencePages: 0, promptsWithAnySearchRelatedCrawl: 0 } },
-  { totals: { captures: 93, distinctUrls: 43 } },
+  { totals: { captures: 93, distinctUrls: 43 }, promptCoverage: { totals: { archivedEvidencePages: 15, promptsWithAnyArchivedEvidence: 15, promptsFullyArchived: 12 } } },
 );
 
 assert.equal(counts.trackedVisits, 70);
@@ -67,6 +67,9 @@ assert.equal(counts.verifiedAhrefsPageCrawls, 1);
 assert.equal(counts.verifiedAhrefsDiscoveryFileCrawls, 1);
 assert.equal(counts.waybackCaptures, 93);
 assert.equal(counts.waybackDistinctUrls, 43);
+assert.equal(counts.waybackArchivedEvidencePages, 15);
+assert.equal(counts.promptsWithAnyWaybackArchive, 15);
+assert.equal(counts.promptsFullyWaybackArchived, 12);
 
 const deltas = buildEvidenceDeltas(counts, {
   trackedVisits: 69,
@@ -183,4 +186,4 @@ assert.equal(selectEvidenceEventKind({ initializing: false, evidenceChanged: tru
 assert.equal(selectEvidenceEventKind({ initializing: false, evidenceChanged: false, availabilityChanged: true }), 'availability-change');
 assert.equal(selectEvidenceEventKind({ initializing: false, evidenceChanged: false, availabilityChanged: false }), null);
 
-console.log(JSON.stringify({ tests: 66, failures: [] }, null, 2));
+console.log(JSON.stringify({ tests: 69, failures: [] }, null, 2));

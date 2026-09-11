@@ -40,6 +40,9 @@ export function buildEvidenceCounts(crawler, referral, commonCrawl, promptCovera
     commonCrawlDistinctUrls: commonCrawl.totals.distinctUrls,
     waybackCaptures: wayback.totals.captures,
     waybackDistinctUrls: wayback.totals.distinctUrls,
+    waybackArchivedEvidencePages: wayback.promptCoverage?.totals?.archivedEvidencePages || 0,
+    promptsWithAnyWaybackArchive: wayback.promptCoverage?.totals?.promptsWithAnyArchivedEvidence || 0,
+    promptsFullyWaybackArchived: wayback.promptCoverage?.totals?.promptsFullyArchived || 0,
   };
 }
 

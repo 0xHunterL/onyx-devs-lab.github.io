@@ -40,3 +40,38 @@ export function parseWaybackCdx(value, { host, query }) {
     query,
   };
 }
+
+export function buildWaybackPromptCoverage(captures, promptMatrix, { origin }) {
+  if (!Array.isArray(promptMatrix?.prompts)) throw new Error('Prompt matrix is missing prompts');
+  const archived = new Set(captures.map((capture) => capture.url));
+  const details = promptMatrix.prompts.map((prompt) => {
+    if (!prompt.id || !Array.isArray(prompt.evidenceUrls) || !prompt.evidenceUrls.length) throw new Error('Prompt matrix contains a prompt without evidence URLs');
+    const evidenceUrls = prompt.evidenceUrls.map((url) => new URL(url, origin).href);
+    const archivedEvidenceUrls = evidenceUrls.filter((url) => archived.has(url));
+    return {
+      id: prompt.id,
+      evidenceUrls,
+      archivedEvidenceUrls,
+      missingEvidenceUrls: evidenceUrls.filter((url) => !archived.has(url)),
+      hasAnyArchivedEvidence: archivedEvidenceUrls.length > 0,
+      fullyArchived: archivedEvidenceUrls.length === evidenceUrls.length,
+    };
+  });
+  const uniqueEvidenceUrls = [...new Set(details.flatMap((detail) => detail.evidenceUrls))].sort();
+  const archivedEvidenceUrls = uniqueEvidenceUrls.filter((url) => archived.has(url));
+  return {
+    schemaVersion: 1,
+    promptMatrixSchemaVersion: promptMatrix.schemaVersion ?? null,
+    totals: {
+      prompts: details.length,
+      uniqueEvidencePages: uniqueEvidenceUrls.length,
+      archivedEvidencePages: archivedEvidenceUrls.length,
+      promptsWithAnyArchivedEvidence: details.filter((detail) => detail.hasAnyArchivedEvidence).length,
+      promptsFullyArchived: details.filter((detail) => detail.fullyArchived).length,
+    },
+    archivedEvidenceUrls,
+    missingEvidenceUrls: uniqueEvidenceUrls.filter((url) => !archived.has(url)),
+    prompts: details,
+    evidenceBoundary: 'Prompt-level Wayback coverage proves only that one or more mapped evidence pages have public historical captures. It does not prove that the prompt, page, or answer is indexed, retrieved, cited, ranked, endorsed, or recommended by a search or AI product.',
+  };
+}

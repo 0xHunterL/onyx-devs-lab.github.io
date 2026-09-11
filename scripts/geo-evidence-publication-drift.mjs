@@ -50,6 +50,9 @@ export function buildPublicationDrift(baseline, summary) {
     ['commonCrawlEvidence.capturesObservedInAvailableIndexes', commonCrawl.capturesObservedInAvailableIndexes, counts.commonCrawlCaptures],
     ['waybackEvidence.captures', wayback.captures, counts.waybackCaptures],
     ['waybackEvidence.distinctUrls', wayback.distinctUrls, counts.waybackDistinctUrls],
+    ['waybackEvidence.fixedPromptArchiveCoverage.archivedEvidencePages', wayback.fixedPromptArchiveCoverage?.archivedEvidencePages, counts.waybackArchivedEvidencePages],
+    ['waybackEvidence.fixedPromptArchiveCoverage.promptsWithAnyArchivedEvidence', wayback.fixedPromptArchiveCoverage?.promptsWithAnyArchivedEvidence, counts.promptsWithAnyWaybackArchive],
+    ['waybackEvidence.fixedPromptArchiveCoverage.promptsFullyArchived', wayback.fixedPromptArchiveCoverage?.promptsFullyArchived, counts.promptsFullyWaybackArchived],
   ];
   for (const mapping of countMappings) check(...mapping);
 

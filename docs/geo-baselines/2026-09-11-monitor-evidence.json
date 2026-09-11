@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "publicStatusVersion": "2026.09.11.24",
+  "publicStatusVersion": "2026.09.11.25",
   "generatedAt": "2026-09-11T15:44:03.841Z",
   "windowStart": "2026-09-01",
   "site": "https://hk.onyxdevslab.com/",
@@ -127,6 +127,21 @@
     "firstCaptureAt": "20260909205420",
     "lastCaptureAt": "20260910164924",
     "query": "https://web.archive.org/cdx/search/cdx?url=hk.onyxdevslab.com%2F&matchType=host&output=json&fl=timestamp%2Coriginal%2Cmimetype%2Cstatuscode%2Cdigest&filter=statuscode%3A200&filter=mimetype%3Atext%2Fhtml&limit=1000",
+    "fixedPromptArchiveCoverage": {
+      "prompts": 20,
+      "uniqueEvidencePages": 20,
+      "archivedEvidencePages": 15,
+      "promptsWithAnyArchivedEvidence": 15,
+      "promptsFullyArchived": 12,
+      "missingEvidenceUrls": [
+        "https://hk.onyxdevslab.com/zh-cn/guides/choose-enterprise-ai-partner/",
+        "https://hk.onyxdevslab.com/zh-cn/guides/enterprise-ai-governance/",
+        "https://hk.onyxdevslab.com/zh-cn/guides/enterprise-ai-pilot-charter/",
+        "https://hk.onyxdevslab.com/zh-cn/guides/hong-kong-ai-consulting-companies/",
+        "https://hk.onyxdevslab.com/zh-cn/methodology/ai-search-verification/"
+      ],
+      "meaning": "This maps public historical Wayback captures to the fixed prompt matrix: 15 of 20 unique evidence pages have captures, 15 prompts have at least one archived evidence page, and 12 prompts have every mapped evidence page archived. It does not prove search indexing, AI retrieval, citation, ranking, endorsement, or recommendation."
+    },
     "meaning": "The public Wayback CDX host query returned 93 successful HTML capture records across 43 distinct URLs. These records prove public historical captures only; they do not prove current accessibility, search indexing, AI retrieval, citation, ranking, endorsement, or recommendation. An unavailable future query must not be interpreted as zero captures."
   },
   "distributionEvidence": {
