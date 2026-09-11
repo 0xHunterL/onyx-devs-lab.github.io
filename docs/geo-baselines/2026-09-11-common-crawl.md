@@ -16,3 +16,5 @@
 2026-09-11T10:23:19Z 生产采集时，官方索引列表可用，但 `CC-MAIN-2026-34` 和 `CC-MAIN-2026-30` 查询分别返回 HTTP `502` 与 `504`；该轮状态为 `partial`，两个索引都未提供可用查询结果。2026-09-11T10:26:11Z 再次由正式 systemd service 采集时，`CC-MAIN-2026-30` 已可用，`CC-MAIN-2026-34` 仍返回 HTTP `502`，总体状态仍为 `partial`。因此这两轮的捕获计数都是不完整观测，不得用来更新上述“两个索引均为零”的完整基线。
 
 同轮已将监测器升级为保留 `available`、`partial` 与 `unavailable` 之间的状态转换事件。这类事件只证明监测源的可用性变化，不是新捕获或可发现性提升证据。
+
+2026-09-11T10:40:23Z 再次生产采集时，两个索引均返回可用结果，捕获 URL 仍为 0。状态从 `partial` 恢复为 `available`，监测器生成了 `events/2026-09-11T10-40-23.179Z-availability-change.json`；事件中 `availabilityChanged` 为 `true`、`changed` 为 `false`、`newEvidence` 为空。该事件以 `0640 root:root` 保存在生产持久目录，证明可用性转换会被保留，同时不会被误报为新收录或新抓取。
