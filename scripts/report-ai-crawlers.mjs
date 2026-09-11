@@ -4,6 +4,7 @@ import { gunzipSync } from 'node:zlib';
 import { resolveLogPaths } from './resolve-log-paths.mjs';
 import { buildUserAgentOnlyCrawlerEvidenceObservations, buildVerifiedCrawlerEvidenceObservations } from './crawler-evidence-observations.mjs';
 import { isInIpPrefix } from './ip-prefix.mjs';
+import { applyPublishedPrefixVerification, fetchPublishedIpPrefixes } from './published-prefix-verification.mjs';
 import { selectTrustedClientIp } from './trusted-client-ip.mjs';
 
 const crawlerFamilies = [
@@ -98,57 +99,6 @@ function parseNginxTime(value) {
   return Date.UTC(Number(match[3]), months[match[2]], Number(match[1]), Number(match[4]), Number(match[5]), Number(match[6])) - offsetMinutes * 60_000;
 }
 
-async function publishedIpPrefixes(url) {
-  let lastFailure = null;
-  for (let attempt = 1; attempt <= 2; attempt += 1) {
-    try {
-      const response = await fetch(url, {
-        signal: AbortSignal.timeout(10_000),
-        headers: { 'User-Agent': 'Onyx-GEO-Crawler-Verifier/1.0' },
-      });
-      if (!response.ok) {
-        lastFailure = { httpStatus: response.status, reason: `HTTP ${response.status}` };
-        continue;
-      }
-      const body = await response.json();
-      const prefixes = Array.isArray(body.prefixes)
-        ? body.prefixes.flatMap((entry) => [entry.ipv4Prefix, entry.ipv6Prefix]).filter(Boolean)
-        : [];
-      if (!prefixes.length) {
-        lastFailure = { httpStatus: response.status, reason: 'published prefix list is empty or malformed' };
-        continue;
-      }
-      return { url, status: 'available', httpStatus: response.status, attempts: attempt, prefixCount: prefixes.length, prefixes };
-    } catch (error) {
-      lastFailure = { httpStatus: null, reason: error.message };
-    }
-  }
-  return { url, status: 'unavailable', attempts: 2, prefixCount: 0, prefixes: [], ...lastFailure };
-}
-
-function applyPublishedPrefixVerification(events, family, source, verifiedReason) {
-  for (const event of events) {
-    if (event.family !== family) continue;
-    if (source.status !== 'available') {
-      event.providerVerified = null;
-      event.providerVerification = {
-        method: 'published-ip-prefix',
-        verified: null,
-        verificationUnavailable: true,
-        reason: 'published-ip-prefix-list-unavailable',
-        sourceReason: source.reason,
-      };
-      continue;
-    }
-    event.providerVerified = source.prefixes.some((prefix) => isInIpPrefix(event.ip, prefix));
-    event.providerVerification = {
-      method: 'published-ip-prefix',
-      verified: event.providerVerified,
-      reason: event.providerVerified ? verifiedReason : 'not-in-official-provider-ip-range',
-    };
-  }
-}
-
 function normalizeIp(ip) {
   return ip.toLowerCase().replace(/^::ffff:/, '');
 }
@@ -241,8 +191,8 @@ for (const path of paths) {
 
 if (verifyOpenAi) {
   const [gptBotSource, searchBotSource] = await Promise.all([
-    publishedIpPrefixes('https://openai.com/gptbot.json'),
-    publishedIpPrefixes('https://openai.com/searchbot.json'),
+    fetchPublishedIpPrefixes('https://openai.com/gptbot.json'),
+    fetchPublishedIpPrefixes('https://openai.com/searchbot.json'),
   ]);
   verificationSources.gptBot = gptBotSource;
   verificationSources.oaiSearchBot = searchBotSource;
@@ -252,8 +202,8 @@ if (verifyOpenAi) {
 
 if (verifyPerplexity) {
   const [botSource, userSource] = await Promise.all([
-    publishedIpPrefixes('https://www.perplexity.com/perplexitybot.json'),
-    publishedIpPrefixes('https://www.perplexity.com/perplexity-user.json'),
+    fetchPublishedIpPrefixes('https://www.perplexity.com/perplexitybot.json'),
+    fetchPublishedIpPrefixes('https://www.perplexity.com/perplexity-user.json'),
   ]);
   verificationSources.perplexityBot = botSource;
   verificationSources.perplexityUser = userSource;
@@ -262,7 +212,7 @@ if (verifyPerplexity) {
 }
 
 if (verifyCommonCrawl) {
-  const source = await publishedIpPrefixes('https://index.commoncrawl.org/ccbot.json');
+  const source = await fetchPublishedIpPrefixes('https://index.commoncrawl.org/ccbot.json');
   verificationSources.commonCrawlBot = source;
   applyPublishedPrefixVerification(events, 'CCBot', source, 'official-common-crawl-ip-range');
 }

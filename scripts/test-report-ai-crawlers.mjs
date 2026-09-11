@@ -6,6 +6,7 @@ import path from 'node:path';
 import { promisify } from 'node:util';
 import { buildVerifiedCrawlerEvidenceObservations } from './crawler-evidence-observations.mjs';
 import { isInIpPrefix } from './ip-prefix.mjs';
+import { applyPublishedPrefixVerification, fetchPublishedIpPrefixes } from './published-prefix-verification.mjs';
 import { cloudflareProxyPrefixes, selectTrustedClientIp } from './trusted-client-ip.mjs';
 
 const execFileAsync = promisify(execFile);
@@ -75,7 +76,51 @@ try {
   assert.equal(cloudflareProxyPrefixes.length, 22);
   assert.deepEqual(selectTrustedClientIp('18.97.14.80', '173.245.48.1'), { ip: '18.97.14.80', trustedProxy: true });
   assert.deepEqual(selectTrustedClientIp('18.97.14.80', '203.0.113.50'), { ip: '203.0.113.50', trustedProxy: false });
-  console.log(JSON.stringify({ tests: 26, failures: [] }, null, 2));
+
+  let failedFetchAttempts = 0;
+  const unavailableSource = await fetchPublishedIpPrefixes('https://provider.invalid/prefixes.json', {
+    fetchImpl: async () => {
+      failedFetchAttempts += 1;
+      throw new Error('simulated connect timeout');
+    },
+    timeoutMs: 10,
+  });
+  assert.equal(failedFetchAttempts, 2);
+  assert.equal(unavailableSource.status, 'unavailable');
+  assert.equal(unavailableSource.reason, 'simulated connect timeout');
+
+  const unavailableEvents = [{ family: 'CCBot', ip: '3.41.188.39' }];
+  applyPublishedPrefixVerification(unavailableEvents, 'CCBot', unavailableSource, 'official-common-crawl-ip-range');
+  assert.equal(unavailableEvents[0].providerVerified, null);
+  assert.equal(unavailableEvents[0].providerVerification.verificationUnavailable, true);
+
+  let recoveredFetchAttempts = 0;
+  const recoveredSource = await fetchPublishedIpPrefixes('https://provider.example/prefixes.json', {
+    fetchImpl: async () => {
+      recoveredFetchAttempts += 1;
+      if (recoveredFetchAttempts === 1) return { ok: false, status: 503 };
+      return {
+        ok: true,
+        status: 200,
+        json: async () => ({ prefixes: [{ ipv4Prefix: '3.41.188.32/29', ipv6Prefix: '2600:1f28:365:8000::/56' }] }),
+      };
+    },
+    timeoutMs: 10,
+  });
+  assert.equal(recoveredSource.status, 'available');
+  assert.equal(recoveredSource.attempts, 2);
+  assert.equal(recoveredSource.prefixCount, 2);
+  const verifiedEvents = [
+    { family: 'CCBot', ip: '3.41.188.39' },
+    { family: 'CCBot', ip: '203.0.113.10' },
+    { family: 'GPTBot', ip: '3.41.188.39' },
+  ];
+  applyPublishedPrefixVerification(verifiedEvents, 'CCBot', recoveredSource, 'official-common-crawl-ip-range');
+  assert.equal(verifiedEvents[0].providerVerified, true);
+  assert.equal(verifiedEvents[1].providerVerified, false);
+  assert.equal('providerVerified' in verifiedEvents[2], false);
+
+  console.log(JSON.stringify({ tests: 38, failures: [] }, null, 2));
 } finally {
   await rm(directory, { recursive: true, force: true });
 }
