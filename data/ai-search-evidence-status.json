@@ -1,8 +1,8 @@
 {
   "schemaVersion": 2,
-  "version": "2026.09.11.22",
+  "version": "2026.09.11.23",
   "id": "https://hk.onyxdevslab.com/data/ai-search-evidence-status.json",
-  "observedAt": "2026-09-11T15:12:09.669Z",
+  "observedAt": "2026-09-11T15:18:24.259Z",
   "sourceBaseline": "https://github.com/0xHunterL/onyx-devs-lab.github.io/blob/main/docs/geo-baselines/2026-09-11-monitor-evidence.json",
   "versionHistory": [
     {
@@ -68,7 +68,7 @@
       "evidence": {
         "verifiedGptBotContentCrawls": 27,
         "verifiedGptBotDiscoveryFileCrawls": 13,
-        "verifiedDistinctContentPaths": 43,
+        "verifiedDistinctContentPaths": 44,
         "verifiedOaiSearchBotDiscoveryFileVisits": 8,
         "verifiedOaiSearchBotContentCrawls": 0,
         "historicallyVerifiedBingbotContentCrawls": 7,
@@ -76,8 +76,8 @@
         "verifiedBaiduspiderDiscoveryFileCrawls": 0,
         "verifiedApplebotContentCrawls": 0,
         "verifiedApplebotDiscoveryFileCrawls": 0,
-        "verifiedYandexbotContentCrawls": 69,
-        "verifiedYandexbotDiscoveryFileCrawls": 63,
+        "verifiedYandexbotContentCrawls": 70,
+        "verifiedYandexbotDiscoveryFileCrawls": 64,
         "verifiedAhrefsBotContentCrawls": 0,
         "verifiedAhrefsBotDiscoveryFileCrawls": 67,
         "verifiedGooglebotContentCrawls": 0,
@@ -97,7 +97,7 @@
           "meaning": "Both selected indexes returned usable responses with zero observed captures. This complete result covers only the selected indexes and must not be interpreted as proof of zero captures across all Common Crawl history."
         },
         "waybackArchiveObservation": {
-          "checkedAt": "2026-09-11T15:12:09.669Z",
+          "checkedAt": "2026-09-11T15:18:24.259Z",
           "status": "available",
           "captures": 93,
           "distinctUrls": 43,
