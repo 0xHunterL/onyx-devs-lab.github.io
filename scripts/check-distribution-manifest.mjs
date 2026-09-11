@@ -32,6 +32,7 @@ for (const item of manifest.items || []) {
     }
   } else if (item.status === 'published') {
     if (!item.publicUrl || !item.anonymousAccessVerifiedAt) failures.push(`${item.id}: published status requires a public URL and anonymous-access verification`);
+    if (!Array.isArray(item.publicContentMarkers) || item.publicContentMarkers.length < 2 || item.publicContentMarkers.some((marker) => typeof marker !== 'string' || !marker.trim())) failures.push(`${item.id}: published status requires at least two public content markers`);
     if (item.publicUrl) {
       const publicUrl = new URL(item.publicUrl);
       if (publicUrl.hostname === 'hk.onyxdevslab.com') failures.push(`${item.id}: publicUrl must be an offsite URL`);

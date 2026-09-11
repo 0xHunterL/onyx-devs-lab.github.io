@@ -6,24 +6,34 @@ const published = (manifest.items || []).filter((item) => item.status === 'publi
 const failures = [];
 const results = [];
 
-async function request(kind, itemId, url) {
+async function request(kind, item, url) {
   try {
     const response = await fetch(url, {
       redirect: 'follow',
       signal: AbortSignal.timeout(15_000),
       headers: { 'User-Agent': 'Onyx-GEO-Release-Check Distribution/1.0' },
     });
-    results.push({ kind, itemId, url, finalUrl: response.url, status: response.status });
-    if (!response.ok) failures.push(`${itemId}: ${kind} returned HTTP ${response.status}: ${url}`);
+    const requested = new URL(url);
+    const final = new URL(response.url);
+    const sameDestination = requested.hostname === final.hostname && requested.pathname === final.pathname && requested.search === final.search;
+    let actualMissingMarkers = [];
+    if (kind === 'publicUrl' && response.ok) {
+      const body = await response.text();
+      actualMissingMarkers = (item.publicContentMarkers || []).filter((marker) => !body.includes(marker));
+    }
+    results.push({ kind, itemId: item.id, url, finalUrl: response.url, status: response.status, sameDestination, missingMarkers: actualMissingMarkers });
+    if (!response.ok) failures.push(`${item.id}: ${kind} returned HTTP ${response.status}: ${url}`);
+    if (!sameDestination) failures.push(`${item.id}: ${kind} redirected away from the declared destination: ${url} -> ${response.url}`);
+    if (actualMissingMarkers.length) failures.push(`${item.id}: publicUrl is missing markers: ${actualMissingMarkers.join(', ')}`);
   } catch (error) {
-    results.push({ kind, itemId, url, status: 'unavailable', reason: error.message });
-    failures.push(`${itemId}: ${kind} unavailable: ${url}: ${error.message}`);
+    results.push({ kind, itemId: item.id, url, status: 'unavailable', reason: error.message });
+    failures.push(`${item.id}: ${kind} unavailable: ${url}: ${error.message}`);
   }
 }
 
 await Promise.all(published.flatMap((item) => [
-  request('publicUrl', item.id, item.publicUrl),
-  ...(item.trackedTargets || []).map((url) => request('trackedTarget', item.id, url)),
+  request('publicUrl', item, item.publicUrl),
+  ...(item.trackedTargets || []).map((url) => request('trackedTarget', item, url)),
 ]));
 
 console.log(JSON.stringify({

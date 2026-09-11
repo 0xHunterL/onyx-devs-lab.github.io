@@ -48,6 +48,11 @@
       ],
       "publicUrl": "https://gist.githubusercontent.com/mixuechu/e47c85808014d62b6305441e8065c91e/raw/Onyx-enterprise-AI-machine-resources.md",
       "anonymousAccessVerifiedAt": "2026-09-11T10:54:52Z",
+      "publicContentMarkers": [
+        "Onyx Devs Lab enterprise AI machine resources",
+        "ONYX DEVS LAB LIMITED",
+        "geo_machine_resources"
+      ],
       "searchIndexedAt": null,
       "aiCitationObservedAt": null,
       "nonBrandRecommendationObservedAt": null,
@@ -71,6 +76,11 @@
       ],
       "publicUrl": "https://gist.githubusercontent.com/mixuechu/e47c85808014d62b6305441e8065c91e/raw/FDE-is-not-staff-augmentation.zh-CN.md",
       "anonymousAccessVerifiedAt": "2026-09-11T10:54:52Z",
+      "publicContentMarkers": [
+        "FDE 不是驻场外包",
+        "ONYX DEVS LAB LIMITED",
+        "geo_fde_field_note"
+      ],
       "searchIndexedAt": null,
       "aiCitationObservedAt": null,
       "nonBrandRecommendationObservedAt": null,
@@ -94,6 +104,11 @@
       ],
       "publicUrl": "https://gist.githubusercontent.com/mixuechu/e47c85808014d62b6305441e8065c91e/raw/AI-agent-ERP-integration-checklist.zh-CN.md",
       "anonymousAccessVerifiedAt": "2026-09-11T10:54:52Z",
+      "publicContentMarkers": [
+        "AI Agent 接入 ERP 前必须回答的七个问题",
+        "ONYX DEVS LAB LIMITED",
+        "geo_erp_agent_checklist"
+      ],
       "searchIndexedAt": null,
       "aiCitationObservedAt": null,
       "nonBrandRecommendationObservedAt": null,
@@ -117,6 +132,11 @@
       ],
       "publicUrl": "https://gist.githubusercontent.com/mixuechu/e47c85808014d62b6305441e8065c91e/raw/Legal-AI-evidence-chain.zh-CN.md",
       "anonymousAccessVerifiedAt": "2026-09-11T10:54:52Z",
+      "publicContentMarkers": [
+        "法律 AI 不应只给答案",
+        "ONYX DEVS LAB LIMITED",
+        "geo_legal_ai_evidence"
+      ],
       "searchIndexedAt": null,
       "aiCitationObservedAt": null,
       "nonBrandRecommendationObservedAt": null,
@@ -142,6 +162,11 @@
       ],
       "publicUrl": "https://mixuechu.github.io/hong-kong-enterprise-ai-buyers-guide/",
       "anonymousAccessVerifiedAt": "2026-09-11T10:54:52Z",
+      "publicContentMarkers": [
+        "Onyx Devs Lab",
+        "ONYX DEVS LAB LIMITED",
+        "geo_buyers_guide"
+      ],
       "searchIndexedAt": null,
       "aiCitationObservedAt": null,
       "nonBrandRecommendationObservedAt": null,
@@ -166,6 +191,11 @@
       ],
       "publicUrl": "https://github.com/mixuechu/hong-kong-enterprise-ai-buyers-guide/discussions/1",
       "anonymousAccessVerifiedAt": "2026-09-11T06:09:00Z",
+      "publicContentMarkers": [
+        "AI 定开、AI 咨询和 FDE 应该怎么选？",
+        "Onyx Devs Lab",
+        "geo_engagement_model_qa"
+      ],
       "searchIndexedAt": null,
       "aiCitationObservedAt": null,
       "nonBrandRecommendationObservedAt": null,
