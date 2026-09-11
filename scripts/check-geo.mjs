@@ -59,6 +59,7 @@ const cloudflareRealIpConfig = fs.readFileSync(path.resolve('deploy/cloudflare-r
 const referralReportSource = fs.readFileSync(path.resolve('scripts/report-geo-referrals.mjs'), 'utf8');
 const crawlerReportSource = fs.readFileSync(path.resolve('scripts/report-ai-crawlers.mjs'), 'utf8');
 const packageSource = fs.readFileSync(path.resolve('package.json'), 'utf8');
+const buildSource = fs.readFileSync(path.resolve('scripts/build-site.mjs'), 'utf8');
 const geoOperationsSource = fs.readFileSync(path.resolve('docs/HK-GEO-发布手册.md'), 'utf8');
 const crawlerObservationSource = fs.readFileSync(path.resolve('scripts/crawler-evidence-observations.mjs'), 'utf8');
 const evidenceSummarySource = fs.readFileSync(path.resolve('scripts/geo-evidence-summary.mjs'), 'utf8');
@@ -71,6 +72,7 @@ if (!crawlerReportSource.includes('userAgentOnlyBytespiderPageCrawls') || !crawl
 if (!crawlerReportSource.includes("--verify-apple") || !crawlerReportSource.includes('https://search.developer.apple.com/applebot.json') || !evidenceCollectorSource.includes("'--verify-apple'")) failures.push('crawler report: official Applebot verification is not enabled in the production collector');
 if (!crawlerReportSource.includes("--verify-baidu") || !crawlerReportSource.includes("['.baidu.com', '.baidu.jp']") || !crawlerReportSource.includes('official-reverse-dns-suffix-plus-forward-confirmation') || !evidenceCollectorSource.includes("'--verify-baidu'")) failures.push('crawler report: official Baiduspider DNS verification is not enabled in the production collector');
 if (fs.existsSync(path.resolve('scripts/report-bing-public-search.mjs')) || packageSource.includes('geo:public-search-report') || geoOperationsSource.includes('npm run geo:public-search-report') || !geoOperationsSource.includes('限制为个人、非商业用途的公开 RSS 结果接口')) failures.push('public search compliance: restricted Bing RSS monitoring path is present or its prohibition is undocumented');
+if (!packageSource.includes('node scripts/build-site.mjs') || !buildSource.includes('restoreUnchangedFileTimes') || !buildSource.includes("createHash('sha256')")) failures.push('build freshness: unchanged generated files do not preserve stable Last-Modified and ETag inputs');
 if (!crawlerReportSource.includes('const pagePath = /^(?:\\/$|') || !crawlerReportSource.includes('feed\\.(?:xml|json)') || !crawlerReportSource.includes('data\\/[^/]+\\.json(?:ld)?')) failures.push('crawler report: homepage or machine-resource path classification is missing');
 if (nginxLogConfig.includes('$http_cf_connecting_ip') || !nginxLogConfig.includes('"clientIp":"$remote_addr"') || !nginxLogConfig.includes('"proxyIp":"$realip_remote_addr"')) failures.push('nginx GEO log: client IP does not use the trusted Real-IP result');
 if (!cloudflareRealIpConfig.includes('real_ip_header CF-Connecting-IP;') || !cloudflareRealIpConfig.includes('real_ip_recursive on;') || (cloudflareRealIpConfig.match(/^set_real_ip_from /gm) || []).length !== 22 || !cloudflareRealIpConfig.includes('2606:4700::/32')) failures.push('nginx Real-IP: Cloudflare IPv4/IPv6 trust configuration is incomplete');

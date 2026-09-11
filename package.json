@@ -6,7 +6,7 @@
   "homepage": "https://onyx-devs-lab.github.io",
   "scripts": {
     "dev": "vite",
-    "build": "vite build && node scripts/generate-geo-pages.mjs",
+    "build": "node scripts/build-site.mjs",
     "geo:check": "node scripts/check-geo.mjs",
     "geo:prompt-coverage": "node scripts/check-prompt-coverage.mjs",
     "geo:content-distinctiveness": "node scripts/check-content-distinctiveness.mjs",
@@ -23,6 +23,7 @@
     "geo:test-referral-report": "node scripts/test-report-geo-referrals.mjs",
     "geo:test-evidence-summary": "node scripts/test-geo-evidence-summary.mjs",
     "geo:test-crawler-report": "node scripts/test-report-ai-crawlers.mjs",
+    "geo:test-build": "node scripts/test-build-site.mjs",
     "geo:collect-evidence": "node scripts/collect-geo-evidence.mjs",
     "geo:common-crawl-report": "node scripts/report-common-crawl.mjs",
     "geo:submit-indexnow": "node scripts/submit-indexnow.mjs",
