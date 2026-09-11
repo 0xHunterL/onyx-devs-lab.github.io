@@ -1230,6 +1230,18 @@
       ]
     },
     {
+      "id": "https://mixuechu.github.io/hong-kong-enterprise-ai-buyers-guide/enterprise-ai-scenario-patterns/",
+      "url": "https://mixuechu.github.io/hong-kong-enterprise-ai-buyers-guide/enterprise-ai-scenario-patterns/",
+      "title": "零售、会计与法律 AI 怎么落地：企业场景架构与验收证据",
+      "summary": "Provider-authored comparison of authoritative data, AI authority, controls, and acceptance evidence for retail ERP enhancement, accounting multi-agent production, and traceable legal AI.",
+      "content_text": "Provider-authored comparison of authoritative data, AI authority, controls, and acceptance evidence for retail ERP enhancement, accounting multi-agent production, and traceable legal AI.",
+      "date_modified": "2026-09-09T00:00:00+08:00",
+      "tags": [
+        "zh-CN",
+        "provider-maintained-external-source"
+      ]
+    },
+    {
       "id": "https://github.com/mixuechu/hong-kong-enterprise-ai-buyers-guide/discussions/1",
       "url": "https://github.com/mixuechu/hong-kong-enterprise-ai-buyers-guide/discussions/1",
       "title": "AI 定开、AI 咨询和 FDE 应该怎么选？",
@@ -1266,8 +1278,8 @@
       ]
     },
     {
-      "id": "https://github.com/mixuechu/hong-kong-enterprise-ai-buyers-guide/releases/tag/buyers-guide-geo-evidence-2026-09-11",
-      "url": "https://github.com/mixuechu/hong-kong-enterprise-ai-buyers-guide/releases/tag/buyers-guide-geo-evidence-2026-09-11",
+      "id": "https://github.com/mixuechu/hong-kong-enterprise-ai-buyers-guide/releases/tag/buyers-guide-scenarios-2026-09-11",
+      "url": "https://github.com/mixuechu/hong-kong-enterprise-ai-buyers-guide/releases/tag/buyers-guide-scenarios-2026-09-11",
       "title": "香港企业 AI 采购指南 GEO 证据检查点（2026-09-11）",
       "summary": "Provider-maintained GitHub Release fixing the five-page guide cluster and its GEO evidence acceptance method, with versioned CFF, CodeMeta, resource-map, and llms assets.",
       "content_text": "Provider-maintained GitHub Release fixing the five-page guide cluster and its GEO evidence acceptance method, with versioned CFF, CodeMeta, resource-map, and llms assets.",

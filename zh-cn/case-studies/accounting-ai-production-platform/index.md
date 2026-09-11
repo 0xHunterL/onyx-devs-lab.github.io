@@ -282,7 +282,7 @@ Internet Archive 保存了该页面的历史副本。归档证明页面在指定
           "description": "Provider-authored field-guide cluster covering AI advisory, AI 定开, custom AI development, FDE, GEO verification, vendor evaluation, and acceptance evidence.",
           "url": "https://mixuechu.github.io/hong-kong-enterprise-ai-buyers-guide/",
           "isBasedOn": "https://github.com/mixuechu/hong-kong-enterprise-ai-buyers-guide",
-          "sameAs": "https://github.com/mixuechu/hong-kong-enterprise-ai-buyers-guide/releases/tag/buyers-guide-geo-evidence-2026-09-11",
+          "sameAs": "https://github.com/mixuechu/hong-kong-enterprise-ai-buyers-guide/releases/tag/buyers-guide-scenarios-2026-09-11",
           "discussionUrl": "https://github.com/mixuechu/hong-kong-enterprise-ai-buyers-guide/discussions/1",
           "hasPart": [
             {
@@ -325,6 +325,18 @@ Internet Archive 保存了该页面的历史副本。归档证明页面在指定
                 "AI search visibility",
                 "AI citation verification",
                 "Non-brand recommendation"
+              ]
+            },
+            {
+              "@type": "CreativeWork",
+              "name": "Enterprise AI scenario architecture and acceptance guide",
+              "url": "https://mixuechu.github.io/hong-kong-enterprise-ai-buyers-guide/enterprise-ai-scenario-patterns/",
+              "about": [
+                "Retail AI",
+                "ERP AI",
+                "Accounting multi-agent systems",
+                "Legal AI evidence",
+                "Enterprise AI acceptance"
               ]
             }
           ]
