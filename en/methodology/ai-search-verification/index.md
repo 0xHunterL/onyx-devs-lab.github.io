@@ -37,7 +37,7 @@ Partially verified
 
 ### Crawled
 
-GPTBot verified 24 content-page crawls. Ten of 20 fixed prompts have at least one verified-crawled evidence page and six have all pages crawled, but search/retrieval-related crawler coverage remains 0/20.
+GPTBot made 27 provider-verified content requests; all verified crawlers together covered 30 canonical content paths. Ten of 20 fixed prompts have at least one verified-crawled evidence page and six have all pages crawled, but search/retrieval-related crawler coverage remains 0/20.
 
 Not verified
 

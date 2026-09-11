@@ -1,8 +1,8 @@
 {
   "schemaVersion": 2,
-  "version": "2026.09.11.8",
+  "version": "2026.09.11.9",
   "id": "https://hk.onyxdevslab.com/data/ai-search-evidence-status.json",
-  "observedAt": "2026-09-11T11:32:57.980Z",
+  "observedAt": "2026-09-11T11:57:29.192Z",
   "sameAs": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-search-monitoring-compliance-2026-09-11/ai-search-evidence-status.json",
   "name": {
     "en": "Onyx Devs Lab AI-search evidence status",
@@ -118,9 +118,9 @@
         "doubaoTestStatus": "not-run",
         "otherAiRecommendationEvidenceCount": 0,
         "realAiReferralVisitsObserved": 0,
-        "trackedAttributionRequests": 70,
+        "trackedAttributionRequests": 73,
         "suspectedAutomatedTrackedRequests": 61,
-        "humanUnverifiedTrackedRequests": 9,
+        "humanUnverifiedTrackedRequests": 12,
         "knownLinkScannerTrackedRequests": 14,
         "knownLinkScannerNetworkRequests": 2,
         "internallyInconsistentUserAgentRequests": 4,
@@ -132,12 +132,36 @@
           "campaign": "geo_buyers_guide",
           "landingPage": "/zh-cn/guides/enterprise-ai-rfp-template/",
           "status": 200
-        }
+        },
+        "latestVisitorTypeUnverifiedAttributions": [
+          {
+            "time": "2026-09-11T11:37:43Z",
+            "source": "github_pages",
+            "campaign": "geo_buyers_guide_scenarios",
+            "landingPage": "/zh-cn/guides/enterprise-ai-agent-erp-integration/",
+            "referrerHost": ""
+          },
+          {
+            "time": "2026-09-11T11:46:46Z",
+            "source": "github_pages",
+            "campaign": "geo_buyers_guide_scenarios",
+            "landingPage": "/zh-cn/case-studies/accounting-ai-production-platform/",
+            "referrerHost": ""
+          },
+          {
+            "time": "2026-09-11T11:56:50Z",
+            "source": "github_pages",
+            "campaign": "geo_buyers_guide_scenarios",
+            "landingPage": "/zh-cn/case-studies/retail-ai-decision-platform/",
+            "referrerHost": ""
+          }
+        ]
       },
       "limitations": [
         "High-velocity or coordinated multi-user-agent bursts, internally inconsistent browser identities, known scanner user agents, and the documented Palo Alto URL-scanner network are classified as suspected automation.",
         "Malformed campaign values are audited and excluded from attributed-visit totals.",
-        "The remaining attributed requests are not proven to be people or AI referrals; one latest request includes a verified GitHub Pages referrer, not an AI referrer."
+        "The three latest attributed requests have no referrer and their visitor type is unverified; they do not prove people, search clicks, AI referrals, citations, or recommendations.",
+        "The latest request with a verified offsite referrer came from GitHub Pages, not an AI referrer."
       ]
     }
   ],
