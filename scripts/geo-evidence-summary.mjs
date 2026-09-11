@@ -1,4 +1,4 @@
-export function buildEvidenceCounts(crawler, referral, commonCrawl, promptCoverage) {
+export function buildEvidenceCounts(crawler, referral, commonCrawl, promptCoverage, wayback = { totals: { captures: 0, distinctUrls: 0 } }) {
   return {
     verifiedGptBotPageCrawls: crawler.totals.verifiedGptBotPageCrawls,
     verifiedOaiSearchBotPageCrawls: crawler.totals.verifiedOaiSearchBotPageCrawls,
@@ -38,6 +38,8 @@ export function buildEvidenceCounts(crawler, referral, commonCrawl, promptCovera
     humanUnverifiedAiReferrerVisits: referral.recentHumanUnverifiedVisits.filter((visit) => visit.evidenceType.includes('ai-referrer')).length,
     commonCrawlCaptures: commonCrawl.totals.captures,
     commonCrawlDistinctUrls: commonCrawl.totals.distinctUrls,
+    waybackCaptures: wayback.totals.captures,
+    waybackDistinctUrls: wayback.totals.distinctUrls,
   };
 }
 
@@ -76,6 +78,25 @@ export function buildCommonCrawlAvailability(commonCrawl) {
     interpretation: status === 'available'
       ? 'All selected indexes returned a usable response; capture counts cover the complete selected set.'
       : 'Capture counts are incomplete and must not be interpreted as a verified zero across the selected indexes.',
+  };
+}
+
+export function buildWaybackAvailability(wayback) {
+  const available = wayback?.status === 'available';
+  return {
+    status: available ? 'available' : 'unavailable',
+    sourcesChecked: 1,
+    availableSources: available ? 1 : 0,
+    unavailableSources: available ? 0 : 1,
+    sources: [{
+      id: wayback?.query || 'https://web.archive.org/cdx/search/cdx',
+      status: available ? 'available' : 'unavailable',
+      httpStatus: wayback?.httpStatus ?? null,
+      reason: available ? null : wayback?.reason || 'unavailable',
+    }],
+    interpretation: available
+      ? 'The public Wayback CDX query returned a complete usable response for this host and filter set.'
+      : 'The Wayback capture inventory is unavailable and its zero-valued counts must not be interpreted as no captures.',
   };
 }
 

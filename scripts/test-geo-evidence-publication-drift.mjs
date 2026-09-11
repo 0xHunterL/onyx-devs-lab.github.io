@@ -7,6 +7,7 @@ const provider = baseline.providerVerifiedCrawlerEvidence;
 const attribution = baseline.attributionEvidence;
 const prompt = baseline.fixedPromptCoverage;
 const commonCrawl = baseline.commonCrawlEvidence;
+const wayback = baseline.waybackEvidence;
 const distribution = baseline.distributionEvidence;
 const summary = {
   generatedAt: baseline.generatedAt,
@@ -41,6 +42,8 @@ const summary = {
     malformedCampaignVisits: attribution.malformedCampaignRequestsExcluded,
     aiReferrerAttributedVisits: attribution.aiReferrerAttributedRequests,
     commonCrawlCaptures: commonCrawl.capturesObservedInAvailableIndexes,
+    waybackCaptures: wayback.captures,
+    waybackDistinctUrls: wayback.distinctUrls,
   },
   availability: {
     commonCrawl: {
@@ -49,6 +52,9 @@ const summary = {
        ...commonCrawl.availableIndexes.map((id) => ({ id, status: 'available' })),
         ...commonCrawl.unavailableIndexes.map((item) => ({ id: item.id, status: 'unavailable' })),
       ],
+    },
+    wayback: {
+      status: wayback.status,
     },
     distribution: {
       status: distribution.availabilityStatus,
@@ -88,4 +94,8 @@ distributionDrift.availability.distribution.status = 'partial';
 assert.equal(buildPublicationDrift(baseline, distributionDrift).mismatches[0].field, 'distributionEvidence.availabilityStatus');
 assert.match(synchronized.evidenceBoundary, /does not prove indexing/);
 
-console.log(JSON.stringify({ tests: 6, failures: [] }, null, 2));
+const waybackDrift = structuredClone(summary);
+waybackDrift.counts.waybackDistinctUrls += 1;
+assert.equal(buildPublicationDrift(baseline, waybackDrift).mismatches[0].field, 'waybackEvidence.distinctUrls');
+
+console.log(JSON.stringify({ tests: 7, failures: [] }, null, 2));

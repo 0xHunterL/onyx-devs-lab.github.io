@@ -10,9 +10,11 @@ export function buildPublicationDrift(baseline, summary) {
   const attribution = baseline.attributionEvidence || {};
   const prompt = baseline.fixedPromptCoverage || {};
   const commonCrawl = baseline.commonCrawlEvidence || {};
+  const wayback = baseline.waybackEvidence || {};
   const distribution = baseline.distributionEvidence || {};
   const counts = summary.counts || {};
   const collectedCommonCrawl = summary.availability?.commonCrawl || {};
+  const collectedWayback = summary.availability?.wayback || {};
   const collectedDistribution = summary.availability?.distribution || {};
 
   const countMappings = [
@@ -46,12 +48,15 @@ export function buildPublicationDrift(baseline, summary) {
     ['attributionEvidence.malformedCampaignRequestsExcluded', attribution.malformedCampaignRequestsExcluded, counts.malformedCampaignVisits],
     ['attributionEvidence.aiReferrerAttributedRequests', attribution.aiReferrerAttributedRequests, counts.aiReferrerAttributedVisits],
     ['commonCrawlEvidence.capturesObservedInAvailableIndexes', commonCrawl.capturesObservedInAvailableIndexes, counts.commonCrawlCaptures],
+    ['waybackEvidence.captures', wayback.captures, counts.waybackCaptures],
+    ['waybackEvidence.distinctUrls', wayback.distinctUrls, counts.waybackDistinctUrls],
   ];
   for (const mapping of countMappings) check(...mapping);
 
   check('commonCrawlEvidence.status', commonCrawl.status, collectedCommonCrawl.status);
   check('commonCrawlEvidence.availableIndexes', commonCrawl.availableIndexes || [], (collectedCommonCrawl.indexes || []).filter((item) => item.status === 'available').map((item) => item.id));
   check('commonCrawlEvidence.unavailableIndexes', (commonCrawl.unavailableIndexes || []).map((item) => item.id), (collectedCommonCrawl.indexes || []).filter((item) => item.status !== 'available').map((item) => item.id));
+  check('waybackEvidence.status', wayback.status, collectedWayback.status);
   check('distributionEvidence.publishedItems', distribution.publishedItems, collectedDistribution.publishedItems);
   check('distributionEvidence.availableSources', distribution.availableSources, collectedDistribution.availableSources);
   check('distributionEvidence.unavailableSources', distribution.unavailableSources, collectedDistribution.unavailableSources);

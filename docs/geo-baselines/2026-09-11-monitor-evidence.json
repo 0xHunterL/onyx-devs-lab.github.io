@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "publicStatusVersion": "2026.09.11.21",
-  "generatedAt": "2026-09-11T14:32:05.739Z",
+  "publicStatusVersion": "2026.09.11.22",
+  "generatedAt": "2026-09-11T15:12:09.669Z",
   "windowStart": "2026-09-01",
   "site": "https://hk.onyxdevslab.com/",
   "sourceLogs": [
@@ -119,6 +119,16 @@
     "unavailableIndexes": [],
     "meaning": "Both selected indexes returned usable responses with zero observed captures. This complete result covers only the selected indexes and must not be interpreted as proof of zero captures across all Common Crawl history."
   },
+  "waybackEvidence": {
+    "checkedAt": "2026-09-11T15:12:09.669Z",
+    "status": "available",
+    "captures": 93,
+    "distinctUrls": 43,
+    "firstCaptureAt": "20260909205420",
+    "lastCaptureAt": "20260910164924",
+    "query": "https://web.archive.org/cdx/search/cdx?url=hk.onyxdevslab.com%2F&matchType=host&output=json&fl=timestamp%2Coriginal%2Cmimetype%2Cstatuscode%2Cdigest&filter=statuscode%3A200&filter=mimetype%3Atext%2Fhtml&limit=1000",
+    "meaning": "The public Wayback CDX host query returned 93 successful HTML capture records across 43 distinct URLs. These records prove public historical captures only; they do not prove current accessibility, search indexing, AI retrieval, citation, ranking, endorsement, or recommendation. An unavailable future query must not be interpreted as zero captures."
+  },
   "distributionEvidence": {
     "manifestItems": 8,
     "publishedItems": 7,
@@ -154,5 +164,5 @@
     "newPublicDiscussionObserved": false
   },
   "doubaoTestStatus": "not-run",
-  "evidenceBoundary": "Provider-verified requests prove only access by the named crawler. Bytespider candidates are separately labeled user-agent-only and identity-unverified; they do not prove Doubao or ByteDance access. Discovery-file access is not content ingestion. Attributed requests do not prove a human visitor. Coordinated multi-profile bursts and internally inconsistent browser identities are classified as suspected automation. Public-search non-results are observations for the stated queries and time. None of this proves indexing, retrieval, citation, ranking, or non-brand recommendation. No prompt was sent to Doubao."
+  "evidenceBoundary": "Provider-verified requests prove only access by the named crawler. Bytespider candidates are separately labeled user-agent-only and identity-unverified; they do not prove Doubao or ByteDance access. Discovery-file access is not content ingestion. Wayback CDX records prove public historical captures only. Attributed requests do not prove a human visitor. Coordinated multi-profile bursts and internally inconsistent browser identities are classified as suspected automation. Public-search non-results are observations for the stated queries and time. None of this proves indexing, retrieval, citation, ranking, endorsement, or non-brand recommendation. No prompt was sent to Doubao."
 }

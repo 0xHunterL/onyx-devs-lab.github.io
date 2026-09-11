@@ -1,5 +1,5 @@
 import assert from 'node:assert/strict';
-import { buildAvailabilityChanges, buildCommonCrawlAvailability, buildCrawlerVerificationAvailability, buildDistributionAvailability, buildEvidenceCounts, buildEvidenceDeltas, selectEvidenceEventKind } from './geo-evidence-summary.mjs';
+import { buildAvailabilityChanges, buildCommonCrawlAvailability, buildCrawlerVerificationAvailability, buildDistributionAvailability, buildEvidenceCounts, buildEvidenceDeltas, buildWaybackAvailability, selectEvidenceEventKind } from './geo-evidence-summary.mjs';
 
 const crawlerTotals = {
   verifiedGptBotPageCrawls: 24,
@@ -42,6 +42,7 @@ const counts = buildEvidenceCounts(
   },
   { totals: { captures: 0, distinctUrls: 0 } },
   { totals: { searchRelatedCrawledEvidencePages: 0, promptsWithAnySearchRelatedCrawl: 0 } },
+  { totals: { captures: 93, distinctUrls: 43 } },
 );
 
 assert.equal(counts.trackedVisits, 70);
@@ -64,6 +65,8 @@ assert.equal(counts.verifiedYandexPageCrawls, 1);
 assert.equal(counts.verifiedYandexDiscoveryFileCrawls, 1);
 assert.equal(counts.verifiedAhrefsPageCrawls, 1);
 assert.equal(counts.verifiedAhrefsDiscoveryFileCrawls, 1);
+assert.equal(counts.waybackCaptures, 93);
+assert.equal(counts.waybackDistinctUrls, 43);
 
 const deltas = buildEvidenceDeltas(counts, {
   trackedVisits: 69,
@@ -101,6 +104,14 @@ assert.equal(availableCommonCrawl.status, 'available');
 
 const unavailableCommonCrawl = buildCommonCrawlAvailability({ collectionIndexStatus: 'unavailable', results: [] });
 assert.equal(unavailableCommonCrawl.status, 'unavailable');
+
+const availableWayback = buildWaybackAvailability({ status: 'available', httpStatus: 200, query: 'https://web.archive.org/cdx/search/cdx?url=example.test' });
+assert.equal(availableWayback.status, 'available');
+assert.equal(availableWayback.availableSources, 1);
+const unavailableWayback = buildWaybackAvailability({ status: 'unavailable', httpStatus: 429, reason: 'HTTP 429', query: 'https://web.archive.org/cdx/search/cdx?url=example.test' });
+assert.equal(unavailableWayback.status, 'unavailable');
+assert.equal(unavailableWayback.unavailableSources, 1);
+assert.match(unavailableWayback.interpretation, /must not be interpreted/);
 
 const partialCrawlerVerification = buildCrawlerVerificationAvailability({
   verificationSources: {
@@ -172,4 +183,4 @@ assert.equal(selectEvidenceEventKind({ initializing: false, evidenceChanged: tru
 assert.equal(selectEvidenceEventKind({ initializing: false, evidenceChanged: false, availabilityChanged: true }), 'availability-change');
 assert.equal(selectEvidenceEventKind({ initializing: false, evidenceChanged: false, availabilityChanged: false }), null);
 
-console.log(JSON.stringify({ tests: 59, failures: [] }, null, 2));
+console.log(JSON.stringify({ tests: 66, failures: [] }, null, 2));
