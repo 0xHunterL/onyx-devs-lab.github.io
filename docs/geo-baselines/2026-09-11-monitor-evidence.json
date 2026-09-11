@@ -1,0 +1,55 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-09-11T04:40:46.028Z",
+  "windowStart": "2026-09-01",
+  "site": "https://hk.onyxdevslab.com/",
+  "sourceLogs": [
+    "/var/log/nginx/hk.onyxdevslab.com.geo.log.2.gz",
+    "/var/log/nginx/hk.onyxdevslab.com.geo.log.1",
+    "/var/log/nginx/hk.onyxdevslab.com.geo.log"
+  ],
+  "providerVerifiedCrawlerEvidence": {
+    "gptBotContentRequests": 24,
+    "oaiSearchBotContentRequests": 0,
+    "oaiSearchBotDiscoveryFileRequests": 6,
+    "bingbotContentRequests": 7,
+    "googlebotContentRequests": 0,
+    "perplexityContentRequests": 0,
+    "distinctVerifiedContentPaths": 29
+  },
+  "fixedPromptCoverage": {
+    "prompts": 20,
+    "uniqueEvidencePages": 20,
+    "verifiedCrawledEvidencePages": 8,
+    "searchRelatedCrawledEvidencePages": 0,
+    "promptsWithAnyVerifiedCrawl": 10,
+    "promptsFullyVerifiedCrawled": 6,
+    "promptsWithAnySearchRelatedCrawl": 0
+  },
+  "attributionEvidence": {
+    "trackedRequests": 31,
+    "suspectedAutomatedRequests": 24,
+    "visitorTypeUnverifiedRequests": 7,
+    "aiReferrerAttributedRequests": 0,
+    "campaigns": {
+      "geo_decision_matrix": 24,
+      "geo_buyers_guide_ai_dingkai": 4,
+      "geo_buyers_guide_fde": 2,
+      "geo_buyers_guide": 1
+    }
+  },
+  "publicSearchRetest": {
+    "testedAt": "2026-09-11",
+    "queries": [
+      "\"ONYX-GEO-VERIFY-79051925-20260908\"",
+      "\"Onyx Devs Lab\"",
+      "site:hk.onyxdevslab.com",
+      "AI 定开 AI 咨询 FDE Onyx Devs Lab"
+    ],
+    "officialSiteObserved": false,
+    "thirdPartyEntityRecordsObserved": true,
+    "categoryRecommendationObserved": false
+  },
+  "doubaoTestStatus": "not-run",
+  "evidenceBoundary": "Provider-verified requests prove only access by the named crawler. Discovery-file access is not content ingestion. Attributed requests do not prove a human visitor. Public-search non-results are observations for the stated queries and date. None of this proves indexing, retrieval, citation, ranking, or non-brand recommendation. No prompt was sent to Doubao."
+}

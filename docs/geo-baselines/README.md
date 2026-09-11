@@ -15,6 +15,7 @@
 
 版本化检查点：
 
+- [`2026-09-11-monitor-evidence.md`](./2026-09-11-monitor-evidence.md) / [`JSON`](./2026-09-11-monitor-evidence.json)：当前及轮转日志的自动监测检查点，记录第 6 次 OAI-SearchBot 发现文件访问、当前爬虫／提示词覆盖、归因分类和公开搜索复测边界。
 - [`2026-09-08-doubao.md`](./2026-09-08-doubao.md)：初始公共检索、爬虫与豆包待测基线。
 - [`2026-09-10-crawler-evidence.json`](./2026-09-10-crawler-evidence.json)：经官方地址段或双向 DNS 核验的爬虫累计、归因访问分类和公开检索非命中快照。
 - [`2026-09-10-prompt-crawl-coverage.md`](./2026-09-10-prompt-crawl-coverage.md) / [`JSON`](./2026-09-10-prompt-crawl-coverage.json)：把 20 条固定提示词的证据 URL 与提供方核验后的正文抓取逐项交叉，单列训练爬虫与搜索／检索相关爬虫覆盖。
