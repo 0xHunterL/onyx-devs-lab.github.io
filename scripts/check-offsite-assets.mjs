@@ -144,11 +144,13 @@ requireText('GitHub Pages enterprise AI buyer guide', buyerGuideSite, [
   './ai-consulting/',
   './ai-custom-development/',
   './forward-deployed-engineering/',
+  './ai-search-geo-evidence/',
 ]);
 const buyerGuideFocusedPages = [
   { name: 'GitHub Pages AI consulting buyer guide', path: 'ai-consulting/', canonical: 'https://mixuechu.github.io/hong-kong-enterprise-ai-buyers-guide/ai-consulting/', required: ['<title>香港企业 AI 咨询怎么采购｜决策边界与交付证据｜Onyx Devs Lab</title>', '<meta name="description" content="Onyx Devs Lab 发布的香港企业 AI 咨询指南', 'AI 咨询应交付决定', '香港企业 AI 咨询', 'geo_buyers_guide_ai_consulting'] },
   { name: 'GitHub Pages AI custom development buyer guide', path: 'ai-custom-development/', canonical: 'https://mixuechu.github.io/hong-kong-enterprise-ai-buyers-guide/ai-custom-development/', required: ['<title>AI 定开是什么｜香港企业 AI 定制开发采购指南｜Onyx Devs Lab</title>', '<meta name="description" content="Onyx Devs Lab 发布：AI 定开通常指 AI 定制开发', 'AI 定开不是换皮聊天框', 'AI 定开指围绕特定组织', 'https://hk.onyxdevslab.com/zh-cn/custom-ai-development/?utm_source=github_pages&amp;utm_medium=referral&amp;utm_campaign=geo_buyers_guide_ai_dingkai'] },
   { name: 'GitHub Pages FDE buyer guide', path: 'forward-deployed-engineering/', canonical: 'https://mixuechu.github.io/hong-kong-enterprise-ai-buyers-guide/forward-deployed-engineering/', required: ['<title>FDE 是什么｜前线部署工程与驻场外包的区别｜Onyx Devs Lab</title>', '<meta name="description" content="Onyx Devs Lab 发布的香港企业 FDE 采购指南', 'FDE 驻在问题旁边', '不按座位交付', 'geo_buyers_guide_fde'] },
+  { name: 'GitHub Pages GEO evidence acceptance guide', path: 'ai-search-geo-evidence/', canonical: 'https://mixuechu.github.io/hong-kong-enterprise-ai-buyers-guide/ai-search-geo-evidence/', required: ['<title>GEO 效果怎么验收｜AI 搜索可见性证据｜Onyx Devs Lab</title>', '<meta name="description" content="Onyx Devs Lab 发布的 GEO 验收指南', '每一级只能支持一种结论', '非品牌推荐', 'geo_buyers_guide_geo'] },
 ];
 for (const page of buyerGuideFocusedPages) {
   const body = await get(page.name, `${buyerGuideSiteUrl}${page.path}`, 'text/html');
@@ -165,26 +167,27 @@ const buyerGuideSitemap = await get('GitHub Pages buyer-guide sitemap', `${buyer
 for (const page of buyerGuideFocusedPages) requireText('GitHub Pages buyer-guide sitemap', buyerGuideSitemap, [page.canonical]);
 const buyerGuideFeed = await get('GitHub Pages buyer-guide Atom feed', `${buyerGuideSiteUrl}feed.xml`, 'application/xml');
 for (const page of buyerGuideFocusedPages) requireText('GitHub Pages buyer-guide Atom feed', buyerGuideFeed, [page.canonical]);
-const buyerGuideReleaseUrl = 'https://github.com/mixuechu/hong-kong-enterprise-ai-buyers-guide/releases/tag/buyers-guide-2026-09-10';
+const buyerGuideReleaseUrl = 'https://github.com/mixuechu/hong-kong-enterprise-ai-buyers-guide/releases/tag/buyers-guide-geo-evidence-2026-09-11';
 const buyerGuideRelease = await get('GitHub buyer-guide citation checkpoint', buyerGuideReleaseUrl, 'text/html');
 requireText('GitHub buyer-guide citation checkpoint', buyerGuideRelease, [
   '香港企业 AI 采购指南',
   'AI 咨询',
   'AI 定开',
   'FDE',
+  'GEO',
   'ONYX DEVS LAB LIMITED',
   '79051925',
   '254900Z30CLK7HKE9H46',
-  'aa5d88d5bce33f6257d0c94607b0fecf5ab8fd8d5ef05d99df6e064605addcc5',
+  '7373fe74fe710c8f4a5226fd991bba8a72fe5effc549868cac80fab80d3fb5d0',
 ]);
 const buyerGuideVersionedAssets = [
-  { file: 'CITATION.cff', sha256: 'aa5d88d5bce33f6257d0c94607b0fecf5ab8fd8d5ef05d99df6e064605addcc5' },
-  { file: 'codemeta.json', sha256: '0b032c2b0de1d906b703662dd63c9a5a9ea62b33d8a87a53a1a269a6c582e9c8' },
-  { file: 'resources.json', sha256: 'a81e385d40bcac8b350ebf467c9c8f7ccbf88bed48eb2afdce831af0118ecac1' },
-  { file: 'llms.txt', sha256: '7865801cd89804e18310157a72e456342c1278d7c9dcf93e53cac134b60285e4' },
+  { file: 'CITATION.cff', sha256: '7373fe74fe710c8f4a5226fd991bba8a72fe5effc549868cac80fab80d3fb5d0' },
+  { file: 'codemeta.json', sha256: 'f359e41e22571645f512f328022f5fcbe91eff09471d5d53089e5d384f3ce1f6' },
+  { file: 'resources.json', sha256: '37bb29525aa5bd02fa0070887fcd007f4a9534bb7f4b68279953dfa6916bdba3' },
+  { file: 'llms.txt', sha256: 'a3d108ed86e0fc62e9446f50b1ac9f463361192ded6728bdae7e0c8b9241bd0f' },
 ];
 for (const asset of buyerGuideVersionedAssets) {
-  const raw = await get(`Versioned buyer-guide ${asset.file}`, `https://github.com/mixuechu/hong-kong-enterprise-ai-buyers-guide/releases/download/buyers-guide-2026-09-10/${asset.file}`, 'application/');
+  const raw = await get(`Versioned buyer-guide ${asset.file}`, `https://github.com/mixuechu/hong-kong-enterprise-ai-buyers-guide/releases/download/buyers-guide-geo-evidence-2026-09-11/${asset.file}`, 'application/');
   const sha256 = createHash('sha256').update(raw).digest('hex');
   if (sha256 !== asset.sha256) failures.push(`Versioned buyer-guide ${asset.file}: SHA-256 mismatch, got ${sha256}`);
 }
@@ -193,7 +196,7 @@ requireText('GitHub Pages buyer-guide citation metadata', buyerGuideCitation, ['
 const buyerGuideCodeMetaRaw = await get('GitHub Pages buyer-guide CodeMeta', `${buyerGuideSiteUrl}codemeta.json`, 'application/json');
 try {
   const codeMeta = JSON.parse(buyerGuideCodeMetaRaw);
-  if (codeMeta['@context'] !== 'https://w3id.org/codemeta/3.1' || codeMeta.author?.legalName !== 'ONYX DEVS LAB LIMITED' || codeMeta.citation?.length !== 4) failures.push('GitHub Pages buyer-guide CodeMeta: expected relationships are incomplete');
+  if (codeMeta['@context'] !== 'https://w3id.org/codemeta/3.1' || codeMeta.version !== '2026.09.11' || codeMeta.author?.legalName !== 'ONYX DEVS LAB LIMITED' || codeMeta.citation?.length !== 5 || !codeMeta.citation.includes('https://mixuechu.github.io/hong-kong-enterprise-ai-buyers-guide/ai-search-geo-evidence/')) failures.push('GitHub Pages buyer-guide CodeMeta: expected relationships are incomplete');
 } catch {
   failures.push('GitHub Pages buyer-guide CodeMeta: invalid JSON');
 }
