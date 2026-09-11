@@ -24,6 +24,7 @@
 
 - 2026-09-11T10:59Z 的生产采集因 Common Crawl 官方 CCBot 前缀清单连接超时而失败。报告器现会对 OpenAI、Perplexity 与 Common Crawl 的五个官方前缀源分别重试和记录可用性；单一来源仍失败时，依赖它的候选请求保持 `providerVerified: null`，其余爬虫、归因、提示词覆盖和公开语料库报告继续生成，不能把未核验候选升级为官方访问。
 - 2026-09-11T11:03:02Z 用同一个 systemd 服务生产复测成功，五个前缀源均为 `available`，Common Crawl 两个所选索引也全部可用；永久可用性事件为 `events/2026-09-11T11-03-02.897Z-availability-change.json`。GPTBot 27 次正文、OAI-SearchBot 8 次发现文件、Bingbot 7 次正文、Bytespider 0 次非合成候选以及 70 次归因请求的基线均未变化，AI Referrer 仍为 0。
+- 2026-09-11T11:23:36Z，生产采集新增 Apple 官方 CIDR 源并成功返回 HTTP `200`；爬虫身份核验覆盖由 5 个来源增至 6 个且全部可用。监测器生成 `events/2026-09-11T11-23-36.089Z-availability-change.json`，明确记录 `crawlerVerification` 的 `coverageChanged:true`、`statusChanged:false`。历史日志中 Applebot 正文和发现文件请求均为 0；GPTBot 27、OAI-SearchBot 正文 0、Bingbot 7、Bytespider 非合成候选 0、归因 70 与 AI Referrer 0 均未改变，因此事件的 `changed` 为 `false`、`newEvidence` 为空。Anthropic 仍未公开可用于核验的稳定 IP 范围，Claude 系列 User-Agent 不升级为已核验证据。
 
 ## 站外分发账本复核
 
