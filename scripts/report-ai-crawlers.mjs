@@ -66,6 +66,7 @@ function classify(entry) {
   const relevantPage = pagePath.test(pathOnly) && !staticAsset.test(pathOnly);
   const discoveryFile = discoveryPath.test(pathOnly);
   const syntheticCheck = /Onyx-GEO-Release-Check/i.test(entry.userAgent);
+  const retrievesRepresentation = entry.method?.toUpperCase() === 'GET';
   return {
     ...entry,
     family,
@@ -73,6 +74,8 @@ function classify(entry) {
       ? 'synthetic-release-check'
       : suspicious
       ? 'suspicious-spoof-or-scan'
+      : !retrievesRepresentation
+        ? 'non-content-request-method'
       : successful && relevantPage
         ? 'candidate-page-crawl'
         : successful && discoveryFile
@@ -271,6 +274,7 @@ const pageCandidates = events.filter((event) => event.classification === 'candid
 const discoveryCandidates = events.filter((event) => event.classification === 'candidate-discovery-file-crawl');
 const suspiciousCandidates = events.filter((event) => event.classification === 'suspicious-spoof-or-scan');
 const syntheticChecks = events.filter((event) => event.classification === 'synthetic-release-check');
+const nonContentMethodRequests = events.filter((event) => event.classification === 'non-content-request-method');
 const userAgentOnlyBytespiderPages = pageCandidates.filter((event) => event.family === 'Bytespider');
 const userAgentOnlyBytespiderDiscoveryFiles = discoveryCandidates.filter((event) => event.family === 'Bytespider');
 const verifiedOpenAiPages = pageCandidates.filter(
@@ -376,7 +380,7 @@ const userAgentOnlyEvidenceObservations = [
 
 console.log(JSON.stringify({
   generatedAt: new Date().toISOString(),
-  caveat: 'User-Agent strings are self-declared. Candidate content crawls do not prove platform identity unless providerVerified is true under an enabled provider verification method. Bytespider page and discovery requests are exposed separately as user-agent-only, identity-unverified observations after synthetic release checks are excluded; they do not prove Doubao or ByteDance access. A null providerVerified value with verificationUnavailable means the resolver returned only RFC 2544 benchmark addresses, so identity could not be tested and must not be reported as failed. GPTBot is reported separately from OAI-SearchBot because a verified training crawl is not evidence of search indexing or citation.',
+  caveat: 'User-Agent strings are self-declared. Only successful GET requests can be classified as candidate page or discovery-file crawls; HEAD and other methods do not retrieve the representation and are kept as non-content request observations. Candidate content crawls do not prove platform identity unless providerVerified is true under an enabled provider verification method. Bytespider page and discovery requests are exposed separately as user-agent-only, identity-unverified observations after synthetic release checks are excluded; they do not prove Doubao or ByteDance access. A null providerVerified value with verificationUnavailable means the resolver returned only RFC 2544 benchmark addresses, so identity could not be tested and must not be reported as failed. GPTBot is reported separately from OAI-SearchBot because a verified training crawl is not evidence of search indexing or citation.',
   files: paths,
   since: sinceArg ? sinceArg.slice('--since='.length) : null,
   verifyOpenAi,
@@ -391,6 +395,7 @@ console.log(JSON.stringify({
     candidateDiscoveryFileCrawls: discoveryCandidates.length,
     suspiciousSpoofOrScanRequests: suspiciousCandidates.length,
     syntheticReleaseChecks: syntheticChecks.length,
+    nonContentMethodRequests: nonContentMethodRequests.length,
     userAgentOnlyBytespiderPageCrawls: userAgentOnlyBytespiderPages.length,
     userAgentOnlyBytespiderDiscoveryFileCrawls: userAgentOnlyBytespiderDiscoveryFiles.length,
     verifiedOpenAiPageCrawls: verifiedOpenAiPages.length,

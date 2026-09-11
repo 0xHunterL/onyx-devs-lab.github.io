@@ -86,7 +86,7 @@ Markdown 协商响应必须为 `text/markdown`，并与 HTML 响应一样包含 
 
 Atom 与 JSON Feed 必须同时声明 WebSub `self` 和 `hub` 关系；Nginx 也应在两个 Feed 的 HTTP `Link` 头中返回相同关系。每次发布实际内容更新后运行 `npm run geo:publish-websub` 通知公开 Hub。Hub 返回成功只代表通知已接收，不能据此宣称 Google 或其他搜索系统已经订阅、抓取、收录或引用页面。
 
-`deploy/nginx-geo-log.conf` 定义独立的 JSON 访问日志格式，保留 Cloudflare 传入的原始客户端 IP，并只记录 Referer 的主机名（不保存可能含查询内容的路径或参数）；`deploy/nginx-hk.conf` 把该站点写入独立日志。报告命令必须使用 `--include-rotated`，这样会按最旧到最新顺序自动纳入同目录的 `.1`、`.2.gz` 等数字轮转文件，避免午夜轮转后把历史抓取和引荐错误归零。报告工具会把带 `Onyx-GEO-Release-Check` 的发布自测排除，并按 OpenAI 与 Perplexity 官方公布的 IP 段验证对应爬虫；Bingbot 和 Googlebot 则分别按官方流程执行反向 DNS 与正向 DNS 双重验证。其他平台在没有公开稳定 IP 规则时仍只记为候选抓取。引荐报告同时识别 UTM 和已知 AI 产品来源域；同一 User-Agent、来源和活动在 60 秒内请求至少 8 次并覆盖至少 5 个落地页时，会单列为疑似自动化访问。未落入该规则的请求也只称为“访问者类型未验证”，不能直接宣称真人点击。浏览器或应用还可能因 Referrer-Policy 不发送来源，因此“0 次来源点击”只能表示所检查的当前及轮转日志均未观测到，不能证明没有点击。
+`deploy/nginx-geo-log.conf` 定义独立的 JSON 访问日志格式，保留 Cloudflare 传入的原始客户端 IP，并只记录 Referer 的主机名（不保存可能含查询内容的路径或参数）；`deploy/nginx-hk.conf` 把该站点写入独立日志。报告命令必须使用 `--include-rotated`，这样会按最旧到最新顺序自动纳入同目录的 `.1`、`.2.gz` 等数字轮转文件，避免午夜轮转后把历史抓取和引荐错误归零。报告工具会把带 `Onyx-GEO-Release-Check` 的发布自测排除；只有成功的 `GET` 才能进入正文或发现文件抓取候选，`HEAD` 及其他不取回表示内容的方法只保留为非内容请求，不能升级抓取证据。OpenAI 与 Perplexity 对应爬虫再按官方公布的 IP 段验证；Bingbot 和 Googlebot 则分别按官方流程执行反向 DNS 与正向 DNS 双重验证。其他平台在没有公开稳定 IP 规则时仍只记为候选抓取。引荐报告同时识别 UTM 和已知 AI 产品来源域；同一 User-Agent、来源和活动在 60 秒内请求至少 8 次并覆盖至少 5 个落地页时，会单列为疑似自动化访问。未落入该规则的请求也只称为“访问者类型未验证”，不能直接宣称真人点击。浏览器或应用还可能因 Referrer-Policy 不发送来源，因此“0 次来源点击”只能表示所检查的当前及轮转日志均未观测到，不能证明没有点击。
 
 如果反向 DNS 命中官方域名，但正向解析只返回 RFC 2544 的 `198.18.0.0/15` 基准测试地址，报告会将验证标为 `verificationUnavailable`，而不是身份失败。这通常表示本机 DNS 代理或网络过滤器接管了解析；在可信公共解析环境重新运行双向 DNS 验证前，该请求只能保留为候选抓取，也不能用来推翻此前保存的成功验证证据。
 
