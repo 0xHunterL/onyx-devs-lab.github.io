@@ -1,8 +1,8 @@
 {
   "schemaVersion": 2,
-  "version": "2026.09.11.14",
+  "version": "2026.09.11.15",
   "id": "https://hk.onyxdevslab.com/data/ai-search-evidence-status.json",
-  "observedAt": "2026-09-11T12:36:00.144Z",
+  "observedAt": "2026-09-11T12:49:36.667Z",
   "sourceBaseline": "https://github.com/0xHunterL/onyx-devs-lab.github.io/blob/main/docs/geo-baselines/2026-09-11-monitor-evidence.json",
   "versionHistory": [
     {
@@ -82,7 +82,7 @@
         "userAgentOnlyBytespiderDiscoveryFileCandidates": 0,
         "syntheticBytespiderReleaseChecksExcluded": 2368,
         "commonCrawlIndexObservation": {
-          "checkedAt": "2026-09-11T12:36:00.144Z",
+          "checkedAt": "2026-09-11T12:49:36.667Z",
           "status": "available",
           "capturesObservedInAvailableIndexes": 0,
           "availableIndexes": [
@@ -137,9 +137,9 @@
         "doubaoTestStatus": "not-run",
         "otherAiRecommendationEvidenceCount": 0,
         "realAiReferralVisitsObserved": 0,
-        "trackedAttributionRequests": 76,
+        "trackedAttributionRequests": 77,
         "suspectedAutomatedTrackedRequests": 61,
-        "humanUnverifiedTrackedRequests": 15,
+        "humanUnverifiedTrackedRequests": 16,
         "knownLinkScannerTrackedRequests": 14,
         "knownLinkScannerNetworkRequests": 2,
         "internallyInconsistentUserAgentRequests": 4,
@@ -193,6 +193,13 @@
             "source": "github_pages",
             "campaign": "geo_buyers_guide_scenarios",
             "landingPage": "/zh-cn/methodology/enterprise-ai-evaluation/",
+            "referrerHost": ""
+          },
+          {
+            "time": "2026-09-11T12:45:58Z",
+            "source": "github_pages",
+            "campaign": "geo_buyers_guide_geo",
+            "landingPage": "/zh-cn/methodology/ai-search-verification/",
             "referrerHost": ""
           }
         ]
