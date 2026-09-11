@@ -3,8 +3,9 @@ import { createHash } from 'node:crypto';
 const failures = [];
 const results = [];
 
-async function get(name, url, expectedType, { allowUnavailable = false, attempts = 2, minimumBytes = 0 } = {}) {
+async function get(name, url, expectedType, { allowUnavailable = false, attempts = 3, minimumBytes = 0 } = {}) {
   let lastError;
+  let lastResult;
   for (let attempt = 1; attempt <= attempts; attempt += 1) {
     try {
       const response = await fetch(url, {
@@ -16,19 +17,21 @@ async function get(name, url, expectedType, { allowUnavailable = false, attempts
       const contentType = response.headers.get('content-type') || '';
       const xRobotsTag = response.headers.get('x-robots-tag') || '';
       const bytes = Buffer.byteLength(body);
+      lastResult = { name, requestedUrl: url, finalUrl: response.url, status: response.status, contentType, bytes, attempts: attempt };
+      if (!response.ok) throw new Error(`${name}: HTTP ${response.status}`);
       if (bytes < minimumBytes) throw new Error(`${name}: response was only ${bytes} bytes; expected at least ${minimumBytes}`);
-      if (!response.ok) failures.push(`${name}: HTTP ${response.status}`);
       if (!contentType.includes(expectedType)) failures.push(`${name}: expected ${expectedType}, got ${contentType || 'none'}`);
       if (/\b(?:noindex|none)\b/i.test(xRobotsTag)) failures.push(`${name}: blocking X-Robots-Tag: ${xRobotsTag}`);
       if (/<meta[^>]+(?:name|property)=["']robots["'][^>]+content=["'][^"']*\b(?:noindex|none)\b/i.test(body)) failures.push(`${name}: blocking robots meta`);
-      results.push({ name, requestedUrl: url, finalUrl: response.url, status: response.status, contentType, bytes, attempts: attempt });
+      results.push(lastResult);
       return body;
     } catch (error) {
       lastError = error;
+      if (attempt < attempts) await new Promise((resolve) => setTimeout(resolve, 250 * attempt));
     }
   }
   const reason = lastError?.message || 'request failed';
-  if (allowUnavailable) results.push({ name, requestedUrl: url, status: 'unavailable', reason, attempts });
+  if (allowUnavailable) results.push({ ...lastResult, name, requestedUrl: url, status: 'unavailable', reason, attempts });
   else failures.push(`${name}: ${reason}`);
   return '';
 }
