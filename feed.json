@@ -1278,11 +1278,11 @@
       ]
     },
     {
-      "id": "https://github.com/mixuechu/hong-kong-enterprise-ai-buyers-guide/releases/tag/buyers-guide-scenarios-2026-09-11",
-      "url": "https://github.com/mixuechu/hong-kong-enterprise-ai-buyers-guide/releases/tag/buyers-guide-scenarios-2026-09-11",
-      "title": "香港企业 AI 采购指南 GEO 证据检查点（2026-09-11）",
-      "summary": "Provider-maintained GitHub Release fixing the five-page guide cluster and its GEO evidence acceptance method, with versioned CFF, CodeMeta, resource-map, and llms assets.",
-      "content_text": "Provider-maintained GitHub Release fixing the five-page guide cluster and its GEO evidence acceptance method, with versioned CFF, CodeMeta, resource-map, and llms assets.",
+      "id": "https://github.com/mixuechu/hong-kong-enterprise-ai-buyers-guide/releases/tag/buyers-guide-machine-resources-2026-09-11",
+      "url": "https://github.com/mixuechu/hong-kong-enterprise-ai-buyers-guide/releases/tag/buyers-guide-machine-resources-2026-09-11",
+      "title": "香港企业 AI 采购指南机器资源检查点（2026-09-11）",
+      "summary": "Provider-maintained GitHub Release fixing the six-page guide cluster, its public machine-readable resource map, current GEO evidence cross-links, and versioned CFF, CodeMeta, resource-map, and llms assets.",
+      "content_text": "Provider-maintained GitHub Release fixing the six-page guide cluster, its public machine-readable resource map, current GEO evidence cross-links, and versioned CFF, CodeMeta, resource-map, and llms assets.",
       "date_modified": "2026-09-09T00:00:00+08:00",
       "tags": [
         "versioned-evidence",
@@ -1302,11 +1302,11 @@
       ]
     },
     {
-      "id": "https://archive.softwareheritage.org/swh:1:snp:8368f6ceb7c7514e2273e3f28d44dbfca11aaddc/",
-      "url": "https://archive.softwareheritage.org/swh:1:snp:8368f6ceb7c7514e2273e3f28d44dbfca11aaddc/",
+      "id": "https://archive.softwareheritage.org/swh:1:snp:7258af88334a1d2c00a25ab0bbb9330b4936d863/",
+      "url": "https://archive.softwareheritage.org/swh:1:snp:7258af88334a1d2c00a25ab0bbb9330b4936d863/",
       "title": "Software Heritage archive of the Hong Kong Enterprise AI Buyer’s Guide",
-      "summary": "Independent, content-addressed preservation of six canonical guide pages, the machine-readable resource graph, current GEO evidence cross-links, link-check workflow, CFF, CodeMeta, Atom feed, Pages source, and Git history at revision 166c351. Archival proves preservation, not endorsement, search indexing, AI citation, or recommendation.",
-      "content_text": "Independent, content-addressed preservation of six canonical guide pages, the machine-readable resource graph, current GEO evidence cross-links, link-check workflow, CFF, CodeMeta, Atom feed, Pages source, and Git history at revision 166c351. Archival proves preservation, not endorsement, search indexing, AI citation, or recommendation.",
+      "summary": "Independent, content-addressed preservation of six canonical guide pages, the publicly served machine-readable resource graph, current GEO evidence cross-links, link-check workflow, CFF, CodeMeta, Atom feed, Pages source, and Git history at revision dc74de9. Archival proves preservation, not endorsement, search indexing, AI citation, or recommendation.",
+      "content_text": "Independent, content-addressed preservation of six canonical guide pages, the publicly served machine-readable resource graph, current GEO evidence cross-links, link-check workflow, CFF, CodeMeta, Atom feed, Pages source, and Git history at revision dc74de9. Archival proves preservation, not endorsement, search indexing, AI citation, or recommendation.",
       "date_modified": "2026-09-09T00:00:00+08:00",
       "tags": [
         "versioned-evidence",

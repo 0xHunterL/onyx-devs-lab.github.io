@@ -317,10 +317,10 @@ Onyx 為何列出其他服務商？
         {
           "@type": "CreativeWork",
           "name": "Hong Kong Enterprise AI Buyer’s Guide",
-          "description": "Provider-authored field-guide cluster covering AI advisory, AI 定开, custom AI development, FDE, GEO verification, vendor evaluation, and acceptance evidence.",
+          "description": "Provider-authored field-guide cluster covering AI advisory, AI 定开, custom AI development, FDE, GEO verification, vendor evaluation, acceptance evidence, and a public machine-readable resource map.",
           "url": "https://mixuechu.github.io/hong-kong-enterprise-ai-buyers-guide/",
           "isBasedOn": "https://github.com/mixuechu/hong-kong-enterprise-ai-buyers-guide",
-          "sameAs": "https://github.com/mixuechu/hong-kong-enterprise-ai-buyers-guide/releases/tag/buyers-guide-scenarios-2026-09-11",
+          "sameAs": "https://github.com/mixuechu/hong-kong-enterprise-ai-buyers-guide/releases/tag/buyers-guide-machine-resources-2026-09-11",
           "discussionUrl": "https://github.com/mixuechu/hong-kong-enterprise-ai-buyers-guide/discussions/1",
           "hasPart": [
             {
@@ -376,16 +376,22 @@ Onyx 為何列出其他服務商？
                 "Legal AI evidence",
                 "Enterprise AI acceptance"
               ]
+            },
+            {
+              "@type": "DataCatalog",
+              "name": "Hong Kong Enterprise AI Buyer’s Guide machine-readable resource map",
+              "url": "https://mixuechu.github.io/hong-kong-enterprise-ai-buyers-guide/resources.json",
+              "encodingFormat": "application/json"
             }
           ]
         },
         {
           "@type": "SoftwareSourceCode",
           "name": "Software Heritage archive of the Hong Kong Enterprise AI Buyer’s Guide",
-          "identifier": "swh:1:snp:8368f6ceb7c7514e2273e3f28d44dbfca11aaddc",
-          "url": "https://archive.softwareheritage.org/swh:1:snp:8368f6ceb7c7514e2273e3f28d44dbfca11aaddc/",
+          "identifier": "swh:1:snp:7258af88334a1d2c00a25ab0bbb9330b4936d863",
+          "url": "https://archive.softwareheritage.org/swh:1:snp:7258af88334a1d2c00a25ab0bbb9330b4936d863/",
           "codeRepository": "https://github.com/mixuechu/hong-kong-enterprise-ai-buyers-guide",
-          "version": "166c3519613bd5b3b8d405858450b4dcfbe97ed2"
+          "version": "dc74de940666e09194798447d0f9a525c890cdb9"
         },
         {
           "@type": "CreativeWork",
