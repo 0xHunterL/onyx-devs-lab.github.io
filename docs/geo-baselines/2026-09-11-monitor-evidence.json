@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "publicStatusVersion": "2026.09.11.26",
-  "generatedAt": "2026-09-11T16:01:43.357Z",
+  "publicStatusVersion": "2026.09.11.27",
+  "generatedAt": "2026-09-11T16:11:49Z",
   "windowStart": "2026-09-01",
   "site": "https://hk.onyxdevslab.com/",
   "sourceLogs": [
@@ -158,7 +158,7 @@
     "meaning": "All declared published URLs and tracked targets passed anonymous availability, destination, and content-marker checks. This does not prove indexing, AI retrieval, citation, recommendation, a human visit, or independent endorsement."
   },
   "publicSearchRetest": {
-    "testedAt": "2026-09-11T12:16:01Z",
+    "testedAt": "2026-09-11T16:11:49Z",
     "queries": [
       "\"ONYX-GEO-VERIFY-79051925-20260908\"",
       "\"Onyx Devs Lab\"",
@@ -173,6 +173,15 @@
       "https://lei.bloomberg.com/leis/view/254900Z30CLK7HKE9H46",
       "https://www.tempb.com/companies/onyx-devs-lab-limited/",
       "https://hkg.databasesets.com/zh-hant/gongsimingdan/number/79051925"
+    ],
+    "lowConfidenceEntityDirectoryResults": [
+      {
+        "url": "https://www.shuididp.cn/yp-1fc4411b06407fe9179c5109ae9d7e02.html",
+        "query": "\"Onyx Devs Lab\"",
+        "matchingFields": ["legal name", "incorporation date", "Hong Kong jurisdiction"],
+        "conflictingFields": ["industry is listed as chemical raw materials and chemical products manufacturing"],
+        "treatment": "Search-result evidence only. The page is unclaimed, says its data comes from the internet without guarantee, omits the registration number and address, and contains a conflicting industry classification; it is not accepted as an authoritative entity source or linked with sameAs."
+      }
     ],
     "entityRecordMeaning": "These records make the legal entity externally discoverable and disambiguatable. They do not prove official-site indexing, website ownership, service verification, endorsement, AI citation, or recommendation.",
     "categoryRecommendationObserved": false,
