@@ -99,6 +99,11 @@ for (const file of htmlFiles) {
   const lang = html.match(/<html lang="([^"]+)"/)?.[1];
   const pathname = canonical ? new URL(canonical).pathname : '';
   if (pathname.includes('/case-studies/') && !html.includes('"@type":"Article"')) failures.push(`${relative}: case study is not declared as Article`);
+  if (/\/case-studies\/(?:retail-ai-decision-platform|accounting-ai-production-platform|legal-ai-evidence-workflow)\/$/.test(pathname)) {
+    const scenarioGuide = 'https://mixuechu.github.io/hong-kong-enterprise-ai-buyers-guide/enterprise-ai-scenario-patterns/';
+    if (!html.includes(`rel="external" href="${scenarioGuide}"`)) failures.push(`${relative}: visible cross-scenario guide link is missing`);
+    if (!html.includes(`"subjectOf":{"@type":"Article","name":"Enterprise AI scenario architecture and evidence guide","url":"${scenarioGuide}"`)) failures.push(`${relative}: cross-scenario guide Schema.org relation is missing`);
+  }
   if (html.includes('"@type":"Article"')) {
     const published = expectedPublishedDate(pathname);
     const authorPath = lang === 'zh-CN' ? '/zh-cn/about/' : (lang === 'zh-Hant-HK' ? '/zh-hk/about/' : '/en/about/');

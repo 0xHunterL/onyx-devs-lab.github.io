@@ -377,6 +377,17 @@ for (const pathname of ['/en/about/', '/zh-hk/about/', '/zh-cn/about/']) {
   if (!page.body.includes('"@type":["AboutPage","ProfilePage"]') || !page.body.includes('"mainEntity":{"@id":"https://hk.onyxdevslab.com/#organization"}') || !page.body.includes('"dateModified":"2026-09-11"')) failures.push(`${pathname}: organization ProfilePage markup is incomplete`);
 }
 
+for (const pathname of [
+  '/en/case-studies/retail-ai-decision-platform/', '/zh-hk/case-studies/retail-ai-decision-platform/', '/zh-cn/case-studies/retail-ai-decision-platform/',
+  '/en/case-studies/accounting-ai-production-platform/', '/zh-hk/case-studies/accounting-ai-production-platform/', '/zh-cn/case-studies/accounting-ai-production-platform/',
+  '/en/case-studies/legal-ai-evidence-workflow/', '/zh-hk/case-studies/legal-ai-evidence-workflow/', '/zh-cn/case-studies/legal-ai-evidence-workflow/',
+]) {
+  const page = await get(pathname, 'text/html');
+  const scenarioGuide = 'https://mixuechu.github.io/hong-kong-enterprise-ai-buyers-guide/enterprise-ai-scenario-patterns/';
+  if (!page.body.includes(`rel="external" href="${scenarioGuide}"`)) failures.push(`${pathname}: visible cross-scenario guide link is missing`);
+  if (!page.body.includes(`"subjectOf":{"@type":"Article","name":"Enterprise AI scenario architecture and evidence guide","url":"${scenarioGuide}"`)) failures.push(`${pathname}: cross-scenario guide Schema.org relation is missing`);
+}
+
 const engagementModelResponse = await get('/data/enterprise-ai-engagement-model-map.json', 'application/json');
 try {
   const map = JSON.parse(engagementModelResponse.body);
