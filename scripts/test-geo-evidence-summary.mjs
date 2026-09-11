@@ -1,5 +1,5 @@
 import assert from 'node:assert/strict';
-import { buildEvidenceCounts, buildEvidenceDeltas } from './geo-evidence-summary.mjs';
+import { buildCommonCrawlAvailability, buildEvidenceCounts, buildEvidenceDeltas } from './geo-evidence-summary.mjs';
 
 const crawlerTotals = {
   verifiedGptBotPageCrawls: 24,
@@ -58,4 +58,26 @@ assert.equal(deltas.humanUnverifiedTrackedVisits, 0);
 assert.equal(deltas.knownLinkScannerTrackedVisits, null);
 assert.equal(buildEvidenceDeltas(counts, null).knownLinkScannerTrackedVisits, 0);
 
-console.log(JSON.stringify({ tests: 16, failures: [] }, null, 2));
+const partialCommonCrawl = buildCommonCrawlAvailability({
+  collectionIndexStatus: 'available',
+  results: [
+    { id: 'CC-MAIN-2026-34', status: 'unavailable', httpStatus: 502, reason: 'HTTP 502' },
+    { id: 'CC-MAIN-2026-30', status: 'available', httpStatus: 404, captures: 0 },
+  ],
+});
+assert.equal(partialCommonCrawl.status, 'partial');
+assert.equal(partialCommonCrawl.availableIndexes, 1);
+assert.equal(partialCommonCrawl.unavailableIndexes, 1);
+assert.deepEqual(partialCommonCrawl.unavailable[0], { id: 'CC-MAIN-2026-34', httpStatus: 502, reason: 'HTTP 502' });
+assert.match(partialCommonCrawl.interpretation, /incomplete/);
+
+const availableCommonCrawl = buildCommonCrawlAvailability({
+  collectionIndexStatus: 'available',
+  results: [{ id: 'CC-MAIN-2026-30', status: 'available', httpStatus: 404, captures: 0 }],
+});
+assert.equal(availableCommonCrawl.status, 'available');
+
+const unavailableCommonCrawl = buildCommonCrawlAvailability({ collectionIndexStatus: 'unavailable', results: [] });
+assert.equal(unavailableCommonCrawl.status, 'unavailable');
+
+console.log(JSON.stringify({ tests: 23, failures: [] }, null, 2));

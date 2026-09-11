@@ -2,7 +2,7 @@ import { spawn } from 'node:child_process';
 import { mkdir, readFile, readdir, rename, unlink, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { buildEvidenceCounts, buildEvidenceDeltas } from './geo-evidence-summary.mjs';
+import { buildCommonCrawlAvailability, buildEvidenceCounts, buildEvidenceDeltas } from './geo-evidence-summary.mjs';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const args = process.argv.slice(2);
@@ -98,6 +98,7 @@ try {
 }
 
 const counts = buildEvidenceCounts(crawler, referral, commonCrawl, promptCoverage);
+const commonCrawlAvailability = buildCommonCrawlAvailability(commonCrawl);
 const priorCounts = previous?.counts || {};
 const deltas = buildEvidenceDeltas(counts, previous ? priorCounts : null);
 const metricForCrawlerObservation = (observation) => {
@@ -146,13 +147,14 @@ const summary = {
   since,
   sourceLogs: crawler.files,
   counts,
+  availability: { commonCrawl: commonCrawlAvailability },
   deltas,
   newEvidence,
   initialized: !previous,
   changed: newEvidence.length > 0,
   eventFile,
   newEvidenceObservations,
-  evidenceBoundary: 'New provider-verified crawler fingerprints prove only previously unseen requests by the named crawler. Bytespider fingerprints are separately labeled user-agent-only and identity-unverified; they do not prove Doubao or ByteDance access. New referral fingerprints exclude suspected automation and prove only previously unseen attributed requests whose visitor type is not verified. Common Crawl fingerprints prove only appearance in the named public crawl index. None proves search indexing, retrieval, citation, ranking, a human visit, or non-brand recommendation.',
+  evidenceBoundary: 'New provider-verified crawler fingerprints prove only previously unseen requests by the named crawler. Bytespider fingerprints are separately labeled user-agent-only and identity-unverified; they do not prove Doubao or ByteDance access. New referral fingerprints exclude suspected automation and prove only previously unseen attributed requests whose visitor type is not verified. Common Crawl fingerprints prove only appearance in the named public crawl index; partial or unavailable index queries make a zero capture count incomplete. None proves search indexing, retrieval, citation, ranking, a human visit, or non-brand recommendation.',
 };
 
 if (eventFile) await atomicJson(eventFile, {

@@ -39,3 +39,29 @@ export function buildEvidenceDeltas(counts, previousCounts) {
     Object.hasOwn(previousCounts, key) ? value - Number(previousCounts[key]) : null,
   ]));
 }
+
+export function buildCommonCrawlAvailability(commonCrawl) {
+  const results = Array.isArray(commonCrawl?.results) ? commonCrawl.results : [];
+  const available = results.filter((result) => result.status === 'available');
+  const unavailable = results.filter((result) => result.status !== 'available');
+  const status = commonCrawl?.collectionIndexStatus !== 'available' || !results.length
+    ? 'unavailable'
+    : unavailable.length
+      ? 'partial'
+      : 'available';
+  return {
+    status,
+    collectionIndexStatus: commonCrawl?.collectionIndexStatus || 'unavailable',
+    indexesChecked: results.length,
+    availableIndexes: available.length,
+    unavailableIndexes: unavailable.length,
+    unavailable: unavailable.map((result) => ({
+      id: result.id || null,
+      httpStatus: result.httpStatus ?? null,
+      reason: result.reason || 'unavailable',
+    })),
+    interpretation: status === 'available'
+      ? 'All selected indexes returned a usable response; capture counts cover the complete selected set.'
+      : 'Capture counts are incomplete and must not be interpreted as a verified zero across the selected indexes.',
+  };
+}
