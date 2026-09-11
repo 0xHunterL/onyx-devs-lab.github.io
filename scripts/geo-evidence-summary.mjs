@@ -55,6 +55,10 @@ export function buildCommonCrawlAvailability(commonCrawl) {
     indexesChecked: results.length,
     availableIndexes: available.length,
     unavailableIndexes: unavailable.length,
+    indexes: results.map((result) => ({
+      id: result.id || null,
+      status: result.status || 'unavailable',
+    })),
     unavailable: unavailable.map((result) => ({
       id: result.id || null,
       httpStatus: result.httpStatus ?? null,
@@ -66,15 +70,41 @@ export function buildCommonCrawlAvailability(commonCrawl) {
   };
 }
 
+function availabilityCoverage(value, useDetailedIndexes) {
+  if (useDetailedIndexes) {
+    return {
+      indexes: value.indexes
+        .map((index) => ({ id: index.id || null, status: index.status || 'unavailable' }))
+        .sort((left, right) => `${left.id}:${left.status}`.localeCompare(`${right.id}:${right.status}`)),
+    };
+  }
+  return {
+    indexesChecked: Number(value?.indexesChecked || 0),
+    availableIndexes: Number(value?.availableIndexes || 0),
+    unavailableIndexes: Number(value?.unavailableIndexes || 0),
+    unavailableIndexIds: (value?.unavailable || []).map((index) => index.id || null).sort(),
+  };
+}
+
 export function buildAvailabilityChanges(currentAvailability, previousAvailability) {
   if (!previousAvailability) return [];
   return Object.entries(currentAvailability).flatMap(([source, current]) => {
     const previous = previousAvailability[source];
-    if (!previous || previous.status === current.status) return [];
+    if (!previous) return [];
+    const statusChanged = previous.status !== current.status;
+    const useDetailedIndexes = Array.isArray(previous.indexes) && Array.isArray(current.indexes);
+    const previousCoverage = availabilityCoverage(previous, useDetailedIndexes);
+    const currentCoverage = availabilityCoverage(current, useDetailedIndexes);
+    const coverageChanged = JSON.stringify(previousCoverage) !== JSON.stringify(currentCoverage);
+    if (!statusChanged && !coverageChanged) return [];
     return [{
       source,
       previousStatus: previous.status || 'unknown',
       currentStatus: current.status || 'unknown',
+      statusChanged,
+      coverageChanged,
+      previousCoverage,
+      currentCoverage,
     }];
   });
 }

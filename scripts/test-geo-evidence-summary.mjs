@@ -68,6 +68,10 @@ const partialCommonCrawl = buildCommonCrawlAvailability({
 assert.equal(partialCommonCrawl.status, 'partial');
 assert.equal(partialCommonCrawl.availableIndexes, 1);
 assert.equal(partialCommonCrawl.unavailableIndexes, 1);
+assert.deepEqual(partialCommonCrawl.indexes, [
+  { id: 'CC-MAIN-2026-34', status: 'unavailable' },
+  { id: 'CC-MAIN-2026-30', status: 'available' },
+]);
 assert.deepEqual(partialCommonCrawl.unavailable[0], { id: 'CC-MAIN-2026-34', httpStatus: 502, reason: 'HTTP 502' });
 assert.match(partialCommonCrawl.interpretation, /incomplete/);
 
@@ -80,14 +84,37 @@ assert.equal(availableCommonCrawl.status, 'available');
 const unavailableCommonCrawl = buildCommonCrawlAvailability({ collectionIndexStatus: 'unavailable', results: [] });
 assert.equal(unavailableCommonCrawl.status, 'unavailable');
 
-assert.deepEqual(buildAvailabilityChanges(
+const statusAndCoverageChange = buildAvailabilityChanges(
   { commonCrawl: partialCommonCrawl },
   { commonCrawl: availableCommonCrawl },
-), [{ source: 'commonCrawl', previousStatus: 'available', currentStatus: 'partial' }]);
-assert.deepEqual(buildAvailabilityChanges(
+);
+assert.equal(statusAndCoverageChange.length, 1);
+assert.equal(statusAndCoverageChange[0].statusChanged, true);
+assert.equal(statusAndCoverageChange[0].coverageChanged, true);
+
+const unavailableIndexChanged = buildAvailabilityChanges(
   { commonCrawl: { ...partialCommonCrawl, unavailable: [{ id: 'different' }] } },
+  { commonCrawl: { ...partialCommonCrawl, indexes: undefined } },
+);
+assert.equal(unavailableIndexChanged.length, 1);
+assert.equal(unavailableIndexChanged[0].statusChanged, false);
+assert.equal(unavailableIndexChanged[0].coverageChanged, true);
+
+assert.deepEqual(buildAvailabilityChanges(
+  { commonCrawl: structuredClone(partialCommonCrawl) },
   { commonCrawl: partialCommonCrawl },
 ), []);
+assert.deepEqual(buildAvailabilityChanges(
+  { commonCrawl: partialCommonCrawl },
+  { commonCrawl: { ...partialCommonCrawl, indexes: undefined } },
+), []);
+
+const selectedIndexesChanged = buildAvailabilityChanges(
+  { commonCrawl: { ...availableCommonCrawl, indexes: [{ id: 'CC-MAIN-2026-34', status: 'available' }] } },
+  { commonCrawl: { ...availableCommonCrawl, indexes: [{ id: 'CC-MAIN-2026-30', status: 'available' }] } },
+);
+assert.equal(selectedIndexesChanged.length, 1);
+assert.equal(selectedIndexesChanged[0].coverageChanged, true);
 assert.deepEqual(buildAvailabilityChanges({ commonCrawl: partialCommonCrawl }, null), []);
 assert.equal(selectEvidenceEventKind({ initializing: true, evidenceChanged: false, availabilityChanged: false }), 'baseline');
 assert.equal(selectEvidenceEventKind({ initializing: false, evidenceChanged: true, availabilityChanged: true }), 'evidence-and-availability-change');
@@ -95,4 +122,4 @@ assert.equal(selectEvidenceEventKind({ initializing: false, evidenceChanged: tru
 assert.equal(selectEvidenceEventKind({ initializing: false, evidenceChanged: false, availabilityChanged: true }), 'availability-change');
 assert.equal(selectEvidenceEventKind({ initializing: false, evidenceChanged: false, availabilityChanged: false }), null);
 
-console.log(JSON.stringify({ tests: 31, failures: [] }, null, 2));
+console.log(JSON.stringify({ tests: 40, failures: [] }, null, 2));
