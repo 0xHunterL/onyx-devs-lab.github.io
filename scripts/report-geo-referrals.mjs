@@ -16,6 +16,9 @@ const inputPaths = args.filter((arg) => !arg.startsWith('--since=') && arg !== '
 const paths = await resolveLogPaths(inputPaths, includeRotated);
 const syntheticUserAgent = /^(?:curl|Wget)\/|Onyx-(?:GEO-Release-Check|Buyer-Guide-Link-Check)|python-requests|node-fetch|undici/i;
 const knownLinkScannerUserAgent = /AppEngine-Google;\s*\(\+http:\/\/code\.google\.com\/appengine;\s*appid:\s*s~virustotalcloud\)/i;
+const knownLinkScannerNetworks = [
+  { name: 'Palo Alto Networks URL scanner', matches: (ip) => /^205\.169\.39\./.test(ip) },
+];
 const aiReferrerFamilies = [
   ['doubao', /(^|\.)doubao\.com$/i],
   ['chatgpt', /(^|\.)(?:chatgpt\.com|chat\.openai\.com)$/i],
@@ -50,6 +53,7 @@ for (const path of paths) {
       const campaign = rawCampaign && /^[a-z0-9_-]{1,100}$/i.test(rawCampaign) ? rawCampaign : null;
       const referrerHost = String(event.referrerHost || '').toLowerCase().replace(/^www\./, '');
       const aiReferrer = aiReferrerFamilies.find(([, pattern]) => pattern.test(referrerHost))?.[0] || null;
+      const scannerNetwork = knownLinkScannerNetworks.find((network) => network.matches(String(event.clientIp || '')))?.name || null;
       if (rawCampaign && !campaign) {
         malformedCampaignVisits.push({ time: event.time, path: url.pathname, rawCampaign, userAgent: event.userAgent || '' });
       }
@@ -64,6 +68,7 @@ for (const path of paths) {
         referrerHost,
         evidenceType: campaign ? (aiReferrer ? 'utm-and-ai-referrer' : 'utm') : 'ai-referrer',
         userAgent: event.userAgent || '',
+        scannerNetwork,
       };
       if (syntheticUserAgent.test(visit.userAgent)) syntheticVisits.push(visit);
       else visits.push(visit);
@@ -97,7 +102,7 @@ for (const [index, visit] of visits.entries()) {
 }
 const burstGroups = new Map();
 for (const [index, visit] of visits.entries()) {
-  if (knownLinkScannerUserAgent.test(visit.userAgent)) suspectedAutomatedVisitIndexes.add(index);
+  if (knownLinkScannerUserAgent.test(visit.userAgent) || visit.scannerNetwork) suspectedAutomatedVisitIndexes.add(index);
   const key = [visit.userAgent, visit.source, visit.campaign].join('\u0000');
   if (!burstGroups.has(key)) burstGroups.set(key, []);
   burstGroups.get(key).push({ index, visit, timestamp: Date.parse(visit.time) });
@@ -189,7 +194,7 @@ console.log(JSON.stringify({
   syntheticTrackedVisits: syntheticVisits.length,
   suspectedAutomatedTrackedVisits: suspectedAutomatedVisitIndexes.size,
   humanUnverifiedTrackedVisits: humanUnverifiedVisits.length,
-  caveat: 'Scripted verification user agents are excluded from trackedVisits and reported separately. High-velocity multi-page bursts are flagged as suspected automation rather than human visits. Remaining requests are human-unverified: UTM or AI-referrer traffic is attribution evidence, not proof of a person, search indexing, answer citation, or recommendation. Referrer headers may be omitted by the source application or browser policy.',
+  caveat: 'Scripted verification user agents are excluded from trackedVisits and reported separately. Known link-scanner user agents and documented scanner networks, internally inconsistent browser identities, and high-velocity multi-page bursts are flagged as suspected automation rather than human visits. Remaining requests are human-unverified: UTM or AI-referrer traffic is attribution evidence, not proof of a person, search indexing, answer citation, or recommendation. Referrer headers may be omitted by the source application or browser policy.',
   byCampaign: aggregate('campaign'),
   bySource: aggregate('source'),
   byMedium: aggregate('medium'),
@@ -197,7 +202,9 @@ console.log(JSON.stringify({
   byEvidenceType: aggregate('evidenceType'),
   suspectedAutomatedBursts,
   internallyInconsistentUserAgentVisits,
-  knownLinkScannerTrackedVisits: visits.filter((visit) => knownLinkScannerUserAgent.test(visit.userAgent)).length,
+  knownLinkScannerTrackedVisits: visits.filter((visit) => knownLinkScannerUserAgent.test(visit.userAgent) || visit.scannerNetwork).length,
+  knownLinkScannerUserAgentVisits: visits.filter((visit) => knownLinkScannerUserAgent.test(visit.userAgent)).length,
+  knownLinkScannerNetworkVisits: visits.filter((visit) => visit.scannerNetwork).length,
   malformedCampaignVisits,
   recentVisits: visits.slice(-50),
   recentHumanUnverifiedVisits: humanUnverifiedVisits.slice(-50),
