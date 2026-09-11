@@ -69,6 +69,7 @@ if (!nginxRouteConfig.includes('location = /zh-cn/custom-ai-development-hong-kon
 if (!nginxRouteConfig.includes('location = /zh-cn/ai-consulting-hong-kong/') || !nginxRouteConfig.includes('return 301 /zh-cn/ai-consulting/;')) failures.push('nginx: observed legacy AI-consulting URL is not redirected');
 if (!nginxRouteConfig.includes('location = /zh-cn/guides/hong-kong-enterprise-ai-providers/') || !nginxRouteConfig.includes('return 301 /zh-cn/guides/hong-kong-ai-consulting-companies/;')) failures.push('nginx: observed legacy provider-guide URL is not redirected');
 if (!nginxRouteConfig.includes('try_files $uri $uri/ =404;')) failures.push('nginx: unknown routes do not return a real 404');
+if ((nginxRouteConfig.match(/Cache-Control "public, max-age=0, must-revalidate"/g) || []).length !== 3 || nginxRouteConfig.includes('no-store, no-cache')) failures.push('nginx: HTML and Markdown must support conditional caching without no-store');
 if (!nginxRouteConfig.includes('if ($request_uri ~ ^/index\\.html(?:\\?|$))')) failures.push('nginx: duplicate /index.html homepage is not redirected');
 
 for (const file of htmlFiles) {

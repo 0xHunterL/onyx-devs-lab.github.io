@@ -86,6 +86,8 @@ async function get(pathname, expectedType, userAgent = 'Onyx-GEO-Release-Check/1
 const root = await get('/', 'text/html');
 const rootLinkHeader = root.response?.headers.get('link') || '';
 if (!/(?:^|,)\s*Accept\s*(?:,|$)/i.test(root.response?.headers.get('vary') || '')) failures.push('/: Vary header does not include Accept');
+if (!/^public,\s*max-age=0,\s*must-revalidate$/i.test(root.response?.headers.get('cache-control') || '')) failures.push('/: HTML cache policy must permit storage with immediate revalidation');
+if (!root.response?.headers.get('etag') && !root.response?.headers.get('last-modified')) failures.push('/: HTML response has no revalidation validator');
 if (!/search=yes/.test(root.response?.headers.get('content-signal') || '') || !/ai-input=yes/.test(root.response?.headers.get('content-signal') || '')) failures.push('/: Content-Signal response header is incomplete');
 for (const resource of ['sitemap.xml', 'feed.xml', 'feed.json', 'data/enterprise-ai-service-terms.jsonld', 'data/ai-search-prompt-evidence-map.json', 'llms.txt']) {
   if (!rootLinkHeader.includes(`https://hk.onyxdevslab.com/${resource}`)) failures.push(`/: Link discovery header is missing ${resource}`);
@@ -119,6 +121,7 @@ for (const required of ['title:', 'canonical: "https://hk.onyxdevslab.com/"', '#
   if (!markdownRoot.body.includes(required)) failures.push(`/: Markdown variant is missing ${required}`);
 }
 if (!/(?:^|,)\s*Accept\s*(?:,|$)/i.test(markdownRoot.response?.headers.get('vary') || '')) failures.push('/: Markdown response Vary header does not include Accept');
+if (!/^public,\s*max-age=0,\s*must-revalidate$/i.test(markdownRoot.response?.headers.get('cache-control') || '')) failures.push('/: Markdown cache policy must permit storage with immediate revalidation');
 if (!/search=yes/.test(markdownRoot.response?.headers.get('content-signal') || '') || !/ai-input=yes/.test(markdownRoot.response?.headers.get('content-signal') || '')) failures.push('/: Markdown Content-Signal response header is incomplete');
 
 const robots = await get('/robots.txt', 'text/plain');

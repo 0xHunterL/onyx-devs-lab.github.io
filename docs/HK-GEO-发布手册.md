@@ -78,6 +78,8 @@ curl -sS -H 'Accept: text/markdown' https://hk.onyxdevslab.com/ | sed -n '1,25p'
 
 `robots.txt` 必须保留 `Content-Signal: search=yes, ai-input=yes`。这分别声明允许传统搜索索引和查询时的 AI 输入；`ai-train` 未经明确决策不作声明。信号存在只证明站点表达了使用意图，不证明爬虫或模型会采用。
 
+HTML 与 Markdown 响应必须保留 `Cache-Control: public, max-age=0, must-revalidate` 以及 ETag 或 Last-Modified，使重复抓取可以做条件复核；禁止重新加入 `no-store`，否则客户端无法保存响应并发起有效的条件请求。
+
 首页和 HTML 内容页响应必须包含 RFC 8288 `Link` 头，并能发现 `sitemap.xml`、`feed.xml`、`feed.json`、`data/enterprise-ai-service-terms.jsonld` 与 `llms.txt`；JSON Feed 必须返回 `application/feed+json`，服务术语图必须返回 `application/ld+json`。`geo:check-live` 会直接检查线上响应，避免只修改仓库示例而没有加载到 Nginx。
 
 Markdown 协商响应必须为 `text/markdown`，并与 HTML 响应一样包含 `Vary: Accept`、`Content-Signal: search=yes, ai-input=yes` 和发现入口 `Link` 头；正文开头应能看到 title、canonical 与 language 前置元数据。未携带 Markdown Accept 头时，首页仍必须返回 `text/html`。
