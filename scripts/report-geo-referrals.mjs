@@ -81,6 +81,20 @@ const aggregate = (key) => Object.fromEntries([...visits.reduce((counts, visit) 
 
 const suspectedAutomatedVisitIndexes = new Set();
 const suspectedAutomatedBursts = [];
+const internallyInconsistentUserAgentVisits = [];
+const chromiumWithLegacyEdge = /Chrome\/(?:[5-9]\d|1\d{2})\.[^\s]*[\s\S]*\bEdge\/1[2-8]\./i;
+for (const [index, visit] of visits.entries()) {
+  if (!chromiumWithLegacyEdge.test(visit.userAgent)) continue;
+  suspectedAutomatedVisitIndexes.add(index);
+  internallyInconsistentUserAgentVisits.push({
+    time: visit.time,
+    path: visit.path,
+    source: visit.source,
+    campaign: visit.campaign,
+    userAgent: visit.userAgent,
+    reason: 'Chromium 50+ combined with legacy EdgeHTML 12-18 is an internally inconsistent browser identity',
+  });
+}
 const burstGroups = new Map();
 for (const [index, visit] of visits.entries()) {
   if (knownLinkScannerUserAgent.test(visit.userAgent)) suspectedAutomatedVisitIndexes.add(index);
@@ -119,10 +133,13 @@ for (const group of coordinatedGroups.values()) {
   group.sort((a, b) => a.timestamp - b.timestamp);
   for (let start = 0; start < group.length; start += 1) {
     const window = [];
-    for (let end = start; end < group.length && group[end].timestamp - group[start].timestamp <= 60_000; end += 1) window.push(group[end]);
+    for (let end = start; end < group.length && group[end].timestamp - group[start].timestamp <= 120_000; end += 1) window.push(group[end]);
     const distinctPaths = new Set(window.map((item) => item.visit.path));
     const distinctUserAgents = new Set(window.map((item) => item.visit.userAgent));
-    if (window.length < 8 || distinctPaths.size < 3 || distinctUserAgents.size < 2) continue;
+    const durationMs = window.at(-1).timestamp - window[0].timestamp;
+    const fastWideBurst = durationMs <= 60_000 && window.length >= 8 && distinctPaths.size >= 3 && distinctUserAgents.size >= 2;
+    const coordinatedMultiProfileBurst = window.length >= 10 && distinctPaths.size >= 3 && distinctUserAgents.size >= 3;
+    if (!fastWideBurst && !coordinatedMultiProfileBurst) continue;
     for (const item of window) suspectedAutomatedVisitIndexes.add(item.index);
     suspectedAutomatedBursts.push({
       start: window[0].visit.time,
@@ -132,7 +149,10 @@ for (const group of coordinatedGroups.values()) {
       requests: window.length,
       distinctLandingPages: distinctPaths.size,
       distinctUserAgents: distinctUserAgents.size,
-      reason: 'at least 8 requests from multiple user agents across at least 3 landing pages within 60 seconds',
+      windowSeconds: Math.round(durationMs / 1000),
+      reason: fastWideBurst
+        ? 'at least 8 requests from multiple user agents across at least 3 landing pages within 60 seconds'
+        : 'at least 10 requests from at least 3 user agents across at least 3 landing pages within 120 seconds',
     });
     start = group.findIndex((item) => item.index === window.at(-1).index);
   }
@@ -176,6 +196,7 @@ console.log(JSON.stringify({
   byLandingPage: aggregate('path'),
   byEvidenceType: aggregate('evidenceType'),
   suspectedAutomatedBursts,
+  internallyInconsistentUserAgentVisits,
   knownLinkScannerTrackedVisits: visits.filter((visit) => knownLinkScannerUserAgent.test(visit.userAgent)).length,
   malformedCampaignVisits,
   recentVisits: visits.slice(-50),

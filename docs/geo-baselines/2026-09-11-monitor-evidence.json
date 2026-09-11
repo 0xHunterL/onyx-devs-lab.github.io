@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-09-11T06:23:00.000Z",
+  "generatedAt": "2026-09-11T07:31:00.000Z",
   "windowStart": "2026-09-01",
   "site": "https://hk.onyxdevslab.com/",
   "sourceLogs": [
@@ -27,22 +27,23 @@
     "promptsWithAnySearchRelatedCrawl": 0
   },
   "attributionEvidence": {
-    "trackedRequests": 52,
-    "suspectedAutomatedRequests": 45,
-    "visitorTypeUnverifiedRequests": 7,
+    "trackedRequests": 68,
+    "suspectedAutomatedRequests": 59,
+    "visitorTypeUnverifiedRequests": 9,
     "knownLinkScannerRequests": 12,
+    "internallyInconsistentUserAgentRequests": 4,
     "malformedCampaignRequestsExcluded": 6,
     "aiReferrerAttributedRequests": 0,
     "campaigns": {
       "geo_decision_matrix": 24,
-      "geo_engagement_model_qa": 21,
+      "geo_engagement_model_qa": 37,
       "geo_buyers_guide_ai_dingkai": 4,
       "geo_buyers_guide_fde": 2,
       "geo_buyers_guide": 1
     }
   },
   "publicSearchRetest": {
-    "testedAt": "2026-09-11",
+    "testedAt": "2026-09-11T07:31:00Z",
     "queries": [
       "\"ONYX-GEO-VERIFY-79051925-20260908\"",
       "\"Onyx Devs Lab\"",
@@ -63,5 +64,5 @@
     "newPublicDiscussionObserved": false
   },
   "doubaoTestStatus": "not-run",
-  "evidenceBoundary": "Provider-verified requests prove only access by the named crawler. Discovery-file access is not content ingestion. Attributed requests do not prove a human visitor. Public-search non-results are observations for the stated queries and date. None of this proves indexing, retrieval, citation, ranking, or non-brand recommendation. No prompt was sent to Doubao."
+  "evidenceBoundary": "Provider-verified requests prove only access by the named crawler. Discovery-file access is not content ingestion. Attributed requests do not prove a human visitor. Coordinated multi-profile bursts and internally inconsistent browser identities are classified as suspected automation. Public-search non-results are observations for the stated queries and time. None of this proves indexing, retrieval, citation, ranking, or non-brand recommendation. No prompt was sent to Doubao."
 }
