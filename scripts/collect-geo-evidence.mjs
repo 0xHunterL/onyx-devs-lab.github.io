@@ -47,6 +47,7 @@ async function readPreviousSummary() {
 
 async function atomicJson(name, value) {
   const target = path.join(outputDir, name);
+  await mkdir(path.dirname(target), { recursive: true, mode: 0o750 });
   const temporary = `${target}.tmp-${process.pid}`;
   await writeFile(temporary, `${JSON.stringify(value, null, 2)}\n`, { mode: 0o640 });
   await rename(temporary, target);
@@ -112,9 +113,12 @@ const evidenceMetrics = new Set([
 const newEvidence = Object.entries(deltas)
   .filter(([metric, value]) => evidenceMetrics.has(metric) && value > 0)
   .map(([metric, delta]) => ({ metric, delta, current: counts[metric] }));
+const generatedAt = new Date().toISOString();
+const eventKind = !previous ? 'baseline' : newEvidence.length ? 'evidence-change' : null;
+const eventFile = eventKind ? `events/${generatedAt.replaceAll(':', '-')}-${eventKind}.json` : null;
 const summary = {
   schemaVersion: 1,
-  generatedAt: new Date().toISOString(),
+  generatedAt,
   since,
   sourceLogs: crawler.files,
   counts,
@@ -122,6 +126,7 @@ const summary = {
   newEvidence,
   initialized: !previous,
   changed: newEvidence.length > 0,
+  eventFile,
   evidenceBoundary: 'Positive crawler deltas prove only provider-verified requests. Positive referral deltas exclude suspected automation and prove only attributed requests whose visitor type is not verified. Neither proves indexing, retrieval, citation, ranking, a human visit, or non-brand recommendation.',
 };
 
@@ -129,4 +134,12 @@ await atomicJson('crawler-report.json', crawler);
 await atomicJson('referral-report.json', referral);
 await atomicJson('prompt-crawl-coverage.json', promptCoverage);
 await atomicJson('summary.json', summary);
+if (eventFile) await atomicJson(eventFile, {
+  schemaVersion: 1,
+  kind: eventKind,
+  summary,
+  crawler,
+  referral,
+  promptCoverage,
+});
 console.log(JSON.stringify(summary, null, 2));

@@ -47,11 +47,12 @@ npm run geo:crawler-report -- --since=2026-09-01 --include-rotated --verify-open
 npm run geo:referral-report -- --since=2026-09-01 --include-rotated /var/log/nginx/hk.onyxdevslab.com.geo.log
 ```
 
-生产机通过 `onyx-geo-monitor.timer` 每六小时自动执行一次 `geo:collect-evidence`。它读取当前及数字轮转日志，启用 OpenAI、Bing、Google 和 Perplexity 的提供方核验，依次生成 `/var/lib/onyx-geo/crawler-report.json`、`referral-report.json`、`prompt-crawl-coverage.json` 和 `summary.json`。`summary.json` 只汇总计数、与上一轮的正向差值及证据边界；`changed: true` 仅表示新增已核验爬虫、可关联的非疑似自动化访问，或这些抓取覆盖的提示词证据，发布自测和疑似自动化 UTM 流量不会触发该标记。这不等于收录、检索、引用、真人访问或非品牌推荐。第一次运行标记 `initialized: true` 并把所有差值置零，避免把已有累计证据误报为新变化；后续运行才报告增量。
+生产机通过 `onyx-geo-monitor.timer` 每六小时自动执行一次 `geo:collect-evidence`。它读取当前及数字轮转日志，启用 OpenAI、Bing、Google 和 Perplexity 的提供方核验，依次生成 `/var/lib/onyx-geo/crawler-report.json`、`referral-report.json`、`prompt-crawl-coverage.json` 和 `summary.json`。`summary.json` 只汇总计数、与上一轮的正向差值及证据边界；`changed: true` 仅表示新增已核验爬虫、可关联的非疑似自动化访问，或这些抓取覆盖的提示词证据，发布自测和疑似自动化 UTM 流量不会触发该标记。这不等于收录、检索、引用、真人访问或非品牌推荐。第一次运行标记 `initialized: true` 并把所有差值置零，避免把已有累计证据误报为新变化；后续运行才报告增量。初始化基线以及每次 `changed: true` 的完整四份报告会原子写入 `/var/lib/onyx-geo/events/`，因此下一轮覆盖当前报告后，新增证据仍有不可覆盖的事件文件可供心跳复核。
 
 ```bash
 systemctl status onyx-geo-monitor.timer --no-pager
 cat /var/lib/onyx-geo/summary.json
+find /var/lib/onyx-geo/events -maxdepth 1 -type f -print
 journalctl -u onyx-geo-monitor.service -n 50 --no-pager
 ```
 
