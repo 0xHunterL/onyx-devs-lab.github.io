@@ -38,6 +38,10 @@ const records = [
     time: '2026-09-11T09:00:05+00:00', clientIp: '51.89.69.107', method: 'GET',
     path: '/sitemap.xml', status: 200, userAgent: 'Mozilla/5.0 (compatible; AhrefsBot/7.0; +http://ahrefs.com/robot/)',
   },
+  {
+    time: '2026-09-11T15:35:27+00:00', clientIp: '203.0.113.23', method: 'GET',
+    path: '/zh-cn/ai-consulting/', status: 200, userAgent: 'Mozilla/5.0 (compatible; Bytespider; spider-feedback@bytedance.com)',
+  },
 ];
 
 try {
@@ -46,10 +50,10 @@ try {
     path.resolve('scripts/report-ai-crawlers.mjs'), '--since=2026-09-11', logPath,
   ], { cwd: path.resolve('.') });
   const report = JSON.parse(stdout);
-  assert.equal(report.byFamily.Bytespider, 5);
+  assert.equal(report.byFamily.Bytespider, 6);
   assert.equal(report.byFamily.AhrefsBot, 1);
   assert.deepEqual(report.verificationSources, {});
-  assert.equal(report.totals.syntheticReleaseChecks, 1);
+  assert.equal(report.totals.syntheticReleaseChecks, 2);
   assert.equal(report.totals.nonContentMethodRequests, 1);
   assert.equal(report.totals.userAgentOnlyBytespiderPageCrawls, 1);
   assert.equal(report.totals.userAgentOnlyBytespiderDiscoveryFileCrawls, 2);
@@ -153,7 +157,7 @@ try {
   assert.equal(verifiedEvents[1].providerVerified, false);
   assert.equal('providerVerified' in verifiedEvents[2], false);
 
-  console.log(JSON.stringify({ tests: 48, failures: [] }, null, 2));
+  console.log(JSON.stringify({ tests: 50, failures: [] }, null, 2));
 } finally {
   await rm(directory, { recursive: true, force: true });
 }

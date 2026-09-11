@@ -28,6 +28,14 @@ const suspiciousPath = /(?:^|\/)(?:\.env(?:\.|$)|\.git(?:\/|$)|wp-admin|wp-login
 const pagePath = /^(?:\/$|\/(?:en|zh-hk|zh-cn)(?:\/|$))/i;
 const discoveryPath = /^\/(?:robots\.txt|sitemap\.xml|llms(?:-full)?\.txt|feed\.(?:xml|json)|CITATION\.cff|codemeta\.json|data\/[^/]+\.json(?:ld)?)$/i;
 const staticAsset = /\.(?:css|js|map|png|jpe?g|gif|svg|webp|ico|woff2?|ttf)(?:\?|$)/i;
+// Two exact, operator-initiated diagnostics were sent without the normal
+// Onyx-GEO-Release-Check suffix while investigating a transient live-gate
+// timeout. Preserve the log records, but never promote them to Bytespider
+// candidates. The key intentionally omits client addresses from source.
+const auditedSyntheticChecks = new Set([
+  '2026-09-11T15:35:27+00:00\u0000GET\u0000/zh-cn/ai-consulting/\u0000Mozilla/5.0 (compatible; Bytespider; spider-feedback@bytedance.com)',
+  '2026-09-11T15:35:35+00:00\u0000GET\u0000/zh-cn/ai-consulting/\u0000Mozilla/5.0 (compatible; Bytespider; spider-feedback@bytedance.com)',
+]);
 
 function parseCombinedLog(line) {
   const match = line.match(/^(\S+)\s+\S+\s+\S+\s+\[([^\]]+)]\s+"(\S+)\s+([^\s"]+)(?:\s+HTTP\/[^\"]+)?"\s+(\d{3})\s+(\S+)(?:\s+"([^"]*)"\s+"([^"]*)")?/);
@@ -72,7 +80,8 @@ function classify(entry) {
   const successful = entry.status >= 200 && entry.status < 400;
   const relevantPage = pagePath.test(pathOnly) && !staticAsset.test(pathOnly);
   const discoveryFile = discoveryPath.test(pathOnly);
-  const syntheticCheck = /Onyx-GEO-Release-Check/i.test(entry.userAgent);
+  const auditKey = [entry.time, entry.method?.toUpperCase(), entry.path, entry.userAgent].join('\u0000');
+  const syntheticCheck = /Onyx-GEO-Release-Check/i.test(entry.userAgent) || auditedSyntheticChecks.has(auditKey);
   const retrievesRepresentation = entry.method?.toUpperCase() === 'GET';
   return {
     ...entry,
