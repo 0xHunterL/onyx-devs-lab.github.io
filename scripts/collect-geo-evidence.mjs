@@ -92,7 +92,26 @@ const counts = {
 };
 const priorCounts = previous?.counts || {};
 const deltas = Object.fromEntries(Object.entries(counts).map(([key, value]) => [key, previous ? value - (Number(priorCounts[key]) || 0) : 0]));
-const newEvidence = Object.entries(deltas).filter(([, value]) => value > 0).map(([metric, delta]) => ({ metric, delta, current: counts[metric] }));
+// Publish only deltas that can change the GEO evidence picture. UTM-tagged
+// release checks and suspected automation stay in the raw referral report, but
+// must not make the periodic monitor look like it discovered external demand.
+const evidenceMetrics = new Set([
+  'verifiedGptBotPageCrawls',
+  'verifiedOaiSearchBotPageCrawls',
+  'verifiedOaiSearchBotDiscoveryFileCrawls',
+  'verifiedBingPageCrawls',
+  'verifiedGooglePageCrawls',
+  'verifiedPerplexityPageCrawls',
+  'verifiedContentPaths',
+  'searchRelatedCrawledEvidencePages',
+  'promptsWithAnySearchRelatedCrawl',
+  'humanUnverifiedTrackedVisits',
+  'aiReferrerAttributedVisits',
+  'humanUnverifiedAiReferrerVisits',
+]);
+const newEvidence = Object.entries(deltas)
+  .filter(([metric, value]) => evidenceMetrics.has(metric) && value > 0)
+  .map(([metric, delta]) => ({ metric, delta, current: counts[metric] }));
 const summary = {
   schemaVersion: 1,
   generatedAt: new Date().toISOString(),
@@ -103,7 +122,7 @@ const summary = {
   newEvidence,
   initialized: !previous,
   changed: newEvidence.length > 0,
-  evidenceBoundary: 'Positive crawler deltas prove only provider-verified requests. Referral deltas prove only attributed requests. Neither proves indexing, retrieval, citation, ranking, a human visit, or non-brand recommendation.',
+  evidenceBoundary: 'Positive crawler deltas prove only provider-verified requests. Positive referral deltas exclude suspected automation and prove only attributed requests whose visitor type is not verified. Neither proves indexing, retrieval, citation, ranking, a human visit, or non-brand recommendation.',
 };
 
 await atomicJson('crawler-report.json', crawler);
