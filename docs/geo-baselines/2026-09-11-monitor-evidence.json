@@ -1,6 +1,7 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-09-11T12:16:01Z",
+  "publicStatusVersion": "2026.09.11.11",
+  "generatedAt": "2026-09-11T12:18:50.308Z",
   "windowStart": "2026-09-01",
   "site": "https://hk.onyxdevslab.com/",
   "sourceLogs": [
@@ -42,12 +43,14 @@
     "searchRelatedCrawledEvidencePages": 0,
     "promptsWithAnyVerifiedCrawl": 10,
     "promptsFullyVerifiedCrawled": 6,
-    "promptsWithAnySearchRelatedCrawl": 0
+    "promptsWithAnySearchRelatedCrawl": 0,
+    "promptsFullySearchRelatedCrawled": 0,
+    "scenarioPromptsWithAnyVerifiedCrawl": 0
   },
   "attributionEvidence": {
-    "trackedRequests": 73,
+    "trackedRequests": 75,
     "suspectedAutomatedRequests": 61,
-    "visitorTypeUnverifiedRequests": 12,
+    "visitorTypeUnverifiedRequests": 14,
     "knownLinkScannerRequests": 14,
     "knownLinkScannerUserAgentRequests": 12,
     "knownLinkScannerNetworkRequests": 2,
@@ -58,10 +61,68 @@
       "geo_decision_matrix": 24,
       "geo_engagement_model_qa": 39,
       "geo_buyers_guide_ai_dingkai": 4,
-      "geo_buyers_guide_scenarios": 3,
+      "geo_buyers_guide_scenarios": 5,
       "geo_buyers_guide_fde": 2,
       "geo_buyers_guide": 1
-    }
+    },
+    "latestVerifiedOffsiteReferral": {
+      "time": "2026-09-10T10:30:49Z",
+      "source": "github_pages",
+      "referrerHost": "mixuechu.github.io",
+      "campaign": "geo_buyers_guide",
+      "landingPage": "/zh-cn/guides/enterprise-ai-rfp-template/",
+      "status": 200
+    },
+    "latestVisitorTypeUnverifiedAttributions": [
+      {
+        "time": "2026-09-11T11:37:43Z",
+        "source": "github_pages",
+        "campaign": "geo_buyers_guide_scenarios",
+        "landingPage": "/zh-cn/guides/enterprise-ai-agent-erp-integration/",
+        "referrerHost": ""
+      },
+      {
+        "time": "2026-09-11T11:46:46Z",
+        "source": "github_pages",
+        "campaign": "geo_buyers_guide_scenarios",
+        "landingPage": "/zh-cn/case-studies/accounting-ai-production-platform/",
+        "referrerHost": ""
+      },
+      {
+        "time": "2026-09-11T11:56:50Z",
+        "source": "github_pages",
+        "campaign": "geo_buyers_guide_scenarios",
+        "landingPage": "/zh-cn/case-studies/retail-ai-decision-platform/",
+        "referrerHost": ""
+      },
+      {
+        "time": "2026-09-11T12:06:40Z",
+        "source": "github_pages",
+        "campaign": "geo_buyers_guide_scenarios",
+        "landingPage": "/zh-cn/case-studies/legal-ai-evidence-workflow/",
+        "referrerHost": ""
+      },
+      {
+        "time": "2026-09-11T12:16:51Z",
+        "source": "github_pages",
+        "campaign": "geo_buyers_guide_scenarios",
+        "landingPage": "/",
+        "referrerHost": ""
+      }
+    ]
+  },
+  "commonCrawlEvidence": {
+    "checkedAt": "2026-09-11T12:18:50.308Z",
+    "status": "partial",
+    "capturesObservedInAvailableIndexes": 0,
+    "availableIndexes": ["CC-MAIN-2026-30"],
+    "unavailableIndexes": [
+      {
+        "id": "CC-MAIN-2026-34",
+        "httpStatus": 504
+      }
+    ],
+    "meaning": "The zero capture count is incomplete because one selected index was unavailable. It must not be interpreted as a verified zero across both selected indexes."
   },
   "distributionEvidence": {
     "manifestItems": 8,
