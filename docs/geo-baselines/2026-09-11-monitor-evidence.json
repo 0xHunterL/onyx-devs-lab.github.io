@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-09-11T08:15:00.000Z",
+  "generatedAt": "2026-09-11T08:27:38.696Z",
   "windowStart": "2026-09-01",
   "site": "https://hk.onyxdevslab.com/",
   "sourceLogs": [
@@ -27,16 +27,18 @@
     "promptsWithAnySearchRelatedCrawl": 0
   },
   "attributionEvidence": {
-    "trackedRequests": 68,
-    "suspectedAutomatedRequests": 59,
+    "trackedRequests": 69,
+    "suspectedAutomatedRequests": 60,
     "visitorTypeUnverifiedRequests": 9,
-    "knownLinkScannerRequests": 12,
+    "knownLinkScannerRequests": 13,
+    "knownLinkScannerUserAgentRequests": 12,
+    "knownLinkScannerNetworkRequests": 1,
     "internallyInconsistentUserAgentRequests": 4,
     "malformedCampaignRequestsExcluded": 6,
     "aiReferrerAttributedRequests": 0,
     "campaigns": {
       "geo_decision_matrix": 24,
-      "geo_engagement_model_qa": 37,
+      "geo_engagement_model_qa": 38,
       "geo_buyers_guide_ai_dingkai": 4,
       "geo_buyers_guide_fde": 2,
       "geo_buyers_guide": 1
