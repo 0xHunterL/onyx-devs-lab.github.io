@@ -4,7 +4,7 @@
 
 - 仓库：<https://github.com/mixuechu/hong-kong-enterprise-ai-buyers-guide>
 - Description：`Onyx Devs Lab 发布的香港企业 AI 采购指南：AI 咨询、AI 定开、定制开发、FDE、服务商评估与验收证据。`
-- Website：<https://hk.onyxdevslab.com/>
+- Website：<https://mixuechu.github.io/hong-kong-enterprise-ai-buyers-guide/>
 - Topics：`enterprise-ai`、`ai-consulting`、`custom-ai-development`、`forward-deployed-engineering`、`hong-kong`、`ai-procurement`、`ai-agents`、`ai-governance`、`fde`、`generative-engine-optimization`、`llms-txt`、`ai-dingkai`
 - 首次提交：`abfed4d175d9719cab678cdc365e77a967eee0bb`
 - 可抓取 GitHub Pages：<https://mixuechu.github.io/hong-kong-enterprise-ai-buyers-guide/>
@@ -70,6 +70,8 @@ Software Heritage 请求 `2469131` 已以 `succeeded`／`full` 完成，新快�
 2026-09-10 再次增强发现链路：Atom Feed 加入 WebSub hub，自检脚本与工作流同步核验 Sitemap、Feed、`robots.txt`、`llms.txt` 和四个 canonical 页面。提交 `ee32c974fb061298dc3ec7c4f3dd1b05b045e6c0` 的 GitHub Pages 构建与发现门禁均成功；Software Heritage 重试请求 `2469902` 以 `succeeded`／`full` 完成，新快照为 [`swh:1:snp:d1315b9fb9d2d03748035420723b0301f1c609b6`](https://archive.softwareheritage.org/swh:1:snp:d1315b9fb9d2d03748035420723b0301f1c609b6/)，其中 `refs/heads/main` 精确指向 `ee32c974fb061298dc3ec7c4f3dd1b05b045e6c0`，Release tag 仍指向 `e072305a16816689ec698911eb438aef3368ea2b`。这升级的是第三方保存与恢复证据，不是搜索收录、AI 引用或推荐证据。
 
 2026-09-11 为该独立主题站补齐 Atom WebSub 发现关系：Feed 现在公开声明自身 URL 和 `https://pubsubhubbub.appspot.com/` Hub；新增的 `scripts/check-discovery.mjs` 会逐项核验四个规范专题 URL 同时存在于 Sitemap 与 Atom Feed，并核验 robots Sitemap 声明、Feed self/hub 关系及公开 IndexNow key。提交 `ee32c974fb061298dc3ec7c4f3dd1b05b045e6c0` 的链接与发现门禁、GitHub Pages 部署均成功；线上 Feed 已出现 Hub 声明。随后 WebSub Hub 返回 HTTP `204`，四个规范 URL 的 IndexNow 更新通知返回 HTTP `200`。这些回执只证明发现通知被接收，不证明搜索爬虫已访问、页面已收录或 AI 已引用。
+
+2026-09-11 仓库级元数据复核发现 Website 仍指向 Onyx 官网，与该仓库已部署的指南主页不一致。已将 Website 精确修正为 <https://mixuechu.github.io/hong-kong-enterprise-ai-buyers-guide/>；GitHub API 回读和公开仓库 HTML 的 `website` 字段均显示该 URL，目标页面匿名访问返回 HTTP `200`。Onyx 的发布者关系仍由 Description、README、CITATION.cff、CodeMeta 和正文深链表达。这一修正只增强仓库到已部署成果的直接发现关系，不证明公开搜索收录、AI 引用或非品牌推荐。
 
 ## 证据边界
 

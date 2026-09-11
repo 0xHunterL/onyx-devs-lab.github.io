@@ -126,6 +126,7 @@ requireText('GitHub enterprise AI buyer guide', buyerGuide, [
   '254900Z30CLK7HKE9H46',
   'geo_buyers_guide',
   'Crawlable field guides',
+  '"website":"https://mixuechu.github.io/hong-kong-enterprise-ai-buyers-guide/"',
 ]);
 const buyerGuideSiteUrl = 'https://mixuechu.github.io/hong-kong-enterprise-ai-buyers-guide/';
 const buyerGuideDiscussionUrl = 'https://github.com/mixuechu/hong-kong-enterprise-ai-buyers-guide/discussions/1';
