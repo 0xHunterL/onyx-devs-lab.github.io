@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "publicStatusVersion": "2026.09.11.12",
-  "generatedAt": "2026-09-11T12:30:35.306Z",
+  "publicStatusVersion": "2026.09.11.13",
+  "generatedAt": "2026-09-11T12:36:00.144Z",
   "windowStart": "2026-09-01",
   "site": "https://hk.onyxdevslab.com/",
   "sourceLogs": [
@@ -119,17 +119,12 @@
     ]
   },
   "commonCrawlEvidence": {
-    "checkedAt": "2026-09-11T12:30:35.306Z",
-    "status": "partial",
+    "checkedAt": "2026-09-11T12:36:00.144Z",
+    "status": "available",
     "capturesObservedInAvailableIndexes": 0,
-    "availableIndexes": ["CC-MAIN-2026-30"],
-    "unavailableIndexes": [
-      {
-        "id": "CC-MAIN-2026-34",
-        "httpStatus": 504
-      }
-    ],
-    "meaning": "The zero capture count is incomplete because one selected index was unavailable. It must not be interpreted as a verified zero across both selected indexes."
+    "availableIndexes": ["CC-MAIN-2026-34", "CC-MAIN-2026-30"],
+    "unavailableIndexes": [],
+    "meaning": "Both selected indexes returned usable responses with zero observed captures. This complete result covers only the selected indexes and must not be interpreted as proof of zero captures across all Common Crawl history."
   },
   "distributionEvidence": {
     "manifestItems": 8,

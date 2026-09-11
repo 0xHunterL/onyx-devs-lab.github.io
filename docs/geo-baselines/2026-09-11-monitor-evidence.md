@@ -29,6 +29,7 @@
 - 2026-09-11T11:32:58Z，生产采集启用 Baiduspider 身份核验：先按百度官方规则确认反向 DNS 主机名以 `*.baidu.com` 或 `*.baidu.jp` 结尾，再正向解析确认回到原 IP；DNS 暂时性故障会标成 `verificationUnavailable`，不会误判为身份失败。当前与轮转日志中 Baiduspider 候选、已核验正文和已核验发现文件均为 0；`changed:false`、`availabilityChanged:false`、`newEvidence:[]`，未生成新事件文件。其余基线保持 GPTBot 正文／发现文件 27／13、OAI-SearchBot 正文／发现文件 0／8、Bingbot 正文 7、归因 70、AI Referrer 0。该结果只证明监测缺口已补齐，不构成百度收录、豆包访问或可发现性提升证据。
 - 2026-09-11T12:18:50Z 的生产复采新观察到 2 次 `geo_buyers_guide_scenarios` 归因请求，分别落在法律 AI 案例页和首页，都没有 Referrer，因此只能使“访问者类型未验证”从 12 增至 14，不能计为真人、搜索点击或 AI 引荐。同次 Common Crawl 查询中 `CC-MAIN-2026-30` 可用而 `CC-MAIN-2026-34` 返回 HTTP `504`，可用索引中未观察到捕获，但总状态必须记为 `partial`，不能将 0 解释为两个所选索引的完整零基线。事件保存为 `events/2026-09-11T12-18-50.308Z-evidence-and-availability-change.json`。
 - 2026-09-11T12:30:35Z 的生产复采新增 1 次 `geo_buyers_guide_scenarios` 归因请求：12:26:36Z 访问简体中文企业 AI 评估方法页，HTTP `200`，但没有 Referrer，访问者类型未验证。归因总数因此增至 76，其中 61 次疑似自动化、15 次访问者类型未验证；AI Referrer 仍为 0。Common Crawl 的 `CC-MAIN-2026-34` 再次返回 HTTP `504`，总状态继续为 `partial`。事件保存为 `events/2026-09-11T12-30-35.306Z-evidence-change.json`；该事件不证明真人访问、搜索点击、收录、AI 引用或推荐。
+- 2026-09-11T12:36:00Z，`CC-MAIN-2026-34` 恢复可查询，与 `CC-MAIN-2026-30` 均返回可用响应；两个所选索引都未观察到官网捕获，因此 Common Crawl 状态由 `partial` 恢复为 `available`。事件保存为 `events/2026-09-11T12-36-00.144Z-availability-change.json`。该完整零结果只覆盖这两个所选索引，不代表全部 Common Crawl 历史，也不证明搜索未收录、AI 未引用或非品牌未推荐；爬虫与归因计数均未变化。
 
 ## 站外分发账本复核
 
