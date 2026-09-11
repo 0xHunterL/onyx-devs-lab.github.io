@@ -10,7 +10,7 @@
 - 经双向 DNS 核验的 Bingbot 正文请求 7 次；Googlebot 与 Perplexity 正文请求均为 0。
 - 排除 2,368 次带 `Onyx-GEO-Release-Check` 标记的发布自测后，Bytespider 正文与发现文件候选均为 0。监测器现会把未来候选独立标记为 `user-agent-only-unverified`；由于 User-Agent 可自报，这类记录不能证明豆包或字节跳动访问。
 - 固定 20 条提示词对应 20 个证据页，其中 8 页曾被已核验爬虫请求；与搜索／答案检索相关的已核验正文覆盖仍为 0。
-- 归因请求 75 次，其中 61 次属于高速／多 User-Agent 协同批量访问、内部矛盾的浏览器身份或已知链接扫描，14 次访问者类型未验证；另有 6 个被 Cloudflare 邮箱解码路径污染的异常 campaign 值被审计并从归因总量排除。两条携带 `bing.com` Referer 的请求来自 ARIN RDAP 标记为 `LOANED-SPACE-TO-PALO-ALTO` 的 `205.169.39.0/24`，现已按 Palo Alto URL 扫描网段归入疑似自动化，不再误认为未验证的 Bing 搜索点击。AI Referrer 为 0。
+- 归因请求 76 次，其中 61 次属于高速／多 User-Agent 协同批量访问、内部矛盾的浏览器身份或已知链接扫描，15 次访问者类型未验证；另有 6 个被 Cloudflare 邮箱解码路径污染的异常 campaign 值被审计并从归因总量排除。两条携带 `bing.com` Referer 的请求来自 ARIN RDAP 标记为 `LOANED-SPACE-TO-PALO-ALTO` 的 `205.169.39.0/24`，现已按 Palo Alto URL 扫描网段归入疑似自动化，不再误认为未验证的 Bing 搜索点击。AI Referrer 为 0。
 - 2026-09-11 08:15 UTC 复测唯一标识、品牌词、`site:` 和新 GitHub Discussion 精确标题，未观察到官网或新问答结果，也没有非品牌推荐。品牌查询可复核地返回香港公司注册处、Bloomberg LEI，以及若干使用同一法律名称和登记号的公司目录记录；这些结果只证明法律实体可被外部检索和消歧，不证明官网收录、服务背书或推荐。
 - 2026-09-11 12:16 UTC 以同一四组查询再次复测，结果未变：唯一标识、`site:hk.onyxdevslab.com` 和 GitHub Discussion 精确标题均未观察到目标结果，品牌词仍只返回公司注册处、Bloomberg LEI 与第三方法律实体目录。本次负向观察不能证明所有搜索索引都未收录，但足以阻止把当前状态误报为已收录、已检索或已推荐。
 - 未向豆包发送提示词。
@@ -28,6 +28,7 @@
 - 2026-09-11T11:23:36Z，生产采集新增 Apple 官方 CIDR 源并成功返回 HTTP `200`；爬虫身份核验覆盖由 5 个来源增至 6 个且全部可用。监测器生成 `events/2026-09-11T11-23-36.089Z-availability-change.json`，明确记录 `crawlerVerification` 的 `coverageChanged:true`、`statusChanged:false`。历史日志中 Applebot 正文和发现文件请求均为 0；GPTBot 27、OAI-SearchBot 正文 0、Bingbot 7、Bytespider 非合成候选 0、归因 70 与 AI Referrer 0 均未改变，因此事件的 `changed` 为 `false`、`newEvidence` 为空。Anthropic 仍未公开可用于核验的稳定 IP 范围，Claude 系列 User-Agent 不升级为已核验证据。
 - 2026-09-11T11:32:58Z，生产采集启用 Baiduspider 身份核验：先按百度官方规则确认反向 DNS 主机名以 `*.baidu.com` 或 `*.baidu.jp` 结尾，再正向解析确认回到原 IP；DNS 暂时性故障会标成 `verificationUnavailable`，不会误判为身份失败。当前与轮转日志中 Baiduspider 候选、已核验正文和已核验发现文件均为 0；`changed:false`、`availabilityChanged:false`、`newEvidence:[]`，未生成新事件文件。其余基线保持 GPTBot 正文／发现文件 27／13、OAI-SearchBot 正文／发现文件 0／8、Bingbot 正文 7、归因 70、AI Referrer 0。该结果只证明监测缺口已补齐，不构成百度收录、豆包访问或可发现性提升证据。
 - 2026-09-11T12:18:50Z 的生产复采新观察到 2 次 `geo_buyers_guide_scenarios` 归因请求，分别落在法律 AI 案例页和首页，都没有 Referrer，因此只能使“访问者类型未验证”从 12 增至 14，不能计为真人、搜索点击或 AI 引荐。同次 Common Crawl 查询中 `CC-MAIN-2026-30` 可用而 `CC-MAIN-2026-34` 返回 HTTP `504`，可用索引中未观察到捕获，但总状态必须记为 `partial`，不能将 0 解释为两个所选索引的完整零基线。事件保存为 `events/2026-09-11T12-18-50.308Z-evidence-and-availability-change.json`。
+- 2026-09-11T12:30:35Z 的生产复采新增 1 次 `geo_buyers_guide_scenarios` 归因请求：12:26:36Z 访问简体中文企业 AI 评估方法页，HTTP `200`，但没有 Referrer，访问者类型未验证。归因总数因此增至 76，其中 61 次疑似自动化、15 次访问者类型未验证；AI Referrer 仍为 0。Common Crawl 的 `CC-MAIN-2026-34` 再次返回 HTTP `504`，总状态继续为 `partial`。事件保存为 `events/2026-09-11T12-30-35.306Z-evidence-change.json`；该事件不证明真人访问、搜索点击、收录、AI 引用或推荐。
 
 ## 站外分发账本复核
 
