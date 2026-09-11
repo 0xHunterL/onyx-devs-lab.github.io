@@ -25,6 +25,8 @@ const summary = {
     verifiedAppleDiscoveryFileCrawls: provider.applebotDiscoveryFileRequests,
     verifiedYandexPageCrawls: provider.yandexbotContentRequests,
     verifiedYandexDiscoveryFileCrawls: provider.yandexbotDiscoveryFileRequests,
+    verifiedAhrefsPageCrawls: provider.ahrefsbotContentRequests,
+    verifiedAhrefsDiscoveryFileCrawls: provider.ahrefsbotDiscoveryFileRequests,
     verifiedContentPaths: provider.distinctVerifiedContentPaths,
     searchRelatedCrawledEvidencePages: prompt.searchRelatedCrawledEvidencePages,
     promptsWithAnySearchRelatedCrawl: prompt.promptsWithAnySearchRelatedCrawl,

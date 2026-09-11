@@ -30,6 +30,8 @@ export function buildPublicationDrift(baseline, summary) {
     ['providerVerifiedCrawlerEvidence.applebotDiscoveryFileRequests', provider.applebotDiscoveryFileRequests, counts.verifiedAppleDiscoveryFileCrawls],
     ['providerVerifiedCrawlerEvidence.yandexbotContentRequests', provider.yandexbotContentRequests, counts.verifiedYandexPageCrawls],
     ['providerVerifiedCrawlerEvidence.yandexbotDiscoveryFileRequests', provider.yandexbotDiscoveryFileRequests, counts.verifiedYandexDiscoveryFileCrawls],
+    ['providerVerifiedCrawlerEvidence.ahrefsbotContentRequests', provider.ahrefsbotContentRequests, counts.verifiedAhrefsPageCrawls],
+    ['providerVerifiedCrawlerEvidence.ahrefsbotDiscoveryFileRequests', provider.ahrefsbotDiscoveryFileRequests, counts.verifiedAhrefsDiscoveryFileCrawls],
     ['providerVerifiedCrawlerEvidence.distinctVerifiedContentPaths', provider.distinctVerifiedContentPaths, counts.verifiedContentPaths],
     ['fixedPromptCoverage.searchRelatedCrawledEvidencePages', prompt.searchRelatedCrawledEvidencePages, counts.searchRelatedCrawledEvidencePages],
     ['fixedPromptCoverage.promptsWithAnySearchRelatedCrawl', prompt.promptsWithAnySearchRelatedCrawl, counts.promptsWithAnySearchRelatedCrawl],

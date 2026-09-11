@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "publicStatusVersion": "2026.09.11.20",
-  "generatedAt": "2026-09-11T14:11:42.353Z",
+  "publicStatusVersion": "2026.09.11.21",
+  "generatedAt": "2026-09-11T14:32:05.739Z",
   "windowStart": "2026-09-01",
   "site": "https://hk.onyxdevslab.com/",
   "sourceLogs": [
@@ -24,6 +24,8 @@
     "applebotDiscoveryFileRequests": 0,
     "yandexbotContentRequests": 69,
     "yandexbotDiscoveryFileRequests": 63,
+    "ahrefsbotContentRequests": 0,
+    "ahrefsbotDiscoveryFileRequests": 67,
     "distinctVerifiedContentPaths": 43,
     "historicalReclassification": {
       "homepageContentRequestsAdded": 3,
@@ -35,6 +37,15 @@
       "lastSeen": "2026-09-11T13:52:34Z",
       "verifiedContentPaths": 40,
       "meaning": "YandexBot monitoring was added after the latest requests exposed the missing family. Most of these provider-verified requests are historical observations newly recognized in current and rotated logs; they are not all newly occurring crawls."
+    },
+    "ahrefsHistoricalRecognition": {
+      "firstSeen": "2026-09-08T13:53:09Z",
+      "lastSeen": "2026-09-11T14:24:40Z",
+      "robotsTxtRequests": 17,
+      "sitemapRequests": 50,
+      "distinctClientAddresses": 61,
+      "verificationSource": "https://api.ahrefs.com/v3/public/crawler-ip-ranges",
+      "meaning": "All 67 discovery-file requests matched the official Ahrefs crawler IP ranges. AhrefsBot serves both the Ahrefs database and Yep, so these requests prove external crawler discovery only; they do not prove Yep indexing, ranking, retrieval, citation, or AI recommendation."
     }
   },
   "identityUnverifiedCrawlerEvidence": {
@@ -101,7 +112,7 @@
     ]
   },
   "commonCrawlEvidence": {
-    "checkedAt": "2026-09-11T14:11:42.353Z",
+    "checkedAt": "2026-09-11T14:32:05.739Z",
     "status": "available",
     "capturesObservedInAvailableIndexes": 0,
     "availableIndexes": ["CC-MAIN-2026-34", "CC-MAIN-2026-30"],
@@ -112,7 +123,7 @@
     "manifestItems": 8,
     "publishedItems": 7,
     "readyNotPublishedItems": 1,
-    "checkedAt": "2026-09-11T14:11:42.353Z",
+    "checkedAt": "2026-09-11T14:32:05.739Z",
     "publicUrlsChecked": 7,
     "trackedTargetsChecked": 17,
     "availableSources": 24,
