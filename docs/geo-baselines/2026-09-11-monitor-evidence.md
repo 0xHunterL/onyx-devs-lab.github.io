@@ -10,7 +10,7 @@
 - 经双向 DNS 核验的 Bingbot 正文请求 7 次；Googlebot 与 Perplexity 正文请求均为 0。
 - 排除 2,368 次带 `Onyx-GEO-Release-Check` 标记的发布自测后，Bytespider 正文与发现文件候选均为 0。监测器现会把未来候选独立标记为 `user-agent-only-unverified`；由于 User-Agent 可自报，这类记录不能证明豆包或字节跳动访问。
 - 固定 20 条提示词对应 20 个证据页，其中 8 页曾被已核验爬虫请求；与搜索／答案检索相关的已核验正文覆盖仍为 0。
-- 归因请求 76 次，其中 61 次属于高速／多 User-Agent 协同批量访问、内部矛盾的浏览器身份或已知链接扫描，15 次访问者类型未验证；另有 6 个被 Cloudflare 邮箱解码路径污染的异常 campaign 值被审计并从归因总量排除。两条携带 `bing.com` Referer 的请求来自 ARIN RDAP 标记为 `LOANED-SPACE-TO-PALO-ALTO` 的 `205.169.39.0/24`，现已按 Palo Alto URL 扫描网段归入疑似自动化，不再误认为未验证的 Bing 搜索点击。AI Referrer 为 0。
+- 归因请求 77 次，其中 61 次属于高速／多 User-Agent 协同批量访问、内部矛盾的浏览器身份或已知链接扫描，16 次访问者类型未验证；另有 6 个被 Cloudflare 邮箱解码路径污染的异常 campaign 值被审计并从归因总量排除。两条携带 `bing.com` Referer 的请求来自 ARIN RDAP 标记为 `LOANED-SPACE-TO-PALO-ALTO` 的 `205.169.39.0/24`，现已按 Palo Alto URL 扫描网段归入疑似自动化，不再误认为未验证的 Bing 搜索点击。AI Referrer 为 0。
 - 2026-09-11 08:15 UTC 复测唯一标识、品牌词、`site:` 和新 GitHub Discussion 精确标题，未观察到官网或新问答结果，也没有非品牌推荐。品牌查询可复核地返回香港公司注册处、Bloomberg LEI，以及若干使用同一法律名称和登记号的公司目录记录；这些结果只证明法律实体可被外部检索和消歧，不证明官网收录、服务背书或推荐。
 - 2026-09-11 12:16 UTC 以同一四组查询再次复测，结果未变：唯一标识、`site:hk.onyxdevslab.com` 和 GitHub Discussion 精确标题均未观察到目标结果，品牌词仍只返回公司注册处、Bloomberg LEI 与第三方法律实体目录。本次负向观察不能证明所有搜索索引都未收录，但足以阻止把当前状态误报为已收录、已检索或已推荐。
 - 未向豆包发送提示词。
@@ -32,6 +32,7 @@
 - 2026-09-11T12:36:00Z，`CC-MAIN-2026-34` 恢复可查询，与 `CC-MAIN-2026-30` 均返回可用响应；两个所选索引都未观察到官网捕获，因此 Common Crawl 状态由 `partial` 恢复为 `available`。事件保存为 `events/2026-09-11T12-36-00.144Z-availability-change.json`。该完整零结果只覆盖这两个所选索引，不代表全部 Common Crawl 历史，也不证明搜索未收录、AI 未引用或非品牌未推荐；爬虫与归因计数均未变化。
 - 同轮审计发现官网公开状态只连接版本化基线、没有直接暴露 Common Crawl 查询状态。公开 `ai-search-evidence-status.json` 现从同一基线生成 `commonCrawlIndexObservation`，并由本地和线上门禁逐字段防止状态、索引范围、捕获数及证据边界陈旧；这是证据可读性修复，不是新增抓取或可发现性效果。
 - 生产采集现增加发布漂移后置门禁：将最新 `summary.json` 的核心爬虫、搜索相关提示词覆盖、归因、Common Crawl 索引范围和站外可用性逐项对照仓库版本化基线，报告原子保存为 `/var/lib/onyx-geo/publication-drift.json`。不一致时 systemd 服务显式失败，必须人工审核证据边界后再更新公开状态；它不会自动把未经复核的日志发布到官网。
+- 2026-09-11T12:49:36Z，后置门禁首次真实运行即发现发布漂移：12:45:58Z 新增 1 次 `geo_buyers_guide_geo` 请求，访问简体 AI 搜索验证方法页并返回 `200`，但没有 Referrer、访问者类型未验证。归因总数因此增至 77，其中 61 次疑似自动化、16 次访问者类型未验证；AI Referrer 仍为 0。事件保存为 `events/2026-09-11T12-49-36.667Z-evidence-change.json`，漂移报告准确列出公开 76／生产 77 与公开 15／生产 16 两项差异；这不证明真人访问、搜索点击、收录、AI 引用或推荐。
 
 ## 站外分发账本复核
 
