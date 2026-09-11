@@ -4,6 +4,7 @@ import { mkdtemp, rm, writeFile } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import path from 'node:path';
 import { promisify } from 'node:util';
+import { buildVerifiedCrawlerEvidenceObservations } from './crawler-evidence-observations.mjs';
 
 const execFileAsync = promisify(execFile);
 const directory = await mkdtemp(path.join(tmpdir(), 'onyx-geo-crawler-test-'));
@@ -48,7 +49,21 @@ try {
   assert.deepEqual(report.userAgentOnlyEvidenceObservations.map((item) => item.path), ['/', '/feed.json', '/data/organization.json']);
   assert.equal(report.byClassification['non-content-request-method'], 1);
   assert.equal(report.recentCandidatePageCrawls.some((item) => item.method === 'HEAD'), false);
-  console.log(JSON.stringify({ tests: 11, failures: [] }, null, 2));
+  const commonCrawlObservation = buildVerifiedCrawlerEvidenceObservations({
+    pages: {
+      commonCrawl: [{
+        family: 'CCBot', classification: 'candidate-page-crawl', time: '2026-09-11T09:00:05+00:00',
+        method: 'GET', path: '/zh-cn/', status: 200, ip: '192.0.2.10', userAgent: 'CCBot/2.0',
+      }],
+    },
+    discoveryFiles: {},
+  });
+  assert.equal(commonCrawlObservation.length, 1);
+  assert.equal(commonCrawlObservation[0].family, 'CCBot');
+  assert.equal(commonCrawlObservation[0].classification, 'candidate-page-crawl');
+  assert.equal('ip' in commonCrawlObservation[0], false);
+  assert.equal('userAgent' in commonCrawlObservation[0], false);
+  console.log(JSON.stringify({ tests: 16, failures: [] }, null, 2));
 } finally {
   await rm(directory, { recursive: true, force: true });
 }

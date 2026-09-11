@@ -1,8 +1,8 @@
 import { readFile } from 'node:fs/promises';
-import { createHash } from 'node:crypto';
 import { lookup, reverse } from 'node:dns/promises';
 import { gunzipSync } from 'node:zlib';
 import { resolveLogPaths } from './resolve-log-paths.mjs';
+import { buildUserAgentOnlyCrawlerEvidenceObservations, buildVerifiedCrawlerEvidenceObservations } from './crawler-evidence-observations.mjs';
 
 const crawlerFamilies = [
   ['Bytespider', /Bytespider/i],
@@ -336,47 +336,26 @@ for (const event of [
 const verifiedContentPathCoverage = [...verifiedContentPathMap.values()]
   .map((entry) => ({ ...entry, families: [...entry.families].sort() }))
   .sort((a, b) => a.path.localeCompare(b.path));
-const fingerprint = (event) => createHash('sha256').update([
-  event.family,
-  event.classification,
-  event.time,
-  event.method,
-  event.path,
-  event.status,
-  event.ip,
-].join('\u0000')).digest('hex');
-const verifiedEvidenceObservations = [
-  ...verifiedOpenAiPages,
-  ...verifiedBingPages,
-  ...verifiedGooglePages,
-  ...verifiedPerplexityPages,
-  ...verifiedOpenAiDiscoveryFiles,
-  ...verifiedBingDiscoveryFiles,
-  ...verifiedGoogleDiscoveryFiles,
-  ...verifiedPerplexityDiscoveryFiles,
-  ...verifiedCommonCrawlDiscoveryFiles,
-].map((event) => ({
-  fingerprint: fingerprint(event),
-  family: event.family,
-  classification: event.classification,
-  time: event.time,
-  method: event.method,
-  path: event.path,
-  status: event.status,
-})).sort((a, b) => a.time.localeCompare(b.time) || a.fingerprint.localeCompare(b.fingerprint));
-const userAgentOnlyEvidenceObservations = [
+const verifiedEvidenceObservations = buildVerifiedCrawlerEvidenceObservations({
+  pages: {
+    openAi: verifiedOpenAiPages,
+    bing: verifiedBingPages,
+    google: verifiedGooglePages,
+    perplexity: verifiedPerplexityPages,
+    commonCrawl: verifiedCommonCrawlPages,
+  },
+  discoveryFiles: {
+    openAi: verifiedOpenAiDiscoveryFiles,
+    bing: verifiedBingDiscoveryFiles,
+    google: verifiedGoogleDiscoveryFiles,
+    perplexity: verifiedPerplexityDiscoveryFiles,
+    commonCrawl: verifiedCommonCrawlDiscoveryFiles,
+  },
+});
+const userAgentOnlyEvidenceObservations = buildUserAgentOnlyCrawlerEvidenceObservations([
   ...userAgentOnlyBytespiderPages,
   ...userAgentOnlyBytespiderDiscoveryFiles,
-].map((event) => ({
-  fingerprint: fingerprint(event),
-  family: event.family,
-  classification: event.classification,
-  time: event.time,
-  method: event.method,
-  path: event.path,
-  status: event.status,
-  identityStatus: 'user-agent-only-unverified',
-})).sort((a, b) => a.time.localeCompare(b.time) || a.fingerprint.localeCompare(b.fingerprint));
+]);
 
 console.log(JSON.stringify({
   generatedAt: new Date().toISOString(),
