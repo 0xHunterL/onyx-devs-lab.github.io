@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "publicStatusVersion": "2026.09.11.22",
-  "generatedAt": "2026-09-11T15:12:09.669Z",
+  "publicStatusVersion": "2026.09.11.23",
+  "generatedAt": "2026-09-11T15:18:24.259Z",
   "windowStart": "2026-09-01",
   "site": "https://hk.onyxdevslab.com/",
   "sourceLogs": [
@@ -22,11 +22,11 @@
     "perplexityContentRequests": 0,
     "applebotContentRequests": 0,
     "applebotDiscoveryFileRequests": 0,
-    "yandexbotContentRequests": 69,
-    "yandexbotDiscoveryFileRequests": 63,
+    "yandexbotContentRequests": 70,
+    "yandexbotDiscoveryFileRequests": 64,
     "ahrefsbotContentRequests": 0,
     "ahrefsbotDiscoveryFileRequests": 67,
-    "distinctVerifiedContentPaths": 43,
+    "distinctVerifiedContentPaths": 44,
     "historicalReclassification": {
       "homepageContentRequestsAdded": 3,
       "machineResourceDiscoveryRequestsAdded": 10,
@@ -34,8 +34,8 @@
     },
     "yandexHistoricalRecognition": {
       "firstSeen": "2026-09-08T12:45:20Z",
-      "lastSeen": "2026-09-11T13:52:34Z",
-      "verifiedContentPaths": 40,
+      "lastSeen": "2026-09-11T15:15:15Z",
+      "verifiedContentPaths": 41,
       "meaning": "YandexBot monitoring was added after the latest requests exposed the missing family. Most of these provider-verified requests are historical observations newly recognized in current and rotated logs; they are not all newly occurring crawls."
     },
     "ahrefsHistoricalRecognition": {
@@ -120,7 +120,7 @@
     "meaning": "Both selected indexes returned usable responses with zero observed captures. This complete result covers only the selected indexes and must not be interpreted as proof of zero captures across all Common Crawl history."
   },
   "waybackEvidence": {
-    "checkedAt": "2026-09-11T15:12:09.669Z",
+    "checkedAt": "2026-09-11T15:18:24.259Z",
     "status": "available",
     "captures": 93,
     "distinctUrls": 43,
