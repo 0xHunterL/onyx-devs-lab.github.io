@@ -3,6 +3,7 @@ import { lookup, reverse } from 'node:dns/promises';
 import { gunzipSync } from 'node:zlib';
 import { resolveLogPaths } from './resolve-log-paths.mjs';
 import { buildUserAgentOnlyCrawlerEvidenceObservations, buildVerifiedCrawlerEvidenceObservations } from './crawler-evidence-observations.mjs';
+import { isInIpPrefix } from './ip-prefix.mjs';
 
 const crawlerFamilies = [
   ['Bytespider', /Bytespider/i],
@@ -93,27 +94,11 @@ function parseNginxTime(value) {
   return Date.UTC(Number(match[3]), months[match[2]], Number(match[1]), Number(match[4]), Number(match[5]), Number(match[6])) - offsetMinutes * 60_000;
 }
 
-function ipv4ToBigInt(ip) {
-  const parts = ip.split('.');
-  if (parts.length !== 4 || parts.some((part) => !/^\d+$/.test(part) || Number(part) > 255)) return null;
-  return parts.reduce((value, part) => (value << 8n) + BigInt(part), 0n);
-}
-
-function isInIpv4Prefix(ip, prefix) {
-  const [network, bitsText] = prefix.split('/');
-  const value = ipv4ToBigInt(ip);
-  const networkValue = ipv4ToBigInt(network);
-  const bits = Number(bitsText);
-  if (value === null || networkValue === null || bits < 0 || bits > 32) return false;
-  const mask = bits === 0 ? 0n : ((1n << BigInt(bits)) - 1n) << BigInt(32 - bits);
-  return (value & mask) === (networkValue & mask);
-}
-
-async function publishedIpv4Prefixes(url) {
+async function publishedIpPrefixes(url) {
   const response = await fetch(url);
   if (!response.ok) throw new Error(`Unable to fetch ${url}: HTTP ${response.status}`);
   const body = await response.json();
-  return body.prefixes.map((entry) => entry.ipv4Prefix).filter(Boolean);
+  return body.prefixes.flatMap((entry) => [entry.ipv4Prefix, entry.ipv6Prefix]).filter(Boolean);
 }
 
 function normalizeIp(ip) {
@@ -138,7 +123,7 @@ async function verifyDnsIp(ip, allowedSuffixes) {
     );
     const normalizedIp = normalizeIp(ip);
     const forwardAddresses = [...new Set(forwardResults.flatMap((result) => result.addresses))];
-    const benchmarkAddresses = forwardAddresses.filter((address) => isInIpv4Prefix(normalizeIp(address), '198.18.0.0/15'));
+    const benchmarkAddresses = forwardAddresses.filter((address) => isInIpPrefix(normalizeIp(address), '198.18.0.0/15'));
     if (forwardAddresses.length && benchmarkAddresses.length === forwardAddresses.length) {
       return {
         verified: null,
@@ -207,32 +192,32 @@ for (const path of paths) {
 
 if (verifyOpenAi) {
   const [gptBotPrefixes, searchBotPrefixes] = await Promise.all([
-    publishedIpv4Prefixes('https://openai.com/gptbot.json'),
-    publishedIpv4Prefixes('https://openai.com/searchbot.json'),
+    publishedIpPrefixes('https://openai.com/gptbot.json'),
+    publishedIpPrefixes('https://openai.com/searchbot.json'),
   ]);
   for (const event of events) {
-    if (event.family === 'GPTBot') event.providerVerified = gptBotPrefixes.some((prefix) => isInIpv4Prefix(event.ip, prefix));
-    if (event.family === 'OAI-SearchBot') event.providerVerified = searchBotPrefixes.some((prefix) => isInIpv4Prefix(event.ip, prefix));
+    if (event.family === 'GPTBot') event.providerVerified = gptBotPrefixes.some((prefix) => isInIpPrefix(event.ip, prefix));
+    if (event.family === 'OAI-SearchBot') event.providerVerified = searchBotPrefixes.some((prefix) => isInIpPrefix(event.ip, prefix));
   }
 }
 
 if (verifyPerplexity) {
   const [botPrefixes, userPrefixes] = await Promise.all([
-    publishedIpv4Prefixes('https://www.perplexity.com/perplexitybot.json'),
-    publishedIpv4Prefixes('https://www.perplexity.com/perplexity-user.json'),
+    publishedIpPrefixes('https://www.perplexity.com/perplexitybot.json'),
+    publishedIpPrefixes('https://www.perplexity.com/perplexity-user.json'),
   ]);
   for (const event of events) {
-    if (event.family === 'PerplexityBot') event.providerVerified = botPrefixes.some((prefix) => isInIpv4Prefix(event.ip, prefix));
-    if (event.family === 'Perplexity-User') event.providerVerified = userPrefixes.some((prefix) => isInIpv4Prefix(event.ip, prefix));
+    if (event.family === 'PerplexityBot') event.providerVerified = botPrefixes.some((prefix) => isInIpPrefix(event.ip, prefix));
+    if (event.family === 'Perplexity-User') event.providerVerified = userPrefixes.some((prefix) => isInIpPrefix(event.ip, prefix));
   }
 }
 
 if (verifyCommonCrawl) {
-  const prefixes = await publishedIpv4Prefixes('https://index.commoncrawl.org/ccbot.json');
+  const prefixes = await publishedIpPrefixes('https://index.commoncrawl.org/ccbot.json');
   for (const event of events) {
     if (event.family !== 'CCBot') continue;
-    event.providerVerified = prefixes.some((prefix) => isInIpv4Prefix(event.ip, prefix));
-    event.providerVerification = { method: 'published-ipv4-prefix', verified: event.providerVerified, reason: event.providerVerified ? 'official-common-crawl-ipv4-range' : 'not-in-official-common-crawl-ipv4-range' };
+    event.providerVerified = prefixes.some((prefix) => isInIpPrefix(event.ip, prefix));
+    event.providerVerification = { method: 'published-ip-prefix', verified: event.providerVerified, reason: event.providerVerified ? 'official-common-crawl-ip-range' : 'not-in-official-common-crawl-ip-range' };
   }
 }
 
