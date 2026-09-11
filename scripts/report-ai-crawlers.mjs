@@ -157,17 +157,18 @@ const verifyBing = args.includes('--verify-bing');
 const verifyGoogle = args.includes('--verify-google');
 const verifyPerplexity = args.includes('--verify-perplexity');
 const verifyCommonCrawl = args.includes('--verify-common-crawl');
+const verifyApple = args.includes('--verify-apple');
 const includeRotated = args.includes('--include-rotated');
 const since = sinceArg ? Date.parse(`${sinceArg.slice('--since='.length)}T00:00:00Z`) : null;
 if (sinceArg && Number.isNaN(since)) {
   console.error('Invalid --since date. Use --since=YYYY-MM-DD.');
   process.exit(2);
 }
-const verificationFlags = ['--verify-openai', '--verify-bing', '--verify-google', '--verify-perplexity', '--verify-common-crawl', '--include-rotated'];
+const verificationFlags = ['--verify-openai', '--verify-bing', '--verify-google', '--verify-perplexity', '--verify-common-crawl', '--verify-apple', '--include-rotated'];
 const inputPaths = args.filter((arg) => !arg.startsWith('--since=') && !verificationFlags.includes(arg));
 const paths = await resolveLogPaths(inputPaths, includeRotated);
 if (!paths.length) {
-  console.error('Usage: npm run geo:crawler-report -- [--since=YYYY-MM-DD] [--include-rotated] [--verify-openai] [--verify-bing] [--verify-google] [--verify-perplexity] [--verify-common-crawl] /var/log/nginx/access.log [/var/log/nginx/access.log.1.gz ...]');
+  console.error('Usage: npm run geo:crawler-report -- [--since=YYYY-MM-DD] [--include-rotated] [--verify-openai] [--verify-bing] [--verify-google] [--verify-perplexity] [--verify-common-crawl] [--verify-apple] /var/log/nginx/access.log [/var/log/nginx/access.log.1.gz ...]');
   process.exit(2);
 }
 
@@ -215,6 +216,12 @@ if (verifyCommonCrawl) {
   const source = await fetchPublishedIpPrefixes('https://index.commoncrawl.org/ccbot.json');
   verificationSources.commonCrawlBot = source;
   applyPublishedPrefixVerification(events, 'CCBot', source, 'official-common-crawl-ip-range');
+}
+
+if (verifyApple) {
+  const source = await fetchPublishedIpPrefixes('https://search.developer.apple.com/applebot.json');
+  verificationSources.appleBot = source;
+  applyPublishedPrefixVerification(events, 'Applebot', source, 'official-applebot-ip-range');
 }
 
 if (verifyBing) {
@@ -269,6 +276,7 @@ const verifiedPerplexityPages = pageCandidates.filter(
   (event) => ['PerplexityBot', 'Perplexity-User'].includes(event.family) && event.providerVerified === true,
 );
 const verifiedCommonCrawlPages = pageCandidates.filter((event) => event.family === 'CCBot' && event.providerVerified === true);
+const verifiedApplePages = pageCandidates.filter((event) => event.family === 'Applebot' && event.providerVerified === true);
 const verifiedOpenAiDiscoveryFiles = discoveryCandidates.filter(
   (event) => ['GPTBot', 'OAI-SearchBot'].includes(event.family) && event.providerVerified === true,
 );
@@ -286,6 +294,7 @@ const verifiedPerplexityDiscoveryFiles = discoveryCandidates.filter(
   (event) => ['PerplexityBot', 'Perplexity-User'].includes(event.family) && event.providerVerified === true,
 );
 const verifiedCommonCrawlDiscoveryFiles = discoveryCandidates.filter((event) => event.family === 'CCBot' && event.providerVerified === true);
+const verifiedAppleDiscoveryFiles = discoveryCandidates.filter((event) => event.family === 'Applebot' && event.providerVerified === true);
 const dnsVerificationUnavailablePages = pageCandidates.filter(
   (event) => event.providerVerification?.verificationUnavailable === true,
 );
@@ -299,6 +308,7 @@ for (const event of [
   ...verifiedGooglePages,
   ...verifiedPerplexityPages,
   ...verifiedCommonCrawlPages,
+  ...verifiedApplePages,
 ]) {
   const pathOnly = event.path.split('?')[0];
   const current = verifiedContentPathMap.get(pathOnly) || {
@@ -324,6 +334,7 @@ const verifiedEvidenceObservations = buildVerifiedCrawlerEvidenceObservations({
     google: verifiedGooglePages,
     perplexity: verifiedPerplexityPages,
     commonCrawl: verifiedCommonCrawlPages,
+    apple: verifiedApplePages,
   },
   discoveryFiles: {
     openAi: verifiedOpenAiDiscoveryFiles,
@@ -331,6 +342,7 @@ const verifiedEvidenceObservations = buildVerifiedCrawlerEvidenceObservations({
     google: verifiedGoogleDiscoveryFiles,
     perplexity: verifiedPerplexityDiscoveryFiles,
     commonCrawl: verifiedCommonCrawlDiscoveryFiles,
+    apple: verifiedAppleDiscoveryFiles,
   },
 });
 const userAgentOnlyEvidenceObservations = buildUserAgentOnlyCrawlerEvidenceObservations([
@@ -348,6 +360,7 @@ console.log(JSON.stringify({
   verifyGoogle,
   verifyPerplexity,
   verifyCommonCrawl,
+  verifyApple,
   includeRotated,
   verificationSources: Object.fromEntries(Object.entries(verificationSources).map(([id, source]) => [id, {
     url: source.url,
@@ -373,6 +386,7 @@ console.log(JSON.stringify({
     verifiedGooglePageCrawls: verifiedGooglePages.length,
     verifiedPerplexityPageCrawls: verifiedPerplexityPages.length,
     verifiedCommonCrawlPageCrawls: verifiedCommonCrawlPages.length,
+    verifiedApplePageCrawls: verifiedApplePages.length,
     verifiedOpenAiDiscoveryFileCrawls: verifiedOpenAiDiscoveryFiles.length,
     verifiedGptBotDiscoveryFileCrawls: verifiedGptBotDiscoveryFiles.length,
     verifiedOaiSearchBotDiscoveryFileCrawls: verifiedOaiSearchBotDiscoveryFiles.length,
@@ -380,6 +394,7 @@ console.log(JSON.stringify({
     verifiedGoogleDiscoveryFileCrawls: verifiedGoogleDiscoveryFiles.length,
     verifiedPerplexityDiscoveryFileCrawls: verifiedPerplexityDiscoveryFiles.length,
     verifiedCommonCrawlDiscoveryFileCrawls: verifiedCommonCrawlDiscoveryFiles.length,
+    verifiedAppleDiscoveryFileCrawls: verifiedAppleDiscoveryFiles.length,
     dnsVerificationUnavailablePageCrawls: dnsVerificationUnavailablePages.length,
     dnsVerificationUnavailableDiscoveryFileCrawls: dnsVerificationUnavailableDiscoveryFiles.length,
     unparsableLines,
@@ -398,6 +413,7 @@ console.log(JSON.stringify({
   recentVerifiedGooglePageCrawls: verifiedGooglePages.slice(-50),
   recentVerifiedPerplexityPageCrawls: verifiedPerplexityPages.slice(-50),
   recentVerifiedCommonCrawlPageCrawls: verifiedCommonCrawlPages.slice(-50),
+  recentVerifiedApplePageCrawls: verifiedApplePages.slice(-50),
   recentVerifiedOpenAiDiscoveryFileCrawls: verifiedOpenAiDiscoveryFiles.slice(-30),
   recentVerifiedGptBotDiscoveryFileCrawls: verifiedGptBotDiscoveryFiles.slice(-30),
   recentVerifiedOaiSearchBotDiscoveryFileCrawls: verifiedOaiSearchBotDiscoveryFiles.slice(-30),
@@ -405,6 +421,7 @@ console.log(JSON.stringify({
   recentVerifiedGoogleDiscoveryFileCrawls: verifiedGoogleDiscoveryFiles.slice(-30),
   recentVerifiedPerplexityDiscoveryFileCrawls: verifiedPerplexityDiscoveryFiles.slice(-30),
   recentVerifiedCommonCrawlDiscoveryFileCrawls: verifiedCommonCrawlDiscoveryFiles.slice(-30),
+  recentVerifiedAppleDiscoveryFileCrawls: verifiedAppleDiscoveryFiles.slice(-30),
   recentDnsVerificationUnavailablePageCrawls: dnsVerificationUnavailablePages.slice(-50),
   recentDnsVerificationUnavailableDiscoveryFileCrawls: dnsVerificationUnavailableDiscoveryFiles.slice(-30),
   recentSuspiciousRequests: suspiciousCandidates.slice(-20),

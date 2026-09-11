@@ -11,9 +11,11 @@ const crawlerTotals = {
   verifiedPerplexityDiscoveryFileCrawls: 0,
   verifiedCommonCrawlPageCrawls: 0,
   verifiedCommonCrawlDiscoveryFileCrawls: 0,
+  verifiedAppleDiscoveryFileCrawls: 0,
   verifiedBingPageCrawls: 7,
   verifiedGooglePageCrawls: 0,
   verifiedPerplexityPageCrawls: 0,
+  verifiedApplePageCrawls: 0,
   userAgentOnlyBytespiderPageCrawls: 0,
   userAgentOnlyBytespiderDiscoveryFileCrawls: 0,
 };
@@ -46,6 +48,8 @@ assert.equal(counts.malformedCampaignVisits, 6);
 assert.equal(counts.aiReferrerAttributedVisits, 0);
 assert.equal(counts.userAgentOnlyBytespiderPageCrawls, 0);
 assert.equal(counts.userAgentOnlyBytespiderDiscoveryFileCrawls, 0);
+assert.equal(counts.verifiedApplePageCrawls, 0);
+assert.equal(counts.verifiedAppleDiscoveryFileCrawls, 0);
 
 const deltas = buildEvidenceDeltas(counts, {
   trackedVisits: 69,
@@ -154,4 +158,4 @@ assert.equal(selectEvidenceEventKind({ initializing: false, evidenceChanged: tru
 assert.equal(selectEvidenceEventKind({ initializing: false, evidenceChanged: false, availabilityChanged: true }), 'availability-change');
 assert.equal(selectEvidenceEventKind({ initializing: false, evidenceChanged: false, availabilityChanged: false }), null);
 
-console.log(JSON.stringify({ tests: 52, failures: [] }, null, 2));
+console.log(JSON.stringify({ tests: 54, failures: [] }, null, 2));

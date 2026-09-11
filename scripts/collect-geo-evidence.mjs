@@ -83,6 +83,7 @@ const crawler = await runJson('report-ai-crawlers.mjs', [
   '--verify-google',
   '--verify-perplexity',
   '--verify-common-crawl',
+  '--verify-apple',
   ...logPaths,
 ]);
 const referral = await runJson('report-geo-referrals.mjs', [`--since=${since}`, '--include-rotated', ...logPaths]);
@@ -115,6 +116,7 @@ const metricForCrawlerObservation = (observation) => {
     PerplexityBot: 'Perplexity',
     'Perplexity-User': 'Perplexity',
     CCBot: 'CommonCrawl',
+    Applebot: 'Apple',
   }[observation.family];
   if (!provider) throw new Error(`Unsupported verified crawler family: ${observation.family}`);
   return `verified${provider}${observation.classification === 'candidate-page-crawl' ? 'Page' : 'DiscoveryFile'}Crawls`;

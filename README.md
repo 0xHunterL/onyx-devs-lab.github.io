@@ -103,11 +103,13 @@ npm run geo:check
 npm run geo:prompt-coverage
 npm run geo:prompt-crawl-coverage -- --crawler-report=/path/to/verified-crawler-report.json
 npm run geo:content-distinctiveness
+npm run geo:check-distribution
+npm run geo:check-distribution-live
 npm run geo:check-live -- https://hk.onyxdevslab.com
 npm run geo:check-offsite
 npm run geo:schema-validate-live -- https://hk.onyxdevslab.com
 npm run geo:submit-indexnow
-npm run geo:crawler-report -- --since=2026-09-01 --include-rotated --verify-openai --verify-bing --verify-google --verify-perplexity --verify-common-crawl /var/log/nginx/hk.onyxdevslab.com.geo.log
+npm run geo:crawler-report -- --since=2026-09-01 --include-rotated --verify-openai --verify-bing --verify-google --verify-perplexity --verify-common-crawl --verify-apple /var/log/nginx/hk.onyxdevslab.com.geo.log
 npm run geo:referral-report -- --since=2026-09-01 --include-rotated /var/log/nginx/hk.onyxdevslab.com.geo.log
 ```
 
