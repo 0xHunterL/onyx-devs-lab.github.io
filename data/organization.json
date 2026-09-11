@@ -241,8 +241,8 @@
       "@type": "Dataset",
       "name": "Onyx automated GEO monitor evidence checkpoint — 2026-09-11",
       "description": "Provider-maintained snapshot of provider-verified crawler requests, fixed-prompt crawl coverage, classified attribution requests, and dated public-search observations. It does not prove indexing, citation, or recommendation.",
-      "url": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-monitor-evidence-2026-09-11-4",
-      "sameAs": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-monitor-evidence-2026-09-11-4/2026-09-11-monitor-evidence.json",
+      "url": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-monitor-evidence-2026-09-11-5",
+      "sameAs": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-monitor-evidence-2026-09-11-5/2026-09-11-monitor-evidence.json",
       "dateModified": "2026-09-11"
     },
     {

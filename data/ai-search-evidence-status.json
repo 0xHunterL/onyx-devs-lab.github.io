@@ -1,9 +1,9 @@
 {
   "schemaVersion": 2,
-  "version": "2026.09.11.4",
+  "version": "2026.09.11.5",
   "id": "https://hk.onyxdevslab.com/data/ai-search-evidence-status.json",
-  "observedAt": "2026-09-11T08:15:00Z",
-  "sameAs": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-monitor-evidence-2026-09-11-4/2026-09-11-monitor-evidence.json",
+  "observedAt": "2026-09-11T08:27:38Z",
+  "sameAs": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-monitor-evidence-2026-09-11-5/2026-09-11-monitor-evidence.json",
   "name": {
     "en": "Onyx Devs Lab AI-search evidence status",
     "zhHant": "Onyx Devs Lab AI 搜尋證據狀態",
@@ -106,10 +106,11 @@
         "doubaoTestStatus": "not-run",
         "otherAiRecommendationEvidenceCount": 0,
         "realAiReferralVisitsObserved": 0,
-        "trackedAttributionRequests": 68,
-        "suspectedAutomatedTrackedRequests": 59,
+        "trackedAttributionRequests": 69,
+        "suspectedAutomatedTrackedRequests": 60,
         "humanUnverifiedTrackedRequests": 9,
-        "knownLinkScannerTrackedRequests": 12,
+        "knownLinkScannerTrackedRequests": 13,
+        "knownLinkScannerNetworkRequests": 1,
         "internallyInconsistentUserAgentRequests": 4,
         "malformedCampaignRequests": 6,
         "latestVerifiedOffsiteReferral": {
@@ -122,7 +123,7 @@
         }
       },
       "limitations": [
-        "High-velocity or coordinated multi-user-agent bursts, internally inconsistent browser identities, and known VirusTotal link scanners are classified as suspected automation.",
+        "High-velocity or coordinated multi-user-agent bursts, internally inconsistent browser identities, known scanner user agents, and the documented Palo Alto URL-scanner network are classified as suspected automation.",
         "Malformed campaign values are audited and excluded from attributed-visit totals.",
         "The remaining attributed requests are not proven to be people or AI referrals; one latest request includes a verified GitHub Pages referrer, not an AI referrer."
       ]
