@@ -22,3 +22,5 @@
 2026-09-11T10:48:11Z 的正式采集再次出现 `partial`：只有 `CC-MAIN-2026-34` 可用，`CC-MAIN-2026-30` 返回 HTTP `504`。随后独立复测观察到相反组合，即 `CC-MAIN-2026-30` 可用而 `CC-MAIN-2026-34` 返回 HTTP `504`；总体标签虽然同为 `partial`，实际可核验月份已经改变。监测器因此进一步保存所选索引及逐项状态，今后同一总体标签下的索引覆盖集合变化也会生成可用性事件，避免当前摘要覆盖掉这一审计信息。
 
 2026-09-11T11:03:02Z 部署新逻辑后的生产采集完整成功：两个索引均可用且捕获仍为 0，五个用于 OpenAI、Perplexity 与 CCBot 身份核验的官方 IP 前缀源也全部可用。监测器生成 `events/2026-09-11T11-03-02.897Z-availability-change.json`，其中 Common Crawl 从 `partial` 恢复为 `available`，`coverageChanged` 与 `availabilityChanged` 为 `true`，但 `changed` 为 `false`、`newEvidence` 为空。该事件证明监测覆盖恢复，不证明新增抓取、收录或引用。
+
+2026-09-11T11:06:33Z 的生产回归又观察到 `CC-MAIN-2026-34` 返回 HTTP `502`、`CC-MAIN-2026-30` 可用，总体从 `available` 变为 `partial`。新事件 `events/2026-09-11T11-06-33.271Z-availability-change.json` 明确保存了两个索引各自的前后状态，权限为 `0640 root:root`；五个爬虫身份核验源仍全部可用，`changed` 为 `false` 且 `newEvidence` 为空。当前捕获数仍为 0，但这一轮只能解释为不完整观测。
