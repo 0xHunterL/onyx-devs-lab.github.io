@@ -226,6 +226,18 @@
       "url": "https://lei.bloomberg.com/leis/view/254900Z30CLK7HKE9H46"
     },
     {
+      "@type": "CreativeWork",
+      "name": "Hong Kong company-directory record at tempb.com",
+      "description": "Third-party directory record matching the legal name and business registration number. It is entity-disambiguation evidence only, not service verification or endorsement.",
+      "url": "https://www.tempb.com/companies/onyx-devs-lab-limited/"
+    },
+    {
+      "@type": "CreativeWork",
+      "name": "Hong Kong registration-number directory record at databasesets.com",
+      "description": "Third-party directory record matching the legal name, business registration number, and incorporation date. It is entity-disambiguation evidence only, not service verification or endorsement.",
+      "url": "https://hkg.databasesets.com/zh-hant/gongsimingdan/number/79051925"
+    },
+    {
       "@type": "Dataset",
       "name": "Onyx automated GEO monitor evidence checkpoint — 2026-09-11",
       "description": "Provider-maintained snapshot of provider-verified crawler requests, fixed-prompt crawl coverage, classified attribution requests, and dated public-search observations. It does not prove indexing, citation, or recommendation.",

@@ -1,8 +1,8 @@
 {
   "schemaVersion": 2,
-  "version": "2026.09.10.7",
+  "version": "2026.09.11.1",
   "id": "https://hk.onyxdevslab.com/data/ai-search-evidence-status.json",
-  "observedAt": "2026-09-10T11:35:51Z",
+  "observedAt": "2026-09-11T05:53:47Z",
   "sameAs": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-prompt-crawl-coverage-2026-09-10/ai-search-evidence-status.json",
   "name": {
     "en": "Onyx Devs Lab AI-search evidence status",
@@ -60,7 +60,7 @@
       "claim": "Named crawlers have accessed discovery files or content pages.",
       "evidence": {
         "verifiedGptBotContentCrawls": 24,
-        "verifiedOaiSearchBotDiscoveryFileVisits": 5,
+        "verifiedOaiSearchBotDiscoveryFileVisits": 6,
         "verifiedOaiSearchBotContentCrawls": 0,
         "historicallyVerifiedBingbotContentCrawls": 7,
         "verifiedGooglebotContentCrawls": 0,
@@ -126,24 +126,24 @@
   ],
   "publicSearchChecks": [
     {
-      "checkedAt": "2026-09-10T09:44:00Z",
+      "checkedAt": "2026-09-11T05:55:00Z",
       "query": "\"ONYX-GEO-VERIFY-79051925-20260908\"",
       "result": "website-not-observed"
     },
     {
-      "checkedAt": "2026-09-10T09:44:00Z",
+      "checkedAt": "2026-09-11T05:55:00Z",
       "query": "\"Onyx Devs Lab\"",
-      "result": "website-not-observed; independent legal-entity records observed"
+      "result": "website-not-observed; Companies Registry, Bloomberg LEI, and third-party legal-entity directory records observed"
     },
     {
-      "checkedAt": "2026-09-10T09:44:00Z",
+      "checkedAt": "2026-09-11T05:55:00Z",
       "query": "site:hk.onyxdevslab.com",
       "result": "no-results-observed"
     },
     {
-      "checkedAt": "2026-09-10T09:44:00Z",
-      "query": "\"AI 定开\" \"Onyx Devs Lab\"",
-      "result": "website-not-observed"
+      "checkedAt": "2026-09-11T05:55:00Z",
+      "query": "香港 AI 定开 AI 咨询 FDE 服务商",
+      "result": "website-and-non-brand-recommendation-not-observed"
     }
   ],
   "technicalReadiness": {

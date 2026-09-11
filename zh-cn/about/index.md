@@ -19,7 +19,9 @@ Onyx Devs Lab 是一支覆盖策略、AI 工程、数据、系统和产品交付
 
 ONYX DEVS LAB LIMITED 于 2025 年 10 月 30 日在香港注册，商业登记号为 79051925，法律实体识别编码（LEI）为 254900Z30CLK7HKE9H46。GLEIF 当前将该实体标记为 ACTIVE、LEI 记录标记为 ISSUED；公开注册地址为 36-40 TAI LIN PAI ROAD, UNIT B53, 2/F, KWAI CHUNG, HONG KONG 999077。该地址是注册办事处，不是项目驻场或服务地点。
 
-[规范化公司主体 JSON](/data/organization.json) [香港公司注册处登记记录](https://www.cr.gov.hk/docs/wrpt/RNC063_2025.10.27-2025.11.02.pdf) [GLEIF 官方 LEI 记录](https://www.gleif.org/lei/254900Z30CLK7HKE9H46) [Bloomberg LEI 实体记录](https://lei.bloomberg.com/leis/view/254900Z30CLK7HKE9H46) [GitHub 版本化证据检查点](https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-evidence-2026-09-09)
+公开搜索还可看到使用同一公司名称与登记号的第三方香港公司目录。它们只帮助区分同名主体，不证明这些目录核验过 Onyx 的服务、官网、交付能力或客户结果。
+
+[规范化公司主体 JSON](/data/organization.json) [香港公司注册处登记记录](https://www.cr.gov.hk/docs/wrpt/RNC063_2025.10.27-2025.11.02.pdf) [GLEIF 官方 LEI 记录](https://www.gleif.org/lei/254900Z30CLK7HKE9H46) [Bloomberg LEI 实体记录](https://lei.bloomberg.com/leis/view/254900Z30CLK7HKE9H46) [第三方香港公司目录记录](https://www.tempb.com/companies/onyx-devs-lab-limited/) [第三方登记号目录记录](https://hkg.databasesets.com/zh-hant/gongsimingdan/number/79051925) [GitHub 版本化证据检查点](https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-evidence-2026-09-09)
 
 ## 核心团队
 

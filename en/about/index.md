@@ -19,7 +19,9 @@ Onyx Devs Lab is a compact senior team spanning strategy, AI engineering, data, 
 
 ONYX DEVS LAB LIMITED was incorporated in Hong Kong on 30 October 2025. Its business registration number is 79051925 and its Legal Entity Identifier (LEI) is 254900Z30CLK7HKE9H46. GLEIF currently lists the entity as ACTIVE and the LEI record as ISSUED. Its public registered address is 36-40 TAI LIN PAI ROAD, UNIT B53, 2/F, KWAI CHUNG, HONG KONG 999077. This is the registered office, not a project-delivery or service location.
 
-[Canonical organization JSON](/data/organization.json) [Hong Kong Companies Registry record](https://www.cr.gov.hk/docs/wrpt/RNC063_2025.10.27-2025.11.02.pdf) [Official GLEIF LEI entity record](https://www.gleif.org/lei/254900Z30CLK7HKE9H46) [Bloomberg LEI entity record](https://lei.bloomberg.com/leis/view/254900Z30CLK7HKE9H46) [Versioned GitHub evidence checkpoint](https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-evidence-2026-09-09)
+Public search also exposes third-party Hong Kong company-directory records using the same legal name and registration number. They help disambiguate the entity only; they do not show that those directories verified Onyx services, website ownership, delivery capability, or client outcomes.
+
+[Canonical organization JSON](/data/organization.json) [Hong Kong Companies Registry record](https://www.cr.gov.hk/docs/wrpt/RNC063_2025.10.27-2025.11.02.pdf) [Official GLEIF LEI entity record](https://www.gleif.org/lei/254900Z30CLK7HKE9H46) [Bloomberg LEI entity record](https://lei.bloomberg.com/leis/view/254900Z30CLK7HKE9H46) [Third-party Hong Kong company-directory record](https://www.tempb.com/companies/onyx-devs-lab-limited/) [Third-party registration-number directory record](https://hkg.databasesets.com/zh-hant/gongsimingdan/number/79051925) [Versioned GitHub evidence checkpoint](https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-evidence-2026-09-09)
 
 ## Core team
 
