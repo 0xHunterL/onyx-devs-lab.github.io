@@ -1,8 +1,8 @@
 {
   "schemaVersion": 2,
-  "version": "2026.09.11.26",
+  "version": "2026.09.11.27",
   "id": "https://hk.onyxdevslab.com/data/ai-search-evidence-status.json",
-  "observedAt": "2026-09-11T16:01:43.357Z",
+  "observedAt": "2026-09-11T16:11:49Z",
   "sourceBaseline": "https://github.com/0xHunterL/onyx-devs-lab.github.io/blob/main/docs/geo-baselines/2026-09-11-monitor-evidence.json",
   "versionHistory": [
     {
@@ -153,6 +153,42 @@
       "claim": "No preserved qualifying AI answer retrieves the marker or cites an Onyx page without being given its URL.",
       "evidence": {
         "publicSearchWebsiteResultObserved": false,
+        "publicSearchObservation": {
+          "testedAt": "2026-09-11T16:11:49Z",
+          "queries": [
+            "\"ONYX-GEO-VERIFY-79051925-20260908\"",
+            "\"Onyx Devs Lab\"",
+            "site:hk.onyxdevslab.com",
+            "AI 定开 AI 咨询 FDE Onyx Devs Lab",
+            "\"AI 定开、AI 咨询和 FDE 应该怎么选？\""
+          ],
+          "officialSiteObserved": false,
+          "thirdPartyEntityRecordsObserved": true,
+          "thirdPartyEntityRecords": [
+            "https://www.cr.gov.hk/docs/wrpt/RNC063_2025.10.27-2025.11.02.pdf",
+            "https://lei.bloomberg.com/leis/view/254900Z30CLK7HKE9H46",
+            "https://www.tempb.com/companies/onyx-devs-lab-limited/",
+            "https://hkg.databasesets.com/zh-hant/gongsimingdan/number/79051925"
+          ],
+          "lowConfidenceEntityDirectoryResults": [
+            {
+              "url": "https://www.shuididp.cn/yp-1fc4411b06407fe9179c5109ae9d7e02.html",
+              "query": "\"Onyx Devs Lab\"",
+              "matchingFields": [
+                "legal name",
+                "incorporation date",
+                "Hong Kong jurisdiction"
+              ],
+              "conflictingFields": [
+                "industry is listed as chemical raw materials and chemical products manufacturing"
+              ],
+              "treatment": "Search-result evidence only. The page is unclaimed, says its data comes from the internet without guarantee, omits the registration number and address, and contains a conflicting industry classification; it is not accepted as an authoritative entity source or linked with sameAs."
+            }
+          ],
+          "entityRecordMeaning": "These records make the legal entity externally discoverable and disambiguatable. They do not prove official-site indexing, website ownership, service verification, endorsement, AI citation, or recommendation.",
+          "categoryRecommendationObserved": false,
+          "newPublicDiscussionObserved": false
+        },
         "retrievalMarkerResultObserved": null,
         "aiAnswerCitationObserved": null,
         "doubaoTestStatus": "not-run"
@@ -212,22 +248,22 @@
   ],
   "publicSearchChecks": [
     {
-      "checkedAt": "2026-09-11T12:16:01Z",
+      "checkedAt": "2026-09-11T16:11:49Z",
       "query": "\"ONYX-GEO-VERIFY-79051925-20260908\"",
       "result": "website-not-observed"
     },
     {
-      "checkedAt": "2026-09-11T12:16:01Z",
+      "checkedAt": "2026-09-11T16:11:49Z",
       "query": "\"Onyx Devs Lab\"",
-      "result": "website-not-observed; Companies Registry, Bloomberg LEI, and third-party legal-entity directory records observed"
+      "result": "website-not-observed; corroborating entity records and one low-confidence directory result with a conflicting industry classification observed"
     },
     {
-      "checkedAt": "2026-09-11T12:16:01Z",
+      "checkedAt": "2026-09-11T16:11:49Z",
       "query": "site:hk.onyxdevslab.com",
       "result": "no-results-observed"
     },
     {
-      "checkedAt": "2026-09-11T12:16:01Z",
+      "checkedAt": "2026-09-11T16:11:49Z",
       "query": "\"AI 定开、AI 咨询和 FDE 应该怎么选？\"",
       "result": "new-public-discussion-not-observed"
     }
