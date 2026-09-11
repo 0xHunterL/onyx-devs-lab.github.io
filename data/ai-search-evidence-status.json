@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "version": "2026.09.11.13",
+  "version": "2026.09.11.14",
   "id": "https://hk.onyxdevslab.com/data/ai-search-evidence-status.json",
   "observedAt": "2026-09-11T12:36:00.144Z",
   "sourceBaseline": "https://github.com/0xHunterL/onyx-devs-lab.github.io/blob/main/docs/geo-baselines/2026-09-11-monitor-evidence.json",
@@ -81,6 +81,17 @@
         "userAgentOnlyBytespiderContentCrawlCandidates": 0,
         "userAgentOnlyBytespiderDiscoveryFileCandidates": 0,
         "syntheticBytespiderReleaseChecksExcluded": 2368,
+        "commonCrawlIndexObservation": {
+          "checkedAt": "2026-09-11T12:36:00.144Z",
+          "status": "available",
+          "capturesObservedInAvailableIndexes": 0,
+          "availableIndexes": [
+            "CC-MAIN-2026-34",
+            "CC-MAIN-2026-30"
+          ],
+          "unavailableIndexes": [],
+          "meaning": "Both selected indexes returned usable responses with zero observed captures. This complete result covers only the selected indexes and must not be interpreted as proof of zero captures across all Common Crawl history."
+        },
         "fixedPromptCoverage": {
           "prompts": 20,
           "uniqueEvidencePages": 20,
@@ -98,6 +109,7 @@
         "GPTBot is a training crawler and does not prove ChatGPT Search indexing or citation.",
         "Baiduspider uses Baidu official reverse-DNS suffixes plus forward confirmation; Applebot uses the official published CIDR list. Their zero counts mean no verified request was observed in the checked current and rotated logs.",
         "Bytespider candidates are labeled user-agent-only and identity-unverified; they do not prove Doubao or ByteDance access.",
+        "Common Crawl index observations cover only the named selected indexes; they do not prove search indexing, retrieval, citation, or absence across all crawl history.",
         "Discovery-file visits do not prove content-page ingestion.",
         "Bingbot content crawls do not prove public search indexing.",
         "Prompt-level crawl coverage does not prove prompt retrieval, citation, ranking, or recommendation."
