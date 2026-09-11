@@ -98,6 +98,42 @@ export function buildCrawlerVerificationAvailability(crawler) {
   };
 }
 
+export function buildDistributionAvailability(distribution) {
+  const sources = (distribution?.results || [])
+    .map((result) => {
+      const available = Number.isInteger(result.status)
+        && result.status >= 200
+        && result.status < 300
+        && result.sameDestination === true
+        && (!Array.isArray(result.missingMarkers) || result.missingMarkers.length === 0);
+      return {
+        id: `${result.itemId || 'unknown'}:${result.kind || 'unknown'}:${result.url || 'unknown'}`,
+        status: available ? 'available' : 'unavailable',
+        httpStatus: Number.isInteger(result.status) ? result.status : null,
+        reason: available ? null : result.reason || (result.sameDestination === false ? 'destination-mismatch' : (result.missingMarkers || []).length ? 'content-marker-missing' : 'request-failed'),
+      };
+    })
+    .sort((left, right) => left.id.localeCompare(right.id));
+  const availableSources = sources.filter((source) => source.status === 'available').length;
+  const unavailableSources = sources.length - availableSources;
+  const status = !sources.length || !availableSources
+    ? 'unavailable'
+    : unavailableSources
+      ? 'partial'
+      : 'available';
+  return {
+    status,
+    publishedItems: Number(distribution?.publishedItems || 0),
+    sourcesChecked: sources.length,
+    availableSources,
+    unavailableSources,
+    sources,
+    interpretation: status === 'available'
+      ? 'All declared offsite publications and tracked canonical targets passed anonymous reachability, destination, and content-marker checks.'
+      : 'Offsite distribution verification is incomplete; failed sources do not prove publication loss until independently retested.',
+  };
+}
+
 function availabilityCoverage(value, useDetailedIndexes) {
   if (useDetailedIndexes) {
     return {

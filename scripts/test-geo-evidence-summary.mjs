@@ -1,5 +1,5 @@
 import assert from 'node:assert/strict';
-import { buildAvailabilityChanges, buildCommonCrawlAvailability, buildCrawlerVerificationAvailability, buildEvidenceCounts, buildEvidenceDeltas, selectEvidenceEventKind } from './geo-evidence-summary.mjs';
+import { buildAvailabilityChanges, buildCommonCrawlAvailability, buildCrawlerVerificationAvailability, buildDistributionAvailability, buildEvidenceCounts, buildEvidenceDeltas, selectEvidenceEventKind } from './geo-evidence-summary.mjs';
 
 const crawlerTotals = {
   verifiedGptBotPageCrawls: 24,
@@ -103,6 +103,19 @@ assert.equal(crawlerSourceRecovered.length, 1);
 assert.equal(crawlerSourceRecovered[0].statusChanged, true);
 assert.equal(crawlerSourceRecovered[0].coverageChanged, true);
 
+const partialDistribution = buildDistributionAvailability({
+  publishedItems: 2,
+  results: [
+    { itemId: 'one', kind: 'publicUrl', url: 'https://example.com/one', status: 200, sameDestination: true, missingMarkers: [] },
+    { itemId: 'two', kind: 'publicUrl', url: 'https://example.com/two', status: 200, sameDestination: true, missingMarkers: ['Onyx'] },
+  ],
+});
+assert.equal(partialDistribution.status, 'partial');
+assert.equal(partialDistribution.availableSources, 1);
+assert.equal(partialDistribution.unavailableSources, 1);
+assert.equal(partialDistribution.sources[1].reason, 'content-marker-missing');
+assert.equal(buildDistributionAvailability({ results: [] }).status, 'unavailable');
+
 const statusAndCoverageChange = buildAvailabilityChanges(
   { commonCrawl: partialCommonCrawl },
   { commonCrawl: availableCommonCrawl },
@@ -141,4 +154,4 @@ assert.equal(selectEvidenceEventKind({ initializing: false, evidenceChanged: tru
 assert.equal(selectEvidenceEventKind({ initializing: false, evidenceChanged: false, availabilityChanged: true }), 'availability-change');
 assert.equal(selectEvidenceEventKind({ initializing: false, evidenceChanged: false, availabilityChanged: false }), null);
 
-console.log(JSON.stringify({ tests: 47, failures: [] }, null, 2));
+console.log(JSON.stringify({ tests: 52, failures: [] }, null, 2));

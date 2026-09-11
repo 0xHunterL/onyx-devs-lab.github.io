@@ -2,7 +2,7 @@ import { spawn } from 'node:child_process';
 import { mkdir, readFile, readdir, rename, unlink, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { buildAvailabilityChanges, buildCommonCrawlAvailability, buildCrawlerVerificationAvailability, buildEvidenceCounts, buildEvidenceDeltas, selectEvidenceEventKind } from './geo-evidence-summary.mjs';
+import { buildAvailabilityChanges, buildCommonCrawlAvailability, buildCrawlerVerificationAvailability, buildDistributionAvailability, buildEvidenceCounts, buildEvidenceDeltas, selectEvidenceEventKind } from './geo-evidence-summary.mjs';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const args = process.argv.slice(2);
@@ -87,6 +87,7 @@ const crawler = await runJson('report-ai-crawlers.mjs', [
 ]);
 const referral = await runJson('report-geo-referrals.mjs', [`--since=${since}`, '--include-rotated', ...logPaths]);
 const commonCrawl = await runJson('report-common-crawl.mjs', ['--host=hk.onyxdevslab.com', '--indexes=2']);
+const distribution = await runJson('check-distribution-live.mjs', ['--report']);
 
 const crawlerTemporary = path.join(outputDir, `.crawler-report-${process.pid}.json`);
 await writeFile(crawlerTemporary, `${JSON.stringify(crawler, null, 2)}\n`, { mode: 0o640 });
@@ -100,7 +101,8 @@ try {
 const counts = buildEvidenceCounts(crawler, referral, commonCrawl, promptCoverage);
 const commonCrawlAvailability = buildCommonCrawlAvailability(commonCrawl);
 const crawlerVerificationAvailability = buildCrawlerVerificationAvailability(crawler);
-const availability = { commonCrawl: commonCrawlAvailability, crawlerVerification: crawlerVerificationAvailability };
+const distributionAvailability = buildDistributionAvailability(distribution);
+const availability = { commonCrawl: commonCrawlAvailability, crawlerVerification: crawlerVerificationAvailability, distribution: distributionAvailability };
 const availabilityChanges = buildAvailabilityChanges(availability, previous?.availability);
 const priorCounts = previous?.counts || {};
 const deltas = buildEvidenceDeltas(counts, previous ? priorCounts : null);
@@ -173,6 +175,7 @@ if (eventFile) await atomicJson(eventFile, {
   crawler,
   referral,
   commonCrawl,
+  distribution,
   promptCoverage,
 });
 await atomicJson('seen-evidence.json', {
@@ -183,6 +186,7 @@ await atomicJson('seen-evidence.json', {
 await atomicJson('crawler-report.json', crawler);
 await atomicJson('referral-report.json', referral);
 await atomicJson('common-crawl-report.json', commonCrawl);
+await atomicJson('distribution-live-report.json', distribution);
 await atomicJson('prompt-crawl-coverage.json', promptCoverage);
 await atomicJson('summary.json', summary);
 console.log(JSON.stringify(summary, null, 2));

@@ -1,6 +1,7 @@
 import fs from 'node:fs';
 
 const manifestPath = 'geo/distribution-manifest.json';
+const reportOnly = process.argv.includes('--report');
 const manifest = JSON.parse(fs.readFileSync(manifestPath, 'utf8'));
 const published = (manifest.items || []).filter((item) => item.status === 'published');
 const failures = [];
@@ -36,7 +37,7 @@ await Promise.all(published.flatMap((item) => [
   ...(item.trackedTargets || []).map((url) => request('trackedTarget', item, url)),
 ]));
 
-console.log(JSON.stringify({
+const report = {
   manifestPath,
   generatedAt: new Date().toISOString(),
   publishedItems: published.length,
@@ -45,5 +46,6 @@ console.log(JSON.stringify({
   results,
   failures,
   evidenceBoundary: 'Anonymous HTTP success proves publication and link reachability only. It does not prove search indexing, AI retrieval, citation, recommendation, a human visit, or independent endorsement.',
-}, null, 2));
-if (failures.length) process.exit(1);
+};
+console.log(JSON.stringify(report, null, 2));
+if (failures.length && !reportOnly) process.exit(1);
