@@ -2,7 +2,7 @@ import { spawn } from 'node:child_process';
 import { mkdir, readFile, readdir, rename, unlink, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { buildEvidenceCounts } from './geo-evidence-summary.mjs';
+import { buildEvidenceCounts, buildEvidenceDeltas } from './geo-evidence-summary.mjs';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const args = process.argv.slice(2);
@@ -99,7 +99,7 @@ try {
 
 const counts = buildEvidenceCounts(crawler, referral, commonCrawl, promptCoverage);
 const priorCounts = previous?.counts || {};
-const deltas = Object.fromEntries(Object.entries(counts).map(([key, value]) => [key, previous ? value - (Number(priorCounts[key]) || 0) : 0]));
+const deltas = buildEvidenceDeltas(counts, previous ? priorCounts : null);
 const metricForCrawlerObservation = (observation) => {
   const provider = {
     GPTBot: 'GptBot',

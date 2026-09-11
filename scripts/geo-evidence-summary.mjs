@@ -29,3 +29,11 @@ export function buildEvidenceCounts(crawler, referral, commonCrawl, promptCovera
     commonCrawlDistinctUrls: commonCrawl.totals.distinctUrls,
   };
 }
+
+export function buildEvidenceDeltas(counts, previousCounts) {
+  if (!previousCounts) return Object.fromEntries(Object.keys(counts).map((key) => [key, 0]));
+  return Object.fromEntries(Object.entries(counts).map(([key, value]) => [
+    key,
+    Object.hasOwn(previousCounts, key) ? value - Number(previousCounts[key]) : null,
+  ]));
+}

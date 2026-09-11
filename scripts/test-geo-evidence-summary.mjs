@@ -1,5 +1,5 @@
 import assert from 'node:assert/strict';
-import { buildEvidenceCounts } from './geo-evidence-summary.mjs';
+import { buildEvidenceCounts, buildEvidenceDeltas } from './geo-evidence-summary.mjs';
 
 const crawlerTotals = {
   verifiedGptBotPageCrawls: 24,
@@ -43,4 +43,15 @@ assert.equal(counts.internallyInconsistentUserAgentVisits, 4);
 assert.equal(counts.malformedCampaignVisits, 6);
 assert.equal(counts.aiReferrerAttributedVisits, 0);
 
-console.log(JSON.stringify({ tests: 9, failures: [] }, null, 2));
+const deltas = buildEvidenceDeltas(counts, {
+  trackedVisits: 69,
+  suspectedAutomatedTrackedVisits: 60,
+  humanUnverifiedTrackedVisits: 9,
+});
+assert.equal(deltas.trackedVisits, 1);
+assert.equal(deltas.suspectedAutomatedTrackedVisits, 1);
+assert.equal(deltas.humanUnverifiedTrackedVisits, 0);
+assert.equal(deltas.knownLinkScannerTrackedVisits, null);
+assert.equal(buildEvidenceDeltas(counts, null).knownLinkScannerTrackedVisits, 0);
+
+console.log(JSON.stringify({ tests: 14, failures: [] }, null, 2));
