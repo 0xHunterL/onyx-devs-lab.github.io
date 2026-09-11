@@ -8,7 +8,7 @@
 - 官方请求状态：<https://archive.softwareheritage.org/api/1/origin/save/2470710/>
 - 官方快照 API：<https://archive.softwareheritage.org/api/1/snapshot/df2409f12f9b01e665ae896d0492aa09148b9c1b/>
 
-该快照独立保存当前公开源代码、Git 历史、`CITATION.cff`、CodeMeta、主题站关系、Internet Archive 核心实体与服务快照簇、扫描器分类与增量审计，以及全部 GEO 版本标签，并提供内容寻址的永久标识。它证明这些材料在该快照中可恢复，不代表 Software Heritage 认可 Onyx 的服务、案例主张或搜索表现，也不证明 `hk.onyxdevslab.com` 已被任何搜索引擎或 AI 产品收录、引用或推荐。
+该快照独立保存截至 `f17606c` 的功能性公开源代码、Git 历史、`CITATION.cff`、CodeMeta、主题站关系、Internet Archive 核心实体与服务快照簇、扫描器分类与增量审计，以及全部 GEO 版本标签，并提供内容寻址的永久标识。其后的提交可以只更新快照关系本身，不把内容寻址快照误称为仓库当前 HEAD。它证明这些材料在该快照中可恢复，不代表 Software Heritage 认可 Onyx 的服务、案例主张或搜索表现，也不证明 `hk.onyxdevslab.com` 已被任何搜索引擎或 AI 产品收录、引用或推荐。
 
 自动门禁 `npm run geo:check-offsite` 会核验快照存在，并确认快照中的 `refs/heads/main` 指向上述不可变 Git revision。
 
