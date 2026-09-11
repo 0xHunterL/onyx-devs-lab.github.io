@@ -29,5 +29,6 @@
 
 - 版本化分发清单现登记 7 项资产：6 项为已发布并经过匿名核验的 GitHub Gist、GitHub Pages 或 GitHub Discussion 资产，1 项今日头条原稿保持 `ready-not-published`。所有已发布条目的搜索收录、AI 引用和非品牌推荐字段仍为 `null`。
 - 2026-09-11T11:15:50Z 的清单驱动线上门禁请求了 6 个站外公开 URL 和 16 个带归因参数的官网目标；全部返回 HTTP `200`，跳转后地址均未偏离声明目标，公开正文中的品牌、法律主体、主题或活动标记均完整。两轮共 32 次分发门禁请求在生产日志中均被识别为合成访问；11:16 UTC 重新汇总后，有效归因仍为 70 次，其中 61 次疑似自动化、9 次访问者类型未验证，AI Referrer 为 0。该结果证明当前已登记发布物与链接可达且自测未污染基线，不证明搜索收录、AI 引用、推荐或真人访问。
+- 2026-09-11T11:19:48Z，正式 `onyx-geo-monitor.service` 首次把同一检查纳入六小时证据采集。`availability.distribution` 为 `available`，22 个来源全部可用，`distribution-live-report.json` 以 `0640 root:root` 持久化；`changed` 与 `availabilityChanged` 均为 `false`，`newEvidence` 为空，有效归因仍为 70、AI Referrer 仍为 0。首次接入只建立站外可用性基线；以后发布物、目标地址或内容标记的状态集合变化才会生成可用性事件，且不会被解释成搜索或 AI 效果证据。
 
 机器可读数据见 [`2026-09-11-monitor-evidence.json`](./2026-09-11-monitor-evidence.json)。这些数字只区分可访问、已核验抓取候选及归因请求，不证明搜索收录、AI 检索、引用、排名、真人访问或非品牌推荐。
