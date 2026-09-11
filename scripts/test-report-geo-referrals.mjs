@@ -9,6 +9,17 @@ const execFileAsync = promisify(execFile);
 const directory = await mkdtemp(path.join(tmpdir(), 'onyx-geo-referral-test-'));
 const logPath = path.join(directory, 'geo.log');
 const campaignPath = '/zh-cn/guides/ai-consulting-vs-development-vs-fde/?utm_source=github_discussions&utm_medium=referral&utm_campaign=geo_engagement_model_qa';
+const periodicUserAgent = 'Mozilla/5.0 (iPhone; CPU iPhone OS 13_2_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.0.3 Mobile/15E148 Safari/604.1';
+const periodicPaths = [
+  '/zh-cn/guides/enterprise-ai-agent-erp-integration/',
+  '/zh-cn/case-studies/accounting-ai-production-platform/',
+  '/zh-cn/case-studies/retail-ai-decision-platform/',
+  '/zh-cn/case-studies/legal-ai-evidence-workflow/',
+  '/',
+  '/zh-cn/methodology/enterprise-ai-evaluation/',
+  '/zh-cn/methodology/ai-search-verification/',
+  '/zh-cn/methodology/case-study-evidence-register/',
+].map((pathname) => `${pathname}?utm_source=github_pages&utm_medium=referral&utm_campaign=geo_buyers_guide_scenarios`);
 const events = [
   {
     time: '2026-09-11T08:21:34+00:00',
@@ -43,6 +54,14 @@ const events = [
     referrerHost: '',
     userAgent: 'Onyx-GEO-Distribution-Check/1.0',
   },
+  ...periodicPaths.map((eventPath, index) => ({
+    time: new Date(Date.parse('2026-09-11T09:00:00Z') + index * 10 * 60_000).toISOString(),
+    clientIp: `198.51.100.${index + 1}`,
+    path: eventPath,
+    status: 200,
+    referrerHost: '',
+    userAgent: periodicUserAgent,
+  })),
 ];
 
 try {
@@ -53,8 +72,8 @@ try {
     logPath,
   ], { cwd: path.resolve('.') });
   const report = JSON.parse(stdout);
-  assert.equal(report.trackedVisits, 3);
-  assert.equal(report.suspectedAutomatedTrackedVisits, 1);
+  assert.equal(report.trackedVisits, 11);
+  assert.equal(report.suspectedAutomatedTrackedVisits, 9);
   assert.equal(report.humanUnverifiedTrackedVisits, 2);
   assert.equal(report.knownLinkScannerTrackedVisits, 1);
   assert.equal(report.knownLinkScannerUserAgentVisits, 0);
@@ -63,7 +82,13 @@ try {
   assert.equal(report.recentHumanUnverifiedVisits[0].scannerNetwork, null);
   assert.equal(report.recentVisits[0].scannerNetwork, 'Palo Alto Networks URL scanner');
   assert.equal(report.recentVisits[2].scannerNetwork, null);
-  console.log(JSON.stringify({ tests: 10, failures: [] }, null, 2));
+  assert.equal(report.suspectedPeriodicAutomation.length, 1);
+  assert.equal(report.suspectedPeriodicAutomation[0].requests, 8);
+  assert.equal(report.suspectedPeriodicAutomation[0].distinctLandingPages, 8);
+  assert.equal(report.suspectedPeriodicAutomation[0].distinctClients, 8);
+  assert.equal(report.suspectedPeriodicAutomation[0].periodicIntervals, 7);
+  assert.match(report.caveat, /periodic rotating-client patterns/);
+  console.log(JSON.stringify({ tests: 15, failures: [] }, null, 2));
 } finally {
   await rm(directory, { recursive: true, force: true });
 }

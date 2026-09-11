@@ -39,6 +39,7 @@ if (!paths.length) {
 }
 
 const visits = [];
+const clientFingerprints = new WeakMap();
 const syntheticVisits = [];
 const malformedCampaignVisits = [];
 let unparsableLines = 0;
@@ -72,6 +73,7 @@ for (const path of paths) {
         userAgent: event.userAgent || '',
         scannerNetwork,
       };
+      clientFingerprints.set(visit, createHash('sha256').update(selectedClient.ip).digest('hex'));
       if (syntheticUserAgent.test(visit.userAgent)) syntheticVisits.push(visit);
       else visits.push(visit);
     } catch {
@@ -88,6 +90,7 @@ const aggregate = (key) => Object.fromEntries([...visits.reduce((counts, visit) 
 
 const suspectedAutomatedVisitIndexes = new Set();
 const suspectedAutomatedBursts = [];
+const suspectedPeriodicAutomation = [];
 const internallyInconsistentUserAgentVisits = [];
 const chromiumWithLegacyEdge = /Chrome\/(?:[5-9]\d|1\d{2})\.[^\s]*[\s\S]*\bEdge\/1[2-8]\./i;
 for (const [index, visit] of visits.entries()) {
@@ -164,6 +167,40 @@ for (const group of coordinatedGroups.values()) {
     start = group.findIndex((item) => item.index === window.at(-1).index);
   }
 }
+const periodicGroups = new Map();
+for (const [index, visit] of visits.entries()) {
+  const key = [visit.userAgent, visit.source].join('\u0000');
+  if (!periodicGroups.has(key)) periodicGroups.set(key, []);
+  periodicGroups.get(key).push({ index, visit, timestamp: Date.parse(visit.time) });
+}
+for (const group of periodicGroups.values()) {
+  group.sort((a, b) => a.timestamp - b.timestamp);
+  for (let start = 0; start < group.length; start += 1) {
+    const window = [];
+    for (let end = start; end < group.length && group[end].timestamp - group[start].timestamp <= 2 * 60 * 60_000; end += 1) window.push(group[end]);
+    if (window.length < 8) continue;
+    const distinctPaths = new Set(window.map((item) => item.visit.path));
+    const distinctClients = new Set(window.map((item) => clientFingerprints.get(item.visit)));
+    const intervals = window.slice(1).map((item, index) => item.timestamp - window[index].timestamp);
+    const periodicIntervals = intervals.filter((duration) => duration >= 4 * 60_000 && duration <= 25 * 60_000).length;
+    const allReferrersMissing = window.every((item) => !item.visit.referrerHost);
+    if (distinctPaths.size < 6 || distinctClients.size < 6 || periodicIntervals < Math.ceil(intervals.length * 0.8) || !allReferrersMissing) continue;
+    for (const item of window) suspectedAutomatedVisitIndexes.add(item.index);
+    suspectedPeriodicAutomation.push({
+      start: window[0].visit.time,
+      end: window.at(-1).visit.time,
+      source: window[0].visit.source,
+      requests: window.length,
+      distinctLandingPages: distinctPaths.size,
+      distinctClients: distinctClients.size,
+      periodicIntervals,
+      intervalCount: intervals.length,
+      userAgent: window[0].visit.userAgent,
+      reason: 'at least 8 no-referrer requests across at least 6 landing pages and 6 trusted client addresses, with at least 80% of intervals between 4 and 25 minutes',
+    });
+    break;
+  }
+}
 const humanUnverifiedVisits = visits.filter((_, index) => !suspectedAutomatedVisitIndexes.has(index));
 const humanUnverifiedEvidenceObservations = humanUnverifiedVisits.map((visit) => ({
   fingerprint: createHash('sha256').update([
@@ -196,13 +233,14 @@ console.log(JSON.stringify({
   syntheticTrackedVisits: syntheticVisits.length,
   suspectedAutomatedTrackedVisits: suspectedAutomatedVisitIndexes.size,
   humanUnverifiedTrackedVisits: humanUnverifiedVisits.length,
-  caveat: 'Scripted verification user agents are excluded from trackedVisits and reported separately. Known link-scanner user agents and documented scanner networks, internally inconsistent browser identities, and high-velocity multi-page bursts are flagged as suspected automation rather than human visits. Remaining requests are human-unverified: UTM or AI-referrer traffic is attribution evidence, not proof of a person, search indexing, answer citation, or recommendation. Referrer headers may be omitted by the source application or browser policy.',
+  caveat: 'Scripted verification user agents are excluded from trackedVisits and reported separately. Known link-scanner user agents and documented scanner networks, internally inconsistent browser identities, high-velocity multi-page bursts, and conservative periodic rotating-client patterns are flagged as suspected automation rather than human visits. Remaining requests are human-unverified: UTM or AI-referrer traffic is attribution evidence, not proof of a person, search indexing, answer citation, or recommendation. Referrer headers may be omitted by the source application or browser policy.',
   byCampaign: aggregate('campaign'),
   bySource: aggregate('source'),
   byMedium: aggregate('medium'),
   byLandingPage: aggregate('path'),
   byEvidenceType: aggregate('evidenceType'),
   suspectedAutomatedBursts,
+  suspectedPeriodicAutomation,
   internallyInconsistentUserAgentVisits,
   knownLinkScannerTrackedVisits: visits.filter((visit) => knownLinkScannerUserAgent.test(visit.userAgent) || visit.scannerNetwork).length,
   knownLinkScannerUserAgentVisits: visits.filter((visit) => knownLinkScannerUserAgent.test(visit.userAgent)).length,
