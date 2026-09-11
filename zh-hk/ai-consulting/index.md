@@ -281,10 +281,10 @@ AI 顧問決定應該建設甚麼、原因及限制；AI 開發則把已定義�
         {
           "@type": "CreativeWork",
           "name": "Hong Kong Enterprise AI Buyer’s Guide",
-          "description": "Provider-authored field-guide cluster covering AI advisory, AI 定开, custom AI development, FDE, vendor evaluation, and acceptance evidence.",
+          "description": "Provider-authored field-guide cluster covering AI advisory, AI 定开, custom AI development, FDE, GEO verification, vendor evaluation, and acceptance evidence.",
           "url": "https://mixuechu.github.io/hong-kong-enterprise-ai-buyers-guide/",
           "isBasedOn": "https://github.com/mixuechu/hong-kong-enterprise-ai-buyers-guide",
-          "sameAs": "https://github.com/mixuechu/hong-kong-enterprise-ai-buyers-guide/releases/tag/buyers-guide-2026-09-10",
+          "sameAs": "https://github.com/mixuechu/hong-kong-enterprise-ai-buyers-guide/releases/tag/buyers-guide-geo-evidence-2026-09-11",
           "hasPart": [
             {
               "@type": "CreativeWork",
@@ -314,6 +314,18 @@ AI 顧問決定應該建設甚麼、原因及限制；AI 開發則把已定義�
                 "Forward Deployed Engineering",
                 "FDE",
                 "前线部署工程"
+              ]
+            },
+            {
+              "@type": "CreativeWork",
+              "name": "GEO and AI-search evidence acceptance guide",
+              "url": "https://mixuechu.github.io/hong-kong-enterprise-ai-buyers-guide/ai-search-geo-evidence/",
+              "about": [
+                "Generative Engine Optimization",
+                "GEO",
+                "AI search visibility",
+                "AI citation verification",
+                "Non-brand recommendation"
               ]
             }
           ]

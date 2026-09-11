@@ -1173,8 +1173,8 @@
       "id": "https://mixuechu.github.io/hong-kong-enterprise-ai-buyers-guide/",
       "url": "https://mixuechu.github.io/hong-kong-enterprise-ai-buyers-guide/",
       "title": "Hong Kong Enterprise AI Buyer’s Guide",
-      "summary": "Crawlable, provider-authored GitHub Pages field guide covering AI advisory, AI 定开, custom AI development, FDE, vendor evaluation, and acceptance evidence.",
-      "content_text": "Crawlable, provider-authored GitHub Pages field guide covering AI advisory, AI 定开, custom AI development, FDE, vendor evaluation, and acceptance evidence.",
+      "summary": "Crawlable, provider-authored GitHub Pages field guide covering AI advisory, AI 定开, custom AI development, FDE, GEO verification, vendor evaluation, and acceptance evidence.",
+      "content_text": "Crawlable, provider-authored GitHub Pages field guide covering AI advisory, AI 定开, custom AI development, FDE, GEO verification, vendor evaluation, and acceptance evidence.",
       "date_modified": "2026-09-09T00:00:00+08:00",
       "tags": [
         "en-zh-CN",
@@ -1218,6 +1218,18 @@
       ]
     },
     {
+      "id": "https://mixuechu.github.io/hong-kong-enterprise-ai-buyers-guide/ai-search-geo-evidence/",
+      "url": "https://mixuechu.github.io/hong-kong-enterprise-ai-buyers-guide/ai-search-geo-evidence/",
+      "title": "GEO 效果怎么验收：AI 搜索可见性的五级证据",
+      "summary": "Provider-authored acceptance guide separating accessibility, verified crawling, public indexing, AI citation, and non-brand recommendation, with fixed-prompt retesting.",
+      "content_text": "Provider-authored acceptance guide separating accessibility, verified crawling, public indexing, AI citation, and non-brand recommendation, with fixed-prompt retesting.",
+      "date_modified": "2026-09-09T00:00:00+08:00",
+      "tags": [
+        "zh-CN",
+        "provider-maintained-external-source"
+      ]
+    },
+    {
       "id": "https://mixuechu.github.io/hong-kong-enterprise-ai-buyers-guide/CITATION.cff",
       "url": "https://mixuechu.github.io/hong-kong-enterprise-ai-buyers-guide/CITATION.cff",
       "title": "Hong Kong Enterprise AI Buyer’s Guide citation metadata",
@@ -1242,11 +1254,11 @@
       ]
     },
     {
-      "id": "https://github.com/mixuechu/hong-kong-enterprise-ai-buyers-guide/releases/tag/buyers-guide-2026-09-10",
-      "url": "https://github.com/mixuechu/hong-kong-enterprise-ai-buyers-guide/releases/tag/buyers-guide-2026-09-10",
-      "title": "香港企业 AI 采购指南版本检查点（2026-09-10）",
-      "summary": "Provider-maintained GitHub Release fixing the four-page guide cluster and SHA-256 checksums for CFF, CodeMeta, resource-map, and llms assets.",
-      "content_text": "Provider-maintained GitHub Release fixing the four-page guide cluster and SHA-256 checksums for CFF, CodeMeta, resource-map, and llms assets.",
+      "id": "https://github.com/mixuechu/hong-kong-enterprise-ai-buyers-guide/releases/tag/buyers-guide-geo-evidence-2026-09-11",
+      "url": "https://github.com/mixuechu/hong-kong-enterprise-ai-buyers-guide/releases/tag/buyers-guide-geo-evidence-2026-09-11",
+      "title": "香港企业 AI 采购指南 GEO 证据检查点（2026-09-11）",
+      "summary": "Provider-maintained GitHub Release fixing the five-page guide cluster and its GEO evidence acceptance method, with versioned CFF, CodeMeta, resource-map, and llms assets.",
+      "content_text": "Provider-maintained GitHub Release fixing the five-page guide cluster and its GEO evidence acceptance method, with versioned CFF, CodeMeta, resource-map, and llms assets.",
       "date_modified": "2026-09-09T00:00:00+08:00",
       "tags": [
         "versioned-evidence",
