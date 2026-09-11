@@ -21,8 +21,8 @@ const crawlerFamilies = [
 ];
 
 const suspiciousPath = /(?:^|\/)(?:\.env(?:\.|$)|\.git(?:\/|$)|wp-admin|wp-login|phpmyadmin|server-status|actuator|cgi-bin)|(?:passwd|shadow|id_rsa|authorized_keys|credentials?|secrets?|backup\.sql|169\.254\.169\.254)/i;
-const pagePath = /^\/(?:en|zh-hk|zh-cn)(?:\/|$)/i;
-const discoveryPath = /^\/(?:robots\.txt|sitemap\.xml|llms(?:-full)?\.txt|feed\.xml)$/i;
+const pagePath = /^(?:\/$|\/(?:en|zh-hk|zh-cn)(?:\/|$))/i;
+const discoveryPath = /^\/(?:robots\.txt|sitemap\.xml|llms(?:-full)?\.txt|feed\.(?:xml|json)|CITATION\.cff|codemeta\.json|data\/[^/]+\.json(?:ld)?)$/i;
 const staticAsset = /\.(?:css|js|map|png|jpe?g|gif|svg|webp|ico|woff2?|ttf)(?:\?|$)/i;
 
 function parseCombinedLog(line) {

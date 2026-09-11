@@ -11,10 +11,18 @@ const logPath = path.join(directory, 'geo.log');
 const records = [
   {
     time: '2026-09-11T09:00:00+00:00', clientIp: '203.0.113.20', method: 'GET',
-    path: '/zh-cn/guides/ai-dingkai/', status: 200, userAgent: 'Mozilla/5.0 (compatible; Bytespider/1.0)',
+    path: '/', status: 200, userAgent: 'Mozilla/5.0 (compatible; Bytespider/1.0)',
   },
   {
-    time: '2026-09-11T09:00:01+00:00', clientIp: '203.0.113.21', method: 'GET',
+    time: '2026-09-11T09:00:01+00:00', clientIp: '203.0.113.20', method: 'GET',
+    path: '/feed.json', status: 200, userAgent: 'Mozilla/5.0 (compatible; Bytespider/1.0)',
+  },
+  {
+    time: '2026-09-11T09:00:02+00:00', clientIp: '203.0.113.20', method: 'GET',
+    path: '/data/organization.json', status: 200, userAgent: 'Mozilla/5.0 (compatible; Bytespider/1.0)',
+  },
+  {
+    time: '2026-09-11T09:00:03+00:00', clientIp: '203.0.113.21', method: 'GET',
     path: '/robots.txt', status: 200, userAgent: 'Onyx-GEO-Release-Check Bytespider',
   },
 ];
@@ -25,14 +33,15 @@ try {
     path.resolve('scripts/report-ai-crawlers.mjs'), '--since=2026-09-11', logPath,
   ], { cwd: path.resolve('.') });
   const report = JSON.parse(stdout);
-  assert.equal(report.byFamily.Bytespider, 2);
+  assert.equal(report.byFamily.Bytespider, 4);
   assert.equal(report.totals.syntheticReleaseChecks, 1);
   assert.equal(report.totals.userAgentOnlyBytespiderPageCrawls, 1);
-  assert.equal(report.totals.userAgentOnlyBytespiderDiscoveryFileCrawls, 0);
-  assert.equal(report.userAgentOnlyEvidenceObservations.length, 1);
+  assert.equal(report.totals.userAgentOnlyBytespiderDiscoveryFileCrawls, 2);
+  assert.equal(report.userAgentOnlyEvidenceObservations.length, 3);
   assert.equal(report.userAgentOnlyEvidenceObservations[0].identityStatus, 'user-agent-only-unverified');
   assert.equal('ip' in report.userAgentOnlyEvidenceObservations[0], false);
-  console.log(JSON.stringify({ tests: 7, failures: [] }, null, 2));
+  assert.deepEqual(report.userAgentOnlyEvidenceObservations.map((item) => item.path), ['/', '/feed.json', '/data/organization.json']);
+  console.log(JSON.stringify({ tests: 8, failures: [] }, null, 2));
 } finally {
   await rm(directory, { recursive: true, force: true });
 }
