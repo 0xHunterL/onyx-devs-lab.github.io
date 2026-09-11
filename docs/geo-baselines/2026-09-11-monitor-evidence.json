@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-09-11T09:03:06.254Z",
+  "generatedAt": "2026-09-11T09:12:38.711Z",
   "windowStart": "2026-09-01",
   "site": "https://hk.onyxdevslab.com/",
   "sourceLogs": [
@@ -9,13 +9,19 @@
     "/var/log/nginx/hk.onyxdevslab.com.geo.log"
   ],
   "providerVerifiedCrawlerEvidence": {
-    "gptBotContentRequests": 24,
+    "gptBotContentRequests": 27,
+    "gptBotDiscoveryFileRequests": 13,
     "oaiSearchBotContentRequests": 0,
     "oaiSearchBotDiscoveryFileRequests": 8,
     "bingbotContentRequests": 7,
     "googlebotContentRequests": 0,
     "perplexityContentRequests": 0,
-    "distinctVerifiedContentPaths": 29
+    "distinctVerifiedContentPaths": 30,
+    "historicalReclassification": {
+      "homepageContentRequestsAdded": 3,
+      "machineResourceDiscoveryRequestsAdded": 10,
+      "meaning": "These requests occurred on 2026-09-09 and 2026-09-10 and were newly recognized by the corrected path classifier; they are not newly occurring crawls."
+    }
   },
   "identityUnverifiedCrawlerEvidence": {
     "bytespiderContentRequestCandidates": 0,

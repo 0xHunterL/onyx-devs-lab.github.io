@@ -456,24 +456,25 @@ requireText('GitHub agent-readiness checkpoint', readinessRelease, [
   '3da4a0be148d3dbb41188ba8b6dc40bb0da75bd484494de4e24d5b2d431baf44',
 ]);
 
-const monitorEvidenceV6Base = 'https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-monitor-evidence-2026-09-11-6';
-const monitorEvidenceV6Release = await get('GitHub GEO monitor evidence revision 6', 'https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-monitor-evidence-2026-09-11-6', 'text/html');
-requireText('GitHub GEO monitor evidence revision 6', monitorEvidenceV6Release, [
-  'eight provider-verified OAI-SearchBot discovery-file requests',
+const monitorEvidenceV7Base = 'https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-monitor-evidence-2026-09-11-7';
+const monitorEvidenceV7Release = await get('GitHub GEO monitor evidence revision 7', 'https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-monitor-evidence-2026-09-11-7', 'text/html');
+requireText('GitHub GEO monitor evidence revision 7', monitorEvidenceV7Release, [
+  '27 provider-verified GPTBot content requests',
+  '13 GPTBot discovery-resource requests',
+  'historical path-classification correction',
   'zero non-synthetic Bytespider candidates',
   '70 attribution candidates',
   '61 suspected automated requests',
-  'Palo Alto URL-scanner network',
   'No prompt was sent to Doubao',
 ]);
-const monitorEvidenceV6Raw = await get('Versioned GEO monitor evidence revision 6', `${monitorEvidenceV6Base}/2026-09-11-monitor-evidence.json`, 'application/');
-const monitorEvidenceV6Sha256 = createHash('sha256').update(monitorEvidenceV6Raw).digest('hex');
-if (monitorEvidenceV6Sha256 !== '002cbca019dc0ea4a2f81639ef3e05576cf9060a73643d600bf0889f29b193dd') failures.push(`Versioned GEO monitor evidence revision 6: SHA-256 mismatch, got ${monitorEvidenceV6Sha256}`);
+const monitorEvidenceV7Raw = await get('Versioned GEO monitor evidence revision 7', `${monitorEvidenceV7Base}/2026-09-11-monitor-evidence.json`, 'application/');
+const monitorEvidenceV7Sha256 = createHash('sha256').update(monitorEvidenceV7Raw).digest('hex');
+if (monitorEvidenceV7Sha256 !== 'ba2d90b4f61383d471db4efecc10e2b27c9d704db2b08469d2522fa9defc8737') failures.push(`Versioned GEO monitor evidence revision 7: SHA-256 mismatch, got ${monitorEvidenceV7Sha256}`);
 try {
-  const monitor = JSON.parse(monitorEvidenceV6Raw);
-  if (monitor.providerVerifiedCrawlerEvidence?.oaiSearchBotDiscoveryFileRequests !== 8 || monitor.providerVerifiedCrawlerEvidence?.oaiSearchBotContentRequests !== 0 || monitor.identityUnverifiedCrawlerEvidence?.bytespiderContentRequestCandidates !== 0 || monitor.identityUnverifiedCrawlerEvidence?.bytespiderDiscoveryFileRequestCandidates !== 0 || monitor.identityUnverifiedCrawlerEvidence?.syntheticBytespiderReleaseChecksExcluded !== 2368 || monitor.identityUnverifiedCrawlerEvidence?.identityStatus !== 'user-agent-only-unverified' || monitor.attributionEvidence?.trackedRequests !== 70 || monitor.attributionEvidence?.suspectedAutomatedRequests !== 61 || monitor.attributionEvidence?.visitorTypeUnverifiedRequests !== 9 || monitor.attributionEvidence?.knownLinkScannerRequests !== 14 || monitor.attributionEvidence?.knownLinkScannerNetworkRequests !== 2 || monitor.attributionEvidence?.internallyInconsistentUserAgentRequests !== 4 || monitor.attributionEvidence?.aiReferrerAttributedRequests !== 0 || monitor.publicSearchRetest?.officialSiteObserved !== false || monitor.publicSearchRetest?.newPublicDiscussionObserved !== false || monitor.doubaoTestStatus !== 'not-run') failures.push('Versioned GEO monitor evidence revision 6: expected evidence structure or boundary is incomplete');
+  const monitor = JSON.parse(monitorEvidenceV7Raw);
+  if (monitor.providerVerifiedCrawlerEvidence?.gptBotContentRequests !== 27 || monitor.providerVerifiedCrawlerEvidence?.gptBotDiscoveryFileRequests !== 13 || monitor.providerVerifiedCrawlerEvidence?.distinctVerifiedContentPaths !== 30 || monitor.providerVerifiedCrawlerEvidence?.historicalReclassification?.homepageContentRequestsAdded !== 3 || monitor.providerVerifiedCrawlerEvidence?.historicalReclassification?.machineResourceDiscoveryRequestsAdded !== 10 || monitor.providerVerifiedCrawlerEvidence?.oaiSearchBotDiscoveryFileRequests !== 8 || monitor.providerVerifiedCrawlerEvidence?.oaiSearchBotContentRequests !== 0 || monitor.identityUnverifiedCrawlerEvidence?.bytespiderContentRequestCandidates !== 0 || monitor.identityUnverifiedCrawlerEvidence?.bytespiderDiscoveryFileRequestCandidates !== 0 || monitor.identityUnverifiedCrawlerEvidence?.syntheticBytespiderReleaseChecksExcluded !== 2368 || monitor.identityUnverifiedCrawlerEvidence?.identityStatus !== 'user-agent-only-unverified' || monitor.attributionEvidence?.trackedRequests !== 70 || monitor.attributionEvidence?.suspectedAutomatedRequests !== 61 || monitor.attributionEvidence?.visitorTypeUnverifiedRequests !== 9 || monitor.attributionEvidence?.knownLinkScannerRequests !== 14 || monitor.attributionEvidence?.knownLinkScannerNetworkRequests !== 2 || monitor.attributionEvidence?.internallyInconsistentUserAgentRequests !== 4 || monitor.attributionEvidence?.aiReferrerAttributedRequests !== 0 || monitor.publicSearchRetest?.officialSiteObserved !== false || monitor.publicSearchRetest?.newPublicDiscussionObserved !== false || monitor.doubaoTestStatus !== 'not-run') failures.push('Versioned GEO monitor evidence revision 7: expected evidence structure or boundary is incomplete');
 } catch {
-  failures.push('Versioned GEO monitor evidence revision 6: invalid JSON');
+  failures.push('Versioned GEO monitor evidence revision 7: invalid JSON');
 }
 
 const crawlerEvidenceReleaseUrl = 'https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-crawler-evidence-2026-09-10';
