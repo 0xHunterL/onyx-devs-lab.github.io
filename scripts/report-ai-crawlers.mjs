@@ -1,4 +1,5 @@
 import { readFile } from 'node:fs/promises';
+import { createHash } from 'node:crypto';
 import { lookup, reverse } from 'node:dns/promises';
 import { gunzipSync } from 'node:zlib';
 import { resolveLogPaths } from './resolve-log-paths.mjs';
@@ -315,6 +316,33 @@ for (const event of [
 const verifiedContentPathCoverage = [...verifiedContentPathMap.values()]
   .map((entry) => ({ ...entry, families: [...entry.families].sort() }))
   .sort((a, b) => a.path.localeCompare(b.path));
+const fingerprint = (event) => createHash('sha256').update([
+  event.family,
+  event.classification,
+  event.time,
+  event.method,
+  event.path,
+  event.status,
+  event.ip,
+].join('\u0000')).digest('hex');
+const verifiedEvidenceObservations = [
+  ...verifiedOpenAiPages,
+  ...verifiedBingPages,
+  ...verifiedGooglePages,
+  ...verifiedPerplexityPages,
+  ...verifiedOpenAiDiscoveryFiles,
+  ...verifiedBingDiscoveryFiles,
+  ...verifiedGoogleDiscoveryFiles,
+  ...verifiedPerplexityDiscoveryFiles,
+].map((event) => ({
+  fingerprint: fingerprint(event),
+  family: event.family,
+  classification: event.classification,
+  time: event.time,
+  method: event.method,
+  path: event.path,
+  status: event.status,
+})).sort((a, b) => a.time.localeCompare(b.time) || a.fingerprint.localeCompare(b.fingerprint));
 
 console.log(JSON.stringify({
   generatedAt: new Date().toISOString(),
@@ -351,6 +379,7 @@ console.log(JSON.stringify({
   byFamily,
   byClassification,
   verifiedContentPathCoverage,
+  verifiedEvidenceObservations,
   recentCandidatePageCrawls: pageCandidates.slice(-50),
   recentCandidateDiscoveryFileCrawls: discoveryCandidates.slice(-30),
   recentVerifiedOpenAiPageCrawls: verifiedOpenAiPages.slice(-50),

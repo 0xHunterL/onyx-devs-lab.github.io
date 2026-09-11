@@ -1,4 +1,5 @@
 import { readFile } from 'node:fs/promises';
+import { createHash } from 'node:crypto';
 import { gunzipSync } from 'node:zlib';
 import { resolveLogPaths } from './resolve-log-paths.mjs';
 
@@ -102,6 +103,27 @@ for (const group of burstGroups.values()) {
   }
 }
 const humanUnverifiedVisits = visits.filter((_, index) => !suspectedAutomatedVisitIndexes.has(index));
+const humanUnverifiedEvidenceObservations = humanUnverifiedVisits.map((visit) => ({
+  fingerprint: createHash('sha256').update([
+    visit.time,
+    visit.path,
+    visit.status,
+    visit.campaign,
+    visit.source,
+    visit.medium,
+    visit.referrerHost,
+    visit.evidenceType,
+    visit.userAgent,
+  ].join('\u0000')).digest('hex'),
+  time: visit.time,
+  path: visit.path,
+  status: visit.status,
+  campaign: visit.campaign,
+  source: visit.source,
+  medium: visit.medium,
+  referrerHost: visit.referrerHost,
+  evidenceType: visit.evidenceType,
+}));
 
 console.log(JSON.stringify({
   generatedAt: new Date().toISOString(),
@@ -121,6 +143,7 @@ console.log(JSON.stringify({
   suspectedAutomatedBursts,
   recentVisits: visits.slice(-50),
   recentHumanUnverifiedVisits: humanUnverifiedVisits.slice(-50),
+  humanUnverifiedEvidenceObservations,
   recentSyntheticVisits: syntheticVisits.slice(-50),
   unparsableLines,
 }, null, 2));

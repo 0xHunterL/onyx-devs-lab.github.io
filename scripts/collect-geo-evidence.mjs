@@ -45,6 +45,15 @@ async function readPreviousSummary() {
   }
 }
 
+async function readSeenEvidence() {
+  try {
+    const value = JSON.parse(await readFile(path.join(outputDir, 'seen-evidence.json'), 'utf8'));
+    return Array.isArray(value.fingerprints) ? value : null;
+  } catch {
+    return null;
+  }
+}
+
 async function hasEventHistory() {
   try {
     return (await readdir(path.join(outputDir, 'events'))).some((name) => name.endsWith('.json'));
@@ -63,6 +72,7 @@ async function atomicJson(name, value) {
 
 await mkdir(outputDir, { recursive: true, mode: 0o750 });
 const previous = await readPreviousSummary();
+const previousSeenEvidence = await readSeenEvidence();
 const eventHistoryExists = await hasEventHistory();
 const crawler = await runJson('report-ai-crawlers.mjs', [
   `--since=${since}`,
@@ -88,6 +98,10 @@ const counts = {
   verifiedGptBotPageCrawls: crawler.totals.verifiedGptBotPageCrawls,
   verifiedOaiSearchBotPageCrawls: crawler.totals.verifiedOaiSearchBotPageCrawls,
   verifiedOaiSearchBotDiscoveryFileCrawls: crawler.totals.verifiedOaiSearchBotDiscoveryFileCrawls,
+  verifiedGptBotDiscoveryFileCrawls: crawler.totals.verifiedGptBotDiscoveryFileCrawls,
+  verifiedBingDiscoveryFileCrawls: crawler.totals.verifiedBingDiscoveryFileCrawls,
+  verifiedGoogleDiscoveryFileCrawls: crawler.totals.verifiedGoogleDiscoveryFileCrawls,
+  verifiedPerplexityDiscoveryFileCrawls: crawler.totals.verifiedPerplexityDiscoveryFileCrawls,
   verifiedBingPageCrawls: crawler.totals.verifiedBingPageCrawls,
   verifiedGooglePageCrawls: crawler.totals.verifiedGooglePageCrawls,
   verifiedPerplexityPageCrawls: crawler.totals.verifiedPerplexityPageCrawls,
@@ -102,26 +116,36 @@ const counts = {
 };
 const priorCounts = previous?.counts || {};
 const deltas = Object.fromEntries(Object.entries(counts).map(([key, value]) => [key, previous ? value - (Number(priorCounts[key]) || 0) : 0]));
-// Publish only deltas that can change the GEO evidence picture. UTM-tagged
-// release checks and suspected automation stay in the raw referral report, but
-// must not make the periodic monitor look like it discovered external demand.
-const evidenceMetrics = new Set([
-  'verifiedGptBotPageCrawls',
-  'verifiedOaiSearchBotPageCrawls',
-  'verifiedOaiSearchBotDiscoveryFileCrawls',
-  'verifiedBingPageCrawls',
-  'verifiedGooglePageCrawls',
-  'verifiedPerplexityPageCrawls',
-  'verifiedContentPaths',
-  'searchRelatedCrawledEvidencePages',
-  'promptsWithAnySearchRelatedCrawl',
-  'humanUnverifiedTrackedVisits',
-  'aiReferrerAttributedVisits',
-  'humanUnverifiedAiReferrerVisits',
-]);
-const newEvidence = Object.entries(deltas)
-  .filter(([metric, value]) => evidenceMetrics.has(metric) && value > 0)
-  .map(([metric, delta]) => ({ metric, delta, current: counts[metric] }));
+const metricForCrawlerObservation = (observation) => {
+  const provider = {
+    GPTBot: 'GptBot',
+    'OAI-SearchBot': 'OaiSearchBot',
+    Bingbot: 'Bing',
+    Googlebot: 'Google',
+    PerplexityBot: 'Perplexity',
+    'Perplexity-User': 'Perplexity',
+  }[observation.family];
+  if (!provider) throw new Error(`Unsupported verified crawler family: ${observation.family}`);
+  return `verified${provider}${observation.classification === 'candidate-page-crawl' ? 'Page' : 'DiscoveryFile'}Crawls`;
+};
+const currentEvidenceObservations = [
+  ...(crawler.verifiedEvidenceObservations || []).map((observation) => ({ ...observation, metric: metricForCrawlerObservation(observation), evidenceClass: 'provider-verified-crawler' })),
+  ...(referral.humanUnverifiedEvidenceObservations || []).map((observation) => ({
+    ...observation,
+    metric: observation.evidenceType.includes('ai-referrer') ? 'humanUnverifiedAiReferrerVisits' : 'humanUnverifiedTrackedVisits',
+    evidenceClass: 'attributed-request-visitor-type-unverified',
+  })),
+];
+const previouslySeen = new Set(previousSeenEvidence?.fingerprints || []);
+const newEvidenceObservations = previousSeenEvidence
+  ? currentEvidenceObservations.filter((observation) => !previouslySeen.has(observation.fingerprint))
+  : [];
+const newEvidenceByMetric = newEvidenceObservations.reduce((result, observation) => {
+  result.set(observation.metric, (result.get(observation.metric) || 0) + 1);
+  return result;
+}, new Map());
+const newEvidence = [...newEvidenceByMetric].map(([metric, delta]) => ({ metric, delta, current: counts[metric] ?? null }));
+const allSeenFingerprints = [...new Set([...(previousSeenEvidence?.fingerprints || []), ...currentEvidenceObservations.map((observation) => observation.fingerprint)])].sort();
 const generatedAt = new Date().toISOString();
 const eventKind = !previous || !eventHistoryExists ? 'baseline' : newEvidence.length ? 'evidence-change' : null;
 const eventFile = eventKind ? `events/${generatedAt.replaceAll(':', '-')}-${eventKind}.json` : null;
@@ -136,13 +160,10 @@ const summary = {
   initialized: !previous,
   changed: newEvidence.length > 0,
   eventFile,
-  evidenceBoundary: 'Positive crawler deltas prove only provider-verified requests. Positive referral deltas exclude suspected automation and prove only attributed requests whose visitor type is not verified. Neither proves indexing, retrieval, citation, ranking, a human visit, or non-brand recommendation.',
+  newEvidenceObservations,
+  evidenceBoundary: 'New crawler fingerprints prove only previously unseen provider-verified requests. New referral fingerprints exclude suspected automation and prove only previously unseen attributed requests whose visitor type is not verified. Neither proves indexing, retrieval, citation, ranking, a human visit, or non-brand recommendation.',
 };
 
-await atomicJson('crawler-report.json', crawler);
-await atomicJson('referral-report.json', referral);
-await atomicJson('prompt-crawl-coverage.json', promptCoverage);
-await atomicJson('summary.json', summary);
 if (eventFile) await atomicJson(eventFile, {
   schemaVersion: 1,
   kind: eventKind,
@@ -151,4 +172,13 @@ if (eventFile) await atomicJson(eventFile, {
   referral,
   promptCoverage,
 });
+await atomicJson('seen-evidence.json', {
+  schemaVersion: 1,
+  updatedAt: generatedAt,
+  fingerprints: allSeenFingerprints,
+});
+await atomicJson('crawler-report.json', crawler);
+await atomicJson('referral-report.json', referral);
+await atomicJson('prompt-crawl-coverage.json', promptCoverage);
+await atomicJson('summary.json', summary);
 console.log(JSON.stringify(summary, null, 2));
