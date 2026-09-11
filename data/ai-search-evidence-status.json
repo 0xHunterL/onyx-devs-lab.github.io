@@ -1,8 +1,8 @@
 {
   "schemaVersion": 2,
-  "version": "2026.09.11.17",
+  "version": "2026.09.11.18",
   "id": "https://hk.onyxdevslab.com/data/ai-search-evidence-status.json",
-  "observedAt": "2026-09-11T13:11:09.180Z",
+  "observedAt": "2026-09-11T13:39:45.783Z",
   "sourceBaseline": "https://github.com/0xHunterL/onyx-devs-lab.github.io/blob/main/docs/geo-baselines/2026-09-11-monitor-evidence.json",
   "versionHistory": [
     {
@@ -82,7 +82,7 @@
         "userAgentOnlyBytespiderDiscoveryFileCandidates": 0,
         "syntheticBytespiderReleaseChecksExcluded": 2368,
         "commonCrawlIndexObservation": {
-          "checkedAt": "2026-09-11T13:11:09.180Z",
+          "checkedAt": "2026-09-11T13:39:45.783Z",
           "status": "available",
           "capturesObservedInAvailableIndexes": 0,
           "availableIndexes": [
@@ -137,9 +137,9 @@
         "doubaoTestStatus": "not-run",
         "otherAiRecommendationEvidenceCount": 0,
         "realAiReferralVisitsObserved": 0,
-        "trackedAttributionRequests": 79,
-        "suspectedAutomatedTrackedRequests": 70,
-        "periodicRotatingClientTrackedRequests": 9,
+        "trackedAttributionRequests": 80,
+        "suspectedAutomatedTrackedRequests": 71,
+        "periodicRotatingClientTrackedRequests": 10,
         "humanUnverifiedTrackedRequests": 9,
         "knownLinkScannerTrackedRequests": 14,
         "knownLinkScannerNetworkRequests": 2,
