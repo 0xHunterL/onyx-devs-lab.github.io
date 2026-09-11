@@ -456,23 +456,24 @@ requireText('GitHub agent-readiness checkpoint', readinessRelease, [
   '3da4a0be148d3dbb41188ba8b6dc40bb0da75bd484494de4e24d5b2d431baf44',
 ]);
 
-const monitorEvidenceV5Base = 'https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-monitor-evidence-2026-09-11-5';
-const monitorEvidenceV5Release = await get('GitHub GEO monitor evidence revision 5', 'https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-monitor-evidence-2026-09-11-5', 'text/html');
-requireText('GitHub GEO monitor evidence revision 5', monitorEvidenceV5Release, [
+const monitorEvidenceV6Base = 'https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-monitor-evidence-2026-09-11-6';
+const monitorEvidenceV6Release = await get('GitHub GEO monitor evidence revision 6', 'https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-monitor-evidence-2026-09-11-6', 'text/html');
+requireText('GitHub GEO monitor evidence revision 6', monitorEvidenceV6Release, [
   'eight provider-verified OAI-SearchBot discovery-file requests',
-  '69 attribution candidates',
-  '60 suspected automated requests',
+  'zero non-synthetic Bytespider candidates',
+  '70 attribution candidates',
+  '61 suspected automated requests',
   'Palo Alto URL-scanner network',
   'No prompt was sent to Doubao',
 ]);
-const monitorEvidenceV5Raw = await get('Versioned GEO monitor evidence revision 5', `${monitorEvidenceV5Base}/2026-09-11-monitor-evidence.json`, 'application/');
-const monitorEvidenceV5Sha256 = createHash('sha256').update(monitorEvidenceV5Raw).digest('hex');
-if (monitorEvidenceV5Sha256 !== '9bafcc4f500de50832ef72a119f13ecf81e211347317bedcd8b49419e48c9970') failures.push(`Versioned GEO monitor evidence revision 5: SHA-256 mismatch, got ${monitorEvidenceV5Sha256}`);
+const monitorEvidenceV6Raw = await get('Versioned GEO monitor evidence revision 6', `${monitorEvidenceV6Base}/2026-09-11-monitor-evidence.json`, 'application/');
+const monitorEvidenceV6Sha256 = createHash('sha256').update(monitorEvidenceV6Raw).digest('hex');
+if (monitorEvidenceV6Sha256 !== '002cbca019dc0ea4a2f81639ef3e05576cf9060a73643d600bf0889f29b193dd') failures.push(`Versioned GEO monitor evidence revision 6: SHA-256 mismatch, got ${monitorEvidenceV6Sha256}`);
 try {
-  const monitor = JSON.parse(monitorEvidenceV5Raw);
-  if (monitor.providerVerifiedCrawlerEvidence?.oaiSearchBotDiscoveryFileRequests !== 8 || monitor.providerVerifiedCrawlerEvidence?.oaiSearchBotContentRequests !== 0 || monitor.attributionEvidence?.trackedRequests !== 69 || monitor.attributionEvidence?.suspectedAutomatedRequests !== 60 || monitor.attributionEvidence?.visitorTypeUnverifiedRequests !== 9 || monitor.attributionEvidence?.knownLinkScannerRequests !== 13 || monitor.attributionEvidence?.knownLinkScannerNetworkRequests !== 1 || monitor.attributionEvidence?.internallyInconsistentUserAgentRequests !== 4 || monitor.attributionEvidence?.aiReferrerAttributedRequests !== 0 || monitor.publicSearchRetest?.officialSiteObserved !== false || monitor.publicSearchRetest?.newPublicDiscussionObserved !== false || monitor.doubaoTestStatus !== 'not-run') failures.push('Versioned GEO monitor evidence revision 5: expected evidence structure or boundary is incomplete');
+  const monitor = JSON.parse(monitorEvidenceV6Raw);
+  if (monitor.providerVerifiedCrawlerEvidence?.oaiSearchBotDiscoveryFileRequests !== 8 || monitor.providerVerifiedCrawlerEvidence?.oaiSearchBotContentRequests !== 0 || monitor.identityUnverifiedCrawlerEvidence?.bytespiderContentRequestCandidates !== 0 || monitor.identityUnverifiedCrawlerEvidence?.bytespiderDiscoveryFileRequestCandidates !== 0 || monitor.identityUnverifiedCrawlerEvidence?.syntheticBytespiderReleaseChecksExcluded !== 2368 || monitor.identityUnverifiedCrawlerEvidence?.identityStatus !== 'user-agent-only-unverified' || monitor.attributionEvidence?.trackedRequests !== 70 || monitor.attributionEvidence?.suspectedAutomatedRequests !== 61 || monitor.attributionEvidence?.visitorTypeUnverifiedRequests !== 9 || monitor.attributionEvidence?.knownLinkScannerRequests !== 14 || monitor.attributionEvidence?.knownLinkScannerNetworkRequests !== 2 || monitor.attributionEvidence?.internallyInconsistentUserAgentRequests !== 4 || monitor.attributionEvidence?.aiReferrerAttributedRequests !== 0 || monitor.publicSearchRetest?.officialSiteObserved !== false || monitor.publicSearchRetest?.newPublicDiscussionObserved !== false || monitor.doubaoTestStatus !== 'not-run') failures.push('Versioned GEO monitor evidence revision 6: expected evidence structure or boundary is incomplete');
 } catch {
-  failures.push('Versioned GEO monitor evidence revision 5: invalid JSON');
+  failures.push('Versioned GEO monitor evidence revision 6: invalid JSON');
 }
 
 const crawlerEvidenceReleaseUrl = 'https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-crawler-evidence-2026-09-10';

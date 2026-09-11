@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-09-11T08:27:38.696Z",
+  "generatedAt": "2026-09-11T09:03:06.254Z",
   "windowStart": "2026-09-01",
   "site": "https://hk.onyxdevslab.com/",
   "sourceLogs": [
@@ -17,6 +17,13 @@
     "perplexityContentRequests": 0,
     "distinctVerifiedContentPaths": 29
   },
+  "identityUnverifiedCrawlerEvidence": {
+    "bytespiderContentRequestCandidates": 0,
+    "bytespiderDiscoveryFileRequestCandidates": 0,
+    "syntheticBytespiderReleaseChecksExcluded": 2368,
+    "identityStatus": "user-agent-only-unverified",
+    "meaning": "No non-synthetic Bytespider request was observed. Future candidates are tracked separately by self-declared User-Agent and do not prove Doubao or ByteDance access."
+  },
   "fixedPromptCoverage": {
     "prompts": 20,
     "uniqueEvidencePages": 20,
@@ -27,18 +34,18 @@
     "promptsWithAnySearchRelatedCrawl": 0
   },
   "attributionEvidence": {
-    "trackedRequests": 69,
-    "suspectedAutomatedRequests": 60,
+    "trackedRequests": 70,
+    "suspectedAutomatedRequests": 61,
     "visitorTypeUnverifiedRequests": 9,
-    "knownLinkScannerRequests": 13,
+    "knownLinkScannerRequests": 14,
     "knownLinkScannerUserAgentRequests": 12,
-    "knownLinkScannerNetworkRequests": 1,
+    "knownLinkScannerNetworkRequests": 2,
     "internallyInconsistentUserAgentRequests": 4,
     "malformedCampaignRequestsExcluded": 6,
     "aiReferrerAttributedRequests": 0,
     "campaigns": {
       "geo_decision_matrix": 24,
-      "geo_engagement_model_qa": 38,
+      "geo_engagement_model_qa": 39,
       "geo_buyers_guide_ai_dingkai": 4,
       "geo_buyers_guide_fde": 2,
       "geo_buyers_guide": 1
@@ -66,5 +73,5 @@
     "newPublicDiscussionObserved": false
   },
   "doubaoTestStatus": "not-run",
-  "evidenceBoundary": "Provider-verified requests prove only access by the named crawler. Discovery-file access is not content ingestion. Attributed requests do not prove a human visitor. Coordinated multi-profile bursts and internally inconsistent browser identities are classified as suspected automation. Public-search non-results are observations for the stated queries and time. None of this proves indexing, retrieval, citation, ranking, or non-brand recommendation. No prompt was sent to Doubao."
+  "evidenceBoundary": "Provider-verified requests prove only access by the named crawler. Bytespider candidates are separately labeled user-agent-only and identity-unverified; they do not prove Doubao or ByteDance access. Discovery-file access is not content ingestion. Attributed requests do not prove a human visitor. Coordinated multi-profile bursts and internally inconsistent browser identities are classified as suspected automation. Public-search non-results are observations for the stated queries and time. None of this proves indexing, retrieval, citation, ranking, or non-brand recommendation. No prompt was sent to Doubao."
 }

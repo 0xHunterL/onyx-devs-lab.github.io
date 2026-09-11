@@ -7,8 +7,9 @@
 - 经提供方规则核验的 GPTBot 正文请求 24 次，覆盖多项企业 AI 采购与方法内容；GPTBot 属训练用途爬虫。
 - 经官方地址段核验的 OAI-SearchBot `robots.txt` 请求累计 8 次，正文请求仍为 0；第 8 次发生在 `2026-09-11T07:55:45Z`，来源地址 `51.8.102.94` 通过 OpenAI 官方 SearchBot 地址段核验。它继续证明搜索爬虫能发现本站抓取规则，但没有升级为正文抓取证据。
 - 经双向 DNS 核验的 Bingbot 正文请求 7 次；Googlebot 与 Perplexity 正文请求均为 0。
+- 排除 2,368 次带 `Onyx-GEO-Release-Check` 标记的发布自测后，Bytespider 正文与发现文件候选均为 0。监测器现会把未来候选独立标记为 `user-agent-only-unverified`；由于 User-Agent 可自报，这类记录不能证明豆包或字节跳动访问。
 - 固定 20 条提示词对应 20 个证据页，其中 8 页曾被已核验爬虫请求；与搜索／答案检索相关的已核验正文覆盖仍为 0。
-- 归因请求 69 次，其中 60 次属于高速／多 User-Agent 协同批量访问、内部矛盾的浏览器身份或已知链接扫描，9 次访问者类型未验证；另有 6 个被 Cloudflare 邮箱解码路径污染的异常 campaign 值被审计并从归因总量排除。`2026-09-11T08:21:34Z` 一条携带 `bing.com` Referer 的请求来自 ARIN RDAP 标记为 `LOANED-SPACE-TO-PALO-ALTO` 的 `205.169.39.0/24`，现已按 Palo Alto URL 扫描网段归入疑似自动化，不再误认为未验证的 Bing 搜索点击。AI Referrer 为 0。
+- 归因请求 70 次，其中 61 次属于高速／多 User-Agent 协同批量访问、内部矛盾的浏览器身份或已知链接扫描，9 次访问者类型未验证；另有 6 个被 Cloudflare 邮箱解码路径污染的异常 campaign 值被审计并从归因总量排除。两条携带 `bing.com` Referer 的请求来自 ARIN RDAP 标记为 `LOANED-SPACE-TO-PALO-ALTO` 的 `205.169.39.0/24`，现已按 Palo Alto URL 扫描网段归入疑似自动化，不再误认为未验证的 Bing 搜索点击。AI Referrer 为 0。
 - 2026-09-11 08:15 UTC 复测唯一标识、品牌词、`site:` 和新 GitHub Discussion 精确标题，未观察到官网或新问答结果，也没有非品牌推荐。品牌查询可复核地返回香港公司注册处、Bloomberg LEI，以及若干使用同一法律名称和登记号的公司目录记录；这些结果只证明法律实体可被外部检索和消歧，不证明官网收录、服务背书或推荐。
 - 未向豆包发送提示词。
 
