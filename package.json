@@ -24,6 +24,8 @@
     "geo:test-evidence-summary": "node scripts/test-geo-evidence-summary.mjs",
     "geo:test-crawler-report": "node scripts/test-report-ai-crawlers.mjs",
     "geo:test-build": "node scripts/test-build-site.mjs",
+    "geo:test-publication-drift": "node scripts/test-geo-evidence-publication-drift.mjs",
+    "geo:test": "npm run geo:test-build && npm run geo:test-evidence-summary && npm run geo:test-crawler-report && npm run geo:test-referral-report && npm run geo:test-publication-drift",
     "geo:collect-evidence": "node scripts/collect-geo-evidence.mjs",
     "geo:check-evidence-publication-drift": "node scripts/check-geo-evidence-publication-drift.mjs",
     "geo:common-crawl-report": "node scripts/report-common-crawl.mjs",

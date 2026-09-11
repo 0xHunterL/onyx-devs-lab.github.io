@@ -59,6 +59,8 @@ npm run geo:referral-report -- --since=2026-09-01 --include-rotated /var/log/ngi
 
 采集成功后，`geo:check-evidence-publication-drift` 会将生产汇总中的核心爬虫、搜索相关提示词覆盖、归因、Common Crawl 索引范围和站外可用性与仓库当前版本化基线逐项比较，并原子写入 `/var/lib/onyx-geo/publication-drift.json`。状态为 `drift` 时 systemd 服务显式失败，防止公开状态静默落后；该失败仅表示需要人工审核和发布证据，不代表可发现性下降，也不会自动发布未经复核的日志。
 
+GitHub 发布工作流在部署前运行 `geo:test`，覆盖站点生成、监测摘要、爬虫身份与路径分类、引荐自动化分类，以及发布漂移的同步与故障样例。任何回归都会阻止 Pages 部署；测试通过只证明这些分类和门禁按固定样例工作，不证明外部平台已经抓取、收录或引用。
+
 用于 OpenAI、Perplexity、Common Crawl 与 Applebot 身份核验的官方 IP 前缀清单分别记录在爬虫报告的 `verificationSources` 与摘要的 `availability.crawlerVerification` 中。[Apple 官方说明](https://support.apple.com/en-gb/119829)可以使用 `*.applebot.apple.com` 双向 DNS 或其[公开 CIDR JSON](https://search.developer.apple.com/applebot.json)识别 Applebot；生产监测使用后者。[百度搜索资源平台官方说明](https://ziyuan.baidu.com/college/documentinfo?id=1399)要求用反向 DNS 检查主机名是否以 `*.baidu.com` 或 `*.baidu.jp` 结尾，并明确不应依赖静态 IP 池；生产监测在此规则之上增加一次正向解析回原 IP 的防伪确认。远端清单超时、返回错误或格式无效时，报告器会重试并把依赖该清单的候选请求标为 `providerVerified: null` 与 `verificationUnavailable: true`；它不会把候选误判为官方，也不会让单一来源故障阻断其余爬虫、归因、提示词覆盖和 Common Crawl 捕获报告。[Anthropic 官方说明](https://support.anthropic.com/en/articles/8896518-does-anthropic-crawl-data-from-the-web-and-how-can-site-owners-block-the-crawler)目前明确表示不发布 Claude 系列爬虫 IP 范围，因此 ClaudeBot、Claude-SearchBot 与 Claude-User 仍只能保留为 User-Agent 候选。清单恢复或可用来源集合改变时会产生可用性事件，但这不是新的抓取或可见性证据。
 
 生产采集器同时启用 Baiduspider 的 DNS 身份核验与 Applebot 的官方前缀核验；前者没有静态“来源可用性”项，只有日志中出现候选 IP 时才实际执行 DNS 校验。

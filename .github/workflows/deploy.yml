@@ -30,6 +30,9 @@ jobs:
       - name: Validate GEO output
         run: npm run lint && npm run geo:check && npm run geo:check-offsite && npm run geo:check-distribution && npm run geo:check-codemeta && npm run geo:check-citation
 
+      - name: Test GEO evidence pipeline
+        run: npm run geo:test
+
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@v4
         with:
