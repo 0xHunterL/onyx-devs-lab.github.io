@@ -14,4 +14,11 @@
 - 构建前后均为 HTTP `200`、`Content-Length: 22812`、`Last-Modified: Fri, 11 Sep 2026 11:46:26 GMT`、`ETag: "6aa3ea12-591c"`。第二次构建同样记录 `unchangedFiles:238`、`changedOrNewFiles:0`。
 - 一次早期诊断误用了本机 HTTPS 443；该端口不属于 `hk.onyxdevslab.com` 的源站虚拟主机，命中了另一默认站点的 434 字节响应，已明确作废且未用于结论。
 
+## 公网条件请求验证
+
+- 更新后的线上门禁对当前实际暴露的验证器发起条件请求，完成 71 页、117 次网络请求且零失败。
+- Cloudflare 公网 HTML 根页暴露 `Last-Modified: Fri, 11 Sep 2026 11:46:26 GMT`，未暴露 ETag；携带该时间的 `If-Modified-Since` 返回 HTTP `304`。
+- Markdown 根页暴露 ETag `"6aa3ea13-280e"` 与 `Last-Modified: Fri, 11 Sep 2026 11:46:27 GMT`；对应 `If-None-Match` 和 `If-Modified-Since` 均返回 HTTP `304`。
+- HTML 公网缺少 ETag 不会被写成 ETag 成功；它仍有一个可工作的时间验证器。若以后 HTML 与 Markdown 同时暴露 ETag，门禁会要求两者不同。
+
 该修复提高 Sitemap `lastmod`、HTTP `Last-Modified` 与 ETag 的一致性，减少无意义的重新抓取和虚假新鲜度信号。它不证明搜索引擎已经重新抓取、收录、排名或在 AI 答案中引用页面。

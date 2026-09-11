@@ -41,6 +41,21 @@ async function probeAbsolute(url) {
   return { status: response.status, location: response.headers.get('location') || '' };
 }
 
+async function probeConditional(pathname, validatorHeaders, accept = '') {
+  networkRequests += 1;
+  const response = await fetch(`${origin}${pathname}`, {
+    headers: {
+      'user-agent': 'Onyx-GEO-Release-Check/1.0',
+      ...(accept ? { accept } : {}),
+      ...validatorHeaders,
+    },
+    redirect: 'follow',
+    signal: AbortSignal.timeout(15_000),
+  });
+  await response.body?.cancel();
+  return response.status;
+}
+
 async function get(pathname, expectedType, userAgent = 'Onyx-GEO-Release-Check/1.0', accept = '') {
   const requestedUrl = `${origin}${pathname}`;
   const cacheKey = `${requestedUrl}\n${userAgent}\n${accept}`;
@@ -88,6 +103,10 @@ const rootLinkHeader = root.response?.headers.get('link') || '';
 if (!/(?:^|,)\s*Accept\s*(?:,|$)/i.test(root.response?.headers.get('vary') || '')) failures.push('/: Vary header does not include Accept');
 if (!/^public,\s*max-age=0,\s*must-revalidate$/i.test(root.response?.headers.get('cache-control') || '')) failures.push('/: HTML cache policy must permit storage with immediate revalidation');
 if (!root.response?.headers.get('etag') && !root.response?.headers.get('last-modified')) failures.push('/: HTML response has no revalidation validator');
+const rootEtag = root.response?.headers.get('etag');
+const rootLastModified = root.response?.headers.get('last-modified');
+if (rootEtag && await probeConditional('/', { 'if-none-match': rootEtag }) !== 304) failures.push('/: current HTML ETag did not produce HTTP 304');
+if (rootLastModified && await probeConditional('/', { 'if-modified-since': rootLastModified }) !== 304) failures.push('/: current HTML Last-Modified did not produce HTTP 304');
 if (!/search=yes/.test(root.response?.headers.get('content-signal') || '') || !/ai-input=yes/.test(root.response?.headers.get('content-signal') || '')) failures.push('/: Content-Signal response header is incomplete');
 for (const resource of ['sitemap.xml', 'feed.xml', 'feed.json', 'data/enterprise-ai-service-terms.jsonld', 'data/ai-search-prompt-evidence-map.json', 'llms.txt']) {
   if (!rootLinkHeader.includes(`https://hk.onyxdevslab.com/${resource}`)) failures.push(`/: Link discovery header is missing ${resource}`);
@@ -122,6 +141,12 @@ for (const required of ['title:', 'canonical: "https://hk.onyxdevslab.com/"', '#
 }
 if (!/(?:^|,)\s*Accept\s*(?:,|$)/i.test(markdownRoot.response?.headers.get('vary') || '')) failures.push('/: Markdown response Vary header does not include Accept');
 if (!/^public,\s*max-age=0,\s*must-revalidate$/i.test(markdownRoot.response?.headers.get('cache-control') || '')) failures.push('/: Markdown cache policy must permit storage with immediate revalidation');
+const markdownRootEtag = markdownRoot.response?.headers.get('etag');
+const markdownRootLastModified = markdownRoot.response?.headers.get('last-modified');
+if (!markdownRootEtag || !markdownRootLastModified) failures.push('/: Markdown response is missing ETag or Last-Modified');
+if (rootEtag && markdownRootEtag === rootEtag) failures.push('/: HTML and Markdown variants unexpectedly share one ETag');
+if (markdownRootEtag && await probeConditional('/', { 'if-none-match': markdownRootEtag }, 'text/markdown') !== 304) failures.push('/: current Markdown ETag did not produce HTTP 304');
+if (markdownRootLastModified && await probeConditional('/', { 'if-modified-since': markdownRootLastModified }, 'text/markdown') !== 304) failures.push('/: current Markdown Last-Modified did not produce HTTP 304');
 if (!/search=yes/.test(markdownRoot.response?.headers.get('content-signal') || '') || !/ai-input=yes/.test(markdownRoot.response?.headers.get('content-signal') || '')) failures.push('/: Markdown Content-Signal response header is incomplete');
 
 const robots = await get('/robots.txt', 'text/plain');

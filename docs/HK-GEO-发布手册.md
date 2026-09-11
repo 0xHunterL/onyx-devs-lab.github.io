@@ -41,6 +41,8 @@ npm run geo:submit-indexnow
 
 构建器会在生成前记录现有 `dist` 文件的 SHA-256 与时间；新构建中内容字节完全相同的文件恢复原 `mtime`，只有内容变化或新增的文件保留新时间。这样 Nginx 的 `Last-Modified` 与 ETag 输入不会因纯重建虚假刷新。Sitemap 的 `lastmod` 仍由 `pageUpdated` 显式管理，只能在相应页面发生实质内容、结构化数据或发现关系变化时更新。
 
+线上门禁会用 HTML 与 Markdown 当前实际暴露的 ETag 或 `Last-Modified` 发起条件请求，所有可用验证器都必须返回 HTTP `304`。HTML 至少要提供其中一种；Markdown 当前同时提供两种。若 HTML 与 Markdown 都暴露 ETag，两者必须不同；两种表示还必须继续返回 `Vary: Accept`，防止缓存或爬虫把 Markdown 与 HTML 混为同一表示。
+
 站外分发必须先登记在 `geo/distribution-manifest.json`。`ready-not-published` 条目不得填写公开 URL 或任何效果字段；`published` 条目必须记录真实站外 URL、匿名访问核验时间、至少两个品牌或主题内容标记，以及与原稿逐字一致的归因目标。`geo:check-distribution-live` 会匿名请求所有已发布 URL 和归因目标，验证跳转后地址没有偏离声明目标且公开正文仍包含全部内容标记；它使用合成 User-Agent，避免把门禁自身流量计入引荐基线。HTTP 成功只证明发布和链接可达，内容标记只证明声明的公开资产没有被通用页或无关内容替代，两者都不能据此填写搜索收录、AI 引用或非品牌推荐时间。
 
 ## Nginx 与线上验收
