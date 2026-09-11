@@ -1302,11 +1302,11 @@
       ]
     },
     {
-      "id": "https://archive.softwareheritage.org/swh:1:snp:45a57c93314db28331263c9449dd86ab8519b585/",
-      "url": "https://archive.softwareheritage.org/swh:1:snp:45a57c93314db28331263c9449dd86ab8519b585/",
+      "id": "https://archive.softwareheritage.org/swh:1:snp:8368f6ceb7c7514e2273e3f28d44dbfca11aaddc/",
+      "url": "https://archive.softwareheritage.org/swh:1:snp:8368f6ceb7c7514e2273e3f28d44dbfca11aaddc/",
       "title": "Software Heritage archive of the Hong Kong Enterprise AI Buyer’s Guide",
-      "summary": "Independent, content-addressed preservation of the five-page buyer-guide cluster, GEO evidence guide, link-check workflow, CFF, CodeMeta, Atom feed, Pages source, and release tag at revision d490ec3. Archival proves preservation, not endorsement, search indexing, AI citation, or recommendation.",
-      "content_text": "Independent, content-addressed preservation of the five-page buyer-guide cluster, GEO evidence guide, link-check workflow, CFF, CodeMeta, Atom feed, Pages source, and release tag at revision d490ec3. Archival proves preservation, not endorsement, search indexing, AI citation, or recommendation.",
+      "summary": "Independent, content-addressed preservation of six canonical guide pages, the machine-readable resource graph, current GEO evidence cross-links, link-check workflow, CFF, CodeMeta, Atom feed, Pages source, and Git history at revision 166c351. Archival proves preservation, not endorsement, search indexing, AI citation, or recommendation.",
+      "content_text": "Independent, content-addressed preservation of six canonical guide pages, the machine-readable resource graph, current GEO evidence cross-links, link-check workflow, CFF, CodeMeta, Atom feed, Pages source, and Git history at revision 166c351. Archival proves preservation, not endorsement, search indexing, AI citation, or recommendation.",
       "date_modified": "2026-09-09T00:00:00+08:00",
       "tags": [
         "versioned-evidence",

@@ -338,11 +338,11 @@
     {
       "@type": "SoftwareSourceCode",
       "name": "Software Heritage archive of the Hong Kong Enterprise AI Buyer’s Guide",
-      "description": "Independently preserves the five-page guide cluster, GEO evidence guide, link-check workflow, CFF, CodeMeta, Atom WebSub feed, Pages source, and release tag at revision d490ec3. Archival does not endorse the guidance or prove search indexing.",
-      "identifier": "swh:1:snp:45a57c93314db28331263c9449dd86ab8519b585",
-      "url": "https://archive.softwareheritage.org/swh:1:snp:45a57c93314db28331263c9449dd86ab8519b585/",
+      "description": "Independently preserves six canonical guide pages, the machine-readable resource graph, current GEO evidence cross-links, link-check workflow, CFF, CodeMeta, Atom WebSub feed, Pages source, and Git history at revision 166c351. Archival does not endorse the guidance or prove search indexing.",
+      "identifier": "swh:1:snp:8368f6ceb7c7514e2273e3f28d44dbfca11aaddc",
+      "url": "https://archive.softwareheritage.org/swh:1:snp:8368f6ceb7c7514e2273e3f28d44dbfca11aaddc/",
       "codeRepository": "https://github.com/mixuechu/hong-kong-enterprise-ai-buyers-guide",
-      "version": "d490ec3ca459eb4aaccb803e8bb29188763dabee"
+      "version": "166c3519613bd5b3b8d405858450b4dcfbe97ed2"
     },
     {
       "@type": "CreativeWork",
