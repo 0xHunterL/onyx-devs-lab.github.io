@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "publicStatusVersion": "2026.09.11.15",
-  "generatedAt": "2026-09-11T12:49:36.667Z",
+  "publicStatusVersion": "2026.09.11.16",
+  "generatedAt": "2026-09-11T12:59:52.694Z",
   "windowStart": "2026-09-01",
   "site": "https://hk.onyxdevslab.com/",
   "sourceLogs": [
@@ -48,9 +48,9 @@
     "scenarioPromptsWithAnyVerifiedCrawl": 0
   },
   "attributionEvidence": {
-    "trackedRequests": 77,
+    "trackedRequests": 78,
     "suspectedAutomatedRequests": 61,
-    "visitorTypeUnverifiedRequests": 16,
+    "visitorTypeUnverifiedRequests": 17,
     "knownLinkScannerRequests": 14,
     "knownLinkScannerUserAgentRequests": 12,
     "knownLinkScannerNetworkRequests": 2,
@@ -61,7 +61,7 @@
       "geo_decision_matrix": 24,
       "geo_engagement_model_qa": 39,
       "geo_buyers_guide_ai_dingkai": 4,
-      "geo_buyers_guide_scenarios": 6,
+      "geo_buyers_guide_scenarios": 7,
       "geo_buyers_guide_geo": 1,
       "geo_buyers_guide_fde": 2,
       "geo_buyers_guide": 1
@@ -123,11 +123,18 @@
         "campaign": "geo_buyers_guide_geo",
         "landingPage": "/zh-cn/methodology/ai-search-verification/",
         "referrerHost": ""
+      },
+      {
+        "time": "2026-09-11T12:56:46Z",
+        "source": "github_pages",
+        "campaign": "geo_buyers_guide_scenarios",
+        "landingPage": "/zh-cn/methodology/case-study-evidence-register/",
+        "referrerHost": ""
       }
     ]
   },
   "commonCrawlEvidence": {
-    "checkedAt": "2026-09-11T12:49:36.667Z",
+    "checkedAt": "2026-09-11T12:59:52.694Z",
     "status": "available",
     "capturesObservedInAvailableIndexes": 0,
     "availableIndexes": ["CC-MAIN-2026-34", "CC-MAIN-2026-30"],
