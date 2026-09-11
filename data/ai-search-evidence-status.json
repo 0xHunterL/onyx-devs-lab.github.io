@@ -1,8 +1,8 @@
 {
   "schemaVersion": 2,
-  "version": "2026.09.11.9",
+  "version": "2026.09.11.10",
   "id": "https://hk.onyxdevslab.com/data/ai-search-evidence-status.json",
-  "observedAt": "2026-09-11T11:57:29.192Z",
+  "observedAt": "2026-09-11T12:16:01Z",
   "sameAs": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-search-monitoring-compliance-2026-09-11/ai-search-evidence-status.json",
   "name": {
     "en": "Onyx Devs Lab AI-search evidence status",
@@ -167,22 +167,22 @@
   ],
   "publicSearchChecks": [
     {
-      "checkedAt": "2026-09-11T08:15:00Z",
+      "checkedAt": "2026-09-11T12:16:01Z",
       "query": "\"ONYX-GEO-VERIFY-79051925-20260908\"",
       "result": "website-not-observed"
     },
     {
-      "checkedAt": "2026-09-11T08:15:00Z",
+      "checkedAt": "2026-09-11T12:16:01Z",
       "query": "\"Onyx Devs Lab\"",
       "result": "website-not-observed; Companies Registry, Bloomberg LEI, and third-party legal-entity directory records observed"
     },
     {
-      "checkedAt": "2026-09-11T08:15:00Z",
-      "query": "site:hk.onyxdevslab.com \"Onyx Devs Lab\"",
+      "checkedAt": "2026-09-11T12:16:01Z",
+      "query": "site:hk.onyxdevslab.com",
       "result": "no-results-observed"
     },
     {
-      "checkedAt": "2026-09-11T08:15:00Z",
+      "checkedAt": "2026-09-11T12:16:01Z",
       "query": "\"AI 定开、AI 咨询和 FDE 应该怎么选？\"",
       "result": "new-public-discussion-not-observed"
     }
