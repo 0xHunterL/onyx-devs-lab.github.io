@@ -13,7 +13,7 @@ Case study · Delivery evidence
 
 A recruiting workspace that synchronises candidate conversations, refreshes evidence-linked profiles, and separates manual, copilot, and controlled-autopilot authority.
 
-By [Onyx Devs Lab](/en/about/) · Published 2026-09-07 · Updated 2026-09-10
+By [Onyx Devs Lab](/en/about/) · Published 2026-09-07 · Updated 2026-09-11
 
 [繁體中文](/zh-hk/case-studies/recruiting-ai-agent-workflow/) [简体中文](/zh-cn/case-studies/recruiting-ai-agent-workflow/)
 
@@ -415,7 +415,7 @@ The published validation covers synchronisation, send verification, and workflow
       "publisher": {
         "@id": "https://hk.onyxdevslab.com/#organization"
       },
-      "dateModified": "2026-09-10",
+      "dateModified": "2026-09-11",
       "headline": "Recruiting automation with context, evidence, and send control",
       "datePublished": "2026-09-07",
       "mainEntityOfPage": {
@@ -429,7 +429,7 @@ The published validation covers synchronisation, send verification, and workflow
       "url": "https://hk.onyxdevslab.com/en/case-studies/recruiting-ai-agent-workflow/",
       "name": "Recruiting AI Agent Workflow Case Study | Onyx Devs Lab",
       "description": "A controlled recruiting agent workflow for candidate sync, evidence-linked profiles, reply drafting, idempotent sending, and human takeover.",
-      "dateModified": "2026-09-10",
+      "dateModified": "2026-09-11",
       "inLanguage": "en",
       "isPartOf": {
         "@id": "https://hk.onyxdevslab.com/#website"

@@ -13,7 +13,7 @@ language: "zh-Hant-HK"
 
 先界定受影響流程與個人資料邊界，再指定責任人、按風險配置人工權限、測試完整系統，並在上線後保留可核對證據。
 
-作者 [Onyx Devs Lab](/zh-hk/about/) · 發布 2026-09-09 · 更新 2026-09-10
+作者 [Onyx Devs Lab](/zh-hk/about/) · 發布 2026-09-09 · 更新 2026-09-11
 
 [預約項目評估](mailto:info@onyxdevslab.com?subject=%E9%A6%99%E6%B8%AF%E4%BC%81%E6%A5%AD%E9%83%A8%E7%BD%B2%20AI%20%E5%89%8D%EF%BC%8C%E9%9C%80%E8%A6%81%E5%BB%BA%E7%AB%8B%E5%93%AA%E4%BA%9B%E7%AE%A1%E6%B2%BB%E6%8E%A7%E5%88%B6%EF%BC%9F) [English](/en/guides/hong-kong-enterprise-ai-governance/) [简体中文](/zh-cn/guides/enterprise-ai-governance/)
 
@@ -441,7 +441,7 @@ language: "zh-Hant-HK"
       "publisher": {
         "@id": "https://hk.onyxdevslab.com/#organization"
       },
-      "dateModified": "2026-09-10",
+      "dateModified": "2026-09-11",
       "headline": "香港企業部署 AI 前，需要建立哪些管治控制？",
       "citation": [
         {
@@ -467,7 +467,7 @@ language: "zh-Hant-HK"
       "url": "https://hk.onyxdevslab.com/zh-hk/guides/enterprise-ai-governance/",
       "name": "香港企業 AI 管治清單｜私隱、風險與人工監督｜Onyx Devs Lab",
       "description": "以香港私隱專員公署框架為依據，把企業 AI 管治落實為責任、風險評估、人工監督、數據、測試、監控及溝通控制。",
-      "dateModified": "2026-09-10",
+      "dateModified": "2026-09-11",
       "inLanguage": "zh-Hant-HK",
       "isPartOf": {
         "@id": "https://hk.onyxdevslab.com/#website"

@@ -13,7 +13,7 @@ Case-study evidence register
 
 This register publishes the measurement definitions behind six anonymised delivery cases in one human-readable page and one machine-readable dataset. It separates first-party validation snapshots from independent audits or general performance claims.
 
-By [Onyx Devs Lab](/en/about/) · Published 2026-09-09 · Updated 2026-09-10
+By [Onyx Devs Lab](/en/about/) · Published 2026-09-09 · Updated 2026-09-11
 
 [Download evidence dataset](/data/case-study-evidence.json) [繁體中文](/zh-hk/methodology/case-study-evidence-register/) [简体中文](/zh-cn/methodology/case-study-evidence-register/)
 
@@ -501,7 +501,7 @@ Every metric retains its value, name, measurement definition, source page, and e
         "@id": "https://hk.onyxdevslab.com/#organization"
       },
       "datePublished": "2026-09-09",
-      "dateModified": "2026-09-10",
+      "dateModified": "2026-09-11",
       "version": "2026.09.09",
       "identifier": "https://hk.onyxdevslab.com/data/case-study-evidence.json",
       "isAccessibleForFree": true,
@@ -562,7 +562,7 @@ Every metric retains its value, name, measurement definition, source page, and e
       "url": "https://hk.onyxdevslab.com/en/methodology/case-study-evidence-register/",
       "name": "Enterprise AI Case Study Evidence Register | Onyx Devs Lab",
       "description": "A versioned register of the definitions, scope, source pages, and limitations behind Onyx enterprise AI case-study metrics.",
-      "dateModified": "2026-09-10",
+      "dateModified": "2026-09-11",
       "inLanguage": "en",
       "isPartOf": {
         "@id": "https://hk.onyxdevslab.com/#website"

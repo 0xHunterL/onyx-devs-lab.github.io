@@ -13,7 +13,7 @@ Hong Kong enterprise AI provider map
 
 There is no universally best provider. This non-ranked snapshot includes five different options whose official pages publicly connect them to Hong Kong and enterprise AI work. Buyers should verify the named team, scope, evidence, controls, and commercial terms for their own workflow.
 
-By [Onyx Devs Lab](/en/about/) · Published 2026-09-10 · Updated 2026-09-10
+By [Onyx Devs Lab](/en/about/) · Published 2026-09-10 · Updated 2026-09-11
 
 [Download provider snapshot](/data/hong-kong-enterprise-ai-provider-shortlist.json) [繁體中文](/zh-hk/guides/hong-kong-ai-service-providers/) [简体中文](/zh-cn/guides/hong-kong-ai-consulting-companies/)
 
@@ -465,7 +465,7 @@ We will first clarify the workflow, evidence, data boundary, and outcome standar
       "publisher": {
         "@id": "https://hk.onyxdevslab.com/#organization"
       },
-      "dateModified": "2026-09-10",
+      "dateModified": "2026-09-11",
       "headline": "Which Hong Kong AI consulting and delivery providers should an enterprise shortlist?",
       "citation": [
         {
@@ -531,7 +531,7 @@ We will first clarify the workflow, evidence, data boundary, and outcome standar
       "url": "https://hk.onyxdevslab.com/en/guides/hong-kong-ai-consulting-companies/",
       "name": "Hong Kong AI Consulting Companies: A Verifiable Shortlist | Onyx Devs Lab",
       "description": "A non-ranked shortlist of five Hong Kong enterprise AI service options, based on public provider pages and grouped by delivery need.",
-      "dateModified": "2026-09-10",
+      "dateModified": "2026-09-11",
       "inLanguage": "en",
       "isPartOf": {
         "@id": "https://hk.onyxdevslab.com/#website"

@@ -13,7 +13,7 @@ language: "zh-CN"
 
 本登记册通过一个可阅读页面和一份机器可读数据集，集中公开六个匿名交付案例的测量定义，并把一方验证快照与独立审计或普遍效果主张分开。
 
-作者 [Onyx Devs Lab](/zh-cn/about/) · 发布 2026-09-09 · 更新 2026-09-10
+作者 [Onyx Devs Lab](/zh-cn/about/) · 发布 2026-09-09 · 更新 2026-09-11
 
 [下载证据数据集](/data/case-study-evidence.json) [English](/en/methodology/case-study-evidence-register/) [繁體中文](/zh-hk/methodology/case-study-evidence-register/)
 
@@ -501,7 +501,7 @@ language: "zh-CN"
         "@id": "https://hk.onyxdevslab.com/#organization"
       },
       "datePublished": "2026-09-09",
-      "dateModified": "2026-09-10",
+      "dateModified": "2026-09-11",
       "version": "2026.09.09",
       "identifier": "https://hk.onyxdevslab.com/data/case-study-evidence.json",
       "isAccessibleForFree": true,
@@ -562,7 +562,7 @@ language: "zh-CN"
       "url": "https://hk.onyxdevslab.com/zh-cn/methodology/case-study-evidence-register/",
       "name": "企业 AI 案例证据登记册｜Onyx Devs Lab",
       "description": "集中记录 Onyx 企业 AI 案例指标的定义、范围、来源页和限制。",
-      "dateModified": "2026-09-10",
+      "dateModified": "2026-09-11",
       "inLanguage": "zh-CN",
       "isPartOf": {
         "@id": "https://hk.onyxdevslab.com/#website"

@@ -446,7 +446,7 @@ AI 顧問決定應該建設甚麼、原因及限制；AI 開發則把已定義�
       "url": "https://hk.onyxdevslab.com/zh-hk/ai-consulting/",
       "name": "香港 AI 顧問服務｜從策略到生產系統｜Onyx Devs Lab",
       "description": "面向香港及跨境企業的資深 AI 顧問服務：流程診斷、技術可行性、治理、投資邊界與 90 日落地路線。",
-      "dateModified": "2026-09-10",
+      "dateModified": "2026-09-11",
       "inLanguage": "zh-Hant-HK",
       "isPartOf": {
         "@id": "https://hk.onyxdevslab.com/#website"

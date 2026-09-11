@@ -13,7 +13,7 @@ AI 開發術語指南
 
 「AI 定開」或「AI定開」是「AI 定制開發」的非正式市場簡稱，指按企業專屬流程、數據、權限及系統接口建設 AI 軟件。它描述交付範圍，不是模型名稱、產品類別或質量認證。
 
-作者 [Onyx Devs Lab](/zh-hk/about/) · 發布 2026-09-10 · 更新 2026-09-10
+作者 [Onyx Devs Lab](/zh-hk/about/) · 發布 2026-09-10 · 更新 2026-09-11
 
 [預約項目評估](mailto:info@onyxdevslab.com?subject=AI%20%E5%AE%9A%E9%96%8B%E6%98%AF%E7%94%9A%E9%BA%BC%EF%BC%9F) [English](/en/guides/what-is-ai-dingkai/) [简体中文](/zh-cn/guides/ai-dingkai/)
 
@@ -431,7 +431,7 @@ AI 顧問解決應建設甚麼及原因；定制開發實施邊界足夠清楚�
       "publisher": {
         "@id": "https://hk.onyxdevslab.com/#organization"
       },
-      "dateModified": "2026-09-10",
+      "dateModified": "2026-09-11",
       "headline": "AI 定開是甚麼？",
       "datePublished": "2026-09-10",
       "mainEntityOfPage": {
@@ -445,7 +445,7 @@ AI 顧問解決應建設甚麼及原因；定制開發實施邊界足夠清楚�
       "url": "https://hk.onyxdevslab.com/zh-hk/guides/what-is-ai-dingkai/",
       "name": "AI 定開是甚麼？AI 定制開發採購指南｜Onyx Devs Lab",
       "description": "AI 定開／AI定開是 AI 定制開發的市場簡稱。了解其交付範圍、與 SaaS、外包及 FDE 的分別，以及企業應核對的生產能力。",
-      "dateModified": "2026-09-10",
+      "dateModified": "2026-09-11",
       "inLanguage": "zh-Hant-HK",
       "isPartOf": {
         "@id": "https://hk.onyxdevslab.com/#website"

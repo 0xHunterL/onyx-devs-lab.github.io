@@ -13,7 +13,7 @@ AI 试点决策工具
 
 把试点当作受控业务决策，而不是模型演示。测试开始前，先固定一条流程、当前基线、权限边界、证据集、验收门槛和决策负责人。
 
-作者 [Onyx Devs Lab](/zh-cn/about/) · 发布 2026-09-09 · 更新 2026-09-10
+作者 [Onyx Devs Lab](/zh-cn/about/) · 发布 2026-09-09 · 更新 2026-09-11
 
 [下载试点章程](/data/enterprise-ai-pilot-charter.json) [English](/en/guides/enterprise-ai-pilot-charter-hong-kong/) [繁體中文](/zh-hk/guides/enterprise-ai-pilot-charter/)
 
@@ -437,7 +437,7 @@ AI 试点决策工具
       "publisher": {
         "@id": "https://hk.onyxdevslab.com/#organization"
       },
-      "dateModified": "2026-09-10",
+      "dateModified": "2026-09-11",
       "headline": "香港企业应该怎样定义和验收 AI 试点？",
       "citation": [
         {
@@ -473,7 +473,7 @@ AI 试点决策工具
       "url": "https://hk.onyxdevslab.com/zh-cn/guides/enterprise-ai-pilot-charter/",
       "name": "香港企业 AI 试点章程与验收模板｜Onyx Devs Lab",
       "description": "可下载的香港企业 AI 试点章程，用于定义范围、证据、风险控制、验收门槛，以及扩大、重设或停止决策。",
-      "dateModified": "2026-09-10",
+      "dateModified": "2026-09-11",
       "inLanguage": "zh-CN",
       "isPartOf": {
         "@id": "https://hk.onyxdevslab.com/#website"

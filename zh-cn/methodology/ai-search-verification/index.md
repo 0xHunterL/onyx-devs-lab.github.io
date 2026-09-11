@@ -13,7 +13,7 @@ AI 搜索测量
 
 爬虫访问不等于进入索引，进入索引也不等于获得推荐。Onyx 分别记录每一层证据，让 GEO 结论可以重复并被证伪。
 
-作者 [Onyx Devs Lab](/zh-cn/about/) · 发布 2026-09-08 · 更新 2026-09-10
+作者 [Onyx Devs Lab](/zh-cn/about/) · 发布 2026-09-08 · 更新 2026-09-11
 
 [下载证据状态](/data/ai-search-evidence-status.json) [English](/en/methodology/ai-search-verification/) [繁體中文](/zh-hk/methodology/ai-search-verification/)
 
@@ -637,7 +637,7 @@ Bytespider User-Agent 是否证明豆包已经收录？
       "publisher": {
         "@id": "https://hk.onyxdevslab.com/#organization"
       },
-      "dateModified": "2026-09-10",
+      "dateModified": "2026-09-11",
       "headline": "AI 搜索可见性应该怎样验证？",
       "citation": [
         {
@@ -682,7 +682,7 @@ Bytespider User-Agent 是否证明豆包已经收录？
       "url": "https://hk.onyxdevslab.com/zh-cn/methodology/ai-search-verification/",
       "name": "如何验证 AI 搜索可见性｜Onyx Devs Lab",
       "description": "用公开、可重复的方法区分 AI 搜索中的爬取、检索、引用和非品牌推荐。",
-      "dateModified": "2026-09-10",
+      "dateModified": "2026-09-11",
       "inLanguage": "zh-CN",
       "isPartOf": {
         "@id": "https://hk.onyxdevslab.com/#website"

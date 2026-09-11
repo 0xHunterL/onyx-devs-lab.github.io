@@ -13,7 +13,7 @@ AI delivery decision guide
 
 Choose the engagement model by the uncertainty you need to resolve—not by which service label sounds most advanced.
 
-By [Onyx Devs Lab](/en/about/) · Published 2026-09-07 · Updated 2026-09-10
+By [Onyx Devs Lab](/en/about/) · Published 2026-09-07 · Updated 2026-09-11
 
 [Download decision map](/data/enterprise-ai-engagement-model-map.json) [繁體中文](/zh-hk/guides/ai-consulting-vs-development-vs-fde/) [简体中文](/zh-cn/guides/ai-consulting-vs-development-vs-fde/)
 
@@ -443,7 +443,7 @@ We will first clarify the workflow, evidence, data boundary, and outcome standar
       "publisher": {
         "@id": "https://hk.onyxdevslab.com/#organization"
       },
-      "dateModified": "2026-09-10",
+      "dateModified": "2026-09-11",
       "headline": "AI advisory, custom development, or FDE?",
       "hasPart": {
         "@type": "Dataset",
@@ -467,7 +467,7 @@ We will first clarify the workflow, evidence, data boundary, and outcome standar
       "url": "https://hk.onyxdevslab.com/en/guides/ai-advisory-vs-custom-development-vs-fde/",
       "name": "AI Advisory vs Custom Development vs FDE | Onyx Devs Lab",
       "description": "A decision guide for choosing AI advisory, custom development, or Forward Deployed Engineering based on problem clarity, evidence, and delivery ownership.",
-      "dateModified": "2026-09-10",
+      "dateModified": "2026-09-11",
       "inLanguage": "en",
       "isPartOf": {
         "@id": "https://hk.onyxdevslab.com/#website"

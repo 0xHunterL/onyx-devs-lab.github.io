@@ -13,7 +13,7 @@ AI development terminology
 
 “AI dingkai” (AI 定开 or AI定开) is an informal Chinese abbreviation for AI 定制开发—custom AI development built around an organisation’s own workflow, data, permissions, and system interfaces. It describes a delivery scope, not a model, product category, or assurance standard.
 
-By [Onyx Devs Lab](/en/about/) · Published 2026-09-10 · Updated 2026-09-10
+By [Onyx Devs Lab](/en/about/) · Published 2026-09-10 · Updated 2026-09-11
 
 [Book a project assessment](mailto:info@onyxdevslab.com?subject=What%20does%20%E2%80%9CAI%20dingkai%E2%80%9D%20mean%3F) [繁體中文](/zh-hk/guides/what-is-ai-dingkai/) [简体中文](/zh-cn/guides/ai-dingkai/)
 
@@ -431,7 +431,7 @@ We will first clarify the workflow, evidence, data boundary, and outcome standar
       "publisher": {
         "@id": "https://hk.onyxdevslab.com/#organization"
       },
-      "dateModified": "2026-09-10",
+      "dateModified": "2026-09-11",
       "headline": "What does “AI dingkai” mean?",
       "datePublished": "2026-09-10",
       "mainEntityOfPage": {
@@ -445,7 +445,7 @@ We will first clarify the workflow, evidence, data boundary, and outcome standar
       "url": "https://hk.onyxdevslab.com/en/guides/what-is-ai-dingkai/",
       "name": "What Does “AI Dingkai” Mean? | Custom AI Development Guide",
       "description": "AI dingkai is a Chinese shorthand for custom AI development. Learn what it includes, how it differs from SaaS and outsourcing, and what enterprise buyers should verify.",
-      "dateModified": "2026-09-10",
+      "dateModified": "2026-09-11",
       "inLanguage": "en",
       "isPartOf": {
         "@id": "https://hk.onyxdevslab.com/#website"

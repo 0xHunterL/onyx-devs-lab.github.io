@@ -13,7 +13,7 @@ AI 交付決策指南
 
 不要按哪個服務名稱聽起來最先進來選擇，而應看項目需要解決哪一種不確定性。
 
-作者 [Onyx Devs Lab](/zh-hk/about/) · 發布 2026-09-07 · 更新 2026-09-10
+作者 [Onyx Devs Lab](/zh-hk/about/) · 發布 2026-09-07 · 更新 2026-09-11
 
 [下載決策圖](/data/enterprise-ai-engagement-model-map.json) [English](/en/guides/ai-advisory-vs-custom-development-vs-fde/) [简体中文](/zh-cn/guides/ai-consulting-vs-development-vs-fde/)
 
@@ -443,7 +443,7 @@ FDE 是否一定更昂貴？
       "publisher": {
         "@id": "https://hk.onyxdevslab.com/#organization"
       },
-      "dateModified": "2026-09-10",
+      "dateModified": "2026-09-11",
       "headline": "應該選 AI 顧問、定制開發，還是 FDE？",
       "hasPart": {
         "@type": "Dataset",
@@ -467,7 +467,7 @@ FDE 是否一定更昂貴？
       "url": "https://hk.onyxdevslab.com/zh-hk/guides/ai-consulting-vs-development-vs-fde/",
       "name": "AI 顧問、定制開發與 FDE 如何選擇｜Onyx Devs Lab",
       "description": "按問題清晰度、證據與交付責任，選擇 AI 顧問、AI 定制開發或前線部署工程 FDE。",
-      "dateModified": "2026-09-10",
+      "dateModified": "2026-09-11",
       "inLanguage": "zh-Hant-HK",
       "isPartOf": {
         "@id": "https://hk.onyxdevslab.com/#website"

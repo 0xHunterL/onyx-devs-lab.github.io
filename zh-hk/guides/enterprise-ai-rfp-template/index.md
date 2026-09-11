@@ -13,7 +13,7 @@ language: "zh-Hant-HK"
 
 要求每個候選團隊回應同一套帶證據的要求。比較價格或示範前，先定義營運成果、數據與權限邊界、評估關口、生產責任、商業假設及退出證據。
 
-作者 [Onyx Devs Lab](/zh-hk/about/) · 發布 2026-09-10 · 更新 2026-09-10
+作者 [Onyx Devs Lab](/zh-hk/about/) · 發布 2026-09-10 · 更新 2026-09-11
 
 [下載 RFP 要求](/data/enterprise-ai-rfp-requirements.json) [English](/en/guides/enterprise-ai-rfp-template-hong-kong/) [简体中文](/zh-cn/guides/enterprise-ai-rfp-template/)
 
@@ -437,7 +437,7 @@ RFP 是否應指定模型供應商？
       "publisher": {
         "@id": "https://hk.onyxdevslab.com/#organization"
       },
-      "dateModified": "2026-09-10",
+      "dateModified": "2026-09-11",
       "headline": "香港企業的 AI RFP 應該寫入甚麼？",
       "citation": [
         {
@@ -478,7 +478,7 @@ RFP 是否應指定模型供應商？
       "url": "https://hk.onyxdevslab.com/zh-hk/guides/enterprise-ai-rfp-template/",
       "name": "香港企業 AI RFP 招標需求模板｜Onyx Devs Lab",
       "description": "可下載的企業 AI RFP 要求模板，涵蓋成果、數據、權限、評估、營運、交付、價格與退出。",
-      "dateModified": "2026-09-10",
+      "dateModified": "2026-09-11",
       "inLanguage": "zh-Hant-HK",
       "isPartOf": {
         "@id": "https://hk.onyxdevslab.com/#website"

@@ -13,7 +13,7 @@ language: "zh-Hant-HK"
 
 連接內部材料與公開金融信息、暴露衝突及證據缺口，並把投資判斷保留給分析師的 Agent 研究工作流。
 
-作者 [Onyx Devs Lab](/zh-hk/about/) · 發布 2026-09-07 · 更新 2026-09-10
+作者 [Onyx Devs Lab](/zh-hk/about/) · 發布 2026-09-07 · 更新 2026-09-11
 
 [English](/en/case-studies/credit-research-ai-agent/) [简体中文](/zh-cn/case-studies/credit-research-ai-agent/)
 
@@ -415,7 +415,7 @@ language: "zh-Hant-HK"
       "publisher": {
         "@id": "https://hk.onyxdevslab.com/#organization"
       },
-      "dateModified": "2026-09-10",
+      "dateModified": "2026-09-11",
       "headline": "不隱藏來源的債權研究自動化",
       "datePublished": "2026-09-07",
       "mainEntityOfPage": {
@@ -429,7 +429,7 @@ language: "zh-Hant-HK"
       "url": "https://hk.onyxdevslab.com/zh-hk/case-studies/credit-research-ai-agent/",
       "name": "債權研究 AI Agent 案例｜Onyx Devs Lab",
       "description": "融合內部材料、最新公開信息、可回查結論與分析師覆核的債權研究 Agent 工作流。",
-      "dateModified": "2026-09-10",
+      "dateModified": "2026-09-11",
       "inLanguage": "zh-Hant-HK",
       "isPartOf": {
         "@id": "https://hk.onyxdevslab.com/#website"

@@ -13,7 +13,7 @@ language: "zh-Hant-HK"
 
 連接司磅、化驗、車輛、能耗及 PLC 數據，同時保持營運技術控制隔離的 ERP 與 AI 信息層。
 
-作者 [Onyx Devs Lab](/zh-hk/about/) · 發布 2026-09-07 · 更新 2026-09-10
+作者 [Onyx Devs Lab](/zh-hk/about/) · 發布 2026-09-07 · 更新 2026-09-11
 
 [English](/en/case-studies/industrial-erp-ai-data-platform/) [简体中文](/zh-cn/case-studies/industrial-erp-ai-data-platform/)
 
@@ -415,7 +415,7 @@ ERP、移動端及工業數據
       "publisher": {
         "@id": "https://hk.onyxdevslab.com/#organization"
       },
-      "dateModified": "2026-09-10",
+      "dateModified": "2026-09-11",
       "headline": "從工業現場到管理決策的可信數據鏈路",
       "datePublished": "2026-09-07",
       "mainEntityOfPage": {
@@ -429,7 +429,7 @@ ERP、移動端及工業數據
       "url": "https://hk.onyxdevslab.com/zh-hk/case-studies/industrial-erp-ai-data-platform/",
       "name": "工業 ERP 與 AI 數據平台案例｜Onyx Devs Lab",
       "description": "連接司磅、化驗、車輛、能耗、ERP 與 PLC 信息，同時不把安全控制交給 AI 的工業數據平台。",
-      "dateModified": "2026-09-10",
+      "dateModified": "2026-09-11",
       "inLanguage": "zh-Hant-HK",
       "isPartOf": {
         "@id": "https://hk.onyxdevslab.com/#website"

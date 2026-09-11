@@ -13,7 +13,7 @@ language: "zh-CN"
 
 先界定受影响流程和个人数据边界，再指定责任人、按风险配置人工权限、测试完整系统，并在上线后保留可核验的证据。
 
-作者 [Onyx Devs Lab](/zh-cn/about/) · 发布 2026-09-09 · 更新 2026-09-10
+作者 [Onyx Devs Lab](/zh-cn/about/) · 发布 2026-09-09 · 更新 2026-09-11
 
 [预约项目评估](mailto:info@onyxdevslab.com?subject=%E9%A6%99%E6%B8%AF%E4%BC%81%E4%B8%9A%E9%83%A8%E7%BD%B2%20AI%20%E5%89%8D%EF%BC%8C%E9%9C%80%E8%A6%81%E5%BB%BA%E7%AB%8B%E5%93%AA%E4%BA%9B%E6%B2%BB%E7%90%86%E6%8E%A7%E5%88%B6%EF%BC%9F) [English](/en/guides/hong-kong-enterprise-ai-governance/) [繁體中文](/zh-hk/guides/enterprise-ai-governance/)
 
@@ -441,7 +441,7 @@ language: "zh-CN"
       "publisher": {
         "@id": "https://hk.onyxdevslab.com/#organization"
       },
-      "dateModified": "2026-09-10",
+      "dateModified": "2026-09-11",
       "headline": "香港企业部署 AI 前，需要建立哪些治理控制？",
       "citation": [
         {
@@ -467,7 +467,7 @@ language: "zh-CN"
       "url": "https://hk.onyxdevslab.com/zh-cn/guides/enterprise-ai-governance/",
       "name": "香港企业 AI 治理清单｜隐私、风险与人工监督｜Onyx Devs Lab",
       "description": "依据香港隐私专员公署框架，把企业 AI 治理落实为责任、风险评估、人工监督、数据、测试、监控和沟通控制。",
-      "dateModified": "2026-09-10",
+      "dateModified": "2026-09-11",
       "inLanguage": "zh-CN",
       "isPartOf": {
         "@id": "https://hk.onyxdevslab.com/#website"

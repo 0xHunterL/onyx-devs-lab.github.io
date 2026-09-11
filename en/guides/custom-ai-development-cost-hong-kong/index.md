@@ -13,7 +13,7 @@ Commercial scope guide
 
 A credible estimate is driven less by the number of screens than by integration depth, data condition, evaluation, permissions, and the operating responsibility the system must carry.
 
-By [Onyx Devs Lab](/en/about/) · Published 2026-09-07 · Updated 2026-09-10
+By [Onyx Devs Lab](/en/about/) · Published 2026-09-07 · Updated 2026-09-11
 
 [Book a project assessment](mailto:info@onyxdevslab.com?subject=What%20determines%20custom%20AI%20development%20cost%20in%20Hong%20Kong%3F) [繁體中文](/zh-hk/guides/ai-custom-development-cost/) [简体中文](/zh-cn/guides/custom-ai-development-cost/)
 
@@ -431,7 +431,7 @@ We will first clarify the workflow, evidence, data boundary, and outcome standar
       "publisher": {
         "@id": "https://hk.onyxdevslab.com/#organization"
       },
-      "dateModified": "2026-09-10",
+      "dateModified": "2026-09-11",
       "headline": "What determines custom AI development cost in Hong Kong?",
       "datePublished": "2026-09-07",
       "mainEntityOfPage": {
@@ -445,7 +445,7 @@ We will first clarify the workflow, evidence, data boundary, and outcome standar
       "url": "https://hk.onyxdevslab.com/en/guides/custom-ai-development-cost-hong-kong/",
       "name": "Custom AI Development Cost in Hong Kong | Scope Guide",
       "description": "Understand what drives custom AI development cost in Hong Kong, what a credible estimate includes, and how to reduce risk before committing to a build.",
-      "dateModified": "2026-09-10",
+      "dateModified": "2026-09-11",
       "inLanguage": "en",
       "isPartOf": {
         "@id": "https://hk.onyxdevslab.com/#website"

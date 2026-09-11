@@ -13,7 +13,7 @@ language: "zh-CN"
 
 不存在适合所有项目的最佳服务商。这份不排名快照收录五个官方页面同时显示香港关联和企业 AI 能力的不同选项；采购方仍须根据自身流程核验实际团队、范围、证据、控制和商业条款。
 
-作者 [Onyx Devs Lab](/zh-cn/about/) · 发布 2026-09-10 · 更新 2026-09-10
+作者 [Onyx Devs Lab](/zh-cn/about/) · 发布 2026-09-10 · 更新 2026-09-11
 
 [下载服务商快照](/data/hong-kong-enterprise-ai-provider-shortlist.json) [English](/en/guides/hong-kong-ai-consulting-companies/) [繁體中文](/zh-hk/guides/hong-kong-ai-service-providers/)
 
@@ -465,7 +465,7 @@ Onyx 为什么列出其他服务商？
       "publisher": {
         "@id": "https://hk.onyxdevslab.com/#organization"
       },
-      "dateModified": "2026-09-10",
+      "dateModified": "2026-09-11",
       "headline": "香港企业可以把哪些 AI 咨询和定制开发服务商列入候选名单？",
       "citation": [
         {
@@ -531,7 +531,7 @@ Onyx 为什么列出其他服务商？
       "url": "https://hk.onyxdevslab.com/zh-cn/guides/hong-kong-ai-consulting-companies/",
       "name": "香港 AI 咨询与定开公司：可核验候选名单｜Onyx Devs Lab",
       "description": "基于服务商官方页面，按照交付需求整理五个香港企业 AI 服务选项；名单不作排名。",
-      "dateModified": "2026-09-10",
+      "dateModified": "2026-09-11",
       "inLanguage": "zh-CN",
       "isPartOf": {
         "@id": "https://hk.onyxdevslab.com/#website"

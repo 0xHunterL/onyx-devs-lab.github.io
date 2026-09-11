@@ -446,7 +446,7 @@ We will first clarify the workflow, evidence, data boundary, and outcome standar
       "url": "https://hk.onyxdevslab.com/en/forward-deployed-engineering/",
       "name": "Forward Deployed Engineering (FDE) | Onyx Devs Lab",
       "description": "Forward Deployed Engineering for complex AI transformation: field diagnosis, embedded implementation, deployment, and measurable validation in one delivery loop.",
-      "dateModified": "2026-09-10",
+      "dateModified": "2026-09-11",
       "inLanguage": "en",
       "isPartOf": {
         "@id": "https://hk.onyxdevslab.com/#website"

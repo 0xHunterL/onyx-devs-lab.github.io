@@ -13,7 +13,7 @@ Case study · Delivery evidence
 
 An ERP and AI information layer connecting weighbridge, laboratory, vehicle, energy, and PLC data while keeping operational technology control separate.
 
-By [Onyx Devs Lab](/en/about/) · Published 2026-09-07 · Updated 2026-09-10
+By [Onyx Devs Lab](/en/about/) · Published 2026-09-07 · Updated 2026-09-11
 
 [繁體中文](/zh-hk/case-studies/industrial-erp-ai-data-platform/) [简体中文](/zh-cn/case-studies/industrial-erp-ai-data-platform/)
 
@@ -415,7 +415,7 @@ Validation covers data-record completeness, collection timeliness, and operator 
       "publisher": {
         "@id": "https://hk.onyxdevslab.com/#organization"
       },
-      "dateModified": "2026-09-10",
+      "dateModified": "2026-09-11",
       "headline": "A trusted data path from industrial operations to management decisions",
       "datePublished": "2026-09-07",
       "mainEntityOfPage": {
@@ -429,7 +429,7 @@ Validation covers data-record completeness, collection timeliness, and operator 
       "url": "https://hk.onyxdevslab.com/en/case-studies/industrial-erp-ai-data-platform/",
       "name": "Industrial ERP and AI Data Platform Case Study | Onyx Devs Lab",
       "description": "An industrial data platform connecting weighbridge, laboratory, vehicle, energy, ERP, and PLC information without handing safety control to AI.",
-      "dateModified": "2026-09-10",
+      "dateModified": "2026-09-11",
       "inLanguage": "en",
       "isPartOf": {
         "@id": "https://hk.onyxdevslab.com/#website"

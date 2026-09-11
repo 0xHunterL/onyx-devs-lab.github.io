@@ -401,7 +401,7 @@ Cross-disciplinary strategy and operations lead with computer science, mathemati
       "mainEntity": {
         "@id": "https://hk.onyxdevslab.com/#organization"
       },
-      "dateModified": "2026-09-10"
+      "dateModified": "2026-09-11"
     },
     {
       "@type": "WebPage",
@@ -409,7 +409,7 @@ Cross-disciplinary strategy and operations lead with computer science, mathemati
       "url": "https://hk.onyxdevslab.com/en/about/",
       "name": "About Onyx Devs Lab | Senior AI Delivery Team",
       "description": "Meet the senior Onyx Devs Lab team delivering AI advisory, custom development, and Forward Deployed Engineering for enterprise operations.",
-      "dateModified": "2026-09-10",
+      "dateModified": "2026-09-11",
       "inLanguage": "en",
       "isPartOf": {
         "@id": "https://hk.onyxdevslab.com/#website"

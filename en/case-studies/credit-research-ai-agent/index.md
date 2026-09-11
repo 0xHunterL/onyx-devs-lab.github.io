@@ -13,7 +13,7 @@ Case study · Delivery evidence
 
 An agentic research workflow that connects internal materials and public financial information, exposes conflicts and missing evidence, and keeps investment judgement with the analyst.
 
-By [Onyx Devs Lab](/en/about/) · Published 2026-09-07 · Updated 2026-09-10
+By [Onyx Devs Lab](/en/about/) · Published 2026-09-07 · Updated 2026-09-11
 
 [繁體中文](/zh-hk/case-studies/credit-research-ai-agent/) [简体中文](/zh-cn/case-studies/credit-research-ai-agent/)
 
@@ -415,7 +415,7 @@ The validation sample measures fact recall, citation coverage, and first-draft t
       "publisher": {
         "@id": "https://hk.onyxdevslab.com/#organization"
       },
-      "dateModified": "2026-09-10",
+      "dateModified": "2026-09-11",
       "headline": "Credit research automation without hiding the source",
       "datePublished": "2026-09-07",
       "mainEntityOfPage": {
@@ -429,7 +429,7 @@ The validation sample measures fact recall, citation coverage, and first-draft t
       "url": "https://hk.onyxdevslab.com/en/case-studies/credit-research-ai-agent/",
       "name": "Credit Research AI Agent Case Study | Onyx Devs Lab",
       "description": "A credit-research agent workflow combining internal material, current public information, source-linked conclusions, and analyst review.",
-      "dateModified": "2026-09-10",
+      "dateModified": "2026-09-11",
       "inLanguage": "en",
       "isPartOf": {
         "@id": "https://hk.onyxdevslab.com/#website"

@@ -13,7 +13,7 @@ language: "zh-CN"
 
 安全模式是保留 ERP 作为权威记录系统，只向 Agent 开放最小必要的数据和工具，并区分读取、建议、草拟和确认写入权限。
 
-作者 [Onyx Devs Lab](/zh-cn/about/) · 发布 2026-09-07 · 更新 2026-09-10
+作者 [Onyx Devs Lab](/zh-cn/about/) · 发布 2026-09-07 · 更新 2026-09-11
 
 [预约项目评估](mailto:info@onyxdevslab.com?subject=AI%20Agent%20%E5%BA%94%E8%AF%A5%E6%80%8E%E6%A0%B7%E8%BF%9E%E6%8E%A5%20ERP%EF%BC%9F) [English](/en/guides/enterprise-ai-agent-erp-integration/) [繁體中文](/zh-hk/guides/enterprise-ai-agent-erp-integration/)
 
@@ -437,7 +437,7 @@ Agent 可以直接写生产数据吗？
       "publisher": {
         "@id": "https://hk.onyxdevslab.com/#organization"
       },
-      "dateModified": "2026-09-10",
+      "dateModified": "2026-09-11",
       "headline": "AI Agent 应该怎样连接 ERP？",
       "archivedAt": "https://web.archive.org/web/20260910164723/https://hk.onyxdevslab.com/zh-cn/guides/enterprise-ai-agent-erp-integration/",
       "datePublished": "2026-09-07",
@@ -452,7 +452,7 @@ Agent 可以直接写生产数据吗？
       "url": "https://hk.onyxdevslab.com/zh-cn/guides/enterprise-ai-agent-erp-integration/",
       "name": "企业 AI Agent 与 ERP 集成指南｜Onyx Devs Lab",
       "description": "在保留 ERP 作为记录系统的前提下，把企业 AI Agent 安全连接到数据与业务操作。",
-      "dateModified": "2026-09-10",
+      "dateModified": "2026-09-11",
       "inLanguage": "zh-CN",
       "isPartOf": {
         "@id": "https://hk.onyxdevslab.com/#website"

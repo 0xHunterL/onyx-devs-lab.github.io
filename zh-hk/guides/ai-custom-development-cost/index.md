@@ -13,7 +13,7 @@ language: "zh-Hant-HK"
 
 可信估算主要不是由界面數量決定，而是由整合深度、數據狀況、評估、權限及系統需要承擔的營運責任決定。
 
-作者 [Onyx Devs Lab](/zh-hk/about/) · 發布 2026-09-07 · 更新 2026-09-10
+作者 [Onyx Devs Lab](/zh-hk/about/) · 發布 2026-09-07 · 更新 2026-09-11
 
 [預約項目評估](mailto:info@onyxdevslab.com?subject=%E9%A6%99%E6%B8%AF%20AI%20%E5%AE%9A%E5%88%B6%E9%96%8B%E7%99%BC%E8%B2%BB%E7%94%A8%E7%94%B1%E7%94%9A%E9%BA%BC%E6%B1%BA%E5%AE%9A%EF%BC%9F) [English](/en/guides/custom-ai-development-cost-hong-kong/) [简体中文](/zh-cn/guides/custom-ai-development-cost/)
 
@@ -431,7 +431,7 @@ language: "zh-Hant-HK"
       "publisher": {
         "@id": "https://hk.onyxdevslab.com/#organization"
       },
-      "dateModified": "2026-09-10",
+      "dateModified": "2026-09-11",
       "headline": "香港 AI 定制開發費用由甚麼決定？",
       "datePublished": "2026-09-07",
       "mainEntityOfPage": {
@@ -445,7 +445,7 @@ language: "zh-Hant-HK"
       "url": "https://hk.onyxdevslab.com/zh-hk/guides/ai-custom-development-cost/",
       "name": "香港 AI 定制開發費用如何估算｜Onyx Devs Lab",
       "description": "了解香港 AI 定制開發的主要成本因素、可信報價應包含甚麼，以及如何在全面開發前降低風險。",
-      "dateModified": "2026-09-10",
+      "dateModified": "2026-09-11",
       "inLanguage": "zh-Hant-HK",
       "isPartOf": {
         "@id": "https://hk.onyxdevslab.com/#website"

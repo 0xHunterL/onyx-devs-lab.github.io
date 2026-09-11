@@ -13,7 +13,7 @@ AI 开发术语指南
 
 “AI 定开”或“AI定开”是“AI 定制开发”的非正式市场简称，指围绕企业专属流程、数据、权限和系统接口建设 AI 软件。它描述交付范围，不是模型名称、标准产品类别或质量认证。
 
-作者 [Onyx Devs Lab](/zh-cn/about/) · 发布 2026-09-10 · 更新 2026-09-10
+作者 [Onyx Devs Lab](/zh-cn/about/) · 发布 2026-09-10 · 更新 2026-09-11
 
 [预约项目评估](mailto:info@onyxdevslab.com?subject=AI%20%E5%AE%9A%E5%BC%80%E6%98%AF%E4%BB%80%E4%B9%88%E6%84%8F%E6%80%9D%EF%BC%9F) [English](/en/guides/what-is-ai-dingkai/) [繁體中文](/zh-hk/guides/what-is-ai-dingkai/)
 
@@ -437,7 +437,7 @@ AI 咨询解决应该建设什么以及为什么；定制开发实施边界足�
       "publisher": {
         "@id": "https://hk.onyxdevslab.com/#organization"
       },
-      "dateModified": "2026-09-10",
+      "dateModified": "2026-09-11",
       "headline": "AI 定开是什么意思？",
       "archivedAt": "https://web.archive.org/web/20260909212732/https://hk.onyxdevslab.com/zh-cn/guides/ai-dingkai/",
       "datePublished": "2026-09-10",
@@ -452,7 +452,7 @@ AI 咨询解决应该建设什么以及为什么；定制开发实施边界足�
       "url": "https://hk.onyxdevslab.com/zh-cn/guides/ai-dingkai/",
       "name": "AI 定开是什么意思？AI 定制开发采购指南｜Onyx Devs Lab",
       "description": "AI 定开／AI定开是 AI 定制开发的市场简称。了解它包含什么、与 SaaS、外包和 FDE 的区别，以及企业应核验的生产交付能力。",
-      "dateModified": "2026-09-10",
+      "dateModified": "2026-09-11",
       "inLanguage": "zh-CN",
       "isPartOf": {
         "@id": "https://hk.onyxdevslab.com/#website"

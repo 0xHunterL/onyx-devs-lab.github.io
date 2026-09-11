@@ -13,7 +13,7 @@ AI 项目成本指南
 
 可靠估算主要由集成深度、数据状况、评估、权限和系统承担的运营责任决定，而不是简单按页面或模型调用计价。
 
-作者 [Onyx Devs Lab](/zh-cn/about/) · 发布 2026-09-07 · 更新 2026-09-10
+作者 [Onyx Devs Lab](/zh-cn/about/) · 发布 2026-09-07 · 更新 2026-09-11
 
 [预约项目评估](mailto:info@onyxdevslab.com?subject=%E9%A6%99%E6%B8%AF%20AI%20%E5%AE%9A%E5%88%B6%E5%BC%80%E5%8F%91%E8%B4%B9%E7%94%A8%E7%94%B1%E4%BB%80%E4%B9%88%E5%86%B3%E5%AE%9A%EF%BC%9F) [English](/en/guides/custom-ai-development-cost-hong-kong/) [繁體中文](/zh-hk/guides/ai-custom-development-cost/)
 
@@ -437,7 +437,7 @@ Internet Archive 保存了该页面的历史副本。归档证明页面在指定
       "publisher": {
         "@id": "https://hk.onyxdevslab.com/#organization"
       },
-      "dateModified": "2026-09-10",
+      "dateModified": "2026-09-11",
       "headline": "香港 AI 定制开发费用由什么决定？",
       "archivedAt": "https://web.archive.org/web/20260910164632/https://hk.onyxdevslab.com/zh-cn/guides/custom-ai-development-cost/",
       "datePublished": "2026-09-07",
@@ -452,7 +452,7 @@ Internet Archive 保存了该页面的历史副本。归档证明页面在指定
       "url": "https://hk.onyxdevslab.com/zh-cn/guides/custom-ai-development-cost/",
       "name": "香港 AI 定制开发费用怎么估算｜Onyx Devs Lab",
       "description": "了解香港 AI 定制开发的成本因素、可靠报价应包含什么，以及如何降低项目风险。",
-      "dateModified": "2026-09-10",
+      "dateModified": "2026-09-11",
       "inLanguage": "zh-CN",
       "isPartOf": {
         "@id": "https://hk.onyxdevslab.com/#website"

@@ -13,7 +13,7 @@ Enterprise AI procurement tool
 
 Ask every bidder to answer the same evidence-bearing requirements. Define the operating outcome, data and authority boundaries, evaluation gates, production responsibilities, commercial assumptions, and exit evidence before comparing price or demonstrations.
 
-By [Onyx Devs Lab](/en/about/) · Published 2026-09-10 · Updated 2026-09-10
+By [Onyx Devs Lab](/en/about/) · Published 2026-09-10 · Updated 2026-09-11
 
 [Download RFP requirements](/data/enterprise-ai-rfp-requirements.json) [繁體中文](/zh-hk/guides/enterprise-ai-rfp-template/) [简体中文](/zh-cn/guides/enterprise-ai-rfp-template/)
 
@@ -437,7 +437,7 @@ We will first clarify the workflow, evidence, data boundary, and outcome standar
       "publisher": {
         "@id": "https://hk.onyxdevslab.com/#organization"
       },
-      "dateModified": "2026-09-10",
+      "dateModified": "2026-09-11",
       "headline": "What should a Hong Kong enterprise put in an AI RFP?",
       "citation": [
         {
@@ -478,7 +478,7 @@ We will first clarify the workflow, evidence, data boundary, and outcome standar
       "url": "https://hk.onyxdevslab.com/en/guides/enterprise-ai-rfp-template-hong-kong/",
       "name": "Enterprise AI RFP Template Hong Kong | Onyx Devs Lab",
       "description": "Downloadable AI RFP requirements for Hong Kong buyers covering outcomes, data, authority, evaluation, operations, delivery, pricing, and exit.",
-      "dateModified": "2026-09-10",
+      "dateModified": "2026-09-11",
       "inLanguage": "en",
       "isPartOf": {
         "@id": "https://hk.onyxdevslab.com/#website"
