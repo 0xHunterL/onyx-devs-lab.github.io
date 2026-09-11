@@ -1110,11 +1110,11 @@
       ]
     },
     {
-      "id": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-monitor-evidence-2026-09-11-3",
-      "url": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-monitor-evidence-2026-09-11-3",
-      "title": "Onyx automated GEO monitor evidence checkpoint — 2026-09-11, revision 3",
-      "summary": "A versioned machine-readable checkpoint recording seven verified OAI-SearchBot discovery-file requests, zero OAI search content requests, current crawler and prompt coverage, 68 attribution candidates classified as 59 suspected automated requests and nine visitor-type-unverified requests, and explicit public-search non-results. It does not prove indexing, citation, or recommendation.",
-      "content_text": "A versioned machine-readable checkpoint recording seven verified OAI-SearchBot discovery-file requests, zero OAI search content requests, current crawler and prompt coverage, 68 attribution candidates classified as 59 suspected automated requests and nine visitor-type-unverified requests, and explicit public-search non-results. It does not prove indexing, citation, or recommendation.",
+      "id": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-monitor-evidence-2026-09-11-4",
+      "url": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-monitor-evidence-2026-09-11-4",
+      "title": "Onyx automated GEO monitor evidence checkpoint — 2026-09-11, revision 4",
+      "summary": "A versioned machine-readable checkpoint recording eight verified OAI-SearchBot discovery-file requests, zero OAI search content requests, current crawler and prompt coverage, 68 attribution candidates classified as 59 suspected automated requests and nine visitor-type-unverified requests, and explicit public-search non-results. It does not prove indexing, citation, or recommendation.",
+      "content_text": "A versioned machine-readable checkpoint recording eight verified OAI-SearchBot discovery-file requests, zero OAI search content requests, current crawler and prompt coverage, 68 attribution candidates classified as 59 suspected automated requests and nine visitor-type-unverified requests, and explicit public-search non-results. It does not prove indexing, citation, or recommendation.",
       "date_modified": "2026-09-11T00:00:00+08:00",
       "tags": [
         "evidence",
