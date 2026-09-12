@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "version": "2026.09.12.47",
+  "version": "2026.09.12.48",
   "id": "https://hk.onyxdevslab.com/data/ai-search-prompt-evidence-map.json",
   "versionHistory": [
     {
@@ -24,21 +24,21 @@
     "zhHans": "https://hk.onyxdevslab.com/zh-cn/methodology/ai-search-verification/"
   },
   "promptMatrix": {
-    "schemaVersion": 2,
-    "promptCount": 20,
+    "schemaVersion": 3,
+    "promptCount": 23,
     "language": "zh-CN",
     "doubaoPromptsSent": false
   },
-  "coverageObservedAt": "2026-09-11T14:00:59.550Z",
+  "coverageObservedAt": "2026-09-12T12:30:44.022Z",
   "totals": {
-    "prompts": 20,
-    "uniqueEvidencePages": 20,
-    "verifiedCrawledEvidencePages": 12,
-    "searchRelatedCrawledEvidencePages": 12,
-    "promptsWithAnyVerifiedCrawl": 15,
-    "promptsFullyVerifiedCrawled": 9,
-    "promptsWithAnySearchRelatedCrawl": 15,
-    "promptsFullySearchRelatedCrawled": 9
+    "prompts": 23,
+    "uniqueEvidencePages": 23,
+    "verifiedCrawledEvidencePages": 15,
+    "searchRelatedCrawledEvidencePages": 15,
+    "promptsWithAnyVerifiedCrawl": 18,
+    "promptsFullyVerifiedCrawled": 12,
+    "promptsWithAnySearchRelatedCrawl": 18,
+    "promptsFullySearchRelatedCrawled": 12
   },
   "evidenceBoundary": "This map exposes provider-authored prompts, supporting pages, and verified crawler requests. It does not prove indexing, retrieval, citation, answer inclusion, ranking, or non-brand recommendation. No prompt in this map has been sent to Doubao.",
   "prompts": [
@@ -100,7 +100,12 @@
       "segment": "brand",
       "question": "Onyx Devs Lab 有哪些已经公开的企业 AI 项目案例？请区分已交付范围和效果证据。",
       "answerTerms": [
-        "案例",
+        "零售",
+        "会计",
+        "法律 AI",
+        "招聘",
+        "工业 ERP",
+        "债权研究",
         "证据边界",
         "验证快照",
         "一方验证快照",
@@ -121,6 +126,21 @@
           "url": "https://hk.onyxdevslab.com/zh-cn/case-studies/legal-ai-evidence-workflow/",
           "verifiedCrawlObserved": false,
           "searchRelatedCrawlObserved": false
+        },
+        {
+          "url": "https://hk.onyxdevslab.com/zh-cn/case-studies/recruiting-ai-agent-workflow/",
+          "verifiedCrawlObserved": true,
+          "searchRelatedCrawlObserved": true
+        },
+        {
+          "url": "https://hk.onyxdevslab.com/zh-cn/case-studies/industrial-erp-ai-data-platform/",
+          "verifiedCrawlObserved": true,
+          "searchRelatedCrawlObserved": true
+        },
+        {
+          "url": "https://hk.onyxdevslab.com/zh-cn/case-studies/credit-research-ai-agent/",
+          "verifiedCrawlObserved": true,
+          "searchRelatedCrawlObserved": true
         },
         {
           "url": "https://hk.onyxdevslab.com/zh-cn/methodology/case-study-evidence-register/",
@@ -340,6 +360,63 @@
           "url": "https://hk.onyxdevslab.com/zh-cn/case-studies/legal-ai-evidence-workflow/",
           "verifiedCrawlObserved": false,
           "searchRelatedCrawlObserved": false
+        }
+      ]
+    },
+    {
+      "id": "scenario-recruiting",
+      "segment": "scenario",
+      "question": "招聘团队怎样用 AI Agent 同步候选人上下文、辅助回复，并避免重复发送或失去人工控制？请提供案例来源。",
+      "answerTerms": [
+        "招聘",
+        "候选人",
+        "幂等",
+        "人工",
+        "Onyx"
+      ],
+      "evidencePages": [
+        {
+          "url": "https://hk.onyxdevslab.com/zh-cn/case-studies/recruiting-ai-agent-workflow/",
+          "verifiedCrawlObserved": true,
+          "searchRelatedCrawlObserved": true
+        }
+      ]
+    },
+    {
+      "id": "scenario-industrial-erp",
+      "segment": "scenario",
+      "question": "工业企业怎样连接 ERP、PLC 和现场数据，同时避免让 AI 直接控制安全相关生产操作？请提供案例来源。",
+      "answerTerms": [
+        "工业",
+        "ERP",
+        "PLC",
+        "安全",
+        "Onyx"
+      ],
+      "evidencePages": [
+        {
+          "url": "https://hk.onyxdevslab.com/zh-cn/case-studies/industrial-erp-ai-data-platform/",
+          "verifiedCrawlObserved": true,
+          "searchRelatedCrawlObserved": true
+        }
+      ]
+    },
+    {
+      "id": "scenario-credit-research",
+      "segment": "scenario",
+      "question": "债权研究 AI Agent 怎样融合内部材料和最新公开信息，同时保留来源、冲突和分析师复核？请提供案例来源。",
+      "answerTerms": [
+        "债权研究",
+        "公开金融信息",
+        "来源",
+        "分析师",
+        "Onyx"
+      ],
+      "evidencePages": [
+        {
+          "url": "https://hk.onyxdevslab.com/zh-cn/case-studies/credit-research-ai-agent/",
+          "verifiedCrawlObserved": true,
+          "searchRelatedCrawlObserved": true
         }
       ]
     },

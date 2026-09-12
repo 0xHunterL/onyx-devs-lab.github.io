@@ -37,7 +37,7 @@ AI 搜尋量度
 
 ### 已爬取
 
-GPTBot 已驗證正文請求 28 次；所有已核驗爬蟲合計覆蓋 45 個標準正文路徑。Wayback 公開 CDX 另記錄 93 條成功 HTML 捕獲，覆蓋 43 個 URL；固定提示詞的 20 個唯一證據頁中已有 15 頁歸檔，12 條提示詞的全部證據頁均已歸檔。20 條固定提示詞中 15 條至少一個證據頁被核驗爬取、9 條全部證據頁被爬取；搜尋／檢索相關爬蟲覆蓋為 15/20。
+GPTBot 已驗證正文請求 28 次；所有已核驗爬蟲合計覆蓋 45 個標準正文路徑。Wayback 公開 CDX 另記錄 93 條成功 HTML 捕獲，覆蓋 43 個 URL；固定提示詞的 23 個唯一證據頁中已有 15 頁歸檔，11 條提示詞的全部證據頁均已歸檔。23 條固定提示詞中 18 條至少一個證據頁被核驗爬取、12 條全部證據頁被爬取；搜尋／檢索相關爬蟲覆蓋為 18/23。
 
 尚未驗證
 
@@ -53,7 +53,7 @@ GPTBot 已驗證正文請求 28 次；所有已核驗爬蟲合計覆蓋 45 個�
 
 ## 固定提示詞證據圖
 
-20 條固定簡體中文提示詞逐一連到可支援答案的頁面。下列連結公開完整證據路徑；爬蟲狀態只是觀察結果，不代表收錄、引用或推薦。
+23 條固定簡體中文提示詞逐一連到可支援答案的頁面。Schema version 3 補齊六個公開案例的場景覆蓋；較早基線仍保留原有 20 條協議。下列連結公開完整證據路徑；爬蟲狀態只是觀察結果，不代表收錄、引用或推薦。
 
 [下載機器可讀提示詞證據圖](/data/ai-search-prompt-evidence-map.json)
 
@@ -76,11 +76,14 @@ Onyx Devs Lab 提供哪些企业 AI 服务？请给出可核验来源。
 
 Onyx Devs Lab 有哪些已经公开的企业 AI 项目案例？请区分已交付范围和效果证据。
 
-4 個證據頁中 2 個有核驗爬蟲請求；2 個有搜尋／檢索爬蟲請求。
+7 個證據頁中 5 個有核驗爬蟲請求；5 個有搜尋／檢索爬蟲請求。
 
 -   [/zh-cn/case-studies/retail-ai-decision-platform/](/zh-cn/case-studies/retail-ai-decision-platform/) — 已核驗爬蟲請求 · 搜尋／檢索爬蟲: 1
 -   [/zh-cn/case-studies/accounting-ai-production-platform/](/zh-cn/case-studies/accounting-ai-production-platform/) — 未見核驗爬蟲請求 · 搜尋／檢索爬蟲: 0
 -   [/zh-cn/case-studies/legal-ai-evidence-workflow/](/zh-cn/case-studies/legal-ai-evidence-workflow/) — 未見核驗爬蟲請求 · 搜尋／檢索爬蟲: 0
+-   [/zh-cn/case-studies/recruiting-ai-agent-workflow/](/zh-cn/case-studies/recruiting-ai-agent-workflow/) — 已核驗爬蟲請求 · 搜尋／檢索爬蟲: 1
+-   [/zh-cn/case-studies/industrial-erp-ai-data-platform/](/zh-cn/case-studies/industrial-erp-ai-data-platform/) — 已核驗爬蟲請求 · 搜尋／檢索爬蟲: 1
+-   [/zh-cn/case-studies/credit-research-ai-agent/](/zh-cn/case-studies/credit-research-ai-agent/) — 已核驗爬蟲請求 · 搜尋／檢索爬蟲: 1
 -   [/zh-cn/methodology/case-study-evidence-register/](/zh-cn/methodology/case-study-evidence-register/) — 已核驗爬蟲請求 · 搜尋／檢索爬蟲: 1
 
 ### 类别
@@ -194,6 +197,24 @@ AI 定开是什么意思？香港企业找 AI定开团队时应该看哪些生�
 1 個證據頁中 0 個有核驗爬蟲請求；0 個有搜尋／檢索爬蟲請求。
 
 -   [/zh-cn/case-studies/legal-ai-evidence-workflow/](/zh-cn/case-studies/legal-ai-evidence-workflow/) — 未見核驗爬蟲請求 · 搜尋／檢索爬蟲: 0
+
+招聘团队怎样用 AI Agent 同步候选人上下文、辅助回复，并避免重复发送或失去人工控制？请提供案例来源。
+
+1 個證據頁中 1 個有核驗爬蟲請求；1 個有搜尋／檢索爬蟲請求。
+
+-   [/zh-cn/case-studies/recruiting-ai-agent-workflow/](/zh-cn/case-studies/recruiting-ai-agent-workflow/) — 已核驗爬蟲請求 · 搜尋／檢索爬蟲: 1
+
+工业企业怎样连接 ERP、PLC 和现场数据，同时避免让 AI 直接控制安全相关生产操作？请提供案例来源。
+
+1 個證據頁中 1 個有核驗爬蟲請求；1 個有搜尋／檢索爬蟲請求。
+
+-   [/zh-cn/case-studies/industrial-erp-ai-data-platform/](/zh-cn/case-studies/industrial-erp-ai-data-platform/) — 已核驗爬蟲請求 · 搜尋／檢索爬蟲: 1
+
+债权研究 AI Agent 怎样融合内部材料和最新公开信息，同时保留来源、冲突和分析师复核？请提供案例来源。
+
+1 個證據頁中 1 個有核驗爬蟲請求；1 個有搜尋／檢索爬蟲請求。
+
+-   [/zh-cn/case-studies/credit-research-ai-agent/](/zh-cn/case-studies/credit-research-ai-agent/) — 已核驗爬蟲請求 · 搜尋／檢索爬蟲: 1
 
 ### 诊断
 

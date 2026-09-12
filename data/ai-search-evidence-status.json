@@ -1,8 +1,8 @@
 {
   "schemaVersion": 2,
-  "version": "2026.09.12.47",
+  "version": "2026.09.12.48",
   "id": "https://hk.onyxdevslab.com/data/ai-search-evidence-status.json",
-  "observedAt": "2026-09-12T12:18:34.513Z",
+  "observedAt": "2026-09-12T12:31:15.092Z",
   "sourceBaseline": "https://github.com/0xHunterL/onyx-devs-lab.github.io/blob/main/docs/geo-baselines/2026-09-11-monitor-evidence.json",
   "versionHistory": [
     {
@@ -35,14 +35,15 @@
   },
   "testProtocol": {
     "promptMatrix": "geo/prompt-matrix.json",
-    "schemaVersion": 2,
-    "promptCount": 20,
+    "schemaVersion": 3,
+    "promptCount": 23,
     "retrievalMarker": "ONYX-GEO-VERIFY-79051925-20260908",
     "doubaoPromptsSent": false,
     "queryAliasesAdded": [
       "AI 定开",
       "AI定开"
-    ]
+    ],
+    "protocolChange": "Schema version 3 adds three scenario prompts and maps the brand-case prompt to all six published cases; historical baselines retain their original protocol."
   },
   "crawlerEvidenceAccounting": {
     "mode": "append-only-provider-verified-fingerprint-cumulative",
@@ -167,19 +168,22 @@
           "lastCaptureAt": "20260910164924",
           "query": "https://web.archive.org/cdx/search/cdx?url=hk.onyxdevslab.com%2F&matchType=host&output=json&fl=timestamp%2Coriginal%2Cmimetype%2Cstatuscode%2Cdigest&filter=statuscode%3A200&filter=mimetype%3Atext%2Fhtml&limit=1000",
           "fixedPromptArchiveCoverage": {
-            "prompts": 20,
-            "uniqueEvidencePages": 20,
+            "prompts": 23,
+            "uniqueEvidencePages": 23,
             "archivedEvidencePages": 15,
             "promptsWithAnyArchivedEvidence": 15,
-            "promptsFullyArchived": 12,
+            "promptsFullyArchived": 11,
             "missingEvidenceUrls": [
+              "https://hk.onyxdevslab.com/zh-cn/case-studies/credit-research-ai-agent/",
+              "https://hk.onyxdevslab.com/zh-cn/case-studies/industrial-erp-ai-data-platform/",
+              "https://hk.onyxdevslab.com/zh-cn/case-studies/recruiting-ai-agent-workflow/",
               "https://hk.onyxdevslab.com/zh-cn/guides/choose-enterprise-ai-partner/",
               "https://hk.onyxdevslab.com/zh-cn/guides/enterprise-ai-governance/",
               "https://hk.onyxdevslab.com/zh-cn/guides/enterprise-ai-pilot-charter/",
               "https://hk.onyxdevslab.com/zh-cn/guides/hong-kong-ai-consulting-companies/",
               "https://hk.onyxdevslab.com/zh-cn/methodology/ai-search-verification/"
             ],
-            "meaning": "This maps public historical Wayback captures to the fixed prompt matrix: 15 of 20 unique evidence pages have captures, 15 prompts have at least one archived evidence page, and 12 prompts have every mapped evidence page archived. It does not prove search indexing, AI retrieval, citation, ranking, endorsement, or recommendation."
+            "meaning": "This maps public historical Wayback captures to prompt-matrix schema version 3: 15 of 23 unique evidence pages have captures, 15 prompts have at least one archived evidence page, and 11 prompts have every mapped evidence page archived. The denominator change reflects three new scenario prompts and full six-case mapping, not lost captures. It does not prove search indexing, AI retrieval, citation, ranking, endorsement, or recommendation."
           },
           "indexResultRetractionObservation": {
             "firstReturnedAt": "2026-09-12T01:33:05.020Z",
@@ -219,15 +223,15 @@
           "meaning": "The public Wayback CDX host query recovered after the preceding timeout and currently returns 93 successful HTML capture records across 43 distinct URLs. The recovery is an availability transition, not a new snapshot or visibility gain. The records prove public historical captures only; they do not prove current accessibility, search indexing, AI retrieval, citation, ranking, endorsement, or recommendation. An unavailable future query must not be interpreted as zero captures."
         },
         "fixedPromptCoverage": {
-          "prompts": 20,
-          "uniqueEvidencePages": 20,
-          "verifiedCrawledEvidencePages": 12,
-          "searchRelatedCrawledEvidencePages": 12,
-          "promptsWithAnyVerifiedCrawl": 15,
-          "promptsFullyVerifiedCrawled": 9,
-          "promptsWithAnySearchRelatedCrawl": 15,
-          "promptsFullySearchRelatedCrawled": 9,
-          "scenarioPromptsWithAnyVerifiedCrawl": 1
+          "prompts": 23,
+          "uniqueEvidencePages": 23,
+          "verifiedCrawledEvidencePages": 15,
+          "searchRelatedCrawledEvidencePages": 15,
+          "promptsWithAnyVerifiedCrawl": 18,
+          "promptsFullyVerifiedCrawled": 12,
+          "promptsWithAnySearchRelatedCrawl": 18,
+          "promptsFullySearchRelatedCrawled": 12,
+          "scenarioPromptsWithAnyVerifiedCrawl": 4
         }
       },
       "limitations": [

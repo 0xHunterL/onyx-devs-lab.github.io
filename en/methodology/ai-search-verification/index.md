@@ -37,7 +37,7 @@ Partially verified
 
 ### Crawled
 
-GPTBot made 28 provider-verified content requests; all verified crawlers together covered 45 canonical content paths. The public Wayback CDX separately exposes 93 successful HTML captures across 43 URLs; 15 of 20 unique fixed-prompt evidence pages are archived, and 12 prompts have every evidence page archived. 15 of 20 fixed prompts have at least one verified-crawled evidence page and 9 have all pages crawled; search/retrieval-related crawler coverage is 15/20.
+GPTBot made 28 provider-verified content requests; all verified crawlers together covered 45 canonical content paths. The public Wayback CDX separately exposes 93 successful HTML captures across 43 URLs; 15 of 23 unique fixed-prompt evidence pages are archived, and 11 prompts have every evidence page archived. 18 of 23 fixed prompts have at least one verified-crawled evidence page and 12 have all pages crawled; search/retrieval-related crawler coverage is 18/23.
 
 Not verified
 
@@ -53,7 +53,7 @@ No fixed prompts have been sent to Doubao, and no qualifying recommendation evid
 
 ## Fixed-prompt evidence map
 
-Twenty fixed Simplified Chinese prompts are mapped to the pages that can support an answer. The links below expose the complete evidence path; crawler status is observational, not a claim of indexing, citation, or recommendation.
+23 fixed Simplified Chinese prompts are mapped to the pages that can support an answer. Schema version 3 adds scenario coverage for all six published cases; earlier baselines retain their original 20-prompt protocol. The links below expose the complete evidence path; crawler status is observational, not a claim of indexing, citation, or recommendation.
 
 [Download the machine-readable prompt map](/data/ai-search-prompt-evidence-map.json)
 
@@ -76,11 +76,14 @@ Onyx Devs Lab 提供哪些企业 AI 服务？请给出可核验来源。
 
 Onyx Devs Lab 有哪些已经公开的企业 AI 项目案例？请区分已交付范围和效果证据。
 
-2/4 evidence pages have a verified crawler request; 2/4 have a search/retrieval crawler request.
+5/7 evidence pages have a verified crawler request; 5/7 have a search/retrieval crawler request.
 
 -   [/zh-cn/case-studies/retail-ai-decision-platform/](/zh-cn/case-studies/retail-ai-decision-platform/) — verified crawler request · search/retrieval crawler: 1
 -   [/zh-cn/case-studies/accounting-ai-production-platform/](/zh-cn/case-studies/accounting-ai-production-platform/) — no verified crawler request · search/retrieval crawler: 0
 -   [/zh-cn/case-studies/legal-ai-evidence-workflow/](/zh-cn/case-studies/legal-ai-evidence-workflow/) — no verified crawler request · search/retrieval crawler: 0
+-   [/zh-cn/case-studies/recruiting-ai-agent-workflow/](/zh-cn/case-studies/recruiting-ai-agent-workflow/) — verified crawler request · search/retrieval crawler: 1
+-   [/zh-cn/case-studies/industrial-erp-ai-data-platform/](/zh-cn/case-studies/industrial-erp-ai-data-platform/) — verified crawler request · search/retrieval crawler: 1
+-   [/zh-cn/case-studies/credit-research-ai-agent/](/zh-cn/case-studies/credit-research-ai-agent/) — verified crawler request · search/retrieval crawler: 1
 -   [/zh-cn/methodology/case-study-evidence-register/](/zh-cn/methodology/case-study-evidence-register/) — verified crawler request · search/retrieval crawler: 1
 
 ### Category
@@ -194,6 +197,24 @@ AI 定开是什么意思？香港企业找 AI定开团队时应该看哪些生�
 0/1 evidence pages have a verified crawler request; 0/1 have a search/retrieval crawler request.
 
 -   [/zh-cn/case-studies/legal-ai-evidence-workflow/](/zh-cn/case-studies/legal-ai-evidence-workflow/) — no verified crawler request · search/retrieval crawler: 0
+
+招聘团队怎样用 AI Agent 同步候选人上下文、辅助回复，并避免重复发送或失去人工控制？请提供案例来源。
+
+1/1 evidence pages have a verified crawler request; 1/1 have a search/retrieval crawler request.
+
+-   [/zh-cn/case-studies/recruiting-ai-agent-workflow/](/zh-cn/case-studies/recruiting-ai-agent-workflow/) — verified crawler request · search/retrieval crawler: 1
+
+工业企业怎样连接 ERP、PLC 和现场数据，同时避免让 AI 直接控制安全相关生产操作？请提供案例来源。
+
+1/1 evidence pages have a verified crawler request; 1/1 have a search/retrieval crawler request.
+
+-   [/zh-cn/case-studies/industrial-erp-ai-data-platform/](/zh-cn/case-studies/industrial-erp-ai-data-platform/) — verified crawler request · search/retrieval crawler: 1
+
+债权研究 AI Agent 怎样融合内部材料和最新公开信息，同时保留来源、冲突和分析师复核？请提供案例来源。
+
+1/1 evidence pages have a verified crawler request; 1/1 have a search/retrieval crawler request.
+
+-   [/zh-cn/case-studies/credit-research-ai-agent/](/zh-cn/case-studies/credit-research-ai-agent/) — verified crawler request · search/retrieval crawler: 1
 
 ### Diagnostic
 
