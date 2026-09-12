@@ -25,7 +25,7 @@ By [Onyx Devs Lab](/en/about/) · Published 2026-09-08 · Updated 2026-09-12
 
 ## Current evidence status
 
-Observed through 12 September 2026. Each level states only preserved evidence; crawler access is never promoted to indexing, citation, or recommendation.
+Observed through 13 September 2026. Each level states only preserved evidence; crawler access is never promoted to indexing, citation, or recommendation.
 
 Verified
 
@@ -39,11 +39,17 @@ Partially verified
 
 GPTBot made 28 provider-verified content requests; all verified crawlers together covered 45 canonical content paths. The public Wayback CDX separately exposes 94 successful HTML captures across 44 URLs; 16 of 23 unique fixed-prompt evidence pages are archived, and 12 prompts have every evidence page archived. 18 of 23 fixed prompts have at least one verified-crawled evidence page and 12 have all pages crawled; search/retrieval-related crawler coverage is 18/23.
 
+Partially verified
+
+### Public-search retrieval
+
+An exact-brand Yandex query returned the official Onyx apex domain, whose canonical points to the Hong Kong site; indexing of the Hong Kong subdomain and non-brand category retrieval remain unverified.
+
 Not verified
 
-### Retrieved and cited
+### AI retrieval and citation
 
-Public search has not returned the website, and no saved AI answer retrieves and cites an Onyx page without being given its URL.
+No saved Doubao or other AI answer retrieves and cites an Onyx page without being given its URL.
 
 Not tested
 

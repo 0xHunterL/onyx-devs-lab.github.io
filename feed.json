@@ -1110,12 +1110,12 @@
       ]
     },
     {
-      "id": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-monitor-evidence-2026-09-12-55",
-      "url": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-monitor-evidence-2026-09-12-55",
-      "title": "Onyx GEO monitor evidence checkpoint — 2026-09-12, revision 55",
-      "summary": "A versioned machine-readable checkpoint recording 95 provider-verified AhrefsBot discovery-file requests, including 71 sitemap requests, while verified content requests remain zero. Public archive coverage remains 94 captures across 44 URLs and fixed-prompt archive coverage remains 16/16/12; it does not prove search indexing, AI citation, ranking, or recommendation.",
-      "content_text": "A versioned machine-readable checkpoint recording 95 provider-verified AhrefsBot discovery-file requests, including 71 sitemap requests, while verified content requests remain zero. Public archive coverage remains 94 captures across 44 URLs and fixed-prompt archive coverage remains 16/16/12; it does not prove search indexing, AI citation, ranking, or recommendation.",
-      "date_modified": "2026-09-12T00:00:00+08:00",
+      "id": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-monitor-evidence-2026-09-13-56",
+      "url": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-monitor-evidence-2026-09-13-56",
+      "title": "Onyx GEO monitor evidence checkpoint — 2026-09-13, revision 56",
+      "summary": "A versioned machine-readable checkpoint preserving the first observed Yandex exact-brand result for the official Onyx apex domain, whose canonical points to the Hong Kong site. Hong Kong subdomain and non-brand retrieval, AI citation, ranking, and recommendation remain unverified.",
+      "content_text": "A versioned machine-readable checkpoint preserving the first observed Yandex exact-brand result for the official Onyx apex domain, whose canonical points to the Hong Kong site. Hong Kong subdomain and non-brand retrieval, AI citation, ranking, and recommendation remain unverified.",
+      "date_modified": "2026-09-13T00:00:00+08:00",
       "tags": [
         "evidence",
         "provider-maintained-external-source"

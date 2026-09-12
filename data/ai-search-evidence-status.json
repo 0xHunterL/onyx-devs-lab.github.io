@@ -1,29 +1,30 @@
 {
   "schemaVersion": 2,
-  "version": "2026.09.12.55",
+  "version": "2026.09.13.56",
   "id": "https://hk.onyxdevslab.com/data/ai-search-evidence-status.json",
   "observedAt": "2026-09-12T22:12:53.589Z",
+  "latestEvidenceObservedAt": "2026-09-12T22:47:17Z",
   "sourceBaseline": "https://github.com/0xHunterL/onyx-devs-lab.github.io/blob/main/docs/geo-baselines/2026-09-11-monitor-evidence.json",
   "versionHistory": [
     {
-      "version": "2026.09.12.55",
+      "version": "2026.09.13.56",
       "relation": "current-immutable-checkpoint",
+      "url": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-monitor-evidence-2026-09-13-56/ai-search-evidence-status.json"
+    },
+    {
+      "version": "2026.09.12.55",
+      "relation": "previous-immutable-checkpoint",
       "url": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-monitor-evidence-2026-09-12-55/ai-search-evidence-status.json"
     },
     {
       "version": "2026.09.12.54",
-      "relation": "previous-immutable-checkpoint",
+      "relation": "earlier-immutable-checkpoint",
       "url": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-monitor-evidence-2026-09-12-54/ai-search-evidence-status.json"
     },
     {
       "version": "2026.09.12.53",
       "relation": "earlier-immutable-checkpoint",
       "url": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-monitor-evidence-2026-09-12-53/ai-search-evidence-status.json"
-    },
-    {
-      "version": "2026.09.12.52",
-      "relation": "earlier-immutable-checkpoint",
-      "url": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-monitor-evidence-2026-09-12-52/ai-search-evidence-status.json"
     }
   ],
   "name": {
@@ -279,9 +280,9 @@
       "level": 3,
       "id": "retrieved-and-cited",
       "status": "not-verified",
-      "claim": "No preserved qualifying AI answer retrieves the marker or cites an Onyx page without being given its URL.",
+      "claim": "Public web search has partial brand-retrieval evidence, but no preserved qualifying AI answer retrieves the marker or cites an Onyx page without being given its URL.",
       "evidence": {
-        "publicSearchWebsiteResultObserved": false,
+        "publicSearchWebsiteResultObserved": true,
         "publicSearchObservation": {
           "testedAt": "2026-09-12T19:59:30Z",
           "queries": [
@@ -423,6 +424,46 @@
           "categoryRecommendationObserved": false,
           "newPublicDiscussionObserved": false
         },
+        "yandexPublicSearchObservation": {
+          "testedAt": "2026-09-12T22:47:17Z",
+          "provider": "Yandex Web Search",
+          "query": "\"Onyx Devs Lab\"",
+          "status": "available",
+          "reportedResultCount": 6,
+          "officialBrandResultObserved": true,
+          "officialBrandResult": {
+            "title": "Onyx Devs Lab",
+            "url": "https://onyxdevslab.com/",
+            "canonicalTarget": "https://hk.onyxdevslab.com/",
+            "canonicalTargetVerified": true
+          },
+          "otherVisibleResults": [
+            {
+              "title": "onyx-devs-lab · GitHub",
+              "url": "https://github.com/onyx-devs-lab"
+            },
+            {
+              "title": "Hong Kong Companies Registry newly incorporated companies list",
+              "url": "https://www.cr.gov.hk/docs/wrpt/RNC063_2025.10.27-2025.11.02.pdf"
+            }
+          ],
+          "followUpQueries": [
+            {
+              "query": "site:hk.onyxdevslab.com",
+              "status": "unavailable",
+              "reason": "Yandex SmartCaptcha was shown after the first query; it was not completed and no result conclusion was drawn."
+            },
+            {
+              "query": "Hong Kong enterprise AI consulting",
+              "status": "not-run-after-captcha"
+            },
+            {
+              "query": "香港 企业 AI 咨询 公司 FDE",
+              "status": "not-run-after-captcha"
+            }
+          ],
+          "meaning": "The dated exact-brand query directly returned the provider-owned apex domain, whose live canonical points to the Hong Kong site. This is positive Yandex brand retrieval evidence for the official web property. It does not prove that the hk subdomain or deep pages are separately indexed, that non-brand category queries return Onyx, that the result is stable or ranked similarly in other regions, or that any AI product retrieved, cited, endorsed, or recommended Onyx. The follow-up captcha was not completed and cannot be interpreted as a negative result."
+        },
         "retrievalMarkerResultObserved": null,
         "aiAnswerCitationObserved": null,
         "doubaoTestStatus": "not-run"
@@ -481,6 +522,12 @@
     }
   ],
   "publicSearchChecks": [
+    {
+      "checkedAt": "2026-09-12T22:47:17Z",
+      "provider": "Yandex Web Search",
+      "query": "\"Onyx Devs Lab\"",
+      "result": "official-apex-domain-observed; canonical-target-is-hong-kong-site; hk-subdomain-and-non-brand-retrieval-not-verified"
+    },
     {
       "checkedAt": "2026-09-12T19:59:30Z",
       "query": "\"ONYX-GEO-VERIFY-79051925-20260908\"",
@@ -544,6 +591,13 @@
     }
   },
   "publicSearchMonitoring": {
+    "yandex": {
+      "status": "partial",
+      "brandQueryStatus": "available",
+      "followUpQueryStatus": "unavailable-after-smartcaptcha",
+      "captchaCompleted": false,
+      "evidenceBoundary": "The exact-brand result is preserved, but follow-up site and category queries are not interpreted because Yandex presented SmartCaptcha. Search-result retrieval does not prove AI citation or recommendation."
+    },
     "bing": {
       "status": "account-verification-required",
       "approvedEvidencePath": "Bing Webmaster Tools or its OAuth-authorized Webmaster API for a verified site",
@@ -648,11 +702,11 @@
     },
     {
       "name": "Latest immutable GEO monitor evidence checkpoint",
-      "url": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-monitor-evidence-2026-09-12-55"
+      "url": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-monitor-evidence-2026-09-13-56"
     },
     {
       "name": "Latest immutable AI-search evidence status",
-      "url": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-monitor-evidence-2026-09-12-55/ai-search-evidence-status.json"
+      "url": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-monitor-evidence-2026-09-13-56/ai-search-evidence-status.json"
     },
     {
       "name": "GitHub repository-search before-and-after baseline",
