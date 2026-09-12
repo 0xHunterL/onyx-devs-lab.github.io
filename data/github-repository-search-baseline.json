@@ -55,5 +55,25 @@
     ],
     "meaning": "The same GitHub repository-search query changed from zero results to the main first-party repository after the README update. This is reproducible GitHub platform-search evidence only."
   },
-  "meaning": "GitHub platform search connects the brand and legal entity to two first-party repositories. After commit c23932f added the exact English category phrase to the main README, the same category query changed from zero results to the main first-party repository. This does not prove public-web indexing, AI retrieval, citation, ranking, independent endorsement, or non-brand recommendation."
+  "buyerGuideFollowUpRetest": {
+    "testedAt": "2026-09-12T12:09:04Z",
+    "completedAt": "2026-09-12T12:09:07Z",
+    "triggerRepository": "mixuechu/hong-kong-enterprise-ai-buyers-guide",
+    "triggerCommit": "2c874a4",
+    "change": "The buyer-guide README opening English paragraph was changed to naturally contain the exact phrase Hong Kong AI consulting alongside custom AI development and Forward Deployed Engineering.",
+    "query": "\"Hong Kong AI consulting\" in:name,description,readme",
+    "previousTotalCount": 1,
+    "currentTotalCount": 2,
+    "firstPartyRepositoriesObserved": [
+      "0xHunterL/onyx-devs-lab.github.io",
+      "mixuechu/hong-kong-enterprise-ai-buyers-guide"
+    ],
+    "buyerGuideValidation": {
+      "checkedLinks": 43,
+      "canonicalUrls": 6,
+      "failures": 0
+    },
+    "meaning": "The same GitHub repository-search query changed from one to two results after the buyer-guide README update, and both results are first-party repositories. This is reproducible GitHub platform-search evidence only."
+  },
+  "meaning": "GitHub platform search connects the brand and legal entity to two first-party repositories. After focused README changes, the exact English category query changed from zero results to the main repository and then to both first-party repositories. This does not prove public-web indexing, AI retrieval, citation, ranking, independent endorsement, or non-brand recommendation."
 }
