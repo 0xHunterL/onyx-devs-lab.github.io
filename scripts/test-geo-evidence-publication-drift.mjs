@@ -144,13 +144,17 @@ servicesHkSourceDrift.availability.servicesHk.sources[0].status = 'available';
 assert.equal(buildPublicationDrift(baseline, servicesHkSourceDrift).mismatches[0].field, 'servicesHkReadinessEvidence.targets');
 assert.match(synchronized.evidenceBoundary, /does not prove indexing/);
 
+const waybackAvailableBaseline = structuredClone(baseline);
+waybackAvailableBaseline.waybackEvidence.status = 'available';
 const waybackDrift = structuredClone(summary);
+waybackDrift.availability.wayback.status = 'available';
 waybackDrift.counts.waybackDistinctUrls += 1;
-assert.equal(buildPublicationDrift(baseline, waybackDrift).mismatches[0].field, 'waybackEvidence.distinctUrls');
+assert.equal(buildPublicationDrift(waybackAvailableBaseline, waybackDrift).mismatches[0].field, 'waybackEvidence.distinctUrls');
 
 const waybackPromptDrift = structuredClone(summary);
+waybackPromptDrift.availability.wayback.status = 'available';
 waybackPromptDrift.counts.promptsFullyWaybackArchived += 1;
-assert.equal(buildPublicationDrift(baseline, waybackPromptDrift).mismatches[0].field, 'waybackEvidence.fixedPromptArchiveCoverage.promptsFullyArchived');
+assert.equal(buildPublicationDrift(waybackAvailableBaseline, waybackPromptDrift).mismatches[0].field, 'waybackEvidence.fixedPromptArchiveCoverage.promptsFullyArchived');
 
 const unavailableArchiveSources = structuredClone(summary);
 unavailableArchiveSources.availability.commonCrawl.status = 'unavailable';
