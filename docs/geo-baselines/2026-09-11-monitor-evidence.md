@@ -90,3 +90,5 @@
 - 2026-09-12T11:12Z，实体一致性审计发现各页面内嵌 Organization JSON-LD 已声明销售联系点，而规范化 `/data/organization.json` 只有顶层邮箱、缺少 `contactPoint`，使同一主体的两套机器图谱不完全一致。修复仅在规范化组织记录补入 Schema.org `ContactPoint`（`sales`、`info@onyxdevslab.com`、English／Chinese）并增加本地与线上断言，不新增同质页面或服务声明。该变化改善机器可读主体一致性，但不证明搜索收录、AI 引用或推荐。
 
 - 2026-09-12T11:16:08Z，版本链审计发现当前 `ai-search-evidence-status.json` 已是 revision 44，但 `versionHistory` 仍只指向 2026-09-11 的旧不可变状态，没有连接当天已发布且校验过 SHA-256 的 revision 41 Release 资产。revision 45 将 revision 41 状态设为最近不可变检查点、保留 revision 8 为更早检查点，并把 Release 与状态资产加入 `evidenceSources`；离线及线上门禁逐项锁定版本、关系和 URL。此次仅修复当前状态到最近不可变证据的可追溯关系，爬虫、公开归档、搜索结果、AI 引用和非品牌推荐证据均未增加。
+
+- 2026-09-12T11:28:09.482Z，生产采集识别到 `11:24:08Z` 一次此前未见的 AhrefsBot 已核验请求：访问 `sitemap.xml`、返回 HTTP `200`，来源命中 Ahrefs 官方 IP 范围。AhrefsBot 已核验发现文件累计从 85 增至 86，其中 `robots.txt` 22 次、`sitemap.xml` 64 次；客户端地址去重数仍为 77，正文请求仍为 0。事件保存为 `events/2026-09-12T11-28-09.482Z-evidence-change.json`，revision 46 同步该事实；它只证明外部爬虫读取发现文件，不证明 Yep 或任何搜索／AI 产品已经收录、检索、引用、排名或推荐。
