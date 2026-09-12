@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "publicStatusVersion": "2026.09.12.30",
-  "generatedAt": "2026-09-12T07:02:58.975Z",
+  "publicStatusVersion": "2026.09.12.31",
+  "generatedAt": "2026-09-12T07:07:07.506Z",
   "windowStart": "2026-09-01",
   "site": "https://hk.onyxdevslab.com/",
   "sourceLogs": [
@@ -113,15 +113,15 @@
     ]
   },
   "commonCrawlEvidence": {
-    "checkedAt": "2026-09-12T07:03:42.654Z",
-    "status": "available",
+    "checkedAt": "2026-09-12T07:07:04.280Z",
+    "status": "partial",
     "capturesObservedInAvailableIndexes": 0,
-    "availableIndexes": ["CC-MAIN-2026-34", "CC-MAIN-2026-30"],
-    "unavailableIndexes": [],
-    "meaning": "Both selected indexes returned usable responses with zero observed captures. This complete result covers only the selected indexes and must not be interpreted as proof of zero captures across all Common Crawl history."
+    "availableIndexes": ["CC-MAIN-2026-30"],
+    "unavailableIndexes": ["CC-MAIN-2026-34"],
+    "meaning": "CC-MAIN-2026-30 returned a usable zero-capture response while CC-MAIN-2026-34 returned HTTP 504. The result is incomplete and must not be interpreted as a verified zero across the selected indexes or all Common Crawl history."
   },
   "waybackEvidence": {
-    "checkedAt": "2026-09-12T07:02:57.886Z",
+    "checkedAt": "2026-09-12T07:07:06.457Z",
     "status": "available",
     "captures": 92,
     "distinctUrls": 43,
@@ -159,7 +159,7 @@
     "manifestItems": 8,
     "publishedItems": 7,
     "readyNotPublishedItems": 1,
-    "checkedAt": "2026-09-12T07:02:58.892Z",
+    "checkedAt": "2026-09-12T07:07:07.434Z",
     "publicUrlsChecked": 7,
     "trackedTargetsChecked": 17,
     "availableSources": 24,
