@@ -10,6 +10,7 @@ const commonCrawl = baseline.commonCrawlEvidence;
 const wayback = baseline.waybackEvidence;
 const distribution = baseline.distributionEvidence;
 const servicesHk = baseline.servicesHkReadinessEvidence;
+const githubRepositorySearch = baseline.githubRepositorySearchEvidence;
 const summary = {
   generatedAt: baseline.generatedAt,
   sourceLogs: structuredClone(baseline.crawlerEvidenceAccounting.currentRetainedLogPaths),
@@ -80,6 +81,10 @@ const summary = {
       sources: servicesHk.targets.map(({ id, status }) => ({ id, status })),
     },
   },
+  platformSearch: {
+    status: githubRepositorySearch.status,
+    queries: structuredClone(githubRepositorySearch.queries),
+  },
 };
 
 const synchronized = buildPublicationDrift(baseline, summary);
@@ -142,6 +147,10 @@ assert.equal(buildPublicationDrift(baseline, servicesHkAvailableCountDrift).mism
 const servicesHkSourceDrift = structuredClone(summary);
 servicesHkSourceDrift.availability.servicesHk.sources[0].status = 'available';
 assert.equal(buildPublicationDrift(baseline, servicesHkSourceDrift).mismatches[0].field, 'servicesHkReadinessEvidence.targets');
+
+const githubRepositorySearchDrift = structuredClone(summary);
+githubRepositorySearchDrift.platformSearch.queries.find((item) => item.id === 'category').totalCount = 1;
+assert.equal(buildPublicationDrift(baseline, githubRepositorySearchDrift).mismatches[0].field, 'githubRepositorySearchEvidence.queries');
 assert.match(synchronized.evidenceBoundary, /does not prove indexing/);
 
 const waybackAvailableBaseline = structuredClone(baseline);
@@ -170,4 +179,4 @@ const unavailableArchiveFields = buildPublicationDrift(baseline, unavailableArch
 assert.ok(!unavailableArchiveFields.some((field) => field.startsWith('waybackEvidence.') && field !== 'waybackEvidence.status'));
 assert.ok(!unavailableArchiveFields.includes('commonCrawlEvidence.capturesObservedInAvailableIndexes'));
 
-console.log(JSON.stringify({ tests: 19, failures: [] }, null, 2));
+console.log(JSON.stringify({ tests: 20, failures: [] }, null, 2));

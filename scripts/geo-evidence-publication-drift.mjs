@@ -14,11 +14,13 @@ export function buildPublicationDrift(baseline, summary) {
   const wayback = baseline.waybackEvidence || {};
   const distribution = baseline.distributionEvidence || {};
   const servicesHk = baseline.servicesHkReadinessEvidence || {};
+  const githubRepositorySearch = baseline.githubRepositorySearchEvidence || {};
   const counts = summary.counts || {};
   const collectedCommonCrawl = summary.availability?.commonCrawl || {};
   const collectedWayback = summary.availability?.wayback || {};
   const collectedDistribution = summary.availability?.distribution || {};
   const collectedServicesHk = summary.availability?.servicesHk || {};
+  const collectedGithubRepositorySearch = summary.platformSearch || {};
 
   const countMappings = [
     ['providerVerifiedCrawlerEvidence.gptBotContentRequests', provider.gptBotContentRequests, counts.verifiedGptBotPageCrawls],
@@ -81,6 +83,10 @@ export function buildPublicationDrift(baseline, summary) {
   check('servicesHkReadinessEvidence.availableTargets', servicesHk.availableTargets, collectedServicesHk.availableSources);
   check('servicesHkReadinessEvidence.unavailableTargets', servicesHk.unavailableTargets, collectedServicesHk.unavailableSources);
   check('servicesHkReadinessEvidence.targets', (servicesHk.targets || []).map(({ id, status }) => ({ id, status })), (collectedServicesHk.sources || []).map(({ id, status }) => ({ id, status })));
+  if (Object.keys(githubRepositorySearch).length || Object.keys(collectedGithubRepositorySearch).length) {
+    check('githubRepositorySearchEvidence.status', githubRepositorySearch.status, collectedGithubRepositorySearch.status);
+    if (collectedGithubRepositorySearch.status === 'available') check('githubRepositorySearchEvidence.queries', githubRepositorySearch.queries, collectedGithubRepositorySearch.queries);
+  }
 
   return {
     schemaVersion: 1,

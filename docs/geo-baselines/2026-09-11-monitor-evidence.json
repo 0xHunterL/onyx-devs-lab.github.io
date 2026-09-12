@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "publicStatusVersion": "2026.09.12.46",
-  "generatedAt": "2026-09-12T11:28:09.482Z",
+  "publicStatusVersion": "2026.09.12.47",
+  "generatedAt": "2026-09-12T12:18:34.513Z",
   "windowStart": "2026-09-01",
   "site": "https://hk.onyxdevslab.com/",
   "sourceLogs": [
@@ -27,11 +27,11 @@
     "commonCrawlBotDiscoveryFileRequests": 0,
     "applebotContentRequests": 0,
     "applebotDiscoveryFileRequests": 0,
-    "yandexbotContentRequests": 72,
-    "yandexbotDiscoveryFileRequests": 65,
+    "yandexbotContentRequests": 75,
+    "yandexbotDiscoveryFileRequests": 68,
     "ahrefsbotContentRequests": 0,
     "ahrefsbotDiscoveryFileRequests": 86,
-    "distinctVerifiedContentPaths": 44,
+    "distinctVerifiedContentPaths": 45,
     "historicalReclassification": {
       "homepageContentRequestsAdded": 3,
       "machineResourceDiscoveryRequestsAdded": 10,
@@ -39,8 +39,8 @@
     },
     "yandexHistoricalRecognition": {
       "firstSeen": "2026-09-08T12:45:20Z",
-      "lastSeen": "2026-09-12T10:57:57Z",
-      "verifiedContentPaths": 41,
+      "lastSeen": "2026-09-12T12:06:27Z",
+      "verifiedContentPaths": 42,
       "meaning": "YandexBot monitoring was added after the latest requests exposed the missing family. Most of these provider-verified requests are historical observations newly recognized in current and rotated logs; they are not all newly occurring crawls."
     },
     "ahrefsHistoricalRecognition": {
@@ -197,6 +197,45 @@
       "distinctUrls": 43
     },
     "meaning": "The public Wayback CDX host query recovered after the preceding timeout and currently returns 93 successful HTML capture records across 43 distinct URLs. The recovery is an availability transition, not a new snapshot or visibility gain. The records prove public historical captures only; they do not prove current accessibility, search indexing, AI retrieval, citation, ranking, endorsement, or recommendation. An unavailable future query must not be interpreted as zero captures."
+  },
+  "githubRepositorySearchEvidence": {
+    "checkedAt": "2026-09-12T12:18:33.802Z",
+    "status": "available",
+    "queriesChecked": 3,
+    "availableQueries": 3,
+    "unavailableQueries": 0,
+    "queries": [
+      {
+        "id": "brand",
+        "query": "\"Onyx Devs Lab\" in:name,description,readme",
+        "totalCount": 4,
+        "firstPartyRepositoriesObserved": [
+          "0xHunterL/onyx-devs-lab.github.io",
+          "mixuechu/hong-kong-enterprise-ai-buyers-guide"
+        ]
+      },
+      {
+        "id": "category",
+        "query": "\"Hong Kong AI consulting\" in:name,description,readme",
+        "totalCount": 2,
+        "firstPartyRepositoriesObserved": [
+          "0xHunterL/onyx-devs-lab.github.io",
+          "mixuechu/hong-kong-enterprise-ai-buyers-guide"
+        ]
+      },
+      {
+        "id": "legal-entity",
+        "query": "\"ONYX DEVS LAB LIMITED\" in:name,description,readme",
+        "totalCount": 2,
+        "firstPartyRepositoriesObserved": [
+          "0xHunterL/onyx-devs-lab.github.io",
+          "mixuechu/hong-kong-enterprise-ai-buyers-guide"
+        ]
+      }
+    ],
+    "source": "https://hk.onyxdevslab.com/data/github-repository-search-baseline.json",
+    "eventFile": "events/2026-09-12T12-18-34.513Z-evidence-and-availability-change.json",
+    "meaning": "All three fixed GitHub Repository Search API queries were available. Brand and legal-entity queries return both first-party repositories; the exact category query returns the same two repositories after the recorded README changes. This proves GitHub platform-search visibility only, not public-web indexing, AI retrieval, citation, ranking, independent endorsement, or non-brand recommendation."
   },
   "distributionEvidence": {
     "manifestItems": 9,
