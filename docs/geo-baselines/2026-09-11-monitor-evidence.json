@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "publicStatusVersion": "2026.09.12.48",
-  "generatedAt": "2026-09-12T12:31:15.092Z",
+  "publicStatusVersion": "2026.09.12.49",
+  "generatedAt": "2026-09-12T13:01:45.340Z",
   "windowStart": "2026-09-01",
   "site": "https://hk.onyxdevslab.com/",
   "sourceLogs": [
@@ -27,10 +27,10 @@
     "commonCrawlBotDiscoveryFileRequests": 0,
     "applebotContentRequests": 0,
     "applebotDiscoveryFileRequests": 0,
-    "yandexbotContentRequests": 75,
-    "yandexbotDiscoveryFileRequests": 68,
+    "yandexbotContentRequests": 76,
+    "yandexbotDiscoveryFileRequests": 69,
     "ahrefsbotContentRequests": 0,
-    "ahrefsbotDiscoveryFileRequests": 86,
+    "ahrefsbotDiscoveryFileRequests": 87,
     "distinctVerifiedContentPaths": 45,
     "historicalReclassification": {
       "homepageContentRequestsAdded": 3,
@@ -39,18 +39,18 @@
     },
     "yandexHistoricalRecognition": {
       "firstSeen": "2026-09-08T12:45:20Z",
-      "lastSeen": "2026-09-12T12:06:27Z",
+      "lastSeen": "2026-09-12T12:49:32Z",
       "verifiedContentPaths": 42,
       "meaning": "YandexBot monitoring was added after the latest requests exposed the missing family. Most of these provider-verified requests are historical observations newly recognized in current and rotated logs; they are not all newly occurring crawls."
     },
     "ahrefsHistoricalRecognition": {
       "firstSeen": "2026-09-08T13:53:09Z",
-      "lastSeen": "2026-09-12T11:24:08Z",
+      "lastSeen": "2026-09-12T12:50:47Z",
       "robotsTxtRequests": 22,
-      "sitemapRequests": 64,
-      "distinctClientAddresses": 77,
+      "sitemapRequests": 65,
+      "distinctClientAddresses": 78,
       "verificationSource": "https://api.ahrefs.com/v3/public/crawler-ip-ranges",
-      "meaning": "All 86 discovery-file requests matched the official Ahrefs crawler IP ranges. AhrefsBot serves both the Ahrefs database and Yep, so these requests prove external crawler discovery only; they do not prove Yep indexing, ranking, retrieval, citation, or AI recommendation."
+      "meaning": "All 87 discovery-file requests matched the official Ahrefs crawler IP ranges. AhrefsBot serves both the Ahrefs database and Yep, so these requests prove external crawler discovery only; they do not prove Yep indexing, ranking, retrieval, citation, or AI recommendation."
     }
   },
   "crawlerEvidenceAccounting": {
