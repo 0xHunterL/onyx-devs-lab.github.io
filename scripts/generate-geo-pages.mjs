@@ -1060,9 +1060,9 @@ const aiSearchEvidenceStatus={
   ],
   publicSearchChecks:[
     {checkedAt:currentPublicSearchRetest.testedAt,query:'"ONYX-GEO-VERIFY-79051925-20260908"',result:'website-not-observed'},
-    {checkedAt:currentPublicSearchRetest.testedAt,query:'"Onyx Devs Lab"',result:'website-not-observed; corroborating entity records and one low-confidence directory result with a conflicting industry classification observed'},
-    {checkedAt:currentPublicSearchRetest.testedAt,query:'site:hk.onyxdevslab.com',result:'no-results-observed'},
-    {checkedAt:currentPublicSearchRetest.testedAt,query:'"AI 定开、AI 咨询和 FDE 应该怎么选？"',result:'new-public-discussion-not-observed'},
+    {checkedAt:currentPublicSearchRetest.testedAt,query:'site:hk.onyxdevslab.com "Onyx Devs Lab"',result:'official-website-not-observed'},
+    {checkedAt:currentPublicSearchRetest.testedAt,query:'"Onyx Devs Lab" -site:cr.gov.hk',result:'official-website-not-observed; corroborating entity record observed'},
+    {checkedAt:currentPublicSearchRetest.testedAt,query:'香港 企业 AI 咨询 公司 FDE',result:'other-category-providers-observed; official-Onyx-result-not-observed'},
   ],
   publicSearchMonitoring:{bing:{status:'account-verification-required',approvedEvidencePath:'Bing Webmaster Tools or its OAuth-authorized Webmaster API for a verified site',restrictedPathExcluded:'Bing public RSS search is not used for enterprise monitoring because its response terms restrict result use to personal, non-commercial RSS rendering.',complianceAudit:'https://github.com/0xHunterL/onyx-devs-lab.github.io/blob/main/docs/geo-baselines/2026-09-11-bing-search-compliance-audit.md'},indexNowBoundary:'IndexNow receipt and Bingbot access do not prove indexing, ranking, Copilot grounding, citation, or recommendation.'},
   technicalReadiness:{checkedAt:'2026-09-09T16:00:00Z',checker:'Cloudflare Agent Readiness — content site',score:86,passedChecks:6,totalChecks:7,level:'Level 5 Agent-Native',passed:['robots.txt','sitemap.xml','HTTP Link discovery','Markdown content negotiation','AI crawler rules','Content Signals'],notPassed:[{check:'DNS-AID',limitation:'This is an emerging IETF draft for agent endpoint discovery and is not treated as evidence of search indexing, AI citation, or Doubao recommendation.'}]},

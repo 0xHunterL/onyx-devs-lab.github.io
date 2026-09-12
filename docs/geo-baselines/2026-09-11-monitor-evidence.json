@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "publicStatusVersion": "2026.09.12.32",
-  "generatedAt": "2026-09-12T07:07:07.506Z",
+  "publicStatusVersion": "2026.09.12.33",
+  "generatedAt": "2026-09-12T07:18:18Z",
   "windowStart": "2026-09-01",
   "site": "https://hk.onyxdevslab.com/",
   "sourceLogs": [
@@ -175,13 +175,12 @@
     "meaning": "All declared published URLs and tracked targets passed anonymous availability, destination, and content-marker checks. This does not prove indexing, AI retrieval, citation, recommendation, a human visit, or independent endorsement."
   },
   "publicSearchRetest": {
-    "testedAt": "2026-09-11T16:11:49Z",
+    "testedAt": "2026-09-12T07:18:18Z",
     "queries": [
       "\"ONYX-GEO-VERIFY-79051925-20260908\"",
-      "\"Onyx Devs Lab\"",
-      "site:hk.onyxdevslab.com",
-      "AI 定开 AI 咨询 FDE Onyx Devs Lab",
-      "\"AI 定开、AI 咨询和 FDE 应该怎么选？\""
+      "site:hk.onyxdevslab.com \"Onyx Devs Lab\"",
+      "\"Onyx Devs Lab\" -site:cr.gov.hk",
+      "香港 企业 AI 咨询 公司 FDE"
     ],
     "officialSiteObserved": false,
     "thirdPartyEntityRecordsObserved": true,
@@ -201,6 +200,53 @@
       }
     ],
     "entityRecordMeaning": "These records make the legal entity externally discoverable and disambiguatable. They do not prove official-site indexing, website ownership, service verification, endorsement, AI citation, or recommendation.",
+    "nonBrandCategoryResultsObserved": [
+      {
+        "url": "https://www.fde.hk/zh-hk",
+        "observedLabel": "FDE.HK 香港金融 AI 部署中心"
+      },
+      {
+        "url": "https://fde.hk/zh-hk",
+        "observedLabel": "FDE.HK 香港金融 AI 部署中心"
+      },
+      {
+        "url": "https://www.fde.hk/zh-cn/products",
+        "observedLabel": "FDE.HK 香港金融 AI 部署产品"
+      },
+      {
+        "url": "https://fde100.com/",
+        "observedLabel": "FDE100 人才与产业平台"
+      },
+      {
+        "url": "https://www.fde123.com/providers",
+        "observedLabel": "FDE123 服务商目录"
+      },
+      {
+        "url": "https://www.fancyar.com/solutions.html",
+        "observedLabel": "幻实科技企业 AI 赋能与落地方案"
+      },
+      {
+        "url": "https://anyabot.com/",
+        "observedLabel": "Anyasmart 企业 AI 落地"
+      },
+      {
+        "url": "https://fdezen.com/",
+        "observedLabel": "FDE 工场企业 AI 落地体系"
+      },
+      {
+        "url": "https://www.willdeal.cn/",
+        "observedLabel": "韦迪智能企业 AI 转型与 FDE"
+      },
+      {
+        "url": "https://www.axiommy.com/",
+        "observedLabel": "AXiom 前向部署 AI 工程"
+      },
+      {
+        "url": "https://www.alphamatch.ai/solutions/ai-consulting",
+        "observedLabel": "Alpha Match Hong Kong AI consulting"
+      }
+    ],
+    "nonBrandCategoryMeaning": "These URLs were returned for the dated non-brand category query in the observed public-search result set, while no official Onyx site result was observed. The list is a reproducible competitive-discovery baseline only: it is not a complete ranking, quality assessment, independent endorsement, or proof of any AI answer recommendation.",
     "categoryRecommendationObserved": false,
     "newPublicDiscussionObserved": false
   },
