@@ -22,6 +22,10 @@ const knownLinkScannerNetworks = [
 ];
 const aiReferrerFamilies = [
   ['doubao', /(^|\.)doubao\.com$/i],
+  ['deepseek', /^chat\.deepseek\.com$/i],
+  ['kimi', /^kimi\.com$/i],
+  ['yuanbao', /^yuanbao\.tencent\.com$/i],
+  ['qwen', /^chat\.qwen\.ai$/i],
   ['chatgpt', /(^|\.)(?:chatgpt\.com|chat\.openai\.com)$/i],
   ['perplexity', /(^|\.)perplexity\.ai$/i],
   ['copilot', /(^|\.)copilot\.microsoft\.com$/i],

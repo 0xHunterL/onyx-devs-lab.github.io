@@ -54,6 +54,19 @@ const events = [
     referrerHost: '',
     userAgent: 'Onyx-GEO-Distribution-Check/1.0',
   },
+  ...[
+    ['2026-09-11T08:25:34+00:00', 'chat.deepseek.com'],
+    ['2026-09-11T08:26:34+00:00', 'www.kimi.com'],
+    ['2026-09-11T08:27:34+00:00', 'yuanbao.tencent.com'],
+    ['2026-09-11T08:28:34+00:00', 'chat.qwen.ai'],
+  ].map(([time, referrerHost], index) => ({
+    time,
+    clientIp: `203.0.113.${20 + index}`,
+    path: '/zh-cn/ai-consulting/',
+    status: 200,
+    referrerHost,
+    userAgent: 'Mozilla/5.0 Chrome/140.0.0.0 Safari/537.36',
+  })),
   ...periodicPaths.map((eventPath, index) => ({
     time: new Date(Date.parse('2026-09-11T09:00:00Z') + index * 10 * 60_000).toISOString(),
     clientIp: `198.51.100.${index + 1}`,
@@ -72,9 +85,9 @@ try {
     logPath,
   ], { cwd: path.resolve('.') });
   const report = JSON.parse(stdout);
-  assert.equal(report.trackedVisits, 11);
+  assert.equal(report.trackedVisits, 15);
   assert.equal(report.suspectedAutomatedTrackedVisits, 9);
-  assert.equal(report.humanUnverifiedTrackedVisits, 2);
+  assert.equal(report.humanUnverifiedTrackedVisits, 6);
   assert.equal(report.knownLinkScannerTrackedVisits, 1);
   assert.equal(report.knownLinkScannerUserAgentVisits, 0);
   assert.equal(report.knownLinkScannerNetworkVisits, 1);
@@ -88,8 +101,13 @@ try {
   assert.equal(report.suspectedPeriodicAutomation[0].distinctClients, 8);
   assert.equal(report.suspectedPeriodicAutomation[0].periodicIntervals, 7);
   assert.equal(report.periodicRotatingClientTrackedVisits, 8);
+  assert.equal(report.byEvidenceType['ai-referrer'], 4);
+  assert.equal(report.bySource.deepseek, 1);
+  assert.equal(report.bySource.kimi, 1);
+  assert.equal(report.bySource.yuanbao, 1);
+  assert.equal(report.bySource.qwen, 1);
   assert.match(report.caveat, /periodic rotating-client patterns/);
-  console.log(JSON.stringify({ tests: 16, failures: [] }, null, 2));
+  console.log(JSON.stringify({ tests: 21, failures: [] }, null, 2));
 } finally {
   await rm(directory, { recursive: true, force: true });
 }
