@@ -769,6 +769,44 @@ if (promptMapV54 && (promptMapV54.version !== '2026.09.12.54' || promptMapV54.pr
 const promptCoverageV54 = monitorEvidenceV54Json['2026-09-11-prompt-crawl-coverage.json'];
 if (promptCoverageV54 && (promptCoverageV54.promptMatrixSchemaVersion !== 3 || promptCoverageV54.totals?.prompts !== 23 || promptCoverageV54.totals?.verifiedCrawledEvidencePages !== 15 || promptCoverageV54.totals?.promptsWithAnyVerifiedCrawl !== 18 || promptCoverageV54.totals?.promptsFullyVerifiedCrawled !== 12 || promptCoverageV54.bySegment?.scenario?.prompts !== 6)) failures.push('Versioned GEO monitor revision 54 prompt crawl coverage: expected totals are incomplete');
 
+const monitorEvidenceV55Base = 'https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-monitor-evidence-2026-09-12-55';
+const monitorEvidenceV55Release = await get('GitHub GEO monitor evidence revision 55', 'https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-monitor-evidence-2026-09-12-55', 'text/html');
+requireText('GitHub GEO monitor evidence revision 55', monitorEvidenceV55Release, [
+  'Onyx GEO monitor evidence checkpoint',
+  '2026-09-12T22:12:53.589Z production collection',
+  'One new provider-verified AhrefsBot fingerprint was observed',
+  'Cumulative AhrefsBot discovery-file requests are now 95',
+  'No prompts were sent to Doubao',
+]);
+const monitorEvidenceV55Assets = [
+  {name:'monitor snapshot',file:'2026-09-11-monitor-evidence.json',sha256:'6aeebe8461ec38841d8461e89bc3e34b90280a15c94788b2e0dbbff0bb5aaf96'},
+  {name:'public status',file:'ai-search-evidence-status.json',sha256:'b8ba0b937bf424b18318370accb7cb9957933e73a863f355d39c08bb4631ddeb'},
+  {name:'prompt matrix',file:'prompt-matrix.json',sha256:'ed5305c7c1221689dd5c522cf305ea7ff73344ef37f016a3e148d5f598351b6f'},
+  {name:'prompt evidence map',file:'ai-search-prompt-evidence-map.json',sha256:'76668981e124c4b1b6ca726795e62fb9bcc15210a0f5f455c230fc0365b2ce9b'},
+  {name:'prompt crawl coverage',file:'2026-09-11-prompt-crawl-coverage.json',sha256:'7b9eb77978732b6425d408bb02cf4c2629daa9693ad2bb448e937df179151c11'},
+];
+const monitorEvidenceV55Json = {};
+for (const asset of monitorEvidenceV55Assets) {
+  const raw = await get(`Versioned GEO monitor revision 55 ${asset.name}`, `${monitorEvidenceV55Base}/${asset.file}`, 'application/');
+  const digest = createHash('sha256').update(raw).digest('hex');
+  if (digest !== asset.sha256) failures.push(`Versioned GEO monitor revision 55 ${asset.name}: SHA-256 mismatch, got ${digest}`);
+  try {
+    monitorEvidenceV55Json[asset.file] = JSON.parse(raw);
+  } catch {
+    failures.push(`Versioned GEO monitor revision 55 ${asset.name}: invalid JSON`);
+  }
+}
+const monitorV55 = monitorEvidenceV55Json['2026-09-11-monitor-evidence.json'];
+if (monitorV55 && (monitorV55.publicStatusVersion !== '2026.09.12.55' || monitorV55.generatedAt !== '2026-09-12T22:12:53.589Z' || monitorV55.providerVerifiedCrawlerEvidence?.ahrefsbotDiscoveryFileRequests !== 95 || monitorV55.providerVerifiedCrawlerEvidence?.ahrefsHistoricalRecognition?.lastSeen !== '2026-09-12T21:59:47Z' || monitorV55.providerVerifiedCrawlerEvidence?.ahrefsHistoricalRecognition?.sitemapRequests !== 71 || monitorV55.providerVerifiedCrawlerEvidence?.ahrefsHistoricalRecognition?.distinctClientAddresses !== 84 || monitorV55.providerVerifiedCrawlerEvidence?.distinctVerifiedContentPaths !== 45 || monitorV55.fixedPromptCoverage?.verifiedCrawledEvidencePages !== 15 || monitorV55.waybackEvidence?.captures !== 94 || monitorV55.waybackEvidence?.distinctUrls !== 44 || monitorV55.waybackEvidence?.fixedPromptArchiveCoverage?.archivedEvidencePages !== 16 || monitorV55.waybackEvidence?.fixedPromptArchiveCoverage?.promptsWithAnyArchivedEvidence !== 16 || monitorV55.waybackEvidence?.fixedPromptArchiveCoverage?.promptsFullyArchived !== 12 || monitorV55.githubRepositorySearchEvidence?.queries?.find((item) => item.id === 'category')?.totalCount !== 2 || monitorV55.attributionEvidence?.campaigns?.geo_engagement_model_qa !== 42 || monitorV55.attributionEvidence?.latestVerifiedOffsiteReferral?.landingPage !== '/zh-cn/guides/enterprise-ai-rfp-template/' || monitorV55.attributionEvidence?.latestVisitorTypeUnverifiedAttributions?.length !== 2 || monitorV55.attributionEvidence?.aiReferrerAttributedRequests !== 0 || monitorV55.doubaoTestStatus !== 'not-run')) failures.push('Versioned GEO monitor revision 55 monitor snapshot: expected AhrefsBot, attribution, or archive evidence boundary is incomplete');
+const statusV55 = monitorEvidenceV55Json['ai-search-evidence-status.json'];
+if (statusV55 && (statusV55.version !== '2026.09.12.55' || statusV55.observedAt !== '2026-09-12T22:12:53.589Z' || statusV55.versionHistory?.[0]?.version !== '2026.09.12.55' || statusV55.versionHistory?.[1]?.version !== '2026.09.12.54' || statusV55.testProtocol?.schemaVersion !== 3 || statusV55.testProtocol?.promptCount !== 23 || statusV55.testProtocol?.doubaoPromptsSent !== false || statusV55.evidenceLevels?.[1]?.evidence?.verifiedAhrefsBotDiscoveryFileCrawls !== 95 || statusV55.evidenceLevels?.[1]?.evidence?.waybackArchiveObservation?.captures !== 94 || statusV55.evidenceLevels?.[1]?.evidence?.waybackArchiveObservation?.fixedPromptArchiveCoverage?.promptsFullyArchived !== 12 || statusV55.evidenceLevels?.[3]?.evidence?.realAiReferralVisitsObserved !== 0)) failures.push('Versioned GEO monitor revision 55 public status: expected AhrefsBot or evidence boundary is incomplete');
+const matrixV55 = monitorEvidenceV55Json['prompt-matrix.json'];
+if (matrixV55 && (matrixV55.schemaVersion !== 3 || matrixV55.prompts?.length !== 23 || matrixV55.prompts.find((prompt) => prompt.id === 'brand-cases')?.evidenceUrls?.length !== 7)) failures.push('Versioned GEO monitor revision 55 prompt matrix: six-case protocol is incomplete');
+const promptMapV55 = monitorEvidenceV55Json['ai-search-prompt-evidence-map.json'];
+if (promptMapV55 && (promptMapV55.version !== '2026.09.12.55' || promptMapV55.promptMatrix?.schemaVersion !== 3 || promptMapV55.promptMatrix?.promptCount !== 23 || promptMapV55.promptMatrix?.doubaoPromptsSent !== false || promptMapV55.totals?.uniqueEvidencePages !== 23 || promptMapV55.prompts?.length !== 23)) failures.push('Versioned GEO monitor revision 55 prompt evidence map: expected protocol or boundary is incomplete');
+const promptCoverageV55 = monitorEvidenceV55Json['2026-09-11-prompt-crawl-coverage.json'];
+if (promptCoverageV55 && (promptCoverageV55.promptMatrixSchemaVersion !== 3 || promptCoverageV55.totals?.prompts !== 23 || promptCoverageV55.totals?.verifiedCrawledEvidencePages !== 15 || promptCoverageV55.totals?.promptsWithAnyVerifiedCrawl !== 18 || promptCoverageV55.totals?.promptsFullyVerifiedCrawled !== 12 || promptCoverageV55.bySegment?.scenario?.prompts !== 6)) failures.push('Versioned GEO monitor revision 55 prompt crawl coverage: expected totals are incomplete');
+
 const crawlerEvidenceReleaseUrl = 'https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-crawler-evidence-2026-09-10';
 const crawlerEvidenceRelease = await get('GitHub verified crawler-evidence checkpoint', crawlerEvidenceReleaseUrl, 'text/html');
 requireText('GitHub verified crawler-evidence checkpoint', crawlerEvidenceRelease, [

@@ -232,23 +232,23 @@
       ]
     },
     {
-      "id": "github-release-geo-monitor-evidence-2026-09-12-54",
+      "id": "github-release-geo-monitor-evidence-2026-09-12-55",
       "channel": "github_releases",
       "format": "versioned-evidence-checkpoint",
       "language": "en-zh-CN",
       "status": "published",
       "sourceFile": "README.md",
-      "title": "Onyx GEO monitor evidence checkpoint — 2026-09-12, revision 54",
-      "campaign": "geo_monitor_evidence_54",
+      "title": "Onyx GEO monitor evidence checkpoint — 2026-09-12, revision 55",
+      "campaign": "geo_monitor_evidence_55",
       "trackedTargets": [
-        "https://hk.onyxdevslab.com/data/ai-search-evidence-status.json?utm_source=github_releases&utm_medium=referral&utm_campaign=geo_monitor_evidence_54"
+        "https://hk.onyxdevslab.com/data/ai-search-evidence-status.json?utm_source=github_releases&utm_medium=referral&utm_campaign=geo_monitor_evidence_55"
       ],
-      "publicUrl": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-monitor-evidence-2026-09-12-54",
-      "anonymousAccessVerifiedAt": "2026-09-12T20:55:24Z",
+      "publicUrl": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-monitor-evidence-2026-09-12-55",
+      "anonymousAccessVerifiedAt": "2026-09-12T22:20:21Z",
       "publicContentMarkers": [
-        "Onyx GEO monitor evidence checkpoint — 2026-09-12, revision 54",
+        "Onyx GEO monitor evidence checkpoint — 2026-09-12, revision 55",
         "One new provider-verified AhrefsBot fingerprint was observed",
-        "newly exposed the previously queued Simplified Chinese industrial ERP AI data platform case study"
+        "Cumulative AhrefsBot discovery-file requests are now 95"
       ],
       "searchIndexedAt": null,
       "aiCitationObservedAt": null,
