@@ -844,6 +844,43 @@ if (promptMapV56 && (promptMapV56.version !== '2026.09.13.56' || promptMapV56.pr
 const promptCoverageV56 = monitorEvidenceV56Json['2026-09-11-prompt-crawl-coverage.json'];
 if (promptCoverageV56 && (promptCoverageV56.promptMatrixSchemaVersion !== 3 || promptCoverageV56.totals?.prompts !== 23 || promptCoverageV56.totals?.verifiedCrawledEvidencePages !== 15 || promptCoverageV56.totals?.promptsWithAnyVerifiedCrawl !== 18 || promptCoverageV56.totals?.promptsFullyVerifiedCrawled !== 12 || promptCoverageV56.bySegment?.scenario?.prompts !== 6)) failures.push('Versioned GEO monitor revision 56 prompt crawl coverage: expected totals are incomplete');
 
+const monitorEvidenceV57Base = 'https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-monitor-evidence-2026-09-13-57';
+const monitorEvidenceV57Release = await get('GitHub GEO monitor evidence revision 57', 'https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-monitor-evidence-2026-09-13-57', 'text/html');
+requireText('GitHub GEO monitor evidence revision 57', monitorEvidenceV57Release, [
+  'GEO monitor evidence — 2026-09-13, revision 57',
+  'six-entry domain-canonicalization observation',
+  'https_enforced=false',
+  'No prompt was sent to Doubao',
+]);
+const monitorEvidenceV57Assets = [
+  {name:'monitor snapshot',file:'2026-09-11-monitor-evidence.json',sha256:'0f38811e5b3ceb41aa8d1a880f0d59e37c12dfb1e81710b2ec2fe868f8e2999e'},
+  {name:'public status',file:'ai-search-evidence-status.json',sha256:'04bf954fa3c99feae313f225c444adae97e387d5a2b662d7ae00766aa517002e'},
+  {name:'prompt matrix',file:'prompt-matrix.json',sha256:'ed5305c7c1221689dd5c522cf305ea7ff73344ef37f016a3e148d5f598351b6f'},
+  {name:'prompt evidence map',file:'ai-search-prompt-evidence-map.json',sha256:'058c37cb27ff549d6ece1763b820286465f647eb1fe4149ce4bf37239ccbfc51'},
+  {name:'prompt crawl coverage',file:'2026-09-11-prompt-crawl-coverage.json',sha256:'7b9eb77978732b6425d408bb02cf4c2629daa9693ad2bb448e937df179151c11'},
+];
+const monitorEvidenceV57Json = {};
+for (const asset of monitorEvidenceV57Assets) {
+  const raw = await get(`Versioned GEO monitor revision 57 ${asset.name}`, `${monitorEvidenceV57Base}/${asset.file}`, 'application/');
+  const digest = createHash('sha256').update(raw).digest('hex');
+  if (digest !== asset.sha256) failures.push(`Versioned GEO monitor revision 57 ${asset.name}: SHA-256 mismatch, got ${digest}`);
+  try {
+    monitorEvidenceV57Json[asset.file] = JSON.parse(raw);
+  } catch {
+    failures.push(`Versioned GEO monitor revision 57 ${asset.name}: invalid JSON`);
+  }
+}
+const monitorV57 = monitorEvidenceV57Json['2026-09-11-monitor-evidence.json'];
+if (monitorV57 && (monitorV57.publicStatusVersion !== '2026.09.13.57' || monitorV57.generatedAt !== '2026-09-12T23:12:15.413Z' || monitorV57.latestEvidenceObservedAt !== '2026-09-12T23:12:15.344Z' || monitorV57.domainCanonicalizationEvidence?.status !== 'noncompliant' || monitorV57.domainCanonicalizationEvidence?.targetsChecked !== 6 || monitorV57.domainCanonicalizationEvidence?.compliantTargets !== 3 || monitorV57.domainCanonicalizationEvidence?.targets?.find((item) => item.id === 'https-www')?.reasons?.includes('https-downgrade-observed') !== true || monitorV57.domainCanonicalizationEvidence?.githubPagesSetting?.httpsEnforced !== false || monitorV57.doubaoTestStatus !== 'not-run')) failures.push('Versioned GEO monitor revision 57 monitor snapshot: expected domain canonicalization defect or boundary is incomplete');
+const statusV57 = monitorEvidenceV57Json['ai-search-evidence-status.json'];
+if (statusV57 && (statusV57.version !== '2026.09.13.57' || statusV57.latestEvidenceObservedAt !== '2026-09-12T23:12:15.344Z' || statusV57.versionHistory?.[0]?.version !== '2026.09.13.57' || statusV57.versionHistory?.[1]?.version !== '2026.09.13.56' || statusV57.domainCanonicalization?.status !== 'noncompliant' || statusV57.domainCanonicalization?.noncompliantTargets !== 3 || statusV57.domainCanonicalization?.githubPagesSetting?.mutationAuthorized !== false || statusV57.evidenceLevels?.[2]?.evidence?.yandexPublicSearchObservation?.officialBrandResultObserved !== true || statusV57.testProtocol?.doubaoPromptsSent !== false)) failures.push('Versioned GEO monitor revision 57 public status: expected canonicalization, Yandex, or AI boundary is incomplete');
+const matrixV57 = monitorEvidenceV57Json['prompt-matrix.json'];
+if (matrixV57 && (matrixV57.schemaVersion !== 3 || matrixV57.prompts?.length !== 23 || matrixV57.prompts.find((prompt) => prompt.id === 'brand-cases')?.evidenceUrls?.length !== 7)) failures.push('Versioned GEO monitor revision 57 prompt matrix: six-case protocol is incomplete');
+const promptMapV57 = monitorEvidenceV57Json['ai-search-prompt-evidence-map.json'];
+if (promptMapV57 && (promptMapV57.version !== '2026.09.13.57' || promptMapV57.promptMatrix?.schemaVersion !== 3 || promptMapV57.promptMatrix?.promptCount !== 23 || promptMapV57.promptMatrix?.doubaoPromptsSent !== false || promptMapV57.totals?.uniqueEvidencePages !== 23 || promptMapV57.prompts?.length !== 23)) failures.push('Versioned GEO monitor revision 57 prompt evidence map: expected protocol or boundary is incomplete');
+const promptCoverageV57 = monitorEvidenceV57Json['2026-09-11-prompt-crawl-coverage.json'];
+if (promptCoverageV57 && (promptCoverageV57.promptMatrixSchemaVersion !== 3 || promptCoverageV57.totals?.prompts !== 23 || promptCoverageV57.totals?.verifiedCrawledEvidencePages !== 15 || promptCoverageV57.totals?.promptsWithAnyVerifiedCrawl !== 18 || promptCoverageV57.totals?.promptsFullyVerifiedCrawled !== 12 || promptCoverageV57.bySegment?.scenario?.prompts !== 6)) failures.push('Versioned GEO monitor revision 57 prompt crawl coverage: expected totals are incomplete');
+
 const crawlerEvidenceReleaseUrl = 'https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-crawler-evidence-2026-09-10';
 const crawlerEvidenceRelease = await get('GitHub verified crawler-evidence checkpoint', crawlerEvidenceReleaseUrl, 'text/html');
 requireText('GitHub verified crawler-evidence checkpoint', crawlerEvidenceRelease, [
