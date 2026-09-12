@@ -117,6 +117,7 @@ const partialCommonCrawl = buildCommonCrawlAvailability({
 assert.equal(partialCommonCrawl.status, 'partial');
 assert.equal(partialCommonCrawl.availableIndexes, 1);
 assert.equal(partialCommonCrawl.unavailableIndexes, 1);
+assert.equal(buildCommonCrawlAvailability({ collectionIndexStatus: 'available', results: partialCommonCrawl.indexes.map((item) => ({ ...item, status: 'unavailable' })) }).status, 'unavailable');
 assert.deepEqual(partialCommonCrawl.indexes, [
   { id: 'CC-MAIN-2026-34', status: 'unavailable' },
   { id: 'CC-MAIN-2026-30', status: 'available' },
@@ -227,4 +228,4 @@ assert.equal(selectEvidenceEventKind({ initializing: false, evidenceChanged: tru
 assert.equal(selectEvidenceEventKind({ initializing: false, evidenceChanged: false, availabilityChanged: true }), 'availability-change');
 assert.equal(selectEvidenceEventKind({ initializing: false, evidenceChanged: false, availabilityChanged: false }), null);
 
-console.log(JSON.stringify({ tests: 82, failures: [] }, null, 2));
+console.log(JSON.stringify({ tests: 83, failures: [] }, null, 2));

@@ -82,7 +82,7 @@ export function buildCommonCrawlAvailability(commonCrawl) {
   const results = Array.isArray(commonCrawl?.results) ? commonCrawl.results : [];
   const available = results.filter((result) => result.status === 'available');
   const unavailable = results.filter((result) => result.status !== 'available');
-  const status = commonCrawl?.collectionIndexStatus !== 'available' || !results.length
+  const status = commonCrawl?.collectionIndexStatus !== 'available' || !results.length || !available.length
     ? 'unavailable'
     : unavailable.length
       ? 'partial'

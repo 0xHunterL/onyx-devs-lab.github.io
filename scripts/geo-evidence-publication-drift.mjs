@@ -54,14 +54,16 @@ export function buildPublicationDrift(baseline, summary) {
     ['attributionEvidence.internallyInconsistentUserAgentRequests', attribution.internallyInconsistentUserAgentRequests, counts.internallyInconsistentUserAgentVisits],
     ['attributionEvidence.malformedCampaignRequestsExcluded', attribution.malformedCampaignRequestsExcluded, counts.malformedCampaignVisits],
     ['attributionEvidence.aiReferrerAttributedRequests', attribution.aiReferrerAttributedRequests, counts.aiReferrerAttributedVisits],
-    ['commonCrawlEvidence.capturesObservedInAvailableIndexes', commonCrawl.capturesObservedInAvailableIndexes, counts.commonCrawlCaptures],
-    ['waybackEvidence.captures', wayback.captures, counts.waybackCaptures],
-    ['waybackEvidence.distinctUrls', wayback.distinctUrls, counts.waybackDistinctUrls],
-    ['waybackEvidence.fixedPromptArchiveCoverage.archivedEvidencePages', wayback.fixedPromptArchiveCoverage?.archivedEvidencePages, counts.waybackArchivedEvidencePages],
-    ['waybackEvidence.fixedPromptArchiveCoverage.promptsWithAnyArchivedEvidence', wayback.fixedPromptArchiveCoverage?.promptsWithAnyArchivedEvidence, counts.promptsWithAnyWaybackArchive],
-    ['waybackEvidence.fixedPromptArchiveCoverage.promptsFullyArchived', wayback.fixedPromptArchiveCoverage?.promptsFullyArchived, counts.promptsFullyWaybackArchived],
   ];
   for (const mapping of countMappings) check(...mapping);
+  if (collectedCommonCrawl.status !== 'unavailable') check('commonCrawlEvidence.capturesObservedInAvailableIndexes', commonCrawl.capturesObservedInAvailableIndexes, counts.commonCrawlCaptures);
+  if (collectedWayback.status === 'available') {
+    check('waybackEvidence.captures', wayback.captures, counts.waybackCaptures);
+    check('waybackEvidence.distinctUrls', wayback.distinctUrls, counts.waybackDistinctUrls);
+    check('waybackEvidence.fixedPromptArchiveCoverage.archivedEvidencePages', wayback.fixedPromptArchiveCoverage?.archivedEvidencePages, counts.waybackArchivedEvidencePages);
+    check('waybackEvidence.fixedPromptArchiveCoverage.promptsWithAnyArchivedEvidence', wayback.fixedPromptArchiveCoverage?.promptsWithAnyArchivedEvidence, counts.promptsWithAnyWaybackArchive);
+    check('waybackEvidence.fixedPromptArchiveCoverage.promptsFullyArchived', wayback.fixedPromptArchiveCoverage?.promptsFullyArchived, counts.promptsFullyWaybackArchived);
+  }
 
   check('crawlerEvidenceAccounting.currentRetainedLogFiles', crawlerAccounting.currentRetainedLogFiles, (summary.sourceLogs || []).length);
   check('crawlerEvidenceAccounting.currentRetainedLogPaths', crawlerAccounting.currentRetainedLogPaths || [], summary.sourceLogs || []);

@@ -152,4 +152,18 @@ const waybackPromptDrift = structuredClone(summary);
 waybackPromptDrift.counts.promptsFullyWaybackArchived += 1;
 assert.equal(buildPublicationDrift(baseline, waybackPromptDrift).mismatches[0].field, 'waybackEvidence.fixedPromptArchiveCoverage.promptsFullyArchived');
 
-console.log(JSON.stringify({ tests: 17, failures: [] }, null, 2));
+const unavailableArchiveSources = structuredClone(summary);
+unavailableArchiveSources.availability.commonCrawl.status = 'unavailable';
+unavailableArchiveSources.availability.commonCrawl.indexes.forEach((item) => { item.status = 'unavailable'; });
+unavailableArchiveSources.availability.wayback.status = 'unavailable';
+unavailableArchiveSources.counts.commonCrawlCaptures = 0;
+unavailableArchiveSources.counts.waybackCaptures = 0;
+unavailableArchiveSources.counts.waybackDistinctUrls = 0;
+unavailableArchiveSources.counts.waybackArchivedEvidencePages = 0;
+unavailableArchiveSources.counts.promptsWithAnyWaybackArchive = 0;
+unavailableArchiveSources.counts.promptsFullyWaybackArchived = 0;
+const unavailableArchiveFields = buildPublicationDrift(baseline, unavailableArchiveSources).mismatches.map((item) => item.field);
+assert.ok(!unavailableArchiveFields.some((field) => field.startsWith('waybackEvidence.') && field !== 'waybackEvidence.status'));
+assert.ok(!unavailableArchiveFields.includes('commonCrawlEvidence.capturesObservedInAvailableIndexes'));
+
+console.log(JSON.stringify({ tests: 19, failures: [] }, null, 2));
