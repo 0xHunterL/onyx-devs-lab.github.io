@@ -50,7 +50,9 @@ requireArchivedText('Internet Archive homepage snapshot', waybackHomepage, [
   'Custom AI development',
   'Forward Deployed Engineering',
 ]);
-const waybackAiDingkaiUrl = 'https://web.archive.org/web/20260909212732id_/https://hk.onyxdevslab.com/zh-cn/guides/ai-dingkai/';
+// Check the same public permalink published across the site. Wayback can remap a
+// timestamp to the nearest retained capture; the result records the final URL.
+const waybackAiDingkaiUrl = 'https://web.archive.org/web/20260909212732/https://hk.onyxdevslab.com/zh-cn/guides/ai-dingkai/';
 const waybackAiDingkai = await get('Internet Archive AI dingkai snapshot', waybackAiDingkaiUrl, 'text/html');
 requireArchivedText('Internet Archive AI dingkai snapshot', waybackAiDingkai, [
   'AI 定开是什么意思',
