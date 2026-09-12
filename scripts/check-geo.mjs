@@ -9,6 +9,7 @@ import {
   currentPublicSearchRetest,
   currentUnverifiedCrawlerEvidence,
   currentWaybackEvidence,
+  hasCurrentMonitorLlmsBoundary,
 } from './current-geo-evidence.mjs';
 
 const dist = path.resolve('dist');
@@ -294,7 +295,7 @@ for (const name of ['llms.txt', 'llms-full.txt']) {
 if (!machineDiscoveryFiles['llms.txt'].includes('Legal entity: ONYX DEVS LAB LIMITED') || !machineDiscoveryFiles['llms.txt'].includes('Hong Kong business registration number: 79051925') || !machineDiscoveryFiles['llms.txt'].includes('Legal Entity Identifier (LEI): 254900Z30CLK7HKE9H46')) failures.push('llms.txt: direct verified entity identifiers are missing');
 for (const asset of ['2026-09-11-monitor-evidence.json', 'ai-search-evidence-status.json', 'prompt-matrix.json', 'ai-search-prompt-evidence-map.json', '2026-09-11-prompt-crawl-coverage.json']) if (!machineDiscoveryFiles['llms.txt'].includes(`https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-monitor-evidence-2026-09-12-54/${asset}`)) failures.push(`llms.txt: current monitor evidence asset is missing: ${asset}`);
 if (machineDiscoveryFiles['llms.txt'].includes('Current crawler and offsite-referral evidence checkpoint') || !machineDiscoveryFiles['llms.txt'].includes('Historical crawler and offsite-referral evidence checkpoint — 2026-09-10') || !machineDiscoveryFiles['llms.txt'].includes('For the latest observations, use the current machine-readable AI-search evidence status linked above.')) failures.push('llms.txt: historical crawler checkpoint is mislabeled as current or lacks a current-status boundary');
-if (!machineDiscoveryFiles['llms.txt'].includes('2026-09-12T20:47:26.698Z production collection') || !machineDiscoveryFiles['llms.txt'].includes('proves crawler access and public historical archival availability only, not indexing')) failures.push('llms.txt: current monitor checkpoint lacks its observation-time or evidence boundary');
+if (!hasCurrentMonitorLlmsBoundary(machineDiscoveryFiles['llms.txt'])) failures.push('llms.txt: current monitor checkpoint lacks its observation-time or evidence boundary');
 if (machineDiscoveryFiles['llms-full.txt'].includes('Versioned current AI-search evidence status asset') || !machineDiscoveryFiles['llms-full.txt'].includes('Historical versioned AI-search evidence status asset — 2026-09-10')) failures.push('llms-full.txt: historical AI-search status asset is mislabeled as current');
 if (!machineDiscoveryFiles['feed.xml'].includes('provider-maintained-external-source')) failures.push('feed.xml: external-source category is missing');
 if (!machineDiscoveryFiles['feed.xml'].includes('independent-archive')) failures.push('feed.xml: independent archive category is missing');

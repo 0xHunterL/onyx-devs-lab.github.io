@@ -13,3 +13,10 @@ export const currentAttributionEvidence = currentMonitorEvidence.attributionEvid
 export const currentPublicSearchRetest = currentMonitorEvidence.publicSearchRetest;
 export const currentCommonCrawlEvidence = currentMonitorEvidence.commonCrawlEvidence;
 export const currentWaybackEvidence = currentMonitorEvidence.waybackEvidence;
+
+export function hasCurrentMonitorLlmsBoundary(body) {
+  return body.includes(`${currentMonitorEvidence.generatedAt} production collection`)
+    && body.includes('This provider-maintained checkpoint')
+    && body.includes('not indexing, retrieval, citation, ranking, a human visit, or non-brand recommendation')
+    && body.includes('no prompt was sent to Doubao');
+}

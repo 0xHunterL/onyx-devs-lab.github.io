@@ -7,6 +7,7 @@ import {
   currentPublicSearchRetest,
   currentUnverifiedCrawlerEvidence,
   currentWaybackEvidence,
+  hasCurrentMonitorLlmsBoundary,
 } from './current-geo-evidence.mjs';
 
 const origin = (process.argv[2] || 'https://hk.onyxdevslab.com').replace(/\/$/, '');
@@ -196,7 +197,7 @@ if (!llms.body.includes('# Onyx Devs Lab')) failures.push('/llms.txt: expected s
 if (!llms.body.includes('Legal entity: ONYX DEVS LAB LIMITED') || !llms.body.includes('Hong Kong business registration number: 79051925') || !llms.body.includes('Legal Entity Identifier (LEI): 254900Z30CLK7HKE9H46')) failures.push('/llms.txt: direct verified entity identifiers are missing');
 for (const asset of ['2026-09-11-monitor-evidence.json', 'ai-search-evidence-status.json', 'prompt-matrix.json', 'ai-search-prompt-evidence-map.json', '2026-09-11-prompt-crawl-coverage.json']) if (!llms.body.includes(`https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-monitor-evidence-2026-09-12-54/${asset}`)) failures.push(`/llms.txt: current monitor evidence asset is missing: ${asset}`);
 if (llms.body.includes('Current crawler and offsite-referral evidence checkpoint') || !llms.body.includes('Historical crawler and offsite-referral evidence checkpoint — 2026-09-10') || !llms.body.includes('For the latest observations, use the current machine-readable AI-search evidence status linked above.')) failures.push('/llms.txt: historical crawler checkpoint is mislabeled as current or lacks a current-status boundary');
-if (!llms.body.includes('2026-09-12T20:47:26.698Z production collection') || !llms.body.includes('proves crawler access and public historical archival availability only, not indexing')) failures.push('/llms.txt: current monitor checkpoint lacks its observation-time or evidence boundary');
+if (!hasCurrentMonitorLlmsBoundary(llms.body)) failures.push('/llms.txt: current monitor checkpoint lacks its observation-time or evidence boundary');
 
 const llmsFull = await get('/llms-full.txt', 'text/plain');
 if (!llmsFull.body.includes('Legal entity: ONYX DEVS LAB LIMITED')) failures.push('/llms-full.txt: verified entity summary is missing');
