@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "publicStatusVersion": "2026.09.12.34",
-  "generatedAt": "2026-09-12T07:21:47.271Z",
+  "publicStatusVersion": "2026.09.12.35",
+  "generatedAt": "2026-09-12T07:34:50.415Z",
   "windowStart": "2026-09-01",
   "site": "https://hk.onyxdevslab.com/",
   "sourceLogs": [
@@ -48,6 +48,14 @@
       "verificationSource": "https://api.ahrefs.com/v3/public/crawler-ip-ranges",
       "meaning": "All 82 discovery-file requests matched the official Ahrefs crawler IP ranges. AhrefsBot serves both the Ahrefs database and Yep, so these requests prove external crawler discovery only; they do not prove Yep indexing, ranking, retrieval, citation, or AI recommendation."
     }
+  },
+  "crawlerEvidenceAccounting": {
+    "mode": "append-only-provider-verified-fingerprint-cumulative",
+    "deduplicationKey": "SHA-256 fingerprint of the verified request observation",
+    "currentRetainedLogFiles": 4,
+    "retentionAdjustmentField": "retentionAdjustments",
+    "latestRetentionAdjustments": [],
+    "meaning": "Provider-verified crawler request counts are cumulative over the append-only fingerprint ledger. If a verified request rotates out of the four currently retained log files, its cumulative count is preserved and the difference is exposed in retentionAdjustments; an explicit evidence correction still requires a reviewed baseline revision. This rule does not apply to user-agent-only candidates, referrals, Common Crawl results, or Wayback results."
   },
   "identityUnverifiedCrawlerEvidence": {
     "bytespiderContentRequestCandidates": 0,
