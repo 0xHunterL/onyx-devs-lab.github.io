@@ -1,8 +1,8 @@
 {
   "schemaVersion": 2,
-  "version": "2026.09.11.27",
+  "version": "2026.09.11.28",
   "id": "https://hk.onyxdevslab.com/data/ai-search-evidence-status.json",
-  "observedAt": "2026-09-11T16:11:49Z",
+  "observedAt": "2026-09-11T16:43:40.620Z",
   "sourceBaseline": "https://github.com/0xHunterL/onyx-devs-lab.github.io/blob/main/docs/geo-baselines/2026-09-11-monitor-evidence.json",
   "versionHistory": [
     {
@@ -84,9 +84,9 @@
         "verifiedPerplexityContentCrawls": 0,
         "userAgentOnlyBytespiderContentCrawlCandidates": 0,
         "userAgentOnlyBytespiderDiscoveryFileCandidates": 0,
-        "syntheticBytespiderReleaseChecksExcluded": 3019,
+        "syntheticCrawlerReleaseChecksExcludedMinimum": 3088,
         "commonCrawlIndexObservation": {
-          "checkedAt": "2026-09-11T16:01:37.022Z",
+          "checkedAt": "2026-09-11T16:43:34.501Z",
           "status": "available",
           "capturesObservedInAvailableIndexes": 0,
           "availableIndexes": [
@@ -97,7 +97,7 @@
           "meaning": "Both selected indexes returned usable responses with zero observed captures. This complete result covers only the selected indexes and must not be interpreted as proof of zero captures across all Common Crawl history."
         },
         "waybackArchiveObservation": {
-          "checkedAt": "2026-09-11T16:01:42.376Z",
+          "checkedAt": "2026-09-11T16:43:39.436Z",
           "status": "available",
           "captures": 93,
           "distinctUrls": 43,
@@ -139,6 +139,7 @@
         "Baiduspider and YandexBot use their providers’ official reverse-DNS suffixes plus forward confirmation; Applebot uses the official published CIDR list. Verified YandexBot crawling proves access by that search crawler, not public indexing, ranking, AI retrieval, or citation.",
         "AhrefsBot uses the official Ahrefs published CIDR list. Because it serves both Ahrefs and Yep, verified discovery-file requests do not prove Yep indexing, ranking, retrieval, citation, or AI recommendation and are excluded from fixed-prompt search coverage.",
         "Bytespider candidates are labeled user-agent-only and identity-unverified; they do not prove Doubao or ByteDance access.",
+        "The synthetic crawler exclusion count is published as a monotonic minimum because live gates create more marked checks; it is audit context across all crawler families and is intentionally not treated as visibility evidence or an exact drift trigger.",
         "Common Crawl index observations cover only the named selected indexes; they do not prove search indexing, retrieval, citation, or absence across all crawl history.",
         "Wayback CDX records prove public historical captures only; they do not prove current accessibility, search indexing, AI retrieval, citation, ranking, endorsement, or recommendation.",
         "Discovery-file visits do not prove content-page ingestion.",
