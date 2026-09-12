@@ -1110,11 +1110,11 @@
       ]
     },
     {
-      "id": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-monitor-evidence-2026-09-13-57",
-      "url": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-monitor-evidence-2026-09-13-57",
-      "title": "Onyx GEO monitor evidence checkpoint — 2026-09-13, revision 57",
-      "summary": "A versioned machine-readable checkpoint preserving Yandex exact-brand retrieval and the first automated six-entry domain-canonicalization report. Three entry points remain noncompliant because HTTP content or an HTTPS downgrade is exposed; search ranking impact remains unverified.",
-      "content_text": "A versioned machine-readable checkpoint preserving Yandex exact-brand retrieval and the first automated six-entry domain-canonicalization report. Three entry points remain noncompliant because HTTP content or an HTTPS downgrade is exposed; search ranking impact remains unverified.",
+      "id": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-monitor-evidence-2026-09-13-58",
+      "url": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-monitor-evidence-2026-09-13-58",
+      "title": "Onyx GEO monitor evidence checkpoint — 2026-09-13, revision 58",
+      "summary": "A versioned machine-readable checkpoint preserving two new provider-verified YandexBot discovery-file requests. The six-entry domain check remains three compliant and three noncompliant; crawler access does not prove causation, indexing, ranking, AI citation, or recommendation.",
+      "content_text": "A versioned machine-readable checkpoint preserving two new provider-verified YandexBot discovery-file requests. The six-entry domain check remains three compliant and three noncompliant; crawler access does not prove causation, indexing, ranking, AI citation, or recommendation.",
       "date_modified": "2026-09-13T00:00:00+08:00",
       "tags": [
         "evidence",
