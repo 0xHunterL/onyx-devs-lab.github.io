@@ -1110,11 +1110,11 @@
       ]
     },
     {
-      "id": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-monitor-evidence-2026-09-12-51",
-      "url": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-monitor-evidence-2026-09-12-51",
-      "title": "Onyx GEO monitor evidence checkpoint — 2026-09-12, revision 51",
-      "summary": "A versioned machine-readable checkpoint recording 11 provider-verified OAI-SearchBot discovery-file requests, 77 YandexBot content requests, 70 YandexBot discovery-file requests, and 93 AhrefsBot discovery-file requests. The 23-prompt crawl coverage remains 15 mapped pages and 18 prompts at least partly; the checkpoint proves crawler access only, not indexing, citation, or recommendation.",
-      "content_text": "A versioned machine-readable checkpoint recording 11 provider-verified OAI-SearchBot discovery-file requests, 77 YandexBot content requests, 70 YandexBot discovery-file requests, and 93 AhrefsBot discovery-file requests. The 23-prompt crawl coverage remains 15 mapped pages and 18 prompts at least partly; the checkpoint proves crawler access only, not indexing, citation, or recommendation.",
+      "id": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-monitor-evidence-2026-09-12-52",
+      "url": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-monitor-evidence-2026-09-12-52",
+      "title": "Onyx GEO monitor evidence checkpoint — 2026-09-12, revision 52",
+      "summary": "A versioned machine-readable checkpoint preserving the 19:59 UTC public-search retest: the official site and Onyx non-brand category result remain unobserved, while the visible competitor set changed from 23 to 22 URLs and historical results remain separately dated. It does not prove indexing, citation, ranking, or recommendation.",
+      "content_text": "A versioned machine-readable checkpoint preserving the 19:59 UTC public-search retest: the official site and Onyx non-brand category result remain unobserved, while the visible competitor set changed from 23 to 22 URLs and historical results remain separately dated. It does not prove indexing, citation, ranking, or recommendation.",
       "date_modified": "2026-09-12T00:00:00+08:00",
       "tags": [
         "evidence",
