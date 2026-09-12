@@ -11,6 +11,8 @@ const wayback = baseline.waybackEvidence;
 const distribution = baseline.distributionEvidence;
 const summary = {
   generatedAt: baseline.generatedAt,
+  sourceLogs: Array(baseline.crawlerEvidenceAccounting.currentRetainedLogFiles).fill('/var/log/nginx/example.log'),
+  retentionAdjustments: structuredClone(baseline.crawlerEvidenceAccounting.latestRetentionAdjustments),
   counts: {
     verifiedGptBotPageCrawls: provider.gptBotContentRequests,
     verifiedGptBotDiscoveryFileCrawls: provider.gptBotDiscoveryFileRequests,
@@ -87,6 +89,14 @@ const crawlerDrift = structuredClone(summary);
 crawlerDrift.counts.verifiedGptBotPageCrawls += 1;
 assert.equal(buildPublicationDrift(baseline, crawlerDrift).mismatches[0].field, 'providerVerifiedCrawlerEvidence.gptBotContentRequests');
 
+const retentionAdjustmentDrift = structuredClone(summary);
+retentionAdjustmentDrift.retentionAdjustments.push({ metric: 'verifiedYandexPageCrawls', retainedLogCount: 70, cumulativeCount: 71, newlyObserved: 0 });
+assert.equal(buildPublicationDrift(baseline, retentionAdjustmentDrift).mismatches[0].field, 'crawlerEvidenceAccounting.latestRetentionAdjustments');
+
+const retainedLogSetDrift = structuredClone(summary);
+retainedLogSetDrift.sourceLogs.pop();
+assert.equal(buildPublicationDrift(baseline, retainedLogSetDrift).mismatches[0].field, 'crawlerEvidenceAccounting.currentRetainedLogFiles');
+
 const commonCrawlDrift = structuredClone(summary);
 commonCrawlDrift.availability.commonCrawl.status = commonCrawl.status === 'partial' ? 'available' : 'partial';
 commonCrawlDrift.availability.commonCrawl.indexes[0].status = 'unavailable';
@@ -106,4 +116,4 @@ const waybackPromptDrift = structuredClone(summary);
 waybackPromptDrift.counts.promptsFullyWaybackArchived += 1;
 assert.equal(buildPublicationDrift(baseline, waybackPromptDrift).mismatches[0].field, 'waybackEvidence.fixedPromptArchiveCoverage.promptsFullyArchived');
 
-console.log(JSON.stringify({ tests: 9, failures: [] }, null, 2));
+console.log(JSON.stringify({ tests: 11, failures: [] }, null, 2));

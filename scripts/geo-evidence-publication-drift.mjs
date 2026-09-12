@@ -7,6 +7,7 @@ export function buildPublicationDrift(baseline, summary) {
   };
 
   const provider = baseline.providerVerifiedCrawlerEvidence || {};
+  const crawlerAccounting = baseline.crawlerEvidenceAccounting || {};
   const attribution = baseline.attributionEvidence || {};
   const prompt = baseline.fixedPromptCoverage || {};
   const commonCrawl = baseline.commonCrawlEvidence || {};
@@ -56,6 +57,8 @@ export function buildPublicationDrift(baseline, summary) {
   ];
   for (const mapping of countMappings) check(...mapping);
 
+  check('crawlerEvidenceAccounting.currentRetainedLogFiles', crawlerAccounting.currentRetainedLogFiles, (summary.sourceLogs || []).length);
+  check('crawlerEvidenceAccounting.latestRetentionAdjustments', crawlerAccounting.latestRetentionAdjustments || [], summary.retentionAdjustments || []);
   check('commonCrawlEvidence.status', commonCrawl.status, collectedCommonCrawl.status);
   check('commonCrawlEvidence.availableIndexes', commonCrawl.availableIndexes || [], (collectedCommonCrawl.indexes || []).filter((item) => item.status === 'available').map((item) => item.id));
   check('commonCrawlEvidence.unavailableIndexes', (commonCrawl.unavailableIndexes || []).map((item) => item.id), (collectedCommonCrawl.indexes || []).filter((item) => item.status !== 'available').map((item) => item.id));
