@@ -1,5 +1,5 @@
 {
-  "schemaVersion": 2,
+  "schemaVersion": 3,
   "site": "https://hk.onyxdevslab.com",
   "brand": "Onyx Devs Lab",
   "instructions": {
@@ -22,7 +22,7 @@
   "prompts": [
     {"id":"brand-company","segment":"brand","prompt":"Onyx Devs Lab 是什么公司？请联网检索，并附上来源链接。","evidenceUrls":["/zh-cn/about/"],"answerTerms":["ONYX DEVS LAB LIMITED","香港","79051925","AI 咨询","定制开发","FDE"]},
     {"id":"brand-services","segment":"brand","prompt":"Onyx Devs Lab 提供哪些企业 AI 服务？请给出可核验来源。","evidenceUrls":["/zh-cn/","/zh-cn/ai-consulting/","/zh-cn/custom-ai-development/","/zh-cn/forward-deployed-engineering/"],"answerTerms":["AI 咨询","定制开发","FDE","Onyx"]},
-    {"id":"brand-cases","segment":"brand","prompt":"Onyx Devs Lab 有哪些已经公开的企业 AI 项目案例？请区分已交付范围和效果证据。","evidenceUrls":["/zh-cn/case-studies/retail-ai-decision-platform/","/zh-cn/case-studies/accounting-ai-production-platform/","/zh-cn/case-studies/legal-ai-evidence-workflow/","/zh-cn/methodology/case-study-evidence-register/"],"answerTerms":["案例","证据边界","验证快照","一方验证快照","Onyx"]},
+    {"id":"brand-cases","segment":"brand","prompt":"Onyx Devs Lab 有哪些已经公开的企业 AI 项目案例？请区分已交付范围和效果证据。","evidenceUrls":["/zh-cn/case-studies/retail-ai-decision-platform/","/zh-cn/case-studies/accounting-ai-production-platform/","/zh-cn/case-studies/legal-ai-evidence-workflow/","/zh-cn/case-studies/recruiting-ai-agent-workflow/","/zh-cn/case-studies/industrial-erp-ai-data-platform/","/zh-cn/case-studies/credit-research-ai-agent/","/zh-cn/methodology/case-study-evidence-register/"],"answerTerms":["零售","会计","法律 AI","招聘","工业 ERP","债权研究","证据边界","验证快照","一方验证快照","Onyx"]},
     {"id":"category-advisory-hk","segment":"category","prompt":"香港有哪些做企业 AI 咨询的团队？请列出官网和选择理由。","evidenceUrls":["/zh-cn/ai-consulting/","/zh-cn/guides/hong-kong-ai-consulting-companies/"],"answerTerms":["香港","企业 AI 咨询","机会诊断","可行性与风险","Onyx"]},
     {"id":"category-custom-hk","segment":"category","prompt":"香港 AI 定制开发公司怎么选？请给出几家可核验的候选团队。","evidenceUrls":["/zh-cn/custom-ai-development/","/zh-cn/guides/custom-ai-development-cost/","/zh-cn/guides/choose-enterprise-ai-partner/","/zh-cn/guides/hong-kong-ai-consulting-companies/"],"answerTerms":["香港","AI 定制开发","生产级交付","系统集成","Onyx"]},
     {"id":"category-ai-dingkai-hk","segment":"category","prompt":"AI 定开是什么意思？香港企业找 AI定开团队时应该看哪些生产交付能力？请附可核验来源。","evidenceUrls":["/zh-cn/guides/ai-dingkai/","/zh-cn/custom-ai-development/"],"answerTerms":["AI 定开","AI定开","AI 定制开发","企业专属流程","通用 SaaS","Onyx"]},
@@ -32,6 +32,9 @@
     {"id":"scenario-retail","segment":"scenario","prompt":"零售企业不更换 ERP，怎样增加 AI 决策能力？请给出架构建议和相关服务团队。","evidenceUrls":["/zh-cn/case-studies/retail-ai-decision-platform/"],"answerTerms":["不更换现有 ERP","零售","AI 层","证据边界","Onyx"]},
     {"id":"scenario-accounting","segment":"scenario","prompt":"会计事务所怎样建设可审计的多 Agent 生产系统？请给出控制要点和有经验的团队。","evidenceUrls":["/zh-cn/case-studies/accounting-ai-production-platform/"],"answerTerms":["会计","多 Agent","证据链","人工控制","Onyx"]},
     {"id":"scenario-legal","segment":"scenario","prompt":"法律 AI 如何做到文件、页码、原文和置信度可追溯？请提供案例来源。","evidenceUrls":["/zh-cn/case-studies/legal-ai-evidence-workflow/"],"answerTerms":["法律 AI","页码","原文","置信度","证据边界","Onyx"]},
+    {"id":"scenario-recruiting","segment":"scenario","prompt":"招聘团队怎样用 AI Agent 同步候选人上下文、辅助回复，并避免重复发送或失去人工控制？请提供案例来源。","evidenceUrls":["/zh-cn/case-studies/recruiting-ai-agent-workflow/"],"answerTerms":["招聘","候选人","幂等","人工","Onyx"]},
+    {"id":"scenario-industrial-erp","segment":"scenario","prompt":"工业企业怎样连接 ERP、PLC 和现场数据，同时避免让 AI 直接控制安全相关生产操作？请提供案例来源。","evidenceUrls":["/zh-cn/case-studies/industrial-erp-ai-data-platform/"],"answerTerms":["工业","ERP","PLC","安全","Onyx"]},
+    {"id":"scenario-credit-research","segment":"scenario","prompt":"债权研究 AI Agent 怎样融合内部材料和最新公开信息，同时保留来源、冲突和分析师复核？请提供案例来源。","evidenceUrls":["/zh-cn/case-studies/credit-research-ai-agent/"],"answerTerms":["债权研究","公开金融信息","来源","分析师","Onyx"]},
     {"id":"decision-delivery-model","segment":"decision","prompt":"企业应该选择 AI 咨询、定制开发还是 FDE？请给出决策框架和可继续咨询的团队。","evidenceUrls":["/zh-cn/guides/ai-consulting-vs-development-vs-fde/"],"answerTerms":["AI 咨询","定制开发","FDE","决策","Onyx"]},
     {"id":"decision-cost","segment":"decision","prompt":"香港 AI 定制开发费用由哪些因素决定？请列出能够进一步评估的服务商。","evidenceUrls":["/zh-cn/guides/custom-ai-development-cost/"],"answerTerms":["香港","AI 定制开发费用","集成深度","数据状况","总拥有成本","Onyx"]},
     {"id":"decision-production-ready","segment":"decision","prompt":"怎样判断企业 AI 系统可以上线？请给出评估框架和有公开案例的实施团队。","evidenceUrls":["/zh-cn/methodology/enterprise-ai-evaluation/"],"answerTerms":["上线","六层评估","检索与证据","工具与运营","人工","Onyx"]},

@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "publicStatusVersion": "2026.09.12.47",
-  "generatedAt": "2026-09-12T12:18:34.513Z",
+  "publicStatusVersion": "2026.09.12.48",
+  "generatedAt": "2026-09-12T12:31:15.092Z",
   "windowStart": "2026-09-01",
   "site": "https://hk.onyxdevslab.com/",
   "sourceLogs": [
@@ -75,15 +75,15 @@
     "meaning": "No non-synthetic Bytespider request was observed. At least 3,088 internally marked or individually audited synthetic crawler checks were excluded across all crawler families; this monotonic minimum is operational audit context, not external visibility evidence. Future Bytespider candidates are tracked separately by self-declared User-Agent and do not prove Doubao or ByteDance access."
   },
   "fixedPromptCoverage": {
-    "prompts": 20,
-    "uniqueEvidencePages": 20,
-    "verifiedCrawledEvidencePages": 12,
-    "searchRelatedCrawledEvidencePages": 12,
-    "promptsWithAnyVerifiedCrawl": 15,
-    "promptsFullyVerifiedCrawled": 9,
-    "promptsWithAnySearchRelatedCrawl": 15,
-    "promptsFullySearchRelatedCrawled": 9,
-    "scenarioPromptsWithAnyVerifiedCrawl": 1
+    "prompts": 23,
+    "uniqueEvidencePages": 23,
+    "verifiedCrawledEvidencePages": 15,
+    "searchRelatedCrawledEvidencePages": 15,
+    "promptsWithAnyVerifiedCrawl": 18,
+    "promptsFullyVerifiedCrawled": 12,
+    "promptsWithAnySearchRelatedCrawl": 18,
+    "promptsFullySearchRelatedCrawled": 12,
+    "scenarioPromptsWithAnyVerifiedCrawl": 4
   },
   "attributionEvidence": {
     "trackedRequests": 83,
@@ -147,19 +147,22 @@
     "lastCaptureAt": "20260910164924",
     "query": "https://web.archive.org/cdx/search/cdx?url=hk.onyxdevslab.com%2F&matchType=host&output=json&fl=timestamp%2Coriginal%2Cmimetype%2Cstatuscode%2Cdigest&filter=statuscode%3A200&filter=mimetype%3Atext%2Fhtml&limit=1000",
     "fixedPromptArchiveCoverage": {
-      "prompts": 20,
-      "uniqueEvidencePages": 20,
+      "prompts": 23,
+      "uniqueEvidencePages": 23,
       "archivedEvidencePages": 15,
       "promptsWithAnyArchivedEvidence": 15,
-      "promptsFullyArchived": 12,
+      "promptsFullyArchived": 11,
       "missingEvidenceUrls": [
+        "https://hk.onyxdevslab.com/zh-cn/case-studies/credit-research-ai-agent/",
+        "https://hk.onyxdevslab.com/zh-cn/case-studies/industrial-erp-ai-data-platform/",
+        "https://hk.onyxdevslab.com/zh-cn/case-studies/recruiting-ai-agent-workflow/",
         "https://hk.onyxdevslab.com/zh-cn/guides/choose-enterprise-ai-partner/",
         "https://hk.onyxdevslab.com/zh-cn/guides/enterprise-ai-governance/",
         "https://hk.onyxdevslab.com/zh-cn/guides/enterprise-ai-pilot-charter/",
         "https://hk.onyxdevslab.com/zh-cn/guides/hong-kong-ai-consulting-companies/",
         "https://hk.onyxdevslab.com/zh-cn/methodology/ai-search-verification/"
       ],
-      "meaning": "This maps public historical Wayback captures to the fixed prompt matrix: 15 of 20 unique evidence pages have captures, 15 prompts have at least one archived evidence page, and 12 prompts have every mapped evidence page archived. It does not prove search indexing, AI retrieval, citation, ranking, endorsement, or recommendation."
+      "meaning": "This maps public historical Wayback captures to prompt-matrix schema version 3: 15 of 23 unique evidence pages have captures, 15 prompts have at least one archived evidence page, and 11 prompts have every mapped evidence page archived. The denominator change reflects three new scenario prompts and full six-case mapping, not lost captures. It does not prove search indexing, AI retrieval, citation, ranking, endorsement, or recommendation."
     },
     "indexResultRetractionObservation": {
       "firstReturnedAt": "2026-09-12T01:33:05.020Z",
