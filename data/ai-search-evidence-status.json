@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "version": "2026.09.12.31",
+  "version": "2026.09.12.32",
   "id": "https://hk.onyxdevslab.com/data/ai-search-evidence-status.json",
   "observedAt": "2026-09-12T07:07:07.506Z",
   "sourceBaseline": "https://github.com/0xHunterL/onyx-devs-lab.github.io/blob/main/docs/geo-baselines/2026-09-11-monitor-evidence.json",
@@ -93,7 +93,11 @@
             "CC-MAIN-2026-30"
           ],
           "unavailableIndexes": [
-            "CC-MAIN-2026-34"
+            {
+              "id": "CC-MAIN-2026-34",
+              "httpStatus": 504,
+              "reason": "HTTP 504"
+            }
           ],
           "meaning": "CC-MAIN-2026-30 returned a usable zero-capture response while CC-MAIN-2026-34 returned HTTP 504. The result is incomplete and must not be interpreted as a verified zero across the selected indexes or all Common Crawl history."
         },
