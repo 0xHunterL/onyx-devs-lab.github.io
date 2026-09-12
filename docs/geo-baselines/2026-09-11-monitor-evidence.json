@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "publicStatusVersion": "2026.09.12.50",
-  "generatedAt": "2026-09-12T14:36:27.882Z",
+  "publicStatusVersion": "2026.09.12.51",
+  "generatedAt": "2026-09-12T19:33:18.402Z",
   "windowStart": "2026-09-01",
   "site": "https://hk.onyxdevslab.com/",
   "sourceLogs": [
@@ -14,7 +14,7 @@
     "gptBotContentRequests": 28,
     "gptBotDiscoveryFileRequests": 14,
     "oaiSearchBotContentRequests": 0,
-    "oaiSearchBotDiscoveryFileRequests": 10,
+    "oaiSearchBotDiscoveryFileRequests": 11,
     "bingbotContentRequests": 7,
     "bingbotDiscoveryFileRequests": 1,
     "baiduspiderContentRequests": 0,
@@ -27,10 +27,10 @@
     "commonCrawlBotDiscoveryFileRequests": 0,
     "applebotContentRequests": 0,
     "applebotDiscoveryFileRequests": 0,
-    "yandexbotContentRequests": 76,
-    "yandexbotDiscoveryFileRequests": 69,
+    "yandexbotContentRequests": 77,
+    "yandexbotDiscoveryFileRequests": 70,
     "ahrefsbotContentRequests": 0,
-    "ahrefsbotDiscoveryFileRequests": 89,
+    "ahrefsbotDiscoveryFileRequests": 93,
     "distinctVerifiedContentPaths": 45,
     "historicalReclassification": {
       "homepageContentRequestsAdded": 3,
@@ -39,18 +39,18 @@
     },
     "yandexHistoricalRecognition": {
       "firstSeen": "2026-09-08T12:45:20Z",
-      "lastSeen": "2026-09-12T12:49:32Z",
+      "lastSeen": "2026-09-12T18:59:03Z",
       "verifiedContentPaths": 42,
       "meaning": "YandexBot monitoring was added after the latest requests exposed the missing family. Most of these provider-verified requests are historical observations newly recognized in current and rotated logs; they are not all newly occurring crawls."
     },
     "ahrefsHistoricalRecognition": {
       "firstSeen": "2026-09-08T13:53:09Z",
-      "lastSeen": "2026-09-12T14:30:55Z",
-      "robotsTxtRequests": 23,
-      "sitemapRequests": 66,
-      "distinctClientAddresses": 80,
+      "lastSeen": "2026-09-12T18:45:34Z",
+      "robotsTxtRequests": 24,
+      "sitemapRequests": 69,
+      "distinctClientAddresses": 84,
       "verificationSource": "https://api.ahrefs.com/v3/public/crawler-ip-ranges",
-      "meaning": "All 89 discovery-file requests matched the official Ahrefs crawler IP ranges. AhrefsBot serves both the Ahrefs database and Yep, so these requests prove external crawler discovery only; they do not prove Yep indexing, ranking, retrieval, citation, or AI recommendation."
+      "meaning": "All 93 discovery-file requests matched the official Ahrefs crawler IP ranges. AhrefsBot serves both the Ahrefs database and Yep, so these requests prove external crawler discovery only; they do not prove Yep indexing, ranking, retrieval, citation, or AI recommendation."
     }
   },
   "crawlerEvidenceAccounting": {
@@ -139,9 +139,9 @@
     "meaning": "CC-MAIN-2026-34 and CC-MAIN-2026-30 both returned usable zero-capture responses. This complete result covers only the two selected indexes; it does not represent all Common Crawl history or prove absence from search or AI systems."
   },
   "waybackEvidence": {
-    "checkedAt": "2026-09-12T11:04:58.776Z",
+    "checkedAt": "2026-09-12T19:33:16.224Z",
     "status": "available",
-    "captures": 93,
+    "captures": 92,
     "distinctUrls": 43,
     "firstCaptureAt": "20260909205420",
     "lastCaptureAt": "20260910164924",
@@ -184,9 +184,18 @@
       "stillAbsentFingerprint": "a1ca5ca174871452d8a56d5d58d02107f0328504b62dcefbcae2d84ba0b89d30",
       "meaning": "The count returned from 92 to 93 because a previously observed custom-AI-development capture reappeared in the CDX result. The earlier AI-consulting fingerprint remains absent. This is public-index volatility, not a newly created snapshot or proof of search or AI visibility."
     },
+    "latestIndexVolatilityObservation": {
+      "observedAt": "2026-09-12T19:33:16.224Z",
+      "previousCount": 93,
+      "currentCount": 92,
+      "noLongerReturnedUrl": "https://hk.onyxdevslab.com/zh-cn/custom-ai-development/",
+      "noLongerReturnedFingerprint": "4178c25c41cdb32a18f8b8ae379c2cf9a086976d06c6641d9ec0bf963e0f418b",
+      "stillAbsentFingerprint": "a1ca5ca174871452d8a56d5d58d02107f0328504b62dcefbcae2d84ba0b89d30",
+      "meaning": "The public CDX query again stopped returning the previously fluctuating custom-AI-development capture while the earlier AI-consulting fingerprint remained absent. The prompt archive ledger retains both independently verified historical observations, so this count change is treated as public-index volatility, not proof that the snapshots or pages disappeared."
+    },
     "lastCompleteObservation": {
-      "observedAt": "2026-09-12T11:04:58.776Z",
-      "captures": 93,
+      "observedAt": "2026-09-12T19:33:16.224Z",
+      "captures": 92,
       "distinctUrls": 43
     },
     "unavailableObservation": {
@@ -199,7 +208,7 @@
       "captures": 93,
       "distinctUrls": 43
     },
-    "meaning": "The public Wayback CDX host query recovered after the preceding timeout and currently returns 93 successful HTML capture records across 43 distinct URLs. The recovery is an availability transition, not a new snapshot or visibility gain. The records prove public historical captures only; they do not prove current accessibility, search indexing, AI retrieval, citation, ranking, endorsement, or recommendation. An unavailable future query must not be interpreted as zero captures."
+    "meaning": "The available public Wayback CDX host query currently returns 92 successful HTML capture records across 43 distinct URLs. The one-record decrease from the preceding 93-result observation matches the documented public-index volatility and is not evidence that a historical snapshot or page disappeared. The append-only prompt archive ledger remains at 15 archived evidence pages, 15 prompts with any archive and 11 fully archived prompts. These records prove public historical captures only; they do not prove current accessibility, search indexing, AI retrieval, citation, ranking, endorsement, or recommendation. An unavailable future query must not be interpreted as zero captures."
   },
   "githubRepositorySearchEvidence": {
     "checkedAt": "2026-09-12T12:18:33.802Z",
