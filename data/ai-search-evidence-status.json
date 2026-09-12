@@ -1,8 +1,8 @@
 {
   "schemaVersion": 2,
-  "version": "2026.09.12.43",
+  "version": "2026.09.12.44",
   "id": "https://hk.onyxdevslab.com/data/ai-search-evidence-status.json",
-  "observedAt": "2026-09-12T11:00:31Z",
+  "observedAt": "2026-09-12T11:04:58.776Z",
   "sourceBaseline": "https://github.com/0xHunterL/onyx-devs-lab.github.io/blob/main/docs/geo-baselines/2026-09-11-monitor-evidence.json",
   "versionHistory": [
     {
@@ -70,8 +70,8 @@
     "commonCrawlBotDiscoveryFileRequests": 0,
     "applebotContentRequests": 0,
     "applebotDiscoveryFileRequests": 0,
-    "yandexbotContentRequests": 71,
-    "yandexbotDiscoveryFileRequests": 64,
+    "yandexbotContentRequests": 72,
+    "yandexbotDiscoveryFileRequests": 65,
     "ahrefsbotContentRequests": 0,
     "ahrefsbotDiscoveryFileRequests": 85,
     "distinctVerifiedContentPaths": 44,
@@ -82,7 +82,7 @@
     },
     "yandexHistoricalRecognition": {
       "firstSeen": "2026-09-08T12:45:20Z",
-      "lastSeen": "2026-09-11T15:31:06Z",
+      "lastSeen": "2026-09-12T10:57:57Z",
       "verifiedContentPaths": 41,
       "meaning": "YandexBot monitoring was added after the latest requests exposed the missing family. Most of these provider-verified requests are historical observations newly recognized in current and rotated logs; they are not all newly occurring crawls."
     },
@@ -133,8 +133,8 @@
         "verifiedBaiduspiderDiscoveryFileCrawls": 0,
         "verifiedApplebotContentCrawls": 0,
         "verifiedApplebotDiscoveryFileCrawls": 0,
-        "verifiedYandexbotContentCrawls": 71,
-        "verifiedYandexbotDiscoveryFileCrawls": 64,
+        "verifiedYandexbotContentCrawls": 72,
+        "verifiedYandexbotDiscoveryFileCrawls": 65,
         "verifiedAhrefsBotContentCrawls": 0,
         "verifiedAhrefsBotDiscoveryFileCrawls": 85,
         "verifiedGooglebotContentCrawls": 0,
@@ -154,8 +154,8 @@
           "meaning": "CC-MAIN-2026-34 and CC-MAIN-2026-30 both returned usable zero-capture responses. This complete result covers only the two selected indexes; it does not represent all Common Crawl history or prove absence from search or AI systems."
         },
         "waybackArchiveObservation": {
-          "checkedAt": "2026-09-12T10:49:52.764Z",
-          "status": "unavailable",
+          "checkedAt": "2026-09-12T11:04:58.776Z",
+          "status": "available",
           "captures": 93,
           "distinctUrls": 43,
           "firstCaptureAt": "20260909205420",
@@ -197,7 +197,7 @@
             "meaning": "The count returned from 92 to 93 because a previously observed custom-AI-development capture reappeared in the CDX result. The earlier AI-consulting fingerprint remains absent. This is public-index volatility, not a newly created snapshot or proof of search or AI visibility."
           },
           "lastCompleteObservation": {
-            "observedAt": "2026-09-12T09:36:31.031Z",
+            "observedAt": "2026-09-12T11:04:58.776Z",
             "captures": 93,
             "distinctUrls": 43
           },
@@ -205,7 +205,13 @@
             "observedAt": "2026-09-12T10:49:52.764Z",
             "reason": "The operation was aborted due to timeout"
           },
-          "meaning": "The public Wayback CDX host query is currently unavailable. The 93 captures across 43 URLs and their fixed-prompt archive coverage are retained from the last complete observation at 2026-09-12T09:36:31.031Z and must not be interpreted as a current query result or replaced with zero. The retained records prove public historical captures only; they do not prove current accessibility, search indexing, AI retrieval, citation, ranking, endorsement, or recommendation."
+          "availabilityRecoveryObservation": {
+            "previousUnavailableAt": "2026-09-12T10:49:52.764Z",
+            "recoveredAt": "2026-09-12T11:04:58.776Z",
+            "captures": 93,
+            "distinctUrls": 43
+          },
+          "meaning": "The public Wayback CDX host query recovered after the preceding timeout and currently returns 93 successful HTML capture records across 43 distinct URLs. The recovery is an availability transition, not a new snapshot or visibility gain. The records prove public historical captures only; they do not prove current accessibility, search indexing, AI retrieval, citation, ranking, endorsement, or recommendation. An unavailable future query must not be interpreted as zero captures."
         },
         "fixedPromptCoverage": {
           "prompts": 20,
