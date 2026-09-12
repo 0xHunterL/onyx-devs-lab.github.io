@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "publicStatusVersion": "2026.09.12.54",
-  "generatedAt": "2026-09-12T20:47:26.698Z",
+  "publicStatusVersion": "2026.09.12.55",
+  "generatedAt": "2026-09-12T22:12:53.589Z",
   "windowStart": "2026-09-01",
   "site": "https://hk.onyxdevslab.com/",
   "sourceLogs": [
@@ -30,7 +30,7 @@
     "yandexbotContentRequests": 78,
     "yandexbotDiscoveryFileRequests": 71,
     "ahrefsbotContentRequests": 0,
-    "ahrefsbotDiscoveryFileRequests": 94,
+    "ahrefsbotDiscoveryFileRequests": 95,
     "distinctVerifiedContentPaths": 45,
     "historicalReclassification": {
       "homepageContentRequestsAdded": 3,
@@ -45,12 +45,12 @@
     },
     "ahrefsHistoricalRecognition": {
       "firstSeen": "2026-09-08T13:53:09Z",
-      "lastSeen": "2026-09-12T20:22:25Z",
+      "lastSeen": "2026-09-12T21:59:47Z",
       "robotsTxtRequests": 24,
-      "sitemapRequests": 70,
+      "sitemapRequests": 71,
       "distinctClientAddresses": 84,
       "verificationSource": "https://api.ahrefs.com/v3/public/crawler-ip-ranges",
-      "meaning": "All 94 discovery-file requests matched the official Ahrefs crawler IP ranges. AhrefsBot serves both the Ahrefs database and Yep, so these requests prove external crawler discovery only; they do not prove Yep indexing, ranking, retrieval, citation, or AI recommendation."
+      "meaning": "All 95 discovery-file requests matched the official Ahrefs crawler IP ranges. AhrefsBot serves both the Ahrefs database and Yep, so these requests prove external crawler discovery only; they do not prove Yep indexing, ranking, retrieval, citation, or AI recommendation."
     }
   },
   "crawlerEvidenceAccounting": {
@@ -131,7 +131,7 @@
     ]
   },
   "commonCrawlEvidence": {
-    "checkedAt": "2026-09-12T20:47:22.382Z",
+    "checkedAt": "2026-09-12T22:12:50.508Z",
     "status": "available",
     "capturesObservedInAvailableIndexes": 0,
     "availableIndexes": ["CC-MAIN-2026-34", "CC-MAIN-2026-30"],
@@ -139,7 +139,7 @@
     "meaning": "CC-MAIN-2026-34 and CC-MAIN-2026-30 both returned usable zero-capture responses. This complete result covers only the two selected indexes; it does not represent all Common Crawl history or prove absence from search or AI systems."
   },
   "waybackEvidence": {
-    "checkedAt": "2026-09-12T20:47:23.824Z",
+    "checkedAt": "2026-09-12T22:12:51.438Z",
     "status": "available",
     "captures": 94,
     "distinctUrls": 44,
@@ -193,7 +193,7 @@
       "meaning": "The public CDX query again stopped returning the previously fluctuating custom-AI-development capture while the earlier AI-consulting fingerprint remained absent. The prompt archive ledger retains both independently verified historical observations, so this count change is treated as public-index volatility, not proof that the snapshots or pages disappeared."
     },
     "latestArchiveGrowthObservation": {
-      "observedAt": "2026-09-12T20:47:23.824Z",
+      "observedAt": "2026-09-12T22:12:51.438Z",
       "timestamp": "20260912144806",
       "url": "https://hk.onyxdevslab.com/zh-cn/case-studies/industrial-erp-ai-data-platform/",
       "digest": "HCSTSCJLSPZ5H2FN4GRCUTMUNRGY6WGM",
@@ -219,7 +219,7 @@
     "meaning": "The available public Wayback CDX host query currently returns 94 successful HTML capture records across 44 distinct URLs. A newly exposed industrial ERP case-study capture increases the prompt archive ledger to 16 archived evidence pages, 16 prompts with any archive and 12 fully archived prompts; the remaining count movement includes documented public-index volatility. These records prove public historical captures only; they do not prove current accessibility, search indexing, AI retrieval, citation, ranking, endorsement, or recommendation. An unavailable future query must not be interpreted as zero captures."
   },
   "githubRepositorySearchEvidence": {
-    "checkedAt": "2026-09-12T20:47:25.977Z",
+    "checkedAt": "2026-09-12T22:12:52.861Z",
     "status": "available",
     "queriesChecked": 3,
     "availableQueries": 3,
@@ -254,20 +254,20 @@
       }
     ],
     "source": "https://hk.onyxdevslab.com/data/github-repository-search-baseline.json",
-    "eventFile": "events/2026-09-12T20-47-26.698Z-evidence-and-availability-change.json",
+    "eventFile": "events/2026-09-12T22-12-53.589Z-evidence-change.json",
     "meaning": "All three fixed GitHub Repository Search API queries were available. Brand and legal-entity queries return both first-party repositories; the exact category query returns the same two repositories after the recorded README changes. This proves GitHub platform-search visibility only, not public-web indexing, AI retrieval, citation, ranking, independent endorsement, or non-brand recommendation."
   },
   "distributionEvidence": {
     "manifestItems": 9,
     "publishedItems": 8,
     "readyNotPublishedItems": 1,
-    "checkedAt": "2026-09-12T20:47:25.514Z",
+    "checkedAt": "2026-09-12T22:12:52.424Z",
     "publicUrlsChecked": 8,
     "trackedTargetsChecked": 18,
     "availableSources": 26,
     "unavailableSources": 0,
     "availabilityStatus": "available",
-    "eventFile": "events/2026-09-12T20-47-26.698Z-evidence-and-availability-change.json",
+    "eventFile": "events/2026-09-12T22-12-53.589Z-evidence-change.json",
     "meaning": "All declared published URLs and tracked targets passed anonymous availability, destination, and content-marker checks. This does not prove indexing, AI retrieval, citation, recommendation, a human visit, or independent endorsement."
   },
   "servicesHkReadinessEvidence": {
