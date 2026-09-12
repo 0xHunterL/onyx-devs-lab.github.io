@@ -232,23 +232,23 @@
       ]
     },
     {
-      "id": "github-release-geo-monitor-evidence-2026-09-12-52",
+      "id": "github-release-geo-monitor-evidence-2026-09-12-53",
       "channel": "github_releases",
       "format": "versioned-evidence-checkpoint",
       "language": "en-zh-CN",
       "status": "published",
       "sourceFile": "README.md",
-      "title": "Onyx GEO monitor evidence checkpoint — 2026-09-12, revision 52",
-      "campaign": "geo_monitor_evidence_52",
+      "title": "Onyx GEO monitor evidence checkpoint — 2026-09-12, revision 53",
+      "campaign": "geo_monitor_evidence_53",
       "trackedTargets": [
-        "https://hk.onyxdevslab.com/data/ai-search-evidence-status.json?utm_source=github_releases&utm_medium=referral&utm_campaign=geo_monitor_evidence_52"
+        "https://hk.onyxdevslab.com/data/ai-search-evidence-status.json?utm_source=github_releases&utm_medium=referral&utm_campaign=geo_monitor_evidence_53"
       ],
-      "publicUrl": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-monitor-evidence-2026-09-12-52",
-      "anonymousAccessVerifiedAt": "2026-09-12T20:05:25Z",
+      "publicUrl": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-monitor-evidence-2026-09-12-53",
+      "anonymousAccessVerifiedAt": "2026-09-12T20:23:30Z",
       "publicContentMarkers": [
-        "Onyx GEO monitor evidence checkpoint — 2026-09-12, revision 52",
-        "Immutable checkpoint for the 2026-09-12T19:59:30Z public-search retest",
-        "non-brand category set changed from 23 to 22 observed URLs"
+        "Onyx GEO monitor evidence checkpoint — 2026-09-12, revision 53",
+        "Two new provider-verified YandexBot fingerprints were observed",
+        "Cumulative YandexBot content and discovery-file requests are now 78 and 71"
       ],
       "searchIndexedAt": null,
       "aiCitationObservedAt": null,
