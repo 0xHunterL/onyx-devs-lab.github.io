@@ -1,8 +1,8 @@
 {
   "schemaVersion": 2,
-  "version": "2026.09.12.40",
+  "version": "2026.09.12.43",
   "id": "https://hk.onyxdevslab.com/data/ai-search-evidence-status.json",
-  "observedAt": "2026-09-12T09:36:32.522Z",
+  "observedAt": "2026-09-12T11:00:31Z",
   "sourceBaseline": "https://github.com/0xHunterL/onyx-devs-lab.github.io/blob/main/docs/geo-baselines/2026-09-11-monitor-evidence.json",
   "versionHistory": [
     {
@@ -73,7 +73,7 @@
     "yandexbotContentRequests": 71,
     "yandexbotDiscoveryFileRequests": 64,
     "ahrefsbotContentRequests": 0,
-    "ahrefsbotDiscoveryFileRequests": 83,
+    "ahrefsbotDiscoveryFileRequests": 85,
     "distinctVerifiedContentPaths": 44,
     "historicalReclassification": {
       "homepageContentRequestsAdded": 3,
@@ -88,12 +88,12 @@
     },
     "ahrefsHistoricalRecognition": {
       "firstSeen": "2026-09-08T13:53:09Z",
-      "lastSeen": "2026-09-12T08:30:55Z",
-      "robotsTxtRequests": 21,
-      "sitemapRequests": 62,
-      "distinctClientAddresses": 75,
+      "lastSeen": "2026-09-12T09:59:36Z",
+      "robotsTxtRequests": 22,
+      "sitemapRequests": 63,
+      "distinctClientAddresses": 77,
       "verificationSource": "https://api.ahrefs.com/v3/public/crawler-ip-ranges",
-      "meaning": "All 83 discovery-file requests matched the official Ahrefs crawler IP ranges. AhrefsBot serves both the Ahrefs database and Yep, so these requests prove external crawler discovery only; they do not prove Yep indexing, ranking, retrieval, citation, or AI recommendation."
+      "meaning": "All 85 discovery-file requests matched the official Ahrefs crawler IP ranges. AhrefsBot serves both the Ahrefs database and Yep, so these requests prove external crawler discovery only; they do not prove Yep indexing, ranking, retrieval, citation, or AI recommendation."
     }
   },
   "evidenceLevels": [
@@ -136,7 +136,7 @@
         "verifiedYandexbotContentCrawls": 71,
         "verifiedYandexbotDiscoveryFileCrawls": 64,
         "verifiedAhrefsBotContentCrawls": 0,
-        "verifiedAhrefsBotDiscoveryFileCrawls": 83,
+        "verifiedAhrefsBotDiscoveryFileCrawls": 85,
         "verifiedGooglebotContentCrawls": 0,
         "verifiedPerplexityContentCrawls": 0,
         "userAgentOnlyBytespiderContentCrawlCandidates": 0,
@@ -154,8 +154,8 @@
           "meaning": "CC-MAIN-2026-34 and CC-MAIN-2026-30 both returned usable zero-capture responses. This complete result covers only the two selected indexes; it does not represent all Common Crawl history or prove absence from search or AI systems."
         },
         "waybackArchiveObservation": {
-          "checkedAt": "2026-09-12T09:36:31.031Z",
-          "status": "available",
+          "checkedAt": "2026-09-12T10:49:52.764Z",
+          "status": "unavailable",
           "captures": 93,
           "distinctUrls": 43,
           "firstCaptureAt": "20260909205420",
@@ -196,7 +196,16 @@
             "stillAbsentFingerprint": "a1ca5ca174871452d8a56d5d58d02107f0328504b62dcefbcae2d84ba0b89d30",
             "meaning": "The count returned from 92 to 93 because a previously observed custom-AI-development capture reappeared in the CDX result. The earlier AI-consulting fingerprint remains absent. This is public-index volatility, not a newly created snapshot or proof of search or AI visibility."
           },
-          "meaning": "The public Wayback CDX host query currently returns 93 successful HTML capture records across 43 distinct URLs. The current set includes a previously observed custom-AI-development capture that was absent from the prior 92-result set, while an earlier AI-consulting fingerprint remains absent. These fluctuations are treated as public-index volatility, not creation or disappearance of pages or snapshots. The records prove public historical captures only; they do not prove current accessibility, search indexing, AI retrieval, citation, ranking, endorsement, or recommendation. An unavailable future query must not be interpreted as zero captures."
+          "lastCompleteObservation": {
+            "observedAt": "2026-09-12T09:36:31.031Z",
+            "captures": 93,
+            "distinctUrls": 43
+          },
+          "unavailableObservation": {
+            "observedAt": "2026-09-12T10:49:52.764Z",
+            "reason": "The operation was aborted due to timeout"
+          },
+          "meaning": "The public Wayback CDX host query is currently unavailable. The 93 captures across 43 URLs and their fixed-prompt archive coverage are retained from the last complete observation at 2026-09-12T09:36:31.031Z and must not be interpreted as a current query result or replaced with zero. The retained records prove public historical captures only; they do not prove current accessibility, search indexing, AI retrieval, citation, ranking, endorsement, or recommendation."
         },
         "fixedPromptCoverage": {
           "prompts": 20,
@@ -232,7 +241,7 @@
       "evidence": {
         "publicSearchWebsiteResultObserved": false,
         "publicSearchObservation": {
-          "testedAt": "2026-09-12T08:05:03Z",
+          "testedAt": "2026-09-12T11:00:31Z",
           "queries": [
             "\"ONYX-GEO-VERIFY-79051925-20260908\"",
             "site:hk.onyxdevslab.com \"Onyx Devs Lab\"",
@@ -271,8 +280,8 @@
           ],
           "entityRecordMeaning": "These records make the legal entity externally discoverable and disambiguatable. They do not prove official-site indexing, website ownership, service verification, endorsement, AI citation, or recommendation.",
           "previousNonBrandCategoryObservation": {
-            "testedAt": "2026-09-12T07:18:18Z",
-            "resultCount": 11,
+            "testedAt": "2026-09-12T08:05:03Z",
+            "resultCount": 12,
             "meaning": "Preserved prior result-set checkpoint. Search-result membership and ordering can fluctuate; a later result set does not establish a ranking trend."
           },
           "nonBrandCategoryResultsObserved": [
@@ -323,9 +332,53 @@
             {
               "url": "https://fde.hk/zh-cn/solutions",
               "observedLabel": "FDE.HK AI 部署场景方案"
+            },
+            {
+              "url": "https://www.hkexnews.hk/listedco/listconews/sehk/2026/0622/2026062201170_c.pdf",
+              "observedLabel": "HKEX issuer announcement mentioning FDE"
+            },
+            {
+              "url": "https://www.hkexnews.hk/listedco/listconews/sehk/2026/0330/2026033003255_c.pdf",
+              "observedLabel": "HKEX issuer announcement mentioning AI First FDE"
+            },
+            {
+              "url": "https://pdf.dfcfw.com/pdf/H3_AP202606021823159019_1.pdf?1780414881000.pdf=",
+              "observedLabel": "Fujitsu AI partnership research note mentioning FDE"
+            },
+            {
+              "url": "https://www.investhk.gov.hk/media/wvke34zz/202407-client-profiles-sc.pdf",
+              "observedLabel": "InvestHK client profiles mentioning AI consulting"
+            },
+            {
+              "url": "https://www.cmbi.com.hk/upload/202512/20251209569935.pdf",
+              "observedLabel": "CMBI research report mentioning AI FDE"
+            },
+            {
+              "url": "https://www.investhk.gov.hk/media/ck0jqksu/202107-thinkcol-sc.pdf",
+              "observedLabel": "InvestHK ThinkCol profile mentioning custom AI consulting"
+            },
+            {
+              "url": "https://zh.wikipedia.org/wiki/%E5%95%86%E6%B1%A4%E7%A7%91%E6%8A%80",
+              "observedLabel": "商汤科技"
+            },
+            {
+              "url": "https://zh.wikipedia.org/wiki/%E8%81%94%E6%83%B3%E7%94%B5%E8%AE%AF%E7%9B%88%E7%A7%91%E4%BC%81%E4%B8%9A%E6%96%B9%E6%A1%88",
+              "observedLabel": "联想电讯盈科企业方案"
+            },
+            {
+              "url": "https://zh.wikipedia.org/wiki/International_Genius_Company",
+              "observedLabel": "International Genius Company"
+            },
+            {
+              "url": "https://zh.wikipedia.org/wiki/%E8%B2%9D%E6%81%A9%E7%AD%96%E7%95%A5%E9%A1%A7%E5%95%8F",
+              "observedLabel": "貝恩策略顧問"
+            },
+            {
+              "url": "https://zh.wikipedia.org/wiki/%E5%BE%B7%E5%8B%A4",
+              "observedLabel": "德勤"
             }
           ],
-          "nonBrandCategoryMeaning": "These URLs were returned for the dated non-brand category query in the observed public-search result set, while no official Onyx site result was observed. This later snapshot is dominated by FDE.HK pages, but result membership can fluctuate and does not establish a ranking trend. The list is a reproducible competitive-discovery baseline only: it is not a complete ranking, quality assessment, independent endorsement, or proof of any AI answer recommendation.",
+          "nonBrandCategoryMeaning": "These 23 URLs were returned for the dated non-brand category query in the observed public-search result set, while no official Onyx site result was observed. The set is dominated by FDE.HK pages and also contains broad or low-relevance company and financial-document results, showing that result-set size is not equivalent to category relevance. Membership and ordering can fluctuate and this snapshot does not establish a ranking trend. The list is a reproducible competitive-discovery baseline only: it is not a complete ranking, quality assessment, independent endorsement, or proof of any AI answer recommendation.",
           "categoryRecommendationObserved": false,
           "newPublicDiscussionObserved": false
         },
@@ -388,22 +441,22 @@
   ],
   "publicSearchChecks": [
     {
-      "checkedAt": "2026-09-12T08:05:03Z",
+      "checkedAt": "2026-09-12T11:00:31Z",
       "query": "\"ONYX-GEO-VERIFY-79051925-20260908\"",
       "result": "website-not-observed"
     },
     {
-      "checkedAt": "2026-09-12T08:05:03Z",
+      "checkedAt": "2026-09-12T11:00:31Z",
       "query": "site:hk.onyxdevslab.com \"Onyx Devs Lab\"",
       "result": "official-website-not-observed"
     },
     {
-      "checkedAt": "2026-09-12T08:05:03Z",
+      "checkedAt": "2026-09-12T11:00:31Z",
       "query": "\"Onyx Devs Lab\" -site:cr.gov.hk",
       "result": "official-website-not-observed; corroborating entity record observed"
     },
     {
-      "checkedAt": "2026-09-12T08:05:03Z",
+      "checkedAt": "2026-09-12T11:00:31Z",
       "query": "香港 企业 AI 咨询 公司 FDE",
       "result": "other-category-providers-observed; official-Onyx-result-not-observed"
     }

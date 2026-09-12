@@ -239,11 +239,16 @@
     },
     {
       "@type": "Dataset",
-      "name": "Onyx automated GEO monitor evidence checkpoint — 2026-09-11",
-      "description": "Provider-maintained snapshot of provider-verified crawler requests, fixed-prompt crawl coverage, classified attribution requests, and dated public-search observations. It does not prove indexing, citation, or recommendation.",
-      "url": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-monitor-evidence-2026-09-11-7",
-      "sameAs": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-monitor-evidence-2026-09-11-7/2026-09-11-monitor-evidence.json",
-      "dateModified": "2026-09-11"
+      "name": "Onyx GEO monitor evidence checkpoint — 2026-09-12, revision 41",
+      "description": "Provider-maintained snapshot of provider-verified crawler requests, fixed-prompt crawl and archive coverage, classified attribution requests, services.hk readiness, and dated public-search observations. It does not prove indexing, citation, or recommendation.",
+      "url": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-monitor-evidence-2026-09-12-41",
+      "sameAs": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-monitor-evidence-2026-09-12-41/2026-09-11-monitor-evidence.json",
+      "distribution": {
+        "@type": "DataDownload",
+        "contentUrl": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-monitor-evidence-2026-09-12-41/ai-search-evidence-status.json",
+        "encodingFormat": "application/json"
+      },
+      "dateModified": "2026-09-12"
     },
     {
       "@type": "SoftwareSourceCode",
