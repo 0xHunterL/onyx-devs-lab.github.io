@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "publicStatusVersion": "2026.09.12.52",
-  "generatedAt": "2026-09-12T19:59:30Z",
+  "publicStatusVersion": "2026.09.12.53",
+  "generatedAt": "2026-09-12T20:19:04.734Z",
   "windowStart": "2026-09-01",
   "site": "https://hk.onyxdevslab.com/",
   "sourceLogs": [
@@ -27,8 +27,8 @@
     "commonCrawlBotDiscoveryFileRequests": 0,
     "applebotContentRequests": 0,
     "applebotDiscoveryFileRequests": 0,
-    "yandexbotContentRequests": 77,
-    "yandexbotDiscoveryFileRequests": 70,
+    "yandexbotContentRequests": 78,
+    "yandexbotDiscoveryFileRequests": 71,
     "ahrefsbotContentRequests": 0,
     "ahrefsbotDiscoveryFileRequests": 93,
     "distinctVerifiedContentPaths": 45,
@@ -39,7 +39,7 @@
     },
     "yandexHistoricalRecognition": {
       "firstSeen": "2026-09-08T12:45:20Z",
-      "lastSeen": "2026-09-12T18:59:03Z",
+      "lastSeen": "2026-09-12T20:02:07Z",
       "verifiedContentPaths": 42,
       "meaning": "YandexBot monitoring was added after the latest requests exposed the missing family. Most of these provider-verified requests are historical observations newly recognized in current and rotated logs; they are not all newly occurring crawls."
     },
@@ -131,7 +131,7 @@
     ]
   },
   "commonCrawlEvidence": {
-    "checkedAt": "2026-09-12T07:21:45.323Z",
+    "checkedAt": "2026-09-12T20:19:01.120Z",
     "status": "available",
     "capturesObservedInAvailableIndexes": 0,
     "availableIndexes": ["CC-MAIN-2026-34", "CC-MAIN-2026-30"],
@@ -139,7 +139,7 @@
     "meaning": "CC-MAIN-2026-34 and CC-MAIN-2026-30 both returned usable zero-capture responses. This complete result covers only the two selected indexes; it does not represent all Common Crawl history or prove absence from search or AI systems."
   },
   "waybackEvidence": {
-    "checkedAt": "2026-09-12T19:33:16.224Z",
+    "checkedAt": "2026-09-12T20:19:02.578Z",
     "status": "available",
     "captures": 92,
     "distinctUrls": 43,
@@ -185,7 +185,7 @@
       "meaning": "The count returned from 92 to 93 because a previously observed custom-AI-development capture reappeared in the CDX result. The earlier AI-consulting fingerprint remains absent. This is public-index volatility, not a newly created snapshot or proof of search or AI visibility."
     },
     "latestIndexVolatilityObservation": {
-      "observedAt": "2026-09-12T19:33:16.224Z",
+      "observedAt": "2026-09-12T20:19:02.578Z",
       "previousCount": 93,
       "currentCount": 92,
       "noLongerReturnedUrl": "https://hk.onyxdevslab.com/zh-cn/custom-ai-development/",
@@ -211,7 +211,7 @@
     "meaning": "The available public Wayback CDX host query currently returns 92 successful HTML capture records across 43 distinct URLs. The one-record decrease from the preceding 93-result observation matches the documented public-index volatility and is not evidence that a historical snapshot or page disappeared. The append-only prompt archive ledger remains at 15 archived evidence pages, 15 prompts with any archive and 11 fully archived prompts. These records prove public historical captures only; they do not prove current accessibility, search indexing, AI retrieval, citation, ranking, endorsement, or recommendation. An unavailable future query must not be interpreted as zero captures."
   },
   "githubRepositorySearchEvidence": {
-    "checkedAt": "2026-09-12T12:18:33.802Z",
+    "checkedAt": "2026-09-12T20:19:03.978Z",
     "status": "available",
     "queriesChecked": 3,
     "availableQueries": 3,
@@ -246,20 +246,20 @@
       }
     ],
     "source": "https://hk.onyxdevslab.com/data/github-repository-search-baseline.json",
-    "eventFile": "events/2026-09-12T12-18-34.513Z-evidence-and-availability-change.json",
+    "eventFile": "events/2026-09-12T20-19-04.734Z-evidence-and-availability-change.json",
     "meaning": "All three fixed GitHub Repository Search API queries were available. Brand and legal-entity queries return both first-party repositories; the exact category query returns the same two repositories after the recorded README changes. This proves GitHub platform-search visibility only, not public-web indexing, AI retrieval, citation, ranking, independent endorsement, or non-brand recommendation."
   },
   "distributionEvidence": {
     "manifestItems": 9,
     "publishedItems": 8,
     "readyNotPublishedItems": 1,
-    "checkedAt": "2026-09-12T10:49:52.301Z",
+    "checkedAt": "2026-09-12T20:19:03.561Z",
     "publicUrlsChecked": 8,
     "trackedTargetsChecked": 18,
     "availableSources": 26,
     "unavailableSources": 0,
     "availabilityStatus": "available",
-    "eventFile": "events/2026-09-12T10-49-52.764Z-availability-change.json",
+    "eventFile": "events/2026-09-12T20-19-04.734Z-evidence-and-availability-change.json",
     "meaning": "All declared published URLs and tracked targets passed anonymous availability, destination, and content-marker checks. This does not prove indexing, AI retrieval, citation, recommendation, a human visit, or independent endorsement."
   },
   "servicesHkReadinessEvidence": {
