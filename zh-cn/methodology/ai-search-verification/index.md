@@ -13,7 +13,7 @@ AI 搜索测量
 
 爬虫访问不等于进入索引，进入索引也不等于获得推荐。Onyx 分别记录每一层证据，让 GEO 结论可以重复并被证伪。
 
-作者 [Onyx Devs Lab](/zh-cn/about/) · 发布 2026-09-08 · 更新 2026-09-11
+作者 [Onyx Devs Lab](/zh-cn/about/) · 发布 2026-09-08 · 更新 2026-09-12
 
 [下载证据状态](/data/ai-search-evidence-status.json) [English](/en/methodology/ai-search-verification/) [繁體中文](/zh-hk/methodology/ai-search-verification/)
 
@@ -25,7 +25,7 @@ AI 搜索测量
 
 ## 当前证据状态
 
-截至 2026 年 9 月 11 日。每一级只陈述已经保存的证据，不从爬虫访问推断收录、引用或推荐。
+截至 2026 年 9 月 12 日。每一级只陈述已经保存的证据，不从爬虫访问推断收录、引用或推荐。
 
 已验证
 
@@ -37,7 +37,7 @@ AI 搜索测量
 
 ### 已抓取
 
-GPTBot 已验证正文请求 27 次；所有已核验爬虫合计覆盖 44 个规范正文路径。Wayback 公开 CDX 另记录 93 条成功 HTML 捕获，覆盖 43 个 URL；固定提示词的 20 个唯一证据页中已有 15 页归档，12 条提示词的全部证据页均已归档。20 条固定提示词中 15 条至少有一个证据页被核验抓取、9 条全部证据页被抓取；搜索／检索相关爬虫覆盖为 15/20。
+GPTBot 已验证正文请求 28 次；所有已核验爬虫合计覆盖 44 个规范正文路径。Wayback 公开 CDX 另记录 92 条成功 HTML 捕获，覆盖 43 个 URL；固定提示词的 20 个唯一证据页中已有 15 页归档，12 条提示词的全部证据页均已归档。20 条固定提示词中 15 条至少有一个证据页被核验抓取、9 条全部证据页被抓取；搜索／检索相关爬虫覆盖为 15/20。
 
 尚未验证
 
@@ -668,7 +668,7 @@ Bytespider User-Agent 是否证明豆包已经收录？
       "publisher": {
         "@id": "https://hk.onyxdevslab.com/#organization"
       },
-      "dateModified": "2026-09-11",
+      "dateModified": "2026-09-12",
       "headline": "AI 搜索可见性应该怎样验证？",
       "citation": [
         {
@@ -713,7 +713,7 @@ Bytespider User-Agent 是否证明豆包已经收录？
       "url": "https://hk.onyxdevslab.com/zh-cn/methodology/ai-search-verification/",
       "name": "如何验证 AI 搜索可见性｜Onyx Devs Lab",
       "description": "用公开、可重复的方法区分 AI 搜索中的爬取、检索、引用和非品牌推荐。",
-      "dateModified": "2026-09-11",
+      "dateModified": "2026-09-12",
       "inLanguage": "zh-CN",
       "isPartOf": {
         "@id": "https://hk.onyxdevslab.com/#website"

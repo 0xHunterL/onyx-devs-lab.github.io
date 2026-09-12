@@ -13,7 +13,7 @@ AI search measurement
 
 A crawler visit is not an index entry, and an index entry is not a recommendation. Onyx records each stage separately so GEO claims can be reproduced and falsified.
 
-By [Onyx Devs Lab](/en/about/) · Published 2026-09-08 · Updated 2026-09-11
+By [Onyx Devs Lab](/en/about/) · Published 2026-09-08 · Updated 2026-09-12
 
 [Download evidence status](/data/ai-search-evidence-status.json) [繁體中文](/zh-hk/methodology/ai-search-verification/) [简体中文](/zh-cn/methodology/ai-search-verification/)
 
@@ -25,7 +25,7 @@ By [Onyx Devs Lab](/en/about/) · Published 2026-09-08 · Updated 2026-09-11
 
 ## Current evidence status
 
-Observed through 11 September 2026. Each level states only preserved evidence; crawler access is never promoted to indexing, citation, or recommendation.
+Observed through 12 September 2026. Each level states only preserved evidence; crawler access is never promoted to indexing, citation, or recommendation.
 
 Verified
 
@@ -37,7 +37,7 @@ Partially verified
 
 ### Crawled
 
-GPTBot made 27 provider-verified content requests; all verified crawlers together covered 44 canonical content paths. The public Wayback CDX separately exposes 93 successful HTML captures across 43 URLs; 15 of 20 unique fixed-prompt evidence pages are archived, and 12 prompts have every evidence page archived. 15 of 20 fixed prompts have at least one verified-crawled evidence page and 9 have all pages crawled; search/retrieval-related crawler coverage is 15/20.
+GPTBot made 28 provider-verified content requests; all verified crawlers together covered 44 canonical content paths. The public Wayback CDX separately exposes 92 successful HTML captures across 43 URLs; 15 of 20 unique fixed-prompt evidence pages are archived, and 12 prompts have every evidence page archived. 15 of 20 fixed prompts have at least one verified-crawled evidence page and 9 have all pages crawled; search/retrieval-related crawler coverage is 15/20.
 
 Not verified
 
@@ -668,7 +668,7 @@ We will first clarify the workflow, evidence, data boundary, and outcome standar
       "publisher": {
         "@id": "https://hk.onyxdevslab.com/#organization"
       },
-      "dateModified": "2026-09-11",
+      "dateModified": "2026-09-12",
       "headline": "How should AI-search visibility be verified?",
       "citation": [
         {
@@ -713,7 +713,7 @@ We will first clarify the workflow, evidence, data boundary, and outcome standar
       "url": "https://hk.onyxdevslab.com/en/methodology/ai-search-verification/",
       "name": "How We Verify AI Search Visibility | Onyx Devs Lab",
       "description": "A public, reproducible method for separating crawler access, retrieval, citation, and non-brand recommendation in AI search.",
-      "dateModified": "2026-09-11",
+      "dateModified": "2026-09-12",
       "inLanguage": "en",
       "isPartOf": {
         "@id": "https://hk.onyxdevslab.com/#website"

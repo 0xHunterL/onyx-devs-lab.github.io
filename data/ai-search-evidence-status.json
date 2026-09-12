@@ -1,8 +1,8 @@
 {
   "schemaVersion": 2,
-  "version": "2026.09.11.28",
+  "version": "2026.09.12.29",
   "id": "https://hk.onyxdevslab.com/data/ai-search-evidence-status.json",
-  "observedAt": "2026-09-11T16:43:40.620Z",
+  "observedAt": "2026-09-12T06:21:19.089Z",
   "sourceBaseline": "https://github.com/0xHunterL/onyx-devs-lab.github.io/blob/main/docs/geo-baselines/2026-09-11-monitor-evidence.json",
   "versionHistory": [
     {
@@ -66,10 +66,10 @@
       "status": "partially-verified",
       "claim": "Named crawlers have accessed discovery files or content pages, and public archives expose historical captures.",
       "evidence": {
-        "verifiedGptBotContentCrawls": 27,
-        "verifiedGptBotDiscoveryFileCrawls": 13,
+        "verifiedGptBotContentCrawls": 28,
+        "verifiedGptBotDiscoveryFileCrawls": 14,
         "verifiedDistinctContentPaths": 44,
-        "verifiedOaiSearchBotDiscoveryFileVisits": 8,
+        "verifiedOaiSearchBotDiscoveryFileVisits": 10,
         "verifiedOaiSearchBotContentCrawls": 0,
         "historicallyVerifiedBingbotContentCrawls": 7,
         "verifiedBaiduspiderContentCrawls": 0,
@@ -79,14 +79,14 @@
         "verifiedYandexbotContentCrawls": 71,
         "verifiedYandexbotDiscoveryFileCrawls": 64,
         "verifiedAhrefsBotContentCrawls": 0,
-        "verifiedAhrefsBotDiscoveryFileCrawls": 69,
+        "verifiedAhrefsBotDiscoveryFileCrawls": 81,
         "verifiedGooglebotContentCrawls": 0,
         "verifiedPerplexityContentCrawls": 0,
         "userAgentOnlyBytespiderContentCrawlCandidates": 0,
         "userAgentOnlyBytespiderDiscoveryFileCandidates": 0,
         "syntheticCrawlerReleaseChecksExcludedMinimum": 3088,
         "commonCrawlIndexObservation": {
-          "checkedAt": "2026-09-11T16:43:34.501Z",
+          "checkedAt": "2026-09-12T06:21:16.753Z",
           "status": "available",
           "capturesObservedInAvailableIndexes": 0,
           "availableIndexes": [
@@ -97,9 +97,9 @@
           "meaning": "Both selected indexes returned usable responses with zero observed captures. This complete result covers only the selected indexes and must not be interpreted as proof of zero captures across all Common Crawl history."
         },
         "waybackArchiveObservation": {
-          "checkedAt": "2026-09-11T16:43:39.436Z",
+          "checkedAt": "2026-09-12T06:21:17.587Z",
           "status": "available",
-          "captures": 93,
+          "captures": 92,
           "distinctUrls": 43,
           "firstCaptureAt": "20260909205420",
           "lastCaptureAt": "20260910164924",
@@ -119,7 +119,17 @@
             ],
             "meaning": "This maps public historical Wayback captures to the fixed prompt matrix: 15 of 20 unique evidence pages have captures, 15 prompts have at least one archived evidence page, and 12 prompts have every mapped evidence page archived. It does not prove search indexing, AI retrieval, citation, ranking, endorsement, or recommendation."
           },
-          "meaning": "The public Wayback CDX host query returned 93 successful HTML capture records across 43 distinct URLs. These records prove public historical captures only; they do not prove current accessibility, search indexing, AI retrieval, citation, ranking, endorsement, or recommendation. An unavailable future query must not be interpreted as zero captures."
+          "indexResultRetractionObservation": {
+            "firstReturnedAt": "2026-09-12T01:33:05.020Z",
+            "noLongerReturnedAt": "2026-09-12T06:21:17.587Z",
+            "timestamp": "20260909205631",
+            "url": "https://hk.onyxdevslab.com/zh-cn/ai-consulting/",
+            "digest": "A7VW474GAGRA43ZM2ZBGPXX6H3W5SA2E",
+            "fingerprint": "a1ca5ca174871452d8a56d5d58d02107f0328504b62dcefbcae2d84ba0b89d30",
+            "repeatQueriesAt92": 4,
+            "meaning": "This capture fingerprint was returned once and preserved in the append-only event history, but the same available CDX query later stopped returning it. The current count is therefore 92; the decrease is treated as public-index retraction or deduplication, not proof that a historical capture or page disappeared."
+          },
+          "meaning": "The public Wayback CDX host query currently returns 92 successful HTML capture records across 43 distinct URLs. A previously observed 93rd record is preserved in the event history but no longer returned by four repeat queries, so the count decrease is not interpreted as disappearance. These records prove public historical captures only; they do not prove current accessibility, search indexing, AI retrieval, citation, ranking, endorsement, or recommendation. An unavailable future query must not be interpreted as zero captures."
         },
         "fixedPromptCoverage": {
           "prompts": 20,
@@ -205,12 +215,12 @@
         "doubaoTestStatus": "not-run",
         "otherAiRecommendationEvidenceCount": 0,
         "realAiReferralVisitsObserved": 0,
-        "trackedAttributionRequests": 80,
-        "suspectedAutomatedTrackedRequests": 71,
+        "trackedAttributionRequests": 83,
+        "suspectedAutomatedTrackedRequests": 72,
         "periodicRotatingClientTrackedRequests": 10,
-        "humanUnverifiedTrackedRequests": 9,
-        "knownLinkScannerTrackedRequests": 14,
-        "knownLinkScannerNetworkRequests": 2,
+        "humanUnverifiedTrackedRequests": 11,
+        "knownLinkScannerTrackedRequests": 15,
+        "knownLinkScannerNetworkRequests": 3,
         "internallyInconsistentUserAgentRequests": 4,
         "malformedCampaignRequests": 6,
         "latestVerifiedOffsiteReferral": {
@@ -223,17 +233,17 @@
         },
         "latestVisitorTypeUnverifiedAttributions": [
           {
-            "time": "2026-09-11T06:55:29Z",
+            "time": "2026-09-11T19:52:50Z",
             "source": "github_discussions",
             "campaign": "geo_engagement_model_qa",
-            "landingPage": "/zh-cn/guides/enterprise-ai-pilot-charter/",
+            "landingPage": "/zh-cn/guides/ai-dingkai/",
             "referrerHost": ""
           },
           {
-            "time": "2026-09-11T07:14:51Z",
+            "time": "2026-09-12T05:43:50Z",
             "source": "github_discussions",
             "campaign": "geo_engagement_model_qa",
-            "landingPage": "/zh-cn/guides/enterprise-ai-pilot-charter/",
+            "landingPage": "/zh-cn/guides/ai-consulting-vs-development-vs-fde/",
             "referrerHost": ""
           }
         ]
