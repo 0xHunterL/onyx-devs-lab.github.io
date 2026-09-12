@@ -1110,11 +1110,11 @@
       ]
     },
     {
-      "id": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-monitor-evidence-2026-09-12-53",
-      "url": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-monitor-evidence-2026-09-12-53",
-      "title": "Onyx GEO monitor evidence checkpoint — 2026-09-12, revision 53",
-      "summary": "A versioned machine-readable checkpoint recording 78 provider-verified YandexBot content requests and 71 discovery-file requests after a new crawl of the English Hong Kong AI consulting companies guide. Content-path and fixed-prompt coverage did not increase; it does not prove indexing, citation, ranking, or recommendation.",
-      "content_text": "A versioned machine-readable checkpoint recording 78 provider-verified YandexBot content requests and 71 discovery-file requests after a new crawl of the English Hong Kong AI consulting companies guide. Content-path and fixed-prompt coverage did not increase; it does not prove indexing, citation, ranking, or recommendation.",
+      "id": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-monitor-evidence-2026-09-12-54",
+      "url": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-monitor-evidence-2026-09-12-54",
+      "title": "Onyx GEO monitor evidence checkpoint — 2026-09-12, revision 54",
+      "summary": "A versioned machine-readable checkpoint recording 94 provider-verified AhrefsBot discovery-file requests and a newly exposed Wayback capture of the Simplified Chinese industrial ERP case study. Public archive coverage is now 16 evidence pages, 16 prompts with any archive, and 12 fully archived prompts; it does not prove search indexing, AI citation, ranking, or recommendation.",
+      "content_text": "A versioned machine-readable checkpoint recording 94 provider-verified AhrefsBot discovery-file requests and a newly exposed Wayback capture of the Simplified Chinese industrial ERP case study. Public archive coverage is now 16 evidence pages, 16 prompts with any archive, and 12 fully archived prompts; it does not prove search indexing, AI citation, ranking, or recommendation.",
       "date_modified": "2026-09-12T00:00:00+08:00",
       "tags": [
         "evidence",
