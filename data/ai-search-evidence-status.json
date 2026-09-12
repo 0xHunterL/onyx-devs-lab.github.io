@@ -1,8 +1,8 @@
 {
   "schemaVersion": 2,
-  "version": "2026.09.12.45",
+  "version": "2026.09.12.46",
   "id": "https://hk.onyxdevslab.com/data/ai-search-evidence-status.json",
-  "observedAt": "2026-09-12T11:16:08.000Z",
+  "observedAt": "2026-09-12T11:28:09.482Z",
   "sourceBaseline": "https://github.com/0xHunterL/onyx-devs-lab.github.io/blob/main/docs/geo-baselines/2026-09-11-monitor-evidence.json",
   "versionHistory": [
     {
@@ -78,7 +78,7 @@
     "yandexbotContentRequests": 72,
     "yandexbotDiscoveryFileRequests": 65,
     "ahrefsbotContentRequests": 0,
-    "ahrefsbotDiscoveryFileRequests": 85,
+    "ahrefsbotDiscoveryFileRequests": 86,
     "distinctVerifiedContentPaths": 44,
     "historicalReclassification": {
       "homepageContentRequestsAdded": 3,
@@ -93,12 +93,12 @@
     },
     "ahrefsHistoricalRecognition": {
       "firstSeen": "2026-09-08T13:53:09Z",
-      "lastSeen": "2026-09-12T09:59:36Z",
+      "lastSeen": "2026-09-12T11:24:08Z",
       "robotsTxtRequests": 22,
-      "sitemapRequests": 63,
+      "sitemapRequests": 64,
       "distinctClientAddresses": 77,
       "verificationSource": "https://api.ahrefs.com/v3/public/crawler-ip-ranges",
-      "meaning": "All 85 discovery-file requests matched the official Ahrefs crawler IP ranges. AhrefsBot serves both the Ahrefs database and Yep, so these requests prove external crawler discovery only; they do not prove Yep indexing, ranking, retrieval, citation, or AI recommendation."
+      "meaning": "All 86 discovery-file requests matched the official Ahrefs crawler IP ranges. AhrefsBot serves both the Ahrefs database and Yep, so these requests prove external crawler discovery only; they do not prove Yep indexing, ranking, retrieval, citation, or AI recommendation."
     }
   },
   "evidenceLevels": [
@@ -141,7 +141,7 @@
         "verifiedYandexbotContentCrawls": 72,
         "verifiedYandexbotDiscoveryFileCrawls": 65,
         "verifiedAhrefsBotContentCrawls": 0,
-        "verifiedAhrefsBotDiscoveryFileCrawls": 85,
+        "verifiedAhrefsBotDiscoveryFileCrawls": 86,
         "verifiedGooglebotContentCrawls": 0,
         "verifiedPerplexityContentCrawls": 0,
         "userAgentOnlyBytespiderContentCrawlCandidates": 0,
