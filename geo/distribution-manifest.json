@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updated": "2026-09-12",
+  "updated": "2026-09-13",
   "publisher": {
     "brand": "Onyx Devs Lab",
     "legalName": "ONYX DEVS LAB LIMITED",
@@ -232,30 +232,31 @@
       ]
     },
     {
-      "id": "github-release-geo-monitor-evidence-2026-09-12-55",
+      "id": "github-release-geo-monitor-evidence-2026-09-13-56",
       "channel": "github_releases",
       "format": "versioned-evidence-checkpoint",
       "language": "en-zh-CN",
       "status": "published",
       "sourceFile": "README.md",
-      "title": "Onyx GEO monitor evidence checkpoint — 2026-09-12, revision 55",
-      "campaign": "geo_monitor_evidence_55",
+      "title": "Onyx GEO monitor evidence checkpoint — 2026-09-13, revision 56",
+      "campaign": "geo_monitor_evidence_56",
       "trackedTargets": [
-        "https://hk.onyxdevslab.com/data/ai-search-evidence-status.json?utm_source=github_releases&utm_medium=referral&utm_campaign=geo_monitor_evidence_55"
+        "https://hk.onyxdevslab.com/data/ai-search-evidence-status.json?utm_source=github_releases&utm_medium=referral&utm_campaign=geo_monitor_evidence_56"
       ],
-      "publicUrl": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-monitor-evidence-2026-09-12-55",
-      "anonymousAccessVerifiedAt": "2026-09-12T22:20:21Z",
+      "publicUrl": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-monitor-evidence-2026-09-13-56",
+      "anonymousAccessVerifiedAt": "2026-09-12T22:59:15Z",
       "publicContentMarkers": [
-        "Onyx GEO monitor evidence checkpoint — 2026-09-12, revision 55",
-        "One new provider-verified AhrefsBot fingerprint was observed",
-        "Cumulative AhrefsBot discovery-file requests are now 95"
+        "GEO monitor evidence — 2026-09-13, revision 56",
+        "Yandex Web Search",
+        "official Onyx apex domain"
       ],
       "searchIndexedAt": null,
       "aiCitationObservedAt": null,
       "nonBrandRecommendationObservedAt": null,
       "limitations": [
         "The Release and its assets are published and maintained by Onyx Devs Lab.",
-        "Anonymous availability and matching content markers do not prove independent endorsement, search indexing, AI citation, recommendation, or a human visit."
+        "The observed Yandex exact-brand result applies to the official apex web property; the Release itself is not proven search-indexed.",
+        "Anonymous availability and matching content markers do not prove independent endorsement, Hong Kong deep-page or non-brand retrieval, AI citation, recommendation, or a human visit."
       ]
     }
   ]
