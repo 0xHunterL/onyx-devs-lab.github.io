@@ -110,7 +110,7 @@ assert.equal(preserveAppendOnlyCrawlerCounts({ verifiedYandexPageCrawls: 70 }, {
 const cumulativeCrawlerObservations = mergeVerifiedCrawlerObservations(
   [
     { fingerprint: 'old-yandex-page', family: 'YandexBot', classification: 'candidate-page-crawl', time: '2026-09-08T00:00:00+00:00', method: 'GET', path: '/evidence/', status: 200 },
-    { fingerprint: 'old-gpt-page', family: 'GPTBot', classification: 'candidate-page-crawl', time: '2026-09-09T00:00:00+00:00', method: 'GET', path: '/evidence/', status: 200 },
+    { fingerprint: 'old-gpt-page', family: 'GPTBot', classification: 'candidate-page-crawl', time: '2026-09-09T00:00:00+00:00', method: 'GET', path: '/evidence/?lang=en', status: 200 },
   ],
   [
     { fingerprint: 'old-yandex-page', family: 'YandexBot', classification: 'candidate-page-crawl', time: '2026-09-08T00:00:00+00:00', method: 'GET', path: '/evidence/', status: 200 },

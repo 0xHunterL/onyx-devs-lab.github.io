@@ -77,8 +77,9 @@ export function buildCumulativeVerifiedContentPathCoverage(observations) {
   const byPath = new Map();
   for (const observation of observations || []) {
     if (observation.classification !== 'candidate-page-crawl') continue;
-    const entry = byPath.get(observation.path) || {
-      path: observation.path,
+    const pathOnly = observation.path.split('?')[0];
+    const entry = byPath.get(pathOnly) || {
+      path: pathOnly,
       families: new Set(),
       firstSeen: observation.time,
       lastSeen: observation.time,
@@ -88,7 +89,7 @@ export function buildCumulativeVerifiedContentPathCoverage(observations) {
     if (observation.time < entry.firstSeen) entry.firstSeen = observation.time;
     if (observation.time > entry.lastSeen) entry.lastSeen = observation.time;
     entry.requests += 1;
-    byPath.set(observation.path, entry);
+    byPath.set(pathOnly, entry);
   }
   return [...byPath.values()]
     .sort((left, right) => left.path.localeCompare(right.path))
