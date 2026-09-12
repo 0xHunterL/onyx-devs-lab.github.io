@@ -99,3 +99,5 @@
 - 2026-09-12T11:59:30Z 至 `11:59:32Z`，主仓库 README 首句在提交 `c23932f` 中自然加入精确类目短语 `Hong Kong AI consulting` 后，用完全相同的 GitHub Repository Search API 查询复测，结果从 0 变为 1，唯一结果为 `0xHunterL/onyx-devs-lab.github.io`。公开 Raw README 已回读到新句，前后查询、触发提交和结果保存在同一[机器可读基线](./2026-09-12-github-repository-search.json)。这是可复测的 GitHub 站内类目发现改善，不等于公网搜索已收录，也不证明豆包或其他 AI 已检索、引用或推荐。
 
 - 2026-09-12T12:05:55Z，GitHub 平台搜索前后基线已部署到规范域名 [`/data/github-repository-search-baseline.json`](https://hk.onyxdevslab.com/data/github-repository-search-baseline.json)，并由 `llms.txt`、`llms-full.txt` 与仓库 README 提供发现入口。线上文件与版本化源的 SHA-256 均为 `408fa372824e08ea95cc18f2e858085f11aa7f46a6b8bc5bb62f61fa8ae2d69a`，HTTP `200`、`application/json`、`Content-Signal: search=yes, ai-input=yes`；本地 221 项回归测试和生产 71 页／125 请求门禁均为 0 失败。IndexNow 接收 71 个页面与 16 个机器资源、合计 87 个 URL。该资源只公开 GitHub 站内查询的 0→1 证据；IndexNow 回执和资源可访问均不证明搜索收录、AI 引用或推荐。
+
+- 2026-09-12T12:09:04Z 至 `12:09:07Z`，香港企业 AI 采购指南的 README 在提交 `2c874a4` 中自然补入同一精确类目短语后，完全相同的 GitHub Repository Search API 查询从 1 项变为 2 项，当前同时返回主仓库与 `mixuechu/hong-kong-enterprise-ai-buyers-guide`。指南自身门禁检查 43 条链接和 6 个规范页面，失败均为 0；不可变提交 Raw 已回读新句。该 1→2 变化将追加到规范域名机器基线，但仍只证明 GitHub 站内类目可发现性，不证明公网收录、AI 引用或非品牌推荐。
