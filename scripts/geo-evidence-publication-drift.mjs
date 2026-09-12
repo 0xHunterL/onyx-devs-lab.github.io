@@ -35,6 +35,7 @@ export function buildPublicationDrift(baseline, summary, { distributionManifest 
   const servicesHk = baseline.servicesHkReadinessEvidence || {};
   const githubRepositorySearch = baseline.githubRepositorySearchEvidence || {};
   const counts = summary.counts || {};
+  const collectedEvidenceSets = summary.evidenceSets || {};
   const collectedCommonCrawl = summary.availability?.commonCrawl || {};
   const collectedWayback = summary.availability?.wayback || {};
   const collectedCrawlerVerification = summary.availability?.crawlerVerification || {};
@@ -85,6 +86,11 @@ export function buildPublicationDrift(baseline, summary, { distributionManifest 
     check('waybackEvidence.fixedPromptArchiveCoverage.archivedEvidencePages', wayback.fixedPromptArchiveCoverage?.archivedEvidencePages, counts.waybackArchivedEvidencePages);
     check('waybackEvidence.fixedPromptArchiveCoverage.promptsWithAnyArchivedEvidence', wayback.fixedPromptArchiveCoverage?.promptsWithAnyArchivedEvidence, counts.promptsWithAnyWaybackArchive);
     check('waybackEvidence.fixedPromptArchiveCoverage.promptsFullyArchived', wayback.fixedPromptArchiveCoverage?.promptsFullyArchived, counts.promptsFullyWaybackArchived);
+    check(
+      'waybackEvidence.fixedPromptArchiveCoverage.missingEvidenceUrls',
+      [...(wayback.fixedPromptArchiveCoverage?.missingEvidenceUrls || [])].sort(),
+      [...(collectedEvidenceSets.waybackMissingEvidenceUrls || [])].sort(),
+    );
   }
 
   check('crawlerEvidenceAccounting.currentRetainedLogFiles', crawlerAccounting.currentRetainedLogFiles, (summary.sourceLogs || []).length);

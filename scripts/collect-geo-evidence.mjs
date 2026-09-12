@@ -211,6 +211,11 @@ const platformSearch = {
   lastCompleteObservation: lastCompletePlatformSearch,
   evidenceBoundary: githubRepositorySearch.evidenceBoundary,
 };
+const evidenceSets = {
+  waybackMissingEvidenceUrls: wayback.status === 'available'
+    ? [...(wayback.promptCoverage?.missingEvidenceUrls || [])].sort()
+    : [],
+};
 const summary = {
   schemaVersion: 1,
   generatedAt,
@@ -228,6 +233,7 @@ const summary = {
   availabilityChanged: availabilityChanges.length > 0,
   eventFile,
   newEvidenceObservations,
+  evidenceSets,
   evidenceBoundary: 'Provider-verified crawler fingerprints are append-only observations: after a source log rotates out, their cumulative count is retained and any difference from the currently retained log set is exposed in retentionAdjustments. New provider-verified crawler fingerprints prove only previously unseen requests by the named crawler. Bytespider fingerprints are separately labeled user-agent-only and identity-unverified; they do not prove Doubao or ByteDance access. New referral fingerprints exclude suspected automation and prove only previously unseen attributed requests whose visitor type is not verified. Common Crawl fingerprints prove only appearance in the named public crawl index; Wayback fingerprints prove only public historical captures. GitHub repository-search changes prove only changes in that platform search. Partial or unavailable source queries make zero-valued counts incomplete. Availability-change events preserve monitoring-source status transitions and are not visibility evidence. None proves public-web indexing, AI retrieval, citation, ranking, a human visit, endorsement, or non-brand recommendation.',
 };
 

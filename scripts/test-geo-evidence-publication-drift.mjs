@@ -14,6 +14,9 @@ const servicesHk = baseline.servicesHkReadinessEvidence;
 const githubRepositorySearch = baseline.githubRepositorySearchEvidence;
 const summary = {
   generatedAt: baseline.generatedAt,
+  evidenceSets: {
+    waybackMissingEvidenceUrls: structuredClone(wayback.fixedPromptArchiveCoverage.missingEvidenceUrls),
+  },
   sourceLogs: structuredClone(baseline.crawlerEvidenceAccounting.currentRetainedLogPaths),
   retentionAdjustments: structuredClone(baseline.crawlerEvidenceAccounting.latestRetentionAdjustments),
   counts: {
@@ -195,6 +198,11 @@ waybackPromptDrift.availability.wayback.status = 'available';
 waybackPromptDrift.counts.promptsFullyWaybackArchived += 1;
 assert.equal(buildPublicationDrift(waybackAvailableBaseline, waybackPromptDrift).mismatches[0].field, 'waybackEvidence.fixedPromptArchiveCoverage.promptsFullyArchived');
 
+const waybackMissingUrlReplacement = structuredClone(summary);
+waybackMissingUrlReplacement.availability.wayback.status = 'available';
+waybackMissingUrlReplacement.evidenceSets.waybackMissingEvidenceUrls[0] = 'https://hk.onyxdevslab.com/zh-cn/replacement/';
+assert.equal(buildPublicationDrift(waybackAvailableBaseline, waybackMissingUrlReplacement).mismatches[0].field, 'waybackEvidence.fixedPromptArchiveCoverage.missingEvidenceUrls');
+
 const unavailableArchiveSources = structuredClone(summary);
 unavailableArchiveSources.availability.commonCrawl.status = 'unavailable';
 unavailableArchiveSources.availability.commonCrawl.indexes.forEach((item) => { item.status = 'unavailable'; });
@@ -209,4 +217,4 @@ const unavailableArchiveFields = buildPublicationDrift(baseline, unavailableArch
 assert.ok(!unavailableArchiveFields.some((field) => field.startsWith('waybackEvidence.') && field !== 'waybackEvidence.status'));
 assert.ok(!unavailableArchiveFields.includes('commonCrawlEvidence.capturesObservedInAvailableIndexes'));
 
-console.log(JSON.stringify({ tests: 23, failures: [] }, null, 2));
+console.log(JSON.stringify({ tests: 24, failures: [] }, null, 2));

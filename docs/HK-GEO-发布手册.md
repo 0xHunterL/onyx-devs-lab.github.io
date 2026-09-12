@@ -59,7 +59,7 @@ npm run geo:referral-report -- --since=2026-09-01 --include-rotated /var/log/ngi
 
 Wayback 查询可用时，捕获数减少也不能自动解释成快照或页面消失。监测应以追加事件和已见指纹保留曾经返回的记录，把当前 CDX 数量如实发布为“本次公开索引结果”，并在独立复测后记录索引回撤／去重的解释边界。
 
-采集成功后，`geo:check-evidence-publication-drift` 会将生产汇总中的核心爬虫、核验源可用性及完整来源集合、搜索相关提示词覆盖、归因、Common Crawl 索引范围、Wayback 捕获清单和站外可用性与仓库当前版本化基线或明确的监测完整性策略逐项比较，并原子写入 `/var/lib/onyx-geo/publication-drift.json`。任何必需核验源不可用或从采集覆盖中消失也必须产生 `drift`；站外分发则按当前版本化清单逐项比较 `itemId`、来源类型和完整 URL，不能用相同总数掩盖 Release 或目标 URL 的集合替换。状态为 `drift` 时 systemd 服务显式失败，防止公开状态静默落后；该失败仅表示需要人工审核和发布证据，不代表可发现性下降，也不会自动发布未经复核的日志。
+采集成功后，`geo:check-evidence-publication-drift` 会将生产汇总中的核心爬虫、核验源可用性及完整来源集合、搜索相关提示词覆盖、归因、Common Crawl 索引范围、Wayback 捕获与未归档证据页集合、站外可用性与仓库当前版本化基线或明确的监测完整性策略逐项比较，并原子写入 `/var/lib/onyx-geo/publication-drift.json`。任何必需核验源不可用或从采集覆盖中消失也必须产生 `drift`；站外分发按当前版本化清单逐项比较 `itemId`、来源类型和完整 URL，Wayback 可用时逐项比较 `missingEvidenceUrls`，不能用相同总数掩盖 Release、目标 URL 或归档证据页的集合替换。状态为 `drift` 时 systemd 服务显式失败，防止公开状态静默落后；该失败仅表示需要人工审核和发布证据，不代表可发现性下降，也不会自动发布未经复核的日志。
 
 生产 timer 使用每天四个固定 UTC 时间窗口并保留 `Persistent=true` 与开机补跑。不得改回以 `OnUnitActiveSec` 为基准的相对周期：人工复测也会更新服务活动时间，持续人工检查可能反复推迟下一次自动采集。固定日历计划不受手工启动影响，并通过最多十分钟随机延迟分散请求。
 
