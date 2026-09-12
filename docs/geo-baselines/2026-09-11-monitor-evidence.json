@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "publicStatusVersion": "2026.09.12.49",
-  "generatedAt": "2026-09-12T13:01:45.340Z",
+  "publicStatusVersion": "2026.09.12.50",
+  "generatedAt": "2026-09-12T14:36:27.882Z",
   "windowStart": "2026-09-01",
   "site": "https://hk.onyxdevslab.com/",
   "sourceLogs": [
@@ -30,7 +30,7 @@
     "yandexbotContentRequests": 76,
     "yandexbotDiscoveryFileRequests": 69,
     "ahrefsbotContentRequests": 0,
-    "ahrefsbotDiscoveryFileRequests": 87,
+    "ahrefsbotDiscoveryFileRequests": 89,
     "distinctVerifiedContentPaths": 45,
     "historicalReclassification": {
       "homepageContentRequestsAdded": 3,
@@ -45,12 +45,12 @@
     },
     "ahrefsHistoricalRecognition": {
       "firstSeen": "2026-09-08T13:53:09Z",
-      "lastSeen": "2026-09-12T12:50:47Z",
-      "robotsTxtRequests": 22,
-      "sitemapRequests": 65,
-      "distinctClientAddresses": 78,
+      "lastSeen": "2026-09-12T14:30:55Z",
+      "robotsTxtRequests": 23,
+      "sitemapRequests": 66,
+      "distinctClientAddresses": 80,
       "verificationSource": "https://api.ahrefs.com/v3/public/crawler-ip-ranges",
-      "meaning": "All 87 discovery-file requests matched the official Ahrefs crawler IP ranges. AhrefsBot serves both the Ahrefs database and Yep, so these requests prove external crawler discovery only; they do not prove Yep indexing, ranking, retrieval, citation, or AI recommendation."
+      "meaning": "All 89 discovery-file requests matched the official Ahrefs crawler IP ranges. AhrefsBot serves both the Ahrefs database and Yep, so these requests prove external crawler discovery only; they do not prove Yep indexing, ranking, retrieval, citation, or AI recommendation."
     }
   },
   "crawlerEvidenceAccounting": {
