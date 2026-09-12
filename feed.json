@@ -1110,11 +1110,11 @@
       ]
     },
     {
-      "id": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-monitor-evidence-2026-09-12-49",
-      "url": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-monitor-evidence-2026-09-12-49",
-      "title": "Onyx GEO monitor evidence checkpoint — 2026-09-12, revision 49",
-      "summary": "A versioned machine-readable checkpoint recording 76 provider-verified YandexBot content requests, 69 YandexBot discovery-file requests, and 87 AhrefsBot discovery-file requests. The 23-prompt coverage remains 15 mapped pages and 18 prompts at least partly; the checkpoint proves crawler access only, not indexing, citation, or recommendation.",
-      "content_text": "A versioned machine-readable checkpoint recording 76 provider-verified YandexBot content requests, 69 YandexBot discovery-file requests, and 87 AhrefsBot discovery-file requests. The 23-prompt coverage remains 15 mapped pages and 18 prompts at least partly; the checkpoint proves crawler access only, not indexing, citation, or recommendation.",
+      "id": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-monitor-evidence-2026-09-12-50",
+      "url": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-monitor-evidence-2026-09-12-50",
+      "title": "Onyx GEO monitor evidence checkpoint — 2026-09-12, revision 50",
+      "summary": "A versioned machine-readable checkpoint recording 76 provider-verified YandexBot content requests, 69 YandexBot discovery-file requests, and 89 AhrefsBot discovery-file requests. The 23-prompt coverage remains 15 mapped pages and 18 prompts at least partly; the checkpoint proves crawler access only, not indexing, citation, or recommendation.",
+      "content_text": "A versioned machine-readable checkpoint recording 76 provider-verified YandexBot content requests, 69 YandexBot discovery-file requests, and 89 AhrefsBot discovery-file requests. The 23-prompt coverage remains 15 mapped pages and 18 prompts at least partly; the checkpoint proves crawler access only, not indexing, citation, or recommendation.",
       "date_modified": "2026-09-12T00:00:00+08:00",
       "tags": [
         "evidence",
