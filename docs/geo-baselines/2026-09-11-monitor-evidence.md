@@ -28,6 +28,7 @@
 - 2026-09-12T09:47:07Z，revision 40 部署后的复采遇到两个 Common Crawl 索引均返回 HTTP `504`，Wayback CDX 也在两次重试后不可用。可用性事件保存为 `events/2026-09-12T09-47-07.816Z-availability-change.json`，但旧漂移逻辑同时把 Wayback 报告的占位 0 误列为 93→0 条、43→0 个 URL 和提示词归档覆盖归零，并在 0 个可用 Common Crawl 索引时仍标成 `partial`。监测现改为：0 个可用索引必须标 `unavailable`；Common Crawl／Wayback 完全不可用时只比较 availability 和来源集合，不把占位 0 当成证据计数变化。新增 3 项断言后 GEO 回归测试为 221 项；这保留来源故障告警，同时禁止误报历史捕获消失。
 - 2026-09-12T10:04:54Z，正式生产复采生成 `events/2026-09-12T10-04-54.078Z-evidence-change.json`，确认 `09:59:36Z` 两个此前未见且命中 Ahrefs 官方 IP 范围的客户端分别访问 `robots.txt` 与 `sitemap.xml`，均返回 HTTP `200`。AhrefsBot 已核验发现文件累计由 83 增至 85，其中 `robots.txt` 22 次、`sitemap.xml` 63 次、77 个不同客户端地址；正文仍为 0。Wayback CDX 同期仍返回 HTTP `503`，因此保留上次可用查询的 93 条／43 个 URL，不用本轮占位 0 覆盖公开基线。这两次请求只证明外部爬虫发现，不证明 Yep 收录、排名、AI 检索、引用或推荐；本轮没有向豆包发送提示词，也没有发送目录申请。
 - 2026-09-12T10:17Z，可抓取性审计确认线上 `robots.txt` 对 17 类通用、搜索与 AI User-Agent 明确开放，Sitemap、HTTP 发现链接、缓存校验和内容类型均正常；同时发现精简机器发现文件 `llms.txt` 把 2026-09-10 的不可变爬虫／引荐 Release 标成 `Current`，并在当前值已变化后继续紧邻展示当时的 24／5／7 等旧计数。现改为明确的 `Historical ... 2026-09-10` 检查点，指示机器读取者以实时 AI-search evidence status 为当前来源，并在文件首屏直接加入法律名称、商业登记号和 LEI。离线与线上门禁同时禁止历史检查点重新被误标为当前，并要求三个实体标识始终存在；这项修复改善时间边界与实体消歧，不构成搜索收录、AI 引用或推荐证据。
+- 2026-09-12T10:23Z，同一时间边界审计继续发现 `llms-full.txt` 把 2026-09-10 的版本化 AI-search status 资产称为 `current`，且 2026-09-11 revision 7 快照以无时间限定的 `current fixed-prompt crawl coverage` 描述当时覆盖。两处现分别改为带日期的历史资产和“该检查点观察到的覆盖”，README 的旧监测数据也改为“当时保留的 active／rotated 日志”；新增线上与离线断言阻止这些历史标签回退。实时状态文件、历史不可变 Release 和当前日志因此保持三层清晰边界。
 - 未向豆包发送提示词。
 
 ## 客户端地址证据链加固

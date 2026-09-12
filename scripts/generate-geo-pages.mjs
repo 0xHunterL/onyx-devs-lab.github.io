@@ -1207,7 +1207,7 @@ const fullKnowledge=[
   `Versioned fixed-prompt crawler coverage report: ${promptCrawlCoverageAssetUrl}`,
   `Versioned fixed-prompt evidence map checkpoint: ${promptEvidenceMapReleaseUrl}`,
   `Versioned fixed-prompt evidence map: ${promptEvidenceMapReleaseAssetUrl}`,
-  `Versioned current AI-search evidence status asset: ${promptCrawlStatusAssetUrl}`,
+  `Historical versioned AI-search evidence status asset — 2026-09-10: ${promptCrawlStatusAssetUrl}`,
   `Versioned Hong Kong enterprise AI provider-shortlist and evidence checkpoint: ${aiSearchStatusReleaseUrl}`,
   `Versioned AI-search evidence status asset: ${aiSearchStatusReleaseAssetUrl}`,
   `Chinese enterprise AI field-note release: ${chineseFieldNotesReleaseUrl}`,
