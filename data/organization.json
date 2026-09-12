@@ -262,11 +262,11 @@
     {
       "@type": "SoftwareSourceCode",
       "name": "Software Heritage archive of the Onyx Devs Lab public repository",
-      "description": "Independently preserves the public source, citation metadata, current crawler/referral checkpoints, machine-readable evidence files, scanner classification, and their Git history at revision f17606c. Archival does not endorse service claims or prove search indexing.",
-      "identifier": "swh:1:snp:df2409f12f9b01e665ae896d0492aa09148b9c1b",
-      "url": "https://archive.softwareheritage.org/swh:1:snp:df2409f12f9b01e665ae896d0492aa09148b9c1b/",
+      "description": "Independently preserves the public source, citation metadata, revision 49 crawler evidence, machine-readable evidence files, monitoring retry logic, and their Git history at revision a2d9281. Archival does not endorse service claims or prove search indexing.",
+      "identifier": "swh:1:snp:a6d10e9586fcc1860acf66f32651994693d87578",
+      "url": "https://archive.softwareheritage.org/swh:1:snp:a6d10e9586fcc1860acf66f32651994693d87578/",
       "codeRepository": "https://github.com/0xHunterL/onyx-devs-lab.github.io",
-      "version": "f17606cf302d4e1368eae3f2a76c295af61384ad"
+      "version": "a2d9281d23f406cd7ab1b19ed62d0e4c2e6fadfc"
     },
     {
       "@type": "CreativeWork",
