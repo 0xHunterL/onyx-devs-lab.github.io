@@ -1,7 +1,8 @@
 {
   "schemaVersion": 1,
-  "publicStatusVersion": "2026.09.12.55",
+  "publicStatusVersion": "2026.09.13.56",
   "generatedAt": "2026-09-12T22:12:53.589Z",
+  "latestEvidenceObservedAt": "2026-09-12T22:47:17Z",
   "windowStart": "2026-09-01",
   "site": "https://hk.onyxdevslab.com/",
   "sourceLogs": [
@@ -283,6 +284,46 @@
     ],
     "eventFile": "events/2026-09-12T09-36-32.522Z-evidence-and-availability-change.json",
     "meaning": "All three sampled services.hk detail pages return HTTP 200 but contain the known PHP application failure and omit the required title, service-description, and contact markers. This blocks submission readiness; it does not prove that Onyx is listed, reviewed, endorsed, indexed, cited, or recommended. Submission still requires current user confirmation after all three targets recover."
+  },
+  "yandexPublicSearchEvidence": {
+    "testedAt": "2026-09-12T22:47:17Z",
+    "provider": "Yandex Web Search",
+    "query": "\"Onyx Devs Lab\"",
+    "status": "available",
+    "reportedResultCount": 6,
+    "officialBrandResultObserved": true,
+    "officialBrandResult": {
+      "title": "Onyx Devs Lab",
+      "url": "https://onyxdevslab.com/",
+      "canonicalTarget": "https://hk.onyxdevslab.com/",
+      "canonicalTargetVerified": true
+    },
+    "otherVisibleResults": [
+      {
+        "title": "onyx-devs-lab · GitHub",
+        "url": "https://github.com/onyx-devs-lab"
+      },
+      {
+        "title": "Hong Kong Companies Registry newly incorporated companies list",
+        "url": "https://www.cr.gov.hk/docs/wrpt/RNC063_2025.10.27-2025.11.02.pdf"
+      }
+    ],
+    "followUpQueries": [
+      {
+        "query": "site:hk.onyxdevslab.com",
+        "status": "unavailable",
+        "reason": "Yandex SmartCaptcha was shown after the first query; it was not completed and no result conclusion was drawn."
+      },
+      {
+        "query": "Hong Kong enterprise AI consulting",
+        "status": "not-run-after-captcha"
+      },
+      {
+        "query": "香港 企业 AI 咨询 公司 FDE",
+        "status": "not-run-after-captcha"
+      }
+    ],
+    "meaning": "The dated exact-brand query directly returned the provider-owned apex domain, whose live canonical points to the Hong Kong site. This is positive Yandex brand retrieval evidence for the official web property. It does not prove that the hk subdomain or deep pages are separately indexed, that non-brand category queries return Onyx, that the result is stable or ranked similarly in other regions, or that any AI product retrieved, cited, endorsed, or recommended Onyx. The follow-up captcha was not completed and cannot be interpreted as a negative result."
   },
   "publicSearchRetest": {
     "testedAt": "2026-09-12T19:59:30Z",
