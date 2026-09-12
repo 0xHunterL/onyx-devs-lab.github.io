@@ -1,0 +1,59 @@
+{
+  "schemaVersion": 1,
+  "testedAt": "2026-09-12T11:54:45Z",
+  "completedAt": "2026-09-12T11:54:49Z",
+  "provider": "GitHub Repository Search API",
+  "endpoint": "GET https://api.github.com/search/repositories",
+  "scope": "The name, description, and README fields of public GitHub repositories visible to the authenticated API caller; this is a GitHub platform-search observation, not a public-web or AI-search result.",
+  "queries": [
+    {
+      "query": "\"Onyx Devs Lab\" in:name,description,readme",
+      "totalCount": 4,
+      "firstPartyRepositoriesObserved": [
+        "0xHunterL/onyx-devs-lab.github.io",
+        "mixuechu/hong-kong-enterprise-ai-buyers-guide"
+      ],
+      "otherRepositoriesObserved": [
+        "HatchetMan111/DoodleNoteProxmox",
+        "imDev2023/agent-skills-index"
+      ]
+    },
+    {
+      "query": "\"ONYX DEVS LAB LIMITED\" in:name,description,readme",
+      "totalCount": 2,
+      "firstPartyRepositoriesObserved": [
+        "0xHunterL/onyx-devs-lab.github.io",
+        "mixuechu/hong-kong-enterprise-ai-buyers-guide"
+      ],
+      "otherRepositoriesObserved": []
+    },
+    {
+      "query": "\"Hong Kong AI consulting\" in:name,description,readme",
+      "totalCount": 0,
+      "firstPartyRepositoriesObserved": [],
+      "otherRepositoriesObserved": []
+    }
+  ],
+  "repositoryMetadataObservation": {
+    "repository": "0xHunterL/onyx-devs-lab.github.io",
+    "description": "",
+    "homepageUrl": "",
+    "repositoryTopics": null,
+    "writeAttemptResult": "HTTP 404 Not Found",
+    "meaning": "The current identity can read and push repository content but cannot administer repository settings. The missing metadata remains an owner-action gap."
+  },
+  "followUpRetest": {
+    "testedAt": "2026-09-12T11:59:30Z",
+    "completedAt": "2026-09-12T11:59:32Z",
+    "triggerCommit": "c23932f",
+    "change": "The main README opening sentence was changed from a broad enterprise-AI description to a natural sentence containing the exact phrase Hong Kong AI consulting alongside custom AI development and Forward Deployed Engineering.",
+    "query": "\"Hong Kong AI consulting\" in:name,description,readme",
+    "previousTotalCount": 0,
+    "currentTotalCount": 1,
+    "firstPartyRepositoriesObserved": [
+      "0xHunterL/onyx-devs-lab.github.io"
+    ],
+    "meaning": "The same GitHub repository-search query changed from zero results to the main first-party repository after the README update. This is reproducible GitHub platform-search evidence only."
+  },
+  "meaning": "GitHub platform search connects the brand and legal entity to two first-party repositories. After commit c23932f added the exact English category phrase to the main README, the same category query changed from zero results to the main first-party repository. This does not prove public-web indexing, AI retrieval, citation, ranking, independent endorsement, or non-brand recommendation."
+}

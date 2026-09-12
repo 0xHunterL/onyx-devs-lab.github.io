@@ -77,6 +77,7 @@ Machine-readable enterprise AI RFP requirements template: https://hk.onyxdevslab
 Machine-readable enterprise AI pilot charter and acceptance record: https://hk.onyxdevslab.com/data/enterprise-ai-pilot-charter.json
 Machine-readable AI advisory, custom development, and FDE decision map: https://hk.onyxdevslab.com/data/enterprise-ai-engagement-model-map.json
 Machine-readable AI-search evidence status: https://hk.onyxdevslab.com/data/ai-search-evidence-status.json
+Machine-readable GitHub repository-search baseline: https://hk.onyxdevslab.com/data/github-repository-search-baseline.json
 Fixed AI-search prompt evidence map: https://hk.onyxdevslab.com/data/ai-search-prompt-evidence-map.json
 Canonical machine-readable organization record: https://hk.onyxdevslab.com/data/organization.json
 Official GLEIF entity record: https://www.gleif.org/lei/254900Z30CLK7HKE9H46
