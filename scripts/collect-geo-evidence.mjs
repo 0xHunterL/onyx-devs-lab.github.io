@@ -94,6 +94,7 @@ const commonCrawl = await runJson('report-common-crawl.mjs', ['--host=hk.onyxdev
 const wayback = await runJson('report-wayback.mjs', ['--host=hk.onyxdevslab.com']);
 const distribution = await runJson('check-distribution-live.mjs', ['--report']);
 const servicesHk = await runJson('check-services-hk.mjs', ['--report']);
+const githubRepositorySearch = await runJson('report-github-repository-search.mjs', []);
 
 const crawlerTemporary = path.join(outputDir, `.crawler-report-${process.pid}.json`);
 await writeFile(crawlerTemporary, `${JSON.stringify(crawler, null, 2)}\n`, { mode: 0o640 });
@@ -110,7 +111,17 @@ const waybackAvailability = buildWaybackAvailability(wayback);
 const crawlerVerificationAvailability = buildCrawlerVerificationAvailability(crawler);
 const distributionAvailability = buildDistributionAvailability(distribution);
 const servicesHkAvailability = buildServicesHkAvailability(servicesHk);
-const availability = { commonCrawl: commonCrawlAvailability, wayback: waybackAvailability, crawlerVerification: crawlerVerificationAvailability, distribution: distributionAvailability, servicesHk: servicesHkAvailability };
+const githubRepositorySearchAvailability = {
+  status: githubRepositorySearch.status,
+  sourcesChecked: githubRepositorySearch.queriesChecked,
+  availableSources: githubRepositorySearch.availableQueries,
+  unavailableSources: githubRepositorySearch.unavailableQueries,
+  sources: githubRepositorySearch.results.map((result) => ({ id: result.id, status: result.status, httpStatus: result.httpStatus, reason: result.reason || null })),
+  interpretation: githubRepositorySearch.status === 'available'
+    ? 'All fixed GitHub repository-search queries returned usable results.'
+    : 'GitHub repository-search coverage is incomplete; unavailable queries must not be interpreted as zero results.',
+};
+const availability = { commonCrawl: commonCrawlAvailability, wayback: waybackAvailability, crawlerVerification: crawlerVerificationAvailability, distribution: distributionAvailability, servicesHk: servicesHkAvailability, githubRepositorySearch: githubRepositorySearchAvailability };
 const availabilityChanges = buildAvailabilityChanges(availability, previous?.availability);
 const priorCounts = previous?.counts || {};
 const metricForCrawlerObservation = (observation) => {
@@ -156,14 +167,50 @@ const newEvidenceByMetric = newEvidenceObservations.reduce((result, observation)
 const { counts, retentionAdjustments } = preserveAppendOnlyCrawlerCounts(retainedLogCounts, previous ? priorCounts : null, newEvidenceByMetric, Boolean(previousSeenEvidence));
 const deltas = buildEvidenceDeltas(counts, previous ? priorCounts : null);
 const newEvidence = [...newEvidenceByMetric].map(([metric, delta]) => ({ metric, delta, current: counts[metric] ?? null }));
+const githubQuerySnapshot = (report) => (report?.results || [])
+  .filter((result) => result.status === 'available')
+  .map((result) => ({ id: result.id, query: result.query, totalCount: result.totalCount, firstPartyRepositoriesObserved: result.firstPartyRepositoriesObserved }))
+  .sort((left, right) => left.id.localeCompare(right.id));
+const currentGithubQueries = githubQuerySnapshot(githubRepositorySearch);
+const previousCompleteGithubQueries = previous?.platformSearch?.status === 'available'
+  ? previous.platformSearch.queries
+  : previous?.platformSearch?.lastCompleteObservation?.queries;
+const platformSearchChanged = githubRepositorySearch.status === 'available'
+  && Array.isArray(previousCompleteGithubQueries)
+  && JSON.stringify(currentGithubQueries) !== JSON.stringify(previousCompleteGithubQueries);
+const platformSearchChanges = platformSearchChanged ? currentGithubQueries.map((current) => {
+  const prior = previousCompleteGithubQueries.find((item) => item.id === current.id);
+  return {
+    id: current.id,
+    previousTotalCount: prior?.totalCount ?? null,
+    currentTotalCount: current.totalCount,
+    previousFirstPartyRepositoriesObserved: prior?.firstPartyRepositoriesObserved || [],
+    currentFirstPartyRepositoriesObserved: current.firstPartyRepositoriesObserved,
+  };
+}).filter((change) => JSON.stringify([change.previousTotalCount, change.previousFirstPartyRepositoriesObserved]) !== JSON.stringify([change.currentTotalCount, change.currentFirstPartyRepositoriesObserved])) : [];
 const allSeenFingerprints = [...new Set([...(previousSeenEvidence?.fingerprints || []), ...currentEvidenceObservations.map((observation) => observation.fingerprint)])].sort();
 const generatedAt = new Date().toISOString();
 const eventKind = selectEvidenceEventKind({
   initializing: !previous || !eventHistoryExists,
-  evidenceChanged: newEvidence.length > 0,
+  evidenceChanged: newEvidence.length > 0 || platformSearchChanged,
   availabilityChanged: availabilityChanges.length > 0,
 });
 const eventFile = eventKind ? `events/${generatedAt.replaceAll(':', '-')}-${eventKind}.json` : null;
+const lastCompletePlatformSearch = githubRepositorySearch.status === 'available'
+  ? { observedAt: githubRepositorySearch.generatedAt, queries: currentGithubQueries }
+  : previous?.platformSearch?.status === 'available'
+    ? { observedAt: previous.platformSearch.observedAt, queries: previous.platformSearch.queries }
+    : previous?.platformSearch?.lastCompleteObservation || null;
+const platformSearch = {
+  provider: githubRepositorySearch.provider,
+  status: githubRepositorySearch.status,
+  observedAt: githubRepositorySearch.generatedAt,
+  queries: currentGithubQueries,
+  changed: platformSearchChanged,
+  changes: platformSearchChanges,
+  lastCompleteObservation: lastCompletePlatformSearch,
+  evidenceBoundary: githubRepositorySearch.evidenceBoundary,
+};
 const summary = {
   schemaVersion: 1,
   generatedAt,
@@ -175,12 +222,13 @@ const summary = {
   availabilityChanges,
   deltas,
   newEvidence,
+  platformSearch,
   initialized: !previous,
-  changed: newEvidence.length > 0,
+  changed: newEvidence.length > 0 || platformSearchChanged,
   availabilityChanged: availabilityChanges.length > 0,
   eventFile,
   newEvidenceObservations,
-  evidenceBoundary: 'Provider-verified crawler fingerprints are append-only observations: after a source log rotates out, their cumulative count is retained and any difference from the currently retained log set is exposed in retentionAdjustments. New provider-verified crawler fingerprints prove only previously unseen requests by the named crawler. Bytespider fingerprints are separately labeled user-agent-only and identity-unverified; they do not prove Doubao or ByteDance access. New referral fingerprints exclude suspected automation and prove only previously unseen attributed requests whose visitor type is not verified. Common Crawl fingerprints prove only appearance in the named public crawl index; Wayback fingerprints prove only public historical captures. Partial or unavailable source queries make zero-valued counts incomplete. Availability-change events preserve monitoring-source status transitions and are not visibility evidence. None proves search indexing, retrieval, citation, ranking, a human visit, endorsement, or non-brand recommendation.',
+  evidenceBoundary: 'Provider-verified crawler fingerprints are append-only observations: after a source log rotates out, their cumulative count is retained and any difference from the currently retained log set is exposed in retentionAdjustments. New provider-verified crawler fingerprints prove only previously unseen requests by the named crawler. Bytespider fingerprints are separately labeled user-agent-only and identity-unverified; they do not prove Doubao or ByteDance access. New referral fingerprints exclude suspected automation and prove only previously unseen attributed requests whose visitor type is not verified. Common Crawl fingerprints prove only appearance in the named public crawl index; Wayback fingerprints prove only public historical captures. GitHub repository-search changes prove only changes in that platform search. Partial or unavailable source queries make zero-valued counts incomplete. Availability-change events preserve monitoring-source status transitions and are not visibility evidence. None proves public-web indexing, AI retrieval, citation, ranking, a human visit, endorsement, or non-brand recommendation.',
 };
 
 if (eventFile) await atomicJson(eventFile, {
@@ -193,6 +241,7 @@ if (eventFile) await atomicJson(eventFile, {
   wayback,
   distribution,
   servicesHk,
+  githubRepositorySearch,
   promptCoverage,
 });
 await atomicJson('seen-evidence.json', {
@@ -206,6 +255,7 @@ await atomicJson('common-crawl-report.json', commonCrawl);
 await atomicJson('wayback-report.json', wayback);
 await atomicJson('distribution-live-report.json', distribution);
 await atomicJson('services-hk-report.json', servicesHk);
+await atomicJson('github-repository-search-report.json', githubRepositorySearch);
 await atomicJson('prompt-crawl-coverage.json', promptCoverage);
 await atomicJson('summary.json', summary);
 console.log(JSON.stringify(summary, null, 2));
