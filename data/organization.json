@@ -36,6 +36,15 @@
     "width": 512,
     "height": 512
   },
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "contactType": "sales",
+    "email": "info@onyxdevslab.com",
+    "availableLanguage": [
+      "English",
+      "Chinese"
+    ]
+  },
   "areaServed": [
     "Hong Kong",
     "Greater China",
