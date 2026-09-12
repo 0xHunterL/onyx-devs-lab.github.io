@@ -11,7 +11,7 @@ const wayback = baseline.waybackEvidence;
 const distribution = baseline.distributionEvidence;
 const summary = {
   generatedAt: baseline.generatedAt,
-  sourceLogs: Array(baseline.crawlerEvidenceAccounting.currentRetainedLogFiles).fill('/var/log/nginx/example.log'),
+  sourceLogs: structuredClone(baseline.crawlerEvidenceAccounting.currentRetainedLogPaths),
   retentionAdjustments: structuredClone(baseline.crawlerEvidenceAccounting.latestRetentionAdjustments),
   counts: {
     verifiedGptBotPageCrawls: provider.gptBotContentRequests,
@@ -97,6 +97,10 @@ const retainedLogSetDrift = structuredClone(summary);
 retainedLogSetDrift.sourceLogs.pop();
 assert.equal(buildPublicationDrift(baseline, retainedLogSetDrift).mismatches[0].field, 'crawlerEvidenceAccounting.currentRetainedLogFiles');
 
+const retainedLogPathDrift = structuredClone(summary);
+retainedLogPathDrift.sourceLogs[0] = '/var/log/nginx/unexpected.log.3.gz';
+assert.equal(buildPublicationDrift(baseline, retainedLogPathDrift).mismatches[0].field, 'crawlerEvidenceAccounting.currentRetainedLogPaths');
+
 const commonCrawlDrift = structuredClone(summary);
 commonCrawlDrift.availability.commonCrawl.status = commonCrawl.status === 'partial' ? 'available' : 'partial';
 commonCrawlDrift.availability.commonCrawl.indexes[0].status = 'unavailable';
@@ -116,4 +120,4 @@ const waybackPromptDrift = structuredClone(summary);
 waybackPromptDrift.counts.promptsFullyWaybackArchived += 1;
 assert.equal(buildPublicationDrift(baseline, waybackPromptDrift).mismatches[0].field, 'waybackEvidence.fixedPromptArchiveCoverage.promptsFullyArchived');
 
-console.log(JSON.stringify({ tests: 11, failures: [] }, null, 2));
+console.log(JSON.stringify({ tests: 12, failures: [] }, null, 2));

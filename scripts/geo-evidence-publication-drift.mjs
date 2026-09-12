@@ -58,6 +58,7 @@ export function buildPublicationDrift(baseline, summary) {
   for (const mapping of countMappings) check(...mapping);
 
   check('crawlerEvidenceAccounting.currentRetainedLogFiles', crawlerAccounting.currentRetainedLogFiles, (summary.sourceLogs || []).length);
+  check('crawlerEvidenceAccounting.currentRetainedLogPaths', crawlerAccounting.currentRetainedLogPaths || [], summary.sourceLogs || []);
   check('crawlerEvidenceAccounting.latestRetentionAdjustments', crawlerAccounting.latestRetentionAdjustments || [], summary.retentionAdjustments || []);
   check('commonCrawlEvidence.status', commonCrawl.status, collectedCommonCrawl.status);
   check('commonCrawlEvidence.availableIndexes', commonCrawl.availableIndexes || [], (collectedCommonCrawl.indexes || []).filter((item) => item.status === 'available').map((item) => item.id));

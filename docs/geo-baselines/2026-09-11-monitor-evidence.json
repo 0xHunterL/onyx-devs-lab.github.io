@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "publicStatusVersion": "2026.09.12.36",
-  "generatedAt": "2026-09-12T07:40:51.474Z",
+  "publicStatusVersion": "2026.09.12.37",
+  "generatedAt": "2026-09-12T07:45:09.557Z",
   "windowStart": "2026-09-01",
   "site": "https://hk.onyxdevslab.com/",
   "sourceLogs": [
@@ -53,6 +53,12 @@
     "mode": "append-only-provider-verified-fingerprint-cumulative",
     "deduplicationKey": "SHA-256 fingerprint of the verified request observation",
     "currentRetainedLogFiles": 4,
+    "currentRetainedLogPaths": [
+      "/var/log/nginx/hk.onyxdevslab.com.geo.log.3.gz",
+      "/var/log/nginx/hk.onyxdevslab.com.geo.log.2.gz",
+      "/var/log/nginx/hk.onyxdevslab.com.geo.log.1",
+      "/var/log/nginx/hk.onyxdevslab.com.geo.log"
+    ],
     "retentionAdjustmentField": "retentionAdjustments",
     "latestRetentionAdjustments": [],
     "meaning": "Provider-verified crawler request counts are cumulative over the append-only fingerprint ledger. If a verified request rotates out of the four currently retained log files, its cumulative count is preserved and the difference is exposed in retentionAdjustments; an explicit evidence correction still requires a reviewed baseline revision. This rule does not apply to user-agent-only candidates, referrals, Common Crawl results, or Wayback results."
