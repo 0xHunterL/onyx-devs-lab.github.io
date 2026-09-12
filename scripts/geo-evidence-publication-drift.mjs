@@ -9,7 +9,17 @@ const requiredCrawlerVerificationSourceIds = [
   'perplexityUser',
 ];
 
-export function buildPublicationDrift(baseline, summary) {
+export function buildExpectedDistributionSources(manifest) {
+  return (manifest?.items || [])
+    .filter((item) => item.status === 'published')
+    .flatMap((item) => [
+      { id: `${item.id}:publicUrl:${item.publicUrl}`, status: 'available' },
+      ...(item.trackedTargets || []).map((url) => ({ id: `${item.id}:trackedTarget:${url}`, status: 'available' })),
+    ])
+    .sort((left, right) => left.id.localeCompare(right.id));
+}
+
+export function buildPublicationDrift(baseline, summary, { distributionManifest } = {}) {
   const mismatches = [];
   const check = (field, published, collected) => {
     if (comparable(published) !== comparable(collected)) mismatches.push({ field, published, collected });
@@ -96,6 +106,15 @@ export function buildPublicationDrift(baseline, summary) {
   check('distributionEvidence.availableSources', distribution.availableSources, collectedDistribution.availableSources);
   check('distributionEvidence.unavailableSources', distribution.unavailableSources, collectedDistribution.unavailableSources);
   check('distributionEvidence.availabilityStatus', distribution.availabilityStatus, collectedDistribution.status);
+  if (distributionManifest) {
+    check(
+      'distributionEvidence.requiredSources',
+      buildExpectedDistributionSources(distributionManifest),
+      (collectedDistribution.sources || [])
+        .map(({ id, status }) => ({ id, status }))
+        .sort((left, right) => left.id.localeCompare(right.id)),
+    );
+  }
   check('servicesHkReadinessEvidence.availabilityStatus', servicesHk.availabilityStatus, collectedServicesHk.status);
   check('servicesHkReadinessEvidence.targetsChecked', servicesHk.targetsChecked, collectedServicesHk.sourcesChecked);
   check('servicesHkReadinessEvidence.availableTargets', servicesHk.availableTargets, collectedServicesHk.availableSources);

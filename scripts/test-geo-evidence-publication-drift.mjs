@@ -1,8 +1,9 @@
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
-import { buildPublicationDrift } from './geo-evidence-publication-drift.mjs';
+import { buildExpectedDistributionSources, buildPublicationDrift } from './geo-evidence-publication-drift.mjs';
 
 const baseline = JSON.parse(await readFile('docs/geo-baselines/2026-09-11-monitor-evidence.json', 'utf8'));
+const distributionManifest = JSON.parse(await readFile('geo/distribution-manifest.json', 'utf8'));
 const provider = baseline.providerVerifiedCrawlerEvidence;
 const attribution = baseline.attributionEvidence;
 const prompt = baseline.fixedPromptCoverage;
@@ -84,6 +85,7 @@ const summary = {
       publishedItems: distribution.publishedItems,
       availableSources: distribution.availableSources,
       unavailableSources: distribution.unavailableSources,
+      sources: buildExpectedDistributionSources(distributionManifest),
     },
     servicesHk: {
       status: servicesHk.availabilityStatus,
@@ -99,7 +101,7 @@ const summary = {
   },
 };
 
-const synchronized = buildPublicationDrift(baseline, summary);
+const synchronized = buildPublicationDrift(baseline, summary, { distributionManifest });
 assert.ok(commonCrawl.unavailableIndexes.every((item) => typeof item?.id === 'string' && item.id.length > 0));
 assert.equal(synchronized.status, 'synchronized');
 assert.deepEqual(synchronized.mismatches, []);
@@ -156,6 +158,10 @@ const distributionDrift = structuredClone(summary);
 distributionDrift.availability.distribution.status = 'partial';
 assert.equal(buildPublicationDrift(baseline, distributionDrift).mismatches[0].field, 'distributionEvidence.availabilityStatus');
 
+const distributionSourceReplacement = structuredClone(summary);
+distributionSourceReplacement.availability.distribution.sources[0].id = 'replacement:publicUrl:https://example.invalid/';
+assert.equal(buildPublicationDrift(baseline, distributionSourceReplacement, { distributionManifest }).mismatches[0].field, 'distributionEvidence.requiredSources');
+
 const servicesHkStatusDrift = structuredClone(summary);
 servicesHkStatusDrift.availability.servicesHk.status = 'available';
 assert.equal(buildPublicationDrift(baseline, servicesHkStatusDrift).mismatches[0].field, 'servicesHkReadinessEvidence.availabilityStatus');
@@ -203,4 +209,4 @@ const unavailableArchiveFields = buildPublicationDrift(baseline, unavailableArch
 assert.ok(!unavailableArchiveFields.some((field) => field.startsWith('waybackEvidence.') && field !== 'waybackEvidence.status'));
 assert.ok(!unavailableArchiveFields.includes('commonCrawlEvidence.capturesObservedInAvailableIndexes'));
 
-console.log(JSON.stringify({ tests: 22, failures: [] }, null, 2));
+console.log(JSON.stringify({ tests: 23, failures: [] }, null, 2));
