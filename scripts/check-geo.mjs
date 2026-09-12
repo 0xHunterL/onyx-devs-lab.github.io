@@ -436,6 +436,7 @@ try {
   const organization = JSON.parse(fs.readFileSync(path.join(dist, 'data/organization.json'), 'utf8'));
   if (organization.iso6523Code !== '0199:254900Z30CLK7HKE9H46') failures.push('organization record: preferred ISO 6523 LEI is missing');
   if (organization.logo?.contentUrl !== 'https://hk.onyxdevslab.com/onyx-devs-lab-logo.svg' || organization.logo?.width !== 512 || organization.logo?.height !== 512) failures.push('organization record: indexable logo metadata is incomplete');
+  if (organization.contactPoint?.['@type'] !== 'ContactPoint' || organization.contactPoint?.contactType !== 'sales' || organization.contactPoint?.email !== 'info@onyxdevslab.com' || organization.contactPoint?.availableLanguage?.join(',') !== 'English,Chinese') failures.push('organization record: canonical sales contact relation is incomplete');
   if (!organization.subjectOf?.some((item) => item.url === 'https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-monitor-evidence-2026-09-12-41' && item.sameAs === 'https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-monitor-evidence-2026-09-12-41/2026-09-11-monitor-evidence.json' && item.distribution?.contentUrl === 'https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-monitor-evidence-2026-09-12-41/ai-search-evidence-status.json')) failures.push('organization record: automated GEO monitor evidence relation is missing');
 } catch {
   failures.push('organization record: invalid JSON');

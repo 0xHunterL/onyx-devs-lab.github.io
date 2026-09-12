@@ -86,3 +86,5 @@
 - 2026-09-12T11:00:31Z，按固定四查询协议复测公开搜索结果。精确验证标记和 `site:hk.onyxdevslab.com` 查询仍未返回官网；品牌查询仍返回 Bloomberg LEI、tempb、水滴点评和 databasesets 等既有第三方主体记录，未出现新的权威官网归属信号。非品牌查询 `香港 企业 AI 咨询 公司 FDE` 的可见结果集合从上一检查点的 12 条扩展到 23 条，仍无 Onyx，并新增 HKEX 公告、券商研报、InvestHK 档案和百科条目等宽泛或低相关结果。revision 43 保存该竞争发现快照，同时明确结果数量不等于类目相关性，单次集合变化也不构成稳定排名趋势、AI 引用或非品牌推荐证据；未向豆包发送提示词。
 
 - 2026-09-12T11:04:58.776Z，生产采集识别到两条新的提供方已核验 YandexBot 请求：10:57:56Z 对 `robots.txt` 的条件请求返回 304，10:57:57Z 对首页的请求返回 200；累计正文／发现文件请求从 71／64 变为 72／65，已核验正文路径和固定提示词覆盖均未增加。同轮 Wayback CDX 从 10:49:52Z 的超时状态恢复，再次完整返回 93 条捕获／43 个 URL；恢复只表示监测源可用，不是新归档或可发现性提升。事件保存为 `events/2026-09-12T11-04-58.776Z-evidence-and-availability-change.json`。revision 44 同步这两项变化；Yandex 抓取和 Wayback 归档均不证明搜索收录、AI 检索、引用、排名或推荐。
+
+- 2026-09-12T11:12Z，实体一致性审计发现各页面内嵌 Organization JSON-LD 已声明销售联系点，而规范化 `/data/organization.json` 只有顶层邮箱、缺少 `contactPoint`，使同一主体的两套机器图谱不完全一致。修复仅在规范化组织记录补入 Schema.org `ContactPoint`（`sales`、`info@onyxdevslab.com`、English／Chinese）并增加本地与线上断言，不新增同质页面或服务声明。该变化改善机器可读主体一致性，但不证明搜索收录、AI 引用或推荐。
