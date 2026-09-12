@@ -4,6 +4,7 @@ export async function fetchOffsiteResource(name, url, {
   fetchImpl = fetch,
   retryDelayMs = 250,
   timeoutMs = 20_000,
+  userAgent = 'Onyx-GEO-Offsite-Check/1.0',
 } = {}) {
   let lastError;
   let lastResult;
@@ -11,7 +12,7 @@ export async function fetchOffsiteResource(name, url, {
   for (let attempt = 1; attempt <= attempts; attempt += 1) {
     try {
       const response = await fetchImpl(url, {
-        headers: { 'user-agent': 'Onyx-GEO-Offsite-Check/1.0' },
+        headers: { 'user-agent': userAgent },
         redirect: 'follow',
         signal: AbortSignal.timeout(timeoutMs),
       });

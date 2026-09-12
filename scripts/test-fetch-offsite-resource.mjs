@@ -54,4 +54,14 @@ const sufficientlyLarge = await fetchOffsiteResource('archived page', 'https://e
 assert.equal(shortBodyCalls, 2);
 assert.equal(sufficientlyLarge.body, 'long enough');
 
-console.log(JSON.stringify({ tests: 10, failures: [] }, null, 2));
+let observedUserAgent = '';
+await fetchOffsiteResource('distribution page', 'https://example.test/distribution', {
+  userAgent: 'Onyx-GEO-Release-Check Distribution/1.0',
+  fetchImpl: async (url, options) => {
+    observedUserAgent = options.headers['user-agent'];
+    return response(200, String(url), 'text/html');
+  },
+});
+assert.equal(observedUserAgent, 'Onyx-GEO-Release-Check Distribution/1.0');
+
+console.log(JSON.stringify({ tests: 12, failures: [] }, null, 2));

@@ -232,23 +232,23 @@
       ]
     },
     {
-      "id": "github-release-geo-monitor-evidence-2026-09-12-49",
+      "id": "github-release-geo-monitor-evidence-2026-09-12-50",
       "channel": "github_releases",
       "format": "versioned-evidence-checkpoint",
       "language": "en-zh-CN",
       "status": "published",
       "sourceFile": "README.md",
-      "title": "Onyx GEO monitor evidence checkpoint — 2026-09-12, revision 49",
-      "campaign": "geo_monitor_evidence_49",
+      "title": "Onyx GEO monitor evidence checkpoint — 2026-09-12, revision 50",
+      "campaign": "geo_monitor_evidence_50",
       "trackedTargets": [
-        "https://hk.onyxdevslab.com/data/ai-search-evidence-status.json?utm_source=github_releases&utm_medium=referral&utm_campaign=geo_monitor_evidence_49"
+        "https://hk.onyxdevslab.com/data/ai-search-evidence-status.json?utm_source=github_releases&utm_medium=referral&utm_campaign=geo_monitor_evidence_50"
       ],
-      "publicUrl": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-monitor-evidence-2026-09-12-49",
-      "anonymousAccessVerifiedAt": "2026-09-12T13:21:54Z",
+      "publicUrl": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-monitor-evidence-2026-09-12-50",
+      "anonymousAccessVerifiedAt": "2026-09-12T14:49:22Z",
       "publicContentMarkers": [
-        "Onyx GEO monitor evidence checkpoint — 2026-09-12, revision 49",
-        "New provider-verified observations since revision 48:",
-        "Cumulative counts: YandexBot content 76 and discovery files 69; AhrefsBot discovery files 87."
+        "Onyx GEO monitor evidence checkpoint — 2026-09-12, revision 50",
+        "New provider-verified observations since revision 49:",
+        "Cumulative AhrefsBot discovery-file requests increased from 87 to 89"
       ],
       "searchIndexedAt": null,
       "aiCitationObservedAt": null,
