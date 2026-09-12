@@ -1,8 +1,8 @@
 {
   "schemaVersion": 2,
-  "version": "2026.09.12.46",
+  "version": "2026.09.12.47",
   "id": "https://hk.onyxdevslab.com/data/ai-search-evidence-status.json",
-  "observedAt": "2026-09-12T11:28:09.482Z",
+  "observedAt": "2026-09-12T12:18:34.513Z",
   "sourceBaseline": "https://github.com/0xHunterL/onyx-devs-lab.github.io/blob/main/docs/geo-baselines/2026-09-11-monitor-evidence.json",
   "versionHistory": [
     {
@@ -75,11 +75,11 @@
     "commonCrawlBotDiscoveryFileRequests": 0,
     "applebotContentRequests": 0,
     "applebotDiscoveryFileRequests": 0,
-    "yandexbotContentRequests": 72,
-    "yandexbotDiscoveryFileRequests": 65,
+    "yandexbotContentRequests": 75,
+    "yandexbotDiscoveryFileRequests": 68,
     "ahrefsbotContentRequests": 0,
     "ahrefsbotDiscoveryFileRequests": 86,
-    "distinctVerifiedContentPaths": 44,
+    "distinctVerifiedContentPaths": 45,
     "historicalReclassification": {
       "homepageContentRequestsAdded": 3,
       "machineResourceDiscoveryRequestsAdded": 10,
@@ -87,8 +87,8 @@
     },
     "yandexHistoricalRecognition": {
       "firstSeen": "2026-09-08T12:45:20Z",
-      "lastSeen": "2026-09-12T10:57:57Z",
-      "verifiedContentPaths": 41,
+      "lastSeen": "2026-09-12T12:06:27Z",
+      "verifiedContentPaths": 42,
       "meaning": "YandexBot monitoring was added after the latest requests exposed the missing family. Most of these provider-verified requests are historical observations newly recognized in current and rotated logs; they are not all newly occurring crawls."
     },
     "ahrefsHistoricalRecognition": {
@@ -130,7 +130,7 @@
       "evidence": {
         "verifiedGptBotContentCrawls": 28,
         "verifiedGptBotDiscoveryFileCrawls": 14,
-        "verifiedDistinctContentPaths": 44,
+        "verifiedDistinctContentPaths": 45,
         "verifiedOaiSearchBotDiscoveryFileVisits": 10,
         "verifiedOaiSearchBotContentCrawls": 0,
         "historicallyVerifiedBingbotContentCrawls": 7,
@@ -138,8 +138,8 @@
         "verifiedBaiduspiderDiscoveryFileCrawls": 0,
         "verifiedApplebotContentCrawls": 0,
         "verifiedApplebotDiscoveryFileCrawls": 0,
-        "verifiedYandexbotContentCrawls": 72,
-        "verifiedYandexbotDiscoveryFileCrawls": 65,
+        "verifiedYandexbotContentCrawls": 75,
+        "verifiedYandexbotDiscoveryFileCrawls": 68,
         "verifiedAhrefsBotContentCrawls": 0,
         "verifiedAhrefsBotDiscoveryFileCrawls": 86,
         "verifiedGooglebotContentCrawls": 0,
@@ -472,6 +472,47 @@
       "result": "other-category-providers-observed; official-Onyx-result-not-observed"
     }
   ],
+  "platformSearchChecks": {
+    "githubRepository": {
+      "checkedAt": "2026-09-12T12:18:33.802Z",
+      "status": "available",
+      "queriesChecked": 3,
+      "availableQueries": 3,
+      "unavailableQueries": 0,
+      "queries": [
+        {
+          "id": "brand",
+          "query": "\"Onyx Devs Lab\" in:name,description,readme",
+          "totalCount": 4,
+          "firstPartyRepositoriesObserved": [
+            "0xHunterL/onyx-devs-lab.github.io",
+            "mixuechu/hong-kong-enterprise-ai-buyers-guide"
+          ]
+        },
+        {
+          "id": "category",
+          "query": "\"Hong Kong AI consulting\" in:name,description,readme",
+          "totalCount": 2,
+          "firstPartyRepositoriesObserved": [
+            "0xHunterL/onyx-devs-lab.github.io",
+            "mixuechu/hong-kong-enterprise-ai-buyers-guide"
+          ]
+        },
+        {
+          "id": "legal-entity",
+          "query": "\"ONYX DEVS LAB LIMITED\" in:name,description,readme",
+          "totalCount": 2,
+          "firstPartyRepositoriesObserved": [
+            "0xHunterL/onyx-devs-lab.github.io",
+            "mixuechu/hong-kong-enterprise-ai-buyers-guide"
+          ]
+        }
+      ],
+      "source": "https://hk.onyxdevslab.com/data/github-repository-search-baseline.json",
+      "eventFile": "events/2026-09-12T12-18-34.513Z-evidence-and-availability-change.json",
+      "meaning": "All three fixed GitHub Repository Search API queries were available. Brand and legal-entity queries return both first-party repositories; the exact category query returns the same two repositories after the recorded README changes. This proves GitHub platform-search visibility only, not public-web indexing, AI retrieval, citation, ranking, independent endorsement, or non-brand recommendation."
+    }
+  },
   "publicSearchMonitoring": {
     "bing": {
       "status": "account-verification-required",
@@ -582,6 +623,10 @@
     {
       "name": "Latest immutable AI-search evidence status",
       "url": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-monitor-evidence-2026-09-12-41/ai-search-evidence-status.json"
+    },
+    {
+      "name": "GitHub repository-search before-and-after baseline",
+      "url": "https://hk.onyxdevslab.com/data/github-repository-search-baseline.json"
     },
     {
       "name": "AI-search verification method",
