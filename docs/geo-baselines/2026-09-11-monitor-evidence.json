@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "publicStatusVersion": "2026.09.12.31",
+  "publicStatusVersion": "2026.09.12.32",
   "generatedAt": "2026-09-12T07:07:07.506Z",
   "windowStart": "2026-09-01",
   "site": "https://hk.onyxdevslab.com/",
@@ -117,7 +117,13 @@
     "status": "partial",
     "capturesObservedInAvailableIndexes": 0,
     "availableIndexes": ["CC-MAIN-2026-30"],
-    "unavailableIndexes": ["CC-MAIN-2026-34"],
+    "unavailableIndexes": [
+      {
+        "id": "CC-MAIN-2026-34",
+        "httpStatus": 504,
+        "reason": "HTTP 504"
+      }
+    ],
     "meaning": "CC-MAIN-2026-30 returned a usable zero-capture response while CC-MAIN-2026-34 returned HTTP 504. The result is incomplete and must not be interpreted as a verified zero across the selected indexes or all Common Crawl history."
   },
   "waybackEvidence": {

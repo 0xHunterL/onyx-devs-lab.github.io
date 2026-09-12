@@ -69,6 +69,7 @@ const summary = {
 };
 
 const synchronized = buildPublicationDrift(baseline, summary);
+assert.ok(commonCrawl.unavailableIndexes.every((item) => typeof item?.id === 'string' && item.id.length > 0));
 assert.equal(synchronized.status, 'synchronized');
 assert.deepEqual(synchronized.mismatches, []);
 
@@ -105,4 +106,4 @@ const waybackPromptDrift = structuredClone(summary);
 waybackPromptDrift.counts.promptsFullyWaybackArchived += 1;
 assert.equal(buildPublicationDrift(baseline, waybackPromptDrift).mismatches[0].field, 'waybackEvidence.fixedPromptArchiveCoverage.promptsFullyArchived');
 
-console.log(JSON.stringify({ tests: 8, failures: [] }, null, 2));
+console.log(JSON.stringify({ tests: 9, failures: [] }, null, 2));
