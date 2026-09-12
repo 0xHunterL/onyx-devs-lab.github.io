@@ -57,6 +57,18 @@ const summary = {
     promptsFullyWaybackArchived: wayback.fixedPromptArchiveCoverage.promptsFullyArchived,
   },
   availability: {
+    crawlerVerification: {
+      status: 'available',
+      sources: [
+        'ahrefsBot',
+        'appleBot',
+        'commonCrawlBot',
+        'gptBot',
+        'oaiSearchBot',
+        'perplexityBot',
+        'perplexityUser',
+      ].map((id) => ({ id, status: 'available' })),
+    },
     commonCrawl: {
       status: commonCrawl.status,
       indexes: [
@@ -105,6 +117,18 @@ assert.deepEqual(referralReport.mismatches, [{
 const crawlerDrift = structuredClone(summary);
 crawlerDrift.counts.verifiedGptBotPageCrawls += 1;
 assert.equal(buildPublicationDrift(baseline, crawlerDrift).mismatches[0].field, 'providerVerifiedCrawlerEvidence.gptBotContentRequests');
+
+const crawlerVerificationUnavailable = structuredClone(summary);
+crawlerVerificationUnavailable.availability.crawlerVerification.status = 'partial';
+crawlerVerificationUnavailable.availability.crawlerVerification.sources[0].status = 'unavailable';
+assert.deepEqual(buildPublicationDrift(baseline, crawlerVerificationUnavailable).mismatches.map((item) => item.field), [
+  'crawlerVerificationAvailability.requiredStatus',
+  'crawlerVerificationAvailability.requiredSources',
+]);
+
+const crawlerVerificationSourceMissing = structuredClone(summary);
+crawlerVerificationSourceMissing.availability.crawlerVerification.sources.pop();
+assert.equal(buildPublicationDrift(baseline, crawlerVerificationSourceMissing).mismatches[0].field, 'crawlerVerificationAvailability.requiredSources');
 
 const commonCrawlBotDrift = structuredClone(summary);
 commonCrawlBotDrift.counts.verifiedCommonCrawlDiscoveryFileCrawls += 1;
@@ -179,4 +203,4 @@ const unavailableArchiveFields = buildPublicationDrift(baseline, unavailableArch
 assert.ok(!unavailableArchiveFields.some((field) => field.startsWith('waybackEvidence.') && field !== 'waybackEvidence.status'));
 assert.ok(!unavailableArchiveFields.includes('commonCrawlEvidence.capturesObservedInAvailableIndexes'));
 
-console.log(JSON.stringify({ tests: 20, failures: [] }, null, 2));
+console.log(JSON.stringify({ tests: 22, failures: [] }, null, 2));

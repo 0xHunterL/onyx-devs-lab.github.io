@@ -1,4 +1,13 @@
 const comparable = (value) => JSON.stringify(value);
+const requiredCrawlerVerificationSourceIds = [
+  'ahrefsBot',
+  'appleBot',
+  'commonCrawlBot',
+  'gptBot',
+  'oaiSearchBot',
+  'perplexityBot',
+  'perplexityUser',
+];
 
 export function buildPublicationDrift(baseline, summary) {
   const mismatches = [];
@@ -18,6 +27,7 @@ export function buildPublicationDrift(baseline, summary) {
   const counts = summary.counts || {};
   const collectedCommonCrawl = summary.availability?.commonCrawl || {};
   const collectedWayback = summary.availability?.wayback || {};
+  const collectedCrawlerVerification = summary.availability?.crawlerVerification || {};
   const collectedDistribution = summary.availability?.distribution || {};
   const collectedServicesHk = summary.availability?.servicesHk || {};
   const collectedGithubRepositorySearch = summary.platformSearch || {};
@@ -74,6 +84,14 @@ export function buildPublicationDrift(baseline, summary) {
   check('commonCrawlEvidence.availableIndexes', commonCrawl.availableIndexes || [], (collectedCommonCrawl.indexes || []).filter((item) => item.status === 'available').map((item) => item.id));
   check('commonCrawlEvidence.unavailableIndexes', (commonCrawl.unavailableIndexes || []).map((item) => item.id), (collectedCommonCrawl.indexes || []).filter((item) => item.status !== 'available').map((item) => item.id));
   check('waybackEvidence.status', wayback.status, collectedWayback.status);
+  check('crawlerVerificationAvailability.requiredStatus', 'available', collectedCrawlerVerification.status);
+  check(
+    'crawlerVerificationAvailability.requiredSources',
+    requiredCrawlerVerificationSourceIds.map((id) => ({ id, status: 'available' })),
+    (collectedCrawlerVerification.sources || [])
+      .map(({ id, status }) => ({ id, status }))
+      .sort((left, right) => left.id.localeCompare(right.id)),
+  );
   check('distributionEvidence.publishedItems', distribution.publishedItems, collectedDistribution.publishedItems);
   check('distributionEvidence.availableSources', distribution.availableSources, collectedDistribution.availableSources);
   check('distributionEvidence.unavailableSources', distribution.unavailableSources, collectedDistribution.unavailableSources);
