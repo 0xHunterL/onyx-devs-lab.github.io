@@ -74,9 +74,9 @@ for (const snapshot of waybackCoreSnapshots) {
   const body = await get(`Internet Archive ${snapshot.name} snapshot`, url, 'text/html', snapshot.name === 'custom AI development' ? { allowUnavailable: true, attempts: 4, minimumBytes: 12_000 } : undefined);
   requireArchivedText(`Internet Archive ${snapshot.name} snapshot`, body, ['Onyx Devs Lab','ONYX DEVS LAB LIMITED','79051925','254900Z30CLK7HKE9H46','AI 咨询','AI 定制开发','FDE']);
 }
-const softwareHeritageSnapshotId = 'df2409f12f9b01e665ae896d0492aa09148b9c1b';
-const softwareHeritageRevisionId = 'f17606cf302d4e1368eae3f2a76c295af61384ad';
-const softwareHeritageSaveRequestRaw = await get('Software Heritage save request', 'https://archive.softwareheritage.org/api/1/origin/save/2470710/', 'application/json');
+const softwareHeritageSnapshotId = 'a6d10e9586fcc1860acf66f32651994693d87578';
+const softwareHeritageRevisionId = 'a2d9281d23f406cd7ab1b19ed62d0e4c2e6fadfc';
+const softwareHeritageSaveRequestRaw = await get('Software Heritage save request', 'https://archive.softwareheritage.org/api/1/origin/save/2472540/', 'application/json');
 try {
   const request = JSON.parse(softwareHeritageSaveRequestRaw);
   if (request.save_task_status !== 'succeeded' || request.visit_status !== 'full' || request.snapshot_swhid !== `swh:1:snp:${softwareHeritageSnapshotId}`) failures.push('Software Heritage save request: archive did not complete with the expected snapshot');
@@ -89,7 +89,7 @@ if (softwareHeritageSnapshotRaw) {
     const snapshot = JSON.parse(softwareHeritageSnapshotRaw);
     if (snapshot.id !== softwareHeritageSnapshotId) failures.push('Software Heritage repository snapshot: unexpected snapshot id');
     if (snapshot.branches?.['refs/heads/main']?.target !== softwareHeritageRevisionId || snapshot.branches?.['refs/heads/main']?.target_type !== 'revision') failures.push('Software Heritage repository snapshot: main branch does not resolve to the archived checkpoint');
-    if (snapshot.branches?.['refs/tags/geo-crawler-evidence-2026-09-10']?.target !== '436ae84b02372854069ea741e1506bdf4f668144' || snapshot.branches?.['refs/tags/geo-referral-evidence-2026-09-10']?.target !== 'e7b088be9bdc24f2c18fa4b6afb6fc0f3700e936') failures.push('Software Heritage repository snapshot: current evidence tags are missing or stale');
+    if (snapshot.branches?.['refs/tags/geo-monitor-evidence-2026-09-12-49']?.target !== '93ad58598177fe15210d00b3e2802fbc99566720' || snapshot.branches?.['refs/tags/geo-monitor-evidence-2026-09-12-49']?.target_type !== 'revision') failures.push('Software Heritage repository snapshot: revision 49 evidence tag is missing or stale');
   } catch {
     failures.push('Software Heritage repository snapshot: invalid JSON');
   }
