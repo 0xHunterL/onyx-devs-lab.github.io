@@ -1,8 +1,8 @@
 {
   "schemaVersion": 2,
-  "version": "2026.09.12.51",
+  "version": "2026.09.12.52",
   "id": "https://hk.onyxdevslab.com/data/ai-search-evidence-status.json",
-  "observedAt": "2026-09-12T19:33:18.402Z",
+  "observedAt": "2026-09-12T19:59:30Z",
   "sourceBaseline": "https://github.com/0xHunterL/onyx-devs-lab.github.io/blob/main/docs/geo-baselines/2026-09-11-monitor-evidence.json",
   "versionHistory": [
     {
@@ -275,7 +275,7 @@
       "evidence": {
         "publicSearchWebsiteResultObserved": false,
         "publicSearchObservation": {
-          "testedAt": "2026-09-12T11:00:31Z",
+          "testedAt": "2026-09-12T19:59:30Z",
           "queries": [
             "\"ONYX-GEO-VERIFY-79051925-20260908\"",
             "site:hk.onyxdevslab.com \"Onyx Devs Lab\"",
@@ -285,22 +285,25 @@
           "officialSiteObserved": false,
           "thirdPartyEntityRecordsObserved": true,
           "brandSearchResultsObserved": [
-            "https://lei.bloomberg.com/leis/view/254900Z30CLK7HKE9H46",
-            "https://www.tempb.com/Onyx/",
-            "https://www.shuididp.cn/yp-1fc4411b06407fe9179c5109ae9d7e02.html",
-            "https://www.tempb.com/ONYX/2",
-            "https://hkg.databasesets.com/zh-hant/gongsimingdan/number/79051925"
+            "https://lei.bloomberg.com/leis/view/254900Z30CLK7HKE9H46"
           ],
+          "previousBrandSearchObservation": {
+            "testedAt": "2026-09-12T11:00:31Z",
+            "resultCount": 5,
+            "meaning": "Preserved prior result-set checkpoint. Search-result membership can fluctuate; sources absent from a later observed result set are not treated as deleted or deindexed."
+          },
           "thirdPartyEntityRecords": [
             "https://www.cr.gov.hk/docs/wrpt/RNC063_2025.10.27-2025.11.02.pdf",
             "https://lei.bloomberg.com/leis/view/254900Z30CLK7HKE9H46",
             "https://www.tempb.com/companies/onyx-devs-lab-limited/",
             "https://hkg.databasesets.com/zh-hant/gongsimingdan/number/79051925"
           ],
-          "lowConfidenceEntityDirectoryResults": [
+          "lowConfidenceEntityDirectoryResults": [],
+          "historicalLowConfidenceEntityDirectoryResults": [
             {
               "url": "https://www.shuididp.cn/yp-1fc4411b06407fe9179c5109ae9d7e02.html",
               "query": "\"Onyx Devs Lab\"",
+              "lastObservedAt": "2026-09-12T11:00:31Z",
               "matchingFields": [
                 "legal name",
                 "incorporation date",
@@ -314,17 +317,13 @@
           ],
           "entityRecordMeaning": "These records make the legal entity externally discoverable and disambiguatable. They do not prove official-site indexing, website ownership, service verification, endorsement, AI citation, or recommendation.",
           "previousNonBrandCategoryObservation": {
-            "testedAt": "2026-09-12T08:05:03Z",
-            "resultCount": 12,
+            "testedAt": "2026-09-12T11:00:31Z",
+            "resultCount": 23,
             "meaning": "Preserved prior result-set checkpoint. Search-result membership and ordering can fluctuate; a later result set does not establish a ranking trend."
           },
           "nonBrandCategoryResultsObserved": [
             {
-              "url": "https://www.fde.hk/zh-cn/products/enterprise-ai-diagnosis",
-              "observedLabel": "FDE 企业 AI 诊断"
-            },
-            {
-              "url": "https://www.fde.hk/zh-cn",
+              "url": "https://fde.hk/zh-hk",
               "observedLabel": "FDE.HK 香港金融 AI 部署中心"
             },
             {
@@ -332,40 +331,40 @@
               "observedLabel": "FDE.HK 香港金融 AI 部署中心"
             },
             {
-              "url": "https://www.fde.hk/zh-cn/about",
-              "observedLabel": "FDE.HK 香港金融 AI 部署中心介绍"
+              "url": "https://fde100.com/",
+              "observedLabel": "FDE100 人才与产业平台"
             },
             {
-              "url": "https://www.fde.hk/zh-cn/products/enterprise-ai-employee",
-              "observedLabel": "FDE 企业 AI 员工"
+              "url": "https://www.fancyar.com/solutions.html",
+              "observedLabel": "幻实科技企业 AI 赋能与 FDE 落地方案"
             },
             {
-              "url": "https://fde.hk/zh-hk",
-              "observedLabel": "FDE.HK 香港金融 AI 部署中心"
+              "url": "https://anyabot.com/",
+              "observedLabel": "Anyasmart 企业 AI 落地与 FDE 服务"
             },
             {
-              "url": "https://www.fde.hk/zh-hk/products",
-              "observedLabel": "FDE.HK 香港金融 AI 部署产品"
+              "url": "https://fdezen.com/",
+              "observedLabel": "FDE 工场企业 AI 落地体系"
+            },
+            {
+              "url": "https://www.willdeal.cn/",
+              "observedLabel": "韦迪智能企业 AI 转型与 FDE 服务"
+            },
+            {
+              "url": "https://www.axiommy.com/",
+              "observedLabel": "AXiom 前向部署 AI 工程"
             },
             {
               "url": "https://www.fde.hk/zh-cn/products",
               "observedLabel": "FDE.HK 香港金融 AI 部署产品"
             },
             {
-              "url": "https://fde.hk/zh-cn/products",
-              "observedLabel": "FDE.HK 香港金融 AI 部署产品"
+              "url": "https://www.alphamatch.ai/solutions/ai-consulting",
+              "observedLabel": "Alpha Match 香港 AI 咨询公司"
             },
             {
-              "url": "https://fancyar.com/index.html",
-              "observedLabel": "幻实科技企业 AI 赋能与 AI 咨询落地服务"
-            },
-            {
-              "url": "https://www.fde.hk/zh-cn/products/research-ai-assistant",
-              "observedLabel": "FDE AI 投研助理"
-            },
-            {
-              "url": "https://fde.hk/zh-cn/solutions",
-              "observedLabel": "FDE.HK AI 部署场景方案"
+              "url": "https://aikm.ai/zh-hans/consulting",
+              "observedLabel": "AIKm 香港 AI 咨询"
             },
             {
               "url": "https://www.hkexnews.hk/listedco/listconews/sehk/2026/0622/2026062201170_c.pdf",
@@ -412,7 +411,7 @@
               "observedLabel": "德勤"
             }
           ],
-          "nonBrandCategoryMeaning": "These 23 URLs were returned for the dated non-brand category query in the observed public-search result set, while no official Onyx site result was observed. The set is dominated by FDE.HK pages and also contains broad or low-relevance company and financial-document results, showing that result-set size is not equivalent to category relevance. Membership and ordering can fluctuate and this snapshot does not establish a ranking trend. The list is a reproducible competitive-discovery baseline only: it is not a complete ranking, quality assessment, independent endorsement, or proof of any AI answer recommendation.",
+          "nonBrandCategoryMeaning": "These 22 URLs were returned for the dated non-brand category query in the observed public-search result set, while no official Onyx site result was observed. Compared with the prior 23-URL checkpoint, the visible set replaced several FDE.HK deep pages with additional provider pages including Alpha Match and AIKm. Result-set size is not equivalent to category relevance; membership and ordering can fluctuate, and this snapshot does not establish a ranking trend. The list is a reproducible competitive-discovery baseline only: it is not a complete ranking, quality assessment, independent endorsement, or proof of any AI answer recommendation.",
           "categoryRecommendationObserved": false,
           "newPublicDiscussionObserved": false
         },
@@ -475,22 +474,22 @@
   ],
   "publicSearchChecks": [
     {
-      "checkedAt": "2026-09-12T11:00:31Z",
+      "checkedAt": "2026-09-12T19:59:30Z",
       "query": "\"ONYX-GEO-VERIFY-79051925-20260908\"",
       "result": "website-not-observed"
     },
     {
-      "checkedAt": "2026-09-12T11:00:31Z",
+      "checkedAt": "2026-09-12T19:59:30Z",
       "query": "site:hk.onyxdevslab.com \"Onyx Devs Lab\"",
       "result": "official-website-not-observed"
     },
     {
-      "checkedAt": "2026-09-12T11:00:31Z",
+      "checkedAt": "2026-09-12T19:59:30Z",
       "query": "\"Onyx Devs Lab\" -site:cr.gov.hk",
       "result": "official-website-not-observed; corroborating entity record observed"
     },
     {
-      "checkedAt": "2026-09-12T11:00:31Z",
+      "checkedAt": "2026-09-12T19:59:30Z",
       "query": "香港 企业 AI 咨询 公司 FDE",
       "result": "other-category-providers-observed; official-Onyx-result-not-observed"
     }
