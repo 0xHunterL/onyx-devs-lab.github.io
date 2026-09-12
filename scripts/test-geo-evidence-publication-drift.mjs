@@ -23,7 +23,11 @@ const summary = {
     verifiedBaiduPageCrawls: provider.baiduspiderContentRequests,
     verifiedBaiduDiscoveryFileCrawls: provider.baiduspiderDiscoveryFileRequests,
     verifiedGooglePageCrawls: provider.googlebotContentRequests,
+    verifiedGoogleDiscoveryFileCrawls: provider.googlebotDiscoveryFileRequests,
     verifiedPerplexityPageCrawls: provider.perplexityContentRequests,
+    verifiedPerplexityDiscoveryFileCrawls: provider.perplexityDiscoveryFileRequests,
+    verifiedCommonCrawlPageCrawls: provider.commonCrawlBotContentRequests,
+    verifiedCommonCrawlDiscoveryFileCrawls: provider.commonCrawlBotDiscoveryFileRequests,
     verifiedApplePageCrawls: provider.applebotContentRequests,
     verifiedAppleDiscoveryFileCrawls: provider.applebotDiscoveryFileRequests,
     verifiedYandexPageCrawls: provider.yandexbotContentRequests,
@@ -89,6 +93,10 @@ const crawlerDrift = structuredClone(summary);
 crawlerDrift.counts.verifiedGptBotPageCrawls += 1;
 assert.equal(buildPublicationDrift(baseline, crawlerDrift).mismatches[0].field, 'providerVerifiedCrawlerEvidence.gptBotContentRequests');
 
+const commonCrawlBotDrift = structuredClone(summary);
+commonCrawlBotDrift.counts.verifiedCommonCrawlDiscoveryFileCrawls += 1;
+assert.equal(buildPublicationDrift(baseline, commonCrawlBotDrift).mismatches[0].field, 'providerVerifiedCrawlerEvidence.commonCrawlBotDiscoveryFileRequests');
+
 const retentionAdjustmentDrift = structuredClone(summary);
 retentionAdjustmentDrift.retentionAdjustments.push({ metric: 'verifiedYandexPageCrawls', retainedLogCount: 70, cumulativeCount: 71, newlyObserved: 0 });
 assert.equal(buildPublicationDrift(baseline, retentionAdjustmentDrift).mismatches[0].field, 'crawlerEvidenceAccounting.latestRetentionAdjustments');
@@ -120,4 +128,4 @@ const waybackPromptDrift = structuredClone(summary);
 waybackPromptDrift.counts.promptsFullyWaybackArchived += 1;
 assert.equal(buildPublicationDrift(baseline, waybackPromptDrift).mismatches[0].field, 'waybackEvidence.fixedPromptArchiveCoverage.promptsFullyArchived');
 
-console.log(JSON.stringify({ tests: 12, failures: [] }, null, 2));
+console.log(JSON.stringify({ tests: 13, failures: [] }, null, 2));

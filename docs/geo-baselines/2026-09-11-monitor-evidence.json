@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "publicStatusVersion": "2026.09.12.37",
-  "generatedAt": "2026-09-12T07:45:09.557Z",
+  "publicStatusVersion": "2026.09.12.38",
+  "generatedAt": "2026-09-12T07:51:18.009Z",
   "windowStart": "2026-09-01",
   "site": "https://hk.onyxdevslab.com/",
   "sourceLogs": [
@@ -20,7 +20,11 @@
     "baiduspiderContentRequests": 0,
     "baiduspiderDiscoveryFileRequests": 0,
     "googlebotContentRequests": 0,
+    "googlebotDiscoveryFileRequests": 0,
     "perplexityContentRequests": 0,
+    "perplexityDiscoveryFileRequests": 0,
+    "commonCrawlBotContentRequests": 0,
+    "commonCrawlBotDiscoveryFileRequests": 0,
     "applebotContentRequests": 0,
     "applebotDiscoveryFileRequests": 0,
     "yandexbotContentRequests": 71,
