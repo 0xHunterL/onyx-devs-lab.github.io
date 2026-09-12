@@ -1,8 +1,8 @@
 {
   "schemaVersion": 2,
-  "version": "2026.09.12.30",
+  "version": "2026.09.12.31",
   "id": "https://hk.onyxdevslab.com/data/ai-search-evidence-status.json",
-  "observedAt": "2026-09-12T07:02:58.975Z",
+  "observedAt": "2026-09-12T07:07:07.506Z",
   "sourceBaseline": "https://github.com/0xHunterL/onyx-devs-lab.github.io/blob/main/docs/geo-baselines/2026-09-11-monitor-evidence.json",
   "versionHistory": [
     {
@@ -86,18 +86,19 @@
         "userAgentOnlyBytespiderDiscoveryFileCandidates": 0,
         "syntheticCrawlerReleaseChecksExcludedMinimum": 3088,
         "commonCrawlIndexObservation": {
-          "checkedAt": "2026-09-12T07:03:42.654Z",
-          "status": "available",
+          "checkedAt": "2026-09-12T07:07:04.280Z",
+          "status": "partial",
           "capturesObservedInAvailableIndexes": 0,
           "availableIndexes": [
-            "CC-MAIN-2026-34",
             "CC-MAIN-2026-30"
           ],
-          "unavailableIndexes": [],
-          "meaning": "Both selected indexes returned usable responses with zero observed captures. This complete result covers only the selected indexes and must not be interpreted as proof of zero captures across all Common Crawl history."
+          "unavailableIndexes": [
+            "CC-MAIN-2026-34"
+          ],
+          "meaning": "CC-MAIN-2026-30 returned a usable zero-capture response while CC-MAIN-2026-34 returned HTTP 504. The result is incomplete and must not be interpreted as a verified zero across the selected indexes or all Common Crawl history."
         },
         "waybackArchiveObservation": {
-          "checkedAt": "2026-09-12T07:02:57.886Z",
+          "checkedAt": "2026-09-12T07:07:06.457Z",
           "status": "available",
           "captures": 92,
           "distinctUrls": 43,
