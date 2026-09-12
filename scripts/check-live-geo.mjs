@@ -435,7 +435,7 @@ for (const group of servicePageGroups) {
 
 for (const pathname of ['/en/about/', '/zh-hk/about/', '/zh-cn/about/']) {
   const page = await get(pathname, 'text/html');
-  if (!page.body.includes('"@type":["AboutPage","ProfilePage"]') || !page.body.includes('"mainEntity":{"@id":"https://hk.onyxdevslab.com/#organization"}') || !page.body.includes('"dateModified":"2026-09-11"')) failures.push(`${pathname}: organization ProfilePage markup is incomplete`);
+  if (!page.body.includes('"@type":["AboutPage","ProfilePage"]') || !page.body.includes('"mainEntity":{"@id":"https://hk.onyxdevslab.com/#organization"}') || !page.body.includes('"dateModified":"2026-09-12"')) failures.push(`${pathname}: organization ProfilePage markup is incomplete or stale`);
 }
 
 for (const pathname of [
@@ -516,7 +516,7 @@ const sitemap = await get('/sitemap.xml', 'xml');
 const urls = [...sitemap.body.matchAll(/<loc>([^<]+)<\/loc>/g)].map((match) => match[1]);
 const currentLastmods = [...sitemap.body.matchAll(/<lastmod>2026-09-(?:11|12)<\/lastmod>/g)];
 if (currentLastmods.length !== urls.length) failures.push(`/sitemap.xml: expected ${urls.length} current page lastmods, got ${currentLastmods.length}`);
-for (const pathname of ['/en/methodology/ai-search-verification/', '/zh-hk/methodology/ai-search-verification/', '/zh-cn/methodology/ai-search-verification/']) {
+for (const pathname of ['/en/methodology/ai-search-verification/', '/zh-hk/methodology/ai-search-verification/', '/zh-cn/methodology/ai-search-verification/', '/en/about/', '/zh-hk/about/', '/zh-cn/about/']) {
   if (!sitemap.body.includes(`<loc>https://hk.onyxdevslab.com${pathname}</loc><lastmod>2026-09-12</lastmod>`)) failures.push(`${pathname}: sitemap lastmod does not reflect the substantive evidence update`);
 }
 if (!feed.body.includes('<updated>2026-09-12T00:00:00+08:00</updated>')) failures.push('/feed.xml: feed update date is stale');
@@ -682,7 +682,7 @@ for (let index = 0; index < urls.length; index += 8) {
       }
     }
     if (url.pathname.includes('/methodology/case-study-evidence-register/') && (!page.body.includes('<time datetime="2026-09-09">2026-09-09</time>') || !page.body.includes('<time datetime="2026-09-11">2026-09-11</time>'))) failures.push(`${url.pathname}: Dataset publication dates are not visible`);
-    const expectedModified = url.pathname.includes('/methodology/ai-search-verification/') ? '2026-09-12' : '2026-09-11';
+    const expectedModified = url.pathname.includes('/methodology/ai-search-verification/') || url.pathname.endsWith('/about/') ? '2026-09-12' : '2026-09-11';
     if (!sitemap.body.includes(`<loc>${absoluteUrl}</loc><lastmod>${expectedModified}</lastmod>`)) failures.push(`${url.pathname}: sitemap lastmod is not scoped to the actual page update`);
     if (url.pathname !== '/' && (!page.body.includes('"@type":"WebPage"') || !page.body.includes(`"dateModified":"${expectedModified}"`))) failures.push(`${url.pathname}: WebPage freshness is stale`);
     if (!page.body.includes('type="application/feed+json"') || !page.body.includes('href="https://hk.onyxdevslab.com/feed.json"')) failures.push(`${url.pathname}: JSON Feed discovery link is missing`);

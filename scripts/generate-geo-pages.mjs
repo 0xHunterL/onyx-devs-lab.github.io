@@ -618,7 +618,8 @@ function publicationMeta(page){
   return `<p class="eyebrow content-dates">${authorLabel} <a rel="author" href="${authorPath}">Onyx Devs Lab</a> · ${publishedLabel} <time datetime="${published}">${published}</time> · ${updatedLabel} <time datetime="${modified}">${modified}</time></p>`;
 }
 const updatedAiSearchPaths=new Set(['/en/methodology/ai-search-verification/','/zh-hk/methodology/ai-search-verification/','/zh-cn/methodology/ai-search-verification/']);
-function modifiedDateFor(pathname){return updatedAiSearchPaths.has(pathname)?currentEvidenceUpdated:pageUpdated;}
+const updatedPagePaths=new Set([...updatedAiSearchPaths,'/en/about/','/zh-hk/about/','/zh-cn/about/']);
+function modifiedDateFor(pathname){return updatedPagePaths.has(pathname)?currentEvidenceUpdated:pageUpdated;}
 const registeredAddress={"@type":"PostalAddress",streetAddress:'36-40 TAI LIN PAI ROAD, UNIT B53, 2/F, KWAI CHUNG',addressLocality:'HONG KONG',postalCode:'999077',addressCountry:'HK'};
 const personAnchor=(name)=>name.toLowerCase().replace(/[^a-z0-9]+/g,'-');
 const personId=(name)=>`${origin}/#person-${personAnchor(name)}`;

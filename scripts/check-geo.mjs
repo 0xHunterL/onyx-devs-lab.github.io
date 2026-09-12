@@ -224,7 +224,7 @@ for (const group of servicePageGroups) {
 
 for (const pathname of ['/en/about/', '/zh-hk/about/', '/zh-cn/about/']) {
   const html = fs.readFileSync(path.join(dist, pathname, 'index.html'), 'utf8');
-  if (!html.includes('"@type":["AboutPage","ProfilePage"]') || !html.includes('"mainEntity":{"@id":"https://hk.onyxdevslab.com/#organization"}') || !html.includes('"dateModified":"2026-09-11"')) failures.push(`${pathname}: organization ProfilePage markup is incomplete`);
+  if (!html.includes('"@type":["AboutPage","ProfilePage"]') || !html.includes('"mainEntity":{"@id":"https://hk.onyxdevslab.com/#organization"}') || !html.includes('"dateModified":"2026-09-12"')) failures.push(`${pathname}: organization ProfilePage markup is incomplete or stale`);
 }
 
 for (const file of ['robots.txt', 'sitemap.xml', 'feed.xml', 'feed.json', 'llms.txt', 'llms-full.txt', 'data/case-study-evidence.json', 'data/enterprise-ai-partner-scorecard.json', 'data/hong-kong-enterprise-ai-provider-shortlist.json', 'data/enterprise-ai-rfp-requirements.json', 'data/enterprise-ai-pilot-charter.json', 'data/enterprise-ai-engagement-model-map.json', 'data/enterprise-ai-service-terms.jsonld', 'data/chinese-enterprise-ai-field-notes.json', 'data/ai-search-evidence-status.json', 'data/ai-search-prompt-evidence-map.json', 'data/organization.json', '.nojekyll']) {
@@ -628,7 +628,7 @@ const sitemap = fs.readFileSync(path.join(dist, 'sitemap.xml'), 'utf8');
 const urls = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map((match) => match[1]);
 const currentLastmods = [...sitemap.matchAll(/<lastmod>2026-09-(?:11|12)<\/lastmod>/g)];
 if (currentLastmods.length !== urls.length) failures.push(`sitemap: expected ${urls.length} current page lastmods, got ${currentLastmods.length}`);
-for (const pathname of ['/en/methodology/ai-search-verification/', '/zh-hk/methodology/ai-search-verification/', '/zh-cn/methodology/ai-search-verification/']) {
+for (const pathname of ['/en/methodology/ai-search-verification/', '/zh-hk/methodology/ai-search-verification/', '/zh-cn/methodology/ai-search-verification/', '/en/about/', '/zh-hk/about/', '/zh-cn/about/']) {
   if (!sitemap.includes(`<loc>https://hk.onyxdevslab.com${pathname}</loc><lastmod>2026-09-12</lastmod>`)) failures.push(`${pathname}: sitemap lastmod does not reflect the substantive evidence update`);
   const html = fs.readFileSync(path.join(dist, pathname, 'index.html'), 'utf8');
   if ((html.match(/"dateModified":"2026-09-12"/g) || []).length < 2) failures.push(`${pathname}: Article and WebPage dateModified are stale`);
@@ -643,7 +643,7 @@ if (!machineDiscoveryFiles['feed.xml'].includes(`<id>https://github.com/0xHunter
 for (const url of urls) {
   const pathname = new URL(url).pathname;
   const target = pathname === '/' ? path.join(dist, 'index.html') : path.join(dist, pathname, 'index.html');
-  const expectedModified = pathname.includes('/methodology/ai-search-verification/') ? '2026-09-12' : '2026-09-11';
+  const expectedModified = pathname.includes('/methodology/ai-search-verification/') || pathname.endsWith('/about/') ? '2026-09-12' : '2026-09-11';
   if (!sitemap.includes(`<loc>${url}</loc><lastmod>${expectedModified}</lastmod>`)) failures.push(`${pathname}: sitemap lastmod is not scoped to the actual page update`);
   if (!fs.existsSync(target)) failures.push(`sitemap target missing: ${pathname}`);
   if (pathname !== '/' && fs.existsSync(target)) {
