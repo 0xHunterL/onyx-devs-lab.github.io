@@ -89,6 +89,7 @@ const rotatedCrawlerCounts = preserveAppendOnlyCrawlerCounts(
   true,
 );
 assert.equal(rotatedCrawlerCounts.counts.verifiedYandexPageCrawls, 71);
+assert.equal(rotatedCrawlerCounts.counts.verifiedContentPaths, 44);
 assert.equal(rotatedCrawlerCounts.counts.trackedVisits, 82);
 assert.deepEqual(rotatedCrawlerCounts.retentionAdjustments[0], {
   metric: 'verifiedYandexPageCrawls',
@@ -106,6 +107,7 @@ const rotatedWithNewCrawlerEvidence = preserveAppendOnlyCrawlerCounts(
 assert.equal(rotatedWithNewCrawlerEvidence.counts.verifiedYandexPageCrawls, 72);
 assert.equal(rotatedWithNewCrawlerEvidence.retentionAdjustments[0].newlyObserved, 1);
 assert.equal(preserveAppendOnlyCrawlerCounts({ verifiedYandexPageCrawls: 70 }, { verifiedYandexPageCrawls: 71 }, new Map(), false).counts.verifiedYandexPageCrawls, 70);
+assert.equal(preserveAppendOnlyCrawlerCounts({ verifiedContentPaths: 43 }, { verifiedContentPaths: 44 }, new Map(), true).counts.verifiedContentPaths, 43);
 
 const cumulativeCrawlerObservations = mergeVerifiedCrawlerObservations(
   [
@@ -261,4 +263,4 @@ assert.equal(selectEvidenceEventKind({ initializing: false, evidenceChanged: tru
 assert.equal(selectEvidenceEventKind({ initializing: false, evidenceChanged: false, availabilityChanged: true }), 'availability-change');
 assert.equal(selectEvidenceEventKind({ initializing: false, evidenceChanged: false, availabilityChanged: false }), null);
 
-console.log(JSON.stringify({ tests: 90, failures: [] }, null, 2));
+console.log(JSON.stringify({ tests: 92, failures: [] }, null, 2));

@@ -102,8 +102,8 @@ export function preserveAppendOnlyCrawlerCounts(currentCounts, previousCounts, n
   if (!previousCounts || !hasSeenLedger) return { counts, retentionAdjustments };
 
   for (const [metric, current] of Object.entries(currentCounts)) {
-    if (!appendOnlyCrawlerMetric.test(metric) && metric !== 'verifiedContentPaths') continue;
-    const newlyObserved = metric === 'verifiedContentPaths' ? 0 : Number(newEvidenceByMetric?.get(metric) || 0);
+    if (!appendOnlyCrawlerMetric.test(metric)) continue;
+    const newlyObserved = Number(newEvidenceByMetric?.get(metric) || 0);
     const cumulativeFloor = Number(previousCounts[metric] || 0) + newlyObserved;
     if (Number(current) >= cumulativeFloor) continue;
     counts[metric] = cumulativeFloor;
