@@ -65,6 +65,8 @@ GitHub 发布工作流在部署前运行 `geo:test`，当前共 181 项，覆盖
 
 用于 OpenAI、Perplexity、Common Crawl 与 Applebot 身份核验的官方 IP 前缀清单分别记录在爬虫报告的 `verificationSources` 与摘要的 `availability.crawlerVerification` 中。[Apple 官方说明](https://support.apple.com/en-gb/119829)可以使用 `*.applebot.apple.com` 双向 DNS 或其[公开 CIDR JSON](https://search.developer.apple.com/applebot.json)识别 Applebot；生产监测使用后者。[百度搜索资源平台官方说明](https://ziyuan.baidu.com/college/documentinfo?id=1399)要求用反向 DNS 检查主机名是否以 `*.baidu.com` 或 `*.baidu.jp` 结尾，并明确不应依赖静态 IP 池；生产监测在此规则之上增加一次正向解析回原 IP 的防伪确认。远端清单超时、返回错误或格式无效时，报告器会重试并把依赖该清单的候选请求标为 `providerVerified: null` 与 `verificationUnavailable: true`；它不会把候选误判为官方，也不会让单一来源故障阻断其余爬虫、归因、提示词覆盖和 Common Crawl 捕获报告。[Anthropic 官方说明](https://support.anthropic.com/en/articles/8896518-does-anthropic-crawl-data-from-the-web-and-how-can-site-owners-block-the-crawler)目前明确表示不发布 Claude 系列爬虫 IP 范围，因此 ClaudeBot、Claude-SearchBot 与 Claude-User 仍只能保留为 User-Agent 候选。清单恢复或可用来源集合改变时会产生可用性事件，但这不是新的抓取或可见性证据。
 
+公开状态中的 `syntheticCrawlerReleaseChecksExcludedMinimum` 是截至版本化基线至少已排除的合成爬虫检查数，覆盖所有爬虫家族，不只是 Bytespider。线上门禁本身会继续增加该累计数，因此它只作为单调递增的最低审计值，不参与精确发布漂移，也不构成外部抓取或可见性证据。
+
 生产采集器同时启用 Baiduspider 的 DNS 身份核验与 Applebot 的官方前缀核验；前者没有静态“来源可用性”项，只有日志中出现候选 IP 时才实际执行 DNS 校验。
 
 Bing 搜索收录与表现监测只使用已验证站点的 Bing Webmaster Tools 或经 OAuth 授权的官方 Webmaster API。不得把限制为个人、非商业用途的公开 RSS 结果接口接入企业监测或证据快照。IndexNow 仍用于内容变更通知，但接收成功和 Bingbot 抓取都不能替代站长工具中的索引证据。

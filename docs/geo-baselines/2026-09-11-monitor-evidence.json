@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "publicStatusVersion": "2026.09.11.27",
-  "generatedAt": "2026-09-11T16:11:49Z",
+  "publicStatusVersion": "2026.09.11.28",
+  "generatedAt": "2026-09-11T16:43:40.620Z",
   "windowStart": "2026-09-01",
   "site": "https://hk.onyxdevslab.com/",
   "sourceLogs": [
@@ -51,9 +51,9 @@
   "identityUnverifiedCrawlerEvidence": {
     "bytespiderContentRequestCandidates": 0,
     "bytespiderDiscoveryFileRequestCandidates": 0,
-    "syntheticBytespiderReleaseChecksExcluded": 3019,
+    "syntheticCrawlerReleaseChecksExcludedMinimum": 3088,
     "identityStatus": "user-agent-only-unverified",
-    "meaning": "No non-synthetic Bytespider request was observed. Future candidates are tracked separately by self-declared User-Agent and do not prove Doubao or ByteDance access."
+    "meaning": "No non-synthetic Bytespider request was observed. At least 3,088 internally marked or individually audited synthetic crawler checks were excluded across all crawler families; this monotonic minimum is operational audit context, not external visibility evidence. Future Bytespider candidates are tracked separately by self-declared User-Agent and do not prove Doubao or ByteDance access."
   },
   "fixedPromptCoverage": {
     "prompts": 20,
@@ -112,7 +112,7 @@
     ]
   },
   "commonCrawlEvidence": {
-    "checkedAt": "2026-09-11T16:01:37.022Z",
+    "checkedAt": "2026-09-11T16:43:34.501Z",
     "status": "available",
     "capturesObservedInAvailableIndexes": 0,
     "availableIndexes": ["CC-MAIN-2026-34", "CC-MAIN-2026-30"],
@@ -120,7 +120,7 @@
     "meaning": "Both selected indexes returned usable responses with zero observed captures. This complete result covers only the selected indexes and must not be interpreted as proof of zero captures across all Common Crawl history."
   },
   "waybackEvidence": {
-    "checkedAt": "2026-09-11T16:01:42.376Z",
+    "checkedAt": "2026-09-11T16:43:39.436Z",
     "status": "available",
     "captures": 93,
     "distinctUrls": 43,
@@ -148,7 +148,7 @@
     "manifestItems": 8,
     "publishedItems": 7,
     "readyNotPublishedItems": 1,
-    "checkedAt": "2026-09-11T16:01:43.285Z",
+    "checkedAt": "2026-09-11T16:43:40.527Z",
     "publicUrlsChecked": 7,
     "trackedTargetsChecked": 17,
     "availableSources": 24,
