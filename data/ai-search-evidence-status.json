@@ -1,8 +1,8 @@
 {
   "schemaVersion": 2,
-  "version": "2026.09.12.39",
+  "version": "2026.09.12.40",
   "id": "https://hk.onyxdevslab.com/data/ai-search-evidence-status.json",
-  "observedAt": "2026-09-12T08:05:03Z",
+  "observedAt": "2026-09-12T09:36:32.522Z",
   "sourceBaseline": "https://github.com/0xHunterL/onyx-devs-lab.github.io/blob/main/docs/geo-baselines/2026-09-11-monitor-evidence.json",
   "versionHistory": [
     {
@@ -73,7 +73,7 @@
     "yandexbotContentRequests": 71,
     "yandexbotDiscoveryFileRequests": 64,
     "ahrefsbotContentRequests": 0,
-    "ahrefsbotDiscoveryFileRequests": 82,
+    "ahrefsbotDiscoveryFileRequests": 83,
     "distinctVerifiedContentPaths": 44,
     "historicalReclassification": {
       "homepageContentRequestsAdded": 3,
@@ -88,12 +88,12 @@
     },
     "ahrefsHistoricalRecognition": {
       "firstSeen": "2026-09-08T13:53:09Z",
-      "lastSeen": "2026-09-12T07:02:02Z",
+      "lastSeen": "2026-09-12T08:30:55Z",
       "robotsTxtRequests": 21,
-      "sitemapRequests": 61,
-      "distinctClientAddresses": 74,
+      "sitemapRequests": 62,
+      "distinctClientAddresses": 75,
       "verificationSource": "https://api.ahrefs.com/v3/public/crawler-ip-ranges",
-      "meaning": "All 82 discovery-file requests matched the official Ahrefs crawler IP ranges. AhrefsBot serves both the Ahrefs database and Yep, so these requests prove external crawler discovery only; they do not prove Yep indexing, ranking, retrieval, citation, or AI recommendation."
+      "meaning": "All 83 discovery-file requests matched the official Ahrefs crawler IP ranges. AhrefsBot serves both the Ahrefs database and Yep, so these requests prove external crawler discovery only; they do not prove Yep indexing, ranking, retrieval, citation, or AI recommendation."
     }
   },
   "evidenceLevels": [
@@ -136,7 +136,7 @@
         "verifiedYandexbotContentCrawls": 71,
         "verifiedYandexbotDiscoveryFileCrawls": 64,
         "verifiedAhrefsBotContentCrawls": 0,
-        "verifiedAhrefsBotDiscoveryFileCrawls": 82,
+        "verifiedAhrefsBotDiscoveryFileCrawls": 83,
         "verifiedGooglebotContentCrawls": 0,
         "verifiedPerplexityContentCrawls": 0,
         "userAgentOnlyBytespiderContentCrawlCandidates": 0,
@@ -154,9 +154,9 @@
           "meaning": "CC-MAIN-2026-34 and CC-MAIN-2026-30 both returned usable zero-capture responses. This complete result covers only the two selected indexes; it does not represent all Common Crawl history or prove absence from search or AI systems."
         },
         "waybackArchiveObservation": {
-          "checkedAt": "2026-09-12T07:07:06.457Z",
+          "checkedAt": "2026-09-12T09:36:31.031Z",
           "status": "available",
-          "captures": 92,
+          "captures": 93,
           "distinctUrls": 43,
           "firstCaptureAt": "20260909205420",
           "lastCaptureAt": "20260910164924",
@@ -184,9 +184,19 @@
             "digest": "A7VW474GAGRA43ZM2ZBGPXX6H3W5SA2E",
             "fingerprint": "a1ca5ca174871452d8a56d5d58d02107f0328504b62dcefbcae2d84ba0b89d30",
             "repeatQueriesAt92": 4,
-            "meaning": "This capture fingerprint was returned once and preserved in the append-only event history, but the same available CDX query later stopped returning it. The current count is therefore 92; the decrease is treated as public-index retraction or deduplication, not proof that a historical capture or page disappeared."
+            "meaning": "This capture fingerprint was returned once and preserved in the append-only event history, but the same available CDX query later stopped returning it. At that observation point the count fell to 92; the decrease was treated as public-index retraction or deduplication, not proof that a historical capture or page disappeared."
           },
-          "meaning": "The public Wayback CDX host query currently returns 92 successful HTML capture records across 43 distinct URLs. A previously observed 93rd record is preserved in the event history but no longer returned by four repeat queries, so the count decrease is not interpreted as disappearance. These records prove public historical captures only; they do not prove current accessibility, search indexing, AI retrieval, citation, ranking, endorsement, or recommendation. An unavailable future query must not be interpreted as zero captures."
+          "indexVolatilityObservation": {
+            "previousStableCount": 92,
+            "recheckedAt": "2026-09-12T09:36:31.031Z",
+            "currentCount": 93,
+            "reappearedTimestamp": "20260909205642",
+            "reappearedUrl": "https://hk.onyxdevslab.com/zh-cn/custom-ai-development/",
+            "reappearedFingerprint": "4178c25c41cdb32a18f8b8ae379c2cf9a086976d06c6641d9ec0bf963e0f418b",
+            "stillAbsentFingerprint": "a1ca5ca174871452d8a56d5d58d02107f0328504b62dcefbcae2d84ba0b89d30",
+            "meaning": "The count returned from 92 to 93 because a previously observed custom-AI-development capture reappeared in the CDX result. The earlier AI-consulting fingerprint remains absent. This is public-index volatility, not a newly created snapshot or proof of search or AI visibility."
+          },
+          "meaning": "The public Wayback CDX host query currently returns 93 successful HTML capture records across 43 distinct URLs. The current set includes a previously observed custom-AI-development capture that was absent from the prior 92-result set, while an earlier AI-consulting fingerprint remains absent. These fluctuations are treated as public-index volatility, not creation or disappearance of pages or snapshots. The records prove public historical captures only; they do not prove current accessibility, search indexing, AI retrieval, citation, ranking, endorsement, or recommendation. An unavailable future query must not be interpreted as zero captures."
         },
         "fixedPromptCoverage": {
           "prompts": 20,
@@ -406,6 +416,37 @@
       "complianceAudit": "https://github.com/0xHunterL/onyx-devs-lab.github.io/blob/main/docs/geo-baselines/2026-09-11-bing-search-compliance-audit.md"
     },
     "indexNowBoundary": "IndexNow receipt and Bingbot access do not prove indexing, ranking, Copilot grounding, citation, or recommendation."
+  },
+  "offsiteChannelReadiness": {
+    "servicesHk": {
+      "checkedAt": "2026-09-12T09:36:32.410Z",
+      "availabilityStatus": "unavailable",
+      "targetsChecked": 3,
+      "availableTargets": 0,
+      "unavailableTargets": 3,
+      "targets": [
+        {
+          "id": "ai-consulting",
+          "status": "unavailable",
+          "httpStatus": 200,
+          "reason": "application-error-marker"
+        },
+        {
+          "id": "cyber-security",
+          "status": "unavailable",
+          "httpStatus": 200,
+          "reason": "application-error-marker"
+        },
+        {
+          "id": "erp-implementation",
+          "status": "unavailable",
+          "httpStatus": 200,
+          "reason": "application-error-marker"
+        }
+      ],
+      "eventFile": "events/2026-09-12T09-36-32.522Z-evidence-and-availability-change.json",
+      "meaning": "All three sampled services.hk detail pages return HTTP 200 but contain the known PHP application failure and omit the required title, service-description, and contact markers. This blocks submission readiness; it does not prove that Onyx is listed, reviewed, endorsed, indexed, cited, or recommended. Submission still requires current user confirmation after all three targets recover."
+    }
   },
   "technicalReadiness": {
     "checkedAt": "2026-09-09T16:00:00Z",
