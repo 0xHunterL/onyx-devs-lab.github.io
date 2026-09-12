@@ -1,4 +1,15 @@
-const comparable = (value) => JSON.stringify(value);
+const canonicalize = (value) => {
+  if (Array.isArray(value)) return value.map(canonicalize);
+  if (value && typeof value === 'object') {
+    return Object.fromEntries(
+      Object.entries(value)
+        .sort(([left], [right]) => left.localeCompare(right))
+        .map(([key, nestedValue]) => [key, canonicalize(nestedValue)]),
+    );
+  }
+  return value;
+};
+const comparable = (value) => JSON.stringify(canonicalize(value));
 const requiredCrawlerVerificationSourceIds = [
   'ahrefsBot',
   'appleBot',
@@ -79,6 +90,9 @@ export function buildPublicationDrift(baseline, summary, { distributionManifest,
     ['attributionEvidence.aiReferrerAttributedRequests', attribution.aiReferrerAttributedRequests, counts.aiReferrerAttributedVisits],
   ];
   for (const mapping of countMappings) check(...mapping);
+  check('attributionEvidence.campaigns', attribution.campaigns || {}, collectedEvidenceSets.attributionCampaigns || {});
+  check('attributionEvidence.latestVerifiedOffsiteReferral', attribution.latestVerifiedOffsiteReferral || null, collectedEvidenceSets.latestVerifiedOffsiteReferral || null);
+  check('attributionEvidence.latestVisitorTypeUnverifiedAttributions', attribution.latestVisitorTypeUnverifiedAttributions || [], collectedEvidenceSets.latestVisitorTypeUnverifiedAttributions || []);
   if (promptCoverageBaseline) {
     check(
       'fixedPromptCoverage.verifiedCrawledEvidenceUrls',

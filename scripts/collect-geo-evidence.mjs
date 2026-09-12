@@ -211,7 +211,21 @@ const platformSearch = {
   lastCompleteObservation: lastCompletePlatformSearch,
   evidenceBoundary: githubRepositorySearch.evidenceBoundary,
 };
+const normalizeUtcTime = (value) => String(value || '').replace(/\+00:00$/, 'Z');
+const summarizeAttribution = (visit, { includeStatus = false } = {}) => ({
+  time: normalizeUtcTime(visit.time),
+  source: visit.source,
+  referrerHost: visit.referrerHost || '',
+  campaign: visit.campaign,
+  landingPage: visit.path,
+  ...(includeStatus ? { status: visit.status } : {}),
+});
+const recentHumanUnverifiedVisits = referral.recentHumanUnverifiedVisits || [];
+const latestVerifiedOffsiteVisit = [...recentHumanUnverifiedVisits].reverse().find((visit) => visit.referrerHost);
 const evidenceSets = {
+  attributionCampaigns: Object.fromEntries(Object.entries(referral.byCampaign || {}).sort(([left], [right]) => left.localeCompare(right))),
+  latestVerifiedOffsiteReferral: latestVerifiedOffsiteVisit ? summarizeAttribution(latestVerifiedOffsiteVisit, { includeStatus: true }) : null,
+  latestVisitorTypeUnverifiedAttributions: recentHumanUnverifiedVisits.slice(-2).map((visit) => summarizeAttribution(visit)),
   promptVerifiedCrawledEvidenceUrls: [...(promptCoverage.verifiedCrawledEvidenceUrls || [])].sort(),
   promptSearchRelatedCrawledEvidenceUrls: [...(promptCoverage.searchRelatedCrawledEvidenceUrls || [])].sort(),
   waybackMissingEvidenceUrls: wayback.status === 'available'

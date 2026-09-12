@@ -16,6 +16,9 @@ const githubRepositorySearch = baseline.githubRepositorySearchEvidence;
 const summary = {
   generatedAt: baseline.generatedAt,
   evidenceSets: {
+    attributionCampaigns: structuredClone(attribution.campaigns),
+    latestVerifiedOffsiteReferral: structuredClone(attribution.latestVerifiedOffsiteReferral),
+    latestVisitorTypeUnverifiedAttributions: structuredClone(attribution.latestVisitorTypeUnverifiedAttributions),
     promptVerifiedCrawledEvidenceUrls: structuredClone(promptCoverageBaseline.verifiedCrawledEvidenceUrls),
     promptSearchRelatedCrawledEvidenceUrls: structuredClone(promptCoverageBaseline.searchRelatedCrawledEvidenceUrls),
     waybackMissingEvidenceUrls: structuredClone(wayback.fixedPromptArchiveCoverage.missingEvidenceUrls),
@@ -122,6 +125,26 @@ assert.deepEqual(referralReport.mismatches, [{
   collected: attribution.trackedRequests + 1,
 }]);
 
+const attributionCampaignReplacement = structuredClone(summary);
+const campaignIds = Object.keys(attributionCampaignReplacement.evidenceSets.attributionCampaigns);
+attributionCampaignReplacement.evidenceSets.attributionCampaigns[campaignIds[0]] -= 1;
+attributionCampaignReplacement.evidenceSets.attributionCampaigns[campaignIds[1]] += 1;
+assert.equal(buildPublicationDrift(baseline, attributionCampaignReplacement).mismatches[0].field, 'attributionEvidence.campaigns');
+
+const latestVerifiedOffsiteReplacement = structuredClone(summary);
+latestVerifiedOffsiteReplacement.evidenceSets.latestVerifiedOffsiteReferral.landingPage = '/zh-cn/replacement/';
+assert.equal(buildPublicationDrift(baseline, latestVerifiedOffsiteReplacement).mismatches[0].field, 'attributionEvidence.latestVerifiedOffsiteReferral');
+
+const visitorTypeUnverifiedReplacement = structuredClone(summary);
+visitorTypeUnverifiedReplacement.evidenceSets.latestVisitorTypeUnverifiedAttributions[0].landingPage = '/zh-cn/replacement/';
+assert.equal(buildPublicationDrift(baseline, visitorTypeUnverifiedReplacement).mismatches[0].field, 'attributionEvidence.latestVisitorTypeUnverifiedAttributions');
+
+const reorderedAttributionRecord = structuredClone(summary);
+reorderedAttributionRecord.evidenceSets.latestVerifiedOffsiteReferral = Object.fromEntries(
+  Object.entries(reorderedAttributionRecord.evidenceSets.latestVerifiedOffsiteReferral).reverse(),
+);
+assert.equal(buildPublicationDrift(baseline, reorderedAttributionRecord).status, 'synchronized');
+
 const crawlerDrift = structuredClone(summary);
 crawlerDrift.counts.verifiedGptBotPageCrawls += 1;
 assert.equal(buildPublicationDrift(baseline, crawlerDrift).mismatches[0].field, 'providerVerifiedCrawlerEvidence.gptBotContentRequests');
@@ -224,4 +247,4 @@ const unavailableArchiveFields = buildPublicationDrift(baseline, unavailableArch
 assert.ok(!unavailableArchiveFields.some((field) => field.startsWith('waybackEvidence.') && field !== 'waybackEvidence.status'));
 assert.ok(!unavailableArchiveFields.includes('commonCrawlEvidence.capturesObservedInAvailableIndexes'));
 
-console.log(JSON.stringify({ tests: 25, failures: [] }, null, 2));
+console.log(JSON.stringify({ tests: 29, failures: [] }, null, 2));
