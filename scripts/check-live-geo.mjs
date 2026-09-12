@@ -413,7 +413,7 @@ try {
   if (!organization.subjectOf?.some((item) => item.url === 'https://web.archive.org/web/20260909233718/https://hk.onyxdevslab.com/zh-cn/about/' && item.hasPart?.length === 11)) failures.push('/data/organization.json: Internet Archive entity, service, guide, and case snapshot cluster is missing');
   if (!organization.additionalProperty?.some((item) => item.propertyID === 'Evidence boundary' && item.value.includes('do not endorse services'))) failures.push('/data/organization.json: evidence boundary is missing');
   if (organization.hasOfferCatalog?.itemListElement?.length !== 3 || !organization.hasOfferCatalog.itemListElement.every((offer) => offer.itemOffered?.['@type'] === 'Service' && offer.itemOffered?.url?.length === 3)) failures.push('/data/organization.json: trilingual service offer catalog is incomplete');
-  if (organization.member?.length !== 5 || !organization.member.every((person) => person['@type'] === 'Person' && person['@id']?.startsWith('https://hk.onyxdevslab.com/#person-') && person.name && person.jobTitle && person.worksFor?.['@id'] === 'https://hk.onyxdevslab.com/#organization')) failures.push('/data/organization.json: canonical team members are incomplete');
+  if (organization.member?.length !== 5 || !organization.member.every((person) => person['@type'] === 'Person' && person['@id']?.startsWith('https://hk.onyxdevslab.com/#person-') && person.name && person.jobTitle && person.url === `https://hk.onyxdevslab.com/en/about/#${person.name.toLowerCase()}` && person.worksFor?.['@id'] === 'https://hk.onyxdevslab.com/#organization')) failures.push('/data/organization.json: canonical team members or resolvable profile URLs are incomplete');
 } catch {
   failures.push('/data/organization.json: invalid JSON');
 }
@@ -594,7 +594,10 @@ for (const pathname of requiredPaths) {
 for (const pathname of ['/en/about/', '/zh-hk/about/', '/zh-cn/about/']) {
   const page = await get(pathname, 'text/html');
   if (!page.body.includes('href="/data/organization.json" type="application/json"')) failures.push(`${pathname}: visible canonical organization JSON link is missing`);
-  for (const person of ['mi', 'lucas', 'hunter', 'jake', 'olivia']) if (!page.body.includes(`"@type":"Person","@id":"https://hk.onyxdevslab.com/#person-${person}"`)) failures.push(`${pathname}: canonical Person node is missing: ${person}`);
+  for (const person of ['mi', 'lucas', 'hunter', 'jake', 'olivia']) {
+    if (!page.body.includes(`"@type":"Person","@id":"https://hk.onyxdevslab.com/#person-${person}"`)) failures.push(`${pathname}: canonical Person node is missing: ${person}`);
+    if (!page.body.includes(`<article class="person" id="${person}">`)) failures.push(`${pathname}: visible Person anchor is missing: ${person}`);
+  }
 }
 
 const bytespiderAgent = 'Mozilla/5.0 (compatible; Bytespider; +https://zhanzhang.toutiao.com/) Onyx-GEO-Release-Check/1.0';

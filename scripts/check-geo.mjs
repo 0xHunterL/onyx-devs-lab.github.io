@@ -451,7 +451,10 @@ for (const pathname of ['/en/about/', '/zh-hk/about/', '/zh-cn/about/']) {
   if (!html.includes('ACTIVE') || !html.includes('ISSUED')) failures.push(`${pathname}: visible GLEIF status is missing`);
   if (!html.includes('https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-evidence-2026-09-09')) failures.push(`${pathname}: visible versioned evidence link is missing`);
   if (!html.includes('href="/data/organization.json" type="application/json"')) failures.push(`${pathname}: visible canonical organization JSON link is missing`);
-  for (const person of ['mi', 'lucas', 'hunter', 'jake', 'olivia']) if (!html.includes(`"@type":"Person","@id":"https://hk.onyxdevslab.com/#person-${person}"`)) failures.push(`${pathname}: canonical Person node is missing: ${person}`);
+  for (const person of ['mi', 'lucas', 'hunter', 'jake', 'olivia']) {
+    if (!html.includes(`"@type":"Person","@id":"https://hk.onyxdevslab.com/#person-${person}"`)) failures.push(`${pathname}: canonical Person node is missing: ${person}`);
+    if (!html.includes(`<article class="person" id="${person}">`)) failures.push(`${pathname}: visible Person anchor is missing: ${person}`);
+  }
 }
 
 try {
@@ -552,7 +555,7 @@ try {
   if (!organization.subjectOf?.some((item) => item.url === 'https://web.archive.org/web/20260909233718/https://hk.onyxdevslab.com/zh-cn/about/' && item.hasPart?.length === 11)) failures.push('organization record: Internet Archive entity, service, guide, and case snapshot cluster is missing');
   if (!organization.additionalProperty?.some((item) => item.propertyID === 'Evidence boundary' && item.value.includes('do not endorse services'))) failures.push('organization record: evidence boundary is missing');
   if (organization.hasOfferCatalog?.itemListElement?.length !== 3 || !organization.hasOfferCatalog.itemListElement.every((offer) => offer.itemOffered?.['@type'] === 'Service' && offer.itemOffered?.url?.length === 3)) failures.push('organization record: trilingual service offer catalog is incomplete');
-  if (organization.member?.length !== 5 || !organization.member.every((person) => person['@type'] === 'Person' && person['@id']?.startsWith('https://hk.onyxdevslab.com/#person-') && person.name && person.jobTitle && person.worksFor?.['@id'] === 'https://hk.onyxdevslab.com/#organization')) failures.push('organization record: canonical team members are incomplete');
+  if (organization.member?.length !== 5 || !organization.member.every((person) => person['@type'] === 'Person' && person['@id']?.startsWith('https://hk.onyxdevslab.com/#person-') && person.name && person.jobTitle && person.url === `https://hk.onyxdevslab.com/en/about/#${person.name.toLowerCase()}` && person.worksFor?.['@id'] === 'https://hk.onyxdevslab.com/#organization')) failures.push('organization record: canonical team members or resolvable profile URLs are incomplete');
 } catch {
   failures.push('organization record: invalid JSON');
 }
