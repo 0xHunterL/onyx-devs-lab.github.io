@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "publicStatusVersion": "2026.09.12.53",
-  "generatedAt": "2026-09-12T20:19:04.734Z",
+  "publicStatusVersion": "2026.09.12.54",
+  "generatedAt": "2026-09-12T20:47:26.698Z",
   "windowStart": "2026-09-01",
   "site": "https://hk.onyxdevslab.com/",
   "sourceLogs": [
@@ -30,7 +30,7 @@
     "yandexbotContentRequests": 78,
     "yandexbotDiscoveryFileRequests": 71,
     "ahrefsbotContentRequests": 0,
-    "ahrefsbotDiscoveryFileRequests": 93,
+    "ahrefsbotDiscoveryFileRequests": 94,
     "distinctVerifiedContentPaths": 45,
     "historicalReclassification": {
       "homepageContentRequestsAdded": 3,
@@ -45,12 +45,12 @@
     },
     "ahrefsHistoricalRecognition": {
       "firstSeen": "2026-09-08T13:53:09Z",
-      "lastSeen": "2026-09-12T18:45:34Z",
+      "lastSeen": "2026-09-12T20:22:25Z",
       "robotsTxtRequests": 24,
-      "sitemapRequests": 69,
+      "sitemapRequests": 70,
       "distinctClientAddresses": 84,
       "verificationSource": "https://api.ahrefs.com/v3/public/crawler-ip-ranges",
-      "meaning": "All 93 discovery-file requests matched the official Ahrefs crawler IP ranges. AhrefsBot serves both the Ahrefs database and Yep, so these requests prove external crawler discovery only; they do not prove Yep indexing, ranking, retrieval, citation, or AI recommendation."
+      "meaning": "All 94 discovery-file requests matched the official Ahrefs crawler IP ranges. AhrefsBot serves both the Ahrefs database and Yep, so these requests prove external crawler discovery only; they do not prove Yep indexing, ranking, retrieval, citation, or AI recommendation."
     }
   },
   "crawlerEvidenceAccounting": {
@@ -131,7 +131,7 @@
     ]
   },
   "commonCrawlEvidence": {
-    "checkedAt": "2026-09-12T20:19:01.120Z",
+    "checkedAt": "2026-09-12T20:47:22.382Z",
     "status": "available",
     "capturesObservedInAvailableIndexes": 0,
     "availableIndexes": ["CC-MAIN-2026-34", "CC-MAIN-2026-30"],
@@ -139,22 +139,21 @@
     "meaning": "CC-MAIN-2026-34 and CC-MAIN-2026-30 both returned usable zero-capture responses. This complete result covers only the two selected indexes; it does not represent all Common Crawl history or prove absence from search or AI systems."
   },
   "waybackEvidence": {
-    "checkedAt": "2026-09-12T20:19:02.578Z",
+    "checkedAt": "2026-09-12T20:47:23.824Z",
     "status": "available",
-    "captures": 92,
-    "distinctUrls": 43,
+    "captures": 94,
+    "distinctUrls": 44,
     "firstCaptureAt": "20260909205420",
-    "lastCaptureAt": "20260910164924",
+    "lastCaptureAt": "20260912144806",
     "query": "https://web.archive.org/cdx/search/cdx?url=hk.onyxdevslab.com%2F&matchType=host&output=json&fl=timestamp%2Coriginal%2Cmimetype%2Cstatuscode%2Cdigest&filter=statuscode%3A200&filter=mimetype%3Atext%2Fhtml&limit=1000",
     "fixedPromptArchiveCoverage": {
       "prompts": 23,
       "uniqueEvidencePages": 23,
-      "archivedEvidencePages": 15,
-      "promptsWithAnyArchivedEvidence": 15,
-      "promptsFullyArchived": 11,
+      "archivedEvidencePages": 16,
+      "promptsWithAnyArchivedEvidence": 16,
+      "promptsFullyArchived": 12,
       "missingEvidenceUrls": [
         "https://hk.onyxdevslab.com/zh-cn/case-studies/credit-research-ai-agent/",
-        "https://hk.onyxdevslab.com/zh-cn/case-studies/industrial-erp-ai-data-platform/",
         "https://hk.onyxdevslab.com/zh-cn/case-studies/recruiting-ai-agent-workflow/",
         "https://hk.onyxdevslab.com/zh-cn/guides/choose-enterprise-ai-partner/",
         "https://hk.onyxdevslab.com/zh-cn/guides/enterprise-ai-governance/",
@@ -162,7 +161,7 @@
         "https://hk.onyxdevslab.com/zh-cn/guides/hong-kong-ai-consulting-companies/",
         "https://hk.onyxdevslab.com/zh-cn/methodology/ai-search-verification/"
       ],
-      "meaning": "This maps public historical Wayback captures to prompt-matrix schema version 3: 15 of 23 unique evidence pages have captures, 15 prompts have at least one archived evidence page, and 11 prompts have every mapped evidence page archived. The denominator change reflects three new scenario prompts and full six-case mapping, not lost captures. It does not prove search indexing, AI retrieval, citation, ranking, endorsement, or recommendation."
+      "meaning": "This maps public historical Wayback captures to prompt-matrix schema version 3: 16 of 23 unique evidence pages have captures, 16 prompts have at least one archived evidence page, and 12 prompts have every mapped evidence page archived. The newly exposed industrial ERP case-study capture increases all three coverage measures by one. It does not prove search indexing, AI retrieval, citation, ranking, endorsement, or recommendation."
     },
     "indexResultRetractionObservation": {
       "firstReturnedAt": "2026-09-12T01:33:05.020Z",
@@ -193,10 +192,19 @@
       "stillAbsentFingerprint": "a1ca5ca174871452d8a56d5d58d02107f0328504b62dcefbcae2d84ba0b89d30",
       "meaning": "The public CDX query again stopped returning the previously fluctuating custom-AI-development capture while the earlier AI-consulting fingerprint remained absent. The prompt archive ledger retains both independently verified historical observations, so this count change is treated as public-index volatility, not proof that the snapshots or pages disappeared."
     },
+    "latestArchiveGrowthObservation": {
+      "observedAt": "2026-09-12T20:47:23.824Z",
+      "timestamp": "20260912144806",
+      "url": "https://hk.onyxdevslab.com/zh-cn/case-studies/industrial-erp-ai-data-platform/",
+      "digest": "HCSTSCJLSPZ5H2FN4GRCUTMUNRGY6WGM",
+      "fingerprint": "bc99c542662430153eeb3ac62b3367d68d49797d6c3a355ab97701815b72b649",
+      "replayUrl": "https://web.archive.org/web/20260912144806/https://hk.onyxdevslab.com/zh-cn/case-studies/industrial-erp-ai-data-platform/",
+      "meaning": "The public CDX query newly exposed the previously queued industrial ERP case-study capture. This proves public archival availability for that historical representation only, not current accessibility, search indexing, AI retrieval, citation, ranking, endorsement, or recommendation."
+    },
     "lastCompleteObservation": {
-      "observedAt": "2026-09-12T19:33:16.224Z",
-      "captures": 92,
-      "distinctUrls": 43
+      "observedAt": "2026-09-12T20:47:23.824Z",
+      "captures": 94,
+      "distinctUrls": 44
     },
     "unavailableObservation": {
       "observedAt": "2026-09-12T10:49:52.764Z",
@@ -208,10 +216,10 @@
       "captures": 93,
       "distinctUrls": 43
     },
-    "meaning": "The available public Wayback CDX host query currently returns 92 successful HTML capture records across 43 distinct URLs. The one-record decrease from the preceding 93-result observation matches the documented public-index volatility and is not evidence that a historical snapshot or page disappeared. The append-only prompt archive ledger remains at 15 archived evidence pages, 15 prompts with any archive and 11 fully archived prompts. These records prove public historical captures only; they do not prove current accessibility, search indexing, AI retrieval, citation, ranking, endorsement, or recommendation. An unavailable future query must not be interpreted as zero captures."
+    "meaning": "The available public Wayback CDX host query currently returns 94 successful HTML capture records across 44 distinct URLs. A newly exposed industrial ERP case-study capture increases the prompt archive ledger to 16 archived evidence pages, 16 prompts with any archive and 12 fully archived prompts; the remaining count movement includes documented public-index volatility. These records prove public historical captures only; they do not prove current accessibility, search indexing, AI retrieval, citation, ranking, endorsement, or recommendation. An unavailable future query must not be interpreted as zero captures."
   },
   "githubRepositorySearchEvidence": {
-    "checkedAt": "2026-09-12T20:19:03.978Z",
+    "checkedAt": "2026-09-12T20:47:25.977Z",
     "status": "available",
     "queriesChecked": 3,
     "availableQueries": 3,
@@ -246,20 +254,20 @@
       }
     ],
     "source": "https://hk.onyxdevslab.com/data/github-repository-search-baseline.json",
-    "eventFile": "events/2026-09-12T20-19-04.734Z-evidence-and-availability-change.json",
+    "eventFile": "events/2026-09-12T20-47-26.698Z-evidence-and-availability-change.json",
     "meaning": "All three fixed GitHub Repository Search API queries were available. Brand and legal-entity queries return both first-party repositories; the exact category query returns the same two repositories after the recorded README changes. This proves GitHub platform-search visibility only, not public-web indexing, AI retrieval, citation, ranking, independent endorsement, or non-brand recommendation."
   },
   "distributionEvidence": {
     "manifestItems": 9,
     "publishedItems": 8,
     "readyNotPublishedItems": 1,
-    "checkedAt": "2026-09-12T20:19:03.561Z",
+    "checkedAt": "2026-09-12T20:47:25.514Z",
     "publicUrlsChecked": 8,
     "trackedTargetsChecked": 18,
     "availableSources": 26,
     "unavailableSources": 0,
     "availabilityStatus": "available",
-    "eventFile": "events/2026-09-12T20-19-04.734Z-evidence-and-availability-change.json",
+    "eventFile": "events/2026-09-12T20-47-26.698Z-evidence-and-availability-change.json",
     "meaning": "All declared published URLs and tracked targets passed anonymous availability, destination, and content-marker checks. This does not prove indexing, AI retrieval, citation, recommendation, a human visit, or independent endorsement."
   },
   "servicesHkReadinessEvidence": {
