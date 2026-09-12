@@ -1,5 +1,5 @@
 import assert from 'node:assert/strict';
-import { buildAvailabilityChanges, buildCommonCrawlAvailability, buildCrawlerVerificationAvailability, buildDistributionAvailability, buildDomainCanonicalizationAvailability, buildEvidenceCounts, buildEvidenceDeltas, buildServicesHkAvailability, buildWaybackAvailability, preserveAppendOnlyCrawlerCounts, selectEvidenceEventKind } from './geo-evidence-summary.mjs';
+import { buildAvailabilityChanges, buildCommonCrawlAvailability, buildCrawlerVerificationAvailability, buildCumulativeVerifiedContentPathCoverage, buildDistributionAvailability, buildDomainCanonicalizationAvailability, buildEvidenceCounts, buildEvidenceDeltas, buildServicesHkAvailability, buildWaybackAvailability, mergeVerifiedCrawlerObservations, preserveAppendOnlyCrawlerCounts, selectEvidenceEventKind } from './geo-evidence-summary.mjs';
 
 const crawlerTotals = {
   verifiedGptBotPageCrawls: 24,
@@ -106,6 +106,25 @@ const rotatedWithNewCrawlerEvidence = preserveAppendOnlyCrawlerCounts(
 assert.equal(rotatedWithNewCrawlerEvidence.counts.verifiedYandexPageCrawls, 72);
 assert.equal(rotatedWithNewCrawlerEvidence.retentionAdjustments[0].newlyObserved, 1);
 assert.equal(preserveAppendOnlyCrawlerCounts({ verifiedYandexPageCrawls: 70 }, { verifiedYandexPageCrawls: 71 }, new Map(), false).counts.verifiedYandexPageCrawls, 70);
+
+const cumulativeCrawlerObservations = mergeVerifiedCrawlerObservations(
+  [
+    { fingerprint: 'old-yandex-page', family: 'YandexBot', classification: 'candidate-page-crawl', time: '2026-09-08T00:00:00+00:00', method: 'GET', path: '/evidence/', status: 200 },
+    { fingerprint: 'old-gpt-page', family: 'GPTBot', classification: 'candidate-page-crawl', time: '2026-09-09T00:00:00+00:00', method: 'GET', path: '/evidence/', status: 200 },
+  ],
+  [
+    { fingerprint: 'old-yandex-page', family: 'YandexBot', classification: 'candidate-page-crawl', time: '2026-09-08T00:00:00+00:00', method: 'GET', path: '/evidence/', status: 200 },
+    { fingerprint: 'new-discovery', family: 'YandexBot', classification: 'candidate-discovery-file-crawl', time: '2026-09-10T00:00:00+00:00', method: 'GET', path: '/robots.txt', status: 304 },
+  ],
+);
+assert.equal(cumulativeCrawlerObservations.length, 3);
+assert.deepEqual(buildCumulativeVerifiedContentPathCoverage(cumulativeCrawlerObservations), [{
+  path: '/evidence/',
+  families: ['GPTBot', 'YandexBot'],
+  firstSeen: '2026-09-08T00:00:00+00:00',
+  lastSeen: '2026-09-09T00:00:00+00:00',
+  requests: 2,
+}]);
 
 const partialCommonCrawl = buildCommonCrawlAvailability({
   collectionIndexStatus: 'available',
@@ -242,4 +261,4 @@ assert.equal(selectEvidenceEventKind({ initializing: false, evidenceChanged: tru
 assert.equal(selectEvidenceEventKind({ initializing: false, evidenceChanged: false, availabilityChanged: true }), 'availability-change');
 assert.equal(selectEvidenceEventKind({ initializing: false, evidenceChanged: false, availabilityChanged: false }), null);
 
-console.log(JSON.stringify({ tests: 88, failures: [] }, null, 2));
+console.log(JSON.stringify({ tests: 90, failures: [] }, null, 2));

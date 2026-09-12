@@ -56,6 +56,45 @@ export function buildEvidenceDeltas(counts, previousCounts) {
 
 const appendOnlyCrawlerMetric = /^verified(?:GptBot|OaiSearchBot|Bing|Baidu|Google|Perplexity|CommonCrawl|Apple|Yandex|Ahrefs)(?:Page|DiscoveryFile)Crawls$/;
 
+export function mergeVerifiedCrawlerObservations(...observationGroups) {
+  const byFingerprint = new Map();
+  for (const observation of observationGroups.flat()) {
+    if (!observation?.fingerprint || observation.classification !== 'candidate-page-crawl' && observation.classification !== 'candidate-discovery-file-crawl') continue;
+    byFingerprint.set(observation.fingerprint, {
+      fingerprint: observation.fingerprint,
+      family: observation.family,
+      classification: observation.classification,
+      time: observation.time,
+      method: observation.method,
+      path: observation.path,
+      status: observation.status,
+    });
+  }
+  return [...byFingerprint.values()].sort((left, right) => left.time.localeCompare(right.time) || left.fingerprint.localeCompare(right.fingerprint));
+}
+
+export function buildCumulativeVerifiedContentPathCoverage(observations) {
+  const byPath = new Map();
+  for (const observation of observations || []) {
+    if (observation.classification !== 'candidate-page-crawl') continue;
+    const entry = byPath.get(observation.path) || {
+      path: observation.path,
+      families: new Set(),
+      firstSeen: observation.time,
+      lastSeen: observation.time,
+      requests: 0,
+    };
+    entry.families.add(observation.family);
+    if (observation.time < entry.firstSeen) entry.firstSeen = observation.time;
+    if (observation.time > entry.lastSeen) entry.lastSeen = observation.time;
+    entry.requests += 1;
+    byPath.set(observation.path, entry);
+  }
+  return [...byPath.values()]
+    .sort((left, right) => left.path.localeCompare(right.path))
+    .map((entry) => ({ ...entry, families: [...entry.families].sort() }));
+}
+
 export function preserveAppendOnlyCrawlerCounts(currentCounts, previousCounts, newEvidenceByMetric, hasSeenLedger) {
   const counts = { ...currentCounts };
   const retentionAdjustments = [];

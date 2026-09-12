@@ -2,7 +2,7 @@ import { spawn } from 'node:child_process';
 import { mkdir, readFile, readdir, rename, unlink, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { buildAvailabilityChanges, buildCommonCrawlAvailability, buildCrawlerVerificationAvailability, buildDistributionAvailability, buildDomainCanonicalizationAvailability, buildEvidenceCounts, buildEvidenceDeltas, buildServicesHkAvailability, buildWaybackAvailability, preserveAppendOnlyCrawlerCounts, selectEvidenceEventKind } from './geo-evidence-summary.mjs';
+import { buildAvailabilityChanges, buildCommonCrawlAvailability, buildCrawlerVerificationAvailability, buildCumulativeVerifiedContentPathCoverage, buildDistributionAvailability, buildDomainCanonicalizationAvailability, buildEvidenceCounts, buildEvidenceDeltas, buildServicesHkAvailability, buildWaybackAvailability, mergeVerifiedCrawlerObservations, preserveAppendOnlyCrawlerCounts, selectEvidenceEventKind } from './geo-evidence-summary.mjs';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const args = process.argv.slice(2);
@@ -63,6 +63,26 @@ async function hasEventHistory() {
   }
 }
 
+async function readHistoricalVerifiedCrawlerObservations() {
+  try {
+    const eventDir = path.join(outputDir, 'events');
+    const names = (await readdir(eventDir)).filter((name) => name.endsWith('.json')).sort();
+    const observations = [];
+    for (const name of names) {
+      try {
+        const event = JSON.parse(await readFile(path.join(eventDir, name), 'utf8'));
+        observations.push(...(event.crawler?.verifiedEvidenceObservations || []));
+      } catch {
+        // A damaged historical event must not stop the live collection; the
+        // publication-drift gate will still expose any unsupported decrease.
+      }
+    }
+    return observations;
+  } catch {
+    return [];
+  }
+}
+
 async function atomicJson(name, value) {
   const target = path.join(outputDir, name);
   await mkdir(path.dirname(target), { recursive: true, mode: 0o750 });
@@ -96,6 +116,22 @@ const distribution = await runJson('check-distribution-live.mjs', ['--report']);
 const servicesHk = await runJson('check-services-hk.mjs', ['--report']);
 const githubRepositorySearch = await runJson('report-github-repository-search.mjs', []);
 const domainCanonicalization = await runJson('check-domain-canonicalization.mjs', []);
+
+const historicalVerifiedCrawlerObservations = Array.isArray(previousSeenEvidence?.verifiedCrawlerObservations)
+  ? previousSeenEvidence.verifiedCrawlerObservations
+  : await readHistoricalVerifiedCrawlerObservations();
+const cumulativeVerifiedCrawlerObservations = mergeVerifiedCrawlerObservations(
+  historicalVerifiedCrawlerObservations,
+  crawler.verifiedEvidenceObservations || [],
+);
+crawler.verifiedEvidenceObservations = cumulativeVerifiedCrawlerObservations;
+crawler.verifiedContentPathCoverage = buildCumulativeVerifiedContentPathCoverage(cumulativeVerifiedCrawlerObservations);
+crawler.verifiedContentPathCoverageAccounting = {
+  mode: 'append-only-provider-verified-fingerprint-cumulative',
+  observations: cumulativeVerifiedCrawlerObservations.filter((observation) => observation.classification === 'candidate-page-crawl').length,
+  paths: crawler.verifiedContentPathCoverage.length,
+  meaning: 'Content-path coverage is rebuilt from the append-only provider-verified observation ledger, so log rotation cannot erase previously verified path or prompt coverage.',
+};
 
 const crawlerTemporary = path.join(outputDir, `.crawler-report-${process.pid}.json`);
 await writeFile(crawlerTemporary, `${JSON.stringify(crawler, null, 2)}\n`, { mode: 0o640 });
@@ -273,6 +309,7 @@ await atomicJson('seen-evidence.json', {
   schemaVersion: 1,
   updatedAt: generatedAt,
   fingerprints: allSeenFingerprints,
+  verifiedCrawlerObservations: cumulativeVerifiedCrawlerObservations,
 });
 await atomicJson('crawler-report.json', crawler);
 await atomicJson('referral-report.json', referral);
