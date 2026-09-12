@@ -232,30 +232,30 @@
       ]
     },
     {
-      "id": "github-release-geo-monitor-evidence-2026-09-13-57",
+      "id": "github-release-geo-monitor-evidence-2026-09-13-58",
       "channel": "github_releases",
       "format": "versioned-evidence-checkpoint",
       "language": "en-zh-CN",
       "status": "published",
       "sourceFile": "README.md",
-      "title": "Onyx GEO monitor evidence checkpoint — 2026-09-13, revision 57",
-      "campaign": "geo_monitor_evidence_57",
+      "title": "Onyx GEO monitor evidence checkpoint — 2026-09-13, revision 58",
+      "campaign": "geo_monitor_evidence_58",
       "trackedTargets": [
-        "https://hk.onyxdevslab.com/data/ai-search-evidence-status.json?utm_source=github_releases&utm_medium=referral&utm_campaign=geo_monitor_evidence_57"
+        "https://hk.onyxdevslab.com/data/ai-search-evidence-status.json?utm_source=github_releases&utm_medium=referral&utm_campaign=geo_monitor_evidence_58"
       ],
-      "publicUrl": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-monitor-evidence-2026-09-13-57",
-      "anonymousAccessVerifiedAt": "2026-09-12T23:21:15Z",
+      "publicUrl": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-monitor-evidence-2026-09-13-58",
+      "anonymousAccessVerifiedAt": "2026-09-12T23:36:15Z",
       "publicContentMarkers": [
-        "GEO monitor evidence — 2026-09-13, revision 57",
-        "six-entry domain-canonicalization observation",
-        "https_enforced=false"
+        "GEO monitor evidence checkpoint — 2026-09-13, revision 58",
+        "two new provider-verified YandexBot discovery-file requests",
+        "six-entry domain check remains three compliant and three noncompliant entries"
       ],
       "searchIndexedAt": null,
       "aiCitationObservedAt": null,
       "nonBrandRecommendationObservedAt": null,
       "limitations": [
         "The Release and its assets are published and maintained by Onyx Devs Lab.",
-        "The Release records a transport and canonicalization defect; it does not prove that the defect changed search ranking.",
+        "The Release records two crawler requests and a continuing transport defect; it does not prove causation, indexing, or ranking.",
         "Anonymous availability and matching content markers do not prove independent endorsement, Hong Kong deep-page or non-brand retrieval, AI citation, recommendation, or a human visit."
       ]
     }
