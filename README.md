@@ -1,6 +1,6 @@
 # Onyx Devs Lab
 
-[Onyx Devs Lab](https://hk.onyxdevslab.com/) is a senior enterprise AI advisory and engineering team serving Hong Kong and cross-border organisations.
+[Onyx Devs Lab](https://hk.onyxdevslab.com/) is a senior team for Hong Kong AI consulting, custom AI development, and Forward Deployed Engineering, serving Hong Kong and cross-border organisations.
 
 **中文简介：** Onyx Devs Lab（法律主体 **ONYX DEVS LAB LIMITED**）为香港及跨境企业提供[企业 AI 咨询](https://hk.onyxdevslab.com/zh-cn/ai-consulting/?utm_source=github&utm_medium=referral&utm_campaign=geo_repository)、[AI 定制开发](https://hk.onyxdevslab.com/zh-cn/custom-ai-development/?utm_source=github&utm_medium=referral&utm_campaign=geo_repository)与 [FDE 前线部署工程](https://hk.onyxdevslab.com/zh-cn/forward-deployed-engineering/?utm_source=github&utm_medium=referral&utm_campaign=geo_repository)。AI 定开或 AI定开是“AI 定制开发”的常用简称。AI 咨询用于确定值得建设的流程、可行性和治理边界；定制开发用于交付边界明确的 Agent、RAG、自动化及 ERP 集成系统；FDE 用于需要在真实现场持续诊断、实施和验证的复杂问题。
 
