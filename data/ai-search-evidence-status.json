@@ -1,13 +1,18 @@
 {
   "schemaVersion": 2,
-  "version": "2026.09.12.44",
+  "version": "2026.09.12.45",
   "id": "https://hk.onyxdevslab.com/data/ai-search-evidence-status.json",
-  "observedAt": "2026-09-12T11:04:58.776Z",
+  "observedAt": "2026-09-12T11:16:08.000Z",
   "sourceBaseline": "https://github.com/0xHunterL/onyx-devs-lab.github.io/blob/main/docs/geo-baselines/2026-09-11-monitor-evidence.json",
   "versionHistory": [
     {
-      "version": "2026.09.11.8",
+      "version": "2026.09.12.41",
       "relation": "previous-immutable-checkpoint",
+      "url": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-monitor-evidence-2026-09-12-41/ai-search-evidence-status.json"
+    },
+    {
+      "version": "2026.09.11.8",
+      "relation": "earlier-immutable-checkpoint",
       "url": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-search-monitoring-compliance-2026-09-11/ai-search-evidence-status.json"
     }
   ],
@@ -569,6 +574,14 @@
     {
       "name": "Versioned search-monitoring compliance checkpoint",
       "url": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-search-monitoring-compliance-2026-09-11"
+    },
+    {
+      "name": "Latest immutable GEO monitor evidence checkpoint",
+      "url": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-monitor-evidence-2026-09-12-41"
+    },
+    {
+      "name": "Latest immutable AI-search evidence status",
+      "url": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-monitor-evidence-2026-09-12-41/ai-search-evidence-status.json"
     },
     {
       "name": "AI-search verification method",
