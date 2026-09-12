@@ -469,6 +469,37 @@ try {
   failures.push('Versioned GEO monitor evidence revision 7: invalid JSON');
 }
 
+const monitorEvidenceV41Base = 'https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-monitor-evidence-2026-09-12-41';
+const monitorEvidenceV41Release = await get('GitHub GEO monitor evidence revision 41', 'https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-monitor-evidence-2026-09-12-41', 'text/html');
+requireText('GitHub GEO monitor evidence revision 41', monitorEvidenceV41Release, [
+  'Onyx GEO monitor evidence checkpoint',
+  '28 provider-verified GPTBot content requests',
+  'services.hk readiness as unavailable',
+  'No prompt was sent to Doubao',
+]);
+const monitorEvidenceV41Raw = await get('Versioned GEO monitor evidence revision 41', `${monitorEvidenceV41Base}/2026-09-11-monitor-evidence.json`, 'application/');
+const monitorEvidenceV41Sha256 = createHash('sha256').update(monitorEvidenceV41Raw).digest('hex');
+if (monitorEvidenceV41Sha256 !== 'cf1a91ce4f40fbc98155163eadacf802f9cf50fc0ce51b55995f0289d18f6e36') failures.push(`Versioned GEO monitor evidence revision 41: SHA-256 mismatch, got ${monitorEvidenceV41Sha256}`);
+try {
+  const monitor = JSON.parse(monitorEvidenceV41Raw);
+  const provider = monitor.providerVerifiedCrawlerEvidence;
+  const services = monitor.servicesHkReadinessEvidence;
+  if (monitor.publicStatusVersion !== '2026.09.12.41' || monitor.generatedAt !== '2026-09-12T10:04:54.078Z' || provider?.gptBotContentRequests !== 28 || provider?.gptBotDiscoveryFileRequests !== 14 || provider?.oaiSearchBotContentRequests !== 0 || provider?.oaiSearchBotDiscoveryFileRequests !== 10 || provider?.bingbotContentRequests !== 7 || provider?.bingbotDiscoveryFileRequests !== 1 || provider?.yandexbotContentRequests !== 71 || provider?.yandexbotDiscoveryFileRequests !== 64 || provider?.ahrefsbotContentRequests !== 0 || provider?.ahrefsbotDiscoveryFileRequests !== 85 || monitor.waybackEvidence?.status !== 'available' || monitor.waybackEvidence?.captures !== 93 || monitor.waybackEvidence?.distinctUrls !== 43 || services?.availabilityStatus !== 'unavailable' || services?.targetsChecked !== 3 || services?.availableTargets !== 0 || monitor.publicSearchRetest?.officialSiteObserved !== false || monitor.publicSearchRetest?.categoryRecommendationObserved !== false || monitor.doubaoTestStatus !== 'not-run') failures.push('Versioned GEO monitor evidence revision 41: expected evidence structure or boundary is incomplete');
+} catch {
+  failures.push('Versioned GEO monitor evidence revision 41: invalid JSON');
+}
+const monitorStatusV41Raw = await get('Versioned public GEO status revision 41', `${monitorEvidenceV41Base}/ai-search-evidence-status.json`, 'application/');
+const monitorStatusV41Sha256 = createHash('sha256').update(monitorStatusV41Raw).digest('hex');
+if (monitorStatusV41Sha256 !== '5e300f95574024b706c53e284fb117362eec14285f4788f2d4d7f7bee7e1d449') failures.push(`Versioned public GEO status revision 41: SHA-256 mismatch, got ${monitorStatusV41Sha256}`);
+try {
+  const status = JSON.parse(monitorStatusV41Raw);
+  const crawled = status.evidenceLevels?.[1]?.evidence;
+  const services = status.offsiteChannelReadiness?.servicesHk;
+  if (status.version !== '2026.09.12.41' || crawled?.verifiedGptBotContentCrawls !== 28 || crawled?.verifiedGptBotDiscoveryFileCrawls !== 14 || crawled?.verifiedOaiSearchBotContentCrawls !== 0 || crawled?.verifiedOaiSearchBotDiscoveryFileVisits !== 10 || crawled?.verifiedYandexbotContentCrawls !== 71 || crawled?.verifiedYandexbotDiscoveryFileCrawls !== 64 || crawled?.verifiedAhrefsBotContentCrawls !== 0 || crawled?.verifiedAhrefsBotDiscoveryFileCrawls !== 85 || crawled?.waybackArchiveObservation?.status !== 'available' || crawled?.waybackArchiveObservation?.captures !== 93 || crawled?.waybackArchiveObservation?.distinctUrls !== 43 || services?.availabilityStatus !== 'unavailable' || services?.targetsChecked !== 3 || services?.availableTargets !== 0 || status.testProtocol?.doubaoPromptsSent !== false) failures.push('Versioned public GEO status revision 41: expected evidence structure or boundary is incomplete');
+} catch {
+  failures.push('Versioned public GEO status revision 41: invalid JSON');
+}
+
 const crawlerEvidenceReleaseUrl = 'https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-crawler-evidence-2026-09-10';
 const crawlerEvidenceRelease = await get('GitHub verified crawler-evidence checkpoint', crawlerEvidenceReleaseUrl, 'text/html');
 requireText('GitHub verified crawler-evidence checkpoint', crawlerEvidenceRelease, [

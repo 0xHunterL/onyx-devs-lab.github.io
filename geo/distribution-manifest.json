@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updated": "2026-09-11",
+  "updated": "2026-09-12",
   "publisher": {
     "brand": "Onyx Devs Lab",
     "legalName": "ONYX DEVS LAB LIMITED",
@@ -222,6 +222,33 @@
         "Search monitoring compliance checkpoint — 2026-09-11",
         "Baiduspider and Applebot zero baselines",
         "Bing indexing evidence remains account-gated"
+      ],
+      "searchIndexedAt": null,
+      "aiCitationObservedAt": null,
+      "nonBrandRecommendationObservedAt": null,
+      "limitations": [
+        "The Release and its assets are published and maintained by Onyx Devs Lab.",
+        "Anonymous availability and matching content markers do not prove independent endorsement, search indexing, AI citation, recommendation, or a human visit."
+      ]
+    },
+    {
+      "id": "github-release-geo-monitor-evidence-2026-09-12-41",
+      "channel": "github_releases",
+      "format": "versioned-evidence-checkpoint",
+      "language": "en-zh-CN",
+      "status": "published",
+      "sourceFile": "README.md",
+      "title": "Onyx GEO monitor evidence checkpoint — 2026-09-12, revision 41",
+      "campaign": "geo_monitor_evidence_41",
+      "trackedTargets": [
+        "https://hk.onyxdevslab.com/data/ai-search-evidence-status.json?utm_source=github_releases&utm_medium=referral&utm_campaign=geo_monitor_evidence_41"
+      ],
+      "publicUrl": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-monitor-evidence-2026-09-12-41",
+      "anonymousAccessVerifiedAt": "2026-09-12T10:30:35Z",
+      "publicContentMarkers": [
+        "Onyx GEO monitor evidence checkpoint — 2026-09-12, revision 41",
+        "28 provider-verified GPTBot content requests",
+        "services.hk readiness as unavailable"
       ],
       "searchIndexedAt": null,
       "aiCitationObservedAt": null,
