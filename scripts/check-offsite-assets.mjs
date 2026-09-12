@@ -502,6 +502,43 @@ try {
   failures.push('Versioned public GEO status revision 41: invalid JSON');
 }
 
+const monitorEvidenceV48Base = 'https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-monitor-evidence-2026-09-12-48';
+const monitorEvidenceV48Release = await get('GitHub GEO monitor evidence revision 48', 'https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-monitor-evidence-2026-09-12-48', 'text/html');
+requireText('GitHub GEO monitor evidence revision 48', monitorEvidenceV48Release, [
+  'Onyx GEO monitor evidence checkpoint',
+  '20 to 23 prompts',
+  'all six published cases',
+  'No prompts were sent to Doubao',
+]);
+const monitorEvidenceV48Assets = [
+  {name:'monitor snapshot',file:'2026-09-11-monitor-evidence.json',sha256:'aef829f2725c55efb047b79747a22e79cd7a1079a9bde4f741c617bea1764aa8'},
+  {name:'public status',file:'ai-search-evidence-status.json',sha256:'7360f29e695b14194b26d328c66294fbdcdd344cc48d4025d135a25a043429a5'},
+  {name:'prompt matrix',file:'prompt-matrix.json',sha256:'ed5305c7c1221689dd5c522cf305ea7ff73344ef37f016a3e148d5f598351b6f'},
+  {name:'prompt evidence map',file:'ai-search-prompt-evidence-map.json',sha256:'eb940ec719387549bab30b6f9c89c892fb38f37bcfb9a1bbfc6463464f2e5727'},
+  {name:'prompt crawl coverage',file:'2026-09-11-prompt-crawl-coverage.json',sha256:'7b9eb77978732b6425d408bb02cf4c2629daa9693ad2bb448e937df179151c11'},
+];
+const monitorEvidenceV48Json = {};
+for (const asset of monitorEvidenceV48Assets) {
+  const raw = await get(`Versioned GEO monitor revision 48 ${asset.name}`, `${monitorEvidenceV48Base}/${asset.file}`, 'application/');
+  const digest = createHash('sha256').update(raw).digest('hex');
+  if (digest !== asset.sha256) failures.push(`Versioned GEO monitor revision 48 ${asset.name}: SHA-256 mismatch, got ${digest}`);
+  try {
+    monitorEvidenceV48Json[asset.file] = JSON.parse(raw);
+  } catch {
+    failures.push(`Versioned GEO monitor revision 48 ${asset.name}: invalid JSON`);
+  }
+}
+const monitorV48 = monitorEvidenceV48Json['2026-09-11-monitor-evidence.json'];
+if (monitorV48 && (monitorV48.publicStatusVersion !== '2026.09.12.48' || monitorV48.generatedAt !== '2026-09-12T12:31:15.092Z' || monitorV48.providerVerifiedCrawlerEvidence?.yandexbotContentRequests !== 75 || monitorV48.providerVerifiedCrawlerEvidence?.yandexbotDiscoveryFileRequests !== 68 || monitorV48.fixedPromptCoverage?.prompts !== 23 || monitorV48.fixedPromptCoverage?.uniqueEvidencePages !== 23 || monitorV48.fixedPromptCoverage?.verifiedCrawledEvidencePages !== 15 || monitorV48.fixedPromptCoverage?.promptsWithAnyVerifiedCrawl !== 18 || monitorV48.fixedPromptCoverage?.promptsFullyVerifiedCrawled !== 12 || monitorV48.waybackEvidence?.fixedPromptArchiveCoverage?.prompts !== 23 || monitorV48.waybackEvidence?.fixedPromptArchiveCoverage?.archivedEvidencePages !== 15 || monitorV48.waybackEvidence?.fixedPromptArchiveCoverage?.promptsFullyArchived !== 11 || monitorV48.doubaoTestStatus !== 'not-run')) failures.push('Versioned GEO monitor revision 48 monitor snapshot: expected protocol or evidence boundary is incomplete');
+const statusV48 = monitorEvidenceV48Json['ai-search-evidence-status.json'];
+if (statusV48 && (statusV48.version !== '2026.09.12.48' || statusV48.testProtocol?.schemaVersion !== 3 || statusV48.testProtocol?.promptCount !== 23 || statusV48.testProtocol?.doubaoPromptsSent !== false || statusV48.evidenceLevels?.[1]?.evidence?.fixedPromptCoverage?.prompts !== 23 || statusV48.evidenceLevels?.[1]?.evidence?.fixedPromptCoverage?.verifiedCrawledEvidencePages !== 15 || statusV48.evidenceLevels?.[1]?.evidence?.waybackArchiveObservation?.fixedPromptArchiveCoverage?.promptsFullyArchived !== 11)) failures.push('Versioned GEO monitor revision 48 public status: expected protocol or evidence boundary is incomplete');
+const matrixV48 = monitorEvidenceV48Json['prompt-matrix.json'];
+if (matrixV48 && (matrixV48.schemaVersion !== 3 || matrixV48.prompts?.length !== 23 || !['scenario-recruiting','scenario-industrial-erp','scenario-credit-research'].every((id) => matrixV48.prompts.some((prompt) => prompt.id === id)) || matrixV48.prompts.find((prompt) => prompt.id === 'brand-cases')?.evidenceUrls?.length !== 7)) failures.push('Versioned GEO monitor revision 48 prompt matrix: six-case protocol is incomplete');
+const promptMapV48 = monitorEvidenceV48Json['ai-search-prompt-evidence-map.json'];
+if (promptMapV48 && (promptMapV48.version !== '2026.09.12.48' || promptMapV48.promptMatrix?.schemaVersion !== 3 || promptMapV48.promptMatrix?.promptCount !== 23 || promptMapV48.promptMatrix?.doubaoPromptsSent !== false || promptMapV48.totals?.uniqueEvidencePages !== 23 || promptMapV48.prompts?.length !== 23)) failures.push('Versioned GEO monitor revision 48 prompt evidence map: expected protocol or boundary is incomplete');
+const promptCoverageV48 = monitorEvidenceV48Json['2026-09-11-prompt-crawl-coverage.json'];
+if (promptCoverageV48 && (promptCoverageV48.promptMatrixSchemaVersion !== 3 || promptCoverageV48.totals?.prompts !== 23 || promptCoverageV48.totals?.uniqueEvidencePages !== 23 || promptCoverageV48.totals?.verifiedCrawledEvidencePages !== 15 || promptCoverageV48.totals?.promptsWithAnyVerifiedCrawl !== 18 || promptCoverageV48.totals?.promptsFullyVerifiedCrawled !== 12 || promptCoverageV48.bySegment?.scenario?.prompts !== 6 || promptCoverageV48.bySegment?.scenario?.promptsWithAnyVerifiedCrawl !== 4)) failures.push('Versioned GEO monitor revision 48 prompt crawl coverage: expected totals are incomplete');
+
 const crawlerEvidenceReleaseUrl = 'https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-crawler-evidence-2026-09-10';
 const crawlerEvidenceRelease = await get('GitHub verified crawler-evidence checkpoint', crawlerEvidenceReleaseUrl, 'text/html');
 requireText('GitHub verified crawler-evidence checkpoint', crawlerEvidenceRelease, [
