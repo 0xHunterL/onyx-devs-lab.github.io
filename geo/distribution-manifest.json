@@ -232,23 +232,23 @@
       ]
     },
     {
-      "id": "github-release-geo-monitor-evidence-2026-09-12-41",
+      "id": "github-release-geo-monitor-evidence-2026-09-12-49",
       "channel": "github_releases",
       "format": "versioned-evidence-checkpoint",
       "language": "en-zh-CN",
       "status": "published",
       "sourceFile": "README.md",
-      "title": "Onyx GEO monitor evidence checkpoint — 2026-09-12, revision 41",
-      "campaign": "geo_monitor_evidence_41",
+      "title": "Onyx GEO monitor evidence checkpoint — 2026-09-12, revision 49",
+      "campaign": "geo_monitor_evidence_49",
       "trackedTargets": [
-        "https://hk.onyxdevslab.com/data/ai-search-evidence-status.json?utm_source=github_releases&utm_medium=referral&utm_campaign=geo_monitor_evidence_41"
+        "https://hk.onyxdevslab.com/data/ai-search-evidence-status.json?utm_source=github_releases&utm_medium=referral&utm_campaign=geo_monitor_evidence_49"
       ],
-      "publicUrl": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-monitor-evidence-2026-09-12-41",
-      "anonymousAccessVerifiedAt": "2026-09-12T10:30:35Z",
+      "publicUrl": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-monitor-evidence-2026-09-12-49",
+      "anonymousAccessVerifiedAt": "2026-09-12T13:21:54Z",
       "publicContentMarkers": [
-        "Onyx GEO monitor evidence checkpoint — 2026-09-12, revision 41",
-        "28 provider-verified GPTBot content requests",
-        "services.hk readiness as unavailable"
+        "Onyx GEO monitor evidence checkpoint — 2026-09-12, revision 49",
+        "76 provider-verified YandexBot content requests",
+        "87 AhrefsBot discovery-file requests"
       ],
       "searchIndexedAt": null,
       "aiCitationObservedAt": null,
