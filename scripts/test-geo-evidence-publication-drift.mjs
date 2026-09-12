@@ -9,6 +9,7 @@ const prompt = baseline.fixedPromptCoverage;
 const commonCrawl = baseline.commonCrawlEvidence;
 const wayback = baseline.waybackEvidence;
 const distribution = baseline.distributionEvidence;
+const servicesHk = baseline.servicesHkReadinessEvidence;
 const summary = {
   generatedAt: baseline.generatedAt,
   sourceLogs: structuredClone(baseline.crawlerEvidenceAccounting.currentRetainedLogPaths),
@@ -71,6 +72,13 @@ const summary = {
       availableSources: distribution.availableSources,
       unavailableSources: distribution.unavailableSources,
     },
+    servicesHk: {
+      status: servicesHk.availabilityStatus,
+      sourcesChecked: servicesHk.targetsChecked,
+      availableSources: servicesHk.availableTargets,
+      unavailableSources: servicesHk.unavailableTargets,
+      sources: servicesHk.targets.map(({ id, status }) => ({ id, status })),
+    },
   },
 };
 
@@ -118,6 +126,22 @@ assert.deepEqual(commonCrawlFields, ['commonCrawlEvidence.status', 'commonCrawlE
 const distributionDrift = structuredClone(summary);
 distributionDrift.availability.distribution.status = 'partial';
 assert.equal(buildPublicationDrift(baseline, distributionDrift).mismatches[0].field, 'distributionEvidence.availabilityStatus');
+
+const servicesHkStatusDrift = structuredClone(summary);
+servicesHkStatusDrift.availability.servicesHk.status = 'available';
+assert.equal(buildPublicationDrift(baseline, servicesHkStatusDrift).mismatches[0].field, 'servicesHkReadinessEvidence.availabilityStatus');
+
+const servicesHkTargetCountDrift = structuredClone(summary);
+servicesHkTargetCountDrift.availability.servicesHk.sourcesChecked += 1;
+assert.equal(buildPublicationDrift(baseline, servicesHkTargetCountDrift).mismatches[0].field, 'servicesHkReadinessEvidence.targetsChecked');
+
+const servicesHkAvailableCountDrift = structuredClone(summary);
+servicesHkAvailableCountDrift.availability.servicesHk.availableSources += 1;
+assert.equal(buildPublicationDrift(baseline, servicesHkAvailableCountDrift).mismatches[0].field, 'servicesHkReadinessEvidence.availableTargets');
+
+const servicesHkSourceDrift = structuredClone(summary);
+servicesHkSourceDrift.availability.servicesHk.sources[0].status = 'available';
+assert.equal(buildPublicationDrift(baseline, servicesHkSourceDrift).mismatches[0].field, 'servicesHkReadinessEvidence.targets');
 assert.match(synchronized.evidenceBoundary, /does not prove indexing/);
 
 const waybackDrift = structuredClone(summary);
@@ -128,4 +152,4 @@ const waybackPromptDrift = structuredClone(summary);
 waybackPromptDrift.counts.promptsFullyWaybackArchived += 1;
 assert.equal(buildPublicationDrift(baseline, waybackPromptDrift).mismatches[0].field, 'waybackEvidence.fixedPromptArchiveCoverage.promptsFullyArchived');
 
-console.log(JSON.stringify({ tests: 13, failures: [] }, null, 2));
+console.log(JSON.stringify({ tests: 17, failures: [] }, null, 2));

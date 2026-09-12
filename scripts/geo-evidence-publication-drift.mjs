@@ -13,10 +13,12 @@ export function buildPublicationDrift(baseline, summary) {
   const commonCrawl = baseline.commonCrawlEvidence || {};
   const wayback = baseline.waybackEvidence || {};
   const distribution = baseline.distributionEvidence || {};
+  const servicesHk = baseline.servicesHkReadinessEvidence || {};
   const counts = summary.counts || {};
   const collectedCommonCrawl = summary.availability?.commonCrawl || {};
   const collectedWayback = summary.availability?.wayback || {};
   const collectedDistribution = summary.availability?.distribution || {};
+  const collectedServicesHk = summary.availability?.servicesHk || {};
 
   const countMappings = [
     ['providerVerifiedCrawlerEvidence.gptBotContentRequests', provider.gptBotContentRequests, counts.verifiedGptBotPageCrawls],
@@ -72,6 +74,11 @@ export function buildPublicationDrift(baseline, summary) {
   check('distributionEvidence.availableSources', distribution.availableSources, collectedDistribution.availableSources);
   check('distributionEvidence.unavailableSources', distribution.unavailableSources, collectedDistribution.unavailableSources);
   check('distributionEvidence.availabilityStatus', distribution.availabilityStatus, collectedDistribution.status);
+  check('servicesHkReadinessEvidence.availabilityStatus', servicesHk.availabilityStatus, collectedServicesHk.status);
+  check('servicesHkReadinessEvidence.targetsChecked', servicesHk.targetsChecked, collectedServicesHk.sourcesChecked);
+  check('servicesHkReadinessEvidence.availableTargets', servicesHk.availableTargets, collectedServicesHk.availableSources);
+  check('servicesHkReadinessEvidence.unavailableTargets', servicesHk.unavailableTargets, collectedServicesHk.unavailableSources);
+  check('servicesHkReadinessEvidence.targets', (servicesHk.targets || []).map(({ id, status }) => ({ id, status })), (collectedServicesHk.sources || []).map(({ id, status }) => ({ id, status })));
 
   return {
     schemaVersion: 1,
