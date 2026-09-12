@@ -1,30 +1,30 @@
 {
   "schemaVersion": 2,
-  "version": "2026.09.13.56",
+  "version": "2026.09.13.57",
   "id": "https://hk.onyxdevslab.com/data/ai-search-evidence-status.json",
-  "observedAt": "2026-09-12T22:12:53.589Z",
-  "latestEvidenceObservedAt": "2026-09-12T22:47:17Z",
+  "observedAt": "2026-09-12T23:12:15.413Z",
+  "latestEvidenceObservedAt": "2026-09-12T23:12:15.344Z",
   "sourceBaseline": "https://github.com/0xHunterL/onyx-devs-lab.github.io/blob/main/docs/geo-baselines/2026-09-11-monitor-evidence.json",
   "versionHistory": [
     {
-      "version": "2026.09.13.56",
+      "version": "2026.09.13.57",
       "relation": "current-immutable-checkpoint",
+      "url": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-monitor-evidence-2026-09-13-57/ai-search-evidence-status.json"
+    },
+    {
+      "version": "2026.09.13.56",
+      "relation": "previous-immutable-checkpoint",
       "url": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-monitor-evidence-2026-09-13-56/ai-search-evidence-status.json"
     },
     {
       "version": "2026.09.12.55",
-      "relation": "previous-immutable-checkpoint",
+      "relation": "earlier-immutable-checkpoint",
       "url": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-monitor-evidence-2026-09-12-55/ai-search-evidence-status.json"
     },
     {
       "version": "2026.09.12.54",
       "relation": "earlier-immutable-checkpoint",
       "url": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-monitor-evidence-2026-09-12-54/ai-search-evidence-status.json"
-    },
-    {
-      "version": "2026.09.12.53",
-      "relation": "earlier-immutable-checkpoint",
-      "url": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-monitor-evidence-2026-09-12-53/ai-search-evidence-status.json"
     }
   ],
   "name": {
@@ -551,7 +551,7 @@
   ],
   "platformSearchChecks": {
     "githubRepository": {
-      "checkedAt": "2026-09-12T22:12:52.861Z",
+      "checkedAt": "2026-09-12T23:12:13.175Z",
       "status": "available",
       "queriesChecked": 3,
       "availableQueries": 3,
@@ -586,9 +586,80 @@
         }
       ],
       "source": "https://hk.onyxdevslab.com/data/github-repository-search-baseline.json",
-      "eventFile": "events/2026-09-12T22-12-53.589Z-evidence-change.json",
+      "eventFile": "events/2026-09-12T23-12-15.413Z-availability-change.json",
       "meaning": "All three fixed GitHub Repository Search API queries were available. Brand and legal-entity queries return both first-party repositories; the exact category query returns the same two repositories after the recorded README changes. This proves GitHub platform-search visibility only, not public-web indexing, AI retrieval, citation, ranking, independent endorsement, or non-brand recommendation."
     }
+  },
+  "domainCanonicalization": {
+    "checkedAt": "2026-09-12T23:12:15.344Z",
+    "status": "noncompliant",
+    "canonicalOrigin": "https://hk.onyxdevslab.com/",
+    "targetsChecked": 6,
+    "compliantTargets": 3,
+    "noncompliantTargets": 3,
+    "unavailableTargets": 0,
+    "targets": [
+      {
+        "id": "http-apex",
+        "startUrl": "http://onyxdevslab.com/",
+        "finalUrl": "http://onyxdevslab.com/",
+        "status": "noncompliant",
+        "reasons": [
+          "http-serves-content-without-redirect",
+          "final-url-is-not-https"
+        ]
+      },
+      {
+        "id": "https-apex",
+        "startUrl": "https://onyxdevslab.com/",
+        "finalUrl": "https://onyxdevslab.com/",
+        "status": "compliant",
+        "reasons": []
+      },
+      {
+        "id": "http-www",
+        "startUrl": "http://www.onyxdevslab.com/",
+        "finalUrl": "http://onyxdevslab.com/",
+        "status": "noncompliant",
+        "reasons": [
+          "redirect-target-uses-http",
+          "final-url-is-not-https"
+        ]
+      },
+      {
+        "id": "https-www",
+        "startUrl": "https://www.onyxdevslab.com/",
+        "finalUrl": "http://onyxdevslab.com/",
+        "status": "noncompliant",
+        "reasons": [
+          "redirect-target-uses-http",
+          "https-downgrade-observed",
+          "final-url-is-not-https"
+        ]
+      },
+      {
+        "id": "http-hk",
+        "startUrl": "http://hk.onyxdevslab.com/",
+        "finalUrl": "https://hk.onyxdevslab.com/",
+        "status": "compliant",
+        "reasons": []
+      },
+      {
+        "id": "https-hk",
+        "startUrl": "https://hk.onyxdevslab.com/",
+        "finalUrl": "https://hk.onyxdevslab.com/",
+        "status": "compliant",
+        "reasons": []
+      }
+    ],
+    "githubPagesSetting": {
+      "checkedAt": "2026-09-12T23:07:00Z",
+      "httpsEnforced": false,
+      "source": "GitHub Pages API via authenticated collaborator access",
+      "mutationAuthorized": false
+    },
+    "eventFile": "events/2026-09-12T23-12-15.413Z-availability-change.json",
+    "meaning": "The Hong Kong host redirects HTTP to HTTPS and exposes the expected self-canonical URL. The GitHub Pages apex host serves content directly over HTTP, both www entry points lead to the HTTP apex, and the HTTPS www entry point downgrades to HTTP. GitHub Pages reports https_enforced=false. This is a technical canonicalization and transport-security defect; it does not negate the observed Yandex brand result or prove any search ranking effect. Enabling Enforce HTTPS requires repository-owner administration, and no DNS, CDN, Cloudflare, or Pages setting was changed by this observation."
   },
   "publicSearchMonitoring": {
     "yandex": {
@@ -702,11 +773,11 @@
     },
     {
       "name": "Latest immutable GEO monitor evidence checkpoint",
-      "url": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-monitor-evidence-2026-09-13-56"
+      "url": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-monitor-evidence-2026-09-13-57"
     },
     {
       "name": "Latest immutable AI-search evidence status",
-      "url": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-monitor-evidence-2026-09-13-56/ai-search-evidence-status.json"
+      "url": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-monitor-evidence-2026-09-13-57/ai-search-evidence-status.json"
     },
     {
       "name": "GitHub repository-search before-and-after baseline",

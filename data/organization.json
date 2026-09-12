@@ -248,13 +248,13 @@
     },
     {
       "@type": "Dataset",
-      "name": "Onyx GEO monitor evidence checkpoint — 2026-09-13, revision 56",
-      "description": "Provider-maintained snapshot of the schema version 3 fixed-prompt protocol, provider-verified crawler requests, crawl and archive coverage, classified attribution requests, services.hk readiness, and dated public and platform-search observations. It preserves the first observed Yandex exact-brand result for the official apex domain, whose canonical points to the Hong Kong site, without inferring Hong Kong subdomain indexing, AI citation, ranking, or non-brand recommendation.",
-      "url": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-monitor-evidence-2026-09-13-56",
-      "sameAs": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-monitor-evidence-2026-09-13-56/2026-09-11-monitor-evidence.json",
+      "name": "Onyx GEO monitor evidence checkpoint — 2026-09-13, revision 57",
+      "description": "Provider-maintained snapshot of crawler, archive, attribution, public-search, platform-search, services.hk and domain-canonicalization evidence. It preserves the Yandex exact-brand result and the automated finding that three of six domain entry points remain noncompliant because HTTP content or an HTTPS downgrade is exposed, without inferring ranking impact, AI citation, or non-brand recommendation.",
+      "url": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-monitor-evidence-2026-09-13-57",
+      "sameAs": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-monitor-evidence-2026-09-13-57/2026-09-11-monitor-evidence.json",
       "distribution": {
         "@type": "DataDownload",
-        "contentUrl": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-monitor-evidence-2026-09-13-56/ai-search-evidence-status.json",
+        "contentUrl": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-monitor-evidence-2026-09-13-57/ai-search-evidence-status.json",
         "encodingFormat": "application/json"
       },
       "dateModified": "2026-09-13"
