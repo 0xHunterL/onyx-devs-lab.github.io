@@ -142,7 +142,8 @@ for (const file of htmlFiles) {
   if (html.includes('"@type":"Article"')) {
     const published = expectedPublishedDate(pathname);
     const authorPath = lang === 'zh-CN' ? '/zh-cn/about/' : (lang === 'zh-Hant-HK' ? '/zh-hk/about/' : '/en/about/');
-    for (const required of [`"datePublished":"${published}"`, '"dateModified":"2026-09-11"', `"mainEntityOfPage":{"@id":"${canonical}"}`, '"articleSection":', `<a rel="author" href="${authorPath}">Onyx Devs Lab</a>`, `<time datetime="${published}">${published}</time>`, '<time datetime="2026-09-11">2026-09-11</time>']) {
+    const modified = pathname.includes('/methodology/ai-search-verification/') ? '2026-09-12' : '2026-09-11';
+    for (const required of [`"datePublished":"${published}"`, `"dateModified":"${modified}"`, `"mainEntityOfPage":{"@id":"${canonical}"}`, '"articleSection":', `<a rel="author" href="${authorPath}">Onyx Devs Lab</a>`, `<time datetime="${published}">${published}</time>`, `<time datetime="${modified}">${modified}</time>`]) {
       if (!html.includes(required)) failures.push(`${relative}: Article publication metadata is missing ${required}`);
     }
   }
@@ -605,14 +606,14 @@ if (!nginxConfig.includes('application/ld+json jsonld')) failures.push('nginx: J
 
 const sitemap = fs.readFileSync(path.join(dist, 'sitemap.xml'), 'utf8');
 const urls = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map((match) => match[1]);
-const currentLastmods = [...sitemap.matchAll(/<lastmod>2026-09-11<\/lastmod>/g)];
+const currentLastmods = [...sitemap.matchAll(/<lastmod>2026-09-(?:11|12)<\/lastmod>/g)];
 if (currentLastmods.length !== urls.length) failures.push(`sitemap: expected ${urls.length} current page lastmods, got ${currentLastmods.length}`);
 for (const pathname of ['/en/methodology/ai-search-verification/', '/zh-hk/methodology/ai-search-verification/', '/zh-cn/methodology/ai-search-verification/']) {
-  if (!sitemap.includes(`<loc>https://hk.onyxdevslab.com${pathname}</loc><lastmod>2026-09-11</lastmod>`)) failures.push(`${pathname}: sitemap lastmod does not reflect the substantive evidence update`);
+  if (!sitemap.includes(`<loc>https://hk.onyxdevslab.com${pathname}</loc><lastmod>2026-09-12</lastmod>`)) failures.push(`${pathname}: sitemap lastmod does not reflect the substantive evidence update`);
   const html = fs.readFileSync(path.join(dist, pathname, 'index.html'), 'utf8');
-  if ((html.match(/"dateModified":"2026-09-11"/g) || []).length < 2) failures.push(`${pathname}: Article and WebPage dateModified are stale`);
+  if ((html.match(/"dateModified":"2026-09-12"/g) || []).length < 2) failures.push(`${pathname}: Article and WebPage dateModified are stale`);
 }
-if (!machineDiscoveryFiles['feed.xml'].includes('<updated>2026-09-11T00:00:00+08:00</updated>')) failures.push('feed.xml: feed update date is stale');
+if (!machineDiscoveryFiles['feed.xml'].includes('<updated>2026-09-12T00:00:00+08:00</updated>')) failures.push('feed.xml: feed update date is stale');
 if (!machineDiscoveryFiles['feed.xml'].includes('<link href="https://hk.onyxdevslab.com/feed.xml" rel="self"/>') || !machineDiscoveryFiles['feed.xml'].includes('<link href="https://pubsubhubbub.appspot.com/" rel="hub"/>')) failures.push('feed.xml: WebSub self or hub discovery is missing');
 if (!machineDiscoveryFiles['feed.xml'].includes(`<id>https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-readiness-2026-09-10</id><link href="https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-readiness-2026-09-10"/><updated>2026-09-10T00:00:00+08:00</updated>`)) failures.push('feed.xml: readiness checkpoint entry date is stale');
 if (!machineDiscoveryFiles['feed.xml'].includes(`<id>https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-ai-rfp-template-2026-09-10</id><link href="https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-ai-rfp-template-2026-09-10"/><updated>2026-09-10T00:00:00+08:00</updated>`)) failures.push('feed.xml: AI RFP checkpoint entry date is stale');
@@ -622,10 +623,12 @@ if (!machineDiscoveryFiles['feed.xml'].includes(`<id>https://github.com/0xHunter
 for (const url of urls) {
   const pathname = new URL(url).pathname;
   const target = pathname === '/' ? path.join(dist, 'index.html') : path.join(dist, pathname, 'index.html');
+  const expectedModified = pathname.includes('/methodology/ai-search-verification/') ? '2026-09-12' : '2026-09-11';
+  if (!sitemap.includes(`<loc>${url}</loc><lastmod>${expectedModified}</lastmod>`)) failures.push(`${pathname}: sitemap lastmod is not scoped to the actual page update`);
   if (!fs.existsSync(target)) failures.push(`sitemap target missing: ${pathname}`);
   if (pathname !== '/' && fs.existsSync(target)) {
     const html = fs.readFileSync(target, 'utf8');
-    if (!html.includes('"@type":"WebPage"') || !html.includes('"dateModified":"2026-09-11"')) failures.push(`${pathname}: WebPage freshness is stale`);
+    if (!html.includes('"@type":"WebPage"') || !html.includes(`"dateModified":"${expectedModified}"`)) failures.push(`${pathname}: WebPage freshness is stale`);
   }
 }
 

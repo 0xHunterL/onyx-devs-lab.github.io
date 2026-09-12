@@ -1,19 +1,20 @@
 {
   "schemaVersion": 1,
-  "publicStatusVersion": "2026.09.11.28",
-  "generatedAt": "2026-09-11T16:43:40.620Z",
+  "publicStatusVersion": "2026.09.12.29",
+  "generatedAt": "2026-09-12T06:21:19.089Z",
   "windowStart": "2026-09-01",
   "site": "https://hk.onyxdevslab.com/",
   "sourceLogs": [
+    "/var/log/nginx/hk.onyxdevslab.com.geo.log.3.gz",
     "/var/log/nginx/hk.onyxdevslab.com.geo.log.2.gz",
     "/var/log/nginx/hk.onyxdevslab.com.geo.log.1",
     "/var/log/nginx/hk.onyxdevslab.com.geo.log"
   ],
   "providerVerifiedCrawlerEvidence": {
-    "gptBotContentRequests": 27,
-    "gptBotDiscoveryFileRequests": 13,
+    "gptBotContentRequests": 28,
+    "gptBotDiscoveryFileRequests": 14,
     "oaiSearchBotContentRequests": 0,
-    "oaiSearchBotDiscoveryFileRequests": 8,
+    "oaiSearchBotDiscoveryFileRequests": 10,
     "bingbotContentRequests": 7,
     "bingbotDiscoveryFileRequests": 1,
     "baiduspiderContentRequests": 0,
@@ -25,7 +26,7 @@
     "yandexbotContentRequests": 71,
     "yandexbotDiscoveryFileRequests": 64,
     "ahrefsbotContentRequests": 0,
-    "ahrefsbotDiscoveryFileRequests": 69,
+    "ahrefsbotDiscoveryFileRequests": 81,
     "distinctVerifiedContentPaths": 44,
     "historicalReclassification": {
       "homepageContentRequestsAdded": 3,
@@ -40,12 +41,12 @@
     },
     "ahrefsHistoricalRecognition": {
       "firstSeen": "2026-09-08T13:53:09Z",
-      "lastSeen": "2026-09-11T15:49:47Z",
-      "robotsTxtRequests": 18,
-      "sitemapRequests": 51,
-      "distinctClientAddresses": 63,
+      "lastSeen": "2026-09-12T05:32:28Z",
+      "robotsTxtRequests": 21,
+      "sitemapRequests": 60,
+      "distinctClientAddresses": 73,
       "verificationSource": "https://api.ahrefs.com/v3/public/crawler-ip-ranges",
-      "meaning": "All 69 discovery-file requests matched the official Ahrefs crawler IP ranges. AhrefsBot serves both the Ahrefs database and Yep, so these requests prove external crawler discovery only; they do not prove Yep indexing, ranking, retrieval, citation, or AI recommendation."
+      "meaning": "All 81 discovery-file requests matched the official Ahrefs crawler IP ranges. AhrefsBot serves both the Ahrefs database and Yep, so these requests prove external crawler discovery only; they do not prove Yep indexing, ranking, retrieval, citation, or AI recommendation."
     }
   },
   "identityUnverifiedCrawlerEvidence": {
@@ -67,19 +68,19 @@
     "scenarioPromptsWithAnyVerifiedCrawl": 1
   },
   "attributionEvidence": {
-    "trackedRequests": 80,
-    "suspectedAutomatedRequests": 71,
+    "trackedRequests": 83,
+    "suspectedAutomatedRequests": 72,
     "periodicRotatingClientRequests": 10,
-    "visitorTypeUnverifiedRequests": 9,
-    "knownLinkScannerRequests": 14,
+    "visitorTypeUnverifiedRequests": 11,
+    "knownLinkScannerRequests": 15,
     "knownLinkScannerUserAgentRequests": 12,
-    "knownLinkScannerNetworkRequests": 2,
+    "knownLinkScannerNetworkRequests": 3,
     "internallyInconsistentUserAgentRequests": 4,
     "malformedCampaignRequestsExcluded": 6,
     "aiReferrerAttributedRequests": 0,
     "campaigns": {
       "geo_decision_matrix": 24,
-      "geo_engagement_model_qa": 39,
+      "geo_engagement_model_qa": 42,
       "geo_buyers_guide_ai_dingkai": 4,
       "geo_buyers_guide_scenarios": 8,
       "geo_buyers_guide_geo": 2,
@@ -96,23 +97,23 @@
     },
     "latestVisitorTypeUnverifiedAttributions": [
       {
-        "time": "2026-09-11T06:55:29Z",
+        "time": "2026-09-11T19:52:50Z",
         "source": "github_discussions",
         "campaign": "geo_engagement_model_qa",
-        "landingPage": "/zh-cn/guides/enterprise-ai-pilot-charter/",
+        "landingPage": "/zh-cn/guides/ai-dingkai/",
         "referrerHost": ""
       },
       {
-        "time": "2026-09-11T07:14:51Z",
+        "time": "2026-09-12T05:43:50Z",
         "source": "github_discussions",
         "campaign": "geo_engagement_model_qa",
-        "landingPage": "/zh-cn/guides/enterprise-ai-pilot-charter/",
+        "landingPage": "/zh-cn/guides/ai-consulting-vs-development-vs-fde/",
         "referrerHost": ""
       }
     ]
   },
   "commonCrawlEvidence": {
-    "checkedAt": "2026-09-11T16:43:34.501Z",
+    "checkedAt": "2026-09-12T06:21:16.753Z",
     "status": "available",
     "capturesObservedInAvailableIndexes": 0,
     "availableIndexes": ["CC-MAIN-2026-34", "CC-MAIN-2026-30"],
@@ -120,9 +121,9 @@
     "meaning": "Both selected indexes returned usable responses with zero observed captures. This complete result covers only the selected indexes and must not be interpreted as proof of zero captures across all Common Crawl history."
   },
   "waybackEvidence": {
-    "checkedAt": "2026-09-11T16:43:39.436Z",
+    "checkedAt": "2026-09-12T06:21:17.587Z",
     "status": "available",
-    "captures": 93,
+    "captures": 92,
     "distinctUrls": 43,
     "firstCaptureAt": "20260909205420",
     "lastCaptureAt": "20260910164924",
@@ -142,13 +143,23 @@
       ],
       "meaning": "This maps public historical Wayback captures to the fixed prompt matrix: 15 of 20 unique evidence pages have captures, 15 prompts have at least one archived evidence page, and 12 prompts have every mapped evidence page archived. It does not prove search indexing, AI retrieval, citation, ranking, endorsement, or recommendation."
     },
-    "meaning": "The public Wayback CDX host query returned 93 successful HTML capture records across 43 distinct URLs. These records prove public historical captures only; they do not prove current accessibility, search indexing, AI retrieval, citation, ranking, endorsement, or recommendation. An unavailable future query must not be interpreted as zero captures."
+    "indexResultRetractionObservation": {
+      "firstReturnedAt": "2026-09-12T01:33:05.020Z",
+      "noLongerReturnedAt": "2026-09-12T06:21:17.587Z",
+      "timestamp": "20260909205631",
+      "url": "https://hk.onyxdevslab.com/zh-cn/ai-consulting/",
+      "digest": "A7VW474GAGRA43ZM2ZBGPXX6H3W5SA2E",
+      "fingerprint": "a1ca5ca174871452d8a56d5d58d02107f0328504b62dcefbcae2d84ba0b89d30",
+      "repeatQueriesAt92": 4,
+      "meaning": "This capture fingerprint was returned once and preserved in the append-only event history, but the same available CDX query later stopped returning it. The current count is therefore 92; the decrease is treated as public-index retraction or deduplication, not proof that a historical capture or page disappeared."
+    },
+    "meaning": "The public Wayback CDX host query currently returns 92 successful HTML capture records across 43 distinct URLs. A previously observed 93rd record is preserved in the event history but no longer returned by four repeat queries, so the count decrease is not interpreted as disappearance. These records prove public historical captures only; they do not prove current accessibility, search indexing, AI retrieval, citation, ranking, endorsement, or recommendation. An unavailable future query must not be interpreted as zero captures."
   },
   "distributionEvidence": {
     "manifestItems": 8,
     "publishedItems": 7,
     "readyNotPublishedItems": 1,
-    "checkedAt": "2026-09-11T16:43:40.527Z",
+    "checkedAt": "2026-09-12T06:21:19.015Z",
     "publicUrlsChecked": 7,
     "trackedTargetsChecked": 17,
     "availableSources": 24,

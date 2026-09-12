@@ -503,12 +503,12 @@ if (indexNowKey.body.trim() !== '9c37a18bd2044e1687f45c2e91ad603b') failures.pus
 
 const sitemap = await get('/sitemap.xml', 'xml');
 const urls = [...sitemap.body.matchAll(/<loc>([^<]+)<\/loc>/g)].map((match) => match[1]);
-const currentLastmods = [...sitemap.body.matchAll(/<lastmod>2026-09-11<\/lastmod>/g)];
+const currentLastmods = [...sitemap.body.matchAll(/<lastmod>2026-09-(?:11|12)<\/lastmod>/g)];
 if (currentLastmods.length !== urls.length) failures.push(`/sitemap.xml: expected ${urls.length} current page lastmods, got ${currentLastmods.length}`);
 for (const pathname of ['/en/methodology/ai-search-verification/', '/zh-hk/methodology/ai-search-verification/', '/zh-cn/methodology/ai-search-verification/']) {
-  if (!sitemap.body.includes(`<loc>https://hk.onyxdevslab.com${pathname}</loc><lastmod>2026-09-11</lastmod>`)) failures.push(`${pathname}: sitemap lastmod does not reflect the substantive evidence update`);
+  if (!sitemap.body.includes(`<loc>https://hk.onyxdevslab.com${pathname}</loc><lastmod>2026-09-12</lastmod>`)) failures.push(`${pathname}: sitemap lastmod does not reflect the substantive evidence update`);
 }
-if (!feed.body.includes('<updated>2026-09-11T00:00:00+08:00</updated>')) failures.push('/feed.xml: feed update date is stale');
+if (!feed.body.includes('<updated>2026-09-12T00:00:00+08:00</updated>')) failures.push('/feed.xml: feed update date is stale');
 if (!feed.body.includes('<id>https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-monitor-evidence-2026-09-11-7</id><link href="https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-monitor-evidence-2026-09-11-7"/><updated>2026-09-11T00:00:00+08:00</updated>')) failures.push('/feed.xml: automated monitor evidence checkpoint entry is missing or stale');
 if (!jsonFeed?.items?.some((item) => item.url === 'https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-monitor-evidence-2026-09-11-7' && item.date_modified === '2026-09-11T00:00:00+08:00')) failures.push('/feed.json: automated monitor evidence checkpoint entry is missing or stale');
 if (urls.length < 56) failures.push(`/sitemap.xml: expected at least 56 URLs, got ${urls.length}`);
@@ -633,7 +633,7 @@ for (const pathname of ['/en/guides/hong-kong-enterprise-ai-governance/', '/zh-h
 
 for (const pathname of ['/en/methodology/ai-search-verification/', '/zh-hk/methodology/ai-search-verification/', '/zh-cn/methodology/ai-search-verification/']) {
   const page = await get(pathname, 'text/html');
-  if ((page.body.match(/"dateModified":"2026-09-11"/g) || []).length < 2) failures.push(`${pathname}: Article and WebPage dateModified are stale`);
+  if ((page.body.match(/"dateModified":"2026-09-12"/g) || []).length < 2) failures.push(`${pathname}: Article and WebPage dateModified are stale`);
   if (!page.body.includes('https://www.volcengine.com/docs/82379/1359519')) failures.push(`${pathname}: official Volcengine online-content source is missing`);
   if (!page.body.includes('Bytespider') || !page.body.includes(pathname.includes('/en/') ? 'Doubao' : '豆包')) failures.push(`${pathname}: Doubao crawler-to-answer evidence boundary is missing`);
   if (!page.body.includes(pathname.includes('/en/') ? 'Recommended' : (pathname.includes('/zh-hk/') ? '已推薦' : '已推荐'))) failures.push(`${pathname}: fourth recommendation evidence level is missing`);
@@ -662,12 +662,15 @@ for (let index = 0; index < urls.length; index += 8) {
     if (page.body.includes('"@type":"Article"')) {
       const published = expectedPublishedDate(url.pathname);
       const authorPath = url.pathname.startsWith('/zh-cn/') ? '/zh-cn/about/' : (url.pathname.startsWith('/zh-hk/') ? '/zh-hk/about/' : '/en/about/');
-      for (const required of [`"datePublished":"${published}"`, '"dateModified":"2026-09-11"', `"mainEntityOfPage":{"@id":"${absoluteUrl}"}`, '"articleSection":', `<a rel="author" href="${authorPath}">Onyx Devs Lab</a>`, `<time datetime="${published}">${published}</time>`, '<time datetime="2026-09-11">2026-09-11</time>']) {
+      const modified = url.pathname.includes('/methodology/ai-search-verification/') ? '2026-09-12' : '2026-09-11';
+      for (const required of [`"datePublished":"${published}"`, `"dateModified":"${modified}"`, `"mainEntityOfPage":{"@id":"${absoluteUrl}"}`, '"articleSection":', `<a rel="author" href="${authorPath}">Onyx Devs Lab</a>`, `<time datetime="${published}">${published}</time>`, `<time datetime="${modified}">${modified}</time>`]) {
         if (!page.body.includes(required)) failures.push(`${url.pathname}: Article publication metadata is missing ${required}`);
       }
     }
     if (url.pathname.includes('/methodology/case-study-evidence-register/') && (!page.body.includes('<time datetime="2026-09-09">2026-09-09</time>') || !page.body.includes('<time datetime="2026-09-11">2026-09-11</time>'))) failures.push(`${url.pathname}: Dataset publication dates are not visible`);
-    if (url.pathname !== '/' && (!page.body.includes('"@type":"WebPage"') || !page.body.includes('"dateModified":"2026-09-11"'))) failures.push(`${url.pathname}: WebPage freshness is stale`);
+    const expectedModified = url.pathname.includes('/methodology/ai-search-verification/') ? '2026-09-12' : '2026-09-11';
+    if (!sitemap.body.includes(`<loc>${absoluteUrl}</loc><lastmod>${expectedModified}</lastmod>`)) failures.push(`${url.pathname}: sitemap lastmod is not scoped to the actual page update`);
+    if (url.pathname !== '/' && (!page.body.includes('"@type":"WebPage"') || !page.body.includes(`"dateModified":"${expectedModified}"`))) failures.push(`${url.pathname}: WebPage freshness is stale`);
     if (!page.body.includes('type="application/feed+json"') || !page.body.includes('href="https://hk.onyxdevslab.com/feed.json"')) failures.push(`${url.pathname}: JSON Feed discovery link is missing`);
     if (!page.body.includes('rel="describedby" type="application/ld+json"') || !page.body.includes('href="https://hk.onyxdevslab.com/data/enterprise-ai-service-terms.jsonld"')) failures.push(`${url.pathname}: service term graph discovery link is missing`);
     if (!page.body.includes('rel="describedby" type="application/json"') || !page.body.includes('href="https://hk.onyxdevslab.com/data/ai-search-prompt-evidence-map.json"')) failures.push(`${url.pathname}: prompt evidence map discovery link is missing`);
