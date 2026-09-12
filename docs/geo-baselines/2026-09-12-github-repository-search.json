@@ -1,0 +1,46 @@
+{
+  "schemaVersion": 1,
+  "testedAt": "2026-09-12T11:54:45Z",
+  "completedAt": "2026-09-12T11:54:49Z",
+  "provider": "GitHub Repository Search API",
+  "endpoint": "GET https://api.github.com/search/repositories",
+  "scope": "The name, description, and README fields of public GitHub repositories visible to the authenticated API caller; this is a GitHub platform-search observation, not a public-web or AI-search result.",
+  "queries": [
+    {
+      "query": "\"Onyx Devs Lab\" in:name,description,readme",
+      "totalCount": 4,
+      "firstPartyRepositoriesObserved": [
+        "0xHunterL/onyx-devs-lab.github.io",
+        "mixuechu/hong-kong-enterprise-ai-buyers-guide"
+      ],
+      "otherRepositoriesObserved": [
+        "HatchetMan111/DoodleNoteProxmox",
+        "imDev2023/agent-skills-index"
+      ]
+    },
+    {
+      "query": "\"ONYX DEVS LAB LIMITED\" in:name,description,readme",
+      "totalCount": 2,
+      "firstPartyRepositoriesObserved": [
+        "0xHunterL/onyx-devs-lab.github.io",
+        "mixuechu/hong-kong-enterprise-ai-buyers-guide"
+      ],
+      "otherRepositoriesObserved": []
+    },
+    {
+      "query": "\"Hong Kong AI consulting\" in:name,description,readme",
+      "totalCount": 0,
+      "firstPartyRepositoriesObserved": [],
+      "otherRepositoriesObserved": []
+    }
+  ],
+  "repositoryMetadataObservation": {
+    "repository": "0xHunterL/onyx-devs-lab.github.io",
+    "description": "",
+    "homepageUrl": "",
+    "repositoryTopics": null,
+    "writeAttemptResult": "HTTP 404 Not Found",
+    "meaning": "The current identity can read and push repository content but cannot administer repository settings. The missing metadata remains an owner-action gap."
+  },
+  "meaning": "GitHub platform search currently connects the brand and legal entity to two first-party repositories, while the exact English category phrase does not return a repository. This does not prove public-web indexing, AI retrieval, citation, ranking, independent endorsement, or non-brand recommendation."
+}

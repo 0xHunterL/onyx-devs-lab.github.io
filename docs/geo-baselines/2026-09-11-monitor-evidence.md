@@ -92,5 +92,6 @@
 - 2026-09-12T11:16:08Z，版本链审计发现当前 `ai-search-evidence-status.json` 已是 revision 44，但 `versionHistory` 仍只指向 2026-09-11 的旧不可变状态，没有连接当天已发布且校验过 SHA-256 的 revision 41 Release 资产。revision 45 将 revision 41 状态设为最近不可变检查点、保留 revision 8 为更早检查点，并把 Release 与状态资产加入 `evidenceSources`；离线及线上门禁逐项锁定版本、关系和 URL。此次仅修复当前状态到最近不可变证据的可追溯关系，爬虫、公开归档、搜索结果、AI 引用和非品牌推荐证据均未增加。
 
 - 2026-09-12T11:28:09.482Z，生产采集识别到 `11:24:08Z` 一次此前未见的 AhrefsBot 已核验请求：访问 `sitemap.xml`、返回 HTTP `200`，来源命中 Ahrefs 官方 IP 范围。AhrefsBot 已核验发现文件累计从 85 增至 86，其中 `robots.txt` 22 次、`sitemap.xml` 64 次；客户端地址去重数仍为 77，正文请求仍为 0。事件保存为 `events/2026-09-12T11-28-09.482Z-evidence-change.json`，revision 46 同步该事实；它只证明外部爬虫读取发现文件，不证明 Yep 或任何搜索／AI 产品已经收录、检索、引用、排名或推荐。
-
 - 2026-09-12T11:34:41Z，实体关系审计发现规范组织 JSON 中 5 个 Person 节点的 `url` 均指向英文团队页的姓名片段，但页面没有对应 HTML `id`，因此这些人物 URL 虽返回页面却不能定位到声明的成员。三语团队页现为每位成员增加同名稳定锚点，组织记录继续使用英文规范 URL；离线和线上门禁同时验证 5 个 Person URL 与 15 个可见锚点。后续 Sitemap 审计还发现这三页的 `lastmod` 与 JSON-LD `dateModified` 未反映本次实质性标记变化，现只把团队页和同日更新的验证方法页标为 2026-09-12，其余 65 页继续保留 2026-09-11。该修复使人物—组织关系及其真实更新时间可解析，不新增履历或能力声明，也不证明搜索收录、AI 引用或推荐。
+
+- 2026-09-12T11:54:45Z 至 `11:54:49Z`，使用 GitHub Repository Search API 对公开仓库的名称、Description 与 README 做平台内复测：精确品牌词 `"Onyx Devs Lab"` 返回 4 项，其中主站源码仓库与香港企业 AI 采购指南为两项第一方结果；精确法律主体词 `"ONYX DEVS LAB LIMITED"` 只返回这两项第一方仓库；精确类目词 `"Hong Kong AI consulting"` 返回 0 项。同期 API 回读确认主仓库 Description、Website 与 Topics 仍为空，设置写入继续因当前身份缺少管理权限返回 HTTP `404`。机器可读原始结果见 [`2026-09-12-github-repository-search.json`](./2026-09-12-github-repository-search.json)。这只证明 GitHub 站内品牌与法律实体检索，不证明公网搜索收录、AI 检索或引用、排名、独立背书或非品牌推荐。
