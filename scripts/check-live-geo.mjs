@@ -193,6 +193,8 @@ if (/^\s*Disallow:\s*\/\s*$/im.test(robots.body)) failures.push('/robots.txt: br
 
 const llms = await get('/llms.txt', 'text/plain');
 if (!llms.body.includes('# Onyx Devs Lab')) failures.push('/llms.txt: expected site summary is missing');
+if (!llms.body.includes('Legal entity: ONYX DEVS LAB LIMITED') || !llms.body.includes('Hong Kong business registration number: 79051925') || !llms.body.includes('Legal Entity Identifier (LEI): 254900Z30CLK7HKE9H46')) failures.push('/llms.txt: direct verified entity identifiers are missing');
+if (llms.body.includes('Current crawler and offsite-referral evidence checkpoint') || !llms.body.includes('Historical crawler and offsite-referral evidence checkpoint — 2026-09-10') || !llms.body.includes('For the latest observations, use the current machine-readable AI-search evidence status linked above.')) failures.push('/llms.txt: historical crawler checkpoint is mislabeled as current or lacks a current-status boundary');
 
 const llmsFull = await get('/llms-full.txt', 'text/plain');
 if (!llmsFull.body.includes('Legal entity: ONYX DEVS LAB LIMITED')) failures.push('/llms-full.txt: verified entity summary is missing');

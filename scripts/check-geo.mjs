@@ -288,6 +288,8 @@ for (const name of ['llms.txt', 'llms-full.txt']) {
   if (!machineDiscoveryFiles[name].includes('https://hk.onyxdevslab.com/data/chinese-enterprise-ai-field-notes.json')) failures.push(`${name}: Chinese field-note index is missing`);
   if (!machineDiscoveryFiles[name].includes('https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/chinese-enterprise-ai-field-notes-2026-09-10/chinese-enterprise-ai-field-notes.json')) failures.push(`${name}: versioned Chinese field-note index is missing`);
 }
+if (!machineDiscoveryFiles['llms.txt'].includes('Legal entity: ONYX DEVS LAB LIMITED') || !machineDiscoveryFiles['llms.txt'].includes('Hong Kong business registration number: 79051925') || !machineDiscoveryFiles['llms.txt'].includes('Legal Entity Identifier (LEI): 254900Z30CLK7HKE9H46')) failures.push('llms.txt: direct verified entity identifiers are missing');
+if (machineDiscoveryFiles['llms.txt'].includes('Current crawler and offsite-referral evidence checkpoint') || !machineDiscoveryFiles['llms.txt'].includes('Historical crawler and offsite-referral evidence checkpoint — 2026-09-10') || !machineDiscoveryFiles['llms.txt'].includes('For the latest observations, use the current machine-readable AI-search evidence status linked above.')) failures.push('llms.txt: historical crawler checkpoint is mislabeled as current or lacks a current-status boundary');
 if (!machineDiscoveryFiles['feed.xml'].includes('provider-maintained-external-source')) failures.push('feed.xml: external-source category is missing');
 if (!machineDiscoveryFiles['feed.xml'].includes('independent-archive')) failures.push('feed.xml: independent archive category is missing');
 const aiDingkaiHtml = fs.readFileSync(path.join(dist, 'zh-cn/guides/ai-dingkai/index.html'), 'utf8');
