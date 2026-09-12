@@ -215,6 +215,29 @@ export function buildServicesHkAvailability(report) {
   };
 }
 
+export function buildDomainCanonicalizationAvailability(report) {
+  const sources = (report?.results || [])
+    .map((result) => ({
+      id: result.id || result.startUrl || 'unknown',
+      status: result.status || 'unavailable',
+      httpStatus: Number.isInteger(result.finalStatus) ? result.finalStatus : null,
+      reason: result.status === 'compliant' ? null : (result.reasons || []).join(',') || 'unavailable',
+    }))
+    .sort((left, right) => left.id.localeCompare(right.id));
+  return {
+    status: report?.status || 'unavailable',
+    canonicalOrigin: report?.canonicalOrigin || null,
+    sourcesChecked: sources.length,
+    compliantSources: sources.filter((source) => source.status === 'compliant').length,
+    noncompliantSources: sources.filter((source) => source.status === 'noncompliant').length,
+    unavailableSources: sources.filter((source) => source.status === 'unavailable').length,
+    sources,
+    interpretation: report?.status === 'compliant'
+      ? 'All monitored domain entry points remain on HTTPS and expose the Hong Kong canonical origin.'
+      : 'At least one monitored domain entry point is unavailable, serves content over HTTP, downgrades HTTPS, or exposes a mismatched canonical target.',
+  };
+}
+
 function availabilityCoverage(value, useDetailedIndexes) {
   if (useDetailedIndexes) {
     return {

@@ -1,5 +1,5 @@
 import assert from 'node:assert/strict';
-import { buildAvailabilityChanges, buildCommonCrawlAvailability, buildCrawlerVerificationAvailability, buildDistributionAvailability, buildEvidenceCounts, buildEvidenceDeltas, buildServicesHkAvailability, buildWaybackAvailability, preserveAppendOnlyCrawlerCounts, selectEvidenceEventKind } from './geo-evidence-summary.mjs';
+import { buildAvailabilityChanges, buildCommonCrawlAvailability, buildCrawlerVerificationAvailability, buildDistributionAvailability, buildDomainCanonicalizationAvailability, buildEvidenceCounts, buildEvidenceDeltas, buildServicesHkAvailability, buildWaybackAvailability, preserveAppendOnlyCrawlerCounts, selectEvidenceEventKind } from './geo-evidence-summary.mjs';
 
 const crawlerTotals = {
   verifiedGptBotPageCrawls: 24,
@@ -190,6 +190,20 @@ assert.equal(newlyMonitoredServicesHk.length, 1);
 assert.equal(newlyMonitoredServicesHk[0].previousStatus, 'unmonitored');
 assert.equal(newlyMonitoredServicesHk[0].coverageChanged, true);
 
+const noncompliantDomainCanonicalization = buildDomainCanonicalizationAvailability({
+  status: 'noncompliant',
+  canonicalOrigin: 'https://hk.onyxdevslab.com/',
+  results: [
+    { id: 'http-apex', status: 'noncompliant', finalStatus: 200, reasons: ['http-serves-content-without-redirect'] },
+    { id: 'https-hk', status: 'compliant', finalStatus: 200, reasons: [] },
+  ],
+});
+assert.equal(noncompliantDomainCanonicalization.status, 'noncompliant');
+assert.equal(noncompliantDomainCanonicalization.compliantSources, 1);
+assert.equal(noncompliantDomainCanonicalization.noncompliantSources, 1);
+assert.equal(noncompliantDomainCanonicalization.sources[0].reason, 'http-serves-content-without-redirect');
+assert.match(noncompliantDomainCanonicalization.interpretation, /HTTP/);
+
 const statusAndCoverageChange = buildAvailabilityChanges(
   { commonCrawl: partialCommonCrawl },
   { commonCrawl: availableCommonCrawl },
@@ -228,4 +242,4 @@ assert.equal(selectEvidenceEventKind({ initializing: false, evidenceChanged: tru
 assert.equal(selectEvidenceEventKind({ initializing: false, evidenceChanged: false, availabilityChanged: true }), 'availability-change');
 assert.equal(selectEvidenceEventKind({ initializing: false, evidenceChanged: false, availabilityChanged: false }), null);
 
-console.log(JSON.stringify({ tests: 83, failures: [] }, null, 2));
+console.log(JSON.stringify({ tests: 88, failures: [] }, null, 2));

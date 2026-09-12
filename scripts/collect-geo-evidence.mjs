@@ -2,7 +2,7 @@ import { spawn } from 'node:child_process';
 import { mkdir, readFile, readdir, rename, unlink, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { buildAvailabilityChanges, buildCommonCrawlAvailability, buildCrawlerVerificationAvailability, buildDistributionAvailability, buildEvidenceCounts, buildEvidenceDeltas, buildServicesHkAvailability, buildWaybackAvailability, preserveAppendOnlyCrawlerCounts, selectEvidenceEventKind } from './geo-evidence-summary.mjs';
+import { buildAvailabilityChanges, buildCommonCrawlAvailability, buildCrawlerVerificationAvailability, buildDistributionAvailability, buildDomainCanonicalizationAvailability, buildEvidenceCounts, buildEvidenceDeltas, buildServicesHkAvailability, buildWaybackAvailability, preserveAppendOnlyCrawlerCounts, selectEvidenceEventKind } from './geo-evidence-summary.mjs';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const args = process.argv.slice(2);
@@ -95,6 +95,7 @@ const wayback = await runJson('report-wayback.mjs', ['--host=hk.onyxdevslab.com'
 const distribution = await runJson('check-distribution-live.mjs', ['--report']);
 const servicesHk = await runJson('check-services-hk.mjs', ['--report']);
 const githubRepositorySearch = await runJson('report-github-repository-search.mjs', []);
+const domainCanonicalization = await runJson('check-domain-canonicalization.mjs', []);
 
 const crawlerTemporary = path.join(outputDir, `.crawler-report-${process.pid}.json`);
 await writeFile(crawlerTemporary, `${JSON.stringify(crawler, null, 2)}\n`, { mode: 0o640 });
@@ -111,6 +112,7 @@ const waybackAvailability = buildWaybackAvailability(wayback);
 const crawlerVerificationAvailability = buildCrawlerVerificationAvailability(crawler);
 const distributionAvailability = buildDistributionAvailability(distribution);
 const servicesHkAvailability = buildServicesHkAvailability(servicesHk);
+const domainCanonicalizationAvailability = buildDomainCanonicalizationAvailability(domainCanonicalization);
 const githubRepositorySearchAvailability = {
   status: githubRepositorySearch.status,
   sourcesChecked: githubRepositorySearch.queriesChecked,
@@ -121,7 +123,7 @@ const githubRepositorySearchAvailability = {
     ? 'All fixed GitHub repository-search queries returned usable results.'
     : 'GitHub repository-search coverage is incomplete; unavailable queries must not be interpreted as zero results.',
 };
-const availability = { commonCrawl: commonCrawlAvailability, wayback: waybackAvailability, crawlerVerification: crawlerVerificationAvailability, distribution: distributionAvailability, servicesHk: servicesHkAvailability, githubRepositorySearch: githubRepositorySearchAvailability };
+const availability = { commonCrawl: commonCrawlAvailability, wayback: waybackAvailability, crawlerVerification: crawlerVerificationAvailability, distribution: distributionAvailability, servicesHk: servicesHkAvailability, githubRepositorySearch: githubRepositorySearchAvailability, domainCanonicalization: domainCanonicalizationAvailability };
 const availabilityChanges = buildAvailabilityChanges(availability, previous?.availability);
 const priorCounts = previous?.counts || {};
 const metricForCrawlerObservation = (observation) => {
@@ -264,6 +266,7 @@ if (eventFile) await atomicJson(eventFile, {
   distribution,
   servicesHk,
   githubRepositorySearch,
+  domainCanonicalization,
   promptCoverage,
 });
 await atomicJson('seen-evidence.json', {
@@ -278,6 +281,7 @@ await atomicJson('wayback-report.json', wayback);
 await atomicJson('distribution-live-report.json', distribution);
 await atomicJson('services-hk-report.json', servicesHk);
 await atomicJson('github-repository-search-report.json', githubRepositorySearch);
+await atomicJson('domain-canonicalization-report.json', domainCanonicalization);
 await atomicJson('prompt-crawl-coverage.json', promptCoverage);
 await atomicJson('summary.json', summary);
 console.log(JSON.stringify(summary, null, 2));
