@@ -54,6 +54,30 @@ export function buildEvidenceDeltas(counts, previousCounts) {
   ]));
 }
 
+const appendOnlyCrawlerMetric = /^verified(?:GptBot|OaiSearchBot|Bing|Baidu|Google|Perplexity|CommonCrawl|Apple|Yandex|Ahrefs)(?:Page|DiscoveryFile)Crawls$/;
+
+export function preserveAppendOnlyCrawlerCounts(currentCounts, previousCounts, newEvidenceByMetric, hasSeenLedger) {
+  const counts = { ...currentCounts };
+  const retentionAdjustments = [];
+  if (!previousCounts || !hasSeenLedger) return { counts, retentionAdjustments };
+
+  for (const [metric, current] of Object.entries(currentCounts)) {
+    if (!appendOnlyCrawlerMetric.test(metric) && metric !== 'verifiedContentPaths') continue;
+    const newlyObserved = metric === 'verifiedContentPaths' ? 0 : Number(newEvidenceByMetric?.get(metric) || 0);
+    const cumulativeFloor = Number(previousCounts[metric] || 0) + newlyObserved;
+    if (Number(current) >= cumulativeFloor) continue;
+    counts[metric] = cumulativeFloor;
+    retentionAdjustments.push({
+      metric,
+      retainedLogCount: Number(current),
+      cumulativeCount: cumulativeFloor,
+      newlyObserved,
+      reason: 'Previously verified evidence is retained after its source log rotates out of the current file set.',
+    });
+  }
+  return { counts, retentionAdjustments };
+}
+
 export function buildCommonCrawlAvailability(commonCrawl) {
   const results = Array.isArray(commonCrawl?.results) ? commonCrawl.results : [];
   const available = results.filter((result) => result.status === 'available');

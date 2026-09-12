@@ -1,5 +1,5 @@
 import assert from 'node:assert/strict';
-import { buildAvailabilityChanges, buildCommonCrawlAvailability, buildCrawlerVerificationAvailability, buildDistributionAvailability, buildEvidenceCounts, buildEvidenceDeltas, buildWaybackAvailability, selectEvidenceEventKind } from './geo-evidence-summary.mjs';
+import { buildAvailabilityChanges, buildCommonCrawlAvailability, buildCrawlerVerificationAvailability, buildDistributionAvailability, buildEvidenceCounts, buildEvidenceDeltas, buildWaybackAvailability, preserveAppendOnlyCrawlerCounts, selectEvidenceEventKind } from './geo-evidence-summary.mjs';
 
 const crawlerTotals = {
   verifiedGptBotPageCrawls: 24,
@@ -81,6 +81,31 @@ assert.equal(deltas.suspectedAutomatedTrackedVisits, 1);
 assert.equal(deltas.humanUnverifiedTrackedVisits, 0);
 assert.equal(deltas.knownLinkScannerTrackedVisits, null);
 assert.equal(buildEvidenceDeltas(counts, null).knownLinkScannerTrackedVisits, 0);
+
+const rotatedCrawlerCounts = preserveAppendOnlyCrawlerCounts(
+  { verifiedYandexPageCrawls: 70, verifiedYandexDiscoveryFileCrawls: 64, verifiedContentPaths: 44, trackedVisits: 82 },
+  { verifiedYandexPageCrawls: 71, verifiedYandexDiscoveryFileCrawls: 64, verifiedContentPaths: 44, trackedVisits: 83 },
+  new Map(),
+  true,
+);
+assert.equal(rotatedCrawlerCounts.counts.verifiedYandexPageCrawls, 71);
+assert.equal(rotatedCrawlerCounts.counts.trackedVisits, 82);
+assert.deepEqual(rotatedCrawlerCounts.retentionAdjustments[0], {
+  metric: 'verifiedYandexPageCrawls',
+  retainedLogCount: 70,
+  cumulativeCount: 71,
+  newlyObserved: 0,
+  reason: 'Previously verified evidence is retained after its source log rotates out of the current file set.',
+});
+const rotatedWithNewCrawlerEvidence = preserveAppendOnlyCrawlerCounts(
+  { verifiedYandexPageCrawls: 70 },
+  { verifiedYandexPageCrawls: 71 },
+  new Map([['verifiedYandexPageCrawls', 1]]),
+  true,
+);
+assert.equal(rotatedWithNewCrawlerEvidence.counts.verifiedYandexPageCrawls, 72);
+assert.equal(rotatedWithNewCrawlerEvidence.retentionAdjustments[0].newlyObserved, 1);
+assert.equal(preserveAppendOnlyCrawlerCounts({ verifiedYandexPageCrawls: 70 }, { verifiedYandexPageCrawls: 71 }, new Map(), false).counts.verifiedYandexPageCrawls, 70);
 
 const partialCommonCrawl = buildCommonCrawlAvailability({
   collectionIndexStatus: 'available',
@@ -186,4 +211,4 @@ assert.equal(selectEvidenceEventKind({ initializing: false, evidenceChanged: tru
 assert.equal(selectEvidenceEventKind({ initializing: false, evidenceChanged: false, availabilityChanged: true }), 'availability-change');
 assert.equal(selectEvidenceEventKind({ initializing: false, evidenceChanged: false, availabilityChanged: false }), null);
 
-console.log(JSON.stringify({ tests: 69, failures: [] }, null, 2));
+console.log(JSON.stringify({ tests: 75, failures: [] }, null, 2));

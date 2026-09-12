@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "publicStatusVersion": "2026.09.12.33",
-  "generatedAt": "2026-09-12T07:18:18Z",
+  "publicStatusVersion": "2026.09.12.34",
+  "generatedAt": "2026-09-12T07:21:47.271Z",
   "windowStart": "2026-09-01",
   "site": "https://hk.onyxdevslab.com/",
   "sourceLogs": [
@@ -113,18 +113,12 @@
     ]
   },
   "commonCrawlEvidence": {
-    "checkedAt": "2026-09-12T07:07:04.280Z",
-    "status": "partial",
+    "checkedAt": "2026-09-12T07:21:45.323Z",
+    "status": "available",
     "capturesObservedInAvailableIndexes": 0,
-    "availableIndexes": ["CC-MAIN-2026-30"],
-    "unavailableIndexes": [
-      {
-        "id": "CC-MAIN-2026-34",
-        "httpStatus": 504,
-        "reason": "HTTP 504"
-      }
-    ],
-    "meaning": "CC-MAIN-2026-30 returned a usable zero-capture response while CC-MAIN-2026-34 returned HTTP 504. The result is incomplete and must not be interpreted as a verified zero across the selected indexes or all Common Crawl history."
+    "availableIndexes": ["CC-MAIN-2026-34", "CC-MAIN-2026-30"],
+    "unavailableIndexes": [],
+    "meaning": "CC-MAIN-2026-34 and CC-MAIN-2026-30 both returned usable zero-capture responses. This complete result covers only the two selected indexes; it does not represent all Common Crawl history or prove absence from search or AI systems."
   },
   "waybackEvidence": {
     "checkedAt": "2026-09-12T07:07:06.457Z",

@@ -63,7 +63,7 @@ Wayback 查询可用时，捕获数减少也不能自动解释成快照或页面
 
 生产 timer 使用每天四个固定 UTC 时间窗口并保留 `Persistent=true` 与开机补跑。不得改回以 `OnUnitActiveSec` 为基准的相对周期：人工复测也会更新服务活动时间，持续人工检查可能反复推迟下一次自动采集。固定日历计划不受手工启动影响，并通过最多十分钟随机延迟分散请求。
 
-GitHub 发布工作流在部署前运行 `geo:test`，当前共 182 项，覆盖站点生成、监测摘要、爬虫身份与路径分类、引荐自动化分类、Wayback CDX 及固定提示词归档覆盖解析，以及发布漂移的同步、故障与不可用索引标识完整性样例。任何回归都会阻止 Pages 部署；测试通过只证明这些分类和门禁按固定样例工作，不证明外部平台已经抓取、收录或引用。
+GitHub 发布工作流在部署前运行 `geo:test`，当前共 188 项，覆盖站点生成、监测摘要、爬虫身份与路径分类、引荐自动化分类、Wayback CDX、固定提示词归档覆盖解析、日志轮转后的已核验指纹累计，以及发布漂移的同步、故障与不可用索引标识完整性样例。任何回归都会阻止 Pages 部署；测试通过只证明这些分类和门禁按固定样例工作，不证明外部平台已经抓取、收录或引用。
 
 用于 OpenAI、Perplexity、Common Crawl 与 Applebot 身份核验的官方 IP 前缀清单分别记录在爬虫报告的 `verificationSources` 与摘要的 `availability.crawlerVerification` 中。[Apple 官方说明](https://support.apple.com/en-gb/119829)可以使用 `*.applebot.apple.com` 双向 DNS 或其[公开 CIDR JSON](https://search.developer.apple.com/applebot.json)识别 Applebot；生产监测使用后者。[百度搜索资源平台官方说明](https://ziyuan.baidu.com/college/documentinfo?id=1399)要求用反向 DNS 检查主机名是否以 `*.baidu.com` 或 `*.baidu.jp` 结尾，并明确不应依赖静态 IP 池；生产监测在此规则之上增加一次正向解析回原 IP 的防伪确认。远端清单超时、返回错误或格式无效时，报告器会重试并把依赖该清单的候选请求标为 `providerVerified: null` 与 `verificationUnavailable: true`；它不会把候选误判为官方，也不会让单一来源故障阻断其余爬虫、归因、提示词覆盖和 Common Crawl 捕获报告。[Anthropic 官方说明](https://support.anthropic.com/en/articles/8896518-does-anthropic-crawl-data-from-the-web-and-how-can-site-owners-block-the-crawler)目前明确表示不发布 Claude 系列爬虫 IP 范围，因此 ClaudeBot、Claude-SearchBot 与 Claude-User 仍只能保留为 User-Agent 候选。清单恢复或可用来源集合改变时会产生可用性事件，但这不是新的抓取或可见性证据。
 
