@@ -19,7 +19,7 @@ export function buildExpectedDistributionSources(manifest) {
     .sort((left, right) => left.id.localeCompare(right.id));
 }
 
-export function buildPublicationDrift(baseline, summary, { distributionManifest } = {}) {
+export function buildPublicationDrift(baseline, summary, { distributionManifest, promptCoverageBaseline } = {}) {
   const mismatches = [];
   const check = (field, published, collected) => {
     if (comparable(published) !== comparable(collected)) mismatches.push({ field, published, collected });
@@ -79,6 +79,18 @@ export function buildPublicationDrift(baseline, summary, { distributionManifest 
     ['attributionEvidence.aiReferrerAttributedRequests', attribution.aiReferrerAttributedRequests, counts.aiReferrerAttributedVisits],
   ];
   for (const mapping of countMappings) check(...mapping);
+  if (promptCoverageBaseline) {
+    check(
+      'fixedPromptCoverage.verifiedCrawledEvidenceUrls',
+      [...(promptCoverageBaseline.verifiedCrawledEvidenceUrls || [])].sort(),
+      [...(collectedEvidenceSets.promptVerifiedCrawledEvidenceUrls || [])].sort(),
+    );
+    check(
+      'fixedPromptCoverage.searchRelatedCrawledEvidenceUrls',
+      [...(promptCoverageBaseline.searchRelatedCrawledEvidenceUrls || [])].sort(),
+      [...(collectedEvidenceSets.promptSearchRelatedCrawledEvidenceUrls || [])].sort(),
+    );
+  }
   if (collectedCommonCrawl.status !== 'unavailable') check('commonCrawlEvidence.capturesObservedInAvailableIndexes', commonCrawl.capturesObservedInAvailableIndexes, counts.commonCrawlCaptures);
   if (collectedWayback.status === 'available') {
     check('waybackEvidence.captures', wayback.captures, counts.waybackCaptures);

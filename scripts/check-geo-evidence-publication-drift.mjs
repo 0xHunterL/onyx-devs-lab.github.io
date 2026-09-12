@@ -7,13 +7,15 @@ const valueArg = (name, fallback) => args.find((arg) => arg.startsWith(`${name}=
 const baselinePath = path.resolve(valueArg('--baseline', 'docs/geo-baselines/2026-09-11-monitor-evidence.json'));
 const summaryPath = path.resolve(valueArg('--summary', '/var/lib/onyx-geo/summary.json'));
 const distributionManifestPath = path.resolve(valueArg('--distribution-manifest', 'geo/distribution-manifest.json'));
+const promptCoverageBaselinePath = path.resolve(valueArg('--prompt-coverage-baseline', 'docs/geo-baselines/2026-09-11-prompt-crawl-coverage.json'));
 const outputValue = valueArg('--output', '');
 const outputPath = outputValue ? path.resolve(outputValue) : '';
 
 const baseline = JSON.parse(await readFile(baselinePath, 'utf8'));
 const summary = JSON.parse(await readFile(summaryPath, 'utf8'));
 const distributionManifest = JSON.parse(await readFile(distributionManifestPath, 'utf8'));
-const report = buildPublicationDrift(baseline, summary, { distributionManifest });
+const promptCoverageBaseline = JSON.parse(await readFile(promptCoverageBaselinePath, 'utf8'));
+const report = buildPublicationDrift(baseline, summary, { distributionManifest, promptCoverageBaseline });
 
 if (outputPath) {
   const temporary = `${outputPath}.tmp-${process.pid}`;

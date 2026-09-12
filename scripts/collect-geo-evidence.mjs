@@ -212,6 +212,8 @@ const platformSearch = {
   evidenceBoundary: githubRepositorySearch.evidenceBoundary,
 };
 const evidenceSets = {
+  promptVerifiedCrawledEvidenceUrls: [...(promptCoverage.verifiedCrawledEvidenceUrls || [])].sort(),
+  promptSearchRelatedCrawledEvidenceUrls: [...(promptCoverage.searchRelatedCrawledEvidenceUrls || [])].sort(),
   waybackMissingEvidenceUrls: wayback.status === 'available'
     ? [...(wayback.promptCoverage?.missingEvidenceUrls || [])].sort()
     : [],

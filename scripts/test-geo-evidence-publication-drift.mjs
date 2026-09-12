@@ -4,6 +4,7 @@ import { buildExpectedDistributionSources, buildPublicationDrift } from './geo-e
 
 const baseline = JSON.parse(await readFile('docs/geo-baselines/2026-09-11-monitor-evidence.json', 'utf8'));
 const distributionManifest = JSON.parse(await readFile('geo/distribution-manifest.json', 'utf8'));
+const promptCoverageBaseline = JSON.parse(await readFile('docs/geo-baselines/2026-09-11-prompt-crawl-coverage.json', 'utf8'));
 const provider = baseline.providerVerifiedCrawlerEvidence;
 const attribution = baseline.attributionEvidence;
 const prompt = baseline.fixedPromptCoverage;
@@ -15,6 +16,8 @@ const githubRepositorySearch = baseline.githubRepositorySearchEvidence;
 const summary = {
   generatedAt: baseline.generatedAt,
   evidenceSets: {
+    promptVerifiedCrawledEvidenceUrls: structuredClone(promptCoverageBaseline.verifiedCrawledEvidenceUrls),
+    promptSearchRelatedCrawledEvidenceUrls: structuredClone(promptCoverageBaseline.searchRelatedCrawledEvidenceUrls),
     waybackMissingEvidenceUrls: structuredClone(wayback.fixedPromptArchiveCoverage.missingEvidenceUrls),
   },
   sourceLogs: structuredClone(baseline.crawlerEvidenceAccounting.currentRetainedLogPaths),
@@ -104,7 +107,7 @@ const summary = {
   },
 };
 
-const synchronized = buildPublicationDrift(baseline, summary, { distributionManifest });
+const synchronized = buildPublicationDrift(baseline, summary, { distributionManifest, promptCoverageBaseline });
 assert.ok(commonCrawl.unavailableIndexes.every((item) => typeof item?.id === 'string' && item.id.length > 0));
 assert.equal(synchronized.status, 'synchronized');
 assert.deepEqual(synchronized.mismatches, []);
@@ -122,6 +125,10 @@ assert.deepEqual(referralReport.mismatches, [{
 const crawlerDrift = structuredClone(summary);
 crawlerDrift.counts.verifiedGptBotPageCrawls += 1;
 assert.equal(buildPublicationDrift(baseline, crawlerDrift).mismatches[0].field, 'providerVerifiedCrawlerEvidence.gptBotContentRequests');
+
+const promptCoverageUrlReplacement = structuredClone(summary);
+promptCoverageUrlReplacement.evidenceSets.promptVerifiedCrawledEvidenceUrls[0] = 'https://hk.onyxdevslab.com/zh-cn/replacement/';
+assert.equal(buildPublicationDrift(baseline, promptCoverageUrlReplacement, { promptCoverageBaseline }).mismatches[0].field, 'fixedPromptCoverage.verifiedCrawledEvidenceUrls');
 
 const crawlerVerificationUnavailable = structuredClone(summary);
 crawlerVerificationUnavailable.availability.crawlerVerification.status = 'partial';
@@ -217,4 +224,4 @@ const unavailableArchiveFields = buildPublicationDrift(baseline, unavailableArch
 assert.ok(!unavailableArchiveFields.some((field) => field.startsWith('waybackEvidence.') && field !== 'waybackEvidence.status'));
 assert.ok(!unavailableArchiveFields.includes('commonCrawlEvidence.capturesObservedInAvailableIndexes'));
 
-console.log(JSON.stringify({ tests: 24, failures: [] }, null, 2));
+console.log(JSON.stringify({ tests: 25, failures: [] }, null, 2));
