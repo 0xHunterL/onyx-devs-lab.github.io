@@ -191,6 +191,30 @@ export function buildDistributionAvailability(distribution) {
   };
 }
 
+export function buildServicesHkAvailability(report) {
+  const sources = (report?.results || [])
+    .map((result) => ({
+      id: result.id || result.url || 'unknown',
+      status: result.status === 'available' ? 'available' : 'unavailable',
+      httpStatus: Number.isInteger(result.httpStatus) ? result.httpStatus : null,
+      reason: result.status === 'available' ? null : result.reason || 'service-detail-unusable',
+    }))
+    .sort((left, right) => left.id.localeCompare(right.id));
+  const availableSources = sources.filter((source) => source.status === 'available').length;
+  const unavailableSources = sources.length - availableSources;
+  const status = !sources.length || !availableSources ? 'unavailable' : unavailableSources ? 'partial' : 'available';
+  return {
+    status,
+    sourcesChecked: sources.length,
+    availableSources,
+    unavailableSources,
+    sources,
+    interpretation: status === 'available'
+      ? 'All sampled services.hk detail templates are readable and free of the known PHP application failure; submission still requires current user confirmation.'
+      : 'At least one sampled services.hk detail template is unusable; HTTP 200 alone is not treated as channel readiness.',
+  };
+}
+
 function availabilityCoverage(value, useDetailedIndexes) {
   if (useDetailedIndexes) {
     return {
@@ -211,7 +235,15 @@ export function buildAvailabilityChanges(currentAvailability, previousAvailabili
   if (!previousAvailability) return [];
   return Object.entries(currentAvailability).flatMap(([source, current]) => {
     const previous = previousAvailability[source];
-    if (!previous) return [];
+    if (!previous) return [{
+      source,
+      previousStatus: 'unmonitored',
+      currentStatus: current.status || 'unknown',
+      statusChanged: true,
+      coverageChanged: true,
+      previousCoverage: { sources: [] },
+      currentCoverage: Array.isArray(current.sources) ? { sources: current.sources.map((entry) => ({ id: entry.id || null, status: entry.status || 'unavailable' })).sort((left, right) => `${left.id}:${left.status}`.localeCompare(`${right.id}:${right.status}`)) } : availabilityCoverage(current, Array.isArray(current.indexes)),
+    }];
     const statusChanged = previous.status !== current.status;
     const useDetailedIndexes = Array.isArray(previous.indexes) && Array.isArray(current.indexes);
     const useDetailedSources = Array.isArray(previous.sources) && Array.isArray(current.sources);

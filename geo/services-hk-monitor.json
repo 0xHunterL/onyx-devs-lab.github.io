@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "channel": "services.hk",
+  "targets": [
+    {
+      "id": "ai-consulting",
+      "url": "https://ai-consulting-hk.services.hk/",
+      "requiredMarkers": [
+        "AI & Machine Learning Consulting Hong Kong",
+        "Practical AI implementation for Hong Kong businesses.",
+        "Free Consultation"
+      ]
+    },
+    {
+      "id": "erp-implementation",
+      "url": "https://erp-implementation-hk.services.hk/",
+      "requiredMarkers": [
+        "ERP Implementation Consulting Hong Kong",
+        "End-to-end SAP, Oracle NetSuite, and Microsoft Dynamics 365 ERP implementation",
+        "Free Consultation"
+      ]
+    },
+    {
+      "id": "cyber-security",
+      "url": "https://cyber-security-hk.services.hk/",
+      "requiredMarkers": [
+        "Cybersecurity Consulting Hong Kong",
+        "Enterprise cybersecurity services including penetration testing",
+        "Free Consultation"
+      ]
+    }
+  ],
+  "forbiddenMarkers": [
+    "open_basedir restriction in effect",
+    "autoload.php",
+    "Failed opening required",
+    "Fatal error"
+  ],
+  "evidenceBoundary": "A usable result proves only that the sampled services.hk detail template is readable without the known PHP application failure. It does not prove that Onyx is listed, reviewed, endorsed, indexed, cited, or recommended. Submission still requires current user confirmation."
+}

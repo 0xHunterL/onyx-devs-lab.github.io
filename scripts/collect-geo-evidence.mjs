@@ -2,7 +2,7 @@ import { spawn } from 'node:child_process';
 import { mkdir, readFile, readdir, rename, unlink, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { buildAvailabilityChanges, buildCommonCrawlAvailability, buildCrawlerVerificationAvailability, buildDistributionAvailability, buildEvidenceCounts, buildEvidenceDeltas, buildWaybackAvailability, preserveAppendOnlyCrawlerCounts, selectEvidenceEventKind } from './geo-evidence-summary.mjs';
+import { buildAvailabilityChanges, buildCommonCrawlAvailability, buildCrawlerVerificationAvailability, buildDistributionAvailability, buildEvidenceCounts, buildEvidenceDeltas, buildServicesHkAvailability, buildWaybackAvailability, preserveAppendOnlyCrawlerCounts, selectEvidenceEventKind } from './geo-evidence-summary.mjs';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const args = process.argv.slice(2);
@@ -93,6 +93,7 @@ const referral = await runJson('report-geo-referrals.mjs', [`--since=${since}`, 
 const commonCrawl = await runJson('report-common-crawl.mjs', ['--host=hk.onyxdevslab.com', '--indexes=2']);
 const wayback = await runJson('report-wayback.mjs', ['--host=hk.onyxdevslab.com']);
 const distribution = await runJson('check-distribution-live.mjs', ['--report']);
+const servicesHk = await runJson('check-services-hk.mjs', ['--report']);
 
 const crawlerTemporary = path.join(outputDir, `.crawler-report-${process.pid}.json`);
 await writeFile(crawlerTemporary, `${JSON.stringify(crawler, null, 2)}\n`, { mode: 0o640 });
@@ -108,7 +109,8 @@ const commonCrawlAvailability = buildCommonCrawlAvailability(commonCrawl);
 const waybackAvailability = buildWaybackAvailability(wayback);
 const crawlerVerificationAvailability = buildCrawlerVerificationAvailability(crawler);
 const distributionAvailability = buildDistributionAvailability(distribution);
-const availability = { commonCrawl: commonCrawlAvailability, wayback: waybackAvailability, crawlerVerification: crawlerVerificationAvailability, distribution: distributionAvailability };
+const servicesHkAvailability = buildServicesHkAvailability(servicesHk);
+const availability = { commonCrawl: commonCrawlAvailability, wayback: waybackAvailability, crawlerVerification: crawlerVerificationAvailability, distribution: distributionAvailability, servicesHk: servicesHkAvailability };
 const availabilityChanges = buildAvailabilityChanges(availability, previous?.availability);
 const priorCounts = previous?.counts || {};
 const metricForCrawlerObservation = (observation) => {
@@ -190,6 +192,7 @@ if (eventFile) await atomicJson(eventFile, {
   commonCrawl,
   wayback,
   distribution,
+  servicesHk,
   promptCoverage,
 });
 await atomicJson('seen-evidence.json', {
@@ -202,6 +205,7 @@ await atomicJson('referral-report.json', referral);
 await atomicJson('common-crawl-report.json', commonCrawl);
 await atomicJson('wayback-report.json', wayback);
 await atomicJson('distribution-live-report.json', distribution);
+await atomicJson('services-hk-report.json', servicesHk);
 await atomicJson('prompt-crawl-coverage.json', promptCoverage);
 await atomicJson('summary.json', summary);
 console.log(JSON.stringify(summary, null, 2));

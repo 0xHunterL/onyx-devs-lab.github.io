@@ -116,6 +116,8 @@ Atom 与 JSON Feed 必须同时声明 WebSub `self` 和 `hub` 关系；Nginx 也
 
 服务器必须把 `deploy/nginx-logrotate.conf` 安装为 `/etc/logrotate.d/nginx`。该配置绕过可能拒绝 `invoke-rc.d` 的 `policy-rc.d`，直接向 `/run/nginx.pid` 中已验证的 Nginx 主进程发送 `USR1`，让进程在每日轮转后无中断地重新打开日志。轮转后应确认主 `.log` 获得新请求、`.log.1` 不再增长；不能只依据 `logrotate.service` 的成功状态判断采集连续性。
 
+生产采集还会按 `geo/services-hk-monitor.json` 检查 services.hk 的三个代表性详情子域，并把结果原子保存为 `/var/lib/onyx-geo/services-hk-report.json`。HTTP `200` 只有在目标未偏离、标题／服务描述／联系入口齐全且正文不含已知 PHP 故障标记时才算 `available`；新增监测源和后续状态变化会进入可用性事件。该状态只用于判断是否值得重新考虑目录申请，不能升级为 Onyx 已获收录、审核、背书、搜索索引、AI 引用或推荐；正式提交仍须取得用户当次明确确认。
+
 如果反向 DNS 命中官方域名，但正向解析只返回 RFC 2544 的 `198.18.0.0/15` 基准测试地址，报告会将验证标为 `verificationUnavailable`，而不是身份失败。这通常表示本机 DNS 代理或网络过滤器接管了解析；在可信公共解析环境重新运行双向 DNS 验证前，该请求只能保留为候选抓取，也不能用来推翻此前保存的成功验证证据。
 
 ## 回滚原则
