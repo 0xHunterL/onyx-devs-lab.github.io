@@ -12,6 +12,7 @@ const commonCrawl = baseline.commonCrawlEvidence;
 const wayback = baseline.waybackEvidence;
 const distribution = baseline.distributionEvidence;
 const servicesHk = baseline.servicesHkReadinessEvidence;
+const domainCanonicalization = baseline.domainCanonicalizationEvidence;
 const githubRepositorySearch = baseline.githubRepositorySearchEvidence;
 const summary = {
   generatedAt: baseline.generatedAt,
@@ -102,6 +103,15 @@ const summary = {
       availableSources: servicesHk.availableTargets,
       unavailableSources: servicesHk.unavailableTargets,
       sources: servicesHk.targets.map(({ id, status }) => ({ id, status })),
+    },
+    domainCanonicalization: {
+      status: domainCanonicalization.status,
+      canonicalOrigin: domainCanonicalization.canonicalOrigin,
+      sourcesChecked: domainCanonicalization.targetsChecked,
+      compliantSources: domainCanonicalization.compliantTargets,
+      noncompliantSources: domainCanonicalization.noncompliantTargets,
+      unavailableSources: domainCanonicalization.unavailableTargets,
+      sources: domainCanonicalization.targets.map(({ id, status, reasons }) => ({ id, status, reason: (reasons || []).join(',') })).sort((left, right) => left.id.localeCompare(right.id)),
     },
   },
   platformSearch: {
@@ -214,6 +224,14 @@ assert.equal(buildPublicationDrift(baseline, servicesHkSourceDrift).mismatches[0
 const githubRepositorySearchDrift = structuredClone(summary);
 githubRepositorySearchDrift.platformSearch.queries.find((item) => item.id === 'category').totalCount = 1;
 assert.equal(buildPublicationDrift(baseline, githubRepositorySearchDrift).mismatches[0].field, 'githubRepositorySearchEvidence.queries');
+
+const domainCanonicalizationStatusDrift = structuredClone(summary);
+domainCanonicalizationStatusDrift.availability.domainCanonicalization.status = 'compliant';
+assert.equal(buildPublicationDrift(baseline, domainCanonicalizationStatusDrift).mismatches[0].field, 'domainCanonicalizationEvidence.status');
+
+const domainCanonicalizationSourceDrift = structuredClone(summary);
+domainCanonicalizationSourceDrift.availability.domainCanonicalization.sources.find((item) => item.id === 'https-www').status = 'compliant';
+assert.equal(buildPublicationDrift(baseline, domainCanonicalizationSourceDrift).mismatches[0].field, 'domainCanonicalizationEvidence.targets');
 assert.match(synchronized.evidenceBoundary, /does not prove indexing/);
 
 const waybackAvailableBaseline = structuredClone(baseline);
@@ -247,4 +265,4 @@ const unavailableArchiveFields = buildPublicationDrift(baseline, unavailableArch
 assert.ok(!unavailableArchiveFields.some((field) => field.startsWith('waybackEvidence.') && field !== 'waybackEvidence.status'));
 assert.ok(!unavailableArchiveFields.includes('commonCrawlEvidence.capturesObservedInAvailableIndexes'));
 
-console.log(JSON.stringify({ tests: 29, failures: [] }, null, 2));
+console.log(JSON.stringify({ tests: 31, failures: [] }, null, 2));

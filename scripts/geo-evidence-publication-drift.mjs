@@ -44,6 +44,7 @@ export function buildPublicationDrift(baseline, summary, { distributionManifest,
   const wayback = baseline.waybackEvidence || {};
   const distribution = baseline.distributionEvidence || {};
   const servicesHk = baseline.servicesHkReadinessEvidence || {};
+  const domainCanonicalization = baseline.domainCanonicalizationEvidence || {};
   const githubRepositorySearch = baseline.githubRepositorySearchEvidence || {};
   const counts = summary.counts || {};
   const collectedEvidenceSets = summary.evidenceSets || {};
@@ -52,6 +53,7 @@ export function buildPublicationDrift(baseline, summary, { distributionManifest,
   const collectedCrawlerVerification = summary.availability?.crawlerVerification || {};
   const collectedDistribution = summary.availability?.distribution || {};
   const collectedServicesHk = summary.availability?.servicesHk || {};
+  const collectedDomainCanonicalization = summary.availability?.domainCanonicalization || {};
   const collectedGithubRepositorySearch = summary.platformSearch || {};
 
   const countMappings = [
@@ -152,6 +154,17 @@ export function buildPublicationDrift(baseline, summary, { distributionManifest,
   check('servicesHkReadinessEvidence.availableTargets', servicesHk.availableTargets, collectedServicesHk.availableSources);
   check('servicesHkReadinessEvidence.unavailableTargets', servicesHk.unavailableTargets, collectedServicesHk.unavailableSources);
   check('servicesHkReadinessEvidence.targets', (servicesHk.targets || []).map(({ id, status }) => ({ id, status })), (collectedServicesHk.sources || []).map(({ id, status }) => ({ id, status })));
+  check('domainCanonicalizationEvidence.status', domainCanonicalization.status, collectedDomainCanonicalization.status);
+  check('domainCanonicalizationEvidence.canonicalOrigin', domainCanonicalization.canonicalOrigin, collectedDomainCanonicalization.canonicalOrigin);
+  check('domainCanonicalizationEvidence.targetsChecked', domainCanonicalization.targetsChecked, collectedDomainCanonicalization.sourcesChecked);
+  check('domainCanonicalizationEvidence.compliantTargets', domainCanonicalization.compliantTargets, collectedDomainCanonicalization.compliantSources);
+  check('domainCanonicalizationEvidence.noncompliantTargets', domainCanonicalization.noncompliantTargets, collectedDomainCanonicalization.noncompliantSources);
+  check('domainCanonicalizationEvidence.unavailableTargets', domainCanonicalization.unavailableTargets, collectedDomainCanonicalization.unavailableSources);
+  check(
+    'domainCanonicalizationEvidence.targets',
+    (domainCanonicalization.targets || []).map(({ id, status, reasons }) => ({ id, status, reason: (reasons || []).join(',') })).sort((left, right) => left.id.localeCompare(right.id)),
+    (collectedDomainCanonicalization.sources || []).map(({ id, status, reason }) => ({ id, status, reason: reason || '' })).sort((left, right) => left.id.localeCompare(right.id)),
+  );
   if (Object.keys(githubRepositorySearch).length || Object.keys(collectedGithubRepositorySearch).length) {
     check('githubRepositorySearchEvidence.status', githubRepositorySearch.status, collectedGithubRepositorySearch.status);
     if (collectedGithubRepositorySearch.status === 'available') check('githubRepositorySearchEvidence.queries', githubRepositorySearch.queries, collectedGithubRepositorySearch.queries);
