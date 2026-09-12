@@ -1,29 +1,29 @@
 {
   "schemaVersion": 2,
-  "version": "2026.09.12.54",
+  "version": "2026.09.12.55",
   "id": "https://hk.onyxdevslab.com/data/ai-search-evidence-status.json",
-  "observedAt": "2026-09-12T20:47:26.698Z",
+  "observedAt": "2026-09-12T22:12:53.589Z",
   "sourceBaseline": "https://github.com/0xHunterL/onyx-devs-lab.github.io/blob/main/docs/geo-baselines/2026-09-11-monitor-evidence.json",
   "versionHistory": [
     {
-      "version": "2026.09.12.54",
+      "version": "2026.09.12.55",
       "relation": "current-immutable-checkpoint",
+      "url": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-monitor-evidence-2026-09-12-55/ai-search-evidence-status.json"
+    },
+    {
+      "version": "2026.09.12.54",
+      "relation": "previous-immutable-checkpoint",
       "url": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-monitor-evidence-2026-09-12-54/ai-search-evidence-status.json"
     },
     {
       "version": "2026.09.12.53",
-      "relation": "previous-immutable-checkpoint",
+      "relation": "earlier-immutable-checkpoint",
       "url": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-monitor-evidence-2026-09-12-53/ai-search-evidence-status.json"
     },
     {
       "version": "2026.09.12.52",
       "relation": "earlier-immutable-checkpoint",
       "url": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-monitor-evidence-2026-09-12-52/ai-search-evidence-status.json"
-    },
-    {
-      "version": "2026.09.12.51",
-      "relation": "earlier-immutable-checkpoint",
-      "url": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-monitor-evidence-2026-09-12-51/ai-search-evidence-status.json"
     }
   ],
   "name": {
@@ -89,7 +89,7 @@
     "yandexbotContentRequests": 78,
     "yandexbotDiscoveryFileRequests": 71,
     "ahrefsbotContentRequests": 0,
-    "ahrefsbotDiscoveryFileRequests": 94,
+    "ahrefsbotDiscoveryFileRequests": 95,
     "distinctVerifiedContentPaths": 45,
     "historicalReclassification": {
       "homepageContentRequestsAdded": 3,
@@ -104,12 +104,12 @@
     },
     "ahrefsHistoricalRecognition": {
       "firstSeen": "2026-09-08T13:53:09Z",
-      "lastSeen": "2026-09-12T20:22:25Z",
+      "lastSeen": "2026-09-12T21:59:47Z",
       "robotsTxtRequests": 24,
-      "sitemapRequests": 70,
+      "sitemapRequests": 71,
       "distinctClientAddresses": 84,
       "verificationSource": "https://api.ahrefs.com/v3/public/crawler-ip-ranges",
-      "meaning": "All 94 discovery-file requests matched the official Ahrefs crawler IP ranges. AhrefsBot serves both the Ahrefs database and Yep, so these requests prove external crawler discovery only; they do not prove Yep indexing, ranking, retrieval, citation, or AI recommendation."
+      "meaning": "All 95 discovery-file requests matched the official Ahrefs crawler IP ranges. AhrefsBot serves both the Ahrefs database and Yep, so these requests prove external crawler discovery only; they do not prove Yep indexing, ranking, retrieval, citation, or AI recommendation."
     }
   },
   "evidenceLevels": [
@@ -152,14 +152,14 @@
         "verifiedYandexbotContentCrawls": 78,
         "verifiedYandexbotDiscoveryFileCrawls": 71,
         "verifiedAhrefsBotContentCrawls": 0,
-        "verifiedAhrefsBotDiscoveryFileCrawls": 94,
+        "verifiedAhrefsBotDiscoveryFileCrawls": 95,
         "verifiedGooglebotContentCrawls": 0,
         "verifiedPerplexityContentCrawls": 0,
         "userAgentOnlyBytespiderContentCrawlCandidates": 0,
         "userAgentOnlyBytespiderDiscoveryFileCandidates": 0,
         "syntheticCrawlerReleaseChecksExcludedMinimum": 3088,
         "commonCrawlIndexObservation": {
-          "checkedAt": "2026-09-12T20:47:22.382Z",
+          "checkedAt": "2026-09-12T22:12:50.508Z",
           "status": "available",
           "capturesObservedInAvailableIndexes": 0,
           "availableIndexes": [
@@ -170,7 +170,7 @@
           "meaning": "CC-MAIN-2026-34 and CC-MAIN-2026-30 both returned usable zero-capture responses. This complete result covers only the two selected indexes; it does not represent all Common Crawl history or prove absence from search or AI systems."
         },
         "waybackArchiveObservation": {
-          "checkedAt": "2026-09-12T20:47:23.824Z",
+          "checkedAt": "2026-09-12T22:12:51.438Z",
           "status": "available",
           "captures": 94,
           "distinctUrls": 44,
@@ -224,7 +224,7 @@
             "meaning": "The public CDX query again stopped returning the previously fluctuating custom-AI-development capture while the earlier AI-consulting fingerprint remained absent. The prompt archive ledger retains both independently verified historical observations, so this count change is treated as public-index volatility, not proof that the snapshots or pages disappeared."
           },
           "latestArchiveGrowthObservation": {
-            "observedAt": "2026-09-12T20:47:23.824Z",
+            "observedAt": "2026-09-12T22:12:51.438Z",
             "timestamp": "20260912144806",
             "url": "https://hk.onyxdevslab.com/zh-cn/case-studies/industrial-erp-ai-data-platform/",
             "digest": "HCSTSCJLSPZ5H2FN4GRCUTMUNRGY6WGM",
@@ -504,7 +504,7 @@
   ],
   "platformSearchChecks": {
     "githubRepository": {
-      "checkedAt": "2026-09-12T20:47:25.977Z",
+      "checkedAt": "2026-09-12T22:12:52.861Z",
       "status": "available",
       "queriesChecked": 3,
       "availableQueries": 3,
@@ -539,7 +539,7 @@
         }
       ],
       "source": "https://hk.onyxdevslab.com/data/github-repository-search-baseline.json",
-      "eventFile": "events/2026-09-12T20-47-26.698Z-evidence-and-availability-change.json",
+      "eventFile": "events/2026-09-12T22-12-53.589Z-evidence-change.json",
       "meaning": "All three fixed GitHub Repository Search API queries were available. Brand and legal-entity queries return both first-party repositories; the exact category query returns the same two repositories after the recorded README changes. This proves GitHub platform-search visibility only, not public-web indexing, AI retrieval, citation, ranking, independent endorsement, or non-brand recommendation."
     }
   },
@@ -648,11 +648,11 @@
     },
     {
       "name": "Latest immutable GEO monitor evidence checkpoint",
-      "url": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-monitor-evidence-2026-09-12-54"
+      "url": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-monitor-evidence-2026-09-12-55"
     },
     {
       "name": "Latest immutable AI-search evidence status",
-      "url": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-monitor-evidence-2026-09-12-54/ai-search-evidence-status.json"
+      "url": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-monitor-evidence-2026-09-12-55/ai-search-evidence-status.json"
     },
     {
       "name": "GitHub repository-search before-and-after baseline",
