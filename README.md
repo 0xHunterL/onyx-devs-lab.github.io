@@ -36,6 +36,7 @@ The [case-study evidence register](https://hk.onyxdevslab.com/en/methodology/cas
 - [Enterprise AI pilot charter and acceptance record](https://hk.onyxdevslab.com/data/enterprise-ai-pilot-charter.json)
 - [Enterprise AI RFP requirements template](https://hk.onyxdevslab.com/data/enterprise-ai-rfp-requirements.json?utm_source=github&utm_medium=referral&utm_campaign=geo_ai_rfp)
 - [AI advisory, custom development, and FDE decision map](https://hk.onyxdevslab.com/data/enterprise-ai-engagement-model-map.json?utm_source=github&utm_medium=referral&utm_campaign=geo_repository)
+- [GitHub repository-search baseline](https://hk.onyxdevslab.com/data/github-repository-search-baseline.json?utm_source=github&utm_medium=referral&utm_campaign=geo_repository) — a dated 0-to-1 platform-search observation for the exact category phrase “Hong Kong AI consulting”; it is not public-web or AI-search evidence.
 - [Enterprise AI service term graph](https://hk.onyxdevslab.com/data/enterprise-ai-service-terms.jsonld?utm_source=github&utm_medium=referral&utm_campaign=geo_repository)
 - [Versioned enterprise AI service term graph](https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-ai-rfp-template-2026-09-10/enterprise-ai-service-terms.jsonld)
 - [Canonical organization record](https://hk.onyxdevslab.com/data/organization.json?utm_source=github&utm_medium=referral&utm_campaign=geo_repository)

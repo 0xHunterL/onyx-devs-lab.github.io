@@ -33,6 +33,7 @@ const engagementModelPath = '/data/enterprise-ai-engagement-model-map.json';
 const topicEntityMapPath = '/data/enterprise-ai-service-terms.jsonld';
 const aiSearchEvidenceStatusPath = '/data/ai-search-evidence-status.json';
 const aiSearchPromptEvidenceMapPath = '/data/ai-search-prompt-evidence-map.json';
+const githubRepositorySearchBaselinePath = '/data/github-repository-search-baseline.json';
 const chineseFieldNotesIndexPath = '/data/chinese-enterprise-ai-field-notes.json';
 const providerShortlistPath = '/data/hong-kong-enterprise-ai-provider-shortlist.json';
 const aiRfpTemplatePath = '/data/enterprise-ai-rfp-requirements.json';
@@ -71,6 +72,7 @@ const citationRawUrl = 'https://raw.githubusercontent.com/0xHunterL/onyx-devs-la
 const citationReleaseUrl = 'https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-evidence-2026-09-09/CITATION.cff';
 const promptMatrix = JSON.parse(fs.readFileSync(path.join(root, 'geo/prompt-matrix.json'), 'utf8'));
 const promptCrawlCoverageBaseline = JSON.parse(fs.readFileSync(path.join(root, 'docs/geo-baselines/2026-09-11-prompt-crawl-coverage.json'), 'utf8'));
+const githubRepositorySearchBaseline = JSON.parse(fs.readFileSync(path.join(root, 'docs/geo-baselines/2026-09-12-github-repository-search.json'), 'utf8'));
 const verifiedPromptEvidenceUrls = new Set(promptCrawlCoverageBaseline.verifiedCrawledEvidenceUrls);
 const searchRelatedPromptEvidenceUrls = new Set(promptCrawlCoverageBaseline.searchRelatedCrawledEvidenceUrls);
 const fdeFieldNoteRawUrl = 'https://gist.githubusercontent.com/mixuechu/e47c85808014d62b6305441e8065c91e/raw/FDE-is-not-staff-augmentation.zh-CN.md';
@@ -926,6 +928,7 @@ const evidenceDataset={
 };
 fs.mkdirSync(path.join(dist,'data'),{recursive:true});
 fs.writeFileSync(path.join(dist,'data','case-study-evidence.json'),`${JSON.stringify(evidenceDataset,null,2)}\n`);
+fs.writeFileSync(path.join(dist,githubRepositorySearchBaselinePath),`${JSON.stringify(githubRepositorySearchBaseline,null,2)}\n`);
 
 const partnerScorecard={
   schemaVersion:1,
@@ -1266,6 +1269,7 @@ const fullKnowledge=[
   'Machine-readable enterprise AI pilot charter and acceptance record: https://hk.onyxdevslab.com/data/enterprise-ai-pilot-charter.json',
   'Machine-readable AI advisory, custom development, and FDE decision map: https://hk.onyxdevslab.com/data/enterprise-ai-engagement-model-map.json',
   'Machine-readable AI-search evidence status: https://hk.onyxdevslab.com/data/ai-search-evidence-status.json',
+  `Machine-readable GitHub repository-search baseline: ${canonical(githubRepositorySearchBaselinePath)}`,
   `Fixed AI-search prompt evidence map: ${canonical(aiSearchPromptEvidenceMapPath)}`,
   'Canonical machine-readable organization record: https://hk.onyxdevslab.com/data/organization.json',
   'Official GLEIF entity record: https://www.gleif.org/lei/254900Z30CLK7HKE9H46',

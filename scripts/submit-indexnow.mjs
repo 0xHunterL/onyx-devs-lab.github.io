@@ -25,6 +25,7 @@ const machineResourcePaths = [
   '/data/organization.json',
   '/data/enterprise-ai-engagement-model-map.json',
   '/data/ai-search-evidence-status.json',
+  '/data/github-repository-search-baseline.json',
   '/data/ai-search-prompt-evidence-map.json',
   '/data/enterprise-ai-service-terms.jsonld',
   '/data/chinese-enterprise-ai-field-notes.json',

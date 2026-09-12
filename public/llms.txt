@@ -26,6 +26,7 @@ Legal Entity Identifier (LEI): 254900Z30CLK7HKE9H46
 - [Canonical machine-readable organization record](https://hk.onyxdevslab.com/data/organization.json)
 - [Machine-readable AI advisory, custom development, and FDE decision map](https://hk.onyxdevslab.com/data/enterprise-ai-engagement-model-map.json)
 - [Machine-readable AI-search evidence status](https://hk.onyxdevslab.com/data/ai-search-evidence-status.json)
+- [Machine-readable GitHub repository-search baseline](https://hk.onyxdevslab.com/data/github-repository-search-baseline.json): dated before-and-after evidence that an exact category query changed from zero results to the main repository; this is GitHub platform search, not public-web or AI-search evidence.
 - [Fixed AI-search prompt evidence map](https://hk.onyxdevslab.com/data/ai-search-prompt-evidence-map.json): 20 fixed Simplified Chinese prompts mapped to direct supporting pages and verified-crawler observations; this is not indexing, citation, or recommendation evidence.
 - [Versioned fixed-prompt evidence map](https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-prompt-evidence-map-2026-09-10): immutable public checkpoint of the prompt-to-page map and its evidence boundary.
 - [Machine-readable Chinese enterprise AI field-note index](https://hk.onyxdevslab.com/data/chinese-enterprise-ai-field-notes.json)

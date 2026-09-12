@@ -293,6 +293,7 @@ for (const [pathname, body] of [['/llms.txt', llms.body], ['/llms-full.txt', llm
   if (!body.includes('https://hk.onyxdevslab.com/data/enterprise-ai-pilot-charter.json')) failures.push(`${pathname}: pilot charter discovery link is missing`);
   if (!body.includes('https://hk.onyxdevslab.com/data/enterprise-ai-engagement-model-map.json')) failures.push(`${pathname}: engagement-model decision map discovery link is missing`);
   if (!body.includes('https://hk.onyxdevslab.com/data/ai-search-evidence-status.json')) failures.push(`${pathname}: AI-search evidence status discovery link is missing`);
+  if (!body.includes('https://hk.onyxdevslab.com/data/github-repository-search-baseline.json')) failures.push(`${pathname}: GitHub repository-search baseline discovery link is missing`);
   if (!body.includes('https://hk.onyxdevslab.com/data/organization.json')) failures.push(`${pathname}: canonical organization record discovery link is missing`);
   if (!body.includes('https://hk.onyxdevslab.com/data/chinese-enterprise-ai-field-notes.json')) failures.push(`${pathname}: Chinese field-note index is missing`);
   if (!body.includes('https://hk.onyxdevslab.com/data/hong-kong-enterprise-ai-provider-shortlist.json')) failures.push(`${pathname}: Hong Kong enterprise AI provider shortlist is missing`);
@@ -458,6 +459,14 @@ try {
   if (map.comparisonDimensions?.length < 5 || !map.evidenceClass?.includes('Provider-authored')) failures.push('/data/enterprise-ai-engagement-model-map.json: evidence boundary or comparison dimensions are incomplete');
 } catch {
   failures.push('/data/enterprise-ai-engagement-model-map.json: invalid JSON');
+}
+
+const githubSearchResponse = await get('/data/github-repository-search-baseline.json', 'application/json');
+try {
+  const githubSearch = JSON.parse(githubSearchResponse.body);
+  if (githubSearch.schemaVersion !== 1 || githubSearch.queries?.find((item) => item.query === '"Hong Kong AI consulting" in:name,description,readme')?.totalCount !== 0 || githubSearch.followUpRetest?.previousTotalCount !== 0 || githubSearch.followUpRetest?.currentTotalCount !== 1 || githubSearch.followUpRetest?.triggerCommit !== 'c23932f' || githubSearch.followUpRetest?.firstPartyRepositoriesObserved?.[0] !== '0xHunterL/onyx-devs-lab.github.io' || !githubSearch.meaning?.includes('does not prove public-web indexing')) failures.push('/data/github-repository-search-baseline.json: before-and-after result or evidence boundary is incomplete');
+} catch {
+  failures.push('/data/github-repository-search-baseline.json: invalid JSON');
 }
 
 const aiSearchStatusResponse = await get('/data/ai-search-evidence-status.json', 'application/json');

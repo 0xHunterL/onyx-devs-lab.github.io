@@ -227,7 +227,7 @@ for (const pathname of ['/en/about/', '/zh-hk/about/', '/zh-cn/about/']) {
   if (!html.includes('"@type":["AboutPage","ProfilePage"]') || !html.includes('"mainEntity":{"@id":"https://hk.onyxdevslab.com/#organization"}') || !html.includes('"dateModified":"2026-09-12"')) failures.push(`${pathname}: organization ProfilePage markup is incomplete or stale`);
 }
 
-for (const file of ['robots.txt', 'sitemap.xml', 'feed.xml', 'feed.json', 'llms.txt', 'llms-full.txt', 'data/case-study-evidence.json', 'data/enterprise-ai-partner-scorecard.json', 'data/hong-kong-enterprise-ai-provider-shortlist.json', 'data/enterprise-ai-rfp-requirements.json', 'data/enterprise-ai-pilot-charter.json', 'data/enterprise-ai-engagement-model-map.json', 'data/enterprise-ai-service-terms.jsonld', 'data/chinese-enterprise-ai-field-notes.json', 'data/ai-search-evidence-status.json', 'data/ai-search-prompt-evidence-map.json', 'data/organization.json', '.nojekyll']) {
+for (const file of ['robots.txt', 'sitemap.xml', 'feed.xml', 'feed.json', 'llms.txt', 'llms-full.txt', 'data/case-study-evidence.json', 'data/enterprise-ai-partner-scorecard.json', 'data/hong-kong-enterprise-ai-provider-shortlist.json', 'data/enterprise-ai-rfp-requirements.json', 'data/enterprise-ai-pilot-charter.json', 'data/enterprise-ai-engagement-model-map.json', 'data/enterprise-ai-service-terms.jsonld', 'data/chinese-enterprise-ai-field-notes.json', 'data/ai-search-evidence-status.json', 'data/ai-search-prompt-evidence-map.json', 'data/github-repository-search-baseline.json', 'data/organization.json', '.nojekyll']) {
   if (!fs.existsSync(path.join(dist, file))) failures.push(`missing ${file}`);
 }
 
@@ -284,6 +284,7 @@ for (const name of ['llms.txt', 'llms-full.txt']) {
   if (!machineDiscoveryFiles[name].includes('https://hk.onyxdevslab.com/data/enterprise-ai-pilot-charter.json')) failures.push(`${name}: pilot charter discovery link is missing`);
   if (!machineDiscoveryFiles[name].includes('https://hk.onyxdevslab.com/data/enterprise-ai-engagement-model-map.json')) failures.push(`${name}: engagement-model decision map discovery link is missing`);
   if (!machineDiscoveryFiles[name].includes('https://hk.onyxdevslab.com/data/ai-search-evidence-status.json')) failures.push(`${name}: AI-search evidence status discovery link is missing`);
+  if (!machineDiscoveryFiles[name].includes('https://hk.onyxdevslab.com/data/github-repository-search-baseline.json')) failures.push(`${name}: GitHub repository-search baseline discovery link is missing`);
   if (!machineDiscoveryFiles[name].includes('https://hk.onyxdevslab.com/data/organization.json')) failures.push(`${name}: canonical organization record discovery link is missing`);
   if (!machineDiscoveryFiles[name].includes('https://hk.onyxdevslab.com/data/chinese-enterprise-ai-field-notes.json')) failures.push(`${name}: Chinese field-note index is missing`);
   if (!machineDiscoveryFiles[name].includes('https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/chinese-enterprise-ai-field-notes-2026-09-10/chinese-enterprise-ai-field-notes.json')) failures.push(`${name}: versioned Chinese field-note index is missing`);
@@ -569,6 +570,13 @@ try {
   if (!map.evidenceClass?.includes('Provider-authored') || !map.limitations?.some((item) => item.includes('not an independent ranking'))) failures.push('engagement-model map: evidence boundary is missing');
 } catch {
   failures.push('engagement-model map: invalid JSON');
+}
+
+try {
+  const githubSearch = JSON.parse(fs.readFileSync(path.join(dist, 'data/github-repository-search-baseline.json'), 'utf8'));
+  if (githubSearch.schemaVersion !== 1 || githubSearch.queries?.find((item) => item.query === '"Hong Kong AI consulting" in:name,description,readme')?.totalCount !== 0 || githubSearch.followUpRetest?.previousTotalCount !== 0 || githubSearch.followUpRetest?.currentTotalCount !== 1 || githubSearch.followUpRetest?.triggerCommit !== 'c23932f' || githubSearch.followUpRetest?.firstPartyRepositoriesObserved?.[0] !== '0xHunterL/onyx-devs-lab.github.io' || !githubSearch.meaning?.includes('does not prove public-web indexing')) failures.push('GitHub repository-search baseline: before-and-after result or evidence boundary is incomplete');
+} catch {
+  failures.push('GitHub repository-search baseline: invalid JSON');
 }
 
 try {
