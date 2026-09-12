@@ -88,3 +88,5 @@
 - 2026-09-12T11:04:58.776Z，生产采集识别到两条新的提供方已核验 YandexBot 请求：10:57:56Z 对 `robots.txt` 的条件请求返回 304，10:57:57Z 对首页的请求返回 200；累计正文／发现文件请求从 71／64 变为 72／65，已核验正文路径和固定提示词覆盖均未增加。同轮 Wayback CDX 从 10:49:52Z 的超时状态恢复，再次完整返回 93 条捕获／43 个 URL；恢复只表示监测源可用，不是新归档或可发现性提升。事件保存为 `events/2026-09-12T11-04-58.776Z-evidence-and-availability-change.json`。revision 44 同步这两项变化；Yandex 抓取和 Wayback 归档均不证明搜索收录、AI 检索、引用、排名或推荐。
 
 - 2026-09-12T11:12Z，实体一致性审计发现各页面内嵌 Organization JSON-LD 已声明销售联系点，而规范化 `/data/organization.json` 只有顶层邮箱、缺少 `contactPoint`，使同一主体的两套机器图谱不完全一致。修复仅在规范化组织记录补入 Schema.org `ContactPoint`（`sales`、`info@onyxdevslab.com`、English／Chinese）并增加本地与线上断言，不新增同质页面或服务声明。该变化改善机器可读主体一致性，但不证明搜索收录、AI 引用或推荐。
+
+- 2026-09-12T11:16:08Z，版本链审计发现当前 `ai-search-evidence-status.json` 已是 revision 44，但 `versionHistory` 仍只指向 2026-09-11 的旧不可变状态，没有连接当天已发布且校验过 SHA-256 的 revision 41 Release 资产。revision 45 将 revision 41 状态设为最近不可变检查点、保留 revision 8 为更早检查点，并把 Release 与状态资产加入 `evidenceSources`；离线及线上门禁逐项锁定版本、关系和 URL。此次仅修复当前状态到最近不可变证据的可追溯关系，爬虫、公开归档、搜索结果、AI 引用和非品牌推荐证据均未增加。

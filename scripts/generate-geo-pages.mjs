@@ -1049,7 +1049,10 @@ fs.writeFileSync(path.join(dist,'data','organization.json'),`${JSON.stringify(or
 const aiSearchEvidenceStatus={
   schemaVersion:2,version:currentMonitorEvidence.publicStatusVersion,id:canonical(aiSearchEvidenceStatusPath),observedAt:currentMonitorEvidence.generatedAt,
   sourceBaseline:'https://github.com/0xHunterL/onyx-devs-lab.github.io/blob/main/docs/geo-baselines/2026-09-11-monitor-evidence.json',
-  versionHistory:[{version:'2026.09.11.8',relation:'previous-immutable-checkpoint',url:searchMonitoringStatusAssetUrl}],
+  versionHistory:[
+    {version:'2026.09.12.41',relation:'previous-immutable-checkpoint',url:monitorEvidenceStatusAssetUrl},
+    {version:'2026.09.11.8',relation:'earlier-immutable-checkpoint',url:searchMonitoringStatusAssetUrl},
+  ],
   name:{en:'Onyx Devs Lab AI-search evidence status',zhHant:'Onyx Devs Lab AI 搜尋證據狀態',zhHans:'Onyx Devs Lab AI 搜索证据状态'},
   publisher:{name:'Onyx Devs Lab',legalName:'ONYX DEVS LAB LIMITED',businessRegistrationNumber:'79051925',lei:'254900Z30CLK7HKE9H46',url:`${origin}/`},
   methodologyPages:{en:`${origin}/en/methodology/ai-search-verification/`,zhHant:`${origin}/zh-hk/methodology/ai-search-verification/`,zhHans:`${origin}/zh-cn/methodology/ai-search-verification/`},
@@ -1082,6 +1085,8 @@ const aiSearchEvidenceStatus={
     {name:'Versioned source crawler path report',url:promptCrawlSourceAssetUrl},
     {name:'Versioned enterprise AI RFP template and evidence checkpoint',url:aiSearchStatusReleaseUrl},
     {name:'Versioned search-monitoring compliance checkpoint',url:searchMonitoringComplianceReleaseUrl},
+    {name:'Latest immutable GEO monitor evidence checkpoint',url:monitorEvidenceReleaseUrl},
+    {name:'Latest immutable AI-search evidence status',url:monitorEvidenceStatusAssetUrl},
     {name:'AI-search verification method',url:`${origin}/en/methodology/ai-search-verification/`},
   ],
   evidenceBoundary:'This provider-maintained status records observed evidence and explicit non-results. It is not an independent audit, proof of platform indexing, proof of AI citation, or proof of recommendation. A higher level must not be inferred from a lower level.',
