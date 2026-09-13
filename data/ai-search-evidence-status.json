@@ -1,30 +1,30 @@
 {
   "schemaVersion": 2,
-  "version": "2026.09.13.73",
+  "version": "2026.09.13.74",
   "id": "https://hk.onyxdevslab.com/data/ai-search-evidence-status.json",
-  "observedAt": "2026-09-13T09:49:52Z",
+  "observedAt": "2026-09-13T10:10:04.690Z",
   "latestEvidenceObservedAt": "2026-09-13T09:49:52Z",
   "sourceBaseline": "https://github.com/0xHunterL/onyx-devs-lab.github.io/blob/main/docs/geo-baselines/2026-09-11-monitor-evidence.json",
   "versionHistory": [
     {
-      "version": "2026.09.13.73",
+      "version": "2026.09.13.74",
       "relation": "current-immutable-checkpoint",
+      "url": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-monitor-evidence-2026-09-13-74/ai-search-evidence-status.json"
+    },
+    {
+      "version": "2026.09.13.73",
+      "relation": "previous-immutable-checkpoint",
       "url": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-monitor-evidence-2026-09-13-73/ai-search-evidence-status.json"
     },
     {
       "version": "2026.09.13.72",
-      "relation": "previous-immutable-checkpoint",
+      "relation": "earlier-immutable-checkpoint",
       "url": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-monitor-evidence-2026-09-13-72/ai-search-evidence-status.json"
     },
     {
       "version": "2026.09.13.71",
       "relation": "earlier-immutable-checkpoint",
       "url": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-monitor-evidence-2026-09-13-71/ai-search-evidence-status.json"
-    },
-    {
-      "version": "2026.09.13.70",
-      "relation": "earlier-immutable-checkpoint",
-      "url": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-monitor-evidence-2026-09-13-70/ai-search-evidence-status.json"
     }
   ],
   "name": {
@@ -111,7 +111,7 @@
     "yandexbotContentRequests": 78,
     "yandexbotDiscoveryFileRequests": 73,
     "ahrefsbotContentRequests": 0,
-    "ahrefsbotDiscoveryFileRequests": 105,
+    "ahrefsbotDiscoveryFileRequests": 106,
     "distinctVerifiedContentPaths": 45,
     "latestOpenAiDiscoveryRequests": [
       {
@@ -157,26 +157,26 @@
     },
     "ahrefsHistoricalRecognition": {
       "firstSeen": "2026-09-08T13:53:09Z",
-      "lastSeen": "2026-09-13T08:16:17Z",
+      "lastSeen": "2026-09-13T09:49:30Z",
       "robotsTxtRequests": 27,
-      "sitemapRequests": 78,
-      "distinctClientAddresses": 93,
+      "sitemapRequests": 79,
+      "distinctClientAddresses": 94,
       "verificationSource": "https://api.ahrefs.com/v3/public/crawler-ip-ranges",
       "latestVerifiedDiscoveryRequests": [
-        {
-          "time": "2026-09-13T08:16:16Z",
-          "path": "/robots.txt",
-          "status": 304,
-          "fingerprint": "c0827fdd15d84c2fbfebd502762a7a5bce22ea032421727b1b0a9a00b2e11af2"
-        },
         {
           "time": "2026-09-13T08:16:17Z",
           "path": "/sitemap.xml",
           "status": 200,
           "fingerprint": "f829510d5b5110fa6029bbd7483b8af619bd8a9e1ae82c5dd4d96cf74793b1c8"
+        },
+        {
+          "time": "2026-09-13T09:49:30Z",
+          "path": "/sitemap.xml",
+          "status": 200,
+          "fingerprint": "bdebe124f33b0c1f8db52601f967f52e0ed8588ef10e3f118b89c6d2083d2528"
         }
       ],
-      "meaning": "All 105 discovery-file requests matched the official Ahrefs crawler IP ranges. The latest requests fetched robots.txt and sitemap.xml but no content page. AhrefsBot serves both the Ahrefs database and Yep, so these requests prove external crawler discovery only; they do not prove Yep indexing, ranking, retrieval, citation, or AI recommendation."
+      "meaning": "All 106 discovery-file requests matched the official Ahrefs crawler IP ranges. The latest request fetched sitemap.xml but no content page. AhrefsBot serves both the Ahrefs database and Yep, so these requests prove external crawler discovery only; they do not prove Yep indexing, ranking, retrieval, citation, or AI recommendation."
     }
   },
   "evidenceLevels": [
@@ -219,7 +219,7 @@
         "verifiedYandexbotContentCrawls": 78,
         "verifiedYandexbotDiscoveryFileCrawls": 73,
         "verifiedAhrefsBotContentCrawls": 0,
-        "verifiedAhrefsBotDiscoveryFileCrawls": 105,
+        "verifiedAhrefsBotDiscoveryFileCrawls": 106,
         "verifiedGooglebotContentCrawls": 0,
         "verifiedPerplexityContentCrawls": 0,
         "userAgentOnlyBytespiderContentCrawlCandidates": 0,
@@ -817,10 +817,10 @@
   },
   "publicCorpusMonitoring": {
     "softwareHeritage": {
-      "checkedAt": "2026-09-13T09:34:27.155Z",
+      "checkedAt": "2026-09-13T10:10:03.179Z",
       "status": "available",
       "archiveCoverageStatus": "lagging",
-      "repositoryHead": "b962ce60c947bcbcc5c666cd2bce625d85486570",
+      "repositoryHead": "80ee96434d7ad342d586879794666fbe0573f6a6",
       "latestCompleteVisitAt": "2026-09-13T06:09:12.547000+00:00",
       "latestAttemptAt": "2026-09-13T06:09:12.547000+00:00",
       "latestAttemptStatus": "full",
@@ -836,8 +836,8 @@
         "snapshotSwhid": "swh:1:snp:beec7f09ab04a666d11d120abddf542620d09e97",
         "nextRun": "2026-09-13T06:09:09.000202Z"
       },
-      "eventFile": "events/2026-09-13T09-14-08.977Z-evidence-and-availability-change.json",
-      "meaning": "GitHub, the Software Heritage visit history, save-request endpoint and latest complete snapshot were all queryable. Request 2473685 remains succeeded/full and snapshot beec7f09 still independently preserves revision d7d6ee3; mutable GitHub main has advanced to b962ce6, so archive coverage remains accurately reported as lagging. The immutable snapshot remains valid preservation evidence for its named revision. Neither current nor lagging archive coverage proves website search indexing, AI retrieval, citation, ranking, endorsement, or recommendation."
+      "eventFile": "events/2026-09-13T10-10-04.690Z-evidence-and-availability-change.json",
+      "meaning": "GitHub, the Software Heritage visit history, save-request endpoint and latest complete snapshot were all queryable. Request 2473685 remains succeeded/full and snapshot beec7f09 still independently preserves revision d7d6ee3; mutable GitHub main has advanced to 80ee964, so archive coverage remains accurately reported as lagging. The immutable snapshot remains valid preservation evidence for its named revision. Neither current nor lagging archive coverage proves website search indexing, AI retrieval, citation, ranking, endorsement, or recommendation."
     }
   },
   "domainCanonicalization": {
@@ -1147,11 +1147,11 @@
     },
     {
       "name": "Latest immutable GEO monitor evidence checkpoint",
-      "url": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-monitor-evidence-2026-09-13-73"
+      "url": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-monitor-evidence-2026-09-13-74"
     },
     {
       "name": "Latest immutable AI-search evidence status",
-      "url": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-monitor-evidence-2026-09-13-73/ai-search-evidence-status.json"
+      "url": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-monitor-evidence-2026-09-13-74/ai-search-evidence-status.json"
     },
     {
       "name": "GitHub repository-search before-and-after baseline",
