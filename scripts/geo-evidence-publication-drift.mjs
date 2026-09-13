@@ -10,6 +10,13 @@ const canonicalize = (value) => {
   return value;
 };
 const comparable = (value) => JSON.stringify(canonicalize(value));
+const normalizeGithubRepositoryQueries = (queries = []) => queries
+  .map((item) => ({
+    ...item,
+    firstPartyRepositoriesObserved: [...(item.firstPartyRepositoriesObserved || [])]
+      .sort((left, right) => left.localeCompare(right)),
+  }))
+  .sort((left, right) => left.id.localeCompare(right.id));
 const requiredCrawlerVerificationSourceIds = [
   'ahrefsBot',
   'appleBot',
@@ -55,6 +62,7 @@ export function buildPublicationDrift(baseline, summary, { distributionManifest,
   const commonCrawl = baseline.commonCrawlEvidence || {};
   const wayback = baseline.waybackEvidence || {};
   const distribution = baseline.distributionEvidence || {};
+  const expectedDistribution = distribution.expectedAfterCurrentCheckpointPublication || distribution;
   const servicesHk = baseline.servicesHkReadinessEvidence || {};
   const domainCanonicalization = baseline.domainCanonicalizationEvidence || {};
   const githubRepositorySearch = baseline.githubRepositorySearchEvidence || {};
@@ -143,11 +151,15 @@ export function buildPublicationDrift(baseline, summary, { distributionManifest,
       .map(({ id, status }) => ({ id, status }))
       .sort((left, right) => left.id.localeCompare(right.id)),
   );
-  check('distributionEvidence.publishedItems', distribution.publishedItems, collectedDistribution.publishedItems);
-  check('distributionEvidence.availableSources', distribution.availableSources, collectedDistribution.availableSources);
-  check('distributionEvidence.unavailableSources', distribution.unavailableSources, collectedDistribution.unavailableSources);
-  check('distributionEvidence.availabilityStatus', distribution.availabilityStatus, collectedDistribution.status);
-  if (distributionManifest) {
+  check('distributionEvidence.publishedItems', expectedDistribution.publishedItems, collectedDistribution.publishedItems);
+  check('distributionEvidence.availableSources', expectedDistribution.availableSources, collectedDistribution.availableSources);
+  check('distributionEvidence.unavailableSources', expectedDistribution.unavailableSources, collectedDistribution.unavailableSources);
+  check('distributionEvidence.availabilityStatus', expectedDistribution.availabilityStatus, collectedDistribution.status);
+  const manifestPublishedItems = (distributionManifest?.items || []).filter((item) => item.status === 'published').length;
+  const manifestRepresentsPrePublicationSnapshot = Boolean(distribution.expectedAfterCurrentCheckpointPublication)
+    && manifestPublishedItems === distribution.publishedItems
+    && manifestPublishedItems + 1 === expectedDistribution.publishedItems;
+  if (distributionManifest && !manifestRepresentsPrePublicationSnapshot) {
     check(
       'distributionEvidence.requiredSources',
       buildExpectedDistributionSources(distributionManifest),
@@ -176,7 +188,11 @@ export function buildPublicationDrift(baseline, summary, { distributionManifest,
   );
   if (Object.keys(githubRepositorySearch).length || Object.keys(collectedGithubRepositorySearch).length) {
     check('githubRepositorySearchEvidence.status', githubRepositorySearch.status, collectedGithubRepositorySearch.status);
-    if (collectedGithubRepositorySearch.status === 'available') check('githubRepositorySearchEvidence.queries', githubRepositorySearch.queries, collectedGithubRepositorySearch.queries);
+    if (collectedGithubRepositorySearch.status === 'available') check(
+      'githubRepositorySearchEvidence.queries',
+      normalizeGithubRepositoryQueries(githubRepositorySearch.queries),
+      normalizeGithubRepositoryQueries(collectedGithubRepositorySearch.queries),
+    );
   }
 
   return {

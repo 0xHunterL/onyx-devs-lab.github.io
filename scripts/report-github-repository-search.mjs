@@ -34,7 +34,9 @@ async function fetchQuery(fetchImpl, item) {
       httpStatus: response.status,
       totalCount: payload.total_count,
       repositories,
-      firstPartyRepositoriesObserved: repositories.filter((repository) => firstPartyRepositories.has(repository)),
+      firstPartyRepositoriesObserved: repositories
+        .filter((repository) => firstPartyRepositories.has(repository))
+        .sort((left, right) => left.localeCompare(right)),
     };
   } catch (error) {
     return { ...item, status: 'unavailable', httpStatus: null, reason: error.message };

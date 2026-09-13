@@ -11,6 +11,7 @@ const prompt = baseline.fixedPromptCoverage;
 const commonCrawl = baseline.commonCrawlEvidence;
 const wayback = baseline.waybackEvidence;
 const distribution = baseline.distributionEvidence;
+const expectedDistribution = distribution.expectedAfterCurrentCheckpointPublication || distribution;
 const servicesHk = baseline.servicesHkReadinessEvidence;
 const domainCanonicalization = baseline.domainCanonicalizationEvidence;
 const githubRepositorySearch = baseline.githubRepositorySearchEvidence;
@@ -91,10 +92,10 @@ const summary = {
       status: wayback.status,
     },
     distribution: {
-      status: distribution.availabilityStatus,
-      publishedItems: distribution.publishedItems,
-      availableSources: distribution.availableSources,
-      unavailableSources: distribution.unavailableSources,
+      status: expectedDistribution.availabilityStatus,
+      publishedItems: expectedDistribution.publishedItems,
+      availableSources: expectedDistribution.availableSources,
+      unavailableSources: expectedDistribution.unavailableSources,
       sources: buildExpectedDistributionSources(distributionManifest),
     },
     servicesHk: {
@@ -207,9 +208,24 @@ const distributionDrift = structuredClone(summary);
 distributionDrift.availability.distribution.status = 'partial';
 assert.equal(buildPublicationDrift(baseline, distributionDrift).mismatches[0].field, 'distributionEvidence.availabilityStatus');
 
+const preCheckpointDistributionBaseline = structuredClone(baseline);
+delete preCheckpointDistributionBaseline.distributionEvidence.expectedAfterCurrentCheckpointPublication;
+const preCheckpointDistributionSummary = structuredClone(summary);
+preCheckpointDistributionSummary.availability.distribution.publishedItems = distribution.publishedItems;
+preCheckpointDistributionSummary.availability.distribution.availableSources = distribution.availableSources;
+preCheckpointDistributionSummary.availability.distribution.unavailableSources = distribution.unavailableSources;
+assert.equal(buildPublicationDrift(preCheckpointDistributionBaseline, preCheckpointDistributionSummary).status, 'synchronized');
+
 const distributionSourceReplacement = structuredClone(summary);
 distributionSourceReplacement.availability.distribution.sources[0].id = 'replacement:publicUrl:https://example.invalid/';
-assert.equal(buildPublicationDrift(baseline, distributionSourceReplacement, { distributionManifest }).mismatches[0].field, 'distributionEvidence.requiredSources');
+const postCheckpointDistributionManifest = structuredClone(distributionManifest);
+postCheckpointDistributionManifest.items.push({
+  id: 'current-checkpoint-release',
+  status: 'published',
+  publicUrl: 'https://example.test/current-checkpoint',
+  trackedTargets: ['https://example.test/current-checkpoint-target'],
+});
+assert.equal(buildPublicationDrift(baseline, distributionSourceReplacement, { distributionManifest: postCheckpointDistributionManifest }).mismatches[0].field, 'distributionEvidence.requiredSources');
 
 const servicesHkStatusDrift = structuredClone(summary);
 servicesHkStatusDrift.availability.servicesHk.status = 'available';
@@ -230,6 +246,11 @@ assert.equal(buildPublicationDrift(baseline, servicesHkSourceDrift).mismatches[0
 const githubRepositorySearchDrift = structuredClone(summary);
 githubRepositorySearchDrift.platformSearch.queries.find((item) => item.id === 'category').totalCount = 1;
 assert.equal(buildPublicationDrift(baseline, githubRepositorySearchDrift).mismatches[0].field, 'githubRepositorySearchEvidence.queries');
+
+const githubRepositorySearchReordered = structuredClone(summary);
+githubRepositorySearchReordered.platformSearch.queries.reverse();
+githubRepositorySearchReordered.platformSearch.queries.forEach((item) => item.firstPartyRepositoriesObserved.reverse());
+assert.equal(buildPublicationDrift(baseline, githubRepositorySearchReordered).status, 'synchronized');
 
 const domainCanonicalizationStatusDrift = structuredClone(summary);
 domainCanonicalizationStatusDrift.availability.domainCanonicalization.status = 'compliant';

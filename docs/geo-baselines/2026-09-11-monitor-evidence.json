@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
-  "publicStatusVersion": "2026.09.13.68",
-  "generatedAt": "2026-09-13T05:01:39Z",
-  "latestEvidenceObservedAt": "2026-09-13T05:01:39Z",
+  "publicStatusVersion": "2026.09.13.69",
+  "generatedAt": "2026-09-13T05:24:54.944Z",
+  "latestEvidenceObservedAt": "2026-09-13T05:15:23Z",
   "windowStart": "2026-09-01",
   "site": "https://hk.onyxdevslab.com/",
   "sourceLogs": [
@@ -32,7 +32,7 @@
     "yandexbotContentRequests": 78,
     "yandexbotDiscoveryFileRequests": 73,
     "ahrefsbotContentRequests": 0,
-    "ahrefsbotDiscoveryFileRequests": 101,
+    "ahrefsbotDiscoveryFileRequests": 102,
     "distinctVerifiedContentPaths": 45,
     "historicalReclassification": {
       "homepageContentRequestsAdded": 3,
@@ -62,26 +62,26 @@
     },
     "ahrefsHistoricalRecognition": {
       "firstSeen": "2026-09-08T13:53:09Z",
-      "lastSeen": "2026-09-13T03:52:09Z",
+      "lastSeen": "2026-09-13T05:15:23Z",
       "robotsTxtRequests": 26,
-      "sitemapRequests": 75,
-      "distinctClientAddresses": 89,
+      "sitemapRequests": 76,
+      "distinctClientAddresses": 90,
       "verificationSource": "https://api.ahrefs.com/v3/public/crawler-ip-ranges",
       "latestVerifiedDiscoveryRequests": [
-        {
-          "time": "2026-09-13T03:52:08Z",
-          "path": "/robots.txt",
-          "status": 304,
-          "fingerprint": "37bc4ac3650b321a6bc0f0c90aead693fd18ed1c5d8f5693c22ac4de941c836c"
-        },
         {
           "time": "2026-09-13T03:52:09Z",
           "path": "/sitemap.xml",
           "status": 200,
           "fingerprint": "1a94f727482770c056544e466781af85a3b49c4b61cab03a62fb42497ac2c79b"
+        },
+        {
+          "time": "2026-09-13T05:15:23Z",
+          "path": "/sitemap.xml",
+          "status": 200,
+          "fingerprint": "d02771e10694b6af762365225cfd2f8b83bf460996d4683d3a040d7795473268"
         }
       ],
-      "meaning": "All 101 discovery-file requests matched the official Ahrefs crawler IP ranges. The latest pair requested robots.txt and sitemap.xml but no content page. AhrefsBot serves both the Ahrefs database and Yep, so these requests prove external crawler discovery only; they do not prove Yep indexing, ranking, retrieval, citation, or AI recommendation."
+      "meaning": "All 102 discovery-file requests matched the official Ahrefs crawler IP ranges. The latest request fetched sitemap.xml but no content page. AhrefsBot serves both the Ahrefs database and Yep, so these requests prove external crawler discovery only; they do not prove Yep indexing, ranking, retrieval, citation, or AI recommendation."
     }
   },
   "crawlerEvidenceAccounting": {
@@ -101,7 +101,15 @@
       "meaning": "The drift gate requires the active log followed by a gap-free numbered rotation lineage in oldest-to-newest order. Natural addition or expiry of a numbered rotation is accepted; an unexpected path, missing generation, duplicate, or absent active log remains a monitoring-integrity failure."
     },
     "retentionAdjustmentField": "retentionAdjustments",
-    "latestRetentionAdjustments": [],
+    "latestRetentionAdjustments": [
+      {
+        "metric": "verifiedYandexPageCrawls",
+        "retainedLogCount": 77,
+        "cumulativeCount": 78,
+        "newlyObserved": 0,
+        "reason": "Previously verified evidence is retained after its source log rotates out of the current file set."
+      }
+    ],
     "contentPathCoverage": {
       "mode": "append-only-provider-verified-fingerprint-cumulative",
       "verifiedPageObservations": 113,
@@ -311,7 +319,7 @@
     "meaning": "The available public Wayback CDX host query currently returns 96 successful HTML capture records across 46 distinct URLs. Three newly exposed recruiting and credit-research case-study captures increase the prompt archive ledger to 18 archived evidence pages, 18 prompts with any archive and 15 fully archived prompts; the remaining count movement includes documented public-index volatility. These records prove public historical captures only; they do not prove current accessibility, search indexing, AI retrieval, citation, ranking, endorsement, or recommendation. An unavailable future query must not be interpreted as zero captures."
   },
   "githubRepositorySearchEvidence": {
-    "checkedAt": "2026-09-13T03:55:47.636Z",
+    "checkedAt": "2026-09-13T05:24:50.333Z",
     "status": "available",
     "queriesChecked": 3,
     "availableQueries": 3,
@@ -350,17 +358,26 @@
     "meaning": "All three fixed GitHub Repository Search API queries were available. Brand and legal-entity queries return both first-party repositories; the exact category query returns the same two repositories after the recorded README changes. This proves GitHub platform-search visibility only, not public-web indexing, AI retrieval, citation, ranking, independent endorsement, or non-brand recommendation."
   },
   "distributionEvidence": {
-    "manifestItems": 13,
+    "manifestItems": 14,
     "publishedItems": 13,
     "readyNotPublishedItems": 1,
-    "checkedAt": "2026-09-13T04:18:27Z",
-    "publicUrlsChecked": 12,
+    "checkedAt": "2026-09-13T05:24:54.944Z",
+    "publicUrlsChecked": 13,
     "trackedTargetsChecked": 27,
     "availableSources": 40,
     "unavailableSources": 0,
     "availabilityStatus": "available",
-    "eventFile": "events/2026-09-13T01-19-32.135Z-evidence-and-availability-change.json",
-    "meaning": "The distribution ledger includes 13 declared published URLs and 27 tracked targets after adding the immutable revision 68 evidence Release. All 40 sources passed anonymous availability, destination, content-marker, asset-hash, and evidence-boundary checks. This versions provider-attributed public-search measurement evidence without creating duplicate topical content; it does not prove exhaustive deindexing, AI retrieval, citation, recommendation, a human visit, or independent endorsement."
+    "eventFile": "events/2026-09-13T05-24-54.944Z-evidence-and-availability-change.json",
+    "expectedAfterCurrentCheckpointPublication": {
+      "manifestItems": 15,
+      "publishedItems": 14,
+      "trackedTargetsChecked": 28,
+      "availableSources": 42,
+      "unavailableSources": 0,
+      "availabilityStatus": "available",
+      "meaning": "The current immutable checkpoint is published after its source snapshot is created. These values are the explicitly declared post-publication state used by the drift gate; they must be confirmed by a subsequent production collection before synchronization is reported."
+    },
+    "meaning": "At collection time, the distribution ledger included 13 published URLs, 27 tracked targets, and 40 available sources. Revision 69 separately declares the expected self-publication delta instead of backdating its own Release into this snapshot. This versions one new provider-verified crawler request and a monitoring correction without creating duplicate topical content; it does not prove indexing, AI retrieval, citation, recommendation, a human visit, or independent endorsement."
   },
   "servicesHkReadinessEvidence": {
     "checkedAt": "2026-09-13T03:55:47.596Z",
