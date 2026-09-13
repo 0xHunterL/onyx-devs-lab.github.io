@@ -59,7 +59,7 @@ npm run geo:referral-report -- --since=2026-09-01 --include-rotated /var/log/ngi
 
 Wayback 查询可用时，捕获数减少也不能自动解释成快照或页面消失。监测应以追加事件和已见指纹保留曾经返回的记录，把当前 CDX 数量如实发布为“本次公开索引结果”，并在独立复测后记录索引回撤／去重的解释边界。
 
-采集成功后，`geo:check-evidence-publication-drift` 会将生产汇总中的核心爬虫、核验源可用性及完整来源集合、搜索相关提示词覆盖与精确证据页集合、归因、Common Crawl 索引范围、Wayback 捕获与未归档证据页集合、站外可用性与仓库当前版本化基线或明确的监测完整性策略逐项比较，并原子写入 `/var/lib/onyx-geo/publication-drift.json`。任何必需核验源不可用或从采集覆盖中消失也必须产生 `drift`；固定提示词分别比较已核验抓取和搜索相关抓取的完整 URL 集合，归因分别比较完整 campaign 计数分布、最新已验证站外引荐和最新两条访客类型未核实记录，站外分发按当前版本化清单逐项比较 `itemId`、来源类型和完整 URL，Wayback 可用时逐项比较 `missingEvidenceUrls`，不能用相同总数掩盖 campaign、归因落地页、抓取证据页、Release、目标 URL 或归档证据页的集合替换。归因记录仅保留监测所需的时间、来源、引荐主机、campaign、落地页和状态，不写入 IP 或 User-Agent。状态为 `drift` 时 systemd 服务显式失败，防止公开状态静默落后；该失败仅表示需要人工审核和发布证据，不代表可发现性下降，也不会自动发布未经复核的日志。
+采集成功后，`geo:check-evidence-publication-drift` 会将生产汇总中的核心爬虫、核验源可用性及完整来源集合、搜索相关提示词覆盖与精确证据页集合、归因、Common Crawl 与 Wayback 的可用结果计数、站外可用性与仓库当前版本化基线或明确的监测完整性策略逐项比较，并原子写入 `/var/lib/onyx-geo/publication-drift.json`。任何必需的爬虫身份核验源不可用或从采集覆盖中消失必须产生 `drift`；Common Crawl 与 Wayback 这类可选外部档案查询的可用性转换继续写入摘要和不可覆盖事件，但不单独阻断服务，且来源不可用时绝不能用占位零覆盖上次可用证据。固定提示词分别比较已核验抓取和搜索相关抓取的完整 URL 集合，归因分别比较完整 campaign 计数分布、最新已验证站外引荐和最新两条访客类型未核实记录，站外分发按当前版本化清单逐项比较 `itemId`、来源类型和完整 URL，Wayback 可用时逐项比较 `missingEvidenceUrls`，不能用相同总数掩盖 campaign、归因落地页、抓取证据页、Release、目标 URL 或归档证据页的集合替换。归因记录仅保留监测所需的时间、来源、引荐主机、campaign、落地页和状态，不写入 IP 或 User-Agent。状态为 `drift` 时 systemd 服务显式失败，防止公开状态静默落后；该失败仅表示需要人工审核和发布证据，不代表可发现性下降，也不会自动发布未经复核的日志。
 
 生产 timer 使用每天四个固定 UTC 时间窗口并保留 `Persistent=true` 与开机补跑。不得改回以 `OnUnitActiveSec` 为基准的相对周期：人工复测也会更新服务活动时间，持续人工检查可能反复推迟下一次自动采集。固定日历计划不受手工启动影响，并通过最多十分钟随机延迟分散请求。
 

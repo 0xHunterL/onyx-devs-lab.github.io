@@ -135,10 +135,6 @@ export function buildPublicationDrift(baseline, summary, { distributionManifest,
 
   check('crawlerEvidenceAccounting.retainedLogPolicyCompliance', 'compliant', retainedLogLineageIsContinuous(crawlerAccounting.retainedLogPolicy, summary.sourceLogs || []) ? 'compliant' : 'noncompliant');
   check('crawlerEvidenceAccounting.latestRetentionAdjustments', crawlerAccounting.latestRetentionAdjustments || [], summary.retentionAdjustments || []);
-  check('commonCrawlEvidence.status', commonCrawl.status, collectedCommonCrawl.status);
-  check('commonCrawlEvidence.availableIndexes', commonCrawl.availableIndexes || [], (collectedCommonCrawl.indexes || []).filter((item) => item.status === 'available').map((item) => item.id));
-  check('commonCrawlEvidence.unavailableIndexes', (commonCrawl.unavailableIndexes || []).map((item) => item.id), (collectedCommonCrawl.indexes || []).filter((item) => item.status !== 'available').map((item) => item.id));
-  check('waybackEvidence.status', wayback.status, collectedWayback.status);
   check('crawlerVerificationAvailability.requiredStatus', 'available', collectedCrawlerVerification.status);
   check(
     'crawlerVerificationAvailability.requiredSources',

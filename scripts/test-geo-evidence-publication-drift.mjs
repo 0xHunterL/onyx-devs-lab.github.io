@@ -199,7 +199,7 @@ const commonCrawlDrift = structuredClone(summary);
 commonCrawlDrift.availability.commonCrawl.status = commonCrawl.status === 'partial' ? 'available' : 'partial';
 commonCrawlDrift.availability.commonCrawl.indexes[0].status = 'unavailable';
 const commonCrawlFields = buildPublicationDrift(baseline, commonCrawlDrift).mismatches.map((item) => item.field);
-assert.deepEqual(commonCrawlFields, ['commonCrawlEvidence.status', 'commonCrawlEvidence.availableIndexes', 'commonCrawlEvidence.unavailableIndexes']);
+assert.deepEqual(commonCrawlFields, []);
 
 const distributionDrift = structuredClone(summary);
 distributionDrift.availability.distribution.status = 'partial';
@@ -266,7 +266,7 @@ unavailableArchiveSources.counts.waybackArchivedEvidencePages = 0;
 unavailableArchiveSources.counts.promptsWithAnyWaybackArchive = 0;
 unavailableArchiveSources.counts.promptsFullyWaybackArchived = 0;
 const unavailableArchiveFields = buildPublicationDrift(baseline, unavailableArchiveSources).mismatches.map((item) => item.field);
-assert.ok(!unavailableArchiveFields.some((field) => field.startsWith('waybackEvidence.') && field !== 'waybackEvidence.status'));
+assert.ok(!unavailableArchiveFields.some((field) => field.startsWith('waybackEvidence.')));
 assert.ok(!unavailableArchiveFields.includes('commonCrawlEvidence.capturesObservedInAvailableIndexes'));
 
 console.log(JSON.stringify({ tests: 32, failures: [] }, null, 2));
