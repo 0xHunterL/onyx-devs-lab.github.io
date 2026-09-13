@@ -1141,6 +1141,24 @@ if (promptMapV64 && (promptMapV64.version !== '2026.09.13.64' || promptMapV64.pr
 const promptCoverageV64 = monitorEvidenceV64Json['2026-09-11-prompt-crawl-coverage.json'];
 if (promptCoverageV64 && (promptCoverageV64.promptMatrixSchemaVersion !== 3 || promptCoverageV64.totals?.prompts !== 23 || promptCoverageV64.totals?.verifiedCrawledEvidencePages !== 15 || promptCoverageV64.totals?.promptsWithAnyVerifiedCrawl !== 18 || promptCoverageV64.totals?.promptsFullyVerifiedCrawled !== 12 || promptCoverageV64.bySegment?.scenario?.prompts !== 6)) failures.push('Versioned GEO monitor revision 64 prompt crawl coverage: expected totals are incomplete');
 
+const monitorEvidenceV65Base = 'https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-monitor-evidence-2026-09-13-65';
+const monitorEvidenceV65Assets = [
+  {file:'2026-09-11-monitor-evidence.json',sha256:'379d468041aa469ba89ddd7091dd228dd0557c11029a21f0e12efff5a5c2b01e'},
+  {file:'ai-search-evidence-status.json',sha256:'c42a0e71e7d2a5083e9ba6ab5d45a25a5474e4ce61b91507b81a9765f501b5ac'},
+  {file:'prompt-matrix.json',sha256:'ed5305c7c1221689dd5c522cf305ea7ff73344ef37f016a3e148d5f598351b6f'},
+  {file:'ai-search-prompt-evidence-map.json',sha256:'8610ecf090b15c25fbb6271b6cd3906fad545b9369e7a2676d8a42b2fa66719a'},
+  {file:'2026-09-11-prompt-crawl-coverage.json',sha256:'7b9eb77978732b6425d408bb02cf4c2629daa9693ad2bb448e937df179151c11'},
+];
+const monitorEvidenceV65Json = {};
+for (const asset of monitorEvidenceV65Assets) {
+  const raw = await get(`Versioned GEO monitor revision 65 ${asset.file}`, `${monitorEvidenceV65Base}/${asset.file}`, 'application/');
+  const digest = createHash('sha256').update(raw).digest('hex');
+  if (digest !== asset.sha256) failures.push(`Versioned GEO monitor revision 65 ${asset.file}: SHA-256 mismatch, got ${digest}`);
+  try { monitorEvidenceV65Json[asset.file] = JSON.parse(raw); } catch { failures.push(`Versioned GEO monitor revision 65 ${asset.file}: invalid JSON`); }
+}
+const monitorV65 = monitorEvidenceV65Json['2026-09-11-monitor-evidence.json'];
+if (monitorV65 && (monitorV65.publicStatusVersion !== '2026.09.13.65' || monitorV65.generatedAt !== '2026-09-13T02:24:04.137Z' || monitorV65.providerVerifiedCrawlerEvidence?.ahrefsbotDiscoveryFileRequests !== 99 || monitorV65.providerVerifiedCrawlerEvidence?.ahrefsbotContentRequests !== 0 || monitorV65.providerVerifiedCrawlerEvidence?.ahrefsHistoricalRecognition?.lastSeen !== '2026-09-13T02:17:49Z' || monitorV65.providerVerifiedCrawlerEvidence?.ahrefsHistoricalRecognition?.sitemapRequests !== 74 || monitorV65.providerVerifiedCrawlerEvidence?.distinctVerifiedContentPaths !== 45 || monitorV65.doubaoTestStatus !== 'not-run')) failures.push('Versioned GEO monitor revision 65: Ahrefs discovery evidence or boundary is incomplete');
+
 const crawlerEvidenceReleaseUrl = 'https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-crawler-evidence-2026-09-10';
 const crawlerEvidenceRelease = await get('GitHub verified crawler-evidence checkpoint', crawlerEvidenceReleaseUrl, 'text/html');
 requireText('GitHub verified crawler-evidence checkpoint', crawlerEvidenceRelease, [
