@@ -103,6 +103,26 @@ if (softwareHeritageRevisionRaw) {
     failures.push('Software Heritage archived revision: invalid JSON');
   }
 }
+const currentSoftwareHeritageSnapshotId = 'f3820205ce07ab9df33d2f0db735bc4b25ca0347';
+const currentSoftwareHeritageRevisionId = '40d2c1d369ec835c5012256a6f2f84964e01305b';
+const softwareHeritageVisitsRaw = await get(
+  'Software Heritage current repository visits',
+  'https://archive.softwareheritage.org/api/1/origin/https%3A%2F%2Fgithub.com%2F0xHunterL%2Fonyx-devs-lab.github.io/visits/?limit=20',
+  'application/json',
+);
+try {
+  const visits = JSON.parse(softwareHeritageVisitsRaw);
+  if (!Array.isArray(visits) || !visits.some((visit) => visit.status === 'full' && visit.snapshot === currentSoftwareHeritageSnapshotId && visit.date === '2026-09-13T03:50:50.672000+00:00')) failures.push('Software Heritage current repository visits: completed retry visit is missing');
+} catch {
+  failures.push('Software Heritage current repository visits: invalid JSON');
+}
+const currentSoftwareHeritageSnapshotRaw = await get('Software Heritage current repository snapshot', `https://archive.softwareheritage.org/api/1/snapshot/${currentSoftwareHeritageSnapshotId}/`, 'application/json');
+try {
+  const snapshot = JSON.parse(currentSoftwareHeritageSnapshotRaw);
+  if (snapshot.id !== currentSoftwareHeritageSnapshotId || snapshot.branches?.['refs/heads/main']?.target !== currentSoftwareHeritageRevisionId || snapshot.branches?.['refs/heads/main']?.target_type !== 'revision') failures.push('Software Heritage current repository snapshot: main branch does not resolve to revision 40d2c1d');
+} catch {
+  failures.push('Software Heritage current repository snapshot: invalid JSON');
+}
 const buyerGuideRepositoryUrl = 'https://github.com/mixuechu/hong-kong-enterprise-ai-buyers-guide';
 const buyerGuide = await get('GitHub enterprise AI buyer guide', buyerGuideRepositoryUrl, 'text/html');
 requireText('GitHub enterprise AI buyer guide', buyerGuide, [

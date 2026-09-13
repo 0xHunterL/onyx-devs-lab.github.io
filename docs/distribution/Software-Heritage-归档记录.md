@@ -1,6 +1,20 @@
 # Software Heritage 代码归档记录
 
-2026-09-12，Onyx Devs Lab 的公开 Git 仓库通过 Software Heritage 官方 Save Code Now 接口再次更新归档。最新请求 `2472540` 已完成，任务状态为 `succeeded`，访问状态为 `full`。
+2026-09-13，Software Heritage 对 Onyx Devs Lab 公开 Git 仓库的提供方重试访问以 `full` 完成。访问历史返回内容寻址快照 `swh:1:snp:f3820205ce07ab9df33d2f0db735bc4b25ca0347`，独立解析快照确认其 `refs/heads/main` 精确保存采集时 GitHub `main` 的 revision `40d2c1d369ec835c5012256a6f2f84964e01305b`。
+
+- 原始仓库：<https://github.com/0xHunterL/onyx-devs-lab.github.io>
+- 当前快照 SWHID：[`swh:1:snp:f3820205ce07ab9df33d2f0db735bc4b25ca0347`](https://archive.softwareheritage.org/swh:1:snp:f3820205ce07ab9df33d2f0db735bc4b25ca0347/)
+- 快照中的 `main`：[`swh:1:rev:40d2c1d369ec835c5012256a6f2f84964e01305b`](https://archive.softwareheritage.org/swh:1:rev:40d2c1d369ec835c5012256a6f2f84964e01305b/)
+- 完整访问时间：`2026-09-13T03:50:50.672000+00:00`
+- 官方访问历史：<https://archive.softwareheritage.org/api/1/origin/https://github.com/0xHunterL/onyx-devs-lab.github.io/visit/latest/?require_snapshot=true>
+- 官方快照 API：<https://archive.softwareheritage.org/api/1/snapshot/f3820205ce07ab9df33d2f0db735bc4b25ca0347/>
+- Save Code Now 请求：<https://archive.softwareheritage.org/api/1/origin/save/2473234/>
+
+请求 `2473234` 的状态接口在观察时仍暴露首次 GitHub HTTP 429 失败记录和已经到期的 `next_run`，所以它不是重试成功的依据。可复核的成功证据是访问历史中的 `full` 记录、返回的快照 SWHID，以及对该快照分支的独立解析。该快照证明公开源代码与 revision 66 证据资产在独立公共代码语料库中可恢复；它不代表 Software Heritage 背书，也不证明官网搜索收录、AI 检索、引用、排名或推荐。
+
+## 历史快照
+
+2026-09-12，请求 `2472540` 以 `succeeded`／`full` 完成，保存了此前的功能性检查点。
 
 - 原始仓库：<https://github.com/0xHunterL/onyx-devs-lab.github.io>
 - 快照 SWHID：[`swh:1:snp:a6d10e9586fcc1860acf66f32651994693d87578`](https://archive.softwareheritage.org/swh:1:snp:a6d10e9586fcc1860acf66f32651994693d87578/)
@@ -11,6 +25,6 @@
 
 该快照独立保存截至 `a2d9281` 的功能性公开源代码、revision 49 证据资产、Git 历史、`CITATION.cff`、CodeMeta、主题站关系、Internet Archive 证据、扫描器分类和 Common Crawl 重试逻辑，并提供内容寻址的永久标识。其后的提交可以只更新快照关系本身，不把内容寻址快照误称为仓库当前 HEAD。它证明这些材料在该快照中可恢复，不代表 Software Heritage 认可 Onyx 的服务、案例主张或搜索表现，也不证明 `hk.onyxdevslab.com` 已被任何搜索引擎或 AI 产品收录、引用或推荐。
 
-自动门禁 `npm run geo:check-offsite` 会核验快照存在，并确认快照中的 `refs/heads/main` 指向上述不可变 Git revision。
+自动门禁 `npm run geo:check-offsite` 会同时核验当前与历史快照存在，并确认各快照中的 `refs/heads/main` 指向对应的不可变 Git revision。
 
 上一功能性归档请求 `2470710` 仍可通过[历史快照](https://archive.softwareheritage.org/swh:1:snp:df2409f12f9b01e665ae896d0492aa09148b9c1b/)复核，当时 `main` 指向 revision `f17606cf302d4e1368eae3f2a76c295af61384ad`。首个完整归档请求 `2469052` 的[历史快照](https://archive.softwareheritage.org/swh:1:snp:6eeeed9ca3ffbfeaa487a39205076233f4836f3b/)则指向 `dcd56f7f38f39cd68b3e36571c8a5c6f1940184e`。旧 SWHID 保留为历史证据，不再作为网站当前状态的规范归档关系。

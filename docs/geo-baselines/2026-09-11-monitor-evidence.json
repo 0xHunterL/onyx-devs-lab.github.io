@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
-  "publicStatusVersion": "2026.09.13.66",
-  "generatedAt": "2026-09-13T03:02:43.851Z",
-  "latestEvidenceObservedAt": "2026-09-13T03:02:43.785Z",
+  "publicStatusVersion": "2026.09.13.67",
+  "generatedAt": "2026-09-13T03:55:52.337Z",
+  "latestEvidenceObservedAt": "2026-09-13T03:52:09Z",
   "windowStart": "2026-09-01",
   "site": "https://hk.onyxdevslab.com/",
   "sourceLogs": [
@@ -32,7 +32,7 @@
     "yandexbotContentRequests": 78,
     "yandexbotDiscoveryFileRequests": 73,
     "ahrefsbotContentRequests": 0,
-    "ahrefsbotDiscoveryFileRequests": 99,
+    "ahrefsbotDiscoveryFileRequests": 101,
     "distinctVerifiedContentPaths": 45,
     "historicalReclassification": {
       "homepageContentRequestsAdded": 3,
@@ -62,26 +62,26 @@
     },
     "ahrefsHistoricalRecognition": {
       "firstSeen": "2026-09-08T13:53:09Z",
-      "lastSeen": "2026-09-13T02:17:49Z",
-      "robotsTxtRequests": 25,
-      "sitemapRequests": 74,
-      "distinctClientAddresses": 87,
+      "lastSeen": "2026-09-13T03:52:09Z",
+      "robotsTxtRequests": 26,
+      "sitemapRequests": 75,
+      "distinctClientAddresses": 89,
       "verificationSource": "https://api.ahrefs.com/v3/public/crawler-ip-ranges",
       "latestVerifiedDiscoveryRequests": [
         {
-          "time": "2026-09-13T00:49:12Z",
-          "path": "/sitemap.xml",
-          "status": 200,
-          "fingerprint": "07dc0b99b1154776f4322206bffa7599105cb3352bbe36f18f6a00eafc255b66"
+          "time": "2026-09-13T03:52:08Z",
+          "path": "/robots.txt",
+          "status": 304,
+          "fingerprint": "37bc4ac3650b321a6bc0f0c90aead693fd18ed1c5d8f5693c22ac4de941c836c"
         },
         {
-          "time": "2026-09-13T02:17:49Z",
+          "time": "2026-09-13T03:52:09Z",
           "path": "/sitemap.xml",
           "status": 200,
-          "fingerprint": "a431ff3543ed8b5878c8bf0a61210dc3907e690115954841b41252dc2df84ec4"
+          "fingerprint": "1a94f727482770c056544e466781af85a3b49c4b61cab03a62fb42497ac2c79b"
         }
       ],
-      "meaning": "All 99 discovery-file requests matched the official Ahrefs crawler IP ranges. AhrefsBot serves both the Ahrefs database and Yep, so these requests prove external crawler discovery only; they do not prove Yep indexing, ranking, retrieval, citation, or AI recommendation."
+      "meaning": "All 101 discovery-file requests matched the official Ahrefs crawler IP ranges. The latest pair requested robots.txt and sitemap.xml but no content page. AhrefsBot serves both the Ahrefs database and Yep, so these requests prove external crawler discovery only; they do not prove Yep indexing, ranking, retrieval, citation, or AI recommendation."
     }
   },
   "crawlerEvidenceAccounting": {
@@ -114,9 +114,9 @@
   "identityUnverifiedCrawlerEvidence": {
     "bytespiderContentRequestCandidates": 0,
     "bytespiderDiscoveryFileRequestCandidates": 0,
-    "syntheticCrawlerReleaseChecksExcludedMinimum": 3088,
+    "syntheticCrawlerReleaseChecksExcludedMinimum": 4583,
     "identityStatus": "user-agent-only-unverified",
-    "meaning": "No non-synthetic Bytespider request was observed. At least 3,088 internally marked or individually audited synthetic crawler checks were excluded across all crawler families; this monotonic minimum is operational audit context, not external visibility evidence. Future Bytespider candidates are tracked separately by self-declared User-Agent and do not prove Doubao or ByteDance access."
+    "meaning": "No non-synthetic Bytespider request was observed. At least 4,583 internally marked or individually audited synthetic crawler checks were excluded across all crawler families; this monotonic minimum is operational audit context, not external visibility evidence. Future Bytespider candidates are tracked separately by self-declared User-Agent and do not prove Doubao or ByteDance access."
   },
   "fixedPromptCoverage": {
     "prompts": 23,
@@ -183,7 +183,7 @@
     }
   },
   "commonCrawlEvidence": {
-    "checkedAt": "2026-09-13T03:02:37.534Z",
+    "checkedAt": "2026-09-13T03:55:35.260Z",
     "status": "available",
     "capturesObservedInAvailableIndexes": 0,
     "availableIndexes": ["CC-MAIN-2026-34", "CC-MAIN-2026-30"],
@@ -191,26 +191,29 @@
     "meaning": "Both selected Common Crawl indexes returned usable zero-capture responses. This complete result covers only the two selected indexes and cannot be interpreted as absence from all Common Crawl history, public search, or AI systems; availability changes remain event-recorded but do not independently block unrelated verified evidence publication."
   },
   "softwareHeritageEvidence": {
-    "checkedAt": "2026-09-13T03:02:42.298Z",
+    "checkedAt": "2026-09-13T03:55:50.677Z",
     "status": "available",
-    "archiveCoverageStatus": "lagging",
-    "repositoryHead": "cfac1ae27146952a21aead104f8d08fcafa365d6",
-    "latestCompleteVisitAt": "2026-09-12T14:03:45.792000+00:00",
-    "latestAttemptAt": "2026-09-13T02:50:45.187000+00:00",
-    "latestAttemptStatus": "failed",
-    "snapshotSwhid": "swh:1:snp:a6d10e9586fcc1860acf66f32651994693d87578",
-    "archiveHead": "a2d9281d23f406cd7ab1b19ed62d0e4c2e6fadfc",
+    "archiveCoverageStatus": "current",
+    "repositoryHead": "40d2c1d369ec835c5012256a6f2f84964e01305b",
+    "latestCompleteVisitAt": "2026-09-13T03:50:50.672000+00:00",
+    "latestAttemptAt": "2026-09-13T03:50:50.672000+00:00",
+    "latestAttemptStatus": "full",
+    "snapshotSwhid": "swh:1:snp:f3820205ce07ab9df33d2f0db735bc4b25ca0347",
+    "archiveHead": "40d2c1d369ec835c5012256a6f2f84964e01305b",
     "saveRequest": {
       "id": 2473234,
       "statusUrl": "https://archive.softwareheritage.org/api/1/origin/save/2473234/",
       "firstAttemptResult": "github-git-upload-pack-http-429",
+      "retryVisitStatus": "full",
+      "retryVisitAt": "2026-09-13T03:50:50.672000+00:00",
+      "requestEndpointStatusAtObservation": "stale-failed",
       "nextRun": "2026-09-13T03:50:45.693551Z"
     },
-    "eventFile": "events/2026-09-13T03-02-43.851Z-evidence-and-availability-change.json",
-    "meaning": "GitHub, the Software Heritage visit history and the latest complete snapshot were all queryable. The latest complete snapshot preserves revision a2d9281 while the observed GitHub main was cfac1ae, so archive coverage is explicitly lagging. Request 2473234 was accepted but its first visit failed after GitHub returned HTTP 429 and has a provider-scheduled retry. This is an archive coverage observation, not proof of website indexing, AI retrieval, citation, ranking, endorsement, or recommendation."
+    "eventFile": "events/2026-09-13T03-55-52.337Z-evidence-and-availability-change.json",
+    "meaning": "GitHub, the Software Heritage visit history, the save-request endpoint and the latest complete snapshot were all queryable. The retry visit completed with status full and snapshot f3820205, whose refs/heads/main exactly preserves the observed GitHub main revision 40d2c1d; archive coverage was therefore current at collection time. The save-request object still exposed the earlier failed attempt and elapsed next_run value, so the complete visit plus independently resolved snapshot—not the stale request object—is the success evidence. This proves independent content-addressed source preservation only, not website indexing, AI retrieval, citation, ranking, endorsement, or recommendation."
   },
   "waybackEvidence": {
-    "checkedAt": "2026-09-13T03:02:38.416Z",
+    "checkedAt": "2026-09-13T03:55:45.852Z",
     "status": "available",
     "captures": 96,
     "distinctUrls": 46,
@@ -308,7 +311,7 @@
     "meaning": "The available public Wayback CDX host query currently returns 96 successful HTML capture records across 46 distinct URLs. Three newly exposed recruiting and credit-research case-study captures increase the prompt archive ledger to 18 archived evidence pages, 18 prompts with any archive and 15 fully archived prompts; the remaining count movement includes documented public-index volatility. These records prove public historical captures only; they do not prove current accessibility, search indexing, AI retrieval, citation, ranking, endorsement, or recommendation. An unavailable future query must not be interpreted as zero captures."
   },
   "githubRepositorySearchEvidence": {
-    "checkedAt": "2026-09-13T03:02:39.916Z",
+    "checkedAt": "2026-09-13T03:55:47.636Z",
     "status": "available",
     "queriesChecked": 3,
     "availableQueries": 3,
@@ -350,7 +353,7 @@
     "manifestItems": 12,
     "publishedItems": 11,
     "readyNotPublishedItems": 1,
-    "checkedAt": "2026-09-13T03:18:12.112Z",
+    "checkedAt": "2026-09-13T03:55:47.159Z",
     "publicUrlsChecked": 11,
     "trackedTargetsChecked": 25,
     "availableSources": 36,
@@ -360,7 +363,7 @@
     "meaning": "The distribution ledger includes 11 declared published URLs and 25 tracked targets after adding the immutable revision 66 evidence Release. All 36 sources passed anonymous availability, destination, and content-marker checks. This versions new archival evidence without creating duplicate topical content; it does not prove indexing, AI retrieval, citation, recommendation, a human visit, or independent endorsement."
   },
   "servicesHkReadinessEvidence": {
-    "checkedAt": "2026-09-13T03:02:39.856Z",
+    "checkedAt": "2026-09-13T03:55:47.596Z",
     "availabilityStatus": "unavailable",
     "targetsChecked": 3,
     "availableTargets": 0,
@@ -374,7 +377,7 @@
     "meaning": "All three sampled services.hk detail pages return HTTP 200 but contain the known PHP application failure and omit the required title, service-description, and contact markers. This blocks submission readiness; it does not prove that Onyx is listed, reviewed, endorsed, indexed, cited, or recommended. Submission still requires current user confirmation after all three targets recover."
   },
   "domainCanonicalizationEvidence": {
-    "checkedAt": "2026-09-13T03:02:43.785Z",
+    "checkedAt": "2026-09-13T03:55:52.261Z",
     "status": "noncompliant",
     "canonicalOrigin": "https://hk.onyxdevslab.com/",
     "targetsChecked": 6,
