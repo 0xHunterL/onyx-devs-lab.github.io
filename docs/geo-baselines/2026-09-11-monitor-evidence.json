@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
-  "publicStatusVersion": "2026.09.13.62",
-  "generatedAt": "2026-09-13T00:51:11.185Z",
-  "latestEvidenceObservedAt": "2026-09-13T00:51:11.113Z",
+  "publicStatusVersion": "2026.09.13.63",
+  "generatedAt": "2026-09-13T01:22:10.953Z",
+  "latestEvidenceObservedAt": "2026-09-13T01:22:10.855Z",
   "windowStart": "2026-09-01",
   "site": "https://hk.onyxdevslab.com/",
   "sourceLogs": [
@@ -172,10 +172,18 @@
         "landingPage": "/zh-cn/guides/ai-consulting-vs-development-vs-fde/",
         "referrerHost": ""
       }
-    ]
+    ],
+    "internalAuditTrafficCorrection": {
+      "correctedAt": "2026-09-13T01:22:10.953Z",
+      "userAgent": "Onyx-GEO-Manifest-Audit/1.0",
+      "requestsExcluded": 6,
+      "affectedCampaigns": ["geo_chinese_field_notes", "geo_governance_guide"],
+      "classifierRule": "All internal Onyx-GEO-* user agents are synthetic verification traffic.",
+      "meaning": "Six manifest-audit requests briefly appeared in the 01:19:32 internal event before the synthetic-user-agent classifier was corrected. The 01:22:10 production collection excludes them and restores the prior 86 tracked requests and 14 visitor-type-unverified requests. These requests are not human, search, AI-referral, citation, or recommendation evidence."
+    }
   },
   "commonCrawlEvidence": {
-    "checkedAt": "2026-09-13T00:51:06.627Z",
+    "checkedAt": "2026-09-13T01:21:58.409Z",
     "status": "available",
     "capturesObservedInAvailableIndexes": 0,
     "availableIndexes": ["CC-MAIN-2026-34", "CC-MAIN-2026-30"],
@@ -183,7 +191,7 @@
     "meaning": "Both selected Common Crawl indexes returned usable zero-capture responses. This complete result covers only the two selected indexes and cannot be interpreted as absence from all Common Crawl history, public search, or AI systems; availability changes remain event-recorded but do not independently block unrelated verified evidence publication."
   },
   "waybackEvidence": {
-    "checkedAt": "2026-09-13T00:51:07.364Z",
+    "checkedAt": "2026-09-13T01:22:07.804Z",
     "status": "available",
     "captures": 94,
     "distinctUrls": 44,
@@ -263,7 +271,7 @@
     "meaning": "The available public Wayback CDX host query currently returns 94 successful HTML capture records across 44 distinct URLs. A newly exposed industrial ERP case-study capture increases the prompt archive ledger to 16 archived evidence pages, 16 prompts with any archive and 12 fully archived prompts; the remaining count movement includes documented public-index volatility. These records prove public historical captures only; they do not prove current accessibility, search indexing, AI retrieval, citation, ranking, endorsement, or recommendation. An unavailable future query must not be interpreted as zero captures."
   },
   "githubRepositorySearchEvidence": {
-    "checkedAt": "2026-09-13T00:51:08.883Z",
+    "checkedAt": "2026-09-13T01:22:09.341Z",
     "status": "available",
     "queriesChecked": 3,
     "availableQueries": 3,
@@ -298,24 +306,24 @@
       }
     ],
     "source": "https://hk.onyxdevslab.com/data/github-repository-search-baseline.json",
-    "eventFile": "events/2026-09-13T00-51-11.185Z-evidence-and-availability-change.json",
+    "eventFile": "events/2026-09-13T01-19-32.135Z-evidence-and-availability-change.json",
     "meaning": "All three fixed GitHub Repository Search API queries were available. Brand and legal-entity queries return both first-party repositories; the exact category query returns the same two repositories after the recorded README changes. This proves GitHub platform-search visibility only, not public-web indexing, AI retrieval, citation, ranking, independent endorsement, or non-brand recommendation."
   },
   "distributionEvidence": {
-    "manifestItems": 9,
-    "publishedItems": 8,
+    "manifestItems": 11,
+    "publishedItems": 10,
     "readyNotPublishedItems": 1,
-    "checkedAt": "2026-09-13T00:51:08.464Z",
-    "publicUrlsChecked": 8,
-    "trackedTargetsChecked": 18,
-    "availableSources": 26,
+    "checkedAt": "2026-09-13T01:22:08.918Z",
+    "publicUrlsChecked": 10,
+    "trackedTargetsChecked": 24,
+    "availableSources": 34,
     "unavailableSources": 0,
     "availabilityStatus": "available",
-    "eventFile": "events/2026-09-13T00-51-11.185Z-evidence-and-availability-change.json",
-    "meaning": "All declared published URLs and tracked targets passed anonymous availability, destination, and content-marker checks. This does not prove indexing, AI retrieval, citation, recommendation, a human visit, or independent endorsement."
+    "eventFile": "events/2026-09-13T01-19-32.135Z-evidence-and-availability-change.json",
+    "meaning": "The distribution ledger now includes two previously published but untracked sources: the bilingual Hong Kong enterprise AI governance Gist and the versioned Chinese enterprise AI field-note index Release. All 10 declared published URLs and 24 tracked targets passed anonymous availability, destination, and content-marker checks. This closes a monitoring-coverage gap without creating duplicate content; it does not prove indexing, AI retrieval, citation, recommendation, a human visit, or independent endorsement."
   },
   "servicesHkReadinessEvidence": {
-    "checkedAt": "2026-09-13T00:51:08.792Z",
+    "checkedAt": "2026-09-13T01:22:09.239Z",
     "availabilityStatus": "unavailable",
     "targetsChecked": 3,
     "availableTargets": 0,
@@ -329,7 +337,7 @@
     "meaning": "All three sampled services.hk detail pages return HTTP 200 but contain the known PHP application failure and omit the required title, service-description, and contact markers. This blocks submission readiness; it does not prove that Onyx is listed, reviewed, endorsed, indexed, cited, or recommended. Submission still requires current user confirmation after all three targets recover."
   },
   "domainCanonicalizationEvidence": {
-    "checkedAt": "2026-09-13T00:51:11.113Z",
+    "checkedAt": "2026-09-13T01:22:10.855Z",
     "status": "noncompliant",
     "canonicalOrigin": "https://hk.onyxdevslab.com/",
     "targetsChecked": 6,
@@ -345,7 +353,7 @@
       {"id": "https-hk", "startUrl": "https://hk.onyxdevslab.com/", "finalUrl": "https://hk.onyxdevslab.com/", "status": "compliant", "reasons": []}
     ],
     "githubPagesSetting": {"checkedAt": "2026-09-12T23:07:00Z", "httpsEnforced": false, "source": "GitHub Pages API via authenticated collaborator access", "mutationAuthorized": false},
-    "eventFile": "events/2026-09-13T00-51-11.185Z-evidence-and-availability-change.json",
+    "eventFile": "events/2026-09-13T01-19-32.135Z-evidence-and-availability-change.json",
     "meaning": "The Hong Kong host redirects HTTP to HTTPS and exposes the expected self-canonical URL. The GitHub Pages apex host serves content directly over HTTP, both www entry points lead to the HTTP apex, and the HTTPS www entry point downgrades to HTTP. GitHub Pages reports https_enforced=false. This is a technical canonicalization and transport-security defect; it does not negate the observed Yandex brand result or prove any search ranking effect. Enabling Enforce HTTPS requires repository-owner administration, and no DNS, CDN, Cloudflare, or Pages setting was changed by this observation."
   },
   "yandexPublicSearchEvidence": {
