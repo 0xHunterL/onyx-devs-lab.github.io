@@ -1067,6 +1067,43 @@ if (promptMapV62 && (promptMapV62.version !== '2026.09.13.62' || promptMapV62.pr
 const promptCoverageV62 = monitorEvidenceV62Json['2026-09-11-prompt-crawl-coverage.json'];
 if (promptCoverageV62 && (promptCoverageV62.promptMatrixSchemaVersion !== 3 || promptCoverageV62.totals?.prompts !== 23 || promptCoverageV62.totals?.verifiedCrawledEvidencePages !== 15 || promptCoverageV62.totals?.promptsWithAnyVerifiedCrawl !== 18 || promptCoverageV62.totals?.promptsFullyVerifiedCrawled !== 12 || promptCoverageV62.bySegment?.scenario?.prompts !== 6)) failures.push('Versioned GEO monitor revision 62 prompt crawl coverage: expected totals are incomplete');
 
+const monitorEvidenceV63Base = 'https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-monitor-evidence-2026-09-13-63';
+const monitorEvidenceV63Release = await get('GitHub GEO monitor evidence revision 63', 'https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-monitor-evidence-2026-09-13-63', 'text/html');
+requireText('GitHub GEO monitor evidence revision 63', monitorEvidenceV63Release, [
+  'GEO monitor evidence checkpoint — 2026-09-13, revision 63',
+  '34 available sources',
+  'actual attribution remains 86 tracked requests',
+  'No prompt was sent to Doubao',
+]);
+const monitorEvidenceV63Assets = [
+  {name:'monitor snapshot',file:'2026-09-11-monitor-evidence.json',sha256:'269dcf5a82a99a41b6d5ce41f2bc6ff0ccb794ccb2e88599697a77fa4acc549a'},
+  {name:'public status',file:'ai-search-evidence-status.json',sha256:'1c9b5183977969fcd19387180151381f1d66beecfc85678d3f3484f6445e2b7d'},
+  {name:'prompt matrix',file:'prompt-matrix.json',sha256:'ed5305c7c1221689dd5c522cf305ea7ff73344ef37f016a3e148d5f598351b6f'},
+  {name:'prompt evidence map',file:'ai-search-prompt-evidence-map.json',sha256:'d292108a971b811753ce9bea8def884884c29cb44e9cb44fcdcbce05673360cd'},
+  {name:'prompt crawl coverage',file:'2026-09-11-prompt-crawl-coverage.json',sha256:'7b9eb77978732b6425d408bb02cf4c2629daa9693ad2bb448e937df179151c11'},
+];
+const monitorEvidenceV63Json = {};
+for (const asset of monitorEvidenceV63Assets) {
+  const raw = await get(`Versioned GEO monitor revision 63 ${asset.name}`, `${monitorEvidenceV63Base}/${asset.file}`, 'application/');
+  const digest = createHash('sha256').update(raw).digest('hex');
+  if (digest !== asset.sha256) failures.push(`Versioned GEO monitor revision 63 ${asset.name}: SHA-256 mismatch, got ${digest}`);
+  try {
+    monitorEvidenceV63Json[asset.file] = JSON.parse(raw);
+  } catch {
+    failures.push(`Versioned GEO monitor revision 63 ${asset.name}: invalid JSON`);
+  }
+}
+const monitorV63 = monitorEvidenceV63Json['2026-09-11-monitor-evidence.json'];
+if (monitorV63 && (monitorV63.publicStatusVersion !== '2026.09.13.63' || monitorV63.generatedAt !== '2026-09-13T01:22:10.953Z' || monitorV63.distributionEvidence?.publishedItems !== 10 || monitorV63.distributionEvidence?.availableSources !== 34 || monitorV63.attributionEvidence?.internalAuditTrafficCorrection?.requestsExcluded !== 6 || monitorV63.attributionEvidence?.trackedRequests !== 86 || monitorV63.attributionEvidence?.visitorTypeUnverifiedRequests !== 14 || monitorV63.attributionEvidence?.aiReferrerAttributedRequests !== 0 || monitorV63.providerVerifiedCrawlerEvidence?.distinctVerifiedContentPaths !== 45 || monitorV63.doubaoTestStatus !== 'not-run')) failures.push('Versioned GEO monitor revision 63 monitor snapshot: expected distribution coverage, audit correction, stable attribution, coverage, or boundary is incomplete');
+const statusV63 = monitorEvidenceV63Json['ai-search-evidence-status.json'];
+if (statusV63 && (statusV63.version !== '2026.09.13.63' || statusV63.observedAt !== '2026-09-13T01:22:10.953Z' || statusV63.versionHistory?.[0]?.version !== '2026.09.13.63' || statusV63.versionHistory?.[1]?.version !== '2026.09.13.62' || statusV63.evidenceLevels?.[3]?.evidence?.trackedAttributionRequests !== 86 || statusV63.evidenceLevels?.[3]?.evidence?.humanUnverifiedTrackedRequests !== 14 || statusV63.evidenceLevels?.[3]?.evidence?.realAiReferralVisitsObserved !== 0 || statusV63.evidenceLevels?.[1]?.evidence?.verifiedDistinctContentPaths !== 45 || statusV63.testProtocol?.doubaoPromptsSent !== false)) failures.push('Versioned GEO monitor revision 63 public status: expected attribution, stable coverage, or AI boundary is incomplete');
+const matrixV63 = monitorEvidenceV63Json['prompt-matrix.json'];
+if (matrixV63 && (matrixV63.schemaVersion !== 3 || matrixV63.prompts?.length !== 23 || matrixV63.prompts.find((prompt) => prompt.id === 'brand-cases')?.evidenceUrls?.length !== 7)) failures.push('Versioned GEO monitor revision 63 prompt matrix: six-case protocol is incomplete');
+const promptMapV63 = monitorEvidenceV63Json['ai-search-prompt-evidence-map.json'];
+if (promptMapV63 && (promptMapV63.version !== '2026.09.13.63' || promptMapV63.promptMatrix?.schemaVersion !== 3 || promptMapV63.promptMatrix?.promptCount !== 23 || promptMapV63.promptMatrix?.doubaoPromptsSent !== false || promptMapV63.totals?.uniqueEvidencePages !== 23 || promptMapV63.prompts?.length !== 23)) failures.push('Versioned GEO monitor revision 63 prompt evidence map: expected protocol or boundary is incomplete');
+const promptCoverageV63 = monitorEvidenceV63Json['2026-09-11-prompt-crawl-coverage.json'];
+if (promptCoverageV63 && (promptCoverageV63.promptMatrixSchemaVersion !== 3 || promptCoverageV63.totals?.prompts !== 23 || promptCoverageV63.totals?.verifiedCrawledEvidencePages !== 15 || promptCoverageV63.totals?.promptsWithAnyVerifiedCrawl !== 18 || promptCoverageV63.totals?.promptsFullyVerifiedCrawled !== 12 || promptCoverageV63.bySegment?.scenario?.prompts !== 6)) failures.push('Versioned GEO monitor revision 63 prompt crawl coverage: expected totals are incomplete');
+
 const crawlerEvidenceReleaseUrl = 'https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-crawler-evidence-2026-09-10';
 const crawlerEvidenceRelease = await get('GitHub verified crawler-evidence checkpoint', crawlerEvidenceReleaseUrl, 'text/html');
 requireText('GitHub verified crawler-evidence checkpoint', crawlerEvidenceRelease, [
