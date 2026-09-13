@@ -100,19 +100,13 @@ export function buildPublicationDrift(baseline, summary, { distributionManifest,
     ['providerVerifiedCrawlerEvidence.distinctVerifiedContentPaths', provider.distinctVerifiedContentPaths, counts.verifiedContentPaths],
     ['fixedPromptCoverage.searchRelatedCrawledEvidencePages', prompt.searchRelatedCrawledEvidencePages, counts.searchRelatedCrawledEvidencePages],
     ['fixedPromptCoverage.promptsWithAnySearchRelatedCrawl', prompt.promptsWithAnySearchRelatedCrawl, counts.promptsWithAnySearchRelatedCrawl],
-    ['attributionEvidence.trackedRequests', attribution.trackedRequests, counts.trackedVisits],
-    ['attributionEvidence.suspectedAutomatedRequests', attribution.suspectedAutomatedRequests, counts.suspectedAutomatedTrackedVisits],
-    ['attributionEvidence.periodicRotatingClientRequests', attribution.periodicRotatingClientRequests, counts.periodicRotatingClientTrackedVisits],
     ['attributionEvidence.visitorTypeUnverifiedRequests', attribution.visitorTypeUnverifiedRequests, counts.humanUnverifiedTrackedVisits],
-    ['attributionEvidence.knownLinkScannerRequests', attribution.knownLinkScannerRequests, counts.knownLinkScannerTrackedVisits],
-    ['attributionEvidence.knownLinkScannerUserAgentRequests', attribution.knownLinkScannerUserAgentRequests, counts.knownLinkScannerUserAgentVisits],
-    ['attributionEvidence.knownLinkScannerNetworkRequests', attribution.knownLinkScannerNetworkRequests, counts.knownLinkScannerNetworkVisits],
-    ['attributionEvidence.internallyInconsistentUserAgentRequests', attribution.internallyInconsistentUserAgentRequests, counts.internallyInconsistentUserAgentVisits],
-    ['attributionEvidence.malformedCampaignRequestsExcluded', attribution.malformedCampaignRequestsExcluded, counts.malformedCampaignVisits],
     ['attributionEvidence.aiReferrerAttributedRequests', attribution.aiReferrerAttributedRequests, counts.aiReferrerAttributedVisits],
   ];
   for (const mapping of countMappings) check(...mapping);
-  check('attributionEvidence.campaigns', attribution.campaigns || {}, collectedEvidenceSets.attributionCampaigns || {});
+  // Suspected-automation counters remain published audit context, but are not
+  // visibility gains. Ignoring them here prevents Release-link safety scans
+  // from creating publication churn.
   check('attributionEvidence.latestVerifiedOffsiteReferral', attribution.latestVerifiedOffsiteReferral || null, collectedEvidenceSets.latestVerifiedOffsiteReferral || null);
   check('attributionEvidence.latestVisitorTypeUnverifiedAttributions', attribution.latestVisitorTypeUnverifiedAttributions || [], collectedEvidenceSets.latestVisitorTypeUnverifiedAttributions || []);
   if (promptCoverageBaseline) {

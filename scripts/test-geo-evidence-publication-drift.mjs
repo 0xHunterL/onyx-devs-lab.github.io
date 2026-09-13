@@ -128,21 +128,18 @@ assert.ok(commonCrawl.unavailableIndexes.every((item) => typeof item?.id === 'st
 assert.equal(synchronized.status, 'synchronized');
 assert.deepEqual(synchronized.mismatches, []);
 
-const referralDrift = structuredClone(summary);
-referralDrift.counts.trackedVisits += 1;
-const referralReport = buildPublicationDrift(baseline, referralDrift);
-assert.equal(referralReport.status, 'drift');
-assert.deepEqual(referralReport.mismatches, [{
-  field: 'attributionEvidence.trackedRequests',
-  published: attribution.trackedRequests,
-  collected: attribution.trackedRequests + 1,
-}]);
+const scannerOnlyDrift = structuredClone(summary);
+scannerOnlyDrift.counts.trackedVisits += 1;
+scannerOnlyDrift.counts.suspectedAutomatedTrackedVisits += 1;
+scannerOnlyDrift.counts.knownLinkScannerTrackedVisits += 1;
+scannerOnlyDrift.counts.knownLinkScannerNetworkVisits += 1;
+scannerOnlyDrift.evidenceSets.attributionCampaigns.geo_engagement_model_qa += 1;
+assert.equal(buildPublicationDrift(baseline, scannerOnlyDrift).status, 'synchronized');
 
-const attributionCampaignReplacement = structuredClone(summary);
-const campaignIds = Object.keys(attributionCampaignReplacement.evidenceSets.attributionCampaigns);
-attributionCampaignReplacement.evidenceSets.attributionCampaigns[campaignIds[0]] -= 1;
-attributionCampaignReplacement.evidenceSets.attributionCampaigns[campaignIds[1]] += 1;
-assert.equal(buildPublicationDrift(baseline, attributionCampaignReplacement).mismatches[0].field, 'attributionEvidence.campaigns');
+const visitorTypeUnverifiedCountDrift = structuredClone(summary);
+visitorTypeUnverifiedCountDrift.counts.trackedVisits += 1;
+visitorTypeUnverifiedCountDrift.counts.humanUnverifiedTrackedVisits += 1;
+assert.equal(buildPublicationDrift(baseline, visitorTypeUnverifiedCountDrift).mismatches[0].field, 'attributionEvidence.visitorTypeUnverifiedRequests');
 
 const latestVerifiedOffsiteReplacement = structuredClone(summary);
 latestVerifiedOffsiteReplacement.evidenceSets.latestVerifiedOffsiteReferral.landingPage = '/zh-cn/replacement/';
