@@ -1,4 +1,5 @@
 import assert from 'node:assert/strict';
+import fs from 'node:fs';
 import { fetchOffsiteResource } from './fetch-offsite-resource.mjs';
 
 function response(status, body, contentType = 'application/octet-stream') {
@@ -64,4 +65,16 @@ await fetchOffsiteResource('distribution page', 'https://example.test/distributi
 });
 assert.equal(observedUserAgent, 'Onyx-GEO-Release-Check Distribution/1.0');
 
-console.log(JSON.stringify({ tests: 12, failures: [] }, null, 2));
+const offsiteGateSource = fs.readFileSync('scripts/check-offsite-assets.mjs', 'utf8');
+assert.match(
+  offsiteGateSource,
+  /get\('Software Heritage current repository snapshot',[\s\S]*?\{ allowUnavailable: true \}\)/,
+  'the current Software Heritage snapshot must remain an optional availability source',
+);
+assert.match(
+  offsiteGateSource,
+  /if \(currentSoftwareHeritageSnapshotRaw\) \{[\s\S]*?JSON\.parse\(currentSoftwareHeritageSnapshotRaw\)/,
+  'the current Software Heritage snapshot must only be parsed when a response body is available',
+);
+
+console.log(JSON.stringify({ tests: 14, failures: [] }, null, 2));
