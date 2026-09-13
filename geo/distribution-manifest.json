@@ -436,6 +436,36 @@
         "The GitHub comparison change removes result-order false drift; it does not claim a ranking or result-set improvement.",
         "Anonymous availability and matching content markers do not prove independent endorsement, Copilot or other AI retrieval, citation, a human visit, or non-brand recommendation."
       ]
+    },
+    {
+      "id": "github-release-geo-monitor-evidence-2026-09-13-70",
+      "channel": "github_releases",
+      "format": "versioned-evidence-checkpoint",
+      "language": "en-zh-CN",
+      "status": "published",
+      "sourceFile": "README.md",
+      "title": "Onyx GEO monitor evidence checkpoint — 2026-09-13, revision 70",
+      "campaign": "geo_monitor_evidence_70",
+      "trackedTargets": [
+        "https://hk.onyxdevslab.com/data/ai-search-evidence-status.json?utm_source=github_releases&utm_medium=referral&utm_campaign=geo_monitor_evidence_70"
+      ],
+      "publicUrl": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-monitor-evidence-2026-09-13-70",
+      "anonymousAccessVerifiedAt": "2026-09-13T06:24:40Z",
+      "publicContentMarkers": [
+        "Onyx GEO monitor evidence — 2026-09-13 revision 70",
+        "request 2473685 completed with succeeded/full",
+        "snapshot swh:1:snp:beec7f09ab04a666d11d120abddf542620d09e97",
+        "No prompt was sent to Doubao"
+      ],
+      "searchIndexedAt": null,
+      "aiCitationObservedAt": null,
+      "nonBrandRecommendationObservedAt": null,
+      "limitations": [
+        "The Release and its assets are published and maintained by Onyx Devs Lab.",
+        "The completed Software Heritage request and independently resolved snapshot prove content-addressed public-code preservation only, not website indexing or endorsement.",
+        "The archived revision was current at observation time; later repository commits can make that immutable snapshot lag the mutable main branch without invalidating the checkpoint.",
+        "Anonymous availability and matching content markers do not prove AI retrieval, citation, ranking, a human visit, or non-brand recommendation."
+      ]
     }
   ]
 }
