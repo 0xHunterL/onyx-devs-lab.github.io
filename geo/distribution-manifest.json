@@ -466,6 +466,36 @@
         "The archived revision was current at observation time; later repository commits can make that immutable snapshot lag the mutable main branch without invalidating the checkpoint.",
         "Anonymous availability and matching content markers do not prove AI retrieval, citation, ranking, a human visit, or non-brand recommendation."
       ]
+    },
+    {
+      "id": "github-release-geo-monitor-evidence-2026-09-13-71",
+      "channel": "github_releases",
+      "format": "versioned-evidence-checkpoint",
+      "language": "en-zh-CN",
+      "status": "published",
+      "sourceFile": "README.md",
+      "title": "Onyx GEO monitor evidence checkpoint — 2026-09-13, revision 71",
+      "campaign": "geo_monitor_evidence_71",
+      "trackedTargets": [
+        "https://hk.onyxdevslab.com/data/ai-search-evidence-status.json?utm_source=github_releases&utm_medium=referral&utm_campaign=geo_monitor_evidence_71"
+      ],
+      "publicUrl": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-monitor-evidence-2026-09-13-71",
+      "anonymousAccessVerifiedAt": "2026-09-13T06:46:12Z",
+      "publicContentMarkers": [
+        "Onyx GEO monitor evidence — 2026-09-13 revision 71",
+        "provider-verified GPTBot",
+        "OAI-SearchBot fetched /robots.txt",
+        "No prompt was sent to Doubao"
+      ],
+      "searchIndexedAt": null,
+      "aiCitationObservedAt": null,
+      "nonBrandRecommendationObservedAt": null,
+      "limitations": [
+        "The Release and its assets are published and maintained by Onyx Devs Lab.",
+        "The provider-verified GPTBot and OAI-SearchBot requests prove discovery-file access only; they do not prove content crawling, indexing, retrieval, citation, ranking, or recommendation.",
+        "The six additional tracked campaign requests were classified as known link-scanner network traffic and are not human or referral evidence.",
+        "Anonymous availability and matching content markers do not prove independent endorsement, an AI citation, a human visit, or non-brand recommendation."
+      ]
     }
   ]
 }

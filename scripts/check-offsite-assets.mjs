@@ -1281,6 +1281,47 @@ if (monitorV70 && (monitorV70.publicStatusVersion !== '2026.09.13.70' || monitor
 const statusV70 = monitorEvidenceV70Json['ai-search-evidence-status.json'];
 if (statusV70 && (statusV70.version !== '2026.09.13.70' || statusV70.observedAt !== '2026-09-13T06:11:54.521Z' || statusV70.versionHistory?.[0]?.version !== '2026.09.13.70' || statusV70.publicCorpusMonitoring?.softwareHeritage?.archiveCoverageStatus !== 'current' || statusV70.publicCorpusMonitoring?.softwareHeritage?.snapshotSwhid !== 'swh:1:snp:beec7f09ab04a666d11d120abddf542620d09e97' || statusV70.publicCorpusMonitoring?.softwareHeritage?.archiveHead !== 'd7d6ee308e5f543e3136d3da68c2fd16f0361500' || statusV70.testProtocol?.doubaoPromptsSent !== false)) failures.push('Versioned GEO monitor revision 70 public status: Software Heritage or AI boundary is incomplete');
 
+const monitorEvidenceV71Base = 'https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-monitor-evidence-2026-09-13-71';
+const monitorEvidenceV71Assets = [
+  {file:'2026-09-11-monitor-evidence.json',sha256:'af0067d8b4a5b6acc2976b12fb646ec8d0a1d890304879ec4c63fd92c4e45e15'},
+  {file:'ai-search-evidence-status.json',sha256:'e0deb4e378ce03971d7bc7f79ab07601510345a406a8c5467c906d9eec729fc1'},
+  {file:'prompt-matrix.json',sha256:'ed5305c7c1221689dd5c522cf305ea7ff73344ef37f016a3e148d5f598351b6f'},
+  {file:'ai-search-prompt-evidence-map.json',sha256:'8b69dafacb5871a6477bc2716060eff81cfb9c85e858cb0ae54b0644c6f54a76'},
+  {file:'2026-09-11-prompt-crawl-coverage.json',sha256:'7b9eb77978732b6425d408bb02cf4c2629daa9693ad2bb448e937df179151c11'},
+];
+const monitorEvidenceV71Json = {};
+for (const asset of monitorEvidenceV71Assets) {
+  const raw = await get(`Versioned GEO monitor revision 71 ${asset.file}`, `${monitorEvidenceV71Base}/${asset.file}`, 'application/');
+  const digest = createHash('sha256').update(raw).digest('hex');
+  if (digest !== asset.sha256) failures.push(`Versioned GEO monitor revision 71 ${asset.file}: SHA-256 mismatch, got ${digest}`);
+  try { monitorEvidenceV71Json[asset.file] = JSON.parse(raw); } catch { failures.push(`Versioned GEO monitor revision 71 ${asset.file}: invalid JSON`); }
+}
+const monitorV71 = monitorEvidenceV71Json['2026-09-11-monitor-evidence.json'];
+if (monitorV71 && (
+  monitorV71.publicStatusVersion !== '2026.09.13.71'
+  || monitorV71.generatedAt !== '2026-09-13T06:35:51.337Z'
+  || monitorV71.latestEvidenceObservedAt !== '2026-09-13T06:16:57Z'
+  || monitorV71.providerVerifiedCrawlerEvidence?.gptBotDiscoveryFileRequests !== 15
+  || monitorV71.providerVerifiedCrawlerEvidence?.oaiSearchBotDiscoveryFileRequests !== 12
+  || monitorV71.providerVerifiedCrawlerEvidence?.latestOpenAiDiscoveryRequests?.length !== 2
+  || monitorV71.providerVerifiedCrawlerEvidence?.latestOpenAiDiscoveryRequests?.[0]?.fingerprint !== 'eb69eab4c93121e0d3100704bcc5a29ce336cbe839ef4f6f45a99495671a2f3d'
+  || monitorV71.softwareHeritageEvidence?.archiveCoverageStatus !== 'lagging'
+  || monitorV71.distributionEvidence?.publishedItems !== 15
+  || monitorV71.distributionEvidence?.expectedAfterCurrentCheckpointPublication?.publishedItems !== 16
+  || monitorV71.distributionEvidence?.expectedAfterCurrentCheckpointPublication?.availableSources !== 46
+  || monitorV71.doubaoTestStatus !== 'not-run'
+)) failures.push('Versioned GEO monitor revision 71: OpenAI crawler, archive, self-publication, or evidence boundary is incomplete');
+const statusV71 = monitorEvidenceV71Json['ai-search-evidence-status.json'];
+if (statusV71 && (
+  statusV71.version !== '2026.09.13.71'
+  || statusV71.observedAt !== '2026-09-13T06:35:51.337Z'
+  || statusV71.versionHistory?.[0]?.version !== '2026.09.13.71'
+  || statusV71.evidenceLevels?.[1]?.evidence?.verifiedGptBotDiscoveryFileCrawls !== 15
+  || statusV71.evidenceLevels?.[1]?.evidence?.verifiedOaiSearchBotDiscoveryFileVisits !== 12
+  || statusV71.publicCorpusMonitoring?.softwareHeritage?.archiveCoverageStatus !== 'lagging'
+  || statusV71.testProtocol?.doubaoPromptsSent !== false
+)) failures.push('Versioned GEO monitor revision 71 public status: OpenAI crawler, archive, or AI boundary is incomplete');
+
 const crawlerEvidenceReleaseUrl = 'https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-crawler-evidence-2026-09-10';
 const crawlerEvidenceRelease = await get('GitHub verified crawler-evidence checkpoint', crawlerEvidenceReleaseUrl, 'text/html');
 requireText('GitHub verified crawler-evidence checkpoint', crawlerEvidenceRelease, [
