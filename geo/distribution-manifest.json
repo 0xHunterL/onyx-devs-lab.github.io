@@ -629,6 +629,36 @@
         "The preserved Bing observation predates the mitigation and does not prove search reprocessing, stable ranking, or clean canonical presentation.",
         "Anonymous availability and matching content markers do not prove independent endorsement, an AI citation, a human visit, or non-brand recommendation."
       ]
+    },
+    {
+      "id": "github-release-geo-monitor-evidence-2026-09-14-76",
+      "channel": "github_releases",
+      "format": "versioned-evidence-checkpoint",
+      "language": "en-zh-CN",
+      "status": "published",
+      "sourceFile": "README.md",
+      "title": "Onyx GEO monitor evidence checkpoint — 2026-09-14, revision 76",
+      "campaign": "geo_monitor_evidence_76",
+      "trackedTargets": [
+        "https://hk.onyxdevslab.com/data/ai-search-evidence-status.json?utm_source=github_releases&utm_medium=referral&utm_campaign=geo_monitor_evidence_76"
+      ],
+      "publicUrl": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-monitor-evidence-2026-09-14-76",
+      "anonymousAccessVerifiedAt": "2026-09-13T17:38:06Z",
+      "publicContentMarkers": [
+        "GEO monitor evidence — 2026-09-14 revision 76",
+        "provider-verified Bingbot robots.txt request and Simplified Chinese homepage fetch",
+        "113 verified Ahrefs discovery-file requests",
+        "No prompt was sent to Doubao"
+      ],
+      "searchIndexedAt": "2026-09-13T09:49:52Z",
+      "aiCitationObservedAt": null,
+      "nonBrandRecommendationObservedAt": null,
+      "limitations": [
+        "The Release, Toutiao article, and their assets are published and maintained by Onyx Devs Lab.",
+        "The Bingbot and AhrefsBot requests prove crawler access only; they do not prove indexing, retrieval, citation, ranking, or recommendation.",
+        "Wayback CDX records prove public historical captures only; current count movement includes public-index volatility.",
+        "Anonymous availability and matching content markers do not prove independent endorsement, an AI citation, a human visit, or non-brand recommendation."
+      ]
     }
   ]
 }
