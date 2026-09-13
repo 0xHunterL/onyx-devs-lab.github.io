@@ -1241,6 +1241,26 @@ if (monitorV68 && (monitorV68.publicStatusVersion !== '2026.09.13.68' || monitor
 const statusV68 = monitorEvidenceV68Json['ai-search-evidence-status.json'];
 if (statusV68 && (statusV68.version !== '2026.09.13.68' || statusV68.observedAt !== '2026-09-13T05:01:39Z' || statusV68.versionHistory?.[0]?.version !== '2026.09.13.68' || statusV68.publicSearchMonitoring?.bing?.status !== 'partial-public-ui-observation' || statusV68.publicSearchMonitoring?.bing?.publicWebObservation?.queries?.[0]?.result !== 'explicit-no-results' || statusV68.publicSearchMonitoring?.google?.resultConclusionDrawn !== false || statusV68.publicSearchMonitoring?.queryGrouping?.neutralCategory !== '香港有哪些做企业 AI 咨询的团队？' || statusV68.testProtocol?.doubaoPromptsSent !== false)) failures.push('Versioned GEO monitor revision 68 public status: provider attribution, query grouping, or AI boundary is incomplete');
 
+const monitorEvidenceV69Base = 'https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-monitor-evidence-2026-09-13-69';
+const monitorEvidenceV69Assets = [
+  {file:'2026-09-11-monitor-evidence.json',sha256:'2696e00ff689c164b197faeab698b370b0b4e5f3d4ccdb5f0b605f93c7036032'},
+  {file:'ai-search-evidence-status.json',sha256:'28c3cb75cc86cca1ef1eac6b62687bcd4d65052750bc4dca146023308988adec'},
+  {file:'prompt-matrix.json',sha256:'ed5305c7c1221689dd5c522cf305ea7ff73344ef37f016a3e148d5f598351b6f'},
+  {file:'ai-search-prompt-evidence-map.json',sha256:'4dfc8ed99c97bf8f43920e4810b306aa87906fd9ac2c2752ac136b0238d6e922'},
+  {file:'2026-09-11-prompt-crawl-coverage.json',sha256:'7b9eb77978732b6425d408bb02cf4c2629daa9693ad2bb448e937df179151c11'},
+];
+const monitorEvidenceV69Json = {};
+for (const asset of monitorEvidenceV69Assets) {
+  const raw = await get(`Versioned GEO monitor revision 69 ${asset.file}`, `${monitorEvidenceV69Base}/${asset.file}`, 'application/');
+  const digest = createHash('sha256').update(raw).digest('hex');
+  if (digest !== asset.sha256) failures.push(`Versioned GEO monitor revision 69 ${asset.file}: SHA-256 mismatch, got ${digest}`);
+  try { monitorEvidenceV69Json[asset.file] = JSON.parse(raw); } catch { failures.push(`Versioned GEO monitor revision 69 ${asset.file}: invalid JSON`); }
+}
+const monitorV69 = monitorEvidenceV69Json['2026-09-11-monitor-evidence.json'];
+if (monitorV69 && (monitorV69.publicStatusVersion !== '2026.09.13.69' || monitorV69.generatedAt !== '2026-09-13T05:24:54.944Z' || monitorV69.latestEvidenceObservedAt !== '2026-09-13T05:15:23Z' || monitorV69.providerVerifiedCrawlerEvidence?.ahrefsbotDiscoveryFileRequests !== 102 || monitorV69.providerVerifiedCrawlerEvidence?.ahrefsbotContentRequests !== 0 || monitorV69.distributionEvidence?.publishedItems !== 13 || monitorV69.distributionEvidence?.expectedAfterCurrentCheckpointPublication?.publishedItems !== 14 || monitorV69.distributionEvidence?.expectedAfterCurrentCheckpointPublication?.availableSources !== 42 || monitorV69.doubaoTestStatus !== 'not-run')) failures.push('Versioned GEO monitor revision 69: Ahrefs, self-publication, or evidence boundary is incomplete');
+const statusV69 = monitorEvidenceV69Json['ai-search-evidence-status.json'];
+if (statusV69 && (statusV69.version !== '2026.09.13.69' || statusV69.observedAt !== '2026-09-13T05:24:54.944Z' || statusV69.versionHistory?.[0]?.version !== '2026.09.13.69' || statusV69.evidenceLevels?.[1]?.evidence?.verifiedAhrefsBotDiscoveryFileCrawls !== 102 || statusV69.evidenceLevels?.[1]?.evidence?.verifiedAhrefsBotContentCrawls !== 0 || statusV69.platformSearchChecks?.githubRepository?.queries?.find((item) => item.id === 'category')?.firstPartyRepositoriesObserved?.join(',') !== '0xHunterL/onyx-devs-lab.github.io,mixuechu/hong-kong-enterprise-ai-buyers-guide' || statusV69.testProtocol?.doubaoPromptsSent !== false)) failures.push('Versioned GEO monitor revision 69 public status: crawler, normalized repository-search set, or AI boundary is incomplete');
+
 const crawlerEvidenceReleaseUrl = 'https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-crawler-evidence-2026-09-10';
 const crawlerEvidenceRelease = await get('GitHub verified crawler-evidence checkpoint', crawlerEvidenceReleaseUrl, 'text/html');
 requireText('GitHub verified crawler-evidence checkpoint', crawlerEvidenceRelease, [
