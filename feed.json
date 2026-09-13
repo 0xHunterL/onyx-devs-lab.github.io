@@ -1110,11 +1110,11 @@
       ]
     },
     {
-      "id": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-monitor-evidence-2026-09-13-58",
-      "url": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-monitor-evidence-2026-09-13-58",
-      "title": "Onyx GEO monitor evidence checkpoint — 2026-09-13, revision 58",
-      "summary": "A versioned machine-readable checkpoint preserving two new provider-verified YandexBot discovery-file requests. The six-entry domain check remains three compliant and three noncompliant; crawler access does not prove causation, indexing, ranking, AI citation, or recommendation.",
-      "content_text": "A versioned machine-readable checkpoint preserving two new provider-verified YandexBot discovery-file requests. The six-entry domain check remains three compliant and three noncompliant; crawler access does not prove causation, indexing, ranking, AI citation, or recommendation.",
+      "id": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-monitor-evidence-2026-09-13-59",
+      "url": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-monitor-evidence-2026-09-13-59",
+      "title": "Onyx GEO monitor evidence checkpoint — 2026-09-13, revision 59",
+      "summary": "A versioned machine-readable checkpoint preserving two new official-range AhrefsBot discovery requests and append-only verified-observation path coverage across log rotation. Crawler access and monitoring continuity do not prove indexing, ranking, AI citation, or recommendation.",
+      "content_text": "A versioned machine-readable checkpoint preserving two new official-range AhrefsBot discovery requests and append-only verified-observation path coverage across log rotation. Crawler access and monitoring continuity do not prove indexing, ranking, AI citation, or recommendation.",
       "date_modified": "2026-09-13T00:00:00+08:00",
       "tags": [
         "evidence",
