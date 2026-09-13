@@ -1,30 +1,30 @@
 {
   "schemaVersion": 2,
-  "version": "2026.09.13.64",
+  "version": "2026.09.13.65",
   "id": "https://hk.onyxdevslab.com/data/ai-search-evidence-status.json",
-  "observedAt": "2026-09-13T01:56:43.310Z",
-  "latestEvidenceObservedAt": "2026-09-13T01:56:43.240Z",
+  "observedAt": "2026-09-13T02:24:04.137Z",
+  "latestEvidenceObservedAt": "2026-09-13T02:24:04.063Z",
   "sourceBaseline": "https://github.com/0xHunterL/onyx-devs-lab.github.io/blob/main/docs/geo-baselines/2026-09-11-monitor-evidence.json",
   "versionHistory": [
     {
-      "version": "2026.09.13.64",
+      "version": "2026.09.13.65",
       "relation": "current-immutable-checkpoint",
+      "url": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-monitor-evidence-2026-09-13-65/ai-search-evidence-status.json"
+    },
+    {
+      "version": "2026.09.13.64",
+      "relation": "previous-immutable-checkpoint",
       "url": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-monitor-evidence-2026-09-13-64/ai-search-evidence-status.json"
     },
     {
       "version": "2026.09.13.63",
-      "relation": "previous-immutable-checkpoint",
+      "relation": "earlier-immutable-checkpoint",
       "url": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-monitor-evidence-2026-09-13-63/ai-search-evidence-status.json"
     },
     {
       "version": "2026.09.13.62",
       "relation": "earlier-immutable-checkpoint",
       "url": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-monitor-evidence-2026-09-13-62/ai-search-evidence-status.json"
-    },
-    {
-      "version": "2026.09.13.61",
-      "relation": "earlier-immutable-checkpoint",
-      "url": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-monitor-evidence-2026-09-13-61/ai-search-evidence-status.json"
     }
   ],
   "name": {
@@ -103,7 +103,7 @@
     "yandexbotContentRequests": 78,
     "yandexbotDiscoveryFileRequests": 73,
     "ahrefsbotContentRequests": 0,
-    "ahrefsbotDiscoveryFileRequests": 98,
+    "ahrefsbotDiscoveryFileRequests": 99,
     "distinctVerifiedContentPaths": 45,
     "historicalReclassification": {
       "homepageContentRequestsAdded": 3,
@@ -133,26 +133,26 @@
     },
     "ahrefsHistoricalRecognition": {
       "firstSeen": "2026-09-08T13:53:09Z",
-      "lastSeen": "2026-09-13T00:49:12Z",
+      "lastSeen": "2026-09-13T02:17:49Z",
       "robotsTxtRequests": 25,
-      "sitemapRequests": 73,
+      "sitemapRequests": 74,
       "distinctClientAddresses": 87,
       "verificationSource": "https://api.ahrefs.com/v3/public/crawler-ip-ranges",
       "latestVerifiedDiscoveryRequests": [
-        {
-          "time": "2026-09-12T23:26:59Z",
-          "path": "/sitemap.xml",
-          "status": 200,
-          "fingerprint": "849a2bf1fa1a0d4ebfd01d3836edf3c0dd53b551b490a5e04abffebc9597f3d7"
-        },
         {
           "time": "2026-09-13T00:49:12Z",
           "path": "/sitemap.xml",
           "status": 200,
           "fingerprint": "07dc0b99b1154776f4322206bffa7599105cb3352bbe36f18f6a00eafc255b66"
+        },
+        {
+          "time": "2026-09-13T02:17:49Z",
+          "path": "/sitemap.xml",
+          "status": 200,
+          "fingerprint": "a431ff3543ed8b5878c8bf0a61210dc3907e690115954841b41252dc2df84ec4"
         }
       ],
-      "meaning": "All 98 discovery-file requests matched the official Ahrefs crawler IP ranges. AhrefsBot serves both the Ahrefs database and Yep, so these requests prove external crawler discovery only; they do not prove Yep indexing, ranking, retrieval, citation, or AI recommendation."
+      "meaning": "All 99 discovery-file requests matched the official Ahrefs crawler IP ranges. AhrefsBot serves both the Ahrefs database and Yep, so these requests prove external crawler discovery only; they do not prove Yep indexing, ranking, retrieval, citation, or AI recommendation."
     }
   },
   "evidenceLevels": [
@@ -195,14 +195,14 @@
         "verifiedYandexbotContentCrawls": 78,
         "verifiedYandexbotDiscoveryFileCrawls": 73,
         "verifiedAhrefsBotContentCrawls": 0,
-        "verifiedAhrefsBotDiscoveryFileCrawls": 98,
+        "verifiedAhrefsBotDiscoveryFileCrawls": 99,
         "verifiedGooglebotContentCrawls": 0,
         "verifiedPerplexityContentCrawls": 0,
         "userAgentOnlyBytespiderContentCrawlCandidates": 0,
         "userAgentOnlyBytespiderDiscoveryFileCandidates": 0,
         "syntheticCrawlerReleaseChecksExcludedMinimum": 3088,
         "commonCrawlIndexObservation": {
-          "checkedAt": "2026-09-13T01:56:39.017Z",
+          "checkedAt": "2026-09-13T02:23:59.352Z",
           "status": "available",
           "capturesObservedInAvailableIndexes": 0,
           "availableIndexes": [
@@ -213,7 +213,7 @@
           "meaning": "Both selected Common Crawl indexes returned usable zero-capture responses. This complete result covers only the two selected indexes and cannot be interpreted as absence from all Common Crawl history, public search, or AI systems; availability changes remain event-recorded but do not independently block unrelated verified evidence publication."
         },
         "waybackArchiveObservation": {
-          "checkedAt": "2026-09-13T01:56:39.740Z",
+          "checkedAt": "2026-09-13T02:24:00.173Z",
           "status": "available",
           "captures": 94,
           "distinctUrls": 44,
@@ -593,7 +593,7 @@
   ],
   "platformSearchChecks": {
     "githubRepository": {
-      "checkedAt": "2026-09-13T01:56:41.238Z",
+      "checkedAt": "2026-09-13T02:24:01.657Z",
       "status": "available",
       "queriesChecked": 3,
       "availableQueries": 3,
@@ -633,7 +633,7 @@
     }
   },
   "domainCanonicalization": {
-    "checkedAt": "2026-09-13T01:56:43.240Z",
+    "checkedAt": "2026-09-13T02:24:04.063Z",
     "status": "noncompliant",
     "canonicalOrigin": "https://hk.onyxdevslab.com/",
     "targetsChecked": 6,
@@ -715,7 +715,7 @@
       "allTargetsCloudflareSignaled": true,
       "signal": "HTTP Server header equals cloudflare and CF-Ray is present on at least one hop"
     },
-    "eventFile": "events/2026-09-13T01-19-32.135Z-evidence-and-availability-change.json",
+    "eventFile": "events/2026-09-13T02-24-04.137Z-evidence-and-availability-change.json",
     "meaning": "The Hong Kong host redirects HTTP to HTTPS and exposes the expected self-canonical URL. The apex serves content directly over HTTP, both www entry points lead to the HTTP apex, and the HTTPS www entry point downgrades to HTTP. GitHub Pages reports https_enforced=false. A separate live authority and edge-path audit now confirms that piper.ns.cloudflare.com and trey.ns.cloudflare.com are authoritative and that all six monitored entry points return both a Cloudflare Server header and CF-Ray on at least one hop. Those public signals identify the delivery path but do not prove which Cloudflare or origin rule caused the redirects. The defect cannot be safely corrected from this repository alone: it requires repository-owner Pages administration or explicit authorization to inspect and change the existing Cloudflare configuration. No DNS, CDN, Cloudflare, or Pages setting was changed by this observation, and it does not prove any search ranking effect."
   },
   "publicSearchMonitoring": {
@@ -736,7 +736,7 @@
   },
   "offsiteChannelReadiness": {
     "servicesHk": {
-      "checkedAt": "2026-09-13T01:56:41.127Z",
+      "checkedAt": "2026-09-13T02:24:01.591Z",
       "availabilityStatus": "unavailable",
       "targetsChecked": 3,
       "availableTargets": 0,
@@ -830,11 +830,11 @@
     },
     {
       "name": "Latest immutable GEO monitor evidence checkpoint",
-      "url": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-monitor-evidence-2026-09-13-64"
+      "url": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-monitor-evidence-2026-09-13-65"
     },
     {
       "name": "Latest immutable AI-search evidence status",
-      "url": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-monitor-evidence-2026-09-13-64/ai-search-evidence-status.json"
+      "url": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-monitor-evidence-2026-09-13-65/ai-search-evidence-status.json"
     },
     {
       "name": "GitHub repository-search before-and-after baseline",

@@ -21,8 +21,8 @@ Versioned agent-readiness evidence checkpoint: https://github.com/0xHunterL/onyx
 Versioned verified crawler evidence checkpoint: https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-referral-evidence-2026-09-10
 Previous crawler-and-referral AI-search evidence status asset: https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-referral-evidence-2026-09-10/ai-search-evidence-status.json
 Versioned verified crawler evidence summary: https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-referral-evidence-2026-09-10/2026-09-10-crawler-evidence.json
-Automated GEO monitor evidence checkpoint: https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-monitor-evidence-2026-09-13-64
-Automated GEO monitor machine-readable snapshot: https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-monitor-evidence-2026-09-13-64/2026-09-11-monitor-evidence.json
+Automated GEO monitor evidence checkpoint: https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-monitor-evidence-2026-09-13-65
+Automated GEO monitor machine-readable snapshot: https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-monitor-evidence-2026-09-13-65/2026-09-11-monitor-evidence.json
 Versioned fixed-prompt crawler coverage checkpoint: https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-prompt-crawl-coverage-2026-09-10
 Versioned fixed-prompt crawler coverage report: https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-prompt-crawl-coverage-2026-09-10/2026-09-10-prompt-crawl-coverage.json
 Versioned fixed-prompt evidence map checkpoint: https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-prompt-evidence-map-2026-09-10
