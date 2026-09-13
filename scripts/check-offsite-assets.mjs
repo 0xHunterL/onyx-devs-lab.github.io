@@ -1363,6 +1363,49 @@ if (statusV72 && (
   || statusV72.testProtocol?.doubaoPromptsSent !== false
 )) failures.push('Versioned GEO monitor revision 72 public status: crawler, attribution, or AI boundary is incomplete');
 
+const monitorEvidenceV73Base = 'https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-monitor-evidence-2026-09-13-73';
+const monitorEvidenceV73Assets = [
+  {file:'2026-09-11-monitor-evidence.json',sha256:'282afa70c451f151c669ec3e8e6c366a020803a75bf46e552ef7764d402520b8'},
+  {file:'ai-search-evidence-status.json',sha256:'90e9e5de2c41d0da92e2c59e5b0c286fcfe5ef5fe82324c35872223ce23b7335'},
+  {file:'prompt-matrix.json',sha256:'ed5305c7c1221689dd5c522cf305ea7ff73344ef37f016a3e148d5f598351b6f'},
+  {file:'ai-search-prompt-evidence-map.json',sha256:'90a7fde0ed57c5b50f95901f496df58a545e61b6d0d31e312cb9962939cf5aa9'},
+  {file:'2026-09-11-prompt-crawl-coverage.json',sha256:'7b9eb77978732b6425d408bb02cf4c2629daa9693ad2bb448e937df179151c11'},
+];
+const monitorEvidenceV73Json = {};
+for (const asset of monitorEvidenceV73Assets) {
+  const raw = await get(`Versioned GEO monitor revision 73 ${asset.file}`, `${monitorEvidenceV73Base}/${asset.file}`, 'application/');
+  const digest = createHash('sha256').update(raw).digest('hex');
+  if (digest !== asset.sha256) failures.push(`Versioned GEO monitor revision 73 ${asset.file}: SHA-256 mismatch, got ${digest}`);
+  try { monitorEvidenceV73Json[asset.file] = JSON.parse(raw); } catch { failures.push(`Versioned GEO monitor revision 73 ${asset.file}: invalid JSON`); }
+}
+const monitorV73 = monitorEvidenceV73Json['2026-09-11-monitor-evidence.json'];
+if (monitorV73 && (
+  monitorV73.publicStatusVersion !== '2026.09.13.73'
+  || monitorV73.generatedAt !== '2026-09-13T09:49:52Z'
+  || monitorV73.bingPublicSearchEvidence?.provider !== 'Bing Web Search'
+  || monitorV73.bingPublicSearchEvidence?.queries?.length !== 5
+  || monitorV73.bingPublicSearchEvidence?.queries?.[0]?.result !== 'official-site-observed-in-first-visible-page'
+  || monitorV73.bingPublicSearchEvidence?.queries?.[0]?.visibleOfficialResults?.[1]?.url !== 'https://hk.onyxdevslab.com/zh-hk/'
+  || monitorV73.bingPublicSearchEvidence?.queries?.[4]?.result !== 'official-Onyx-result-not-observed-in-visible-first-page'
+  || monitorV73.bingPublicSearchEvidence?.previousObservation?.exactMarkerResult !== 'explicit-no-results'
+  || monitorV73.distributionEvidence?.publishedItems !== 17
+  || monitorV73.distributionEvidence?.expectedAfterCurrentCheckpointPublication?.publishedItems !== 18
+  || monitorV73.distributionEvidence?.expectedAfterCurrentCheckpointPublication?.availableSources !== 50
+  || monitorV73.doubaoTestStatus !== 'not-run'
+)) failures.push('Versioned GEO monitor revision 73: Bing brand, category, self-publication, or evidence boundary is incomplete');
+const statusV73 = monitorEvidenceV73Json['ai-search-evidence-status.json'];
+if (statusV73 && (
+  statusV73.version !== '2026.09.13.73'
+  || statusV73.observedAt !== '2026-09-13T09:49:52Z'
+  || statusV73.versionHistory?.[0]?.version !== '2026.09.13.73'
+  || statusV73.publicSearchChecks?.length !== 10
+  || statusV73.evidenceLevels?.[2]?.evidence?.bingPublicSearchObservation?.queries?.[0]?.officialSiteObserved !== true
+  || statusV73.evidenceLevels?.[2]?.evidence?.bingPublicSearchObservation?.queries?.[4]?.officialSiteObserved !== false
+  || statusV73.evidenceLevels?.[2]?.status !== 'not-verified'
+  || statusV73.evidenceLevels?.[3]?.status !== 'not-tested'
+  || statusV73.testProtocol?.doubaoPromptsSent !== false
+)) failures.push('Versioned GEO monitor revision 73 public status: Bing public-search or AI boundary is incomplete');
+
 const crawlerEvidenceReleaseUrl = 'https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-crawler-evidence-2026-09-10';
 const crawlerEvidenceRelease = await get('GitHub verified crawler-evidence checkpoint', crawlerEvidenceReleaseUrl, 'text/html');
 requireText('GitHub verified crawler-evidence checkpoint', crawlerEvidenceRelease, [
