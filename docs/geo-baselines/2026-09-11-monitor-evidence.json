@@ -351,16 +351,16 @@
   },
   "distributionEvidence": {
     "manifestItems": 13,
-    "publishedItems": 12,
+    "publishedItems": 13,
     "readyNotPublishedItems": 1,
     "checkedAt": "2026-09-13T04:18:27Z",
     "publicUrlsChecked": 12,
-    "trackedTargetsChecked": 26,
-    "availableSources": 38,
+    "trackedTargetsChecked": 27,
+    "availableSources": 40,
     "unavailableSources": 0,
     "availabilityStatus": "available",
     "eventFile": "events/2026-09-13T01-19-32.135Z-evidence-and-availability-change.json",
-    "meaning": "The distribution ledger includes 12 declared published URLs and 26 tracked targets after adding the immutable revision 67 evidence Release. All 38 sources passed anonymous availability, destination, content-marker, asset-hash, and evidence-boundary checks. This versions new archival and crawler evidence without creating duplicate topical content; it does not prove indexing, AI retrieval, citation, recommendation, a human visit, or independent endorsement."
+    "meaning": "The distribution ledger includes 13 declared published URLs and 27 tracked targets after adding the immutable revision 68 evidence Release. All 40 sources passed anonymous availability, destination, content-marker, asset-hash, and evidence-boundary checks. This versions provider-attributed public-search measurement evidence without creating duplicate topical content; it does not prove exhaustive deindexing, AI retrieval, citation, recommendation, a human visit, or independent endorsement."
   },
   "servicesHkReadinessEvidence": {
     "checkedAt": "2026-09-13T03:55:47.596Z",

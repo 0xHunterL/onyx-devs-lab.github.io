@@ -376,6 +376,36 @@
         "Provider-verified AhrefsBot discovery-file requests do not prove content crawling, Yep indexing, ranking, retrieval, citation, or recommendation.",
         "Anonymous availability and matching content markers do not prove independent endorsement, an AI citation, a human visit, or non-brand recommendation."
       ]
+    },
+    {
+      "id": "github-release-geo-monitor-evidence-2026-09-13-68",
+      "channel": "github_releases",
+      "format": "versioned-evidence-checkpoint",
+      "language": "en-zh-CN",
+      "status": "published",
+      "sourceFile": "README.md",
+      "title": "Onyx GEO monitor evidence checkpoint — 2026-09-13, revision 68",
+      "campaign": "geo_monitor_evidence_68",
+      "trackedTargets": [
+        "https://hk.onyxdevslab.com/data/ai-search-evidence-status.json?utm_source=github_releases&utm_medium=referral&utm_campaign=geo_monitor_evidence_68"
+      ],
+      "publicUrl": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-monitor-evidence-2026-09-13-68",
+      "anonymousAccessVerifiedAt": "2026-09-13T05:10:02Z",
+      "publicContentMarkers": [
+        "Onyx GEO monitor evidence — 2026-09-13 revision 68",
+        "explicit no-result Bing response",
+        "separate neutral-category versus FDE query groups",
+        "No prompt was sent to Doubao"
+      ],
+      "searchIndexedAt": null,
+      "aiCitationObservedAt": null,
+      "nonBrandRecommendationObservedAt": null,
+      "limitations": [
+        "The Release and its assets are published and maintained by Onyx Devs Lab.",
+        "The exact-marker result is a dated Bing public-search observation; it does not prove exhaustive absence or deindexing across all Bing regions and result pages.",
+        "The broadened brand and site queries are recorded as first-page non-observations, not as reliable exhaustive index checks.",
+        "Anonymous availability and matching content markers do not prove independent endorsement, Copilot or other AI retrieval, citation, a human visit, or non-brand recommendation."
+      ]
     }
   ]
 }
