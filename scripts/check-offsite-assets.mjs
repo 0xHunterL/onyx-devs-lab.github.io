@@ -956,6 +956,43 @@ if (promptMapV59 && (promptMapV59.version !== '2026.09.13.59' || promptMapV59.pr
 const promptCoverageV59 = monitorEvidenceV59Json['2026-09-11-prompt-crawl-coverage.json'];
 if (promptCoverageV59 && (promptCoverageV59.promptMatrixSchemaVersion !== 3 || promptCoverageV59.totals?.prompts !== 23 || promptCoverageV59.totals?.verifiedCrawledEvidencePages !== 15 || promptCoverageV59.totals?.promptsWithAnyVerifiedCrawl !== 18 || promptCoverageV59.totals?.promptsFullyVerifiedCrawled !== 12 || promptCoverageV59.bySegment?.scenario?.prompts !== 6)) failures.push('Versioned GEO monitor revision 59 prompt crawl coverage: expected totals are incomplete');
 
+const monitorEvidenceV60Base = 'https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-monitor-evidence-2026-09-13-60';
+const monitorEvidenceV60Release = await get('GitHub GEO monitor evidence revision 60', 'https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-monitor-evidence-2026-09-13-60', 'text/html');
+requireText('GitHub GEO monitor evidence revision 60', monitorEvidenceV60Release, [
+  'GEO monitor evidence checkpoint — 2026-09-13, revision 60',
+  'continuous numbered-log lineage policy',
+  'Common Crawl observation is partial',
+  'No prompt was sent to Doubao',
+]);
+const monitorEvidenceV60Assets = [
+  {name:'monitor snapshot',file:'2026-09-11-monitor-evidence.json',sha256:'b705e66fb4ae0af8a65e95fe9c390d61a61f69a9be786a6e2822d66923456ea0'},
+  {name:'public status',file:'ai-search-evidence-status.json',sha256:'e5814881e1884502422e72de20fb06240a7f9334e1adf68651a19261257fc4ec'},
+  {name:'prompt matrix',file:'prompt-matrix.json',sha256:'ed5305c7c1221689dd5c522cf305ea7ff73344ef37f016a3e148d5f598351b6f'},
+  {name:'prompt evidence map',file:'ai-search-prompt-evidence-map.json',sha256:'a27ea7fb31d886b2200edbebd3afcb1e5b990c5da3281a3811c28be69eaacc01'},
+  {name:'prompt crawl coverage',file:'2026-09-11-prompt-crawl-coverage.json',sha256:'7b9eb77978732b6425d408bb02cf4c2629daa9693ad2bb448e937df179151c11'},
+];
+const monitorEvidenceV60Json = {};
+for (const asset of monitorEvidenceV60Assets) {
+  const raw = await get(`Versioned GEO monitor revision 60 ${asset.name}`, `${monitorEvidenceV60Base}/${asset.file}`, 'application/');
+  const digest = createHash('sha256').update(raw).digest('hex');
+  if (digest !== asset.sha256) failures.push(`Versioned GEO monitor revision 60 ${asset.name}: SHA-256 mismatch, got ${digest}`);
+  try {
+    monitorEvidenceV60Json[asset.file] = JSON.parse(raw);
+  } catch {
+    failures.push(`Versioned GEO monitor revision 60 ${asset.name}: invalid JSON`);
+  }
+}
+const monitorV60 = monitorEvidenceV60Json['2026-09-11-monitor-evidence.json'];
+if (monitorV60 && (monitorV60.publicStatusVersion !== '2026.09.13.60' || monitorV60.generatedAt !== '2026-09-13T00:15:36.990Z' || monitorV60.sourceLogs?.length !== 5 || monitorV60.crawlerEvidenceAccounting?.retainedLogPolicy?.mode !== 'continuous-numbered-rotation-lineage' || monitorV60.providerVerifiedCrawlerEvidence?.distinctVerifiedContentPaths !== 45 || monitorV60.commonCrawlEvidence?.status !== 'partial' || monitorV60.commonCrawlEvidence?.unavailableIndexes?.[0]?.id !== 'CC-MAIN-2026-34' || monitorV60.doubaoTestStatus !== 'not-run')) failures.push('Versioned GEO monitor revision 60 monitor snapshot: expected log-lineage policy, partial Common Crawl state, stable coverage, or boundary is incomplete');
+const statusV60 = monitorEvidenceV60Json['ai-search-evidence-status.json'];
+if (statusV60 && (statusV60.version !== '2026.09.13.60' || statusV60.observedAt !== '2026-09-13T00:15:36.990Z' || statusV60.versionHistory?.[0]?.version !== '2026.09.13.60' || statusV60.versionHistory?.[1]?.version !== '2026.09.13.59' || statusV60.crawlerEvidenceAccounting?.retainedLogPolicy?.mode !== 'continuous-numbered-rotation-lineage' || statusV60.evidenceLevels?.[1]?.evidence?.verifiedDistinctContentPaths !== 45 || statusV60.evidenceLevels?.[1]?.evidence?.commonCrawlIndexObservation?.status !== 'partial' || statusV60.testProtocol?.doubaoPromptsSent !== false)) failures.push('Versioned GEO monitor revision 60 public status: expected log-lineage policy, partial Common Crawl state, stable coverage, or AI boundary is incomplete');
+const matrixV60 = monitorEvidenceV60Json['prompt-matrix.json'];
+if (matrixV60 && (matrixV60.schemaVersion !== 3 || matrixV60.prompts?.length !== 23 || matrixV60.prompts.find((prompt) => prompt.id === 'brand-cases')?.evidenceUrls?.length !== 7)) failures.push('Versioned GEO monitor revision 60 prompt matrix: six-case protocol is incomplete');
+const promptMapV60 = monitorEvidenceV60Json['ai-search-prompt-evidence-map.json'];
+if (promptMapV60 && (promptMapV60.version !== '2026.09.13.60' || promptMapV60.promptMatrix?.schemaVersion !== 3 || promptMapV60.promptMatrix?.promptCount !== 23 || promptMapV60.promptMatrix?.doubaoPromptsSent !== false || promptMapV60.totals?.uniqueEvidencePages !== 23 || promptMapV60.prompts?.length !== 23)) failures.push('Versioned GEO monitor revision 60 prompt evidence map: expected protocol or boundary is incomplete');
+const promptCoverageV60 = monitorEvidenceV60Json['2026-09-11-prompt-crawl-coverage.json'];
+if (promptCoverageV60 && (promptCoverageV60.promptMatrixSchemaVersion !== 3 || promptCoverageV60.totals?.prompts !== 23 || promptCoverageV60.totals?.verifiedCrawledEvidencePages !== 15 || promptCoverageV60.totals?.promptsWithAnyVerifiedCrawl !== 18 || promptCoverageV60.totals?.promptsFullyVerifiedCrawled !== 12 || promptCoverageV60.bySegment?.scenario?.prompts !== 6)) failures.push('Versioned GEO monitor revision 60 prompt crawl coverage: expected totals are incomplete');
+
 const crawlerEvidenceReleaseUrl = 'https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-crawler-evidence-2026-09-10';
 const crawlerEvidenceRelease = await get('GitHub verified crawler-evidence checkpoint', crawlerEvidenceReleaseUrl, 'text/html');
 requireText('GitHub verified crawler-evidence checkpoint', crawlerEvidenceRelease, [
