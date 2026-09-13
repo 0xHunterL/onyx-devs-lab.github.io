@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
-  "publicStatusVersion": "2026.09.13.63",
-  "generatedAt": "2026-09-13T01:22:10.953Z",
-  "latestEvidenceObservedAt": "2026-09-13T01:22:10.855Z",
+  "publicStatusVersion": "2026.09.13.64",
+  "generatedAt": "2026-09-13T01:56:43.310Z",
+  "latestEvidenceObservedAt": "2026-09-13T01:56:43.240Z",
   "windowStart": "2026-09-01",
   "site": "https://hk.onyxdevslab.com/",
   "sourceLogs": [
@@ -183,7 +183,7 @@
     }
   },
   "commonCrawlEvidence": {
-    "checkedAt": "2026-09-13T01:21:58.409Z",
+    "checkedAt": "2026-09-13T01:56:39.017Z",
     "status": "available",
     "capturesObservedInAvailableIndexes": 0,
     "availableIndexes": ["CC-MAIN-2026-34", "CC-MAIN-2026-30"],
@@ -191,7 +191,7 @@
     "meaning": "Both selected Common Crawl indexes returned usable zero-capture responses. This complete result covers only the two selected indexes and cannot be interpreted as absence from all Common Crawl history, public search, or AI systems; availability changes remain event-recorded but do not independently block unrelated verified evidence publication."
   },
   "waybackEvidence": {
-    "checkedAt": "2026-09-13T01:22:07.804Z",
+    "checkedAt": "2026-09-13T01:56:39.740Z",
     "status": "available",
     "captures": 94,
     "distinctUrls": 44,
@@ -271,7 +271,7 @@
     "meaning": "The available public Wayback CDX host query currently returns 94 successful HTML capture records across 44 distinct URLs. A newly exposed industrial ERP case-study capture increases the prompt archive ledger to 16 archived evidence pages, 16 prompts with any archive and 12 fully archived prompts; the remaining count movement includes documented public-index volatility. These records prove public historical captures only; they do not prove current accessibility, search indexing, AI retrieval, citation, ranking, endorsement, or recommendation. An unavailable future query must not be interpreted as zero captures."
   },
   "githubRepositorySearchEvidence": {
-    "checkedAt": "2026-09-13T01:22:09.341Z",
+    "checkedAt": "2026-09-13T01:56:41.238Z",
     "status": "available",
     "queriesChecked": 3,
     "availableQueries": 3,
@@ -313,7 +313,7 @@
     "manifestItems": 11,
     "publishedItems": 10,
     "readyNotPublishedItems": 1,
-    "checkedAt": "2026-09-13T01:22:08.918Z",
+    "checkedAt": "2026-09-13T01:56:40.735Z",
     "publicUrlsChecked": 10,
     "trackedTargetsChecked": 24,
     "availableSources": 34,
@@ -323,7 +323,7 @@
     "meaning": "The distribution ledger now includes two previously published but untracked sources: the bilingual Hong Kong enterprise AI governance Gist and the versioned Chinese enterprise AI field-note index Release. All 10 declared published URLs and 24 tracked targets passed anonymous availability, destination, and content-marker checks. This closes a monitoring-coverage gap without creating duplicate content; it does not prove indexing, AI retrieval, citation, recommendation, a human visit, or independent endorsement."
   },
   "servicesHkReadinessEvidence": {
-    "checkedAt": "2026-09-13T01:22:09.239Z",
+    "checkedAt": "2026-09-13T01:56:41.127Z",
     "availabilityStatus": "unavailable",
     "targetsChecked": 3,
     "availableTargets": 0,
@@ -337,7 +337,7 @@
     "meaning": "All three sampled services.hk detail pages return HTTP 200 but contain the known PHP application failure and omit the required title, service-description, and contact markers. This blocks submission readiness; it does not prove that Onyx is listed, reviewed, endorsed, indexed, cited, or recommended. Submission still requires current user confirmation after all three targets recover."
   },
   "domainCanonicalizationEvidence": {
-    "checkedAt": "2026-09-13T01:22:10.855Z",
+    "checkedAt": "2026-09-13T01:56:43.240Z",
     "status": "noncompliant",
     "canonicalOrigin": "https://hk.onyxdevslab.com/",
     "targetsChecked": 6,
@@ -353,8 +353,10 @@
       {"id": "https-hk", "startUrl": "https://hk.onyxdevslab.com/", "finalUrl": "https://hk.onyxdevslab.com/", "status": "compliant", "reasons": []}
     ],
     "githubPagesSetting": {"checkedAt": "2026-09-12T23:07:00Z", "httpsEnforced": false, "source": "GitHub Pages API via authenticated collaborator access", "mutationAuthorized": false},
+    "authorityObservation": {"status": "available", "domain": "onyxdevslab.com", "nameServers": ["piper.ns.cloudflare.com", "trey.ns.cloudflare.com"], "cloudflareNameservers": true},
+    "edgeObservation": {"targetsChecked": 6, "cloudflareSignaledTargets": 6, "allTargetsCloudflareSignaled": true, "signal": "HTTP Server header equals cloudflare and CF-Ray is present on at least one hop"},
     "eventFile": "events/2026-09-13T01-19-32.135Z-evidence-and-availability-change.json",
-    "meaning": "The Hong Kong host redirects HTTP to HTTPS and exposes the expected self-canonical URL. The GitHub Pages apex host serves content directly over HTTP, both www entry points lead to the HTTP apex, and the HTTPS www entry point downgrades to HTTP. GitHub Pages reports https_enforced=false. This is a technical canonicalization and transport-security defect; it does not negate the observed Yandex brand result or prove any search ranking effect. Enabling Enforce HTTPS requires repository-owner administration, and no DNS, CDN, Cloudflare, or Pages setting was changed by this observation."
+    "meaning": "The Hong Kong host redirects HTTP to HTTPS and exposes the expected self-canonical URL. The apex serves content directly over HTTP, both www entry points lead to the HTTP apex, and the HTTPS www entry point downgrades to HTTP. GitHub Pages reports https_enforced=false. A separate live authority and edge-path audit now confirms that piper.ns.cloudflare.com and trey.ns.cloudflare.com are authoritative and that all six monitored entry points return both a Cloudflare Server header and CF-Ray on at least one hop. Those public signals identify the delivery path but do not prove which Cloudflare or origin rule caused the redirects. The defect cannot be safely corrected from this repository alone: it requires repository-owner Pages administration or explicit authorization to inspect and change the existing Cloudflare configuration. No DNS, CDN, Cloudflare, or Pages setting was changed by this observation, and it does not prove any search ranking effect."
   },
   "yandexPublicSearchEvidence": {
     "testedAt": "2026-09-12T22:47:17Z",

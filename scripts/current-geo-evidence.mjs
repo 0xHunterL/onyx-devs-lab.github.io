@@ -18,14 +18,15 @@ export const currentWaybackEvidence = currentMonitorEvidence.waybackEvidence;
 
 export function hasCurrentMonitorLlmsBoundary(body) {
   return body.includes(`${currentMonitorEvidence.generatedAt} production collection`)
-    && body.includes('monitored distribution ledger expands from eight to 10 existing public sources')
-    && body.includes('all 34 source checks passed')
-    && body.includes('Six internal manifest-audit requests are excluded')
-    && body.includes('attribution remains 86 tracked requests, 14 visitor-type-unverified requests, and zero AI Referrer')
+    && body.includes('domain monitor now records authoritative DNS and public edge-header evidence')
+    && body.includes('piper.ns.cloudflare.com')
+    && body.includes('all six entry points expose Cloudflare `Server` plus `CF-Ray` signals')
+    && body.includes('Three entry points remain noncompliant')
+    && body.includes('Crawler, archive, 10-publication／24-target distribution, attribution and AI-referrer counts remain unchanged')
     && body.includes('continuous numbered-log lineage policy')
     && body.includes('verified coverage remains 45 paths, 15 search-related evidence pages, and 18 prompts')
-    && body.includes('Both selected Common Crawl indexes returned usable zero-capture responses')
-    && body.includes('This is monitoring-integrity and source-availability evidence only')
+    && body.includes('both selected Common Crawl indexes returned usable zero-capture responses')
+    && body.includes('This is technical monitoring evidence only')
     && body.includes('does not prove indexing, ranking, AI citation, a human visit, or non-brand recommendation')
     && body.includes('no prompt was sent to Doubao');
 }
