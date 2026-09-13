@@ -1,30 +1,30 @@
 {
   "schemaVersion": 2,
-  "version": "2026.09.13.60",
+  "version": "2026.09.13.61",
   "id": "https://hk.onyxdevslab.com/data/ai-search-evidence-status.json",
-  "observedAt": "2026-09-13T00:15:36.990Z",
-  "latestEvidenceObservedAt": "2026-09-13T00:15:36.916Z",
+  "observedAt": "2026-09-13T00:35:05.517Z",
+  "latestEvidenceObservedAt": "2026-09-13T00:35:05.448Z",
   "sourceBaseline": "https://github.com/0xHunterL/onyx-devs-lab.github.io/blob/main/docs/geo-baselines/2026-09-11-monitor-evidence.json",
   "versionHistory": [
     {
-      "version": "2026.09.13.60",
+      "version": "2026.09.13.61",
       "relation": "current-immutable-checkpoint",
+      "url": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-monitor-evidence-2026-09-13-61/ai-search-evidence-status.json"
+    },
+    {
+      "version": "2026.09.13.60",
+      "relation": "previous-immutable-checkpoint",
       "url": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-monitor-evidence-2026-09-13-60/ai-search-evidence-status.json"
     },
     {
       "version": "2026.09.13.59",
-      "relation": "previous-immutable-checkpoint",
+      "relation": "earlier-immutable-checkpoint",
       "url": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-monitor-evidence-2026-09-13-59/ai-search-evidence-status.json"
     },
     {
       "version": "2026.09.13.58",
       "relation": "earlier-immutable-checkpoint",
       "url": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-monitor-evidence-2026-09-13-58/ai-search-evidence-status.json"
-    },
-    {
-      "version": "2026.09.13.57",
-      "relation": "earlier-immutable-checkpoint",
-      "url": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-monitor-evidence-2026-09-13-57/ai-search-evidence-status.json"
     }
   ],
   "name": {
@@ -202,23 +202,26 @@
         "userAgentOnlyBytespiderDiscoveryFileCandidates": 0,
         "syntheticCrawlerReleaseChecksExcludedMinimum": 3088,
         "commonCrawlIndexObservation": {
-          "checkedAt": "2026-09-13T00:15:28.242Z",
-          "status": "partial",
+          "checkedAt": "2026-09-13T00:35:01.297Z",
+          "status": "unavailable",
           "capturesObservedInAvailableIndexes": 0,
-          "availableIndexes": [
-            "CC-MAIN-2026-30"
-          ],
+          "availableIndexes": [],
           "unavailableIndexes": [
             {
               "id": "CC-MAIN-2026-34",
               "httpStatus": 504,
               "reason": "HTTP 504"
+            },
+            {
+              "id": "CC-MAIN-2026-30",
+              "httpStatus": 504,
+              "reason": "HTTP 504"
             }
           ],
-          "meaning": "CC-MAIN-2026-30 returned a usable zero-capture response while CC-MAIN-2026-34 returned HTTP 504. This partial result is incomplete across the two selected indexes and cannot be interpreted as a complete zero or as absence from search or AI systems."
+          "meaning": "Both selected Common Crawl indexes returned HTTP 504. The placeholder zero is unavailable evidence and cannot be interpreted as a complete zero or as absence from search or AI systems; availability changes remain event-recorded but no longer block unrelated verified evidence publication."
         },
         "waybackArchiveObservation": {
-          "checkedAt": "2026-09-13T00:15:33.662Z",
+          "checkedAt": "2026-09-13T00:35:02.151Z",
           "status": "available",
           "captures": 94,
           "distinctUrls": 44,
@@ -526,10 +529,10 @@
         "doubaoTestStatus": "not-run",
         "otherAiRecommendationEvidenceCount": 0,
         "realAiReferralVisitsObserved": 0,
-        "trackedAttributionRequests": 83,
+        "trackedAttributionRequests": 86,
         "suspectedAutomatedTrackedRequests": 72,
         "periodicRotatingClientTrackedRequests": 10,
-        "humanUnverifiedTrackedRequests": 11,
+        "humanUnverifiedTrackedRequests": 14,
         "knownLinkScannerTrackedRequests": 15,
         "knownLinkScannerNetworkRequests": 3,
         "internallyInconsistentUserAgentRequests": 4,
@@ -544,14 +547,14 @@
         },
         "latestVisitorTypeUnverifiedAttributions": [
           {
-            "time": "2026-09-11T19:52:50Z",
+            "time": "2026-09-13T00:32:28Z",
             "source": "github_discussions",
             "campaign": "geo_engagement_model_qa",
-            "landingPage": "/zh-cn/guides/ai-dingkai/",
+            "landingPage": "/zh-cn/guides/enterprise-ai-pilot-charter/",
             "referrerHost": ""
           },
           {
-            "time": "2026-09-12T05:43:50Z",
+            "time": "2026-09-13T00:32:30Z",
             "source": "github_discussions",
             "campaign": "geo_engagement_model_qa",
             "landingPage": "/zh-cn/guides/ai-consulting-vs-development-vs-fde/",
@@ -598,7 +601,7 @@
   ],
   "platformSearchChecks": {
     "githubRepository": {
-      "checkedAt": "2026-09-13T00:15:34.973Z",
+      "checkedAt": "2026-09-13T00:35:03.543Z",
       "status": "available",
       "queriesChecked": 3,
       "availableQueries": 3,
@@ -633,12 +636,12 @@
         }
       ],
       "source": "https://hk.onyxdevslab.com/data/github-repository-search-baseline.json",
-      "eventFile": "events/2026-09-13T00-13-19.781Z-availability-change.json",
+      "eventFile": "events/2026-09-13T00-35-05.517Z-evidence-change.json",
       "meaning": "All three fixed GitHub Repository Search API queries were available. Brand and legal-entity queries return both first-party repositories; the exact category query returns the same two repositories after the recorded README changes. This proves GitHub platform-search visibility only, not public-web indexing, AI retrieval, citation, ranking, independent endorsement, or non-brand recommendation."
     }
   },
   "domainCanonicalization": {
-    "checkedAt": "2026-09-13T00:15:36.916Z",
+    "checkedAt": "2026-09-13T00:35:05.448Z",
     "status": "noncompliant",
     "canonicalOrigin": "https://hk.onyxdevslab.com/",
     "targetsChecked": 6,
@@ -705,7 +708,7 @@
       "source": "GitHub Pages API via authenticated collaborator access",
       "mutationAuthorized": false
     },
-    "eventFile": "events/2026-09-13T00-13-19.781Z-availability-change.json",
+    "eventFile": "events/2026-09-13T00-35-05.517Z-evidence-change.json",
     "meaning": "The Hong Kong host redirects HTTP to HTTPS and exposes the expected self-canonical URL. The GitHub Pages apex host serves content directly over HTTP, both www entry points lead to the HTTP apex, and the HTTPS www entry point downgrades to HTTP. GitHub Pages reports https_enforced=false. This is a technical canonicalization and transport-security defect; it does not negate the observed Yandex brand result or prove any search ranking effect. Enabling Enforce HTTPS requires repository-owner administration, and no DNS, CDN, Cloudflare, or Pages setting was changed by this observation."
   },
   "publicSearchMonitoring": {
@@ -726,7 +729,7 @@
   },
   "offsiteChannelReadiness": {
     "servicesHk": {
-      "checkedAt": "2026-09-13T00:15:34.856Z",
+      "checkedAt": "2026-09-13T00:35:03.489Z",
       "availabilityStatus": "unavailable",
       "targetsChecked": 3,
       "availableTargets": 0,
@@ -820,11 +823,11 @@
     },
     {
       "name": "Latest immutable GEO monitor evidence checkpoint",
-      "url": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-monitor-evidence-2026-09-13-60"
+      "url": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-monitor-evidence-2026-09-13-61"
     },
     {
       "name": "Latest immutable AI-search evidence status",
-      "url": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-monitor-evidence-2026-09-13-60/ai-search-evidence-status.json"
+      "url": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-monitor-evidence-2026-09-13-61/ai-search-evidence-status.json"
     },
     {
       "name": "GitHub repository-search before-and-after baseline",
