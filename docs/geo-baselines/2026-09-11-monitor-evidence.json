@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
-  "publicStatusVersion": "2026.09.13.58",
-  "generatedAt": "2026-09-12T23:27:02.484Z",
-  "latestEvidenceObservedAt": "2026-09-12T23:27:02.416Z",
+  "publicStatusVersion": "2026.09.13.59",
+  "generatedAt": "2026-09-12T23:52:07.815Z",
+  "latestEvidenceObservedAt": "2026-09-12T23:52:07.747Z",
   "windowStart": "2026-09-01",
   "site": "https://hk.onyxdevslab.com/",
   "sourceLogs": [
@@ -31,7 +31,7 @@
     "yandexbotContentRequests": 78,
     "yandexbotDiscoveryFileRequests": 73,
     "ahrefsbotContentRequests": 0,
-    "ahrefsbotDiscoveryFileRequests": 95,
+    "ahrefsbotDiscoveryFileRequests": 97,
     "distinctVerifiedContentPaths": 45,
     "historicalReclassification": {
       "homepageContentRequestsAdded": 3,
@@ -61,12 +61,26 @@
     },
     "ahrefsHistoricalRecognition": {
       "firstSeen": "2026-09-08T13:53:09Z",
-      "lastSeen": "2026-09-12T21:59:47Z",
-      "robotsTxtRequests": 24,
-      "sitemapRequests": 71,
-      "distinctClientAddresses": 84,
+      "lastSeen": "2026-09-12T23:26:59Z",
+      "robotsTxtRequests": 25,
+      "sitemapRequests": 72,
+      "distinctClientAddresses": 86,
       "verificationSource": "https://api.ahrefs.com/v3/public/crawler-ip-ranges",
-      "meaning": "All 95 discovery-file requests matched the official Ahrefs crawler IP ranges. AhrefsBot serves both the Ahrefs database and Yep, so these requests prove external crawler discovery only; they do not prove Yep indexing, ranking, retrieval, citation, or AI recommendation."
+      "latestVerifiedDiscoveryRequests": [
+        {
+          "time": "2026-09-12T23:26:58Z",
+          "path": "/robots.txt",
+          "status": 200,
+          "fingerprint": "0cb33586b7c3e21f20e4e81faaed2b3a8691d4b76bfe3de7e7dded85ba102466"
+        },
+        {
+          "time": "2026-09-12T23:26:59Z",
+          "path": "/sitemap.xml",
+          "status": 200,
+          "fingerprint": "849a2bf1fa1a0d4ebfd01d3836edf3c0dd53b551b490a5e04abffebc9597f3d7"
+        }
+      ],
+      "meaning": "All 97 discovery-file requests matched the official Ahrefs crawler IP ranges. AhrefsBot serves both the Ahrefs database and Yep, so these requests prove external crawler discovery only; they do not prove Yep indexing, ranking, retrieval, citation, or AI recommendation."
     }
   },
   "crawlerEvidenceAccounting": {
@@ -81,6 +95,13 @@
     ],
     "retentionAdjustmentField": "retentionAdjustments",
     "latestRetentionAdjustments": [],
+    "contentPathCoverage": {
+      "mode": "append-only-provider-verified-fingerprint-cumulative",
+      "verifiedPageObservations": 113,
+      "distinctPaths": 45,
+      "migrationSource": "Sanitized verified crawler observations recovered from the versioned event history and persisted in seen-evidence.json",
+      "meaning": "Content-path and fixed-prompt coverage are rebuilt from the append-only verified-observation ledger. Query strings are normalized away, and log rotation cannot erase previously verified path coverage."
+    },
     "meaning": "Provider-verified crawler request counts are cumulative over the append-only fingerprint ledger. If a verified request rotates out of the four currently retained log files, its cumulative count is preserved and the difference is exposed in retentionAdjustments; an explicit evidence correction still requires a reviewed baseline revision. This rule does not apply to user-agent-only candidates, referrals, Common Crawl results, or Wayback results."
   },
   "identityUnverifiedCrawlerEvidence": {
@@ -147,7 +168,7 @@
     ]
   },
   "commonCrawlEvidence": {
-    "checkedAt": "2026-09-12T23:26:57.779Z",
+    "checkedAt": "2026-09-12T23:52:04.218Z",
     "status": "available",
     "capturesObservedInAvailableIndexes": 0,
     "availableIndexes": ["CC-MAIN-2026-34", "CC-MAIN-2026-30"],
@@ -155,7 +176,7 @@
     "meaning": "CC-MAIN-2026-34 and CC-MAIN-2026-30 both returned usable zero-capture responses. This complete result covers only the two selected indexes; it does not represent all Common Crawl history or prove absence from search or AI systems."
   },
   "waybackEvidence": {
-    "checkedAt": "2026-09-12T23:26:59.062Z",
+    "checkedAt": "2026-09-12T23:52:04.960Z",
     "status": "available",
     "captures": 94,
     "distinctUrls": 44,
@@ -235,7 +256,7 @@
     "meaning": "The available public Wayback CDX host query currently returns 94 successful HTML capture records across 44 distinct URLs. A newly exposed industrial ERP case-study capture increases the prompt archive ledger to 16 archived evidence pages, 16 prompts with any archive and 12 fully archived prompts; the remaining count movement includes documented public-index volatility. These records prove public historical captures only; they do not prove current accessibility, search indexing, AI retrieval, citation, ranking, endorsement, or recommendation. An unavailable future query must not be interpreted as zero captures."
   },
   "githubRepositorySearchEvidence": {
-    "checkedAt": "2026-09-12T23:27:00.488Z",
+    "checkedAt": "2026-09-12T23:52:06.312Z",
     "status": "available",
     "queriesChecked": 3,
     "availableQueries": 3,
@@ -270,24 +291,24 @@
       }
     ],
     "source": "https://hk.onyxdevslab.com/data/github-repository-search-baseline.json",
-    "eventFile": "events/2026-09-12T23-27-02.484Z-evidence-and-availability-change.json",
+    "eventFile": "events/2026-09-12T23-44-28.829Z-evidence-and-availability-change.json",
     "meaning": "All three fixed GitHub Repository Search API queries were available. Brand and legal-entity queries return both first-party repositories; the exact category query returns the same two repositories after the recorded README changes. This proves GitHub platform-search visibility only, not public-web indexing, AI retrieval, citation, ranking, independent endorsement, or non-brand recommendation."
   },
   "distributionEvidence": {
     "manifestItems": 9,
     "publishedItems": 8,
     "readyNotPublishedItems": 1,
-    "checkedAt": "2026-09-12T23:27:00.064Z",
+    "checkedAt": "2026-09-12T23:52:05.913Z",
     "publicUrlsChecked": 8,
     "trackedTargetsChecked": 18,
     "availableSources": 26,
     "unavailableSources": 0,
     "availabilityStatus": "available",
-    "eventFile": "events/2026-09-12T23-27-02.484Z-evidence-and-availability-change.json",
+    "eventFile": "events/2026-09-12T23-44-28.829Z-evidence-and-availability-change.json",
     "meaning": "All declared published URLs and tracked targets passed anonymous availability, destination, and content-marker checks. This does not prove indexing, AI retrieval, citation, recommendation, a human visit, or independent endorsement."
   },
   "servicesHkReadinessEvidence": {
-    "checkedAt": "2026-09-12T23:27:00.448Z",
+    "checkedAt": "2026-09-12T23:52:06.200Z",
     "availabilityStatus": "unavailable",
     "targetsChecked": 3,
     "availableTargets": 0,
@@ -301,7 +322,7 @@
     "meaning": "All three sampled services.hk detail pages return HTTP 200 but contain the known PHP application failure and omit the required title, service-description, and contact markers. This blocks submission readiness; it does not prove that Onyx is listed, reviewed, endorsed, indexed, cited, or recommended. Submission still requires current user confirmation after all three targets recover."
   },
   "domainCanonicalizationEvidence": {
-    "checkedAt": "2026-09-12T23:27:02.416Z",
+    "checkedAt": "2026-09-12T23:52:07.747Z",
     "status": "noncompliant",
     "canonicalOrigin": "https://hk.onyxdevslab.com/",
     "targetsChecked": 6,
@@ -317,7 +338,7 @@
       {"id": "https-hk", "startUrl": "https://hk.onyxdevslab.com/", "finalUrl": "https://hk.onyxdevslab.com/", "status": "compliant", "reasons": []}
     ],
     "githubPagesSetting": {"checkedAt": "2026-09-12T23:07:00Z", "httpsEnforced": false, "source": "GitHub Pages API via authenticated collaborator access", "mutationAuthorized": false},
-    "eventFile": "events/2026-09-12T23-27-02.484Z-evidence-and-availability-change.json",
+    "eventFile": "events/2026-09-12T23-44-28.829Z-evidence-and-availability-change.json",
     "meaning": "The Hong Kong host redirects HTTP to HTTPS and exposes the expected self-canonical URL. The GitHub Pages apex host serves content directly over HTTP, both www entry points lead to the HTTP apex, and the HTTPS www entry point downgrades to HTTP. GitHub Pages reports https_enforced=false. This is a technical canonicalization and transport-security defect; it does not negate the observed Yandex brand result or prove any search ranking effect. Enabling Enforce HTTPS requires repository-owner administration, and no DNS, CDN, Cloudflare, or Pages setting was changed by this observation."
   },
   "yandexPublicSearchEvidence": {

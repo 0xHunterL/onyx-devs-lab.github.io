@@ -18,10 +18,10 @@ export const currentWaybackEvidence = currentMonitorEvidence.waybackEvidence;
 
 export function hasCurrentMonitorLlmsBoundary(body) {
   return body.includes(`${currentMonitorEvidence.generatedAt} production collection`)
-    && body.includes('two new provider-verified YandexBot discovery requests')
-    && body.includes('bringing discovery-file requests to 73 while content requests remain 78')
-    && body.includes('The domain check remains three compliant and three noncompliant entries')
-    && body.includes('This is crawler-access evidence only')
-    && body.includes('does not prove causation, indexing, ranking, AI citation, a human visit, or non-brand recommendation')
+    && body.includes('two new official-range AhrefsBot discovery requests')
+    && body.includes('bringing the total to 97')
+    && body.includes('rebuilds 45 distinct content paths and fixed-prompt coverage')
+    && body.includes('This is crawler-access and monitoring-continuity evidence only')
+    && body.includes('does not prove indexing, ranking, AI citation, a human visit, or non-brand recommendation')
     && body.includes('no prompt was sent to Doubao');
 }
