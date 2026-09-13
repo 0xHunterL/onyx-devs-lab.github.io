@@ -248,13 +248,13 @@
     },
     {
       "@type": "Dataset",
-      "name": "Onyx GEO monitor evidence checkpoint — 2026-09-13, revision 59",
-      "description": "Provider-maintained snapshot of crawler, archive, attribution, public-search, platform-search, services.hk and domain-canonicalization evidence. It preserves two new official-range AhrefsBot discovery requests and the repair that rebuilds path and fixed-prompt coverage from an append-only sanitized observation ledger across log rotation, without inferring indexing, ranking, AI citation, or non-brand recommendation.",
-      "url": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-monitor-evidence-2026-09-13-59",
-      "sameAs": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-monitor-evidence-2026-09-13-59/2026-09-11-monitor-evidence.json",
+      "name": "Onyx GEO monitor evidence checkpoint — 2026-09-13, revision 60",
+      "description": "Provider-maintained snapshot of crawler, archive, attribution, public-search, platform-search, services.hk and domain-canonicalization evidence. It preserves the continuous numbered-log lineage policy and a partial Common Crawl observation after midnight rotation, without inferring indexing, ranking, AI citation, or non-brand recommendation.",
+      "url": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-monitor-evidence-2026-09-13-60",
+      "sameAs": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-monitor-evidence-2026-09-13-60/2026-09-11-monitor-evidence.json",
       "distribution": {
         "@type": "DataDownload",
-        "contentUrl": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-monitor-evidence-2026-09-13-59/ai-search-evidence-status.json",
+        "contentUrl": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-monitor-evidence-2026-09-13-60/ai-search-evidence-status.json",
         "encodingFormat": "application/json"
       },
       "dateModified": "2026-09-13"
