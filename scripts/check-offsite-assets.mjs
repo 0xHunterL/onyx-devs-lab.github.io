@@ -116,12 +116,14 @@ try {
 } catch {
   failures.push('Software Heritage current repository visits: invalid JSON');
 }
-const currentSoftwareHeritageSnapshotRaw = await get('Software Heritage current repository snapshot', `https://archive.softwareheritage.org/api/1/snapshot/${currentSoftwareHeritageSnapshotId}/`, 'application/json');
-try {
-  const snapshot = JSON.parse(currentSoftwareHeritageSnapshotRaw);
-  if (snapshot.id !== currentSoftwareHeritageSnapshotId || snapshot.branches?.['refs/heads/main']?.target !== currentSoftwareHeritageRevisionId || snapshot.branches?.['refs/heads/main']?.target_type !== 'revision') failures.push('Software Heritage current repository snapshot: main branch does not resolve to revision 40d2c1d');
-} catch {
-  failures.push('Software Heritage current repository snapshot: invalid JSON');
+const currentSoftwareHeritageSnapshotRaw = await get('Software Heritage current repository snapshot', `https://archive.softwareheritage.org/api/1/snapshot/${currentSoftwareHeritageSnapshotId}/`, 'application/json', { allowUnavailable: true });
+if (currentSoftwareHeritageSnapshotRaw) {
+  try {
+    const snapshot = JSON.parse(currentSoftwareHeritageSnapshotRaw);
+    if (snapshot.id !== currentSoftwareHeritageSnapshotId || snapshot.branches?.['refs/heads/main']?.target !== currentSoftwareHeritageRevisionId || snapshot.branches?.['refs/heads/main']?.target_type !== 'revision') failures.push('Software Heritage current repository snapshot: main branch does not resolve to revision 40d2c1d');
+  } catch {
+    failures.push('Software Heritage current repository snapshot: invalid JSON');
+  }
 }
 const buyerGuideRepositoryUrl = 'https://github.com/mixuechu/hong-kong-enterprise-ai-buyers-guide';
 const buyerGuide = await get('GitHub enterprise AI buyer guide', buyerGuideRepositoryUrl, 'text/html');
@@ -1198,6 +1200,26 @@ const monitorV66 = monitorEvidenceV66Json['2026-09-11-monitor-evidence.json'];
 if (monitorV66 && (monitorV66.publicStatusVersion !== '2026.09.13.66' || monitorV66.generatedAt !== '2026-09-13T03:02:43.851Z' || monitorV66.waybackEvidence?.captures !== 96 || monitorV66.waybackEvidence?.distinctUrls !== 46 || monitorV66.waybackEvidence?.fixedPromptArchiveCoverage?.archivedEvidencePages !== 18 || monitorV66.waybackEvidence?.fixedPromptArchiveCoverage?.promptsFullyArchived !== 15 || monitorV66.waybackEvidence?.latestArchiveGrowthObservation?.observations?.length !== 3 || monitorV66.softwareHeritageEvidence?.archiveCoverageStatus !== 'lagging' || monitorV66.softwareHeritageEvidence?.saveRequest?.id !== 2473234 || monitorV66.doubaoTestStatus !== 'not-run')) failures.push('Versioned GEO monitor revision 66: Wayback growth, Software Heritage coverage, or evidence boundary is incomplete');
 const statusV66 = monitorEvidenceV66Json['ai-search-evidence-status.json'];
 if (statusV66 && (statusV66.version !== '2026.09.13.66' || statusV66.observedAt !== '2026-09-13T03:02:43.851Z' || statusV66.versionHistory?.[0]?.version !== '2026.09.13.66' || statusV66.evidenceLevels?.[1]?.evidence?.waybackArchiveObservation?.captures !== 96 || statusV66.publicCorpusMonitoring?.softwareHeritage?.archiveCoverageStatus !== 'lagging' || statusV66.testProtocol?.doubaoPromptsSent !== false)) failures.push('Versioned GEO monitor revision 66 public status: archive evidence or AI boundary is incomplete');
+
+const monitorEvidenceV67Base = 'https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-monitor-evidence-2026-09-13-67';
+const monitorEvidenceV67Assets = [
+  {file:'2026-09-11-monitor-evidence.json',sha256:'7a18ac07265092e69f68d038df94b30ed92ae3d2f168e46ebe5c9d6925b61143'},
+  {file:'ai-search-evidence-status.json',sha256:'b4abc1b026b9fa41306b0da384548752a0cd67022fd4b9cb8ad58f058bb8260b'},
+  {file:'prompt-matrix.json',sha256:'ed5305c7c1221689dd5c522cf305ea7ff73344ef37f016a3e148d5f598351b6f'},
+  {file:'ai-search-prompt-evidence-map.json',sha256:'696d4ab92d662702c35b74afd554f247c4961a907418f50dbb39cc1c401d3315'},
+  {file:'2026-09-11-prompt-crawl-coverage.json',sha256:'7b9eb77978732b6425d408bb02cf4c2629daa9693ad2bb448e937df179151c11'},
+];
+const monitorEvidenceV67Json = {};
+for (const asset of monitorEvidenceV67Assets) {
+  const raw = await get(`Versioned GEO monitor revision 67 ${asset.file}`, `${monitorEvidenceV67Base}/${asset.file}`, 'application/');
+  const digest = createHash('sha256').update(raw).digest('hex');
+  if (digest !== asset.sha256) failures.push(`Versioned GEO monitor revision 67 ${asset.file}: SHA-256 mismatch, got ${digest}`);
+  try { monitorEvidenceV67Json[asset.file] = JSON.parse(raw); } catch { failures.push(`Versioned GEO monitor revision 67 ${asset.file}: invalid JSON`); }
+}
+const monitorV67 = monitorEvidenceV67Json['2026-09-11-monitor-evidence.json'];
+if (monitorV67 && (monitorV67.publicStatusVersion !== '2026.09.13.67' || monitorV67.generatedAt !== '2026-09-13T03:55:52.337Z' || monitorV67.latestEvidenceObservedAt !== '2026-09-13T03:52:09Z' || monitorV67.providerVerifiedCrawlerEvidence?.ahrefsbotDiscoveryFileRequests !== 101 || monitorV67.providerVerifiedCrawlerEvidence?.ahrefsbotContentRequests !== 0 || monitorV67.softwareHeritageEvidence?.archiveCoverageStatus !== 'current' || monitorV67.softwareHeritageEvidence?.snapshotSwhid !== 'swh:1:snp:f3820205ce07ab9df33d2f0db735bc4b25ca0347' || monitorV67.softwareHeritageEvidence?.archiveHead !== '40d2c1d369ec835c5012256a6f2f84964e01305b' || monitorV67.softwareHeritageEvidence?.saveRequest?.requestEndpointStatusAtObservation !== 'stale-failed' || monitorV67.doubaoTestStatus !== 'not-run')) failures.push('Versioned GEO monitor revision 67: Ahrefs, Software Heritage, or evidence boundary is incomplete');
+const statusV67 = monitorEvidenceV67Json['ai-search-evidence-status.json'];
+if (statusV67 && (statusV67.version !== '2026.09.13.67' || statusV67.observedAt !== '2026-09-13T03:55:52.337Z' || statusV67.versionHistory?.[0]?.version !== '2026.09.13.67' || statusV67.evidenceLevels?.[1]?.evidence?.verifiedAhrefsBotDiscoveryFileCrawls !== 101 || statusV67.evidenceLevels?.[1]?.evidence?.verifiedAhrefsBotContentCrawls !== 0 || statusV67.publicCorpusMonitoring?.softwareHeritage?.archiveCoverageStatus !== 'current' || statusV67.publicCorpusMonitoring?.softwareHeritage?.snapshotSwhid !== 'swh:1:snp:f3820205ce07ab9df33d2f0db735bc4b25ca0347' || statusV67.testProtocol?.doubaoPromptsSent !== false)) failures.push('Versioned GEO monitor revision 67 public status: crawler, archive, or AI boundary is incomplete');
 
 const crawlerEvidenceReleaseUrl = 'https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-crawler-evidence-2026-09-10';
 const crawlerEvidenceRelease = await get('GitHub verified crawler-evidence checkpoint', crawlerEvidenceReleaseUrl, 'text/html');

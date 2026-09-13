@@ -346,6 +346,36 @@
         "The Software Heritage lagging state proves only that the latest complete repository archive has not caught up with the observed GitHub main revision.",
         "Anonymous availability and matching content markers do not prove independent endorsement, an AI citation, a human visit, or non-brand recommendation."
       ]
+    },
+    {
+      "id": "github-release-geo-monitor-evidence-2026-09-13-67",
+      "channel": "github_releases",
+      "format": "versioned-evidence-checkpoint",
+      "language": "en-zh-CN",
+      "status": "published",
+      "sourceFile": "README.md",
+      "title": "Onyx GEO monitor evidence checkpoint — 2026-09-13, revision 67",
+      "campaign": "geo_monitor_evidence_67",
+      "trackedTargets": [
+        "https://hk.onyxdevslab.com/data/ai-search-evidence-status.json?utm_source=github_releases&utm_medium=referral&utm_campaign=geo_monitor_evidence_67"
+      ],
+      "publicUrl": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-monitor-evidence-2026-09-13-67",
+      "anonymousAccessVerifiedAt": "2026-09-13T04:18:27Z",
+      "publicContentMarkers": [
+        "GEO monitor evidence checkpoint — 2026-09-13, revision 67",
+        "Provider-verified AhrefsBot discovery-file requests increased to 101",
+        "snapshot f3820205",
+        "save-request endpoint still exposes the earlier failed attempt"
+      ],
+      "searchIndexedAt": null,
+      "aiCitationObservedAt": null,
+      "nonBrandRecommendationObservedAt": null,
+      "limitations": [
+        "The Release and its assets are published and maintained by Onyx Devs Lab.",
+        "The full Software Heritage visit and independently resolved snapshot prove content-addressed code preservation only; the stale save-request object is not treated as success evidence.",
+        "Provider-verified AhrefsBot discovery-file requests do not prove content crawling, Yep indexing, ranking, retrieval, citation, or recommendation.",
+        "Anonymous availability and matching content markers do not prove independent endorsement, an AI citation, a human visit, or non-brand recommendation."
+      ]
     }
   ]
 }
