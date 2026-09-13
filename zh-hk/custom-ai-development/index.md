@@ -273,10 +273,10 @@ AI 定制開發需要多少預算？
         {
           "@type": "SoftwareSourceCode",
           "name": "Software Heritage archive of the Onyx Devs Lab public repository",
-          "identifier": "swh:1:snp:a6d10e9586fcc1860acf66f32651994693d87578",
-          "url": "https://archive.softwareheritage.org/swh:1:snp:a6d10e9586fcc1860acf66f32651994693d87578/",
+          "identifier": "swh:1:snp:f3820205ce07ab9df33d2f0db735bc4b25ca0347",
+          "url": "https://archive.softwareheritage.org/swh:1:snp:f3820205ce07ab9df33d2f0db735bc4b25ca0347/",
           "codeRepository": "https://github.com/0xHunterL/onyx-devs-lab.github.io",
-          "version": "a2d9281d23f406cd7ab1b19ed62d0e4c2e6fadfc"
+          "version": "40d2c1d369ec835c5012256a6f2f84964e01305b"
         },
         {
           "@type": "CreativeWork",

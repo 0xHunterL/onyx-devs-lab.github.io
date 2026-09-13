@@ -248,13 +248,13 @@
     },
     {
       "@type": "Dataset",
-      "name": "Onyx GEO monitor evidence checkpoint — 2026-09-13, revision 66",
-      "description": "Provider-maintained snapshot of crawler, archive, attribution, public-search, platform-search, services.hk, Software Heritage and domain-canonicalization evidence. It records 96 public Wayback HTML captures across 46 URLs and 18 archived fixed-prompt evidence pages, without inferring indexing, ranking, AI citation, a human visit, or non-brand recommendation.",
-      "url": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-monitor-evidence-2026-09-13-66",
-      "sameAs": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-monitor-evidence-2026-09-13-66/2026-09-11-monitor-evidence.json",
+      "name": "Onyx GEO monitor evidence checkpoint — 2026-09-13, revision 67",
+      "description": "Provider-maintained snapshot of crawler, archive, attribution, public-search, platform-search, services.hk, Software Heritage and domain-canonicalization evidence. It records a current Software Heritage snapshot of revision 40d2c1d, 101 provider-verified AhrefsBot discovery requests, 96 public Wayback HTML captures across 46 URLs, and 18 archived fixed-prompt evidence pages, without inferring indexing, ranking, AI citation, a human visit, or non-brand recommendation.",
+      "url": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-monitor-evidence-2026-09-13-67",
+      "sameAs": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-monitor-evidence-2026-09-13-67/2026-09-11-monitor-evidence.json",
       "distribution": {
         "@type": "DataDownload",
-        "contentUrl": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-monitor-evidence-2026-09-13-66/ai-search-evidence-status.json",
+        "contentUrl": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-monitor-evidence-2026-09-13-67/ai-search-evidence-status.json",
         "encodingFormat": "application/json"
       },
       "dateModified": "2026-09-13"
@@ -262,11 +262,11 @@
     {
       "@type": "SoftwareSourceCode",
       "name": "Software Heritage archive of the Onyx Devs Lab public repository",
-      "description": "Independently preserves the public source, citation metadata, revision 49 crawler evidence, machine-readable evidence files, monitoring retry logic, and their Git history at revision a2d9281. Archival does not endorse service claims or prove search indexing.",
-      "identifier": "swh:1:snp:a6d10e9586fcc1860acf66f32651994693d87578",
-      "url": "https://archive.softwareheritage.org/swh:1:snp:a6d10e9586fcc1860acf66f32651994693d87578/",
+      "description": "Independently preserves the public source, citation metadata, revision 66 evidence files, save-request monitoring, and their Git history at revision 40d2c1d. Archival does not endorse service claims or prove search indexing.",
+      "identifier": "swh:1:snp:f3820205ce07ab9df33d2f0db735bc4b25ca0347",
+      "url": "https://archive.softwareheritage.org/swh:1:snp:f3820205ce07ab9df33d2f0db735bc4b25ca0347/",
       "codeRepository": "https://github.com/0xHunterL/onyx-devs-lab.github.io",
-      "version": "a2d9281d23f406cd7ab1b19ed62d0e4c2e6fadfc"
+      "version": "40d2c1d369ec835c5012256a6f2f84964e01305b"
     },
     {
       "@type": "CreativeWork",
