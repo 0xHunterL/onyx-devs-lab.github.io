@@ -54,6 +54,14 @@ const events = [
     referrerHost: '',
     userAgent: 'Onyx-GEO-Distribution-Check/1.0',
   },
+  {
+    time: '2026-09-11T08:24:35+00:00',
+    clientIp: '203.0.113.11',
+    path: campaignPath,
+    status: 200,
+    referrerHost: '',
+    userAgent: 'Onyx-GEO-Manifest-Audit/1.0',
+  },
   ...[
     ['2026-09-11T08:25:34+00:00', 'chat.deepseek.com'],
     ['2026-09-11T08:26:34+00:00', 'www.kimi.com'],
@@ -91,7 +99,8 @@ try {
   assert.equal(report.knownLinkScannerTrackedVisits, 1);
   assert.equal(report.knownLinkScannerUserAgentVisits, 0);
   assert.equal(report.knownLinkScannerNetworkVisits, 1);
-  assert.equal(report.syntheticTrackedVisits, 1);
+  assert.equal(report.syntheticTrackedVisits, 2);
+  assert.equal(report.recentSyntheticVisits.at(-1).userAgent, 'Onyx-GEO-Manifest-Audit/1.0');
   assert.equal(report.recentHumanUnverifiedVisits[0].scannerNetwork, null);
   assert.equal(report.recentVisits[0].scannerNetwork, 'Palo Alto Networks URL scanner');
   assert.equal(report.recentVisits[2].scannerNetwork, null);
@@ -107,7 +116,7 @@ try {
   assert.equal(report.bySource.yuanbao, 1);
   assert.equal(report.bySource.qwen, 1);
   assert.match(report.caveat, /periodic rotating-client patterns/);
-  console.log(JSON.stringify({ tests: 21, failures: [] }, null, 2));
+  console.log(JSON.stringify({ tests: 22, failures: [] }, null, 2));
 } finally {
   await rm(directory, { recursive: true, force: true });
 }
