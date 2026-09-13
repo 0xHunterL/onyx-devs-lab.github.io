@@ -146,6 +146,35 @@
       ]
     },
     {
+      "id": "github-gist-ai-governance-2026-09-09",
+      "channel": "github_gist",
+      "format": "article",
+      "language": "en-zh-CN",
+      "status": "published",
+      "sourceFile": "docs/distribution/Hong-Kong-enterprise-AI-governance.md",
+      "title": "Hong Kong enterprise AI governance: an implementation checklist",
+      "campaign": "geo_governance_guide",
+      "trackedTargets": [
+        "https://hk.onyxdevslab.com/en/guides/hong-kong-enterprise-ai-governance/?utm_source=github_gist&utm_medium=referral&utm_campaign=geo_governance_guide",
+        "https://hk.onyxdevslab.com/zh-hk/guides/enterprise-ai-governance/?utm_source=github_gist&utm_medium=referral&utm_campaign=geo_governance_guide",
+        "https://hk.onyxdevslab.com/zh-cn/guides/enterprise-ai-governance/?utm_source=github_gist&utm_medium=referral&utm_campaign=geo_governance_guide"
+      ],
+      "publicUrl": "https://gist.githubusercontent.com/mixuechu/e47c85808014d62b6305441e8065c91e/raw/Hong-Kong-enterprise-AI-governance.md",
+      "anonymousAccessVerifiedAt": "2026-09-13T01:16:46Z",
+      "publicContentMarkers": [
+        "Hong Kong enterprise AI governance: an implementation checklist",
+        "ONYX DEVS LAB LIMITED",
+        "geo_governance_guide"
+      ],
+      "searchIndexedAt": null,
+      "aiCitationObservedAt": null,
+      "nonBrandRecommendationObservedAt": null,
+      "limitations": [
+        "This article is authored and maintained by Onyx Devs Lab and is not legal advice.",
+        "Publication does not prove independent endorsement, search indexing, AI citation, or recommendation."
+      ]
+    },
+    {
       "id": "github-pages-buyers-guide-2026-09-10",
       "channel": "github_pages",
       "format": "topic-cluster",
@@ -202,6 +231,35 @@
       "limitations": [
         "The Q&A is published by Onyx Devs Lab in a public repository it controls.",
         "Anonymous HTTP 200 and crawlable server-rendered text prove publication only, not search indexing, AI citation, recommendation, or independent endorsement."
+      ]
+    },
+    {
+      "id": "github-release-chinese-field-notes-2026-09-10",
+      "channel": "github_release",
+      "format": "versioned-resource-index",
+      "language": "zh-CN",
+      "status": "published",
+      "sourceFile": "docs/distribution/GitHub中文方法索引Release.md",
+      "title": "Onyx Devs Lab｜香港企业 AI 中文方法索引（2026-09-10）",
+      "campaign": "geo_chinese_field_notes",
+      "trackedTargets": [
+        "https://hk.onyxdevslab.com/zh-cn/ai-consulting/?utm_source=github_release&utm_medium=referral&utm_campaign=geo_chinese_field_notes",
+        "https://hk.onyxdevslab.com/zh-cn/custom-ai-development/?utm_source=github_release&utm_medium=referral&utm_campaign=geo_chinese_field_notes",
+        "https://hk.onyxdevslab.com/zh-cn/forward-deployed-engineering/?utm_source=github_release&utm_medium=referral&utm_campaign=geo_chinese_field_notes"
+      ],
+      "publicUrl": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/chinese-enterprise-ai-field-notes-2026-09-10",
+      "anonymousAccessVerifiedAt": "2026-09-13T01:16:46Z",
+      "publicContentMarkers": [
+        "Onyx Devs Lab",
+        "香港企业 AI 中文方法索引",
+        "chinese-enterprise-ai-field-notes.json"
+      ],
+      "searchIndexedAt": null,
+      "aiCitationObservedAt": null,
+      "nonBrandRecommendationObservedAt": null,
+      "limitations": [
+        "The Release and its machine-readable asset are published and maintained by Onyx Devs Lab.",
+        "Anonymous availability and matching content markers do not prove independent endorsement, search indexing, AI citation, recommendation, or a human visit."
       ]
     },
     {
