@@ -586,6 +586,36 @@
         "The preserved Bing brand observation does not establish exhaustive site indexing, stable ranking, or clean canonical presentation.",
         "Anonymous availability and matching content markers do not prove independent endorsement, an AI citation, a human visit, or non-brand recommendation."
       ]
+    },
+    {
+      "id": "github-release-geo-monitor-evidence-2026-09-13-75",
+      "channel": "github_releases",
+      "format": "versioned-evidence-checkpoint",
+      "language": "en-zh-CN",
+      "status": "published",
+      "sourceFile": "README.md",
+      "title": "Onyx GEO monitor evidence checkpoint — 2026-09-13, revision 75",
+      "campaign": "geo_monitor_evidence_75",
+      "trackedTargets": [
+        "https://hk.onyxdevslab.com/data/ai-search-evidence-status.json?utm_source=github_releases&utm_medium=referral&utm_campaign=geo_monitor_evidence_75"
+      ],
+      "publicUrl": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-monitor-evidence-2026-09-13-75",
+      "anonymousAccessVerifiedAt": "2026-09-13T11:03:41Z",
+      "publicContentMarkers": [
+        "GEO monitor evidence — 2026-09-13 revision 75",
+        "72 known HTML paths and a dynamic 404",
+        "mitigated but still noncompliant",
+        "No prompt was sent to Doubao"
+      ],
+      "searchIndexedAt": "2026-09-13T09:49:52Z",
+      "aiCitationObservedAt": null,
+      "nonBrandRecommendationObservedAt": null,
+      "limitations": [
+        "The Release and its assets are published and maintained by Onyx Devs Lab.",
+        "Client-side noindex, canonical and navigation mitigate duplicate legacy-apex content but do not replace an HTTP 301 or 308 redirect.",
+        "The preserved Bing observation predates the mitigation and does not prove search reprocessing, stable ranking, or clean canonical presentation.",
+        "Anonymous availability and matching content markers do not prove independent endorsement, an AI citation, a human visit, or non-brand recommendation."
+      ]
     }
   ]
 }

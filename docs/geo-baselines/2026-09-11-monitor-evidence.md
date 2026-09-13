@@ -4,6 +4,7 @@
 
 ## 当前可复核结果
 
+- revision 75 Release 已于 2026-09-13T11:03:41Z 发布为不可变 GitHub Release [`geo-monitor-evidence-2026-09-13-75`](https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-monitor-evidence-2026-09-13-75)，目标精确锁定提交 `0dd92285078b1d1faf68170a610127e61e0054db`。五个 JSON 资产匿名下载可用且 SHA-256 与本地发布源逐字节一致。该检查点只记录旧主域重复内容缓解及仍缺服务器 301／308 的事实，不证明搜索重处理、AI 引用或推荐；未向豆包发送提示词。
 - 2026-09-13T10:51:21.060Z，revision 75 固定记录根域重复内容缓解：GitHub Pages 已不再发布完整站点副本，72 个已知 HTML 路径和动态 404 现在只提供 `noindex`、同路径香港规范 URL、脚本跳转与 meta refresh；域名验证文件继续可访问。线上六入口复核为 2 个完全合规、4 个 `mitigated-noncompliant`。后四个仍未通过 HTTP 301／308 到达 `https://hk.onyxdevslab.com/`，因此不能表述为规范化已完成；Cloudflare 未改动。本次没有新增爬虫、收录、AI 引用、引荐或非品牌推荐证据，也未向豆包发送提示词。
 - revision 74 Release 已精确固定到基线提交 `631c97a189e53cc1ee32ce92a9761f48c0549f91`。五个资产经匿名下载逐字节复核，SHA-256 依次为：监测快照 `2ec0857b160a3f8bb595f6cb20be2d6552c2c5a47a4a5f6d5e7b6fa040a8229a`、公开状态 `facff45f9eed3ca743fae29c0275f0354bbf65040bff907bdc3d1a2521504e7b`、提示词矩阵 `ed5305c7c1221689dd5c522cf305ea7ff73344ef37f016a3e148d5f598351b6f`、证据映射 `5e2651de59efff9c946b75320be68c7a81870ed9b49e10cb0194f29622a78ab6`、覆盖报告 `7b9eb77978732b6425d408bb02cf4c2629daa9693ad2bb448e937df179151c11`。
 - 2026-09-13T10:10:04.690Z，revision 73 部署后生产复采确认 18 个已发布项目、32 个跟踪目标和 50 个来源全部可用，同时发现 AhrefsBot 于 `09:49:30Z` 从官方公布地址段请求 `/sitemap.xml` 并返回 HTTP 200；新增指纹为 `bdebe124f33b0c1f8db52601f967f52e0ed8588ef10e3f118b89c6d2083d2528`，已核验 Ahrefs 发现文件请求增至 106、正文仍为 0。revision 74 将同时保留 Bing 品牌正向观测及其类目边界；该爬虫访问不证明 Yep 或其他搜索／AI 产品收录、排名、检索、引用或推荐，未向豆包发送提示词。

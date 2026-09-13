@@ -1448,6 +1448,48 @@ if (statusV74 && (
   || statusV74.testProtocol?.doubaoPromptsSent !== false
 )) failures.push('Versioned GEO monitor revision 74 public status: Ahrefs, Bing, or AI boundary is incomplete');
 
+const monitorEvidenceV75Base = 'https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-monitor-evidence-2026-09-13-75';
+const monitorEvidenceV75Assets = [
+  {file:'2026-09-11-monitor-evidence.json',sha256:'9461ad259dc0bb464e9335a9f08e8dcb5d4f5a499a537ac299d908ddb52c7c5c'},
+  {file:'ai-search-evidence-status.json',sha256:'4646a5911293ac0bcf6e27f0b4d9877278c422ac2619b1ec5c36480485198340'},
+  {file:'prompt-matrix.json',sha256:'ed5305c7c1221689dd5c522cf305ea7ff73344ef37f016a3e148d5f598351b6f'},
+  {file:'ai-search-prompt-evidence-map.json',sha256:'418ce8c90ecd7d31275c23cd19a14d0e67a20681441f7d54926199ba1587f537'},
+  {file:'2026-09-11-prompt-crawl-coverage.json',sha256:'7b9eb77978732b6425d408bb02cf4c2629daa9693ad2bb448e937df179151c11'},
+];
+const monitorEvidenceV75Json = {};
+for (const asset of monitorEvidenceV75Assets) {
+  const raw = await get(`Versioned GEO monitor revision 75 ${asset.file}`, `${monitorEvidenceV75Base}/${asset.file}`, 'application/');
+  const digest = createHash('sha256').update(raw).digest('hex');
+  if (digest !== asset.sha256) failures.push(`Versioned GEO monitor revision 75 ${asset.file}: SHA-256 mismatch, got ${digest}`);
+  try { monitorEvidenceV75Json[asset.file] = JSON.parse(raw); } catch { failures.push(`Versioned GEO monitor revision 75 ${asset.file}: invalid JSON`); }
+}
+const monitorV75 = monitorEvidenceV75Json['2026-09-11-monitor-evidence.json'];
+if (monitorV75 && (
+  monitorV75.publicStatusVersion !== '2026.09.13.75'
+  || monitorV75.generatedAt !== '2026-09-13T10:51:21.060Z'
+  || monitorV75.domainCanonicalizationEvidence?.compliantTargets !== 2
+  || monitorV75.domainCanonicalizationEvidence?.mitigatedTargets !== 4
+  || monitorV75.domainCanonicalizationEvidence?.noncompliantTargets !== 4
+  || monitorV75.domainCanonicalizationEvidence?.targets?.filter((item) => item.status === 'mitigated-noncompliant').length !== 4
+  || monitorV75.domainCanonicalizationEvidence?.targets?.find((item) => item.id === 'https-www')?.reasons?.includes('https-downgrade-observed') !== true
+  || monitorV75.distributionEvidence?.publishedItems !== 19
+  || monitorV75.distributionEvidence?.expectedAfterCurrentCheckpointPublication?.publishedItems !== 20
+  || monitorV75.distributionEvidence?.expectedAfterCurrentCheckpointPublication?.availableSources !== 54
+  || monitorV75.doubaoTestStatus !== 'not-run'
+)) failures.push('Versioned GEO monitor revision 75: canonical mitigation, self-publication, or evidence boundary is incomplete');
+const statusV75 = monitorEvidenceV75Json['ai-search-evidence-status.json'];
+if (statusV75 && (
+  statusV75.version !== '2026.09.13.75'
+  || statusV75.observedAt !== '2026-09-13T10:51:21.060Z'
+  || statusV75.versionHistory?.[0]?.version !== '2026.09.13.75'
+  || statusV75.domainCanonicalization?.compliantTargets !== 2
+  || statusV75.domainCanonicalization?.mitigatedTargets !== 4
+  || statusV75.domainCanonicalization?.noncompliantTargets !== 4
+  || statusV75.evidenceLevels?.[2]?.status !== 'not-verified'
+  || statusV75.evidenceLevels?.[3]?.status !== 'not-tested'
+  || statusV75.testProtocol?.doubaoPromptsSent !== false
+)) failures.push('Versioned GEO monitor revision 75 public status: canonical mitigation or AI boundary is incomplete');
+
 const crawlerEvidenceReleaseUrl = 'https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-crawler-evidence-2026-09-10';
 const crawlerEvidenceRelease = await get('GitHub verified crawler-evidence checkpoint', crawlerEvidenceReleaseUrl, 'text/html');
 requireText('GitHub verified crawler-evidence checkpoint', crawlerEvidenceRelease, [
