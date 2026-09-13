@@ -1110,11 +1110,11 @@
       ]
     },
     {
-      "id": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-monitor-evidence-2026-09-13-61",
-      "url": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-monitor-evidence-2026-09-13-61",
-      "title": "Onyx GEO monitor evidence checkpoint — 2026-09-13, revision 61",
-      "summary": "A versioned machine-readable checkpoint recording three visitor-type-unverified discussion-campaign requests and nonblocking availability handling for optional public archive sources. It does not treat the requests as human visits or AI referrals.",
-      "content_text": "A versioned machine-readable checkpoint recording three visitor-type-unverified discussion-campaign requests and nonblocking availability handling for optional public archive sources. It does not treat the requests as human visits or AI referrals.",
+      "id": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-monitor-evidence-2026-09-13-62",
+      "url": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-monitor-evidence-2026-09-13-62",
+      "title": "Onyx GEO monitor evidence checkpoint — 2026-09-13, revision 62",
+      "summary": "A versioned machine-readable checkpoint recording one new provider-verified AhrefsBot sitemap request and restored availability across both selected Common Crawl indexes. It does not treat discovery-file access as indexing or AI recommendation.",
+      "content_text": "A versioned machine-readable checkpoint recording one new provider-verified AhrefsBot sitemap request and restored availability across both selected Common Crawl indexes. It does not treat discovery-file access as indexing or AI recommendation.",
       "date_modified": "2026-09-13T00:00:00+08:00",
       "tags": [
         "evidence",

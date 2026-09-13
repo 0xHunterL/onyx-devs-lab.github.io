@@ -1,30 +1,30 @@
 {
   "schemaVersion": 2,
-  "version": "2026.09.13.61",
+  "version": "2026.09.13.62",
   "id": "https://hk.onyxdevslab.com/data/ai-search-evidence-status.json",
-  "observedAt": "2026-09-13T00:35:05.517Z",
-  "latestEvidenceObservedAt": "2026-09-13T00:35:05.448Z",
+  "observedAt": "2026-09-13T00:51:11.185Z",
+  "latestEvidenceObservedAt": "2026-09-13T00:51:11.113Z",
   "sourceBaseline": "https://github.com/0xHunterL/onyx-devs-lab.github.io/blob/main/docs/geo-baselines/2026-09-11-monitor-evidence.json",
   "versionHistory": [
     {
-      "version": "2026.09.13.61",
+      "version": "2026.09.13.62",
       "relation": "current-immutable-checkpoint",
+      "url": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-monitor-evidence-2026-09-13-62/ai-search-evidence-status.json"
+    },
+    {
+      "version": "2026.09.13.61",
+      "relation": "previous-immutable-checkpoint",
       "url": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-monitor-evidence-2026-09-13-61/ai-search-evidence-status.json"
     },
     {
       "version": "2026.09.13.60",
-      "relation": "previous-immutable-checkpoint",
+      "relation": "earlier-immutable-checkpoint",
       "url": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-monitor-evidence-2026-09-13-60/ai-search-evidence-status.json"
     },
     {
       "version": "2026.09.13.59",
       "relation": "earlier-immutable-checkpoint",
       "url": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-monitor-evidence-2026-09-13-59/ai-search-evidence-status.json"
-    },
-    {
-      "version": "2026.09.13.58",
-      "relation": "earlier-immutable-checkpoint",
-      "url": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-monitor-evidence-2026-09-13-58/ai-search-evidence-status.json"
     }
   ],
   "name": {
@@ -103,7 +103,7 @@
     "yandexbotContentRequests": 78,
     "yandexbotDiscoveryFileRequests": 73,
     "ahrefsbotContentRequests": 0,
-    "ahrefsbotDiscoveryFileRequests": 97,
+    "ahrefsbotDiscoveryFileRequests": 98,
     "distinctVerifiedContentPaths": 45,
     "historicalReclassification": {
       "homepageContentRequestsAdded": 3,
@@ -133,26 +133,26 @@
     },
     "ahrefsHistoricalRecognition": {
       "firstSeen": "2026-09-08T13:53:09Z",
-      "lastSeen": "2026-09-12T23:26:59Z",
+      "lastSeen": "2026-09-13T00:49:12Z",
       "robotsTxtRequests": 25,
-      "sitemapRequests": 72,
-      "distinctClientAddresses": 86,
+      "sitemapRequests": 73,
+      "distinctClientAddresses": 87,
       "verificationSource": "https://api.ahrefs.com/v3/public/crawler-ip-ranges",
       "latestVerifiedDiscoveryRequests": [
-        {
-          "time": "2026-09-12T23:26:58Z",
-          "path": "/robots.txt",
-          "status": 200,
-          "fingerprint": "0cb33586b7c3e21f20e4e81faaed2b3a8691d4b76bfe3de7e7dded85ba102466"
-        },
         {
           "time": "2026-09-12T23:26:59Z",
           "path": "/sitemap.xml",
           "status": 200,
           "fingerprint": "849a2bf1fa1a0d4ebfd01d3836edf3c0dd53b551b490a5e04abffebc9597f3d7"
+        },
+        {
+          "time": "2026-09-13T00:49:12Z",
+          "path": "/sitemap.xml",
+          "status": 200,
+          "fingerprint": "07dc0b99b1154776f4322206bffa7599105cb3352bbe36f18f6a00eafc255b66"
         }
       ],
-      "meaning": "All 97 discovery-file requests matched the official Ahrefs crawler IP ranges. AhrefsBot serves both the Ahrefs database and Yep, so these requests prove external crawler discovery only; they do not prove Yep indexing, ranking, retrieval, citation, or AI recommendation."
+      "meaning": "All 98 discovery-file requests matched the official Ahrefs crawler IP ranges. AhrefsBot serves both the Ahrefs database and Yep, so these requests prove external crawler discovery only; they do not prove Yep indexing, ranking, retrieval, citation, or AI recommendation."
     }
   },
   "evidenceLevels": [
@@ -195,33 +195,25 @@
         "verifiedYandexbotContentCrawls": 78,
         "verifiedYandexbotDiscoveryFileCrawls": 73,
         "verifiedAhrefsBotContentCrawls": 0,
-        "verifiedAhrefsBotDiscoveryFileCrawls": 97,
+        "verifiedAhrefsBotDiscoveryFileCrawls": 98,
         "verifiedGooglebotContentCrawls": 0,
         "verifiedPerplexityContentCrawls": 0,
         "userAgentOnlyBytespiderContentCrawlCandidates": 0,
         "userAgentOnlyBytespiderDiscoveryFileCandidates": 0,
         "syntheticCrawlerReleaseChecksExcludedMinimum": 3088,
         "commonCrawlIndexObservation": {
-          "checkedAt": "2026-09-13T00:35:01.297Z",
-          "status": "unavailable",
+          "checkedAt": "2026-09-13T00:51:06.627Z",
+          "status": "available",
           "capturesObservedInAvailableIndexes": 0,
-          "availableIndexes": [],
-          "unavailableIndexes": [
-            {
-              "id": "CC-MAIN-2026-34",
-              "httpStatus": 504,
-              "reason": "HTTP 504"
-            },
-            {
-              "id": "CC-MAIN-2026-30",
-              "httpStatus": 504,
-              "reason": "HTTP 504"
-            }
+          "availableIndexes": [
+            "CC-MAIN-2026-34",
+            "CC-MAIN-2026-30"
           ],
-          "meaning": "Both selected Common Crawl indexes returned HTTP 504. The placeholder zero is unavailable evidence and cannot be interpreted as a complete zero or as absence from search or AI systems; availability changes remain event-recorded but no longer block unrelated verified evidence publication."
+          "unavailableIndexes": [],
+          "meaning": "Both selected Common Crawl indexes returned usable zero-capture responses. This complete result covers only the two selected indexes and cannot be interpreted as absence from all Common Crawl history, public search, or AI systems; availability changes remain event-recorded but do not independently block unrelated verified evidence publication."
         },
         "waybackArchiveObservation": {
-          "checkedAt": "2026-09-13T00:35:02.151Z",
+          "checkedAt": "2026-09-13T00:51:07.364Z",
           "status": "available",
           "captures": 94,
           "distinctUrls": 44,
@@ -601,7 +593,7 @@
   ],
   "platformSearchChecks": {
     "githubRepository": {
-      "checkedAt": "2026-09-13T00:35:03.543Z",
+      "checkedAt": "2026-09-13T00:51:08.883Z",
       "status": "available",
       "queriesChecked": 3,
       "availableQueries": 3,
@@ -636,12 +628,12 @@
         }
       ],
       "source": "https://hk.onyxdevslab.com/data/github-repository-search-baseline.json",
-      "eventFile": "events/2026-09-13T00-35-05.517Z-evidence-change.json",
+      "eventFile": "events/2026-09-13T00-51-11.185Z-evidence-and-availability-change.json",
       "meaning": "All three fixed GitHub Repository Search API queries were available. Brand and legal-entity queries return both first-party repositories; the exact category query returns the same two repositories after the recorded README changes. This proves GitHub platform-search visibility only, not public-web indexing, AI retrieval, citation, ranking, independent endorsement, or non-brand recommendation."
     }
   },
   "domainCanonicalization": {
-    "checkedAt": "2026-09-13T00:35:05.448Z",
+    "checkedAt": "2026-09-13T00:51:11.113Z",
     "status": "noncompliant",
     "canonicalOrigin": "https://hk.onyxdevslab.com/",
     "targetsChecked": 6,
@@ -708,7 +700,7 @@
       "source": "GitHub Pages API via authenticated collaborator access",
       "mutationAuthorized": false
     },
-    "eventFile": "events/2026-09-13T00-35-05.517Z-evidence-change.json",
+    "eventFile": "events/2026-09-13T00-51-11.185Z-evidence-and-availability-change.json",
     "meaning": "The Hong Kong host redirects HTTP to HTTPS and exposes the expected self-canonical URL. The GitHub Pages apex host serves content directly over HTTP, both www entry points lead to the HTTP apex, and the HTTPS www entry point downgrades to HTTP. GitHub Pages reports https_enforced=false. This is a technical canonicalization and transport-security defect; it does not negate the observed Yandex brand result or prove any search ranking effect. Enabling Enforce HTTPS requires repository-owner administration, and no DNS, CDN, Cloudflare, or Pages setting was changed by this observation."
   },
   "publicSearchMonitoring": {
@@ -729,7 +721,7 @@
   },
   "offsiteChannelReadiness": {
     "servicesHk": {
-      "checkedAt": "2026-09-13T00:35:03.489Z",
+      "checkedAt": "2026-09-13T00:51:08.792Z",
       "availabilityStatus": "unavailable",
       "targetsChecked": 3,
       "availableTargets": 0,
@@ -823,11 +815,11 @@
     },
     {
       "name": "Latest immutable GEO monitor evidence checkpoint",
-      "url": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-monitor-evidence-2026-09-13-61"
+      "url": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-monitor-evidence-2026-09-13-62"
     },
     {
       "name": "Latest immutable AI-search evidence status",
-      "url": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-monitor-evidence-2026-09-13-61/ai-search-evidence-status.json"
+      "url": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-monitor-evidence-2026-09-13-62/ai-search-evidence-status.json"
     },
     {
       "name": "GitHub repository-search before-and-after baseline",
