@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
-  "publicStatusVersion": "2026.09.13.64",
-  "generatedAt": "2026-09-13T01:56:43.310Z",
-  "latestEvidenceObservedAt": "2026-09-13T01:56:43.240Z",
+  "publicStatusVersion": "2026.09.13.65",
+  "generatedAt": "2026-09-13T02:24:04.137Z",
+  "latestEvidenceObservedAt": "2026-09-13T02:24:04.063Z",
   "windowStart": "2026-09-01",
   "site": "https://hk.onyxdevslab.com/",
   "sourceLogs": [
@@ -32,7 +32,7 @@
     "yandexbotContentRequests": 78,
     "yandexbotDiscoveryFileRequests": 73,
     "ahrefsbotContentRequests": 0,
-    "ahrefsbotDiscoveryFileRequests": 98,
+    "ahrefsbotDiscoveryFileRequests": 99,
     "distinctVerifiedContentPaths": 45,
     "historicalReclassification": {
       "homepageContentRequestsAdded": 3,
@@ -62,26 +62,26 @@
     },
     "ahrefsHistoricalRecognition": {
       "firstSeen": "2026-09-08T13:53:09Z",
-      "lastSeen": "2026-09-13T00:49:12Z",
+      "lastSeen": "2026-09-13T02:17:49Z",
       "robotsTxtRequests": 25,
-      "sitemapRequests": 73,
+      "sitemapRequests": 74,
       "distinctClientAddresses": 87,
       "verificationSource": "https://api.ahrefs.com/v3/public/crawler-ip-ranges",
       "latestVerifiedDiscoveryRequests": [
-        {
-          "time": "2026-09-12T23:26:59Z",
-          "path": "/sitemap.xml",
-          "status": 200,
-          "fingerprint": "849a2bf1fa1a0d4ebfd01d3836edf3c0dd53b551b490a5e04abffebc9597f3d7"
-        },
         {
           "time": "2026-09-13T00:49:12Z",
           "path": "/sitemap.xml",
           "status": 200,
           "fingerprint": "07dc0b99b1154776f4322206bffa7599105cb3352bbe36f18f6a00eafc255b66"
+        },
+        {
+          "time": "2026-09-13T02:17:49Z",
+          "path": "/sitemap.xml",
+          "status": 200,
+          "fingerprint": "a431ff3543ed8b5878c8bf0a61210dc3907e690115954841b41252dc2df84ec4"
         }
       ],
-      "meaning": "All 98 discovery-file requests matched the official Ahrefs crawler IP ranges. AhrefsBot serves both the Ahrefs database and Yep, so these requests prove external crawler discovery only; they do not prove Yep indexing, ranking, retrieval, citation, or AI recommendation."
+      "meaning": "All 99 discovery-file requests matched the official Ahrefs crawler IP ranges. AhrefsBot serves both the Ahrefs database and Yep, so these requests prove external crawler discovery only; they do not prove Yep indexing, ranking, retrieval, citation, or AI recommendation."
     }
   },
   "crawlerEvidenceAccounting": {
@@ -183,7 +183,7 @@
     }
   },
   "commonCrawlEvidence": {
-    "checkedAt": "2026-09-13T01:56:39.017Z",
+    "checkedAt": "2026-09-13T02:23:59.352Z",
     "status": "available",
     "capturesObservedInAvailableIndexes": 0,
     "availableIndexes": ["CC-MAIN-2026-34", "CC-MAIN-2026-30"],
@@ -191,7 +191,7 @@
     "meaning": "Both selected Common Crawl indexes returned usable zero-capture responses. This complete result covers only the two selected indexes and cannot be interpreted as absence from all Common Crawl history, public search, or AI systems; availability changes remain event-recorded but do not independently block unrelated verified evidence publication."
   },
   "waybackEvidence": {
-    "checkedAt": "2026-09-13T01:56:39.740Z",
+    "checkedAt": "2026-09-13T02:24:00.173Z",
     "status": "available",
     "captures": 94,
     "distinctUrls": 44,
@@ -271,7 +271,7 @@
     "meaning": "The available public Wayback CDX host query currently returns 94 successful HTML capture records across 44 distinct URLs. A newly exposed industrial ERP case-study capture increases the prompt archive ledger to 16 archived evidence pages, 16 prompts with any archive and 12 fully archived prompts; the remaining count movement includes documented public-index volatility. These records prove public historical captures only; they do not prove current accessibility, search indexing, AI retrieval, citation, ranking, endorsement, or recommendation. An unavailable future query must not be interpreted as zero captures."
   },
   "githubRepositorySearchEvidence": {
-    "checkedAt": "2026-09-13T01:56:41.238Z",
+    "checkedAt": "2026-09-13T02:24:01.657Z",
     "status": "available",
     "queriesChecked": 3,
     "availableQueries": 3,
@@ -313,7 +313,7 @@
     "manifestItems": 11,
     "publishedItems": 10,
     "readyNotPublishedItems": 1,
-    "checkedAt": "2026-09-13T01:56:40.735Z",
+    "checkedAt": "2026-09-13T02:24:01.195Z",
     "publicUrlsChecked": 10,
     "trackedTargetsChecked": 24,
     "availableSources": 34,
@@ -323,7 +323,7 @@
     "meaning": "The distribution ledger now includes two previously published but untracked sources: the bilingual Hong Kong enterprise AI governance Gist and the versioned Chinese enterprise AI field-note index Release. All 10 declared published URLs and 24 tracked targets passed anonymous availability, destination, and content-marker checks. This closes a monitoring-coverage gap without creating duplicate content; it does not prove indexing, AI retrieval, citation, recommendation, a human visit, or independent endorsement."
   },
   "servicesHkReadinessEvidence": {
-    "checkedAt": "2026-09-13T01:56:41.127Z",
+    "checkedAt": "2026-09-13T02:24:01.591Z",
     "availabilityStatus": "unavailable",
     "targetsChecked": 3,
     "availableTargets": 0,
@@ -337,7 +337,7 @@
     "meaning": "All three sampled services.hk detail pages return HTTP 200 but contain the known PHP application failure and omit the required title, service-description, and contact markers. This blocks submission readiness; it does not prove that Onyx is listed, reviewed, endorsed, indexed, cited, or recommended. Submission still requires current user confirmation after all three targets recover."
   },
   "domainCanonicalizationEvidence": {
-    "checkedAt": "2026-09-13T01:56:43.240Z",
+    "checkedAt": "2026-09-13T02:24:04.063Z",
     "status": "noncompliant",
     "canonicalOrigin": "https://hk.onyxdevslab.com/",
     "targetsChecked": 6,
@@ -355,7 +355,7 @@
     "githubPagesSetting": {"checkedAt": "2026-09-12T23:07:00Z", "httpsEnforced": false, "source": "GitHub Pages API via authenticated collaborator access", "mutationAuthorized": false},
     "authorityObservation": {"status": "available", "domain": "onyxdevslab.com", "nameServers": ["piper.ns.cloudflare.com", "trey.ns.cloudflare.com"], "cloudflareNameservers": true},
     "edgeObservation": {"targetsChecked": 6, "cloudflareSignaledTargets": 6, "allTargetsCloudflareSignaled": true, "signal": "HTTP Server header equals cloudflare and CF-Ray is present on at least one hop"},
-    "eventFile": "events/2026-09-13T01-19-32.135Z-evidence-and-availability-change.json",
+    "eventFile": "events/2026-09-13T02-24-04.137Z-evidence-and-availability-change.json",
     "meaning": "The Hong Kong host redirects HTTP to HTTPS and exposes the expected self-canonical URL. The apex serves content directly over HTTP, both www entry points lead to the HTTP apex, and the HTTPS www entry point downgrades to HTTP. GitHub Pages reports https_enforced=false. A separate live authority and edge-path audit now confirms that piper.ns.cloudflare.com and trey.ns.cloudflare.com are authoritative and that all six monitored entry points return both a Cloudflare Server header and CF-Ray on at least one hop. Those public signals identify the delivery path but do not prove which Cloudflare or origin rule caused the redirects. The defect cannot be safely corrected from this repository alone: it requires repository-owner Pages administration or explicit authorization to inspect and change the existing Cloudflare configuration. No DNS, CDN, Cloudflare, or Pages setting was changed by this observation, and it does not prove any search ranking effect."
   },
   "yandexPublicSearchEvidence": {
