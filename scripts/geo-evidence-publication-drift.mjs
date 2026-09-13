@@ -54,6 +54,11 @@ export function buildPublicationDrift(baseline, summary, { distributionManifest,
   const check = (field, published, collected) => {
     if (comparable(published) !== comparable(collected)) mismatches.push({ field, published, collected });
   };
+  const checkCumulativeFloor = (field, published, collected) => {
+    if (!Number.isFinite(published) || !Number.isFinite(collected) || collected < published) {
+      mismatches.push({ field, published, collected });
+    }
+  };
 
   const provider = baseline.providerVerifiedCrawlerEvidence || {};
   const crawlerAccounting = baseline.crawlerEvidenceAccounting || {};
@@ -76,7 +81,7 @@ export function buildPublicationDrift(baseline, summary, { distributionManifest,
   const collectedDomainCanonicalization = summary.availability?.domainCanonicalization || {};
   const collectedGithubRepositorySearch = summary.platformSearch || {};
 
-  const countMappings = [
+  const cumulativeCrawlerCountMappings = [
     ['providerVerifiedCrawlerEvidence.gptBotContentRequests', provider.gptBotContentRequests, counts.verifiedGptBotPageCrawls],
     ['providerVerifiedCrawlerEvidence.gptBotDiscoveryFileRequests', provider.gptBotDiscoveryFileRequests, counts.verifiedGptBotDiscoveryFileCrawls],
     ['providerVerifiedCrawlerEvidence.oaiSearchBotContentRequests', provider.oaiSearchBotContentRequests, counts.verifiedOaiSearchBotPageCrawls],
@@ -97,13 +102,17 @@ export function buildPublicationDrift(baseline, summary, { distributionManifest,
     ['providerVerifiedCrawlerEvidence.yandexbotDiscoveryFileRequests', provider.yandexbotDiscoveryFileRequests, counts.verifiedYandexDiscoveryFileCrawls],
     ['providerVerifiedCrawlerEvidence.ahrefsbotContentRequests', provider.ahrefsbotContentRequests, counts.verifiedAhrefsPageCrawls],
     ['providerVerifiedCrawlerEvidence.ahrefsbotDiscoveryFileRequests', provider.ahrefsbotDiscoveryFileRequests, counts.verifiedAhrefsDiscoveryFileCrawls],
+  ];
+  for (const mapping of cumulativeCrawlerCountMappings) checkCumulativeFloor(...mapping);
+
+  const exactCountMappings = [
     ['providerVerifiedCrawlerEvidence.distinctVerifiedContentPaths', provider.distinctVerifiedContentPaths, counts.verifiedContentPaths],
     ['fixedPromptCoverage.searchRelatedCrawledEvidencePages', prompt.searchRelatedCrawledEvidencePages, counts.searchRelatedCrawledEvidencePages],
     ['fixedPromptCoverage.promptsWithAnySearchRelatedCrawl', prompt.promptsWithAnySearchRelatedCrawl, counts.promptsWithAnySearchRelatedCrawl],
     ['attributionEvidence.visitorTypeUnverifiedRequests', attribution.visitorTypeUnverifiedRequests, counts.humanUnverifiedTrackedVisits],
     ['attributionEvidence.aiReferrerAttributedRequests', attribution.aiReferrerAttributedRequests, counts.aiReferrerAttributedVisits],
   ];
-  for (const mapping of countMappings) check(...mapping);
+  for (const mapping of exactCountMappings) check(...mapping);
   // Suspected-automation counters remain published audit context, but are not
   // visibility gains. Ignoring them here prevents Release-link safety scans
   // from creating publication churn.
@@ -121,19 +130,11 @@ export function buildPublicationDrift(baseline, summary, { distributionManifest,
       [...(collectedEvidenceSets.promptSearchRelatedCrawledEvidenceUrls || [])].sort(),
     );
   }
-  if (collectedCommonCrawl.status !== 'unavailable') check('commonCrawlEvidence.capturesObservedInAvailableIndexes', commonCrawl.capturesObservedInAvailableIndexes, counts.commonCrawlCaptures);
-  if (collectedWayback.status === 'available') {
-    check('waybackEvidence.captures', wayback.captures, counts.waybackCaptures);
-    check('waybackEvidence.distinctUrls', wayback.distinctUrls, counts.waybackDistinctUrls);
-    check('waybackEvidence.fixedPromptArchiveCoverage.archivedEvidencePages', wayback.fixedPromptArchiveCoverage?.archivedEvidencePages, counts.waybackArchivedEvidencePages);
-    check('waybackEvidence.fixedPromptArchiveCoverage.promptsWithAnyArchivedEvidence', wayback.fixedPromptArchiveCoverage?.promptsWithAnyArchivedEvidence, counts.promptsWithAnyWaybackArchive);
-    check('waybackEvidence.fixedPromptArchiveCoverage.promptsFullyArchived', wayback.fixedPromptArchiveCoverage?.promptsFullyArchived, counts.promptsFullyWaybackArchived);
-    check(
-      'waybackEvidence.fixedPromptArchiveCoverage.missingEvidenceUrls',
-      [...(wayback.fixedPromptArchiveCoverage?.missingEvidenceUrls || [])].sort(),
-      [...(collectedEvidenceSets.waybackMissingEvidenceUrls || [])].sort(),
-    );
-  }
+  // Common Crawl and Wayback are dated external snapshots whose current result
+  // sets can grow, roll forward, deduplicate, or temporarily contract. The
+  // collector preserves those changes as append-only events. They are not a
+  // reason to fail publication unless a separately pinned artifact is being
+  // validated; the published checkpoint remains a truthful historical result.
 
   check('crawlerEvidenceAccounting.retainedLogPolicyCompliance', 'compliant', retainedLogLineageIsContinuous(crawlerAccounting.retainedLogPolicy, summary.sourceLogs || []) ? 'compliant' : 'noncompliant');
   // This diagnostic can legitimately appear or disappear as the retained log
@@ -199,6 +200,6 @@ export function buildPublicationDrift(baseline, summary, { distributionManifest,
     baselineObservedAt: baseline.generatedAt || null,
     collectionObservedAt: summary.generatedAt || null,
     mismatches,
-    evidenceBoundary: 'Synchronized means the selected published metrics match the latest supplied production collection. It does not prove indexing, retrieval, citation, ranking, a human visit, or recommendation.',
+    evidenceBoundary: 'Synchronized means the latest supplied production collection satisfies the publication-integrity policy: cumulative crawler evidence has not regressed and exact structural sets still match. It does not mean every naturally increasing or externally volatile count was republished, and it does not prove indexing, retrieval, citation, ranking, a human visit, or recommendation.',
   };
 }

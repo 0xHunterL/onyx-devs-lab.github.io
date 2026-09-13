@@ -157,7 +157,11 @@ assert.equal(buildPublicationDrift(baseline, reorderedAttributionRecord).status,
 
 const crawlerDrift = structuredClone(summary);
 crawlerDrift.counts.verifiedGptBotPageCrawls += 1;
-assert.equal(buildPublicationDrift(baseline, crawlerDrift).mismatches[0].field, 'providerVerifiedCrawlerEvidence.gptBotContentRequests');
+assert.equal(buildPublicationDrift(baseline, crawlerDrift).status, 'synchronized');
+
+const crawlerAccountingRegression = structuredClone(summary);
+crawlerAccountingRegression.counts.verifiedGptBotPageCrawls -= 1;
+assert.equal(buildPublicationDrift(baseline, crawlerAccountingRegression).mismatches[0].field, 'providerVerifiedCrawlerEvidence.gptBotContentRequests');
 
 const promptCoverageUrlReplacement = structuredClone(summary);
 promptCoverageUrlReplacement.evidenceSets.promptVerifiedCrawledEvidenceUrls[0] = 'https://hk.onyxdevslab.com/zh-cn/replacement/';
@@ -177,7 +181,7 @@ assert.equal(buildPublicationDrift(baseline, crawlerVerificationSourceMissing).m
 
 const commonCrawlBotDrift = structuredClone(summary);
 commonCrawlBotDrift.counts.verifiedCommonCrawlDiscoveryFileCrawls += 1;
-assert.equal(buildPublicationDrift(baseline, commonCrawlBotDrift).mismatches[0].field, 'providerVerifiedCrawlerEvidence.commonCrawlBotDiscoveryFileRequests');
+assert.equal(buildPublicationDrift(baseline, commonCrawlBotDrift).status, 'synchronized');
 
 const retentionAdjustmentDrift = structuredClone(summary);
 retentionAdjustmentDrift.retentionAdjustments.push({ metric: 'verifiedYandexPageCrawls', retainedLogCount: 70, cumulativeCount: 71, newlyObserved: 0 });
@@ -275,17 +279,17 @@ waybackAvailableBaseline.waybackEvidence.status = 'available';
 const waybackDrift = structuredClone(summary);
 waybackDrift.availability.wayback.status = 'available';
 waybackDrift.counts.waybackDistinctUrls += 1;
-assert.equal(buildPublicationDrift(waybackAvailableBaseline, waybackDrift).mismatches[0].field, 'waybackEvidence.distinctUrls');
+assert.equal(buildPublicationDrift(waybackAvailableBaseline, waybackDrift).status, 'synchronized');
 
 const waybackPromptDrift = structuredClone(summary);
 waybackPromptDrift.availability.wayback.status = 'available';
 waybackPromptDrift.counts.promptsFullyWaybackArchived += 1;
-assert.equal(buildPublicationDrift(waybackAvailableBaseline, waybackPromptDrift).mismatches[0].field, 'waybackEvidence.fixedPromptArchiveCoverage.promptsFullyArchived');
+assert.equal(buildPublicationDrift(waybackAvailableBaseline, waybackPromptDrift).status, 'synchronized');
 
 const waybackMissingUrlReplacement = structuredClone(summary);
 waybackMissingUrlReplacement.availability.wayback.status = 'available';
 waybackMissingUrlReplacement.evidenceSets.waybackMissingEvidenceUrls[0] = 'https://hk.onyxdevslab.com/zh-cn/replacement/';
-assert.equal(buildPublicationDrift(waybackAvailableBaseline, waybackMissingUrlReplacement).mismatches[0].field, 'waybackEvidence.fixedPromptArchiveCoverage.missingEvidenceUrls');
+assert.equal(buildPublicationDrift(waybackAvailableBaseline, waybackMissingUrlReplacement).status, 'synchronized');
 
 const unavailableArchiveSources = structuredClone(summary);
 unavailableArchiveSources.availability.commonCrawl.status = 'unavailable';
@@ -301,4 +305,4 @@ const unavailableArchiveFields = buildPublicationDrift(baseline, unavailableArch
 assert.ok(!unavailableArchiveFields.some((field) => field.startsWith('waybackEvidence.')));
 assert.ok(!unavailableArchiveFields.includes('commonCrawlEvidence.capturesObservedInAvailableIndexes'));
 
-console.log(JSON.stringify({ tests: 34, failures: [] }, null, 2));
+console.log(JSON.stringify({ tests: 35, failures: [] }, null, 2));
