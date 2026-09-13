@@ -30,7 +30,7 @@ export function hasCurrentMonitorLlmsBoundary(body) {
     && body.includes('not treated as a stable ranking trend')
     && body.includes('Google stopped at automated-traffic verification')
     && body.includes('neutral AI-consulting discovery remains separated from FDE-branded queries')
-    && body.includes('105 requests while Ahrefs content requests remain zero')
+    && body.includes('106 requests while Ahrefs content requests remain zero')
     && body.includes('result sets are compared as unordered provider-returned sets')
     && body.includes('two-source self-publication delta separately')
     && body.includes('visitor type remains unverified')
