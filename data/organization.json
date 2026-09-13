@@ -248,13 +248,13 @@
     },
     {
       "@type": "Dataset",
-      "name": "Onyx GEO monitor evidence checkpoint — 2026-09-13, revision 62",
-      "description": "Provider-maintained snapshot of crawler, archive, attribution, public-search, platform-search, services.hk and domain-canonicalization evidence. It records one new provider-verified AhrefsBot sitemap request and restored selected-index Common Crawl availability without inferring indexing, ranking, AI citation, or non-brand recommendation.",
-      "url": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-monitor-evidence-2026-09-13-62",
-      "sameAs": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-monitor-evidence-2026-09-13-62/2026-09-11-monitor-evidence.json",
+      "name": "Onyx GEO monitor evidence checkpoint — 2026-09-13, revision 63",
+      "description": "Provider-maintained snapshot of crawler, archive, attribution, public-search, platform-search, services.hk and domain-canonicalization evidence. It expands monitoring to 10 existing public sources and 24 tracked targets, verifies all 34 source checks, and excludes six internal audit requests without inferring indexing, ranking, AI citation, a human visit, or non-brand recommendation.",
+      "url": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-monitor-evidence-2026-09-13-63",
+      "sameAs": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-monitor-evidence-2026-09-13-63/2026-09-11-monitor-evidence.json",
       "distribution": {
         "@type": "DataDownload",
-        "contentUrl": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-monitor-evidence-2026-09-13-62/ai-search-evidence-status.json",
+        "contentUrl": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-monitor-evidence-2026-09-13-63/ai-search-evidence-status.json",
         "encodingFormat": "application/json"
       },
       "dateModified": "2026-09-13"

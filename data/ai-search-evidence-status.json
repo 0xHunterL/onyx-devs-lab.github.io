@@ -1,30 +1,30 @@
 {
   "schemaVersion": 2,
-  "version": "2026.09.13.62",
+  "version": "2026.09.13.63",
   "id": "https://hk.onyxdevslab.com/data/ai-search-evidence-status.json",
-  "observedAt": "2026-09-13T00:51:11.185Z",
-  "latestEvidenceObservedAt": "2026-09-13T00:51:11.113Z",
+  "observedAt": "2026-09-13T01:22:10.953Z",
+  "latestEvidenceObservedAt": "2026-09-13T01:22:10.855Z",
   "sourceBaseline": "https://github.com/0xHunterL/onyx-devs-lab.github.io/blob/main/docs/geo-baselines/2026-09-11-monitor-evidence.json",
   "versionHistory": [
     {
-      "version": "2026.09.13.62",
+      "version": "2026.09.13.63",
       "relation": "current-immutable-checkpoint",
+      "url": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-monitor-evidence-2026-09-13-63/ai-search-evidence-status.json"
+    },
+    {
+      "version": "2026.09.13.62",
+      "relation": "previous-immutable-checkpoint",
       "url": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-monitor-evidence-2026-09-13-62/ai-search-evidence-status.json"
     },
     {
       "version": "2026.09.13.61",
-      "relation": "previous-immutable-checkpoint",
+      "relation": "earlier-immutable-checkpoint",
       "url": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-monitor-evidence-2026-09-13-61/ai-search-evidence-status.json"
     },
     {
       "version": "2026.09.13.60",
       "relation": "earlier-immutable-checkpoint",
       "url": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-monitor-evidence-2026-09-13-60/ai-search-evidence-status.json"
-    },
-    {
-      "version": "2026.09.13.59",
-      "relation": "earlier-immutable-checkpoint",
-      "url": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-monitor-evidence-2026-09-13-59/ai-search-evidence-status.json"
     }
   ],
   "name": {
@@ -202,7 +202,7 @@
         "userAgentOnlyBytespiderDiscoveryFileCandidates": 0,
         "syntheticCrawlerReleaseChecksExcludedMinimum": 3088,
         "commonCrawlIndexObservation": {
-          "checkedAt": "2026-09-13T00:51:06.627Z",
+          "checkedAt": "2026-09-13T01:21:58.409Z",
           "status": "available",
           "capturesObservedInAvailableIndexes": 0,
           "availableIndexes": [
@@ -213,7 +213,7 @@
           "meaning": "Both selected Common Crawl indexes returned usable zero-capture responses. This complete result covers only the two selected indexes and cannot be interpreted as absence from all Common Crawl history, public search, or AI systems; availability changes remain event-recorded but do not independently block unrelated verified evidence publication."
         },
         "waybackArchiveObservation": {
-          "checkedAt": "2026-09-13T00:51:07.364Z",
+          "checkedAt": "2026-09-13T01:22:07.804Z",
           "status": "available",
           "captures": 94,
           "distinctUrls": 44,
@@ -593,7 +593,7 @@
   ],
   "platformSearchChecks": {
     "githubRepository": {
-      "checkedAt": "2026-09-13T00:51:08.883Z",
+      "checkedAt": "2026-09-13T01:22:09.341Z",
       "status": "available",
       "queriesChecked": 3,
       "availableQueries": 3,
@@ -628,12 +628,12 @@
         }
       ],
       "source": "https://hk.onyxdevslab.com/data/github-repository-search-baseline.json",
-      "eventFile": "events/2026-09-13T00-51-11.185Z-evidence-and-availability-change.json",
+      "eventFile": "events/2026-09-13T01-19-32.135Z-evidence-and-availability-change.json",
       "meaning": "All three fixed GitHub Repository Search API queries were available. Brand and legal-entity queries return both first-party repositories; the exact category query returns the same two repositories after the recorded README changes. This proves GitHub platform-search visibility only, not public-web indexing, AI retrieval, citation, ranking, independent endorsement, or non-brand recommendation."
     }
   },
   "domainCanonicalization": {
-    "checkedAt": "2026-09-13T00:51:11.113Z",
+    "checkedAt": "2026-09-13T01:22:10.855Z",
     "status": "noncompliant",
     "canonicalOrigin": "https://hk.onyxdevslab.com/",
     "targetsChecked": 6,
@@ -700,7 +700,7 @@
       "source": "GitHub Pages API via authenticated collaborator access",
       "mutationAuthorized": false
     },
-    "eventFile": "events/2026-09-13T00-51-11.185Z-evidence-and-availability-change.json",
+    "eventFile": "events/2026-09-13T01-19-32.135Z-evidence-and-availability-change.json",
     "meaning": "The Hong Kong host redirects HTTP to HTTPS and exposes the expected self-canonical URL. The GitHub Pages apex host serves content directly over HTTP, both www entry points lead to the HTTP apex, and the HTTPS www entry point downgrades to HTTP. GitHub Pages reports https_enforced=false. This is a technical canonicalization and transport-security defect; it does not negate the observed Yandex brand result or prove any search ranking effect. Enabling Enforce HTTPS requires repository-owner administration, and no DNS, CDN, Cloudflare, or Pages setting was changed by this observation."
   },
   "publicSearchMonitoring": {
@@ -721,7 +721,7 @@
   },
   "offsiteChannelReadiness": {
     "servicesHk": {
-      "checkedAt": "2026-09-13T00:51:08.792Z",
+      "checkedAt": "2026-09-13T01:22:09.239Z",
       "availabilityStatus": "unavailable",
       "targetsChecked": 3,
       "availableTargets": 0,
@@ -815,11 +815,11 @@
     },
     {
       "name": "Latest immutable GEO monitor evidence checkpoint",
-      "url": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-monitor-evidence-2026-09-13-62"
+      "url": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-monitor-evidence-2026-09-13-63"
     },
     {
       "name": "Latest immutable AI-search evidence status",
-      "url": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-monitor-evidence-2026-09-13-62/ai-search-evidence-status.json"
+      "url": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-monitor-evidence-2026-09-13-63/ai-search-evidence-status.json"
     },
     {
       "name": "GitHub repository-search before-and-after baseline",

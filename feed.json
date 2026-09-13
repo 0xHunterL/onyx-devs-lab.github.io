@@ -1110,11 +1110,11 @@
       ]
     },
     {
-      "id": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-monitor-evidence-2026-09-13-62",
-      "url": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-monitor-evidence-2026-09-13-62",
-      "title": "Onyx GEO monitor evidence checkpoint — 2026-09-13, revision 62",
-      "summary": "A versioned machine-readable checkpoint recording one new provider-verified AhrefsBot sitemap request and restored availability across both selected Common Crawl indexes. It does not treat discovery-file access as indexing or AI recommendation.",
-      "content_text": "A versioned machine-readable checkpoint recording one new provider-verified AhrefsBot sitemap request and restored availability across both selected Common Crawl indexes. It does not treat discovery-file access as indexing or AI recommendation.",
+      "id": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-monitor-evidence-2026-09-13-63",
+      "url": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-monitor-evidence-2026-09-13-63",
+      "title": "Onyx GEO monitor evidence checkpoint — 2026-09-13, revision 63",
+      "summary": "A versioned machine-readable checkpoint expanding the monitored distribution ledger to 10 existing public sources and 24 tracked targets while excluding six internal audit requests from attribution.",
+      "content_text": "A versioned machine-readable checkpoint expanding the monitored distribution ledger to 10 existing public sources and 24 tracked targets while excluding six internal audit requests from attribution.",
       "date_modified": "2026-09-13T00:00:00+08:00",
       "tags": [
         "evidence",
