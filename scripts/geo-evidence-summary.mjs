@@ -271,6 +271,8 @@ export function buildDomainCanonicalizationAvailability(report) {
     compliantSources: sources.filter((source) => source.status === 'compliant').length,
     noncompliantSources: sources.filter((source) => source.status === 'noncompliant').length,
     unavailableSources: sources.filter((source) => source.status === 'unavailable').length,
+    authorityObservation: report?.authorityObservation || null,
+    edgeObservation: report?.edgeObservation || null,
     sources,
     interpretation: report?.status === 'compliant'
       ? 'All monitored domain entry points remain on HTTPS and expose the Hong Kong canonical origin.'

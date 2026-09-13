@@ -1,9 +1,9 @@
 import assert from 'node:assert/strict';
 import { buildDomainCanonicalizationReport, evaluateRedirectChain, traceRedirectChain } from './check-domain-canonicalization.mjs';
 
-const response = (status, { location = null, body = '' } = {}) => ({
+const response = (status, { location = null, body = '', server = 'cloudflare', cfRay = 'test-SIN' } = {}) => ({
   status,
-  headers: new Headers(location ? { location } : {}),
+  headers: new Headers({ ...(location ? { location } : {}), ...(server ? { server } : {}), ...(cfRay ? { 'cf-ray': cfRay } : {}) }),
   text: async () => body,
 });
 const canonicalBody = '<html><head><link rel="canonical" href="https://hk.onyxdevslab.com/"></head></html>';
@@ -33,17 +33,25 @@ assert.ok(wrongCanonical.reasons.includes('canonical-target-mismatch'));
 const report = await buildDomainCanonicalizationReport({
   targets: [{ id: 'one', url: 'http://example.test/' }, { id: 'two', url: 'https://example.test/' }],
   fetchImpl: async (url) => routes.get(url),
+  resolveNsImpl: async () => ['trey.ns.cloudflare.com.', 'piper.ns.cloudflare.com'],
 });
+assert.equal(report.schemaVersion, 2);
 assert.equal(report.status, 'compliant');
 assert.equal(report.compliantTargets, 2);
 assert.equal(report.noncompliantTargets, 0);
+assert.deepEqual(report.authorityObservation.nameServers, ['piper.ns.cloudflare.com', 'trey.ns.cloudflare.com']);
+assert.equal(report.authorityObservation.cloudflareNameservers, true);
+assert.equal(report.edgeObservation.cloudflareSignaledTargets, 2);
+assert.equal(report.edgeObservation.allTargetsCloudflareSignaled, true);
 assert.match(report.evidenceBoundary, /does not change/);
 
 const unavailable = await buildDomainCanonicalizationReport({
   targets: [{ id: 'offline', url: 'https://offline.test/' }],
   fetchImpl: async () => { throw new Error('offline'); },
+  resolveNsImpl: async () => { throw new Error('dns offline'); },
 });
 assert.equal(unavailable.status, 'unavailable');
 assert.equal(unavailable.unavailableTargets, 1);
+assert.equal(unavailable.authorityObservation.status, 'unavailable');
 
-console.log(JSON.stringify({ tests: 18, failures: [] }, null, 2));
+console.log(JSON.stringify({ tests: 25, failures: [] }, null, 2));

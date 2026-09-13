@@ -111,6 +111,8 @@ const summary = {
       compliantSources: domainCanonicalization.compliantTargets,
       noncompliantSources: domainCanonicalization.noncompliantTargets,
       unavailableSources: domainCanonicalization.unavailableTargets,
+      authorityObservation: structuredClone(domainCanonicalization.authorityObservation),
+      edgeObservation: structuredClone(domainCanonicalization.edgeObservation),
       sources: domainCanonicalization.targets.map(({ id, status, reasons }) => ({ id, status, reason: (reasons || []).join(',') })).sort((left, right) => left.id.localeCompare(right.id)),
     },
   },
@@ -236,6 +238,14 @@ assert.equal(buildPublicationDrift(baseline, domainCanonicalizationStatusDrift).
 const domainCanonicalizationSourceDrift = structuredClone(summary);
 domainCanonicalizationSourceDrift.availability.domainCanonicalization.sources.find((item) => item.id === 'https-www').status = 'compliant';
 assert.equal(buildPublicationDrift(baseline, domainCanonicalizationSourceDrift).mismatches[0].field, 'domainCanonicalizationEvidence.targets');
+
+const domainAuthorityDrift = structuredClone(summary);
+domainAuthorityDrift.availability.domainCanonicalization.authorityObservation = { status: 'available', domain: 'onyxdevslab.com', nameServers: ['example.invalid'], cloudflareNameservers: false };
+assert.equal(buildPublicationDrift(baseline, domainAuthorityDrift).mismatches[0].field, 'domainCanonicalizationEvidence.authorityObservation');
+
+const domainEdgeDrift = structuredClone(summary);
+domainEdgeDrift.availability.domainCanonicalization.edgeObservation = { targetsChecked: 6, cloudflareSignaledTargets: 0, allTargetsCloudflareSignaled: false, signal: 'changed' };
+assert.equal(buildPublicationDrift(baseline, domainEdgeDrift).mismatches[0].field, 'domainCanonicalizationEvidence.edgeObservation');
 assert.match(synchronized.evidenceBoundary, /does not prove indexing/);
 
 const waybackAvailableBaseline = structuredClone(baseline);
@@ -269,4 +279,4 @@ const unavailableArchiveFields = buildPublicationDrift(baseline, unavailableArch
 assert.ok(!unavailableArchiveFields.some((field) => field.startsWith('waybackEvidence.')));
 assert.ok(!unavailableArchiveFields.includes('commonCrawlEvidence.capturesObservedInAvailableIndexes'));
 
-console.log(JSON.stringify({ tests: 32, failures: [] }, null, 2));
+console.log(JSON.stringify({ tests: 34, failures: [] }, null, 2));

@@ -1,7 +1,9 @@
 import path from 'node:path';
+import { resolveNs } from 'node:dns/promises';
 import { fileURLToPath } from 'node:url';
 
 const canonicalOrigin = 'https://hk.onyxdevslab.com/';
+const authorityDomain = 'onyxdevslab.com';
 const defaultTargets = [
   { id: 'http-apex', url: 'http://onyxdevslab.com/' },
   { id: 'https-apex', url: 'https://onyxdevslab.com/' },
@@ -45,7 +47,13 @@ export async function traceRedirectChain(startUrl, {
     const response = await fetchWithRetry(currentUrl, { fetchImpl, attempts, timeoutMs, userAgent });
     const locationHeader = response.headers.get('location');
     const location = locationHeader ? new URL(locationHeader, currentUrl).href : null;
-    hops.push({ url: currentUrl, status: response.status, location });
+    hops.push({
+      url: currentUrl,
+      status: response.status,
+      location,
+      edgeServer: response.headers.get('server') || null,
+      cfRayPresent: Boolean(response.headers.get('cf-ray')),
+    });
     if (response.status < 300 || response.status >= 400 || !location) {
       const body = await response.text();
       return { startUrl, finalUrl: currentUrl, finalStatus: response.status, canonical: canonicalFromHtml(body), hops };
@@ -81,7 +89,7 @@ export function evaluateRedirectChain(trace, { expectedCanonical = canonicalOrig
   return { ...trace, status: compliant ? 'compliant' : 'noncompliant', reasons };
 }
 
-export async function buildDomainCanonicalizationReport({ targets = defaultTargets, fetchImpl = fetch } = {}) {
+export async function buildDomainCanonicalizationReport({ targets = defaultTargets, fetchImpl = fetch, resolveNsImpl = resolveNs } = {}) {
   const results = [];
   for (const target of targets) {
     try {
@@ -93,8 +101,27 @@ export async function buildDomainCanonicalizationReport({ targets = defaultTarge
   }
   const compliantTargets = results.filter((result) => result.status === 'compliant').length;
   const unavailableTargets = results.filter((result) => result.status === 'unavailable').length;
+  let authorityObservation;
+  try {
+    const nameServers = [...new Set((await resolveNsImpl(authorityDomain)).map((value) => String(value).toLowerCase().replace(/\.$/, '')))].sort();
+    authorityObservation = {
+      status: 'available',
+      domain: authorityDomain,
+      nameServers,
+      cloudflareNameservers: nameServers.length > 0 && nameServers.every((value) => value.endsWith('.ns.cloudflare.com')),
+    };
+  } catch (error) {
+    authorityObservation = {
+      status: 'unavailable',
+      domain: authorityDomain,
+      nameServers: [],
+      cloudflareNameservers: null,
+      error: error instanceof Error ? error.message : String(error),
+    };
+  }
+  const cloudflareSignaledTargets = results.filter((result) => result.hops.some((hop) => hop.edgeServer?.toLowerCase() === 'cloudflare' && hop.cfRayPresent)).length;
   return {
-    schemaVersion: 1,
+    schemaVersion: 2,
     generatedAt: new Date().toISOString(),
     canonicalOrigin,
     status: compliantTargets === results.length ? 'compliant' : unavailableTargets === results.length ? 'unavailable' : 'noncompliant',
@@ -102,8 +129,15 @@ export async function buildDomainCanonicalizationReport({ targets = defaultTarge
     compliantTargets,
     noncompliantTargets: results.length - compliantTargets - unavailableTargets,
     unavailableTargets,
+    authorityObservation,
+    edgeObservation: {
+      targetsChecked: results.length,
+      cloudflareSignaledTargets,
+      allTargetsCloudflareSignaled: results.length > 0 && cloudflareSignaledTargets === results.length,
+      signal: 'HTTP Server header equals cloudflare and CF-Ray is present on at least one hop',
+    },
     results,
-    evidenceBoundary: 'This report tests live redirect chains and HTML canonical targets. It does not change GitHub Pages, DNS, TLS, CDN, or Cloudflare settings, and a compliant result does not prove search indexing, ranking, AI citation, or recommendation.',
+    evidenceBoundary: 'This report tests live redirect chains, HTML canonical targets, authoritative nameserver resolution, and public Cloudflare edge-header signals. Nameserver and response-header observations identify the current delivery path but do not prove which rule caused a redirect or grant configuration access. The report does not change GitHub Pages, DNS, TLS, CDN, or Cloudflare settings, and a compliant result does not prove search indexing, ranking, AI citation, or recommendation.',
   };
 }
 

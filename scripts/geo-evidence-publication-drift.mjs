@@ -167,6 +167,8 @@ export function buildPublicationDrift(baseline, summary, { distributionManifest,
   check('domainCanonicalizationEvidence.compliantTargets', domainCanonicalization.compliantTargets, collectedDomainCanonicalization.compliantSources);
   check('domainCanonicalizationEvidence.noncompliantTargets', domainCanonicalization.noncompliantTargets, collectedDomainCanonicalization.noncompliantSources);
   check('domainCanonicalizationEvidence.unavailableTargets', domainCanonicalization.unavailableTargets, collectedDomainCanonicalization.unavailableSources);
+  check('domainCanonicalizationEvidence.authorityObservation', domainCanonicalization.authorityObservation, collectedDomainCanonicalization.authorityObservation);
+  check('domainCanonicalizationEvidence.edgeObservation', domainCanonicalization.edgeObservation, collectedDomainCanonicalization.edgeObservation);
   check(
     'domainCanonicalizationEvidence.targets',
     (domainCanonicalization.targets || []).map(({ id, status, reasons }) => ({ id, status, reason: (reasons || []).join(',') })).sort((left, right) => left.id.localeCompare(right.id)),
