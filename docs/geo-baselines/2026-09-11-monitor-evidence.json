@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
-  "publicStatusVersion": "2026.09.13.67",
-  "generatedAt": "2026-09-13T03:55:52.337Z",
-  "latestEvidenceObservedAt": "2026-09-13T03:52:09Z",
+  "publicStatusVersion": "2026.09.13.68",
+  "generatedAt": "2026-09-13T05:01:39Z",
+  "latestEvidenceObservedAt": "2026-09-13T05:01:39Z",
   "windowStart": "2026-09-01",
   "site": "https://hk.onyxdevslab.com/",
   "sourceLogs": [
@@ -438,8 +438,57 @@
     ],
     "meaning": "The dated exact-brand query directly returned the provider-owned apex domain, whose live canonical points to the Hong Kong site. This is positive Yandex brand retrieval evidence for the official web property. It does not prove that the hk subdomain or deep pages are separately indexed, that non-brand category queries return Onyx, that the result is stable or ranked similarly in other regions, or that any AI product retrieved, cited, endorsed, or recommended Onyx. The follow-up captcha was not completed and cannot be interpreted as a negative result."
   },
+  "bingPublicSearchEvidence": {
+    "testedAt": "2026-09-13T05:01:39Z",
+    "provider": "Bing Web Search",
+    "interface": "public interactive HTML search",
+    "localeObserved": "zh-CN interface",
+    "status": "partial",
+    "queries": [
+      {
+        "query": "\"ONYX-GEO-VERIFY-79051925-20260908\"",
+        "url": "https://www.bing.com/search?q=%22ONYX-GEO-VERIFY-79051925-20260908%22",
+        "result": "explicit-no-results",
+        "officialSiteObserved": false,
+        "visibleResultScope": "Bing displayed an explicit no-results message for the exact marker query."
+      },
+      {
+        "query": "\"Onyx Devs Lab\" -site:cr.gov.hk",
+        "url": "https://www.bing.com/search?q=%22Onyx+Devs+Lab%22+-site%3Acr.gov.hk",
+        "result": "official-site-not-observed-in-first-page; query-broadened",
+        "officialSiteObserved": false,
+        "visibleResultScope": "The first visible page contained ten generic Onyx results and no Onyx Devs Lab result; Bing reported about 44,500 results, showing that the exact phrase was not enforced in the visible result set."
+      },
+      {
+        "query": "site:hk.onyxdevslab.com \"Onyx Devs Lab\"",
+        "url": "https://www.bing.com/search?q=site%3Ahk.onyxdevslab.com+%22Onyx+Devs+Lab%22",
+        "result": "official-site-not-observed-in-first-page; site-operator-not-enforced",
+        "officialSiteObserved": false,
+        "visibleResultScope": "The first visible page again contained ten generic Onyx results and no hk.onyxdevslab.com URL; the visible results did not honor the requested site restriction."
+      }
+    ],
+    "categoryQueryProtocol": {
+      "neutralQuery": "香港有哪些做企业 AI 咨询的团队？",
+      "fdeQuery": "香港有哪些提供 FDE 前线部署工程的团队？",
+      "status": "not-run-in-this-check",
+      "reason": "Neutral category discovery must be measured separately from FDE because FDE.HK is also a provider brand; combining them would confound category and competitor-brand visibility."
+    },
+    "meaning": "This dated, provider-attributed observation is negative Bing public-search evidence for the exact marker and first-page official-site visibility. The two brand and site queries visibly broadened to generic Onyx results, so they cannot be treated as reliable exhaustive index checks. The observation does not prove deindexing, absence from all Bing regions or result pages, Copilot retrieval, AI citation, ranking, or non-brand recommendation."
+  },
+  "googlePublicSearchAttempt": {
+    "testedAt": "2026-09-13T04:57:43Z",
+    "provider": "Google Web Search",
+    "query": "\"Onyx Devs Lab\" -site:cr.gov.hk",
+    "status": "unavailable-after-automated-traffic-interstitial",
+    "captchaCompleted": false,
+    "resultConclusionDrawn": false,
+    "meaning": "Google presented an automated-traffic verification page before results. No challenge was completed and no positive or negative search-result conclusion is drawn."
+  },
   "publicSearchRetest": {
     "testedAt": "2026-09-12T19:59:30Z",
+    "provider": "not disclosed by the public-search interface",
+    "reproducibilityStatus": "provider-unattributed-historical-observation",
+    "resultScope": "Only the returned result set was recorded. Because the interface did not disclose a provider, this historical checkpoint is retained but must not be used as a provider-specific trend series.",
     "queries": [
       "\"ONYX-GEO-VERIFY-79051925-20260908\"",
       "site:hk.onyxdevslab.com \"Onyx Devs Lab\"",
