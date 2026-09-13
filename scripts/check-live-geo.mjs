@@ -522,7 +522,7 @@ try {
   const evidenceUrls = [...new Set(promptMap.prompts?.flatMap((prompt) => prompt.evidencePages?.map((page) => page.url) || []) || [])];
   if (promptMap.schemaVersion !== 1 || promptMap.promptMatrix?.schemaVersion !== 3 || promptMap.prompts?.length !== 23 || evidenceUrls.length !== 23) failures.push('/data/ai-search-prompt-evidence-map.json: prompt or evidence-page coverage is incomplete');
   if (!promptMap.versionHistory?.some((item) => item.relation === 'previous-immutable-checkpoint' && item.url === 'https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-prompt-evidence-map-2026-09-10/ai-search-prompt-evidence-map.json')) failures.push('/data/ai-search-prompt-evidence-map.json: immutable checkpoint history is missing');
-  if (promptMap.promptMatrix?.doubaoPromptsSent !== false || promptMap.totals?.verifiedCrawledEvidencePages !== 15 || promptMap.totals?.searchRelatedCrawledEvidencePages !== 15) failures.push('/data/ai-search-prompt-evidence-map.json: evidence boundary is incomplete');
+  if (promptMap.promptMatrix?.doubaoPromptsSent !== false || promptMap.totals?.verifiedCrawledEvidencePages !== 16 || promptMap.totals?.searchRelatedCrawledEvidencePages !== 16) failures.push('/data/ai-search-prompt-evidence-map.json: evidence boundary is incomplete');
   const zhCnVerification = await get('/zh-cn/methodology/ai-search-verification/', 'text/html');
   for (const url of evidenceUrls) if (!zhCnVerification.body.includes(`href="${new URL(url).pathname}"`)) failures.push(`/zh-cn/methodology/ai-search-verification/: evidence link is missing: ${url}`);
 } catch {
@@ -539,7 +539,7 @@ if (currentLastmods.length !== urls.length) failures.push(`/sitemap.xml: expecte
 for (const pathname of ['/en/methodology/ai-search-verification/', '/zh-hk/methodology/ai-search-verification/', '/zh-cn/methodology/ai-search-verification/', '/en/about/', '/zh-hk/about/', '/zh-cn/about/']) {
   if (!sitemap.body.includes(`<loc>https://hk.onyxdevslab.com${pathname}</loc><lastmod>2026-09-12</lastmod>`)) failures.push(`${pathname}: sitemap lastmod does not reflect the substantive evidence update`);
 }
-if (!feed.body.includes('<updated>2026-09-13T00:00:00+08:00</updated>')) failures.push('/feed.xml: feed update date is stale');
+if (!feed.body.includes('<updated>2026-09-14T00:00:00+08:00</updated>')) failures.push('/feed.xml: feed update date is stale');
 if (!feed.body.includes('<id>https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-monitor-evidence-2026-09-14-76</id><link href="https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-monitor-evidence-2026-09-14-76"/><updated>2026-09-14T00:00:00+08:00</updated>')) failures.push('/feed.xml: automated monitor evidence checkpoint entry is missing or stale');
 if (!jsonFeed?.items?.some((item) => item.url === 'https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-monitor-evidence-2026-09-14-76' && item.date_modified === '2026-09-14T00:00:00+08:00')) failures.push('/feed.json: automated monitor evidence checkpoint entry is missing or stale');
 if (urls.length < 56) failures.push(`/sitemap.xml: expected at least 56 URLs, got ${urls.length}`);
