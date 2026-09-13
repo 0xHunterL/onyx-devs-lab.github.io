@@ -1110,11 +1110,11 @@
       ]
     },
     {
-      "id": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-monitor-evidence-2026-09-13-68",
-      "url": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-monitor-evidence-2026-09-13-68",
-      "title": "Onyx GEO monitor evidence checkpoint — 2026-09-13, revision 68",
-      "summary": "A versioned machine-readable checkpoint adding provider-attributed Bing public-search observations and an explicit neutral-category query boundary while keeping indexing and AI-citation claims unverified.",
-      "content_text": "A versioned machine-readable checkpoint adding provider-attributed Bing public-search observations and an explicit neutral-category query boundary while keeping indexing and AI-citation claims unverified.",
+      "id": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-monitor-evidence-2026-09-13-69",
+      "url": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-monitor-evidence-2026-09-13-69",
+      "title": "Onyx GEO monitor evidence checkpoint — 2026-09-13, revision 69",
+      "summary": "A versioned machine-readable checkpoint recording 102 provider-verified AhrefsBot discovery requests and order-insensitive GitHub result-set monitoring, while retaining the provider-attributed public-search baseline.",
+      "content_text": "A versioned machine-readable checkpoint recording 102 provider-verified AhrefsBot discovery requests and order-insensitive GitHub result-set monitoring, while retaining the provider-attributed public-search baseline.",
       "date_modified": "2026-09-13T00:00:00+08:00",
       "tags": [
         "evidence",

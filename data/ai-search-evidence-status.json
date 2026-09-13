@@ -1,30 +1,30 @@
 {
   "schemaVersion": 2,
-  "version": "2026.09.13.68",
+  "version": "2026.09.13.69",
   "id": "https://hk.onyxdevslab.com/data/ai-search-evidence-status.json",
-  "observedAt": "2026-09-13T05:01:39Z",
-  "latestEvidenceObservedAt": "2026-09-13T05:01:39Z",
+  "observedAt": "2026-09-13T05:24:54.944Z",
+  "latestEvidenceObservedAt": "2026-09-13T05:15:23Z",
   "sourceBaseline": "https://github.com/0xHunterL/onyx-devs-lab.github.io/blob/main/docs/geo-baselines/2026-09-11-monitor-evidence.json",
   "versionHistory": [
     {
-      "version": "2026.09.13.68",
+      "version": "2026.09.13.69",
       "relation": "current-immutable-checkpoint",
+      "url": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-monitor-evidence-2026-09-13-69/ai-search-evidence-status.json"
+    },
+    {
+      "version": "2026.09.13.68",
+      "relation": "previous-immutable-checkpoint",
       "url": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-monitor-evidence-2026-09-13-68/ai-search-evidence-status.json"
     },
     {
       "version": "2026.09.13.67",
-      "relation": "previous-immutable-checkpoint",
+      "relation": "earlier-immutable-checkpoint",
       "url": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-monitor-evidence-2026-09-13-67/ai-search-evidence-status.json"
     },
     {
       "version": "2026.09.13.66",
       "relation": "earlier-immutable-checkpoint",
       "url": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-monitor-evidence-2026-09-13-66/ai-search-evidence-status.json"
-    },
-    {
-      "version": "2026.09.13.65",
-      "relation": "earlier-immutable-checkpoint",
-      "url": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-monitor-evidence-2026-09-13-65/ai-search-evidence-status.json"
     }
   ],
   "name": {
@@ -73,7 +73,15 @@
       "meaning": "The drift gate requires the active log followed by a gap-free numbered rotation lineage in oldest-to-newest order. Natural addition or expiry of a numbered rotation is accepted; an unexpected path, missing generation, duplicate, or absent active log remains a monitoring-integrity failure."
     },
     "retentionAdjustmentField": "retentionAdjustments",
-    "latestRetentionAdjustments": [],
+    "latestRetentionAdjustments": [
+      {
+        "metric": "verifiedYandexPageCrawls",
+        "retainedLogCount": 77,
+        "cumulativeCount": 78,
+        "newlyObserved": 0,
+        "reason": "Previously verified evidence is retained after its source log rotates out of the current file set."
+      }
+    ],
     "contentPathCoverage": {
       "mode": "append-only-provider-verified-fingerprint-cumulative",
       "verifiedPageObservations": 113,
@@ -103,7 +111,7 @@
     "yandexbotContentRequests": 78,
     "yandexbotDiscoveryFileRequests": 73,
     "ahrefsbotContentRequests": 0,
-    "ahrefsbotDiscoveryFileRequests": 101,
+    "ahrefsbotDiscoveryFileRequests": 102,
     "distinctVerifiedContentPaths": 45,
     "historicalReclassification": {
       "homepageContentRequestsAdded": 3,
@@ -133,26 +141,26 @@
     },
     "ahrefsHistoricalRecognition": {
       "firstSeen": "2026-09-08T13:53:09Z",
-      "lastSeen": "2026-09-13T03:52:09Z",
+      "lastSeen": "2026-09-13T05:15:23Z",
       "robotsTxtRequests": 26,
-      "sitemapRequests": 75,
-      "distinctClientAddresses": 89,
+      "sitemapRequests": 76,
+      "distinctClientAddresses": 90,
       "verificationSource": "https://api.ahrefs.com/v3/public/crawler-ip-ranges",
       "latestVerifiedDiscoveryRequests": [
-        {
-          "time": "2026-09-13T03:52:08Z",
-          "path": "/robots.txt",
-          "status": 304,
-          "fingerprint": "37bc4ac3650b321a6bc0f0c90aead693fd18ed1c5d8f5693c22ac4de941c836c"
-        },
         {
           "time": "2026-09-13T03:52:09Z",
           "path": "/sitemap.xml",
           "status": 200,
           "fingerprint": "1a94f727482770c056544e466781af85a3b49c4b61cab03a62fb42497ac2c79b"
+        },
+        {
+          "time": "2026-09-13T05:15:23Z",
+          "path": "/sitemap.xml",
+          "status": 200,
+          "fingerprint": "d02771e10694b6af762365225cfd2f8b83bf460996d4683d3a040d7795473268"
         }
       ],
-      "meaning": "All 101 discovery-file requests matched the official Ahrefs crawler IP ranges. The latest pair requested robots.txt and sitemap.xml but no content page. AhrefsBot serves both the Ahrefs database and Yep, so these requests prove external crawler discovery only; they do not prove Yep indexing, ranking, retrieval, citation, or AI recommendation."
+      "meaning": "All 102 discovery-file requests matched the official Ahrefs crawler IP ranges. The latest request fetched sitemap.xml but no content page. AhrefsBot serves both the Ahrefs database and Yep, so these requests prove external crawler discovery only; they do not prove Yep indexing, ranking, retrieval, citation, or AI recommendation."
     }
   },
   "evidenceLevels": [
@@ -195,7 +203,7 @@
         "verifiedYandexbotContentCrawls": 78,
         "verifiedYandexbotDiscoveryFileCrawls": 73,
         "verifiedAhrefsBotContentCrawls": 0,
-        "verifiedAhrefsBotDiscoveryFileCrawls": 101,
+        "verifiedAhrefsBotDiscoveryFileCrawls": 102,
         "verifiedGooglebotContentCrawls": 0,
         "verifiedPerplexityContentCrawls": 0,
         "userAgentOnlyBytespiderContentCrawlCandidates": 0,
@@ -681,7 +689,7 @@
   ],
   "platformSearchChecks": {
     "githubRepository": {
-      "checkedAt": "2026-09-13T03:55:47.636Z",
+      "checkedAt": "2026-09-13T05:24:50.333Z",
       "status": "available",
       "queriesChecked": 3,
       "availableQueries": 3,
@@ -994,11 +1002,11 @@
     },
     {
       "name": "Latest immutable GEO monitor evidence checkpoint",
-      "url": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-monitor-evidence-2026-09-13-68"
+      "url": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-monitor-evidence-2026-09-13-69"
     },
     {
       "name": "Latest immutable AI-search evidence status",
-      "url": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-monitor-evidence-2026-09-13-68/ai-search-evidence-status.json"
+      "url": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-monitor-evidence-2026-09-13-69/ai-search-evidence-status.json"
     },
     {
       "name": "GitHub repository-search before-and-after baseline",
