@@ -248,13 +248,13 @@
     },
     {
       "@type": "Dataset",
-      "name": "Onyx GEO monitor evidence checkpoint — 2026-09-13, revision 72",
-      "description": "Provider-maintained snapshot of crawler, archive, attribution, public-search, platform-search, services.hk, Software Heritage and domain-canonicalization evidence. It records one new provider-verified OAI-SearchBot robots.txt request, additional Ahrefs discovery requests, and one attributed request whose visitor type remains unverified, without inferring content crawling, indexing, ranking, AI citation, a human visit, or non-brand recommendation.",
-      "url": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-monitor-evidence-2026-09-13-72",
-      "sameAs": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-monitor-evidence-2026-09-13-72/2026-09-11-monitor-evidence.json",
+      "name": "Onyx GEO monitor evidence checkpoint — 2026-09-13, revision 73",
+      "description": "Provider-maintained snapshot of crawler, archive, attribution, public-search, platform-search, services.hk, Software Heritage and domain-canonicalization evidence. It records direct Bing brand visibility for the official apex and two localized Hong Kong homepages, while preserving the stale legacy-apex snippet, legal-entity, category-query, ranking, AI-citation and recommendation boundaries.",
+      "url": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-monitor-evidence-2026-09-13-73",
+      "sameAs": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-monitor-evidence-2026-09-13-73/2026-09-11-monitor-evidence.json",
       "distribution": {
         "@type": "DataDownload",
-        "contentUrl": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-monitor-evidence-2026-09-13-72/ai-search-evidence-status.json",
+        "contentUrl": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-monitor-evidence-2026-09-13-73/ai-search-evidence-status.json",
         "encodingFormat": "application/json"
       },
       "dateModified": "2026-09-13"

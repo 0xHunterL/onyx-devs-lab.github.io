@@ -1110,11 +1110,11 @@
       ]
     },
     {
-      "id": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-monitor-evidence-2026-09-13-72",
-      "url": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-monitor-evidence-2026-09-13-72",
-      "title": "Onyx GEO monitor evidence checkpoint — 2026-09-13, revision 72",
-      "summary": "A versioned machine-readable checkpoint recording a new provider-verified OAI-SearchBot robots.txt request, additional Ahrefs discovery requests, and one attributed request whose visitor type remains unverified.",
-      "content_text": "A versioned machine-readable checkpoint recording a new provider-verified OAI-SearchBot robots.txt request, additional Ahrefs discovery requests, and one attributed request whose visitor type remains unverified.",
+      "id": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-monitor-evidence-2026-09-13-73",
+      "url": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-monitor-evidence-2026-09-13-73",
+      "title": "Onyx GEO monitor evidence checkpoint — 2026-09-13, revision 73",
+      "summary": "A versioned machine-readable checkpoint recording direct Bing brand visibility for the official apex and two localized Hong Kong homepages, while preserving negative category-query and canonical-presentation boundaries.",
+      "content_text": "A versioned machine-readable checkpoint recording direct Bing brand visibility for the official apex and two localized Hong Kong homepages, while preserving negative category-query and canonical-presentation boundaries.",
       "date_modified": "2026-09-13T00:00:00+08:00",
       "tags": [
         "evidence",
