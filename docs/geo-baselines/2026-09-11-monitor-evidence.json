@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
-  "publicStatusVersion": "2026.09.13.69",
-  "generatedAt": "2026-09-13T05:24:54.944Z",
-  "latestEvidenceObservedAt": "2026-09-13T05:15:23Z",
+  "publicStatusVersion": "2026.09.13.70",
+  "generatedAt": "2026-09-13T06:11:54.521Z",
+  "latestEvidenceObservedAt": "2026-09-13T06:09:12.547Z",
   "windowStart": "2026-09-01",
   "site": "https://hk.onyxdevslab.com/",
   "sourceLogs": [
@@ -199,26 +199,27 @@
     "meaning": "Both selected Common Crawl indexes returned usable zero-capture responses. This complete result covers only the two selected indexes and cannot be interpreted as absence from all Common Crawl history, public search, or AI systems; availability changes remain event-recorded but do not independently block unrelated verified evidence publication."
   },
   "softwareHeritageEvidence": {
-    "checkedAt": "2026-09-13T03:55:50.677Z",
+    "checkedAt": "2026-09-13T06:11:54.521Z",
     "status": "available",
     "archiveCoverageStatus": "current",
-    "repositoryHead": "40d2c1d369ec835c5012256a6f2f84964e01305b",
-    "latestCompleteVisitAt": "2026-09-13T03:50:50.672000+00:00",
-    "latestAttemptAt": "2026-09-13T03:50:50.672000+00:00",
+    "repositoryHead": "d7d6ee308e5f543e3136d3da68c2fd16f0361500",
+    "latestCompleteVisitAt": "2026-09-13T06:09:12.547000+00:00",
+    "latestAttemptAt": "2026-09-13T06:09:12.547000+00:00",
     "latestAttemptStatus": "full",
-    "snapshotSwhid": "swh:1:snp:f3820205ce07ab9df33d2f0db735bc4b25ca0347",
-    "archiveHead": "40d2c1d369ec835c5012256a6f2f84964e01305b",
+    "snapshotSwhid": "swh:1:snp:beec7f09ab04a666d11d120abddf542620d09e97",
+    "archiveHead": "d7d6ee308e5f543e3136d3da68c2fd16f0361500",
     "saveRequest": {
-      "id": 2473234,
-      "statusUrl": "https://archive.softwareheritage.org/api/1/origin/save/2473234/",
-      "firstAttemptResult": "github-git-upload-pack-http-429",
-      "retryVisitStatus": "full",
-      "retryVisitAt": "2026-09-13T03:50:50.672000+00:00",
-      "requestEndpointStatusAtObservation": "stale-failed",
-      "nextRun": "2026-09-13T03:50:45.693551Z"
+      "id": 2473685,
+      "statusUrl": "https://archive.softwareheritage.org/api/1/origin/save/2473685/",
+      "saveRequestStatus": "accepted",
+      "saveTaskStatus": "succeeded",
+      "visitStatus": "full",
+      "visitAt": "2026-09-13T06:09:12.547000+00:00",
+      "snapshotSwhid": "swh:1:snp:beec7f09ab04a666d11d120abddf542620d09e97",
+      "nextRun": "2026-09-13T06:09:09.000202Z"
     },
-    "eventFile": "events/2026-09-13T03-55-52.337Z-evidence-and-availability-change.json",
-    "meaning": "GitHub, the Software Heritage visit history, the save-request endpoint and the latest complete snapshot were all queryable. The retry visit completed with status full and snapshot f3820205, whose refs/heads/main exactly preserves the observed GitHub main revision 40d2c1d; archive coverage was therefore current at collection time. The save-request object still exposed the earlier failed attempt and elapsed next_run value, so the complete visit plus independently resolved snapshot—not the stale request object—is the success evidence. This proves independent content-addressed source preservation only, not website indexing, AI retrieval, citation, ranking, endorsement, or recommendation."
+    "eventFile": null,
+    "meaning": "GitHub, the Software Heritage visit history, save-request endpoint and latest complete snapshot were all queryable. Save Code Now request 2473685 completed with succeeded/full and snapshot beec7f09; independent resolution of that content-addressed snapshot shows refs/heads/main exactly preserving GitHub revision d7d6ee3, so archive coverage was current at observation time. This proves independent public code preservation only; it does not prove website search indexing, AI retrieval, citation, ranking, endorsement, or recommendation."
   },
   "waybackEvidence": {
     "checkedAt": "2026-09-13T03:55:45.852Z",
@@ -358,26 +359,26 @@
     "meaning": "All three fixed GitHub Repository Search API queries were available. Brand and legal-entity queries return both first-party repositories; the exact category query returns the same two repositories after the recorded README changes. This proves GitHub platform-search visibility only, not public-web indexing, AI retrieval, citation, ranking, independent endorsement, or non-brand recommendation."
   },
   "distributionEvidence": {
-    "manifestItems": 14,
-    "publishedItems": 13,
+    "manifestItems": 15,
+    "publishedItems": 14,
     "readyNotPublishedItems": 1,
-    "checkedAt": "2026-09-13T05:24:54.944Z",
-    "publicUrlsChecked": 13,
-    "trackedTargetsChecked": 27,
-    "availableSources": 40,
+    "checkedAt": "2026-09-13T06:03:23.905Z",
+    "publicUrlsChecked": 14,
+    "trackedTargetsChecked": 28,
+    "availableSources": 42,
     "unavailableSources": 0,
     "availabilityStatus": "available",
     "eventFile": "events/2026-09-13T05-24-54.944Z-evidence-and-availability-change.json",
     "expectedAfterCurrentCheckpointPublication": {
-      "manifestItems": 15,
-      "publishedItems": 14,
-      "trackedTargetsChecked": 28,
-      "availableSources": 42,
+      "manifestItems": 16,
+      "publishedItems": 15,
+      "trackedTargetsChecked": 29,
+      "availableSources": 44,
       "unavailableSources": 0,
       "availabilityStatus": "available",
       "meaning": "The current immutable checkpoint is published after its source snapshot is created. These values are the explicitly declared post-publication state used by the drift gate; they must be confirmed by a subsequent production collection before synchronization is reported."
     },
-    "meaning": "At collection time, the distribution ledger included 13 published URLs, 27 tracked targets, and 40 available sources. Revision 69 separately declares the expected self-publication delta instead of backdating its own Release into this snapshot. This versions one new provider-verified crawler request and a monitoring correction without creating duplicate topical content; it does not prove indexing, AI retrieval, citation, recommendation, a human visit, or independent endorsement."
+    "meaning": "At the latest production collection before this checkpoint, the distribution ledger included 14 published URLs, 28 tracked targets, and 42 available sources. Revision 70 separately declares its expected self-publication delta instead of backdating its own Release into the snapshot. This versions newly completed independent code preservation without creating duplicate topical content; it does not prove indexing, AI retrieval, citation, recommendation, a human visit, or independent endorsement."
   },
   "servicesHkReadinessEvidence": {
     "checkedAt": "2026-09-13T03:55:47.596Z",

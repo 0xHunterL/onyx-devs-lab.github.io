@@ -1,18 +1,20 @@
 # Software Heritage 代码归档记录
 
-2026-09-13，Software Heritage 对 Onyx Devs Lab 公开 Git 仓库的提供方重试访问以 `full` 完成。访问历史返回内容寻址快照 `swh:1:snp:f3820205ce07ab9df33d2f0db735bc4b25ca0347`，独立解析快照确认其 `refs/heads/main` 精确保存采集时 GitHub `main` 的 revision `40d2c1d369ec835c5012256a6f2f84964e01305b`。
+2026-09-13，Software Heritage Save Code Now 请求 `2473685` 以 `succeeded`／`full` 完成。访问历史返回内容寻址快照 `swh:1:snp:beec7f09ab04a666d11d120abddf542620d09e97`，独立解析快照确认其 `refs/heads/main` 精确保存采集时 GitHub `main` 的 revision `d7d6ee308e5f543e3136d3da68c2fd16f0361500`。
 
 - 原始仓库：<https://github.com/0xHunterL/onyx-devs-lab.github.io>
-- 当前快照 SWHID：[`swh:1:snp:f3820205ce07ab9df33d2f0db735bc4b25ca0347`](https://archive.softwareheritage.org/swh:1:snp:f3820205ce07ab9df33d2f0db735bc4b25ca0347/)
-- 快照中的 `main`：[`swh:1:rev:40d2c1d369ec835c5012256a6f2f84964e01305b`](https://archive.softwareheritage.org/swh:1:rev:40d2c1d369ec835c5012256a6f2f84964e01305b/)
-- 完整访问时间：`2026-09-13T03:50:50.672000+00:00`
+- 当前快照 SWHID：[`swh:1:snp:beec7f09ab04a666d11d120abddf542620d09e97`](https://archive.softwareheritage.org/swh:1:snp:beec7f09ab04a666d11d120abddf542620d09e97/)
+- 快照中的 `main`：[`swh:1:rev:d7d6ee308e5f543e3136d3da68c2fd16f0361500`](https://archive.softwareheritage.org/swh:1:rev:d7d6ee308e5f543e3136d3da68c2fd16f0361500/)
+- 完整访问时间：`2026-09-13T06:09:12.547000+00:00`
 - 官方访问历史：<https://archive.softwareheritage.org/api/1/origin/https://github.com/0xHunterL/onyx-devs-lab.github.io/visit/latest/?require_snapshot=true>
-- 官方快照 API：<https://archive.softwareheritage.org/api/1/snapshot/f3820205ce07ab9df33d2f0db735bc4b25ca0347/>
-- Save Code Now 请求：<https://archive.softwareheritage.org/api/1/origin/save/2473234/>
+- 官方快照 API：<https://archive.softwareheritage.org/api/1/snapshot/beec7f09ab04a666d11d120abddf542620d09e97/>
+- Save Code Now 请求：<https://archive.softwareheritage.org/api/1/origin/save/2473685/>
 
-请求 `2473234` 的状态接口在观察时仍暴露首次 GitHub HTTP 429 失败记录和已经到期的 `next_run`，所以它不是重试成功的依据。可复核的成功证据是访问历史中的 `full` 记录、返回的快照 SWHID，以及对该快照分支的独立解析。该快照证明公开源代码与 revision 66 证据资产在独立公共代码语料库中可恢复；它不代表 Software Heritage 背书，也不证明官网搜索收录、AI 检索、引用、排名或推荐。
+请求 `2473685` 的状态接口、访问历史和快照 API 三者一致：保存任务成功、访问完整，且快照的 `main` 精确指向 `d7d6ee3`。该快照证明公开源代码与 revision 69 证据资产在独立公共代码语料库中可恢复；它不代表 Software Heritage 背书，也不证明官网搜索收录、AI 检索、引用、排名或推荐。
 
 ## 历史快照
+
+较早的请求 `2473234` 最初因 GitHub HTTP 429 失败，但提供方重试访问随后以 `full` 完成，生成快照 [`swh:1:snp:f3820205ce07ab9df33d2f0db735bc4b25ca0347`](https://archive.softwareheritage.org/swh:1:snp:f3820205ce07ab9df33d2f0db735bc4b25ca0347/)，其中 `main` 指向 revision [`40d2c1d`](https://archive.softwareheritage.org/swh:1:rev:40d2c1d369ec835c5012256a6f2f84964e01305b/)。访问于 `2026-09-13T03:50:50.672000+00:00` 完成；请求对象当时仍保留首次失败状态，因此成功判断来自完整访问记录和独立快照解析。
 
 2026-09-12，请求 `2472540` 以 `succeeded`／`full` 完成，保存了此前的功能性检查点。
 
