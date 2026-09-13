@@ -21,8 +21,10 @@ export const currentSoftwareHeritageEvidence = currentMonitorEvidence.softwareHe
 
 export function hasCurrentMonitorLlmsBoundary(body) {
   return body.includes(currentMonitorEvidence.generatedAt)
-    && body.includes('Save Code Now request `2473685` completed with `succeeded`/`full`')
-    && body.includes('Software Heritage snapshot `beec7f09` preserves the observed GitHub `main` revision `d7d6ee3`')
+    && body.includes('provider-verified GPTBot fetched `/sitemap.xml` with HTTP 200')
+    && body.includes('OAI-SearchBot fetched `/robots.txt` with HTTP 304')
+    && body.includes('discovery-file counts to 15 and 12')
+    && body.includes('archive coverage is accurately reported as lagging')
     && body.includes('provider-attributed Bing public-search checkpoint')
     && body.includes('exact retrieval marker returned an explicit no-results page')
     && body.includes('broader brand and `site:` checks are not treated as exhaustive index checks')
@@ -33,7 +35,7 @@ export function hasCurrentMonitorLlmsBoundary(body) {
     && body.includes('result sets are compared as unordered provider-returned sets')
     && body.includes('two-source self-publication delta separately')
     && body.includes('96 Wayback captures across 46 URLs')
-    && body.includes('does not prove indexing or deindexing across all regions or pages, ranking')
+    && body.includes('do not prove content crawling by OAI-SearchBot, indexing or deindexing across all regions or pages, ranking')
     && body.includes('AI retrieval, citation, a human visit, or non-brand recommendation')
     && body.includes('no prompt was sent to Doubao');
 }
