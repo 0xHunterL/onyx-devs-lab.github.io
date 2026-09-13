@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
-  "publicStatusVersion": "2026.09.13.75",
-  "generatedAt": "2026-09-13T10:51:21.060Z",
-  "latestEvidenceObservedAt": "2026-09-13T10:51:20.991Z",
+  "publicStatusVersion": "2026.09.14.76",
+  "generatedAt": "2026-09-13T17:26:04.446Z",
+  "latestEvidenceObservedAt": "2026-09-13T17:19:46Z",
   "windowStart": "2026-09-01",
   "site": "https://hk.onyxdevslab.com/",
   "sourceLogs": [
@@ -17,8 +17,8 @@
     "gptBotDiscoveryFileRequests": 15,
     "oaiSearchBotContentRequests": 0,
     "oaiSearchBotDiscoveryFileRequests": 13,
-    "bingbotContentRequests": 7,
-    "bingbotDiscoveryFileRequests": 1,
+    "bingbotContentRequests": 8,
+    "bingbotDiscoveryFileRequests": 2,
     "baiduspiderContentRequests": 0,
     "baiduspiderDiscoveryFileRequests": 0,
     "googlebotContentRequests": 0,
@@ -32,8 +32,8 @@
     "yandexbotContentRequests": 78,
     "yandexbotDiscoveryFileRequests": 73,
     "ahrefsbotContentRequests": 0,
-    "ahrefsbotDiscoveryFileRequests": 106,
-    "distinctVerifiedContentPaths": 45,
+    "ahrefsbotDiscoveryFileRequests": 113,
+    "distinctVerifiedContentPaths": 46,
     "latestOpenAiDiscoveryRequests": [
       {
         "time": "2026-09-13T06:16:57Z",
@@ -50,6 +50,23 @@
         "fingerprint": "ce39e4cac47e6da061bd923217c39083b26ab397e61b0cd7fc4aee5128088ecc"
       }
     ],
+    "latestBingVerifiedRequests": [
+      {
+        "time": "2026-09-13T11:52:04Z",
+        "path": "/robots.txt",
+        "status": 304,
+        "classification": "discovery-file",
+        "fingerprint": "a93db5566fb5e889c2e61ec2892668e377d6314d3c7f76d0e490b39d233b9a1f"
+      },
+      {
+        "time": "2026-09-13T11:52:08Z",
+        "path": "/zh-cn/",
+        "status": 200,
+        "classification": "content-page",
+        "fingerprint": "d8ff255d563d17b9ea951870431a5d0fc589b755dcc524d367268c35722c4c17"
+      }
+    ],
+    "latestBingMeaning": "Reverse- and forward-DNS verification confirms one new Bingbot robots.txt request and one new Bingbot content request for the Simplified Chinese homepage. This raises fixed-prompt search-related crawl coverage by one evidence page, but proves only crawler access—not Bing indexing, ranking, Copilot retrieval, AI citation, endorsement, or recommendation.",
     "historicalReclassification": {
       "homepageContentRequestsAdded": 3,
       "machineResourceDiscoveryRequestsAdded": 10,
@@ -78,26 +95,26 @@
     },
     "ahrefsHistoricalRecognition": {
       "firstSeen": "2026-09-08T13:53:09Z",
-      "lastSeen": "2026-09-13T09:49:30Z",
-      "robotsTxtRequests": 27,
-      "sitemapRequests": 79,
-      "distinctClientAddresses": 94,
+      "lastSeen": "2026-09-13T17:19:46Z",
+      "robotsTxtRequests": 29,
+      "sitemapRequests": 84,
+      "distinctClientAddresses": 101,
       "verificationSource": "https://api.ahrefs.com/v3/public/crawler-ip-ranges",
       "latestVerifiedDiscoveryRequests": [
         {
-          "time": "2026-09-13T08:16:17Z",
-          "path": "/sitemap.xml",
-          "status": 200,
-          "fingerprint": "f829510d5b5110fa6029bbd7483b8af619bd8a9e1ae82c5dd4d96cf74793b1c8"
+          "time": "2026-09-13T17:19:45Z",
+          "path": "/robots.txt",
+          "status": 304,
+          "fingerprint": "9d219fc523f755f235362d034193eec4e898b4a3ffe4a54881414d4ba2087977"
         },
         {
-          "time": "2026-09-13T09:49:30Z",
+          "time": "2026-09-13T17:19:46Z",
           "path": "/sitemap.xml",
           "status": 200,
-          "fingerprint": "bdebe124f33b0c1f8db52601f967f52e0ed8588ef10e3f118b89c6d2083d2528"
+          "fingerprint": "1187466dcddf456079914c39242aeee5328f09403e4229041ab5ed1d9b55edb9"
         }
       ],
-      "meaning": "All 106 discovery-file requests matched the official Ahrefs crawler IP ranges. The latest request fetched sitemap.xml but no content page. AhrefsBot serves both the Ahrefs database and Yep, so these requests prove external crawler discovery only; they do not prove Yep indexing, ranking, retrieval, citation, or AI recommendation."
+      "meaning": "All 113 discovery-file requests matched the official Ahrefs crawler IP ranges. The latest pair fetched robots.txt and sitemap.xml but no content page. AhrefsBot serves both the Ahrefs database and Yep, so these requests prove external crawler discovery only; they do not prove Yep indexing, ranking, retrieval, citation, or AI recommendation."
     }
   },
   "crawlerEvidenceAccounting": {
@@ -128,8 +145,8 @@
     ],
     "contentPathCoverage": {
       "mode": "append-only-provider-verified-fingerprint-cumulative",
-      "verifiedPageObservations": 113,
-      "distinctPaths": 45,
+      "verifiedPageObservations": 114,
+      "distinctPaths": 46,
       "migrationSource": "Sanitized verified crawler observations recovered from the versioned event history and persisted in seen-evidence.json",
       "meaning": "Content-path and fixed-prompt coverage are rebuilt from the append-only verified-observation ledger. Query strings are normalized away, and log rotation cannot erase previously verified path coverage."
     },
@@ -145,8 +162,8 @@
   "fixedPromptCoverage": {
     "prompts": 23,
     "uniqueEvidencePages": 23,
-    "verifiedCrawledEvidencePages": 15,
-    "searchRelatedCrawledEvidencePages": 15,
+    "verifiedCrawledEvidencePages": 16,
+    "searchRelatedCrawledEvidencePages": 16,
     "promptsWithAnyVerifiedCrawl": 18,
     "promptsFullyVerifiedCrawled": 12,
     "promptsWithAnySearchRelatedCrawl": 18,
@@ -215,10 +232,10 @@
     "meaning": "Both selected Common Crawl indexes returned usable zero-capture responses. This complete result covers only the two selected indexes and cannot be interpreted as absence from all Common Crawl history, public search, or AI systems; availability changes remain event-recorded but do not independently block unrelated verified evidence publication."
   },
   "softwareHeritageEvidence": {
-    "checkedAt": "2026-09-13T10:51:19.849Z",
+    "checkedAt": "2026-09-13T17:26:02.552Z",
     "status": "available",
     "archiveCoverageStatus": "lagging",
-    "repositoryHead": "83eefbd13225334b2bfabcf8f7202619722ca02b",
+    "repositoryHead": "55c03bcfb4ea88b1e68fb7291d459580d2a4cea1",
     "latestCompleteVisitAt": "2026-09-13T06:09:12.547000+00:00",
     "latestAttemptAt": "2026-09-13T06:09:12.547000+00:00",
     "latestAttemptStatus": "full",
@@ -234,13 +251,13 @@
       "snapshotSwhid": "swh:1:snp:beec7f09ab04a666d11d120abddf542620d09e97",
       "nextRun": "2026-09-13T06:09:09.000202Z"
     },
-    "eventFile": "events/2026-09-13T10-51-21.060Z-availability-change.json",
-    "meaning": "GitHub, the Software Heritage visit history, save-request endpoint and latest complete snapshot were all queryable. Request 2473685 remains succeeded/full and snapshot beec7f09 still independently preserves revision d7d6ee3; mutable GitHub main has advanced to 83eefbd, so archive coverage remains accurately reported as lagging. The immutable snapshot remains valid preservation evidence for its named revision. Neither current nor lagging archive coverage proves website search indexing, AI retrieval, citation, ranking, endorsement, or recommendation."
+    "eventFile": "events/2026-09-13T17-26-04.446Z-evidence-and-availability-change.json",
+    "meaning": "GitHub, the Software Heritage visit history, save-request endpoint and latest complete snapshot were all queryable. Request 2473685 remains succeeded/full and snapshot beec7f09 still independently preserves revision d7d6ee3; mutable GitHub main has advanced to 55c03bc, so archive coverage remains accurately reported as lagging. The immutable snapshot remains valid preservation evidence for its named revision. Neither current nor lagging archive coverage proves website search indexing, AI retrieval, citation, ranking, endorsement, or recommendation."
   },
   "waybackEvidence": {
-    "checkedAt": "2026-09-13T03:55:45.852Z",
+    "checkedAt": "2026-09-13T17:25:57.676Z",
     "status": "available",
-    "captures": 96,
+    "captures": 98,
     "distinctUrls": 46,
     "firstCaptureAt": "20260909205420",
     "lastCaptureAt": "20260912154745",
@@ -290,37 +307,23 @@
       "meaning": "The public CDX query again stopped returning the previously fluctuating custom-AI-development capture while the earlier AI-consulting fingerprint remained absent. The prompt archive ledger retains both independently verified historical observations, so this count change is treated as public-index volatility, not proof that the snapshots or pages disappeared."
     },
     "latestArchiveGrowthObservation": {
-      "observedAt": "2026-09-13T03:02:43.851Z",
-      "capturesAdded": 3,
-      "distinctUrlsAdded": 2,
+      "observedAt": "2026-09-13T17:26:04.446Z",
+      "capturesAdded": 1,
+      "distinctUrlsAdded": 0,
       "observations": [
         {
-          "timestamp": "20260912144751",
-          "url": "https://hk.onyxdevslab.com/zh-cn/case-studies/recruiting-ai-agent-workflow/",
-          "digest": "GBAJWOEUDJAYAMYE4JXLLH2FE5Q6T6AB",
-          "fingerprint": "eba3cdeb3ce444a82dc904c2a49518db43109ab96a3ef66cfb15b5ba5186c005",
-          "replayUrl": "https://web.archive.org/web/20260912144751/https://hk.onyxdevslab.com/zh-cn/case-studies/recruiting-ai-agent-workflow/"
-        },
-        {
-          "timestamp": "20260912144834",
-          "url": "https://hk.onyxdevslab.com/zh-cn/case-studies/credit-research-ai-agent/",
-          "digest": "T7IU5PFUEXYNNND3KJZZPRPBUPIOSAGE",
-          "fingerprint": "a06681441783097c36536b70f53a5c86f9cb493e243e626b8f8479bb1ed53795",
-          "replayUrl": "https://web.archive.org/web/20260912144834/https://hk.onyxdevslab.com/zh-cn/case-studies/credit-research-ai-agent/"
-        },
-        {
-          "timestamp": "20260912154745",
-          "url": "https://hk.onyxdevslab.com/zh-cn/case-studies/recruiting-ai-agent-workflow/",
-          "digest": "DKQ5JCSLAOG26A5E7DF2QUUDNURZMNBO",
-          "fingerprint": "ae773f8d2c2a6d74ea6d2ddd136c5c947a91a1f2e6cc6ee3c771f6699f02fcd4",
-          "replayUrl": "https://web.archive.org/web/20260912154745/https://hk.onyxdevslab.com/zh-cn/case-studies/recruiting-ai-agent-workflow/"
+          "timestamp": "20260909212732",
+          "url": "https://hk.onyxdevslab.com/zh-cn/guides/ai-dingkai/",
+          "digest": "JO7LCW64WMAU2GXBU42IO2EJ2FWWDAFW",
+          "fingerprint": "d6485f6eb82d94409748278fc57b8daef3c41082375f5320a262416aa066f99f",
+          "replayUrl": "https://web.archive.org/web/20260909212732/https://hk.onyxdevslab.com/zh-cn/guides/ai-dingkai/"
         }
       ],
-      "meaning": "The public CDX query newly exposed three captures across the recruiting and credit-research case studies. This proves public archival availability for those historical representations only, not current accessibility, search indexing, AI retrieval, citation, ranking, endorsement, or recommendation."
+      "meaning": "The public CDX query newly re-exposed one previously known AI dingkai capture fingerprint while the distinct-URL and fixed-prompt archive-coverage counts remained unchanged. This is public-index visibility change, not proof of a newly created snapshot, current accessibility, search indexing, AI retrieval, citation, ranking, endorsement, or recommendation."
     },
     "lastCompleteObservation": {
-      "observedAt": "2026-09-13T03:02:38.416Z",
-      "captures": 96,
+      "observedAt": "2026-09-13T17:25:57.676Z",
+      "captures": 98,
       "distinctUrls": 46
     },
     "unavailableObservation": {
@@ -333,7 +336,7 @@
       "captures": 93,
       "distinctUrls": 43
     },
-    "meaning": "The available public Wayback CDX host query currently returns 96 successful HTML capture records across 46 distinct URLs. Three newly exposed recruiting and credit-research case-study captures increase the prompt archive ledger to 18 archived evidence pages, 18 prompts with any archive and 15 fully archived prompts; the remaining count movement includes documented public-index volatility. These records prove public historical captures only; they do not prove current accessibility, search indexing, AI retrieval, citation, ranking, endorsement, or recommendation. An unavailable future query must not be interpreted as zero captures."
+    "meaning": "The available public Wayback CDX host query currently returns 98 successful HTML capture records across 46 distinct URLs. One previously known AI-dingkai capture fingerprint was newly re-exposed in this collection, while prompt archive coverage remains 18 archived evidence pages, 18 prompts with any archive and 15 fully archived prompts. These records prove public historical captures only; they do not prove current accessibility, search indexing, AI retrieval, citation, ranking, endorsement, or recommendation. An unavailable future query must not be interpreted as zero captures."
   },
   "githubRepositorySearchEvidence": {
     "checkedAt": "2026-09-13T05:24:50.333Z",
@@ -375,26 +378,26 @@
     "meaning": "All three fixed GitHub Repository Search API queries were available. Brand and legal-entity queries return both first-party repositories; the exact category query returns the same two repositories after the recorded README changes. This proves GitHub platform-search visibility only, not public-web indexing, AI retrieval, citation, ranking, independent endorsement, or non-brand recommendation."
   },
   "distributionEvidence": {
-    "manifestItems": 20,
-    "publishedItems": 19,
-    "readyNotPublishedItems": 1,
-    "checkedAt": "2026-09-13T10:51:16.395Z",
-    "publicUrlsChecked": 19,
-    "trackedTargetsChecked": 33,
-    "availableSources": 52,
+    "manifestItems": 21,
+    "publishedItems": 21,
+    "readyNotPublishedItems": 0,
+    "checkedAt": "2026-09-13T17:25:59.087Z",
+    "publicUrlsChecked": 21,
+    "trackedTargetsChecked": 36,
+    "availableSources": 57,
     "unavailableSources": 0,
     "availabilityStatus": "available",
-    "eventFile": "events/2026-09-13T10-51-21.060Z-availability-change.json",
+    "eventFile": "events/2026-09-13T17-26-04.446Z-evidence-and-availability-change.json",
     "expectedAfterCurrentCheckpointPublication": {
-      "manifestItems": 21,
-      "publishedItems": 20,
-      "trackedTargetsChecked": 34,
-      "availableSources": 54,
+      "manifestItems": 22,
+      "publishedItems": 22,
+      "trackedTargetsChecked": 37,
+      "availableSources": 59,
       "unavailableSources": 0,
       "availabilityStatus": "available",
       "meaning": "The current immutable checkpoint is published after its source snapshot is created. These values are the explicitly declared post-publication state used by the drift gate; they must be confirmed by a subsequent production collection before synchronization is reported."
     },
-    "meaning": "The 2026-09-13T10:51:21.060Z production collection confirmed revision 74's self-publication state: 19 published URLs, 33 tracked targets, and 52 available sources. Revision 75 separately declares its expected self-publication delta instead of backdating its own Release into the snapshot. This checkpoint records removal of duplicate legacy-apex content and a client-side canonicalization mitigation; it adds no crawler, indexing, AI-citation, referral, or recommendation claim."
+    "meaning": "The 2026-09-13T17:26:04.446Z production collection confirmed revision 75 and the verified Toutiao publication state: 21 published URLs, 36 tracked targets, and 57 available sources. Revision 76 separately declares its expected self-publication delta instead of backdating its own Release into the snapshot. The Toutiao page is provider-authored distribution evidence only; availability does not prove search indexing, AI retrieval, citation, ranking, endorsement, referral, or recommendation."
   },
   "servicesHkReadinessEvidence": {
     "checkedAt": "2026-09-13T03:55:47.596Z",
@@ -411,7 +414,7 @@
     "meaning": "All three sampled services.hk detail pages return HTTP 200 but contain the known PHP application failure and omit the required title, service-description, and contact markers. This blocks submission readiness; it does not prove that Onyx is listed, reviewed, endorsed, indexed, cited, or recommended. Submission still requires current user confirmation after all three targets recover."
   },
   "domainCanonicalizationEvidence": {
-    "checkedAt": "2026-09-13T10:51:20.991Z",
+    "checkedAt": "2026-09-13T17:26:04.373Z",
     "status": "noncompliant",
     "canonicalOrigin": "https://hk.onyxdevslab.com/",
     "targetsChecked": 6,
@@ -430,7 +433,7 @@
     "githubPagesSetting": {"checkedAt": "2026-09-12T23:07:00Z", "httpsEnforced": false, "source": "GitHub Pages API via authenticated collaborator access", "mutationAuthorized": false},
     "authorityObservation": {"status": "available", "domain": "onyxdevslab.com", "nameServers": ["piper.ns.cloudflare.com", "trey.ns.cloudflare.com"], "cloudflareNameservers": true},
     "edgeObservation": {"targetsChecked": 6, "cloudflareSignaledTargets": 6, "allTargetsCloudflareSignaled": true, "signal": "HTTP Server header equals cloudflare and CF-Ray is present on at least one hop"},
-    "eventFile": "events/2026-09-13T10-48-43.346Z-availability-change.json",
+    "eventFile": "events/2026-09-13T17-26-04.446Z-evidence-and-availability-change.json",
     "meaning": "The Hong Kong host redirects HTTP to HTTPS and exposes the expected self-canonical URL. GitHub Pages previously served the full site on the apex; revision c244dcb replaced that duplicate output with 72 path-preserving redirect shells plus a dynamic 404, each using noindex, canonical and meta refresh, while preserving the domain-verification file. Live checks confirm the apex and www entry points now expose this client-side mitigation, but they still fail to arrive at the canonical origin by HTTP redirect: the apex returns 200, www leads to the HTTP apex, and HTTPS www downgrades to HTTP. Only 2 of 6 entry points are fully compliant; 4 are mitigated but remain noncompliant until Cloudflare returns a server-side 301 or 308 to https://hk.onyxdevslab.com/. GitHub Pages still reports https_enforced=false. Cloudflare configuration was not changed, and this mitigation does not prove search reprocessing, ranking improvement, AI citation, or recommendation."
   },
   "yandexPublicSearchEvidence": {

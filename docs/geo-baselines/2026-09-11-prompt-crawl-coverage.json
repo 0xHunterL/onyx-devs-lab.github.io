@@ -1,14 +1,14 @@
 {
   "schemaVersion": 1,
-  "observedAt": "2026-09-12T12:30:44.022Z",
+  "observedAt": "2026-09-13T17:26:04.427Z",
   "site": "https://hk.onyxdevslab.com",
   "promptMatrixSchemaVersion": 3,
   "evidenceBoundary": "This report proves only that provider-verified crawlers requested mapped evidence pages. GPTBot is a training crawler. A verified crawl does not prove indexing, retrieval, citation, answer inclusion, ranking, or non-brand recommendation.",
   "totals": {
     "prompts": 23,
     "uniqueEvidencePages": 23,
-    "verifiedCrawledEvidencePages": 15,
-    "searchRelatedCrawledEvidencePages": 15,
+    "verifiedCrawledEvidencePages": 16,
+    "searchRelatedCrawledEvidencePages": 16,
     "promptsWithAnyVerifiedCrawl": 18,
     "promptsFullyVerifiedCrawled": 12,
     "promptsWithAnySearchRelatedCrawl": 18,
@@ -22,6 +22,7 @@
     "scenario": {"prompts": 6, "promptsWithAnyVerifiedCrawl": 4, "promptsFullyVerifiedCrawled": 4, "promptsWithAnySearchRelatedCrawl": 4, "promptsFullySearchRelatedCrawled": 4}
   },
   "verifiedCrawledEvidenceUrls": [
+    "https://hk.onyxdevslab.com/zh-cn/",
     "https://hk.onyxdevslab.com/zh-cn/ai-consulting/",
     "https://hk.onyxdevslab.com/zh-cn/case-studies/credit-research-ai-agent/",
     "https://hk.onyxdevslab.com/zh-cn/case-studies/industrial-erp-ai-data-platform/",
@@ -39,6 +40,7 @@
     "https://hk.onyxdevslab.com/zh-cn/methodology/case-study-evidence-register/"
   ],
   "searchRelatedCrawledEvidenceUrls": [
+    "https://hk.onyxdevslab.com/zh-cn/",
     "https://hk.onyxdevslab.com/zh-cn/ai-consulting/",
     "https://hk.onyxdevslab.com/zh-cn/case-studies/credit-research-ai-agent/",
     "https://hk.onyxdevslab.com/zh-cn/case-studies/industrial-erp-ai-data-platform/",
