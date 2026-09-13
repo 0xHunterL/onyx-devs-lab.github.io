@@ -248,13 +248,13 @@
     },
     {
       "@type": "Dataset",
-      "name": "Onyx GEO monitor evidence checkpoint — 2026-09-13, revision 70",
-      "description": "Provider-maintained snapshot of crawler, archive, attribution, public-search, platform-search, services.hk, Software Heritage and domain-canonicalization evidence. It records completed independent Software Heritage preservation of revision d7d6ee3 and retains revision 69’s crawler and normalized platform-search evidence without inferring indexing, ranking, AI citation, a human visit, or non-brand recommendation.",
-      "url": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-monitor-evidence-2026-09-13-70",
-      "sameAs": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-monitor-evidence-2026-09-13-70/2026-09-11-monitor-evidence.json",
+      "name": "Onyx GEO monitor evidence checkpoint — 2026-09-13, revision 71",
+      "description": "Provider-maintained snapshot of crawler, archive, attribution, public-search, platform-search, services.hk, Software Heritage and domain-canonicalization evidence. It records one new provider-verified GPTBot sitemap request and one new OAI-SearchBot robots.txt request, while retaining the revision 70 archive evidence without inferring content crawling, indexing, ranking, AI citation, a human visit, or non-brand recommendation.",
+      "url": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-monitor-evidence-2026-09-13-71",
+      "sameAs": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-monitor-evidence-2026-09-13-71/2026-09-11-monitor-evidence.json",
       "distribution": {
         "@type": "DataDownload",
-        "contentUrl": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-monitor-evidence-2026-09-13-70/ai-search-evidence-status.json",
+        "contentUrl": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-monitor-evidence-2026-09-13-71/ai-search-evidence-status.json",
         "encodingFormat": "application/json"
       },
       "dateModified": "2026-09-13"
