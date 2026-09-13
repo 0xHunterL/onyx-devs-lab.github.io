@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updated": "2026-09-13",
+  "updated": "2026-09-14",
   "publisher": {
     "brand": "Onyx Devs Lab",
     "legalName": "ONYX DEVS LAB LIMITED",
@@ -43,6 +43,41 @@
         "Toutiao rendered both tracked target URLs as plain text rather than clickable anchors, so publication does not prove a referral or link-equity transfer.",
         "An independent logged-out Chrome session showed the public article under the account name Onyx开发实验室; the creator backend subsequently marked the article published and the profile-change review passed, while the public profile exposed the Onyx Devs Lab biography.",
         "This article is authored by Onyx Devs Lab; publication does not prove independent endorsement, search indexing, AI citation, recommendation, or a human visit."
+      ]
+    },
+    {
+      "id": "toutiao-erp-agent-checklist-2026-09-14",
+      "channel": "toutiao",
+      "format": "article",
+      "language": "zh-CN",
+      "status": "published",
+      "sourceFile": "docs/distribution/今日头条-AI-Agent接入ERP前的七个问题.md",
+      "title": "AI Agent 接入 ERP 前，先回答这七个问题",
+      "campaign": "geo_erp_agent_checklist",
+      "trackedTargets": [
+        "https://hk.onyxdevslab.com/zh-cn/case-studies/industrial-erp-ai-data-platform/?utm_source=toutiao&utm_medium=referral&utm_campaign=geo_erp_agent_checklist",
+        "https://hk.onyxdevslab.com/zh-cn/guides/enterprise-ai-agent-erp-integration/?utm_source=toutiao&utm_medium=referral&utm_campaign=geo_erp_agent_checklist"
+      ],
+      "publicUrl": "https://www.toutiao.com/article/7685122209379959337/",
+      "anonymousAccessVerifiedAt": "2026-09-13T20:41:00Z",
+      "publicContentMarkers": [
+        "AI Agent 接入 ERP 前，先回答这七个问题",
+        "Onyx Devs Lab",
+        "ONYX DEVS LAB LIMITED",
+        "geo_erp_agent_checklist"
+      ],
+      "publicContentValidation": {
+        "mode": "browser",
+        "verifiedAt": "2026-09-13T20:41:00Z",
+        "reason": "A logged-in Chrome session confirmed the creator backend marked the article published, and the canonical public article rendered the complete title, body, author profile, AI-content declaration, legal entity statement, and both tracked target URLs."
+      },
+      "searchIndexedAt": null,
+      "aiCitationObservedAt": null,
+      "nonBrandRecommendationObservedAt": null,
+      "limitations": [
+        "The article is authored by Onyx Devs Lab and reworks an existing provider-authored ERP checklist for Toutiao; it is not an independent endorsement.",
+        "Toutiao renders the tracked target URLs as plain text rather than confirmed clickable anchors, so publication does not prove a referral or link-equity transfer.",
+        "Public browser rendering proves availability at verification time, not search indexing, AI retrieval, citation, ranking, a human visit, or non-brand recommendation."
       ]
     },
     {

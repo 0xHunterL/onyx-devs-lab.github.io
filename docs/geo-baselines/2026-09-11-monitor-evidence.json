@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
-  "publicStatusVersion": "2026.09.14.76",
-  "generatedAt": "2026-09-13T17:26:04.446Z",
-  "latestEvidenceObservedAt": "2026-09-13T17:19:46Z",
+  "publicStatusVersion": "2026.09.14.77",
+  "generatedAt": "2026-09-13T20:43:20.577Z",
+  "latestEvidenceObservedAt": "2026-09-13T20:41:00Z",
   "windowStart": "2026-09-01",
   "site": "https://hk.onyxdevslab.com/",
   "sourceLogs": [
@@ -32,7 +32,7 @@
     "yandexbotContentRequests": 78,
     "yandexbotDiscoveryFileRequests": 73,
     "ahrefsbotContentRequests": 0,
-    "ahrefsbotDiscoveryFileRequests": 113,
+    "ahrefsbotDiscoveryFileRequests": 114,
     "distinctVerifiedContentPaths": 46,
     "latestOpenAiDiscoveryRequests": [
       {
@@ -95,26 +95,26 @@
     },
     "ahrefsHistoricalRecognition": {
       "firstSeen": "2026-09-08T13:53:09Z",
-      "lastSeen": "2026-09-13T17:19:46Z",
+      "lastSeen": "2026-09-13T19:00:06Z",
       "robotsTxtRequests": 29,
-      "sitemapRequests": 84,
-      "distinctClientAddresses": 101,
+      "sitemapRequests": 85,
+      "distinctClientAddresses": 102,
       "verificationSource": "https://api.ahrefs.com/v3/public/crawler-ip-ranges",
       "latestVerifiedDiscoveryRequests": [
-        {
-          "time": "2026-09-13T17:19:45Z",
-          "path": "/robots.txt",
-          "status": 304,
-          "fingerprint": "9d219fc523f755f235362d034193eec4e898b4a3ffe4a54881414d4ba2087977"
-        },
         {
           "time": "2026-09-13T17:19:46Z",
           "path": "/sitemap.xml",
           "status": 200,
           "fingerprint": "1187466dcddf456079914c39242aeee5328f09403e4229041ab5ed1d9b55edb9"
+        },
+        {
+          "time": "2026-09-13T19:00:06Z",
+          "path": "/sitemap.xml",
+          "status": 200,
+          "fingerprint": "00bfe20a91c4f190516dc2066fd60834a417407b682c3c91f4dcca517f6b4b5a"
         }
       ],
-      "meaning": "All 113 discovery-file requests matched the official Ahrefs crawler IP ranges. The latest pair fetched robots.txt and sitemap.xml but no content page. AhrefsBot serves both the Ahrefs database and Yep, so these requests prove external crawler discovery only; they do not prove Yep indexing, ranking, retrieval, citation, or AI recommendation."
+      "meaning": "All 114 discovery-file requests matched the official Ahrefs crawler IP ranges. The latest request fetched sitemap.xml but no content page. AhrefsBot serves both the Ahrefs database and Yep, so these requests prove external crawler discovery only; they do not prove Yep indexing, ranking, retrieval, citation, or AI recommendation."
     }
   },
   "crawlerEvidenceAccounting": {
@@ -232,10 +232,10 @@
     "meaning": "Both selected Common Crawl indexes returned usable zero-capture responses. This complete result covers only the two selected indexes and cannot be interpreted as absence from all Common Crawl history, public search, or AI systems; availability changes remain event-recorded but do not independently block unrelated verified evidence publication."
   },
   "softwareHeritageEvidence": {
-    "checkedAt": "2026-09-13T17:26:02.552Z",
+    "checkedAt": "2026-09-13T19:36:48.365Z",
     "status": "available",
     "archiveCoverageStatus": "lagging",
-    "repositoryHead": "55c03bcfb4ea88b1e68fb7291d459580d2a4cea1",
+    "repositoryHead": "24ba8a4084cf5ccfcddc6ae9633421297ea2c6d8",
     "latestCompleteVisitAt": "2026-09-13T06:09:12.547000+00:00",
     "latestAttemptAt": "2026-09-13T06:09:12.547000+00:00",
     "latestAttemptStatus": "full",
@@ -251,8 +251,8 @@
       "snapshotSwhid": "swh:1:snp:beec7f09ab04a666d11d120abddf542620d09e97",
       "nextRun": "2026-09-13T06:09:09.000202Z"
     },
-    "eventFile": "events/2026-09-13T17-26-04.446Z-evidence-and-availability-change.json",
-    "meaning": "GitHub, the Software Heritage visit history, save-request endpoint and latest complete snapshot were all queryable. Request 2473685 remains succeeded/full and snapshot beec7f09 still independently preserves revision d7d6ee3; mutable GitHub main has advanced to 55c03bc, so archive coverage remains accurately reported as lagging. The immutable snapshot remains valid preservation evidence for its named revision. Neither current nor lagging archive coverage proves website search indexing, AI retrieval, citation, ranking, endorsement, or recommendation."
+    "eventFile": "events/2026-09-13T19-35-57.050Z-evidence-change.json",
+    "meaning": "GitHub, the Software Heritage visit history, save-request endpoint and latest complete snapshot were all queryable. Request 2473685 remains succeeded/full and snapshot beec7f09 still independently preserves revision d7d6ee3; mutable GitHub main has advanced to 24ba8a4, so archive coverage remains accurately reported as lagging. The immutable snapshot remains valid preservation evidence for its named revision. Neither current nor lagging archive coverage proves website search indexing, AI retrieval, citation, ranking, endorsement, or recommendation."
   },
   "waybackEvidence": {
     "checkedAt": "2026-09-13T17:25:57.676Z",
@@ -378,26 +378,26 @@
     "meaning": "All three fixed GitHub Repository Search API queries were available. Brand and legal-entity queries return both first-party repositories; the exact category query returns the same two repositories after the recorded README changes. This proves GitHub platform-search visibility only, not public-web indexing, AI retrieval, citation, ranking, independent endorsement, or non-brand recommendation."
   },
   "distributionEvidence": {
-    "manifestItems": 21,
-    "publishedItems": 21,
+    "manifestItems": 23,
+    "publishedItems": 23,
     "readyNotPublishedItems": 0,
-    "checkedAt": "2026-09-13T17:25:59.087Z",
-    "publicUrlsChecked": 21,
-    "trackedTargetsChecked": 36,
-    "availableSources": 57,
+    "checkedAt": "2026-09-13T20:43:20.577Z",
+    "publicUrlsChecked": 23,
+    "trackedTargetsChecked": 39,
+    "availableSources": 62,
     "unavailableSources": 0,
     "availabilityStatus": "available",
-    "eventFile": "events/2026-09-13T17-26-04.446Z-evidence-and-availability-change.json",
+    "eventFile": "events/2026-09-13T19-35-57.050Z-evidence-change.json",
     "expectedAfterCurrentCheckpointPublication": {
-      "manifestItems": 22,
-      "publishedItems": 22,
-      "trackedTargetsChecked": 37,
-      "availableSources": 59,
+      "manifestItems": 24,
+      "publishedItems": 24,
+      "trackedTargetsChecked": 40,
+      "availableSources": 64,
       "unavailableSources": 0,
       "availabilityStatus": "available",
       "meaning": "The current immutable checkpoint is published after its source snapshot is created. These values are the explicitly declared post-publication state used by the drift gate; they must be confirmed by a subsequent production collection before synchronization is reported."
     },
-    "meaning": "The 2026-09-13T17:26:04.446Z production collection confirmed revision 75 and the verified Toutiao publication state: 21 published URLs, 36 tracked targets, and 57 available sources. Revision 76 separately declares its expected self-publication delta instead of backdating its own Release into the snapshot. The Toutiao page is provider-authored distribution evidence only; availability does not prove search indexing, AI retrieval, citation, ranking, endorsement, referral, or recommendation."
+    "meaning": "The 2026-09-13T19:36:49.423Z production collection confirmed revision 76's self-publication state. A subsequent 2026-09-13T20:43:20.577Z manifest-driven public check verified the second Toutiao article plus both tracked targets, bringing the pre-checkpoint state to 23 published URLs, 39 tracked targets, and 62 available sources. Revision 77 separately declares its expected self-publication delta instead of backdating its own Release into the snapshot. This checkpoint adds a Bing public-search presentation retest, one Ahrefs discovery-file request, and one verified provider-authored Toutiao publication; none proves AI retrieval, citation, endorsement, link equity, a human referral, or recommendation."
   },
   "servicesHkReadinessEvidence": {
     "checkedAt": "2026-09-13T03:55:47.596Z",
@@ -414,7 +414,7 @@
     "meaning": "All three sampled services.hk detail pages return HTTP 200 but contain the known PHP application failure and omit the required title, service-description, and contact markers. This blocks submission readiness; it does not prove that Onyx is listed, reviewed, endorsed, indexed, cited, or recommended. Submission still requires current user confirmation after all three targets recover."
   },
   "domainCanonicalizationEvidence": {
-    "checkedAt": "2026-09-13T17:26:04.373Z",
+    "checkedAt": "2026-09-13T19:36:49.355Z",
     "status": "noncompliant",
     "canonicalOrigin": "https://hk.onyxdevslab.com/",
     "targetsChecked": 6,
@@ -477,7 +477,7 @@
     "meaning": "The dated exact-brand query directly returned the provider-owned apex domain, whose live canonical points to the Hong Kong site. This is positive Yandex brand retrieval evidence for the official web property. It does not prove that the hk subdomain or deep pages are separately indexed, that non-brand category queries return Onyx, that the result is stable or ranked similarly in other regions, or that any AI product retrieved, cited, endorsed, or recommended Onyx. The follow-up captcha was not completed and cannot be interpreted as a negative result."
   },
   "bingPublicSearchEvidence": {
-    "testedAt": "2026-09-13T09:49:52Z",
+    "testedAt": "2026-09-13T19:35:28Z",
     "provider": "Bing Web Search",
     "interface": "public interactive HTML search",
     "localeObserved": "zh-CN interface",
@@ -492,9 +492,10 @@
         "visibleOfficialResults": [
           {
             "positionInVisibleResults": 1,
-            "title": "Onyx Devs Lab",
-            "url": "http://onyxdevslab.com/",
-            "qualityCaveat": "The visible result used the legacy HTTP apex and a stale personal-profile snippet; it is official-domain visibility but not a clean current canonical presentation."
+          "title": "Onyx Devs Lab — AI Advisory, Custom Development & FDE",
+          "url": "http://onyxdevslab.com/",
+          "visibleSnippet": "Onyx Devs Lab is a senior AI advisory and engineering team delivering consulting, custom development, and FDE transformation …",
+          "qualityCaveat": "The result still uses the legacy HTTP apex, but its visible snippet has reprocessed from the previously stale personal-profile text to a current Onyx enterprise-AI description. This is improved search presentation, not clean canonicalization or a stable ranking claim."
           },
           {
             "positionInVisibleResults": 2,
@@ -541,16 +542,15 @@
         "url": "https://www.bing.com/search?q=%22Hong+Kong+AI+consulting%22",
         "result": "official-Onyx-result-not-observed-in-visible-first-page",
         "officialSiteObserved": false,
-        "reportedApproximateResultCount": 63300,
+      "reportedApproximateResultCount": 64000,
         "otherVisibleResults": [
           "softmind.tech",
           "aikm.ai",
-          "ensun.io",
-          "alphamatch.ai",
-          "YCP Group",
-          "stepone.agency",
-          "super-cat.tech",
-          "Sortlist"
+        "alphamatch.ai",
+        "ensun.io",
+        "stepone.agency",
+        "YCP Group",
+        "Sortlist"
         ],
         "visibleResultScope": "The first visible page contained other Hong Kong AI-consulting providers and directories; no Onyx result was visible. This is a first-page observation, not an exhaustive absence claim."
       }
@@ -562,13 +562,19 @@
       "siteQueryResult": "official-site-not-observed-in-first-page; site-operator-not-enforced",
       "meaning": "The prior provider-attributed checkpoint is retained to show that visible result sets can change. It must not be converted into a stable ranking, exhaustive indexing, or deindexing trend claim."
     },
+    "priorPositiveBrandObservation": {
+      "testedAt": "2026-09-13T09:49:52Z",
+      "officialSiteObserved": true,
+      "legacyApexSnippetStatus": "stale-personal-profile-snippet",
+      "meaning": "The earlier positive brand checkpoint is retained to make the later snippet correction independently interpretable. The official apex and both Hong Kong localized homepages were already visible, but the apex description was stale."
+    },
     "categoryQueryProtocol": {
       "neutralQuery": "\"Hong Kong AI consulting\"",
       "fdeQuery": "香港有哪些提供 FDE 前线部署工程的团队？",
       "status": "neutral-query-run-separately; fde-query-not-run-in-this-check",
       "reason": "The neutral English category query was run separately and did not show Onyx in the visible first page. FDE remains a separate protocol because FDE.HK is also a provider brand; combining it with neutral AI consulting would confound category and competitor-brand visibility."
     },
-    "meaning": "This dated, provider-attributed observation upgrades Bing brand visibility: the official apex and two Hong Kong localized homepages were directly visible for the exact brand query. It does not establish stable ranking, clean canonical presentation, exhaustive indexing, Copilot or other AI retrieval, citation, endorsement, or non-brand recommendation. The neutral category query and exact combined brand-and-category query still did not return an Onyx result in their stated visible scopes."
+    "meaning": "This dated, provider-attributed retest confirms that the official apex and two Hong Kong localized homepages remain directly visible for the exact brand query, and that the legacy-apex snippet has reprocessed from stale personal-profile text to a current Onyx enterprise-AI description. The result URL remains the noncanonical HTTP apex. This does not establish stable ranking, complete canonical reprocessing, exhaustive indexing, Copilot or other AI retrieval, citation, endorsement, or non-brand recommendation. The neutral category query still did not return an Onyx result in its visible first-page scope."
   },
   "googlePublicSearchAttempt": {
     "testedAt": "2026-09-13T04:57:43Z",
