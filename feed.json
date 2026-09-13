@@ -1110,11 +1110,11 @@
       ]
     },
     {
-      "id": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-monitor-evidence-2026-09-13-65",
-      "url": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-monitor-evidence-2026-09-13-65",
-      "title": "Onyx GEO monitor evidence checkpoint — 2026-09-13, revision 65",
-      "summary": "A versioned machine-readable checkpoint recording 99 provider-verified AhrefsBot discovery-file requests, with Ahrefs content requests still at zero.",
-      "content_text": "A versioned machine-readable checkpoint recording 99 provider-verified AhrefsBot discovery-file requests, with Ahrefs content requests still at zero.",
+      "id": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-monitor-evidence-2026-09-13-66",
+      "url": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-monitor-evidence-2026-09-13-66",
+      "title": "Onyx GEO monitor evidence checkpoint — 2026-09-13, revision 66",
+      "summary": "A versioned machine-readable checkpoint recording 96 public Wayback HTML captures across 46 URLs, including newly exposed recruiting and credit-research case-study captures, while keeping indexing and AI-citation claims unverified.",
+      "content_text": "A versioned machine-readable checkpoint recording 96 public Wayback HTML captures across 46 URLs, including newly exposed recruiting and credit-research case-study captures, while keeping indexing and AI-citation claims unverified.",
       "date_modified": "2026-09-13T00:00:00+08:00",
       "tags": [
         "evidence",

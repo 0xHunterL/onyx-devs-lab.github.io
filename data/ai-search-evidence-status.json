@@ -1,30 +1,30 @@
 {
   "schemaVersion": 2,
-  "version": "2026.09.13.65",
+  "version": "2026.09.13.66",
   "id": "https://hk.onyxdevslab.com/data/ai-search-evidence-status.json",
-  "observedAt": "2026-09-13T02:24:04.137Z",
-  "latestEvidenceObservedAt": "2026-09-13T02:24:04.063Z",
+  "observedAt": "2026-09-13T03:02:43.851Z",
+  "latestEvidenceObservedAt": "2026-09-13T03:02:43.785Z",
   "sourceBaseline": "https://github.com/0xHunterL/onyx-devs-lab.github.io/blob/main/docs/geo-baselines/2026-09-11-monitor-evidence.json",
   "versionHistory": [
     {
-      "version": "2026.09.13.65",
+      "version": "2026.09.13.66",
       "relation": "current-immutable-checkpoint",
+      "url": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-monitor-evidence-2026-09-13-66/ai-search-evidence-status.json"
+    },
+    {
+      "version": "2026.09.13.65",
+      "relation": "previous-immutable-checkpoint",
       "url": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-monitor-evidence-2026-09-13-65/ai-search-evidence-status.json"
     },
     {
       "version": "2026.09.13.64",
-      "relation": "previous-immutable-checkpoint",
+      "relation": "earlier-immutable-checkpoint",
       "url": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-monitor-evidence-2026-09-13-64/ai-search-evidence-status.json"
     },
     {
       "version": "2026.09.13.63",
       "relation": "earlier-immutable-checkpoint",
       "url": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-monitor-evidence-2026-09-13-63/ai-search-evidence-status.json"
-    },
-    {
-      "version": "2026.09.13.62",
-      "relation": "earlier-immutable-checkpoint",
-      "url": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-monitor-evidence-2026-09-13-62/ai-search-evidence-status.json"
     }
   ],
   "name": {
@@ -202,7 +202,7 @@
         "userAgentOnlyBytespiderDiscoveryFileCandidates": 0,
         "syntheticCrawlerReleaseChecksExcludedMinimum": 3088,
         "commonCrawlIndexObservation": {
-          "checkedAt": "2026-09-13T02:23:59.352Z",
+          "checkedAt": "2026-09-13T03:02:37.534Z",
           "status": "available",
           "capturesObservedInAvailableIndexes": 0,
           "availableIndexes": [
@@ -213,29 +213,27 @@
           "meaning": "Both selected Common Crawl indexes returned usable zero-capture responses. This complete result covers only the two selected indexes and cannot be interpreted as absence from all Common Crawl history, public search, or AI systems; availability changes remain event-recorded but do not independently block unrelated verified evidence publication."
         },
         "waybackArchiveObservation": {
-          "checkedAt": "2026-09-13T02:24:00.173Z",
+          "checkedAt": "2026-09-13T03:02:38.416Z",
           "status": "available",
-          "captures": 94,
-          "distinctUrls": 44,
+          "captures": 96,
+          "distinctUrls": 46,
           "firstCaptureAt": "20260909205420",
-          "lastCaptureAt": "20260912144806",
+          "lastCaptureAt": "20260912154745",
           "query": "https://web.archive.org/cdx/search/cdx?url=hk.onyxdevslab.com%2F&matchType=host&output=json&fl=timestamp%2Coriginal%2Cmimetype%2Cstatuscode%2Cdigest&filter=statuscode%3A200&filter=mimetype%3Atext%2Fhtml&limit=1000",
           "fixedPromptArchiveCoverage": {
             "prompts": 23,
             "uniqueEvidencePages": 23,
-            "archivedEvidencePages": 16,
-            "promptsWithAnyArchivedEvidence": 16,
-            "promptsFullyArchived": 12,
+            "archivedEvidencePages": 18,
+            "promptsWithAnyArchivedEvidence": 18,
+            "promptsFullyArchived": 15,
             "missingEvidenceUrls": [
-              "https://hk.onyxdevslab.com/zh-cn/case-studies/credit-research-ai-agent/",
-              "https://hk.onyxdevslab.com/zh-cn/case-studies/recruiting-ai-agent-workflow/",
               "https://hk.onyxdevslab.com/zh-cn/guides/choose-enterprise-ai-partner/",
               "https://hk.onyxdevslab.com/zh-cn/guides/enterprise-ai-governance/",
               "https://hk.onyxdevslab.com/zh-cn/guides/enterprise-ai-pilot-charter/",
               "https://hk.onyxdevslab.com/zh-cn/guides/hong-kong-ai-consulting-companies/",
               "https://hk.onyxdevslab.com/zh-cn/methodology/ai-search-verification/"
             ],
-            "meaning": "This maps public historical Wayback captures to prompt-matrix schema version 3: 16 of 23 unique evidence pages have captures, 16 prompts have at least one archived evidence page, and 12 prompts have every mapped evidence page archived. The newly exposed industrial ERP case-study capture increases all three coverage measures by one. It does not prove search indexing, AI retrieval, citation, ranking, endorsement, or recommendation."
+            "meaning": "This maps public historical Wayback captures to prompt-matrix schema version 3: 18 of 23 unique evidence pages have captures, 18 prompts have at least one archived evidence page, and 15 prompts have every mapped evidence page archived. Newly exposed recruiting and credit-research case-study captures increase archival coverage; they do not prove search indexing, AI retrieval, citation, ranking, endorsement, or recommendation."
           },
           "indexResultRetractionObservation": {
             "firstReturnedAt": "2026-09-12T01:33:05.020Z",
@@ -267,18 +265,38 @@
             "meaning": "The public CDX query again stopped returning the previously fluctuating custom-AI-development capture while the earlier AI-consulting fingerprint remained absent. The prompt archive ledger retains both independently verified historical observations, so this count change is treated as public-index volatility, not proof that the snapshots or pages disappeared."
           },
           "latestArchiveGrowthObservation": {
-            "observedAt": "2026-09-12T22:12:51.438Z",
-            "timestamp": "20260912144806",
-            "url": "https://hk.onyxdevslab.com/zh-cn/case-studies/industrial-erp-ai-data-platform/",
-            "digest": "HCSTSCJLSPZ5H2FN4GRCUTMUNRGY6WGM",
-            "fingerprint": "bc99c542662430153eeb3ac62b3367d68d49797d6c3a355ab97701815b72b649",
-            "replayUrl": "https://web.archive.org/web/20260912144806/https://hk.onyxdevslab.com/zh-cn/case-studies/industrial-erp-ai-data-platform/",
-            "meaning": "The public CDX query newly exposed the previously queued industrial ERP case-study capture. This proves public archival availability for that historical representation only, not current accessibility, search indexing, AI retrieval, citation, ranking, endorsement, or recommendation."
+            "observedAt": "2026-09-13T03:02:43.851Z",
+            "capturesAdded": 3,
+            "distinctUrlsAdded": 2,
+            "observations": [
+              {
+                "timestamp": "20260912144751",
+                "url": "https://hk.onyxdevslab.com/zh-cn/case-studies/recruiting-ai-agent-workflow/",
+                "digest": "GBAJWOEUDJAYAMYE4JXLLH2FE5Q6T6AB",
+                "fingerprint": "eba3cdeb3ce444a82dc904c2a49518db43109ab96a3ef66cfb15b5ba5186c005",
+                "replayUrl": "https://web.archive.org/web/20260912144751/https://hk.onyxdevslab.com/zh-cn/case-studies/recruiting-ai-agent-workflow/"
+              },
+              {
+                "timestamp": "20260912144834",
+                "url": "https://hk.onyxdevslab.com/zh-cn/case-studies/credit-research-ai-agent/",
+                "digest": "T7IU5PFUEXYNNND3KJZZPRPBUPIOSAGE",
+                "fingerprint": "a06681441783097c36536b70f53a5c86f9cb493e243e626b8f8479bb1ed53795",
+                "replayUrl": "https://web.archive.org/web/20260912144834/https://hk.onyxdevslab.com/zh-cn/case-studies/credit-research-ai-agent/"
+              },
+              {
+                "timestamp": "20260912154745",
+                "url": "https://hk.onyxdevslab.com/zh-cn/case-studies/recruiting-ai-agent-workflow/",
+                "digest": "DKQ5JCSLAOG26A5E7DF2QUUDNURZMNBO",
+                "fingerprint": "ae773f8d2c2a6d74ea6d2ddd136c5c947a91a1f2e6cc6ee3c771f6699f02fcd4",
+                "replayUrl": "https://web.archive.org/web/20260912154745/https://hk.onyxdevslab.com/zh-cn/case-studies/recruiting-ai-agent-workflow/"
+              }
+            ],
+            "meaning": "The public CDX query newly exposed three captures across the recruiting and credit-research case studies. This proves public archival availability for those historical representations only, not current accessibility, search indexing, AI retrieval, citation, ranking, endorsement, or recommendation."
           },
           "lastCompleteObservation": {
-            "observedAt": "2026-09-12T20:47:23.824Z",
-            "captures": 94,
-            "distinctUrls": 44
+            "observedAt": "2026-09-13T03:02:38.416Z",
+            "captures": 96,
+            "distinctUrls": 46
           },
           "unavailableObservation": {
             "observedAt": "2026-09-12T10:49:52.764Z",
@@ -290,7 +308,7 @@
             "captures": 93,
             "distinctUrls": 43
           },
-          "meaning": "The available public Wayback CDX host query currently returns 94 successful HTML capture records across 44 distinct URLs. A newly exposed industrial ERP case-study capture increases the prompt archive ledger to 16 archived evidence pages, 16 prompts with any archive and 12 fully archived prompts; the remaining count movement includes documented public-index volatility. These records prove public historical captures only; they do not prove current accessibility, search indexing, AI retrieval, citation, ranking, endorsement, or recommendation. An unavailable future query must not be interpreted as zero captures."
+          "meaning": "The available public Wayback CDX host query currently returns 96 successful HTML capture records across 46 distinct URLs. Three newly exposed recruiting and credit-research case-study captures increase the prompt archive ledger to 18 archived evidence pages, 18 prompts with any archive and 15 fully archived prompts; the remaining count movement includes documented public-index volatility. These records prove public historical captures only; they do not prove current accessibility, search indexing, AI retrieval, citation, ranking, endorsement, or recommendation. An unavailable future query must not be interpreted as zero captures."
         },
         "fixedPromptCoverage": {
           "prompts": 23,
@@ -593,7 +611,7 @@
   ],
   "platformSearchChecks": {
     "githubRepository": {
-      "checkedAt": "2026-09-13T02:24:01.657Z",
+      "checkedAt": "2026-09-13T03:02:39.916Z",
       "status": "available",
       "queriesChecked": 3,
       "availableQueries": 3,
@@ -632,8 +650,29 @@
       "meaning": "All three fixed GitHub Repository Search API queries were available. Brand and legal-entity queries return both first-party repositories; the exact category query returns the same two repositories after the recorded README changes. This proves GitHub platform-search visibility only, not public-web indexing, AI retrieval, citation, ranking, independent endorsement, or non-brand recommendation."
     }
   },
+  "publicCorpusMonitoring": {
+    "softwareHeritage": {
+      "checkedAt": "2026-09-13T03:02:42.298Z",
+      "status": "available",
+      "archiveCoverageStatus": "lagging",
+      "repositoryHead": "cfac1ae27146952a21aead104f8d08fcafa365d6",
+      "latestCompleteVisitAt": "2026-09-12T14:03:45.792000+00:00",
+      "latestAttemptAt": "2026-09-13T02:50:45.187000+00:00",
+      "latestAttemptStatus": "failed",
+      "snapshotSwhid": "swh:1:snp:a6d10e9586fcc1860acf66f32651994693d87578",
+      "archiveHead": "a2d9281d23f406cd7ab1b19ed62d0e4c2e6fadfc",
+      "saveRequest": {
+        "id": 2473234,
+        "statusUrl": "https://archive.softwareheritage.org/api/1/origin/save/2473234/",
+        "firstAttemptResult": "github-git-upload-pack-http-429",
+        "nextRun": "2026-09-13T03:50:45.693551Z"
+      },
+      "eventFile": "events/2026-09-13T03-02-43.851Z-evidence-and-availability-change.json",
+      "meaning": "GitHub, the Software Heritage visit history and the latest complete snapshot were all queryable. The latest complete snapshot preserves revision a2d9281 while the observed GitHub main was cfac1ae, so archive coverage is explicitly lagging. Request 2473234 was accepted but its first visit failed after GitHub returned HTTP 429 and has a provider-scheduled retry. This is an archive coverage observation, not proof of website indexing, AI retrieval, citation, ranking, endorsement, or recommendation."
+    }
+  },
   "domainCanonicalization": {
-    "checkedAt": "2026-09-13T02:24:04.063Z",
+    "checkedAt": "2026-09-13T03:02:43.785Z",
     "status": "noncompliant",
     "canonicalOrigin": "https://hk.onyxdevslab.com/",
     "targetsChecked": 6,
@@ -736,7 +775,7 @@
   },
   "offsiteChannelReadiness": {
     "servicesHk": {
-      "checkedAt": "2026-09-13T02:24:01.591Z",
+      "checkedAt": "2026-09-13T03:02:39.856Z",
       "availabilityStatus": "unavailable",
       "targetsChecked": 3,
       "availableTargets": 0,
@@ -830,11 +869,11 @@
     },
     {
       "name": "Latest immutable GEO monitor evidence checkpoint",
-      "url": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-monitor-evidence-2026-09-13-65"
+      "url": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-monitor-evidence-2026-09-13-66"
     },
     {
       "name": "Latest immutable AI-search evidence status",
-      "url": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-monitor-evidence-2026-09-13-65/ai-search-evidence-status.json"
+      "url": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-monitor-evidence-2026-09-13-66/ai-search-evidence-status.json"
     },
     {
       "name": "GitHub repository-search before-and-after baseline",
