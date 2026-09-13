@@ -18,6 +18,9 @@ export const currentWaybackEvidence = currentMonitorEvidence.waybackEvidence;
 
 export function hasCurrentMonitorLlmsBoundary(body) {
   return body.includes(`${currentMonitorEvidence.generatedAt} production collection`)
+    && body.includes('three new no-referrer `geo_engagement_model_qa` requests')
+    && body.includes('tracked requests are 86 and visitor-type-unverified requests are 14')
+    && body.includes('optional archive availability remains event-recorded but does not independently block')
     && body.includes('continuous numbered-log lineage policy')
     && body.includes('verified coverage remains 45 paths, 15 search-related evidence pages, and 18 prompts')
     && body.includes('Common Crawl indexes returned HTTP 504')
