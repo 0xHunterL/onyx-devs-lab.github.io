@@ -347,17 +347,17 @@
     "meaning": "All three fixed GitHub Repository Search API queries were available. Brand and legal-entity queries return both first-party repositories; the exact category query returns the same two repositories after the recorded README changes. This proves GitHub platform-search visibility only, not public-web indexing, AI retrieval, citation, ranking, independent endorsement, or non-brand recommendation."
   },
   "distributionEvidence": {
-    "manifestItems": 11,
-    "publishedItems": 10,
+    "manifestItems": 12,
+    "publishedItems": 11,
     "readyNotPublishedItems": 1,
-    "checkedAt": "2026-09-13T03:02:39.496Z",
-    "publicUrlsChecked": 10,
-    "trackedTargetsChecked": 24,
-    "availableSources": 34,
+    "checkedAt": "2026-09-13T03:18:12.112Z",
+    "publicUrlsChecked": 11,
+    "trackedTargetsChecked": 25,
+    "availableSources": 36,
     "unavailableSources": 0,
     "availabilityStatus": "available",
     "eventFile": "events/2026-09-13T01-19-32.135Z-evidence-and-availability-change.json",
-    "meaning": "The distribution ledger now includes two previously published but untracked sources: the bilingual Hong Kong enterprise AI governance Gist and the versioned Chinese enterprise AI field-note index Release. All 10 declared published URLs and 24 tracked targets passed anonymous availability, destination, and content-marker checks. This closes a monitoring-coverage gap without creating duplicate content; it does not prove indexing, AI retrieval, citation, recommendation, a human visit, or independent endorsement."
+    "meaning": "The distribution ledger includes 11 declared published URLs and 25 tracked targets after adding the immutable revision 66 evidence Release. All 36 sources passed anonymous availability, destination, and content-marker checks. This versions new archival evidence without creating duplicate topical content; it does not prove indexing, AI retrieval, citation, recommendation, a human visit, or independent endorsement."
   },
   "servicesHkReadinessEvidence": {
     "checkedAt": "2026-09-13T03:02:39.856Z",

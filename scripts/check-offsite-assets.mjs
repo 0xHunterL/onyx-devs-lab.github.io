@@ -1159,6 +1159,26 @@ for (const asset of monitorEvidenceV65Assets) {
 const monitorV65 = monitorEvidenceV65Json['2026-09-11-monitor-evidence.json'];
 if (monitorV65 && (monitorV65.publicStatusVersion !== '2026.09.13.65' || monitorV65.generatedAt !== '2026-09-13T02:24:04.137Z' || monitorV65.providerVerifiedCrawlerEvidence?.ahrefsbotDiscoveryFileRequests !== 99 || monitorV65.providerVerifiedCrawlerEvidence?.ahrefsbotContentRequests !== 0 || monitorV65.providerVerifiedCrawlerEvidence?.ahrefsHistoricalRecognition?.lastSeen !== '2026-09-13T02:17:49Z' || monitorV65.providerVerifiedCrawlerEvidence?.ahrefsHistoricalRecognition?.sitemapRequests !== 74 || monitorV65.providerVerifiedCrawlerEvidence?.distinctVerifiedContentPaths !== 45 || monitorV65.doubaoTestStatus !== 'not-run')) failures.push('Versioned GEO monitor revision 65: Ahrefs discovery evidence or boundary is incomplete');
 
+const monitorEvidenceV66Base = 'https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-monitor-evidence-2026-09-13-66';
+const monitorEvidenceV66Assets = [
+  {file:'2026-09-11-monitor-evidence.json',sha256:'ef657391b28a75ff678c30757eb8e784d964a1567e20d2dec842bf02c78980fb'},
+  {file:'ai-search-evidence-status.json',sha256:'ed071c7eb44fdca6e7f1cc18f32cff4412f6f9a53cc650207bcfc995e3424ed4'},
+  {file:'prompt-matrix.json',sha256:'ed5305c7c1221689dd5c522cf305ea7ff73344ef37f016a3e148d5f598351b6f'},
+  {file:'ai-search-prompt-evidence-map.json',sha256:'df0d1e557f58f0e78948e405579c680bceede29561f033ecb45fab9e9900edc7'},
+  {file:'2026-09-11-prompt-crawl-coverage.json',sha256:'7b9eb77978732b6425d408bb02cf4c2629daa9693ad2bb448e937df179151c11'},
+];
+const monitorEvidenceV66Json = {};
+for (const asset of monitorEvidenceV66Assets) {
+  const raw = await get(`Versioned GEO monitor revision 66 ${asset.file}`, `${monitorEvidenceV66Base}/${asset.file}`, 'application/');
+  const digest = createHash('sha256').update(raw).digest('hex');
+  if (digest !== asset.sha256) failures.push(`Versioned GEO monitor revision 66 ${asset.file}: SHA-256 mismatch, got ${digest}`);
+  try { monitorEvidenceV66Json[asset.file] = JSON.parse(raw); } catch { failures.push(`Versioned GEO monitor revision 66 ${asset.file}: invalid JSON`); }
+}
+const monitorV66 = monitorEvidenceV66Json['2026-09-11-monitor-evidence.json'];
+if (monitorV66 && (monitorV66.publicStatusVersion !== '2026.09.13.66' || monitorV66.generatedAt !== '2026-09-13T03:02:43.851Z' || monitorV66.waybackEvidence?.captures !== 96 || monitorV66.waybackEvidence?.distinctUrls !== 46 || monitorV66.waybackEvidence?.fixedPromptArchiveCoverage?.archivedEvidencePages !== 18 || monitorV66.waybackEvidence?.fixedPromptArchiveCoverage?.promptsFullyArchived !== 15 || monitorV66.waybackEvidence?.latestArchiveGrowthObservation?.observations?.length !== 3 || monitorV66.softwareHeritageEvidence?.archiveCoverageStatus !== 'lagging' || monitorV66.softwareHeritageEvidence?.saveRequest?.id !== 2473234 || monitorV66.doubaoTestStatus !== 'not-run')) failures.push('Versioned GEO monitor revision 66: Wayback growth, Software Heritage coverage, or evidence boundary is incomplete');
+const statusV66 = monitorEvidenceV66Json['ai-search-evidence-status.json'];
+if (statusV66 && (statusV66.version !== '2026.09.13.66' || statusV66.observedAt !== '2026-09-13T03:02:43.851Z' || statusV66.versionHistory?.[0]?.version !== '2026.09.13.66' || statusV66.evidenceLevels?.[1]?.evidence?.waybackArchiveObservation?.captures !== 96 || statusV66.publicCorpusMonitoring?.softwareHeritage?.archiveCoverageStatus !== 'lagging' || statusV66.testProtocol?.doubaoPromptsSent !== false)) failures.push('Versioned GEO monitor revision 66 public status: archive evidence or AI boundary is incomplete');
+
 const crawlerEvidenceReleaseUrl = 'https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-crawler-evidence-2026-09-10';
 const crawlerEvidenceRelease = await get('GitHub verified crawler-evidence checkpoint', crawlerEvidenceReleaseUrl, 'text/html');
 requireText('GitHub verified crawler-evidence checkpoint', crawlerEvidenceRelease, [

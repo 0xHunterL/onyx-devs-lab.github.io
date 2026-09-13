@@ -316,6 +316,36 @@
         "The Release records a provider-verified AhrefsBot discovery-file request; it does not prove indexing, retrieval, citation, or ranking.",
         "Anonymous availability and matching content markers do not prove independent endorsement, Hong Kong deep-page or non-brand retrieval, AI citation, recommendation, or a human visit."
       ]
+    },
+    {
+      "id": "github-release-geo-monitor-evidence-2026-09-13-66",
+      "channel": "github_releases",
+      "format": "versioned-evidence-checkpoint",
+      "language": "en-zh-CN",
+      "status": "published",
+      "sourceFile": "README.md",
+      "title": "Onyx GEO monitor evidence checkpoint — 2026-09-13, revision 66",
+      "campaign": "geo_monitor_evidence_66",
+      "trackedTargets": [
+        "https://hk.onyxdevslab.com/data/ai-search-evidence-status.json?utm_source=github_releases&utm_medium=referral&utm_campaign=geo_monitor_evidence_66"
+      ],
+      "publicUrl": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-monitor-evidence-2026-09-13-66",
+      "anonymousAccessVerifiedAt": "2026-09-13T03:16:11Z",
+      "publicContentMarkers": [
+        "GEO monitor evidence checkpoint — 2026-09-13, revision 66",
+        "96 successful HTML captures across 46 URLs",
+        "15 prompts with every mapped evidence page archived",
+        "Software Heritage coverage comparison"
+      ],
+      "searchIndexedAt": null,
+      "aiCitationObservedAt": null,
+      "nonBrandRecommendationObservedAt": null,
+      "limitations": [
+        "The Release and its assets are published and maintained by Onyx Devs Lab.",
+        "Wayback records prove public historical captures only; they do not prove current indexing, retrieval, citation, ranking, or recommendation.",
+        "The Software Heritage lagging state proves only that the latest complete repository archive has not caught up with the observed GitHub main revision.",
+        "Anonymous availability and matching content markers do not prove independent endorsement, an AI citation, a human visit, or non-brand recommendation."
+      ]
     }
   ]
 }
