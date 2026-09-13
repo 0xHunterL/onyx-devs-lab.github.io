@@ -9,18 +9,32 @@ const response = (status, { location = null, body = '', server = 'cloudflare', c
 const canonicalBody = '<html><head><link rel="canonical" href="https://hk.onyxdevslab.com/"></head></html>';
 
 const routes = new Map([
-  ['http://example.test/', response(301, { location: 'https://example.test/' })],
-  ['https://example.test/', response(200, { body: canonicalBody })],
+  ['http://example.test/', response(301, { location: 'https://hk.onyxdevslab.com/' })],
+  ['https://example.test/', response(308, { location: 'https://hk.onyxdevslab.com/' })],
+  ['https://hk.onyxdevslab.com/', response(200, { body: canonicalBody })],
 ]);
 const trace = await traceRedirectChain('http://example.test/', { fetchImpl: async (url) => routes.get(url), attempts: 1 });
 assert.equal(trace.hops.length, 2);
-assert.equal(trace.finalUrl, 'https://example.test/');
+assert.equal(trace.finalUrl, 'https://hk.onyxdevslab.com/');
 assert.equal(trace.canonical, 'https://hk.onyxdevslab.com/');
 assert.equal(evaluateRedirectChain(trace).status, 'compliant');
 
 const directHttp = evaluateRedirectChain({ startUrl: 'http://example.test/', finalUrl: 'http://example.test/', finalStatus: 200, canonical: 'https://hk.onyxdevslab.com/', hops: [{ url: 'http://example.test/', status: 200, location: null }] });
 assert.equal(directHttp.status, 'noncompliant');
 assert.ok(directHttp.reasons.includes('http-serves-content-without-redirect'));
+
+const redirectShell = evaluateRedirectChain({
+  startUrl: 'https://example.test/',
+  finalUrl: 'https://example.test/',
+  finalStatus: 200,
+  canonical: 'https://hk.onyxdevslab.com/',
+  robotsNoindex: true,
+  metaRefreshTarget: 'https://hk.onyxdevslab.com/',
+  hops: [{ url: 'https://example.test/', status: 200, location: null }],
+});
+assert.equal(redirectShell.status, 'noncompliant');
+assert.equal(redirectShell.mitigation.status, 'applied');
+assert.ok(redirectShell.reasons.includes('final-url-is-not-canonical-origin'));
 
 const downgrade = evaluateRedirectChain({ startUrl: 'https://www.example.test/', finalUrl: 'http://example.test/', finalStatus: 200, canonical: 'https://hk.onyxdevslab.com/', hops: [{ url: 'https://www.example.test/', status: 301, location: 'http://example.test/' }, { url: 'http://example.test/', status: 200, location: null }] });
 assert.equal(downgrade.status, 'noncompliant');
@@ -35,9 +49,10 @@ const report = await buildDomainCanonicalizationReport({
   fetchImpl: async (url) => routes.get(url),
   resolveNsImpl: async () => ['trey.ns.cloudflare.com.', 'piper.ns.cloudflare.com'],
 });
-assert.equal(report.schemaVersion, 2);
+assert.equal(report.schemaVersion, 3);
 assert.equal(report.status, 'compliant');
 assert.equal(report.compliantTargets, 2);
+assert.equal(report.mitigatedTargets, 0);
 assert.equal(report.noncompliantTargets, 0);
 assert.deepEqual(report.authorityObservation.nameServers, ['piper.ns.cloudflare.com', 'trey.ns.cloudflare.com']);
 assert.equal(report.authorityObservation.cloudflareNameservers, true);
@@ -54,4 +69,4 @@ assert.equal(unavailable.status, 'unavailable');
 assert.equal(unavailable.unavailableTargets, 1);
 assert.equal(unavailable.authorityObservation.status, 'unavailable');
 
-console.log(JSON.stringify({ tests: 25, failures: [] }, null, 2));
+console.log(JSON.stringify({ tests: 30, failures: [] }, null, 2));

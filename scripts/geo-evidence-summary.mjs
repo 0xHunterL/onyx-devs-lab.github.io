@@ -259,9 +259,10 @@ export function buildDomainCanonicalizationAvailability(report) {
   const sources = (report?.results || [])
     .map((result) => ({
       id: result.id || result.startUrl || 'unknown',
-      status: result.status || 'unavailable',
+      status: result.status === 'noncompliant' && result.mitigation?.status === 'applied' ? 'mitigated-noncompliant' : (result.status || 'unavailable'),
       httpStatus: Number.isInteger(result.finalStatus) ? result.finalStatus : null,
       reason: result.status === 'compliant' ? null : (result.reasons || []).join(',') || 'unavailable',
+      mitigation: result.mitigation || null,
     }))
     .sort((left, right) => left.id.localeCompare(right.id));
   return {
@@ -274,9 +275,10 @@ export function buildDomainCanonicalizationAvailability(report) {
     authorityObservation: report?.authorityObservation || null,
     edgeObservation: report?.edgeObservation || null,
     sources,
+    mitigatedSources: sources.filter((source) => source.status === 'mitigated-noncompliant').length,
     interpretation: report?.status === 'compliant'
       ? 'All monitored domain entry points remain on HTTPS and expose the Hong Kong canonical origin.'
-      : 'At least one monitored domain entry point is unavailable, serves content over HTTP, downgrades HTTPS, or exposes a mismatched canonical target.',
+      : 'At least one monitored domain entry point is unavailable, serves content over HTTP, downgrades HTTPS, fails to arrive at the canonical origin, or exposes a mismatched canonical target. A mitigated alternate origin remains noncompliant until it uses a server-side 301 or 308 redirect.',
   };
 }
 

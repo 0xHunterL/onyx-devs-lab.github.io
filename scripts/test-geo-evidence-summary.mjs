@@ -225,6 +225,17 @@ assert.equal(noncompliantDomainCanonicalization.noncompliantSources, 1);
 assert.equal(noncompliantDomainCanonicalization.sources[0].reason, 'http-serves-content-without-redirect');
 assert.match(noncompliantDomainCanonicalization.interpretation, /HTTP/);
 
+const mitigatedDomainCanonicalization = buildDomainCanonicalizationAvailability({
+  status: 'noncompliant',
+  canonicalOrigin: 'https://hk.onyxdevslab.com/',
+  results: [
+    { id: 'https-apex', status: 'noncompliant', finalStatus: 200, reasons: ['final-url-is-not-canonical-origin'], mitigation: { status: 'applied', mechanism: 'noindex-canonical-meta-refresh' } },
+  ],
+});
+assert.equal(mitigatedDomainCanonicalization.mitigatedSources, 1);
+assert.equal(mitigatedDomainCanonicalization.sources[0].status, 'mitigated-noncompliant');
+assert.match(mitigatedDomainCanonicalization.interpretation, /301 or 308/);
+
 const statusAndCoverageChange = buildAvailabilityChanges(
   { commonCrawl: partialCommonCrawl },
   { commonCrawl: availableCommonCrawl },
@@ -263,4 +274,4 @@ assert.equal(selectEvidenceEventKind({ initializing: false, evidenceChanged: tru
 assert.equal(selectEvidenceEventKind({ initializing: false, evidenceChanged: false, availabilityChanged: true }), 'availability-change');
 assert.equal(selectEvidenceEventKind({ initializing: false, evidenceChanged: false, availabilityChanged: false }), null);
 
-console.log(JSON.stringify({ tests: 92, failures: [] }, null, 2));
+console.log(JSON.stringify({ tests: 95, failures: [] }, null, 2));
