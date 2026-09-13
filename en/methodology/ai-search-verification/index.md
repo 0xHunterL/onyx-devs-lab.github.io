@@ -508,10 +508,10 @@ We will first clarify the workflow, evidence, data boundary, and outcome standar
         {
           "@type": "SoftwareSourceCode",
           "name": "Software Heritage archive of the Onyx Devs Lab public repository",
-          "identifier": "swh:1:snp:f3820205ce07ab9df33d2f0db735bc4b25ca0347",
-          "url": "https://archive.softwareheritage.org/swh:1:snp:f3820205ce07ab9df33d2f0db735bc4b25ca0347/",
+          "identifier": "swh:1:snp:beec7f09ab04a666d11d120abddf542620d09e97",
+          "url": "https://archive.softwareheritage.org/swh:1:snp:beec7f09ab04a666d11d120abddf542620d09e97/",
           "codeRepository": "https://github.com/0xHunterL/onyx-devs-lab.github.io",
-          "version": "40d2c1d369ec835c5012256a6f2f84964e01305b"
+          "version": "d7d6ee308e5f543e3136d3da68c2fd16f0361500"
         },
         {
           "@type": "CreativeWork",

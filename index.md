@@ -184,10 +184,10 @@ Onyx Devs Lab is the public brand of ONYX DEVS LAB LIMITED, a Hong Kong company 
         {
           "@type": "SoftwareSourceCode",
           "name": "Software Heritage archive of the Onyx Devs Lab public repository",
-          "identifier": "swh:1:snp:f3820205ce07ab9df33d2f0db735bc4b25ca0347",
-          "url": "https://archive.softwareheritage.org/swh:1:snp:f3820205ce07ab9df33d2f0db735bc4b25ca0347/",
+          "identifier": "swh:1:snp:beec7f09ab04a666d11d120abddf542620d09e97",
+          "url": "https://archive.softwareheritage.org/swh:1:snp:beec7f09ab04a666d11d120abddf542620d09e97/",
           "codeRepository": "https://github.com/0xHunterL/onyx-devs-lab.github.io",
-          "version": "a2d9281d23f406cd7ab1b19ed62d0e4c2e6fadfc"
+          "version": "d7d6ee308e5f543e3136d3da68c2fd16f0361500"
         },
         {
           "@type": "CreativeWork",

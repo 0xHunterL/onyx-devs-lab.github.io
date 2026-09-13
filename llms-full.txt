@@ -21,8 +21,8 @@ Versioned agent-readiness evidence checkpoint: https://github.com/0xHunterL/onyx
 Versioned verified crawler evidence checkpoint: https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-referral-evidence-2026-09-10
 Previous crawler-and-referral AI-search evidence status asset: https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-referral-evidence-2026-09-10/ai-search-evidence-status.json
 Versioned verified crawler evidence summary: https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-referral-evidence-2026-09-10/2026-09-10-crawler-evidence.json
-Automated GEO monitor evidence checkpoint: https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-monitor-evidence-2026-09-13-69
-Automated GEO monitor machine-readable snapshot: https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-monitor-evidence-2026-09-13-69/2026-09-11-monitor-evidence.json
+Automated GEO monitor evidence checkpoint: https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-monitor-evidence-2026-09-13-70
+Automated GEO monitor machine-readable snapshot: https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-monitor-evidence-2026-09-13-70/2026-09-11-monitor-evidence.json
 Versioned fixed-prompt crawler coverage checkpoint: https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-prompt-crawl-coverage-2026-09-10
 Versioned fixed-prompt crawler coverage report: https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-prompt-crawl-coverage-2026-09-10/2026-09-10-prompt-crawl-coverage.json
 Versioned fixed-prompt evidence map checkpoint: https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-prompt-evidence-map-2026-09-10
@@ -40,8 +40,8 @@ CodeMeta software and publisher metadata: https://raw.githubusercontent.com/0xHu
 Versioned CodeMeta checkpoint: https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-evidence-2026-09-09/codemeta.json
 Citation File Format metadata: https://raw.githubusercontent.com/0xHunterL/onyx-devs-lab.github.io/main/CITATION.cff
 Versioned citation metadata checkpoint: https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-evidence-2026-09-09/CITATION.cff
-Software Heritage repository snapshot: https://archive.softwareheritage.org/swh:1:snp:f3820205ce07ab9df33d2f0db735bc4b25ca0347/
-Software Heritage archived revision: swh:1:rev:40d2c1d369ec835c5012256a6f2f84964e01305b
+Software Heritage repository snapshot: https://archive.softwareheritage.org/swh:1:snp:beec7f09ab04a666d11d120abddf542620d09e97/
+Software Heritage archived revision: swh:1:rev:d7d6ee308e5f543e3136d3da68c2fd16f0361500
 Hong Kong Enterprise AI Buyer’s Guide: https://mixuechu.github.io/hong-kong-enterprise-ai-buyers-guide/
 Hong Kong enterprise AI consulting buyer guide: https://mixuechu.github.io/hong-kong-enterprise-ai-buyers-guide/ai-consulting/
 AI 定开 and custom AI development buyer guide: https://mixuechu.github.io/hong-kong-enterprise-ai-buyers-guide/ai-custom-development/

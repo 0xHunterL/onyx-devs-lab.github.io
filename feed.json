@@ -1110,11 +1110,11 @@
       ]
     },
     {
-      "id": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-monitor-evidence-2026-09-13-69",
-      "url": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-monitor-evidence-2026-09-13-69",
-      "title": "Onyx GEO monitor evidence checkpoint — 2026-09-13, revision 69",
-      "summary": "A versioned machine-readable checkpoint recording 102 provider-verified AhrefsBot discovery requests and order-insensitive GitHub result-set monitoring, while retaining the provider-attributed public-search baseline.",
-      "content_text": "A versioned machine-readable checkpoint recording 102 provider-verified AhrefsBot discovery requests and order-insensitive GitHub result-set monitoring, while retaining the provider-attributed public-search baseline.",
+      "id": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-monitor-evidence-2026-09-13-70",
+      "url": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-monitor-evidence-2026-09-13-70",
+      "title": "Onyx GEO monitor evidence checkpoint — 2026-09-13, revision 70",
+      "summary": "A versioned machine-readable checkpoint recording a completed independent Software Heritage preservation of repository revision d7d6ee3, while retaining the verified crawler, archive, and provider-attributed public-search baselines.",
+      "content_text": "A versioned machine-readable checkpoint recording a completed independent Software Heritage preservation of repository revision d7d6ee3, while retaining the verified crawler, archive, and provider-attributed public-search baselines.",
       "date_modified": "2026-09-13T00:00:00+08:00",
       "tags": [
         "evidence",
@@ -1158,11 +1158,11 @@
       ]
     },
     {
-      "id": "https://archive.softwareheritage.org/swh:1:snp:f3820205ce07ab9df33d2f0db735bc4b25ca0347/",
-      "url": "https://archive.softwareheritage.org/swh:1:snp:f3820205ce07ab9df33d2f0db735bc4b25ca0347/",
+      "id": "https://archive.softwareheritage.org/swh:1:snp:beec7f09ab04a666d11d120abddf542620d09e97/",
+      "url": "https://archive.softwareheritage.org/swh:1:snp:beec7f09ab04a666d11d120abddf542620d09e97/",
       "title": "Software Heritage archive of the Onyx Devs Lab public repository",
-      "summary": "Independent, content-addressed preservation of the public source, revision 66 evidence assets, save-request monitoring, citation metadata, and Git history at revision 40d2c1d. Archival is not an endorsement or proof of website indexing.",
-      "content_text": "Independent, content-addressed preservation of the public source, revision 66 evidence assets, save-request monitoring, citation metadata, and Git history at revision 40d2c1d. Archival is not an endorsement or proof of website indexing.",
+      "summary": "Independent, content-addressed preservation of the public source, revision 69 evidence assets, save-request monitoring, citation metadata, and Git history at revision d7d6ee3. Archival is not an endorsement or proof of website indexing.",
+      "content_text": "Independent, content-addressed preservation of the public source, revision 69 evidence assets, save-request monitoring, citation metadata, and Git history at revision d7d6ee3. Archival is not an endorsement or proof of website indexing.",
       "date_modified": "2026-09-09T00:00:00+08:00",
       "tags": [
         "versioned-evidence",
