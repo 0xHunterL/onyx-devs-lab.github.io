@@ -31,6 +31,20 @@ export function buildSoftwareHeritageAvailability(observation, sources = []) {
     if (source.id === 'github-branch-ref') return { ...source, id: `${source.id}:${observation?.repositoryHead || 'unknown'}` };
     if (source.id === 'software-heritage-visits') return { ...source, id: `${source.id}:${observation?.snapshotSwhid || 'unknown'}` };
     if (source.id === 'software-heritage-snapshot') return { ...source, id: `${source.id}:${observation?.archiveHead || 'unknown'}` };
+    if (source.id === 'software-heritage-save-request') {
+      const request = observation?.saveRequest;
+      return {
+        ...source,
+        id: [
+          source.id,
+          request?.id || 'unknown',
+          request?.saveTaskStatus || 'unknown',
+          request?.visitStatus || 'unknown',
+          request?.snapshotSwhid || 'none',
+          request?.nextRun || 'none',
+        ].join(':'),
+      };
+    }
     return source;
   });
   const availableSources = coverageSources.filter((source) => source.status === 'available').length;

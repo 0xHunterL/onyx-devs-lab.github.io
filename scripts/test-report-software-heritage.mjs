@@ -21,19 +21,30 @@ const unavailable = buildSoftwareHeritageObservation({ ...base, latestVisit: { s
 assert.equal(unavailable.status, 'unavailable');
 assert.equal(unavailable.archiveCoverageStatus, 'unavailable');
 
-const availability = buildSoftwareHeritageAvailability(lagging, [
+const availability = buildSoftwareHeritageAvailability({
+  ...lagging,
+  saveRequest: {
+    id: 2473234,
+    saveTaskStatus: 'failed',
+    visitStatus: 'failed',
+    snapshotSwhid: null,
+    nextRun: '2026-09-13T03:50:45Z',
+  },
+}, [
   { id: 'github-branch-ref', status: 'available' },
   { id: 'software-heritage-visits', status: 'available' },
   { id: 'software-heritage-snapshot', status: 'available' },
+  { id: 'software-heritage-save-request', status: 'available' },
 ]);
 assert.equal(availability.status, 'available');
-assert.equal(availability.sourcesChecked, 3);
+assert.equal(availability.sourcesChecked, 4);
 assert.equal(availability.archiveCoverageStatus, 'lagging');
 assert.equal(availability.sources[0].id, 'github-branch-ref:new-head');
 assert.equal(availability.sources[1].id, 'software-heritage-visits:swh:1:snp:snapshot-id');
 assert.equal(availability.sources[2].id, 'software-heritage-snapshot:old-head');
+assert.equal(availability.sources[3].id, 'software-heritage-save-request:2473234:failed:failed:none:2026-09-13T03:50:45Z');
 assert.match(availability.interpretation, /does not yet preserve/);
 assert.match(current.evidenceBoundary, /Neither state proves/);
 assert.throws(() => buildSoftwareHeritageObservation({ origin: base.origin, repositoryHead: '' }), /required/);
 
-console.log(JSON.stringify({ tests: 16, failures: [] }, null, 2));
+console.log(JSON.stringify({ tests: 18, failures: [] }, null, 2));
