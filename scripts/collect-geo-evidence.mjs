@@ -115,6 +115,7 @@ const wayback = await runJson('report-wayback.mjs', ['--host=hk.onyxdevslab.com'
 const distribution = await runJson('check-distribution-live.mjs', ['--report']);
 const servicesHk = await runJson('check-services-hk.mjs', ['--report']);
 const githubRepositorySearch = await runJson('report-github-repository-search.mjs', []);
+const softwareHeritage = await runJson('report-software-heritage.mjs', []);
 const domainCanonicalization = await runJson('check-domain-canonicalization.mjs', []);
 
 const historicalVerifiedCrawlerObservations = Array.isArray(previousSeenEvidence?.verifiedCrawlerObservations)
@@ -159,7 +160,7 @@ const githubRepositorySearchAvailability = {
     ? 'All fixed GitHub repository-search queries returned usable results.'
     : 'GitHub repository-search coverage is incomplete; unavailable queries must not be interpreted as zero results.',
 };
-const availability = { commonCrawl: commonCrawlAvailability, wayback: waybackAvailability, crawlerVerification: crawlerVerificationAvailability, distribution: distributionAvailability, servicesHk: servicesHkAvailability, githubRepositorySearch: githubRepositorySearchAvailability, domainCanonicalization: domainCanonicalizationAvailability };
+const availability = { commonCrawl: commonCrawlAvailability, wayback: waybackAvailability, softwareHeritage: softwareHeritage.availability, crawlerVerification: crawlerVerificationAvailability, distribution: distributionAvailability, servicesHk: servicesHkAvailability, githubRepositorySearch: githubRepositorySearchAvailability, domainCanonicalization: domainCanonicalizationAvailability };
 const availabilityChanges = buildAvailabilityChanges(availability, previous?.availability);
 const priorCounts = previous?.counts || {};
 const metricForCrawlerObservation = (observation) => {
@@ -282,6 +283,7 @@ const summary = {
   deltas,
   newEvidence,
   platformSearch,
+  publicCorpus: { softwareHeritage },
   initialized: !previous,
   changed: newEvidence.length > 0 || platformSearchChanged,
   availabilityChanged: availabilityChanges.length > 0,
@@ -302,6 +304,7 @@ if (eventFile) await atomicJson(eventFile, {
   distribution,
   servicesHk,
   githubRepositorySearch,
+  softwareHeritage,
   domainCanonicalization,
   promptCoverage,
 });
@@ -318,6 +321,7 @@ await atomicJson('wayback-report.json', wayback);
 await atomicJson('distribution-live-report.json', distribution);
 await atomicJson('services-hk-report.json', servicesHk);
 await atomicJson('github-repository-search-report.json', githubRepositorySearch);
+await atomicJson('software-heritage-report.json', softwareHeritage);
 await atomicJson('domain-canonicalization-report.json', domainCanonicalization);
 await atomicJson('prompt-crawl-coverage.json', promptCoverage);
 await atomicJson('summary.json', summary);
