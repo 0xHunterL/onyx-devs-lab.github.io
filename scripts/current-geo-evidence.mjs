@@ -18,12 +18,12 @@ export const currentWaybackEvidence = currentMonitorEvidence.waybackEvidence;
 
 export function hasCurrentMonitorLlmsBoundary(body) {
   return body.includes(`${currentMonitorEvidence.generatedAt} production collection`)
-    && body.includes('three new no-referrer `geo_engagement_model_qa` requests')
-    && body.includes('tracked requests are 86 and visitor-type-unverified requests are 14')
+    && body.includes('one new provider-verified AhrefsBot request for `/sitemap.xml`')
+    && body.includes('verified discovery-file requests to 98')
     && body.includes('optional archive availability remains event-recorded but does not independently block')
     && body.includes('continuous numbered-log lineage policy')
     && body.includes('verified coverage remains 45 paths, 15 search-related evidence pages, and 18 prompts')
-    && body.includes('Common Crawl indexes returned HTTP 504')
+    && body.includes('Both selected Common Crawl indexes returned usable zero-capture responses')
     && body.includes('This is monitoring-integrity and source-availability evidence only')
     && body.includes('does not prove indexing, ranking, AI citation, a human visit, or non-brand recommendation')
     && body.includes('no prompt was sent to Doubao');
