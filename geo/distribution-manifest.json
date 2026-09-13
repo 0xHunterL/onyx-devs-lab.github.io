@@ -232,30 +232,30 @@
       ]
     },
     {
-      "id": "github-release-geo-monitor-evidence-2026-09-13-60",
+      "id": "github-release-geo-monitor-evidence-2026-09-13-61",
       "channel": "github_releases",
       "format": "versioned-evidence-checkpoint",
       "language": "en-zh-CN",
       "status": "published",
       "sourceFile": "README.md",
-      "title": "Onyx GEO monitor evidence checkpoint — 2026-09-13, revision 60",
-      "campaign": "geo_monitor_evidence_60",
+      "title": "Onyx GEO monitor evidence checkpoint — 2026-09-13, revision 61",
+      "campaign": "geo_monitor_evidence_61",
       "trackedTargets": [
-        "https://hk.onyxdevslab.com/data/ai-search-evidence-status.json?utm_source=github_releases&utm_medium=referral&utm_campaign=geo_monitor_evidence_60"
+        "https://hk.onyxdevslab.com/data/ai-search-evidence-status.json?utm_source=github_releases&utm_medium=referral&utm_campaign=geo_monitor_evidence_61"
       ],
-      "publicUrl": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-monitor-evidence-2026-09-13-60",
-      "anonymousAccessVerifiedAt": "2026-09-13T00:24:00Z",
+      "publicUrl": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-monitor-evidence-2026-09-13-61",
+      "anonymousAccessVerifiedAt": "2026-09-13T00:44:00Z",
       "publicContentMarkers": [
-        "GEO monitor evidence checkpoint — 2026-09-13, revision 60",
-        "continuous numbered-log lineage policy",
-        "Common Crawl observation is partial"
+        "GEO monitor evidence checkpoint — 2026-09-13, revision 61",
+        "three new no-referrer geo_engagement_model_qa requests",
+        "optional archive availability remains event-recorded"
       ],
       "searchIndexedAt": null,
       "aiCitationObservedAt": null,
       "nonBrandRecommendationObservedAt": null,
       "limitations": [
         "The Release and its assets are published and maintained by Onyx Devs Lab.",
-        "The Release records a monitoring-integrity repair and partial source availability; it does not prove causation, indexing, or ranking.",
+        "The Release records visitor-type-unverified attribution and optional archive-source availability; it does not prove causation, indexing, or ranking.",
         "Anonymous availability and matching content markers do not prove independent endorsement, Hong Kong deep-page or non-brand retrieval, AI citation, recommendation, or a human visit."
       ]
     }
