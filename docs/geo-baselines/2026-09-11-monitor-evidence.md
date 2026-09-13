@@ -4,6 +4,8 @@
 
 ## 当前可复核结果
 
+- 2026-09-13T09:49:52Z，通过 Bing 中文公开交互页面直接复测五条查询：精确品牌词 `"Onyx Devs Lab"` 的首个可见结果集合同时出现官方旧 apex、香港繁体首页与简体首页，首次形成具名提供方的 Bing 品牌官网正向证据；`site:` 查询也显示官网，但结果中混入 QCC，故不把它解释为严格站点穷举。旧 apex 仍以 HTTP URL 和过时个人履历摘要展示，是明确的规范化与摘要质量缺口；本轮只记录，没有修改 DNS、Cloudflare 或 Pages。精确法律主体词的可见首屏先出现 QCC、Bloomberg LEI、tempb 等第三方实体记录，未见官网；精确组合词 `"Hong Kong AI consulting" "Onyx Devs Lab"` 明确无相关结果，中性类目词 `"Hong Kong AI consulting"` 的可见首屏也未见 Onyx。此前 Bing 负面检查点作为历史保留，不据一次变化推断稳定排名、全量收录、Copilot／AI 检索、引用或非品牌推荐；未处理验证码，未向豆包发送提示词。
+- 2026-09-13T09:34:28.534Z，revision 72 部署后生产复采确认统一账本已达到 17 个已发布项目、31 个跟踪目标与 48 个可用来源，发布漂移状态为 `synchronized`、`mismatches:[]`。爬虫计数、归因计数、Wayback 覆盖和 AI Referrer 均无新增；Software Heritage 仍精确保存 `d7d6ee3`，相对当时 `b962ce6` 主分支继续如实标为 `lagging`。
 - revision 72 Release 已精确固定到基线提交 `c2665364455a9f4fa6bd97439081aacae11648d2`。五个资产经匿名下载逐字节复核，SHA-256 依次为：监测快照 `4ece1eb31e6165c20d5f6ccd023123ff4a661712eef9da6e63f7580453884a95`、公开状态 `a0d71bc1ba2234e358a05e56263ac33a840c33fe515465f16f3618702f225382`、提示词矩阵 `ed5305c7c1221689dd5c522cf305ea7ff73344ef37f016a3e148d5f598351b6f`、证据映射 `28b9c7f47bdc555e4add7e27a11e5bfffa7d1aed41c4f30b7884dd81719524c6`、覆盖报告 `7b9eb77978732b6425d408bb02cf4c2629daa9693ad2bb448e937df179151c11`。
 - revision 72 固定 `2026-09-13T09:14:08.977Z` 生产采集：新增一条提供方已核验的 OAI-SearchBot `/robots.txt` 304 请求，OpenAI 发现文件累计为 GPTBot 15、OAI-SearchBot 13，正文请求仍为 28／0；Ahrefs 发现文件累计为 105、正文为 0。另有一条来自 GitHub Discussions UTM 的请求仅记为“访问者类型未验证”，其 OVH 网络、空 Referrer 与浏览器标识不足以证明真人访问。所有增量均不证明收录、AI 检索、引用、排名或非品牌推荐，且未向豆包发送提示词。
 - revision 71 的发布漂移门禁继续严格比较提供方已核验爬虫、正文路径、提示词覆盖、真人类型未验证归因、可验证站外 Referrer 与 AI Referrer；已明确归类为链接扫描器、周期客户端、异常身份或格式错误活动的自动流量只保留为公开审计上下文，不再单独触发新版本。这样可避免 Release 链接安全扫描造成自激式发布循环，同时不会吞掉可能代表真人、搜索点击或 AI 引荐的变化。

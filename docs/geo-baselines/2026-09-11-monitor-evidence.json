@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
-  "publicStatusVersion": "2026.09.13.72",
-  "generatedAt": "2026-09-13T09:14:08.977Z",
-  "latestEvidenceObservedAt": "2026-09-13T08:16:17Z",
+  "publicStatusVersion": "2026.09.13.73",
+  "generatedAt": "2026-09-13T09:49:52Z",
+  "latestEvidenceObservedAt": "2026-09-13T09:49:52Z",
   "windowStart": "2026-09-01",
   "site": "https://hk.onyxdevslab.com/",
   "sourceLogs": [
@@ -215,10 +215,10 @@
     "meaning": "Both selected Common Crawl indexes returned usable zero-capture responses. This complete result covers only the two selected indexes and cannot be interpreted as absence from all Common Crawl history, public search, or AI systems; availability changes remain event-recorded but do not independently block unrelated verified evidence publication."
   },
   "softwareHeritageEvidence": {
-    "checkedAt": "2026-09-13T09:14:07.141Z",
+    "checkedAt": "2026-09-13T09:34:27.155Z",
     "status": "available",
     "archiveCoverageStatus": "lagging",
-    "repositoryHead": "c46a09cb348c5b001e8e5e4f31f8b4b830629a2b",
+    "repositoryHead": "b962ce60c947bcbcc5c666cd2bce625d85486570",
     "latestCompleteVisitAt": "2026-09-13T06:09:12.547000+00:00",
     "latestAttemptAt": "2026-09-13T06:09:12.547000+00:00",
     "latestAttemptStatus": "full",
@@ -235,7 +235,7 @@
       "nextRun": "2026-09-13T06:09:09.000202Z"
     },
     "eventFile": "events/2026-09-13T09-14-08.977Z-evidence-and-availability-change.json",
-    "meaning": "GitHub, the Software Heritage visit history, save-request endpoint and latest complete snapshot were all queryable. Request 2473685 remains succeeded/full and snapshot beec7f09 still independently preserves revision d7d6ee3; mutable GitHub main has advanced to c46a09c, so archive coverage remains accurately reported as lagging. The immutable snapshot remains valid preservation evidence for its named revision. Neither current nor lagging archive coverage proves website search indexing, AI retrieval, citation, ranking, endorsement, or recommendation."
+    "meaning": "GitHub, the Software Heritage visit history, save-request endpoint and latest complete snapshot were all queryable. Request 2473685 remains succeeded/full and snapshot beec7f09 still independently preserves revision d7d6ee3; mutable GitHub main has advanced to b962ce6, so archive coverage remains accurately reported as lagging. The immutable snapshot remains valid preservation evidence for its named revision. Neither current nor lagging archive coverage proves website search indexing, AI retrieval, citation, ranking, endorsement, or recommendation."
   },
   "waybackEvidence": {
     "checkedAt": "2026-09-13T03:55:45.852Z",
@@ -375,26 +375,26 @@
     "meaning": "All three fixed GitHub Repository Search API queries were available. Brand and legal-entity queries return both first-party repositories; the exact category query returns the same two repositories after the recorded README changes. This proves GitHub platform-search visibility only, not public-web indexing, AI retrieval, citation, ranking, independent endorsement, or non-brand recommendation."
   },
   "distributionEvidence": {
-    "manifestItems": 17,
-    "publishedItems": 16,
+    "manifestItems": 18,
+    "publishedItems": 17,
     "readyNotPublishedItems": 1,
-    "checkedAt": "2026-09-13T09:14:03.545Z",
-    "publicUrlsChecked": 16,
-    "trackedTargetsChecked": 30,
-    "availableSources": 46,
+    "checkedAt": "2026-09-13T09:34:28.534Z",
+    "publicUrlsChecked": 17,
+    "trackedTargetsChecked": 31,
+    "availableSources": 48,
     "unavailableSources": 0,
     "availabilityStatus": "available",
     "eventFile": "events/2026-09-13T09-14-08.977Z-evidence-and-availability-change.json",
     "expectedAfterCurrentCheckpointPublication": {
-      "manifestItems": 18,
-      "publishedItems": 17,
-      "trackedTargetsChecked": 31,
-      "availableSources": 48,
+      "manifestItems": 19,
+      "publishedItems": 18,
+      "trackedTargetsChecked": 32,
+      "availableSources": 50,
       "unavailableSources": 0,
       "availabilityStatus": "available",
       "meaning": "The current immutable checkpoint is published after its source snapshot is created. These values are the explicitly declared post-publication state used by the drift gate; they must be confirmed by a subsequent production collection before synchronization is reported."
     },
-    "meaning": "At collection time, the distribution ledger included 16 published URLs, 30 tracked targets, and 46 available sources. Revision 72 separately declares its expected self-publication delta instead of backdating its own Release into the snapshot. This checkpoint versions one new provider-verified OAI-SearchBot robots.txt request, three additional Ahrefs discovery-file requests since revision 71's source snapshot, and one attributed request whose visitor type remains unverified. It does not prove content crawling by OAI-SearchBot, indexing, AI retrieval, citation, recommendation, a human visit, or independent endorsement."
+    "meaning": "The 2026-09-13T09:34:28.534Z production collection confirmed revision 72's self-publication state: 17 published URLs, 31 tracked targets, and 48 available sources. Revision 73 separately declares its expected self-publication delta instead of backdating its own Release into the snapshot. This checkpoint versions a new direct Bing public-search observation, not a new independent endorsement."
   },
   "servicesHkReadinessEvidence": {
     "checkedAt": "2026-09-13T03:55:47.596Z",
@@ -473,41 +473,98 @@
     "meaning": "The dated exact-brand query directly returned the provider-owned apex domain, whose live canonical points to the Hong Kong site. This is positive Yandex brand retrieval evidence for the official web property. It does not prove that the hk subdomain or deep pages are separately indexed, that non-brand category queries return Onyx, that the result is stable or ranked similarly in other regions, or that any AI product retrieved, cited, endorsed, or recommended Onyx. The follow-up captcha was not completed and cannot be interpreted as a negative result."
   },
   "bingPublicSearchEvidence": {
-    "testedAt": "2026-09-13T05:01:39Z",
+    "testedAt": "2026-09-13T09:49:52Z",
     "provider": "Bing Web Search",
     "interface": "public interactive HTML search",
     "localeObserved": "zh-CN interface",
     "status": "partial",
     "queries": [
       {
-        "query": "\"ONYX-GEO-VERIFY-79051925-20260908\"",
-        "url": "https://www.bing.com/search?q=%22ONYX-GEO-VERIFY-79051925-20260908%22",
-        "result": "explicit-no-results",
-        "officialSiteObserved": false,
-        "visibleResultScope": "Bing displayed an explicit no-results message for the exact marker query."
-      },
-      {
-        "query": "\"Onyx Devs Lab\" -site:cr.gov.hk",
-        "url": "https://www.bing.com/search?q=%22Onyx+Devs+Lab%22+-site%3Acr.gov.hk",
-        "result": "official-site-not-observed-in-first-page; query-broadened",
-        "officialSiteObserved": false,
-        "visibleResultScope": "The first visible page contained ten generic Onyx results and no Onyx Devs Lab result; Bing reported about 44,500 results, showing that the exact phrase was not enforced in the visible result set."
+        "query": "\"Onyx Devs Lab\"",
+        "url": "https://www.bing.com/search?q=%22Onyx+Devs+Lab%22",
+        "result": "official-site-observed-in-first-visible-page",
+        "officialSiteObserved": true,
+        "reportedApproximateResultCount": 258,
+        "visibleOfficialResults": [
+          {
+            "positionInVisibleResults": 1,
+            "title": "Onyx Devs Lab",
+            "url": "http://onyxdevslab.com/",
+            "qualityCaveat": "The visible result used the legacy HTTP apex and a stale personal-profile snippet; it is official-domain visibility but not a clean current canonical presentation."
+          },
+          {
+            "positionInVisibleResults": 2,
+            "title": "香港企業 AI 服務｜Onyx Devs Lab",
+            "url": "https://hk.onyxdevslab.com/zh-hk/"
+          },
+          {
+            "positionInVisibleResults": 3,
+            "title": "香港企业 AI 咨询、定制开发与 FDE｜Onyx Devs Lab",
+            "url": "https://hk.onyxdevslab.com/zh-cn/"
+          }
+        ],
+        "visibleResultScope": "The first visible Bing results included the official apex, Hong Kong Traditional Chinese homepage, and Simplified Chinese homepage. The observed order is a dated visible-page observation, not a stable rank claim."
       },
       {
         "query": "site:hk.onyxdevslab.com \"Onyx Devs Lab\"",
         "url": "https://www.bing.com/search?q=site%3Ahk.onyxdevslab.com+%22Onyx+Devs+Lab%22",
-        "result": "official-site-not-observed-in-first-page; site-operator-not-enforced",
+        "result": "official-site-observed-in-first-visible-page; site-operator-not-strictly-enforced",
+        "officialSiteObserved": true,
+        "visibleResultScope": "The official apex and the Hong Kong Traditional and Simplified Chinese homepages were visible, but a QCC third-party entity result also appeared, so the displayed result set did not strictly enforce the requested site restriction."
+      },
+      {
+        "query": "\"ONYX DEVS LAB LIMITED\"",
+        "url": "https://www.bing.com/search?q=%22ONYX+DEVS+LAB+LIMITED%22",
+        "result": "official-site-not-observed-in-visible-first-page; third-party-entity-records-observed",
         "officialSiteObserved": false,
-        "visibleResultScope": "The first visible page again contained ten generic Onyx results and no hk.onyxdevslab.com URL; the visible results did not honor the requested site restriction."
+        "visibleThirdPartyEntityResults": [
+          "QCC company record",
+          "Bloomberg LEI record",
+          "tempb.com company directory",
+          "Hong Kong company-directory records"
+        ],
+        "visibleResultScope": "The visible first-page subset began with third-party legal-entity records; no official-site result was visible in that inspected subset."
+      },
+      {
+        "query": "\"Hong Kong AI consulting\" \"Onyx Devs Lab\"",
+        "url": "https://www.bing.com/search?q=%22Hong+Kong+AI+consulting%22+%22Onyx+Devs+Lab%22",
+        "result": "explicit-no-related-results",
+        "officialSiteObserved": false,
+        "visibleResultScope": "Bing displayed an explicit no-related-results message for this exact combined brand-and-category query. A captcha-related advertisement was visible but was not interacted with."
+      },
+      {
+        "query": "\"Hong Kong AI consulting\"",
+        "url": "https://www.bing.com/search?q=%22Hong+Kong+AI+consulting%22",
+        "result": "official-Onyx-result-not-observed-in-visible-first-page",
+        "officialSiteObserved": false,
+        "reportedApproximateResultCount": 63300,
+        "otherVisibleResults": [
+          "softmind.tech",
+          "aikm.ai",
+          "ensun.io",
+          "alphamatch.ai",
+          "YCP Group",
+          "stepone.agency",
+          "super-cat.tech",
+          "Sortlist"
+        ],
+        "visibleResultScope": "The first visible page contained other Hong Kong AI-consulting providers and directories; no Onyx result was visible. This is a first-page observation, not an exhaustive absence claim."
       }
     ],
-    "categoryQueryProtocol": {
-      "neutralQuery": "香港有哪些做企业 AI 咨询的团队？",
-      "fdeQuery": "香港有哪些提供 FDE 前线部署工程的团队？",
-      "status": "not-run-in-this-check",
-      "reason": "Neutral category discovery must be measured separately from FDE because FDE.HK is also a provider brand; combining them would confound category and competitor-brand visibility."
+    "previousObservation": {
+      "testedAt": "2026-09-13T05:01:39Z",
+      "exactMarkerResult": "explicit-no-results",
+      "brandQueryResult": "official-site-not-observed-in-first-page; query-broadened",
+      "siteQueryResult": "official-site-not-observed-in-first-page; site-operator-not-enforced",
+      "meaning": "The prior provider-attributed checkpoint is retained to show that visible result sets can change. It must not be converted into a stable ranking, exhaustive indexing, or deindexing trend claim."
     },
-    "meaning": "This dated, provider-attributed observation is negative Bing public-search evidence for the exact marker and first-page official-site visibility. The two brand and site queries visibly broadened to generic Onyx results, so they cannot be treated as reliable exhaustive index checks. The observation does not prove deindexing, absence from all Bing regions or result pages, Copilot retrieval, AI citation, ranking, or non-brand recommendation."
+    "categoryQueryProtocol": {
+      "neutralQuery": "\"Hong Kong AI consulting\"",
+      "fdeQuery": "香港有哪些提供 FDE 前线部署工程的团队？",
+      "status": "neutral-query-run-separately; fde-query-not-run-in-this-check",
+      "reason": "The neutral English category query was run separately and did not show Onyx in the visible first page. FDE remains a separate protocol because FDE.HK is also a provider brand; combining it with neutral AI consulting would confound category and competitor-brand visibility."
+    },
+    "meaning": "This dated, provider-attributed observation upgrades Bing brand visibility: the official apex and two Hong Kong localized homepages were directly visible for the exact brand query. It does not establish stable ranking, clean canonical presentation, exhaustive indexing, Copilot or other AI retrieval, citation, endorsement, or non-brand recommendation. The neutral category query and exact combined brand-and-category query still did not return an Onyx result in their stated visible scopes."
   },
   "googlePublicSearchAttempt": {
     "testedAt": "2026-09-13T04:57:43Z",
