@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
-  "publicStatusVersion": "2026.09.13.74",
-  "generatedAt": "2026-09-13T10:10:04.690Z",
-  "latestEvidenceObservedAt": "2026-09-13T09:49:52Z",
+  "publicStatusVersion": "2026.09.13.75",
+  "generatedAt": "2026-09-13T10:51:21.060Z",
+  "latestEvidenceObservedAt": "2026-09-13T10:51:20.991Z",
   "windowStart": "2026-09-01",
   "site": "https://hk.onyxdevslab.com/",
   "sourceLogs": [
@@ -215,10 +215,10 @@
     "meaning": "Both selected Common Crawl indexes returned usable zero-capture responses. This complete result covers only the two selected indexes and cannot be interpreted as absence from all Common Crawl history, public search, or AI systems; availability changes remain event-recorded but do not independently block unrelated verified evidence publication."
   },
   "softwareHeritageEvidence": {
-    "checkedAt": "2026-09-13T10:10:03.179Z",
+    "checkedAt": "2026-09-13T10:51:19.849Z",
     "status": "available",
     "archiveCoverageStatus": "lagging",
-    "repositoryHead": "80ee96434d7ad342d586879794666fbe0573f6a6",
+    "repositoryHead": "83eefbd13225334b2bfabcf8f7202619722ca02b",
     "latestCompleteVisitAt": "2026-09-13T06:09:12.547000+00:00",
     "latestAttemptAt": "2026-09-13T06:09:12.547000+00:00",
     "latestAttemptStatus": "full",
@@ -234,8 +234,8 @@
       "snapshotSwhid": "swh:1:snp:beec7f09ab04a666d11d120abddf542620d09e97",
       "nextRun": "2026-09-13T06:09:09.000202Z"
     },
-    "eventFile": "events/2026-09-13T10-10-04.690Z-evidence-and-availability-change.json",
-    "meaning": "GitHub, the Software Heritage visit history, save-request endpoint and latest complete snapshot were all queryable. Request 2473685 remains succeeded/full and snapshot beec7f09 still independently preserves revision d7d6ee3; mutable GitHub main has advanced to 80ee964, so archive coverage remains accurately reported as lagging. The immutable snapshot remains valid preservation evidence for its named revision. Neither current nor lagging archive coverage proves website search indexing, AI retrieval, citation, ranking, endorsement, or recommendation."
+    "eventFile": "events/2026-09-13T10-51-21.060Z-availability-change.json",
+    "meaning": "GitHub, the Software Heritage visit history, save-request endpoint and latest complete snapshot were all queryable. Request 2473685 remains succeeded/full and snapshot beec7f09 still independently preserves revision d7d6ee3; mutable GitHub main has advanced to 83eefbd, so archive coverage remains accurately reported as lagging. The immutable snapshot remains valid preservation evidence for its named revision. Neither current nor lagging archive coverage proves website search indexing, AI retrieval, citation, ranking, endorsement, or recommendation."
   },
   "waybackEvidence": {
     "checkedAt": "2026-09-13T03:55:45.852Z",
@@ -375,26 +375,26 @@
     "meaning": "All three fixed GitHub Repository Search API queries were available. Brand and legal-entity queries return both first-party repositories; the exact category query returns the same two repositories after the recorded README changes. This proves GitHub platform-search visibility only, not public-web indexing, AI retrieval, citation, ranking, independent endorsement, or non-brand recommendation."
   },
   "distributionEvidence": {
-    "manifestItems": 19,
-    "publishedItems": 18,
+    "manifestItems": 20,
+    "publishedItems": 19,
     "readyNotPublishedItems": 1,
-    "checkedAt": "2026-09-13T10:10:04.690Z",
-    "publicUrlsChecked": 18,
-    "trackedTargetsChecked": 32,
-    "availableSources": 50,
+    "checkedAt": "2026-09-13T10:51:16.395Z",
+    "publicUrlsChecked": 19,
+    "trackedTargetsChecked": 33,
+    "availableSources": 52,
     "unavailableSources": 0,
     "availabilityStatus": "available",
-    "eventFile": "events/2026-09-13T10-10-04.690Z-evidence-and-availability-change.json",
+    "eventFile": "events/2026-09-13T10-51-21.060Z-availability-change.json",
     "expectedAfterCurrentCheckpointPublication": {
-      "manifestItems": 20,
-      "publishedItems": 19,
-      "trackedTargetsChecked": 33,
-      "availableSources": 52,
+      "manifestItems": 21,
+      "publishedItems": 20,
+      "trackedTargetsChecked": 34,
+      "availableSources": 54,
       "unavailableSources": 0,
       "availabilityStatus": "available",
       "meaning": "The current immutable checkpoint is published after its source snapshot is created. These values are the explicitly declared post-publication state used by the drift gate; they must be confirmed by a subsequent production collection before synchronization is reported."
     },
-    "meaning": "The 2026-09-13T10:10:04.690Z production collection confirmed revision 73's self-publication state: 18 published URLs, 32 tracked targets, and 50 available sources. Revision 74 separately declares its expected self-publication delta instead of backdating its own Release into the snapshot. This checkpoint preserves the direct Bing brand-visibility observation and adds one provider-verified AhrefsBot sitemap request; neither is independent endorsement or proof of AI retrieval."
+    "meaning": "The 2026-09-13T10:51:21.060Z production collection confirmed revision 74's self-publication state: 19 published URLs, 33 tracked targets, and 52 available sources. Revision 75 separately declares its expected self-publication delta instead of backdating its own Release into the snapshot. This checkpoint records removal of duplicate legacy-apex content and a client-side canonicalization mitigation; it adds no crawler, indexing, AI-citation, referral, or recommendation claim."
   },
   "servicesHkReadinessEvidence": {
     "checkedAt": "2026-09-13T03:55:47.596Z",
@@ -411,26 +411,27 @@
     "meaning": "All three sampled services.hk detail pages return HTTP 200 but contain the known PHP application failure and omit the required title, service-description, and contact markers. This blocks submission readiness; it does not prove that Onyx is listed, reviewed, endorsed, indexed, cited, or recommended. Submission still requires current user confirmation after all three targets recover."
   },
   "domainCanonicalizationEvidence": {
-    "checkedAt": "2026-09-13T03:55:52.261Z",
+    "checkedAt": "2026-09-13T10:51:20.991Z",
     "status": "noncompliant",
     "canonicalOrigin": "https://hk.onyxdevslab.com/",
     "targetsChecked": 6,
-    "compliantTargets": 3,
-    "noncompliantTargets": 3,
+    "compliantTargets": 2,
+    "mitigatedTargets": 4,
+    "noncompliantTargets": 4,
     "unavailableTargets": 0,
     "targets": [
-      {"id": "http-apex", "startUrl": "http://onyxdevslab.com/", "finalUrl": "http://onyxdevslab.com/", "status": "noncompliant", "reasons": ["http-serves-content-without-redirect", "final-url-is-not-https"]},
-      {"id": "https-apex", "startUrl": "https://onyxdevslab.com/", "finalUrl": "https://onyxdevslab.com/", "status": "compliant", "reasons": []},
-      {"id": "http-www", "startUrl": "http://www.onyxdevslab.com/", "finalUrl": "http://onyxdevslab.com/", "status": "noncompliant", "reasons": ["redirect-target-uses-http", "final-url-is-not-https"]},
-      {"id": "https-www", "startUrl": "https://www.onyxdevslab.com/", "finalUrl": "http://onyxdevslab.com/", "status": "noncompliant", "reasons": ["redirect-target-uses-http", "https-downgrade-observed", "final-url-is-not-https"]},
-      {"id": "http-hk", "startUrl": "http://hk.onyxdevslab.com/", "finalUrl": "https://hk.onyxdevslab.com/", "status": "compliant", "reasons": []},
-      {"id": "https-hk", "startUrl": "https://hk.onyxdevslab.com/", "finalUrl": "https://hk.onyxdevslab.com/", "status": "compliant", "reasons": []}
+      {"id": "http-apex", "startUrl": "http://onyxdevslab.com/", "finalUrl": "http://onyxdevslab.com/", "status": "mitigated-noncompliant", "reasons": ["http-serves-content-without-redirect", "final-url-is-not-https", "final-url-is-not-canonical-origin"], "mitigation": {"status": "applied", "mechanism": "noindex-canonical-meta-refresh", "limitation": "Client-side suppression and navigation do not replace an HTTP 301 or 308 redirect."}},
+      {"id": "https-apex", "startUrl": "https://onyxdevslab.com/", "finalUrl": "https://onyxdevslab.com/", "status": "mitigated-noncompliant", "reasons": ["final-url-is-not-canonical-origin"], "mitigation": {"status": "applied", "mechanism": "noindex-canonical-meta-refresh", "limitation": "Client-side suppression and navigation do not replace an HTTP 301 or 308 redirect."}},
+      {"id": "http-www", "startUrl": "http://www.onyxdevslab.com/", "finalUrl": "http://onyxdevslab.com/", "status": "mitigated-noncompliant", "reasons": ["redirect-target-uses-http", "final-url-is-not-https", "final-url-is-not-canonical-origin"], "mitigation": {"status": "applied", "mechanism": "noindex-canonical-meta-refresh", "limitation": "Client-side suppression and navigation do not replace an HTTP 301 or 308 redirect."}},
+      {"id": "https-www", "startUrl": "https://www.onyxdevslab.com/", "finalUrl": "http://onyxdevslab.com/", "status": "mitigated-noncompliant", "reasons": ["redirect-target-uses-http", "https-downgrade-observed", "final-url-is-not-https", "final-url-is-not-canonical-origin"], "mitigation": {"status": "applied", "mechanism": "noindex-canonical-meta-refresh", "limitation": "Client-side suppression and navigation do not replace an HTTP 301 or 308 redirect."}},
+      {"id": "http-hk", "startUrl": "http://hk.onyxdevslab.com/", "finalUrl": "https://hk.onyxdevslab.com/", "status": "compliant", "reasons": [], "mitigation": {"status": "absent", "mechanism": null, "limitation": null}},
+      {"id": "https-hk", "startUrl": "https://hk.onyxdevslab.com/", "finalUrl": "https://hk.onyxdevslab.com/", "status": "compliant", "reasons": [], "mitigation": {"status": "absent", "mechanism": null, "limitation": null}}
     ],
     "githubPagesSetting": {"checkedAt": "2026-09-12T23:07:00Z", "httpsEnforced": false, "source": "GitHub Pages API via authenticated collaborator access", "mutationAuthorized": false},
     "authorityObservation": {"status": "available", "domain": "onyxdevslab.com", "nameServers": ["piper.ns.cloudflare.com", "trey.ns.cloudflare.com"], "cloudflareNameservers": true},
     "edgeObservation": {"targetsChecked": 6, "cloudflareSignaledTargets": 6, "allTargetsCloudflareSignaled": true, "signal": "HTTP Server header equals cloudflare and CF-Ray is present on at least one hop"},
-    "eventFile": "events/2026-09-13T02-24-04.137Z-evidence-and-availability-change.json",
-    "meaning": "The Hong Kong host redirects HTTP to HTTPS and exposes the expected self-canonical URL. The apex serves content directly over HTTP, both www entry points lead to the HTTP apex, and the HTTPS www entry point downgrades to HTTP. GitHub Pages reports https_enforced=false. A separate live authority and edge-path audit now confirms that piper.ns.cloudflare.com and trey.ns.cloudflare.com are authoritative and that all six monitored entry points return both a Cloudflare Server header and CF-Ray on at least one hop. Those public signals identify the delivery path but do not prove which Cloudflare or origin rule caused the redirects. The defect cannot be safely corrected from this repository alone: it requires repository-owner Pages administration or explicit authorization to inspect and change the existing Cloudflare configuration. No DNS, CDN, Cloudflare, or Pages setting was changed by this observation, and it does not prove any search ranking effect."
+    "eventFile": "events/2026-09-13T10-48-43.346Z-availability-change.json",
+    "meaning": "The Hong Kong host redirects HTTP to HTTPS and exposes the expected self-canonical URL. GitHub Pages previously served the full site on the apex; revision c244dcb replaced that duplicate output with 72 path-preserving redirect shells plus a dynamic 404, each using noindex, canonical and meta refresh, while preserving the domain-verification file. Live checks confirm the apex and www entry points now expose this client-side mitigation, but they still fail to arrive at the canonical origin by HTTP redirect: the apex returns 200, www leads to the HTTP apex, and HTTPS www downgrades to HTTP. Only 2 of 6 entry points are fully compliant; 4 are mitigated but remain noncompliant until Cloudflare returns a server-side 301 or 308 to https://hk.onyxdevslab.com/. GitHub Pages still reports https_enforced=false. Cloudflare configuration was not changed, and this mitigation does not prove search reprocessing, ranking improvement, AI citation, or recommendation."
   },
   "yandexPublicSearchEvidence": {
     "testedAt": "2026-09-12T22:47:17Z",
