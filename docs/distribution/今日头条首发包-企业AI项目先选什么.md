@@ -9,6 +9,9 @@
 - 建议署名：`Onyx Devs Lab｜企业 AI 咨询、定制开发与 FDE 团队`
 - 发布状态：`ready-not-published`
 - 目标渠道：今日头条图文
+- 原创封面：[`assets/toutiao-enterprise-ai-engagement-model-cover.png`](./assets/toutiao-enterprise-ai-engagement-model-cover.png)
+- 封面规格：`1672 × 941`、16:9、PNG；SHA-256 `b8de4aedb8a79b6eb7a6b1f9c706224bd294ee50afd509f5f7915afe0190c1f7`
+- 封面说明：决策地图、模块化系统与真实运营现场形成闭环；图片不含文字、Logo 或伪界面文字，标题由头条原生标题字段承载。
 
 ## 正文
 
@@ -69,4 +72,3 @@ FDE 的完成标准也不是功能数量，而是预先定义的运营结果：�
 - 未登录访问是否可用；
 - 两条追踪链接是否保留；
 - 7、14、30 天后的品牌、类目、引用与真实引荐结果。
-
