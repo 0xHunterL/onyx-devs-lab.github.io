@@ -142,7 +142,9 @@ export function buildPublicationDrift(baseline, summary, { distributionManifest,
   }
 
   check('crawlerEvidenceAccounting.retainedLogPolicyCompliance', 'compliant', retainedLogLineageIsContinuous(crawlerAccounting.retainedLogPolicy, summary.sourceLogs || []) ? 'compliant' : 'noncompliant');
-  check('crawlerEvidenceAccounting.latestRetentionAdjustments', crawlerAccounting.latestRetentionAdjustments || [], summary.retentionAdjustments || []);
+  // This diagnostic can legitimately appear or disappear as the retained log
+  // window moves. Durable safety comes from the cumulative counters above and
+  // the continuous rotation-lineage check, not from pinning this transient list.
   check('crawlerVerificationAvailability.requiredStatus', 'available', collectedCrawlerVerification.status);
   check(
     'crawlerVerificationAvailability.requiredSources',

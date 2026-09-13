@@ -184,7 +184,11 @@ assert.equal(buildPublicationDrift(baseline, commonCrawlBotDrift).mismatches[0].
 
 const retentionAdjustmentDrift = structuredClone(summary);
 retentionAdjustmentDrift.retentionAdjustments.push({ metric: 'verifiedYandexPageCrawls', retainedLogCount: 70, cumulativeCount: 71, newlyObserved: 0 });
-assert.equal(buildPublicationDrift(baseline, retentionAdjustmentDrift).mismatches[0].field, 'crawlerEvidenceAccounting.latestRetentionAdjustments');
+assert.equal(buildPublicationDrift(baseline, retentionAdjustmentDrift).status, 'synchronized');
+
+const retentionAdjustmentCleared = structuredClone(summary);
+retentionAdjustmentCleared.retentionAdjustments = [];
+assert.equal(buildPublicationDrift(baseline, retentionAdjustmentCleared).status, 'synchronized');
 
 const retainedLogExpansion = structuredClone(summary);
 retainedLogExpansion.sourceLogs.unshift('/var/log/nginx/hk.onyxdevslab.com.geo.log.5.gz');
