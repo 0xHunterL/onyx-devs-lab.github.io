@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
-  "publicStatusVersion": "2026.09.13.71",
-  "generatedAt": "2026-09-13T06:35:51.337Z",
-  "latestEvidenceObservedAt": "2026-09-13T06:16:57Z",
+  "publicStatusVersion": "2026.09.13.72",
+  "generatedAt": "2026-09-13T09:14:08.977Z",
+  "latestEvidenceObservedAt": "2026-09-13T08:16:17Z",
   "windowStart": "2026-09-01",
   "site": "https://hk.onyxdevslab.com/",
   "sourceLogs": [
@@ -16,7 +16,7 @@
     "gptBotContentRequests": 28,
     "gptBotDiscoveryFileRequests": 15,
     "oaiSearchBotContentRequests": 0,
-    "oaiSearchBotDiscoveryFileRequests": 12,
+    "oaiSearchBotDiscoveryFileRequests": 13,
     "bingbotContentRequests": 7,
     "bingbotDiscoveryFileRequests": 1,
     "baiduspiderContentRequests": 0,
@@ -32,7 +32,7 @@
     "yandexbotContentRequests": 78,
     "yandexbotDiscoveryFileRequests": 73,
     "ahrefsbotContentRequests": 0,
-    "ahrefsbotDiscoveryFileRequests": 102,
+    "ahrefsbotDiscoveryFileRequests": 105,
     "distinctVerifiedContentPaths": 45,
     "latestOpenAiDiscoveryRequests": [
       {
@@ -43,11 +43,11 @@
         "fingerprint": "eb69eab4c93121e0d3100704bcc5a29ce336cbe839ef4f6f45a99495671a2f3d"
       },
       {
-        "time": "2026-09-13T06:16:57Z",
+        "time": "2026-09-13T07:59:58Z",
         "family": "OAI-SearchBot",
         "path": "/robots.txt",
         "status": 304,
-        "fingerprint": "f0dc2422471629e55b3adb5d0c3efe28cd854716f369eb9a737be46d4df4961e"
+        "fingerprint": "ce39e4cac47e6da061bd923217c39083b26ab397e61b0cd7fc4aee5128088ecc"
       }
     ],
     "historicalReclassification": {
@@ -78,26 +78,26 @@
     },
     "ahrefsHistoricalRecognition": {
       "firstSeen": "2026-09-08T13:53:09Z",
-      "lastSeen": "2026-09-13T05:15:23Z",
-      "robotsTxtRequests": 26,
-      "sitemapRequests": 76,
-      "distinctClientAddresses": 90,
+      "lastSeen": "2026-09-13T08:16:17Z",
+      "robotsTxtRequests": 27,
+      "sitemapRequests": 78,
+      "distinctClientAddresses": 93,
       "verificationSource": "https://api.ahrefs.com/v3/public/crawler-ip-ranges",
       "latestVerifiedDiscoveryRequests": [
         {
-          "time": "2026-09-13T03:52:09Z",
-          "path": "/sitemap.xml",
-          "status": 200,
-          "fingerprint": "1a94f727482770c056544e466781af85a3b49c4b61cab03a62fb42497ac2c79b"
+          "time": "2026-09-13T08:16:16Z",
+          "path": "/robots.txt",
+          "status": 304,
+          "fingerprint": "c0827fdd15d84c2fbfebd502762a7a5bce22ea032421727b1b0a9a00b2e11af2"
         },
         {
-          "time": "2026-09-13T05:15:23Z",
+          "time": "2026-09-13T08:16:17Z",
           "path": "/sitemap.xml",
           "status": 200,
-          "fingerprint": "d02771e10694b6af762365225cfd2f8b83bf460996d4683d3a040d7795473268"
+          "fingerprint": "f829510d5b5110fa6029bbd7483b8af619bd8a9e1ae82c5dd4d96cf74793b1c8"
         }
       ],
-      "meaning": "All 102 discovery-file requests matched the official Ahrefs crawler IP ranges. The latest request fetched sitemap.xml but no content page. AhrefsBot serves both the Ahrefs database and Yep, so these requests prove external crawler discovery only; they do not prove Yep indexing, ranking, retrieval, citation, or AI recommendation."
+      "meaning": "All 105 discovery-file requests matched the official Ahrefs crawler IP ranges. The latest requests fetched robots.txt and sitemap.xml but no content page. AhrefsBot serves both the Ahrefs database and Yep, so these requests prove external crawler discovery only; they do not prove Yep indexing, ranking, retrieval, citation, or AI recommendation."
     }
   },
   "crawlerEvidenceAccounting": {
@@ -154,10 +154,10 @@
     "scenarioPromptsWithAnyVerifiedCrawl": 4
   },
   "attributionEvidence": {
-    "trackedRequests": 92,
+    "trackedRequests": 93,
     "suspectedAutomatedRequests": 78,
     "periodicRotatingClientRequests": 10,
-    "visitorTypeUnverifiedRequests": 14,
+    "visitorTypeUnverifiedRequests": 15,
     "knownLinkScannerRequests": 21,
     "knownLinkScannerUserAgentRequests": 12,
     "knownLinkScannerNetworkRequests": 9,
@@ -166,7 +166,7 @@
     "aiReferrerAttributedRequests": 0,
     "campaigns": {
       "geo_decision_matrix": 24,
-      "geo_engagement_model_qa": 51,
+      "geo_engagement_model_qa": 52,
       "geo_buyers_guide_ai_dingkai": 4,
       "geo_buyers_guide_scenarios": 8,
       "geo_buyers_guide_geo": 2,
@@ -183,17 +183,17 @@
     },
     "latestVisitorTypeUnverifiedAttributions": [
       {
-        "time": "2026-09-13T00:32:28Z",
-        "source": "github_discussions",
-        "campaign": "geo_engagement_model_qa",
-        "landingPage": "/zh-cn/guides/enterprise-ai-pilot-charter/",
-        "referrerHost": ""
-      },
-      {
         "time": "2026-09-13T00:32:30Z",
         "source": "github_discussions",
         "campaign": "geo_engagement_model_qa",
         "landingPage": "/zh-cn/guides/ai-consulting-vs-development-vs-fde/",
+        "referrerHost": ""
+      },
+      {
+        "time": "2026-09-13T08:03:46Z",
+        "source": "github_discussions",
+        "campaign": "geo_engagement_model_qa",
+        "landingPage": "/zh-cn/guides/enterprise-ai-pilot-charter/",
         "referrerHost": ""
       }
     ],
@@ -215,10 +215,10 @@
     "meaning": "Both selected Common Crawl indexes returned usable zero-capture responses. This complete result covers only the two selected indexes and cannot be interpreted as absence from all Common Crawl history, public search, or AI systems; availability changes remain event-recorded but do not independently block unrelated verified evidence publication."
   },
   "softwareHeritageEvidence": {
-    "checkedAt": "2026-09-13T06:35:49.765Z",
+    "checkedAt": "2026-09-13T09:14:07.141Z",
     "status": "available",
     "archiveCoverageStatus": "lagging",
-    "repositoryHead": "bdd5e46c31524609c5ed5baa56dec3105803f72a",
+    "repositoryHead": "c46a09cb348c5b001e8e5e4f31f8b4b830629a2b",
     "latestCompleteVisitAt": "2026-09-13T06:09:12.547000+00:00",
     "latestAttemptAt": "2026-09-13T06:09:12.547000+00:00",
     "latestAttemptStatus": "full",
@@ -234,8 +234,8 @@
       "snapshotSwhid": "swh:1:snp:beec7f09ab04a666d11d120abddf542620d09e97",
       "nextRun": "2026-09-13T06:09:09.000202Z"
     },
-    "eventFile": "events/2026-09-13T06-35-51.337Z-evidence-and-availability-change.json",
-    "meaning": "GitHub, the Software Heritage visit history, save-request endpoint and latest complete snapshot were all queryable. Request 2473685 remains succeeded/full and snapshot beec7f09 still independently preserves revision d7d6ee3; after revision 70 was published, mutable GitHub main advanced to bdd5e46, so archive coverage is now accurately reported as lagging. The immutable snapshot remains valid preservation evidence for its named revision. Neither current nor lagging archive coverage proves website search indexing, AI retrieval, citation, ranking, endorsement, or recommendation."
+    "eventFile": "events/2026-09-13T09-14-08.977Z-evidence-and-availability-change.json",
+    "meaning": "GitHub, the Software Heritage visit history, save-request endpoint and latest complete snapshot were all queryable. Request 2473685 remains succeeded/full and snapshot beec7f09 still independently preserves revision d7d6ee3; mutable GitHub main has advanced to c46a09c, so archive coverage remains accurately reported as lagging. The immutable snapshot remains valid preservation evidence for its named revision. Neither current nor lagging archive coverage proves website search indexing, AI retrieval, citation, ranking, endorsement, or recommendation."
   },
   "waybackEvidence": {
     "checkedAt": "2026-09-13T03:55:45.852Z",
@@ -375,26 +375,26 @@
     "meaning": "All three fixed GitHub Repository Search API queries were available. Brand and legal-entity queries return both first-party repositories; the exact category query returns the same two repositories after the recorded README changes. This proves GitHub platform-search visibility only, not public-web indexing, AI retrieval, citation, ranking, independent endorsement, or non-brand recommendation."
   },
   "distributionEvidence": {
-    "manifestItems": 16,
-    "publishedItems": 15,
+    "manifestItems": 17,
+    "publishedItems": 16,
     "readyNotPublishedItems": 1,
-    "checkedAt": "2026-09-13T06:35:51.337Z",
-    "publicUrlsChecked": 15,
-    "trackedTargetsChecked": 29,
-    "availableSources": 44,
+    "checkedAt": "2026-09-13T09:14:03.545Z",
+    "publicUrlsChecked": 16,
+    "trackedTargetsChecked": 30,
+    "availableSources": 46,
     "unavailableSources": 0,
     "availabilityStatus": "available",
-    "eventFile": "events/2026-09-13T06-35-51.337Z-evidence-and-availability-change.json",
+    "eventFile": "events/2026-09-13T09-14-08.977Z-evidence-and-availability-change.json",
     "expectedAfterCurrentCheckpointPublication": {
-      "manifestItems": 17,
-      "publishedItems": 16,
-      "trackedTargetsChecked": 30,
-      "availableSources": 46,
+      "manifestItems": 18,
+      "publishedItems": 17,
+      "trackedTargetsChecked": 31,
+      "availableSources": 48,
       "unavailableSources": 0,
       "availabilityStatus": "available",
       "meaning": "The current immutable checkpoint is published after its source snapshot is created. These values are the explicitly declared post-publication state used by the drift gate; they must be confirmed by a subsequent production collection before synchronization is reported."
     },
-    "meaning": "At collection time, the distribution ledger included 15 published URLs, 29 tracked targets, and 44 available sources. Revision 71 separately declares its expected self-publication delta instead of backdating its own Release into the snapshot. The six newly counted attributed requests were known link-scanner network traffic generated while verifying existing public links and are not human or referral evidence. This checkpoint versions two new provider-verified OpenAI discovery-file requests without creating duplicate topical content; it does not prove indexing, AI retrieval, citation, recommendation, a human visit, or independent endorsement."
+    "meaning": "At collection time, the distribution ledger included 16 published URLs, 30 tracked targets, and 46 available sources. Revision 72 separately declares its expected self-publication delta instead of backdating its own Release into the snapshot. This checkpoint versions one new provider-verified OAI-SearchBot robots.txt request, three additional Ahrefs discovery-file requests since revision 71's source snapshot, and one attributed request whose visitor type remains unverified. It does not prove content crawling by OAI-SearchBot, indexing, AI retrieval, citation, recommendation, a human visit, or independent endorsement."
   },
   "servicesHkReadinessEvidence": {
     "checkedAt": "2026-09-13T03:55:47.596Z",

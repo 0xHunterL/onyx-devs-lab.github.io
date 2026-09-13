@@ -21,21 +21,22 @@ export const currentSoftwareHeritageEvidence = currentMonitorEvidence.softwareHe
 
 export function hasCurrentMonitorLlmsBoundary(body) {
   return body.includes(currentMonitorEvidence.generatedAt)
-    && body.includes('provider-verified GPTBot fetched `/sitemap.xml` with HTTP 200')
-    && body.includes('OAI-SearchBot fetched `/robots.txt` with HTTP 304')
-    && body.includes('discovery-file counts to 15 and 12')
-    && body.includes('archive coverage is accurately reported as lagging')
+    && body.includes('provider-verified OAI-SearchBot fetched `/robots.txt` with HTTP 304')
+    && body.includes('discovery-file counts to 15 and 13')
+    && body.includes('archive coverage remains accurately reported as lagging')
     && body.includes('provider-attributed Bing public-search checkpoint')
     && body.includes('exact retrieval marker returned an explicit no-results page')
     && body.includes('broader brand and `site:` checks are not treated as exhaustive index checks')
     && body.includes('not treated as exhaustive index checks')
     && body.includes('Google stopped at automated-traffic verification')
     && body.includes('neutral AI-consulting discovery remains separated from FDE-branded queries')
-    && body.includes('102 requests while Ahrefs content requests remain zero')
+    && body.includes('105 requests while Ahrefs content requests remain zero')
     && body.includes('result sets are compared as unordered provider-returned sets')
     && body.includes('two-source self-publication delta separately')
+    && body.includes('visitor type remains unverified')
     && body.includes('96 Wayback captures across 46 URLs')
     && body.includes('do not prove content crawling by OAI-SearchBot, indexing or deindexing across all regions or pages, ranking')
-    && body.includes('AI retrieval, citation, a human visit, or non-brand recommendation')
+    && body.includes('AI retrieval')
+    && body.includes('citation, a human visit, or non-brand recommendation')
     && body.includes('no prompt was sent to Doubao');
 }
