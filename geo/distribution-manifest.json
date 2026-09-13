@@ -694,6 +694,37 @@
         "Wayback CDX records prove public historical captures only; current count movement includes public-index volatility.",
         "Anonymous availability and matching content markers do not prove independent endorsement, an AI citation, a human visit, or non-brand recommendation."
       ]
+    },
+    {
+      "id": "github-release-geo-monitor-evidence-2026-09-14-77",
+      "channel": "github_releases",
+      "format": "versioned-evidence-checkpoint",
+      "language": "en-zh-CN",
+      "status": "published",
+      "sourceFile": "README.md",
+      "title": "Onyx GEO monitor evidence checkpoint — 2026-09-14, revision 77",
+      "campaign": "geo_monitor_evidence_77",
+      "trackedTargets": [
+        "https://hk.onyxdevslab.com/data/ai-search-evidence-status.json?utm_source=github_releases&utm_medium=referral&utm_campaign=geo_monitor_evidence_77"
+      ],
+      "publicUrl": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-monitor-evidence-2026-09-14-77",
+      "anonymousAccessVerifiedAt": "2026-09-13T20:48:17Z",
+      "publicContentMarkers": [
+        "GEO monitor evidence — 2026-09-14 revision 77",
+        "legacy HTTP apex snippet reprocessed",
+        "second differentiated Toutiao article",
+        "No prompt was sent to Doubao"
+      ],
+      "searchIndexedAt": "2026-09-13T19:35:28Z",
+      "aiCitationObservedAt": null,
+      "nonBrandRecommendationObservedAt": null,
+      "limitations": [
+        "The Release, the two Toutiao articles, and their assets are published and maintained by Onyx Devs Lab.",
+        "searchIndexedAt records a dated direct Bing brand-result presentation observation; it does not mean exhaustive indexing or stable ranking.",
+        "The legacy HTTP apex still appears instead of the canonical Hong Kong origin, and the neutral Hong Kong AI consulting query did not show Onyx in the visible first page.",
+        "The Ahrefs request proves discovery-file access only; the Toutiao plain-text URLs do not prove clickable referral or link equity.",
+        "Anonymous availability and matching content markers do not prove independent endorsement, AI retrieval or citation, a human visit, or non-brand recommendation."
+      ]
     }
   ]
 }
