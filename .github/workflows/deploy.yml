@@ -33,8 +33,11 @@ jobs:
       - name: Test GEO evidence pipeline
         run: npm run geo:test
 
+      - name: Build legacy-domain redirect shell
+        run: npm run pages:build-redirect
+
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@v4
         with:
-          folder: dist
+          folder: .pages-redirect
           branch: gh-pages

@@ -7,6 +7,8 @@
   "scripts": {
     "dev": "vite",
     "build": "node scripts/build-site.mjs",
+    "pages:build-redirect": "node scripts/build-pages-redirect.mjs",
+    "pages:test-redirect": "node scripts/test-build-pages-redirect.mjs",
     "geo:check": "node scripts/check-geo.mjs",
     "geo:prompt-coverage": "node scripts/check-prompt-coverage.mjs",
     "geo:content-distinctiveness": "node scripts/check-content-distinctiveness.mjs",
@@ -36,7 +38,7 @@
     "geo:test-wayback-report": "node scripts/test-report-wayback.mjs",
     "geo:test-github-search-report": "node scripts/test-report-github-repository-search.mjs",
     "geo:test-software-heritage-report": "node scripts/test-report-software-heritage.mjs",
-    "geo:test": "npm run geo:test-build && npm run geo:test-evidence-summary && npm run geo:test-crawler-report && npm run geo:test-referral-report && npm run geo:test-publication-drift && npm run geo:test-offsite-retry && npm run geo:test-common-crawl-fetch && npm run geo:test-services-hk && npm run geo:test-domain-canonicalization && npm run geo:test-wayback-report && npm run geo:test-github-search-report && npm run geo:test-software-heritage-report",
+    "geo:test": "npm run geo:test-build && npm run pages:test-redirect && npm run geo:test-evidence-summary && npm run geo:test-crawler-report && npm run geo:test-referral-report && npm run geo:test-publication-drift && npm run geo:test-offsite-retry && npm run geo:test-common-crawl-fetch && npm run geo:test-services-hk && npm run geo:test-domain-canonicalization && npm run geo:test-wayback-report && npm run geo:test-github-search-report && npm run geo:test-software-heritage-report",
     "geo:collect-evidence": "node scripts/collect-geo-evidence.mjs",
     "geo:check-evidence-publication-drift": "node scripts/check-geo-evidence-publication-drift.mjs",
     "geo:common-crawl-report": "node scripts/report-common-crawl.mjs",
