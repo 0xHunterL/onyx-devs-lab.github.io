@@ -183,13 +183,17 @@ const retentionAdjustmentDrift = structuredClone(summary);
 retentionAdjustmentDrift.retentionAdjustments.push({ metric: 'verifiedYandexPageCrawls', retainedLogCount: 70, cumulativeCount: 71, newlyObserved: 0 });
 assert.equal(buildPublicationDrift(baseline, retentionAdjustmentDrift).mismatches[0].field, 'crawlerEvidenceAccounting.latestRetentionAdjustments');
 
+const retainedLogExpansion = structuredClone(summary);
+retainedLogExpansion.sourceLogs.unshift('/var/log/nginx/hk.onyxdevslab.com.geo.log.5.gz');
+assert.equal(buildPublicationDrift(baseline, retainedLogExpansion).mismatches.length, 0);
+
 const retainedLogSetDrift = structuredClone(summary);
 retainedLogSetDrift.sourceLogs.pop();
-assert.equal(buildPublicationDrift(baseline, retainedLogSetDrift).mismatches[0].field, 'crawlerEvidenceAccounting.currentRetainedLogFiles');
+assert.equal(buildPublicationDrift(baseline, retainedLogSetDrift).mismatches[0].field, 'crawlerEvidenceAccounting.retainedLogPolicyCompliance');
 
 const retainedLogPathDrift = structuredClone(summary);
 retainedLogPathDrift.sourceLogs[0] = '/var/log/nginx/unexpected.log.3.gz';
-assert.equal(buildPublicationDrift(baseline, retainedLogPathDrift).mismatches[0].field, 'crawlerEvidenceAccounting.currentRetainedLogPaths');
+assert.equal(buildPublicationDrift(baseline, retainedLogPathDrift).mismatches[0].field, 'crawlerEvidenceAccounting.retainedLogPolicyCompliance');
 
 const commonCrawlDrift = structuredClone(summary);
 commonCrawlDrift.availability.commonCrawl.status = commonCrawl.status === 'partial' ? 'available' : 'partial';
@@ -265,4 +269,4 @@ const unavailableArchiveFields = buildPublicationDrift(baseline, unavailableArch
 assert.ok(!unavailableArchiveFields.some((field) => field.startsWith('waybackEvidence.') && field !== 'waybackEvidence.status'));
 assert.ok(!unavailableArchiveFields.includes('commonCrawlEvidence.capturesObservedInAvailableIndexes'));
 
-console.log(JSON.stringify({ tests: 31, failures: [] }, null, 2));
+console.log(JSON.stringify({ tests: 32, failures: [] }, null, 2));

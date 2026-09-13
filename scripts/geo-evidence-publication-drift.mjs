@@ -30,6 +30,18 @@ export function buildExpectedDistributionSources(manifest) {
     .sort((left, right) => left.id.localeCompare(right.id));
 }
 
+export function retainedLogLineageIsContinuous(policy, sourceLogs) {
+  const basePath = policy?.basePath;
+  if (policy?.mode !== 'continuous-numbered-rotation-lineage' || typeof basePath !== 'string' || !Array.isArray(sourceLogs) || sourceLogs.length === 0) return false;
+  if (sourceLogs.at(-1) !== basePath || new Set(sourceLogs).size !== sourceLogs.length) return false;
+
+  const rotations = sourceLogs.slice(0, -1);
+  return rotations.every((logPath, index) => {
+    const rotation = rotations.length - index;
+    return logPath === (rotation === 1 ? `${basePath}.1` : `${basePath}.${rotation}.gz`);
+  });
+}
+
 export function buildPublicationDrift(baseline, summary, { distributionManifest, promptCoverageBaseline } = {}) {
   const mismatches = [];
   const check = (field, published, collected) => {
@@ -121,8 +133,7 @@ export function buildPublicationDrift(baseline, summary, { distributionManifest,
     );
   }
 
-  check('crawlerEvidenceAccounting.currentRetainedLogFiles', crawlerAccounting.currentRetainedLogFiles, (summary.sourceLogs || []).length);
-  check('crawlerEvidenceAccounting.currentRetainedLogPaths', crawlerAccounting.currentRetainedLogPaths || [], summary.sourceLogs || []);
+  check('crawlerEvidenceAccounting.retainedLogPolicyCompliance', 'compliant', retainedLogLineageIsContinuous(crawlerAccounting.retainedLogPolicy, summary.sourceLogs || []) ? 'compliant' : 'noncompliant');
   check('crawlerEvidenceAccounting.latestRetentionAdjustments', crawlerAccounting.latestRetentionAdjustments || [], summary.retentionAdjustments || []);
   check('commonCrawlEvidence.status', commonCrawl.status, collectedCommonCrawl.status);
   check('commonCrawlEvidence.availableIndexes', commonCrawl.availableIndexes || [], (collectedCommonCrawl.indexes || []).filter((item) => item.status === 'available').map((item) => item.id));

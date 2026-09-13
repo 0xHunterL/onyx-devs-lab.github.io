@@ -18,10 +18,10 @@ export const currentWaybackEvidence = currentMonitorEvidence.waybackEvidence;
 
 export function hasCurrentMonitorLlmsBoundary(body) {
   return body.includes(`${currentMonitorEvidence.generatedAt} production collection`)
-    && body.includes('two new official-range AhrefsBot discovery requests')
-    && body.includes('bringing the total to 97')
-    && body.includes('rebuilds 45 distinct content paths and fixed-prompt coverage')
-    && body.includes('This is crawler-access and monitoring-continuity evidence only')
+    && body.includes('continuous numbered-log lineage policy')
+    && body.includes('verified coverage remains 45 paths, 15 search-related evidence pages, and 18 prompts')
+    && body.includes('Common Crawl indexes returned HTTP 504')
+    && body.includes('This is monitoring-integrity and source-availability evidence only')
     && body.includes('does not prove indexing, ranking, AI citation, a human visit, or non-brand recommendation')
     && body.includes('no prompt was sent to Doubao');
 }

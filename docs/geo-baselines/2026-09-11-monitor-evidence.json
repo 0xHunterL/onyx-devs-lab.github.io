@@ -1,11 +1,12 @@
 {
   "schemaVersion": 1,
-  "publicStatusVersion": "2026.09.13.59",
-  "generatedAt": "2026-09-12T23:52:07.815Z",
-  "latestEvidenceObservedAt": "2026-09-12T23:52:07.747Z",
+  "publicStatusVersion": "2026.09.13.60",
+  "generatedAt": "2026-09-13T00:15:36.990Z",
+  "latestEvidenceObservedAt": "2026-09-13T00:15:36.916Z",
   "windowStart": "2026-09-01",
   "site": "https://hk.onyxdevslab.com/",
   "sourceLogs": [
+    "/var/log/nginx/hk.onyxdevslab.com.geo.log.4.gz",
     "/var/log/nginx/hk.onyxdevslab.com.geo.log.3.gz",
     "/var/log/nginx/hk.onyxdevslab.com.geo.log.2.gz",
     "/var/log/nginx/hk.onyxdevslab.com.geo.log.1",
@@ -86,13 +87,19 @@
   "crawlerEvidenceAccounting": {
     "mode": "append-only-provider-verified-fingerprint-cumulative",
     "deduplicationKey": "SHA-256 fingerprint of the verified request observation",
-    "currentRetainedLogFiles": 4,
+    "currentRetainedLogFiles": 5,
     "currentRetainedLogPaths": [
+      "/var/log/nginx/hk.onyxdevslab.com.geo.log.4.gz",
       "/var/log/nginx/hk.onyxdevslab.com.geo.log.3.gz",
       "/var/log/nginx/hk.onyxdevslab.com.geo.log.2.gz",
       "/var/log/nginx/hk.onyxdevslab.com.geo.log.1",
       "/var/log/nginx/hk.onyxdevslab.com.geo.log"
     ],
+    "retainedLogPolicy": {
+      "mode": "continuous-numbered-rotation-lineage",
+      "basePath": "/var/log/nginx/hk.onyxdevslab.com.geo.log",
+      "meaning": "The drift gate requires the active log followed by a gap-free numbered rotation lineage in oldest-to-newest order. Natural addition or expiry of a numbered rotation is accepted; an unexpected path, missing generation, duplicate, or absent active log remains a monitoring-integrity failure."
+    },
     "retentionAdjustmentField": "retentionAdjustments",
     "latestRetentionAdjustments": [],
     "contentPathCoverage": {
@@ -168,15 +175,15 @@
     ]
   },
   "commonCrawlEvidence": {
-    "checkedAt": "2026-09-12T23:52:04.218Z",
-    "status": "available",
+    "checkedAt": "2026-09-13T00:15:28.242Z",
+    "status": "partial",
     "capturesObservedInAvailableIndexes": 0,
-    "availableIndexes": ["CC-MAIN-2026-34", "CC-MAIN-2026-30"],
-    "unavailableIndexes": [],
-    "meaning": "CC-MAIN-2026-34 and CC-MAIN-2026-30 both returned usable zero-capture responses. This complete result covers only the two selected indexes; it does not represent all Common Crawl history or prove absence from search or AI systems."
+    "availableIndexes": ["CC-MAIN-2026-30"],
+    "unavailableIndexes": [{"id": "CC-MAIN-2026-34", "httpStatus": 504, "reason": "HTTP 504"}],
+    "meaning": "CC-MAIN-2026-30 returned a usable zero-capture response while CC-MAIN-2026-34 returned HTTP 504. This partial result is incomplete across the two selected indexes and cannot be interpreted as a complete zero or as absence from search or AI systems."
   },
   "waybackEvidence": {
-    "checkedAt": "2026-09-12T23:52:04.960Z",
+    "checkedAt": "2026-09-13T00:15:33.662Z",
     "status": "available",
     "captures": 94,
     "distinctUrls": 44,
@@ -256,7 +263,7 @@
     "meaning": "The available public Wayback CDX host query currently returns 94 successful HTML capture records across 44 distinct URLs. A newly exposed industrial ERP case-study capture increases the prompt archive ledger to 16 archived evidence pages, 16 prompts with any archive and 12 fully archived prompts; the remaining count movement includes documented public-index volatility. These records prove public historical captures only; they do not prove current accessibility, search indexing, AI retrieval, citation, ranking, endorsement, or recommendation. An unavailable future query must not be interpreted as zero captures."
   },
   "githubRepositorySearchEvidence": {
-    "checkedAt": "2026-09-12T23:52:06.312Z",
+    "checkedAt": "2026-09-13T00:15:34.973Z",
     "status": "available",
     "queriesChecked": 3,
     "availableQueries": 3,
@@ -291,24 +298,24 @@
       }
     ],
     "source": "https://hk.onyxdevslab.com/data/github-repository-search-baseline.json",
-    "eventFile": "events/2026-09-12T23-44-28.829Z-evidence-and-availability-change.json",
+    "eventFile": "events/2026-09-13T00-13-19.781Z-availability-change.json",
     "meaning": "All three fixed GitHub Repository Search API queries were available. Brand and legal-entity queries return both first-party repositories; the exact category query returns the same two repositories after the recorded README changes. This proves GitHub platform-search visibility only, not public-web indexing, AI retrieval, citation, ranking, independent endorsement, or non-brand recommendation."
   },
   "distributionEvidence": {
     "manifestItems": 9,
     "publishedItems": 8,
     "readyNotPublishedItems": 1,
-    "checkedAt": "2026-09-12T23:52:05.913Z",
+    "checkedAt": "2026-09-13T00:15:34.594Z",
     "publicUrlsChecked": 8,
     "trackedTargetsChecked": 18,
     "availableSources": 26,
     "unavailableSources": 0,
     "availabilityStatus": "available",
-    "eventFile": "events/2026-09-12T23-44-28.829Z-evidence-and-availability-change.json",
+    "eventFile": "events/2026-09-13T00-13-19.781Z-availability-change.json",
     "meaning": "All declared published URLs and tracked targets passed anonymous availability, destination, and content-marker checks. This does not prove indexing, AI retrieval, citation, recommendation, a human visit, or independent endorsement."
   },
   "servicesHkReadinessEvidence": {
-    "checkedAt": "2026-09-12T23:52:06.200Z",
+    "checkedAt": "2026-09-13T00:15:34.856Z",
     "availabilityStatus": "unavailable",
     "targetsChecked": 3,
     "availableTargets": 0,
@@ -322,7 +329,7 @@
     "meaning": "All three sampled services.hk detail pages return HTTP 200 but contain the known PHP application failure and omit the required title, service-description, and contact markers. This blocks submission readiness; it does not prove that Onyx is listed, reviewed, endorsed, indexed, cited, or recommended. Submission still requires current user confirmation after all three targets recover."
   },
   "domainCanonicalizationEvidence": {
-    "checkedAt": "2026-09-12T23:52:07.747Z",
+    "checkedAt": "2026-09-13T00:15:36.916Z",
     "status": "noncompliant",
     "canonicalOrigin": "https://hk.onyxdevslab.com/",
     "targetsChecked": 6,
@@ -338,7 +345,7 @@
       {"id": "https-hk", "startUrl": "https://hk.onyxdevslab.com/", "finalUrl": "https://hk.onyxdevslab.com/", "status": "compliant", "reasons": []}
     ],
     "githubPagesSetting": {"checkedAt": "2026-09-12T23:07:00Z", "httpsEnforced": false, "source": "GitHub Pages API via authenticated collaborator access", "mutationAuthorized": false},
-    "eventFile": "events/2026-09-12T23-44-28.829Z-evidence-and-availability-change.json",
+    "eventFile": "events/2026-09-13T00-13-19.781Z-availability-change.json",
     "meaning": "The Hong Kong host redirects HTTP to HTTPS and exposes the expected self-canonical URL. The GitHub Pages apex host serves content directly over HTTP, both www entry points lead to the HTTP apex, and the HTTPS www entry point downgrades to HTTP. GitHub Pages reports https_enforced=false. This is a technical canonicalization and transport-security defect; it does not negate the observed Yandex brand result or prove any search ranking effect. Enabling Enforce HTTPS requires repository-owner administration, and no DNS, CDN, Cloudflare, or Pages setting was changed by this observation."
   },
   "yandexPublicSearchEvidence": {
