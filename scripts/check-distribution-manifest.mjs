@@ -40,6 +40,12 @@ for (const item of manifest.items || []) {
       publicUrls.add(publicUrl.href);
     }
     if (Number.isNaN(Date.parse(item.anonymousAccessVerifiedAt))) failures.push(`${item.id}: anonymousAccessVerifiedAt must be an ISO timestamp`);
+    const contentValidation = item.publicContentValidation;
+    if (contentValidation) {
+      if (contentValidation.mode !== 'browser') failures.push(`${item.id}: unsupported publicContentValidation mode ${contentValidation.mode}`);
+      if (Number.isNaN(Date.parse(contentValidation.verifiedAt))) failures.push(`${item.id}: browser content verification requires an ISO verifiedAt timestamp`);
+      if (typeof contentValidation.reason !== 'string' || !contentValidation.reason.trim()) failures.push(`${item.id}: browser content verification requires a reason`);
+    }
   } else {
     failures.push(`${item.id}: unsupported status ${item.status}`);
   }

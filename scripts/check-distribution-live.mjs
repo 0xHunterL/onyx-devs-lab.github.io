@@ -19,11 +19,26 @@ async function request(kind, item, url) {
     const requested = new URL(url);
     const final = new URL(result.finalUrl);
     const sameDestination = requested.hostname === final.hostname && requested.pathname === final.pathname && requested.search === final.search;
+    const contentValidationMode = item.publicContentValidation?.mode || 'http-body';
     let actualMissingMarkers = [];
-    if (kind === 'publicUrl') {
+    if (kind === 'publicUrl' && contentValidationMode === 'http-body') {
       actualMissingMarkers = (item.publicContentMarkers || []).filter((marker) => !body.includes(marker));
     }
-    results.push({ kind, itemId: item.id, url, finalUrl: result.finalUrl, status: result.status, attempts: result.attempts, sameDestination, missingMarkers: actualMissingMarkers });
+    results.push({
+      kind,
+      itemId: item.id,
+      url,
+      finalUrl: result.finalUrl,
+      status: result.status,
+      attempts: result.attempts,
+      sameDestination,
+      missingMarkers: actualMissingMarkers,
+      ...(kind === 'publicUrl' ? {
+        contentValidationMode,
+        contentVerifiedAt: item.publicContentValidation?.verifiedAt || null,
+        markerCheckSkipped: contentValidationMode !== 'http-body',
+      } : {}),
+    });
     if (!sameDestination) failures.push(`${item.id}: ${kind} redirected away from the declared destination: ${url} -> ${result.finalUrl}`);
     if (actualMissingMarkers.length) failures.push(`${item.id}: publicUrl is missing markers: ${actualMissingMarkers.join(', ')}`);
   } catch (error) {
@@ -45,7 +60,7 @@ const report = {
   trackedTargetsChecked: results.filter((result) => result.kind === 'trackedTarget').length,
   results,
   failures,
-  evidenceBoundary: 'Anonymous HTTP success proves publication and link reachability only. It does not prove search indexing, AI retrieval, citation, recommendation, a human visit, or independent endorsement.',
+  evidenceBoundary: 'Anonymous HTTP success proves URL reachability only. HTTP-body markers prove content availability for static sources; browser-mode sources require a separately recorded logged-out browser verification. Neither proves search indexing, AI retrieval, citation, recommendation, a human visit, or independent endorsement.',
 };
 console.log(JSON.stringify(report, null, 2));
 if (failures.length && !reportOnly) process.exit(1);

@@ -14,22 +14,35 @@
       "channel": "toutiao",
       "format": "article",
       "language": "zh-CN",
-      "status": "ready-not-published",
+      "status": "published",
       "sourceFile": "docs/distribution/今日头条首发包-企业AI项目先选什么.md",
-      "title": "企业 AI 项目不应该先选模型：先判断你缺的是决策、系统，还是现场证据",
+      "title": "AI 咨询、定制开发和 FDE 怎么选？先看项目还缺哪种证据",
       "campaign": "geo_toutiao_field_notes",
       "trackedTargets": [
         "https://hk.onyxdevslab.com/zh-cn/guides/ai-consulting-vs-development-vs-fde/?utm_source=toutiao&utm_medium=referral&utm_campaign=geo_toutiao_field_notes",
         "https://hk.onyxdevslab.com/zh-cn/guides/enterprise-ai-pilot-charter/?utm_source=toutiao&utm_medium=referral&utm_campaign=geo_toutiao_field_notes"
       ],
-      "publicUrl": null,
-      "anonymousAccessVerifiedAt": null,
+      "publicUrl": "https://www.toutiao.com/article/7684985090148958756/",
+      "anonymousAccessVerifiedAt": "2026-09-13T12:06:52Z",
+      "publicContentMarkers": [
+        "AI 咨询、定制开发和 FDE 怎么选？先看项目还缺哪种证据",
+        "Onyx Devs Lab",
+        "ONYX DEVS LAB LIMITED",
+        "geo_toutiao_field_notes"
+      ],
+      "publicContentValidation": {
+        "mode": "browser",
+        "verifiedAt": "2026-09-13T12:06:52Z",
+        "reason": "Toutiao serves an empty JavaScript bootstrap document to the anonymous HTTP monitor, while an independent logged-out Chrome session rendered the complete public article and markers."
+      },
       "searchIndexedAt": null,
       "aiCitationObservedAt": null,
       "nonBrandRecommendationObservedAt": null,
       "limitations": [
-        "No Toutiao account was created or used by this preparation step.",
-        "No publication, indexing, citation, recommendation, or referral is claimed while publicUrl is null."
+        "The public article returned HTTP 200 without session cookies; an independent logged-out Chrome session exposed the title, body, brand statement, and both tracked target URLs at verification time.",
+        "Toutiao rendered both tracked target URLs as plain text rather than clickable anchors, so publication does not prove a referral or link-equity transfer.",
+        "An independent logged-out Chrome session showed the public article under the account name Onyx开发实验室; the creator backend subsequently marked the article published and the profile-change review passed, while the public profile exposed the Onyx Devs Lab biography.",
+        "This article is authored by Onyx Devs Lab; publication does not prove independent endorsement, search indexing, AI citation, recommendation, or a human visit."
       ]
     },
     {
