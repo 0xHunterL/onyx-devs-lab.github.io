@@ -1322,6 +1322,47 @@ if (statusV71 && (
   || statusV71.testProtocol?.doubaoPromptsSent !== false
 )) failures.push('Versioned GEO monitor revision 71 public status: OpenAI crawler, archive, or AI boundary is incomplete');
 
+const monitorEvidenceV72Base = 'https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-monitor-evidence-2026-09-13-72';
+const monitorEvidenceV72Assets = [
+  {file:'2026-09-11-monitor-evidence.json',sha256:'4ece1eb31e6165c20d5f6ccd023123ff4a661712eef9da6e63f7580453884a95'},
+  {file:'ai-search-evidence-status.json',sha256:'a0d71bc1ba2234e358a05e56263ac33a840c33fe515465f16f3618702f225382'},
+  {file:'prompt-matrix.json',sha256:'ed5305c7c1221689dd5c522cf305ea7ff73344ef37f016a3e148d5f598351b6f'},
+  {file:'ai-search-prompt-evidence-map.json',sha256:'28b9c7f47bdc555e4add7e27a11e5bfffa7d1aed41c4f30b7884dd81719524c6'},
+  {file:'2026-09-11-prompt-crawl-coverage.json',sha256:'7b9eb77978732b6425d408bb02cf4c2629daa9693ad2bb448e937df179151c11'},
+];
+const monitorEvidenceV72Json = {};
+for (const asset of monitorEvidenceV72Assets) {
+  const raw = await get(`Versioned GEO monitor revision 72 ${asset.file}`, `${monitorEvidenceV72Base}/${asset.file}`, 'application/');
+  const digest = createHash('sha256').update(raw).digest('hex');
+  if (digest !== asset.sha256) failures.push(`Versioned GEO monitor revision 72 ${asset.file}: SHA-256 mismatch, got ${digest}`);
+  try { monitorEvidenceV72Json[asset.file] = JSON.parse(raw); } catch { failures.push(`Versioned GEO monitor revision 72 ${asset.file}: invalid JSON`); }
+}
+const monitorV72 = monitorEvidenceV72Json['2026-09-11-monitor-evidence.json'];
+if (monitorV72 && (
+  monitorV72.publicStatusVersion !== '2026.09.13.72'
+  || monitorV72.generatedAt !== '2026-09-13T09:14:08.977Z'
+  || monitorV72.providerVerifiedCrawlerEvidence?.gptBotDiscoveryFileRequests !== 15
+  || monitorV72.providerVerifiedCrawlerEvidence?.oaiSearchBotDiscoveryFileRequests !== 13
+  || monitorV72.providerVerifiedCrawlerEvidence?.oaiSearchBotContentRequests !== 0
+  || monitorV72.providerVerifiedCrawlerEvidence?.ahrefsbotDiscoveryFileRequests !== 105
+  || monitorV72.attributionEvidence?.visitorTypeUnverifiedRequests !== 15
+  || monitorV72.attributionEvidence?.aiReferrerAttributedRequests !== 0
+  || monitorV72.distributionEvidence?.publishedItems !== 16
+  || monitorV72.distributionEvidence?.expectedAfterCurrentCheckpointPublication?.publishedItems !== 17
+  || monitorV72.distributionEvidence?.expectedAfterCurrentCheckpointPublication?.availableSources !== 48
+  || monitorV72.doubaoTestStatus !== 'not-run'
+)) failures.push('Versioned GEO monitor revision 72: crawler, attribution, self-publication, or evidence boundary is incomplete');
+const statusV72 = monitorEvidenceV72Json['ai-search-evidence-status.json'];
+if (statusV72 && (
+  statusV72.version !== '2026.09.13.72'
+  || statusV72.observedAt !== '2026-09-13T09:14:08.977Z'
+  || statusV72.versionHistory?.[0]?.version !== '2026.09.13.72'
+  || statusV72.evidenceLevels?.[1]?.evidence?.verifiedOaiSearchBotDiscoveryFileVisits !== 13
+  || statusV72.evidenceLevels?.[1]?.evidence?.verifiedOaiSearchBotContentCrawls !== 0
+  || statusV72.evidenceLevels?.[3]?.evidence?.humanUnverifiedTrackedRequests !== 15
+  || statusV72.testProtocol?.doubaoPromptsSent !== false
+)) failures.push('Versioned GEO monitor revision 72 public status: crawler, attribution, or AI boundary is incomplete');
+
 const crawlerEvidenceReleaseUrl = 'https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-crawler-evidence-2026-09-10';
 const crawlerEvidenceRelease = await get('GitHub verified crawler-evidence checkpoint', crawlerEvidenceReleaseUrl, 'text/html');
 requireText('GitHub verified crawler-evidence checkpoint', crawlerEvidenceRelease, [

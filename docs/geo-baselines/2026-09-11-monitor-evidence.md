@@ -4,6 +4,7 @@
 
 ## 当前可复核结果
 
+- revision 72 Release 已精确固定到基线提交 `c2665364455a9f4fa6bd97439081aacae11648d2`。五个资产经匿名下载逐字节复核，SHA-256 依次为：监测快照 `4ece1eb31e6165c20d5f6ccd023123ff4a661712eef9da6e63f7580453884a95`、公开状态 `a0d71bc1ba2234e358a05e56263ac33a840c33fe515465f16f3618702f225382`、提示词矩阵 `ed5305c7c1221689dd5c522cf305ea7ff73344ef37f016a3e148d5f598351b6f`、证据映射 `28b9c7f47bdc555e4add7e27a11e5bfffa7d1aed41c4f30b7884dd81719524c6`、覆盖报告 `7b9eb77978732b6425d408bb02cf4c2629daa9693ad2bb448e937df179151c11`。
 - revision 72 固定 `2026-09-13T09:14:08.977Z` 生产采集：新增一条提供方已核验的 OAI-SearchBot `/robots.txt` 304 请求，OpenAI 发现文件累计为 GPTBot 15、OAI-SearchBot 13，正文请求仍为 28／0；Ahrefs 发现文件累计为 105、正文为 0。另有一条来自 GitHub Discussions UTM 的请求仅记为“访问者类型未验证”，其 OVH 网络、空 Referrer 与浏览器标识不足以证明真人访问。所有增量均不证明收录、AI 检索、引用、排名或非品牌推荐，且未向豆包发送提示词。
 - revision 71 的发布漂移门禁继续严格比较提供方已核验爬虫、正文路径、提示词覆盖、真人类型未验证归因、可验证站外 Referrer 与 AI Referrer；已明确归类为链接扫描器、周期客户端、异常身份或格式错误活动的自动流量只保留为公开审计上下文，不再单独触发新版本。这样可避免 Release 链接安全扫描造成自激式发布循环，同时不会吞掉可能代表真人、搜索点击或 AI 引荐的变化。
 - revision 71 Release 已精确固定到基线提交 `c9d09a465cc431b53a883f934139e084dc82c5f5`。五个资产经匿名下载逐字节复核，SHA-256 依次为：监测快照 `af0067d8b4a5b6acc2976b12fb646ec8d0a1d890304879ec4c63fd92c4e45e15`、公开状态 `e0deb4e378ce03971d7bc7f79ab07601510345a406a8c5467c906d9eec729fc1`、提示词矩阵 `ed5305c7c1221689dd5c522cf305ea7ff73344ef37f016a3e148d5f598351b6f`、证据映射 `8b69dafacb5871a6477bc2716060eff81cfb9c85e858cb0ae54b0644c6f54a76`、覆盖报告 `7b9eb77978732b6425d408bb02cf4c2629daa9693ad2bb448e937df179151c11`；Release 的目标提交、资产名、公开字节、OpenAI 爬虫计数和证据边界均已复核。

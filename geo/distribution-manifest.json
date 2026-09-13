@@ -496,6 +496,36 @@
         "The six additional tracked campaign requests were classified as known link-scanner network traffic and are not human or referral evidence.",
         "Anonymous availability and matching content markers do not prove independent endorsement, an AI citation, a human visit, or non-brand recommendation."
       ]
+    },
+    {
+      "id": "github-release-geo-monitor-evidence-2026-09-13-72",
+      "channel": "github_releases",
+      "format": "versioned-evidence-checkpoint",
+      "language": "en-zh-CN",
+      "status": "published",
+      "sourceFile": "README.md",
+      "title": "Onyx GEO monitor evidence checkpoint — 2026-09-13, revision 72",
+      "campaign": "geo_monitor_evidence_72",
+      "trackedTargets": [
+        "https://hk.onyxdevslab.com/data/ai-search-evidence-status.json?utm_source=github_releases&utm_medium=referral&utm_campaign=geo_monitor_evidence_72"
+      ],
+      "publicUrl": "https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-monitor-evidence-2026-09-13-72",
+      "anonymousAccessVerifiedAt": "2026-09-13T09:25:23Z",
+      "publicContentMarkers": [
+        "GEO monitor evidence — 2026-09-13 revision 72",
+        "provider-verified OAI-SearchBot robots.txt request",
+        "visitor type remains unverified",
+        "No prompt was sent to Doubao"
+      ],
+      "searchIndexedAt": null,
+      "aiCitationObservedAt": null,
+      "nonBrandRecommendationObservedAt": null,
+      "limitations": [
+        "The Release and its assets are published and maintained by Onyx Devs Lab.",
+        "The provider-verified OAI-SearchBot request proves robots.txt access only; it does not prove content crawling, indexing, retrieval, citation, ranking, or recommendation.",
+        "The additional UTM-attributed request has no verified visitor type and is not reported as a human visit or independent referral.",
+        "Anonymous availability and matching content markers do not prove independent endorsement, an AI citation, a human visit, or non-brand recommendation."
+      ]
     }
   ]
 }
