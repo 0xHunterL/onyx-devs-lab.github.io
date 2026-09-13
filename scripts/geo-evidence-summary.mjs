@@ -270,7 +270,7 @@ export function buildDomainCanonicalizationAvailability(report) {
     canonicalOrigin: report?.canonicalOrigin || null,
     sourcesChecked: sources.length,
     compliantSources: sources.filter((source) => source.status === 'compliant').length,
-    noncompliantSources: sources.filter((source) => source.status === 'noncompliant').length,
+    noncompliantSources: sources.filter((source) => source.status === 'noncompliant' || source.status === 'mitigated-noncompliant').length,
     unavailableSources: sources.filter((source) => source.status === 'unavailable').length,
     authorityObservation: report?.authorityObservation || null,
     edgeObservation: report?.edgeObservation || null,

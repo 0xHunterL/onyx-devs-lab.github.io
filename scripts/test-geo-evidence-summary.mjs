@@ -233,6 +233,7 @@ const mitigatedDomainCanonicalization = buildDomainCanonicalizationAvailability(
   ],
 });
 assert.equal(mitigatedDomainCanonicalization.mitigatedSources, 1);
+assert.equal(mitigatedDomainCanonicalization.noncompliantSources, 1);
 assert.equal(mitigatedDomainCanonicalization.sources[0].status, 'mitigated-noncompliant');
 assert.match(mitigatedDomainCanonicalization.interpretation, /301 or 308/);
 
@@ -274,4 +275,4 @@ assert.equal(selectEvidenceEventKind({ initializing: false, evidenceChanged: tru
 assert.equal(selectEvidenceEventKind({ initializing: false, evidenceChanged: false, availabilityChanged: true }), 'availability-change');
 assert.equal(selectEvidenceEventKind({ initializing: false, evidenceChanged: false, availabilityChanged: false }), null);
 
-console.log(JSON.stringify({ tests: 95, failures: [] }, null, 2));
+console.log(JSON.stringify({ tests: 96, failures: [] }, null, 2));
