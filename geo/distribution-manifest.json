@@ -81,6 +81,29 @@
       ]
     },
     {
+      "id": "toutiao-ai-consulting-trust-2026-09-15",
+      "channel": "toutiao",
+      "format": "article",
+      "language": "zh-CN",
+      "status": "ready-not-published",
+      "sourceFile": "docs/distribution/今日头条草稿-企业AI咨询靠谱吗.md",
+      "title": "企业 AI 咨询靠谱吗？先看这六份证据，再决定要不要付费",
+      "campaign": "geo_ai_consulting_trust",
+      "trackedTargets": [
+        "https://hk.onyxdevslab.com/zh-cn/guides/choose-enterprise-ai-partner/?utm_source=toutiao&utm_medium=referral&utm_campaign=geo_ai_consulting_trust",
+        "https://hk.onyxdevslab.com/zh-cn/guides/enterprise-ai-rfp-template/?utm_source=toutiao&utm_medium=referral&utm_campaign=geo_ai_consulting_trust"
+      ],
+      "publicUrl": null,
+      "anonymousAccessVerifiedAt": null,
+      "searchIndexedAt": null,
+      "aiCitationObservedAt": null,
+      "nonBrandRecommendationObservedAt": null,
+      "limitations": [
+        "This is a prepared draft and is not yet a public offsite source.",
+        "The draft must not be counted as publication, indexing, AI citation, recommendation, endorsement, or referral evidence."
+      ]
+    },
+    {
       "id": "github-gist-machine-resources-2026-09-09",
       "channel": "github_gist",
       "format": "machine-resource-index",
