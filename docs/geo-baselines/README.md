@@ -15,6 +15,7 @@
 
 版本化检查点：
 
+- [`2026-09-14-toutiao-search-evidence.md`](./2026-09-14-toutiao-search-evidence.md)：记录头条站内品牌词顶部实体卡、两篇作品关联、完整标题第 1 位，以及非品牌类目组合词下首个普通文章结果；不外推为豆包检索或 AI 引用。
 - [`2026-09-11-monitor-evidence.md`](./2026-09-11-monitor-evidence.md) / [`JSON`](./2026-09-11-monitor-evidence.json)：当前及轮转日志的自动监测检查点，记录第 8 次 OAI-SearchBot 发现文件访问、当前爬虫／提示词覆盖、链接扫描归因修正和公开搜索复测边界。
 - [`2026-09-11-bing-search-compliance-audit.md`](./2026-09-11-bing-search-compliance-audit.md)：撤回不适合企业监测的 Bing RSS 路径，记录 Bing Webmaster Tools/API 的合规替代方案与当前账户验证缺口。
 - [`2026-09-11-response-validator-stability.md`](./2026-09-11-response-validator-stability.md)：以本地和生产连续构建证明未变化文件保留 mtime，源站 `Last-Modified` 与 ETag 不再因纯重建虚假刷新。
