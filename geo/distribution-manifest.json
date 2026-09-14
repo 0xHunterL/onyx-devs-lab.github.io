@@ -35,7 +35,7 @@
         "verifiedAt": "2026-09-13T12:06:52Z",
         "reason": "Toutiao serves an empty JavaScript bootstrap document to the anonymous HTTP monitor, while an independent logged-out Chrome session rendered the complete public article and markers."
       },
-      "searchIndexedAt": null,
+      "searchIndexedAt": "2026-09-14T06:39:22Z",
       "aiCitationObservedAt": null,
       "nonBrandRecommendationObservedAt": null,
       "limitations": [
@@ -71,13 +71,14 @@
         "verifiedAt": "2026-09-13T20:41:00Z",
         "reason": "A logged-in Chrome session confirmed the creator backend marked the article published, and the canonical public article rendered the complete title, body, author profile, AI-content declaration, legal entity statement, and both tracked target URLs."
       },
-      "searchIndexedAt": null,
+      "searchIndexedAt": "2026-09-14T06:35:17Z",
       "aiCitationObservedAt": null,
       "nonBrandRecommendationObservedAt": null,
       "limitations": [
         "The article is authored by Onyx Devs Lab and reworks an existing provider-authored ERP checklist for Toutiao; it is not an independent endorsement.",
         "Toutiao renders the tracked target URLs as plain text rather than confirmed clickable anchors, so publication does not prove a referral or link-equity transfer.",
-        "Public browser rendering proves availability at verification time, not search indexing, AI retrieval, citation, ranking, a human visit, or non-brand recommendation."
+        "An exact-title query first retrieved the article at 2026-09-14T06:35:17Z; a natural non-brand query for AI Agent 接入 ERP retrieved it as the first ordinary article after a video aggregation card at 2026-09-14T07:38:43Z.",
+        "These Toutiao search observations prove platform search retrieval at those times, not durable ranking, public-web indexing, AI retrieval, citation, a human visit, endorsement, or non-brand recommendation."
       ]
     },
     {
