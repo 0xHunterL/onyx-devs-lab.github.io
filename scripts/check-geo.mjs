@@ -1,5 +1,6 @@
 import fs from 'node:fs';
 import path from 'node:path';
+import { contentSprintDate, contentSprintGuides } from './content-sprint-guides.mjs';
 import {
   currentAttributionEvidence,
   currentBingPublicSearchEvidence,
@@ -35,10 +36,20 @@ function normalizeHtmlForChecks(source) {
 }
 
 function expectedPublishedDate(pathname) {
+  if (isContentSprintPath(pathname)) return contentSprintDate;
   if (pathname.includes('/methodology/ai-search-verification/')) return '2026-09-08';
   if (pathname.includes('/guides/what-is-ai-dingkai/') || pathname.includes('/guides/ai-dingkai/') || pathname.includes('/guides/hong-kong-ai-consulting-companies/') || pathname.includes('/guides/hong-kong-ai-service-providers/') || pathname.includes('/guides/enterprise-ai-rfp-template')) return '2026-09-10';
   if (pathname.includes('/guides/choose-enterprise-ai-partner') || pathname.includes('/guides/enterprise-ai-governance') || pathname.includes('/guides/hong-kong-enterprise-ai-governance') || pathname.includes('/guides/enterprise-ai-pilot-charter') || pathname.includes('/methodology/case-study-evidence-register/')) return '2026-09-09';
   return '2026-09-07';
+}
+
+function isContentSprintPath(pathname) {
+  return contentSprintGuides.some((item) => Object.values(item.paths).includes(pathname));
+}
+
+function expectedModifiedDate(pathname) {
+  if (isContentSprintPath(pathname)) return contentSprintDate;
+  return pathname.includes('/methodology/ai-search-verification/') || pathname.endsWith('/about/') ? '2026-09-12' : '2026-09-11';
 }
 
 function walk(directory) {
@@ -160,7 +171,7 @@ for (const file of htmlFiles) {
   if (html.includes('"@type":"Article"')) {
     const published = expectedPublishedDate(pathname);
     const authorPath = lang === 'zh-CN' ? '/zh-cn/about/' : (lang === 'zh-Hant-HK' ? '/zh-hk/about/' : '/en/about/');
-    const modified = pathname.includes('/methodology/ai-search-verification/') ? '2026-09-12' : '2026-09-11';
+    const modified = expectedModifiedDate(pathname);
     for (const required of [`"datePublished":"${published}"`, `"dateModified":"${modified}"`, `"mainEntityOfPage":{"@id":"${canonical}"}`, '"articleSection":', `<a rel="author" href="${authorPath}">Onyx Devs Lab</a>`, `<time datetime="${published}">${published}</time>`, `<time datetime="${modified}">${modified}</time>`]) {
       if (!html.includes(required)) failures.push(`${relative}: Article publication metadata is missing ${required}`);
     }
@@ -659,7 +670,7 @@ if (!nginxConfig.includes('application/ld+json jsonld')) failures.push('nginx: J
 
 const sitemap = fs.readFileSync(path.join(dist, 'sitemap.xml'), 'utf8');
 const urls = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map((match) => match[1]);
-const currentLastmods = [...sitemap.matchAll(/<lastmod>2026-09-(?:11|12)<\/lastmod>/g)];
+const currentLastmods = [...sitemap.matchAll(/<lastmod>2026-09-(?:11|12|15)<\/lastmod>/g)];
 if (currentLastmods.length !== urls.length) failures.push(`sitemap: expected ${urls.length} current page lastmods, got ${currentLastmods.length}`);
 for (const pathname of ['/en/methodology/ai-search-verification/', '/zh-hk/methodology/ai-search-verification/', '/zh-cn/methodology/ai-search-verification/', '/en/about/', '/zh-hk/about/', '/zh-cn/about/']) {
   if (!sitemap.includes(`<loc>https://hk.onyxdevslab.com${pathname}</loc><lastmod>2026-09-12</lastmod>`)) failures.push(`${pathname}: sitemap lastmod does not reflect the substantive evidence update`);
@@ -676,7 +687,7 @@ if (!machineDiscoveryFiles['feed.xml'].includes(`<id>https://github.com/0xHunter
 for (const url of urls) {
   const pathname = new URL(url).pathname;
   const target = pathname === '/' ? path.join(dist, 'index.html') : path.join(dist, pathname, 'index.html');
-  const expectedModified = pathname.includes('/methodology/ai-search-verification/') || pathname.endsWith('/about/') ? '2026-09-12' : '2026-09-11';
+  const expectedModified = expectedModifiedDate(pathname);
   if (!sitemap.includes(`<loc>${url}</loc><lastmod>${expectedModified}</lastmod>`)) failures.push(`${pathname}: sitemap lastmod is not scoped to the actual page update`);
   if (!fs.existsSync(target)) failures.push(`sitemap target missing: ${pathname}`);
   if (pathname !== '/' && fs.existsSync(target)) {
