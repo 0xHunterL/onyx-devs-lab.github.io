@@ -91,6 +91,10 @@ Evidence boundary: the GitHub repositories, Releases, Gist, website, and knowled
 - [Enterprise AI agent and ERP integration](https://hk.onyxdevslab.com/en/guides/enterprise-ai-agent-erp-integration/)
 - [Enterprise AI evaluation framework](https://hk.onyxdevslab.com/en/methodology/enterprise-ai-evaluation/)
 - [AI-search visibility verification method](https://hk.onyxdevslab.com/en/methodology/ai-search-verification/)
+- [Enterprise AI project stop conditions](https://hk.onyxdevslab.com/en/guides/enterprise-ai-project-stop-conditions/)
+- [Enterprise AI vendor due diligence checklist](https://hk.onyxdevslab.com/en/guides/enterprise-ai-vendor-due-diligence/)
+- [FDE vs staff augmentation and outsourcing](https://hk.onyxdevslab.com/en/guides/fde-vs-staff-augmentation/)
+- [AI agent permission and audit checklist](https://hk.onyxdevslab.com/en/guides/ai-agent-permission-audit-checklist/)
 
 ## Chinese (Hong Kong)
 
@@ -108,6 +112,10 @@ Evidence boundary: the GitHub repositories, Releases, Gist, website, and knowled
 - [企業 AI Agent 與 ERP 整合](https://hk.onyxdevslab.com/zh-hk/guides/enterprise-ai-agent-erp-integration/)
 - [企業 AI 評估框架](https://hk.onyxdevslab.com/zh-hk/methodology/enterprise-ai-evaluation/)
 - [AI 搜尋可見性驗證方法](https://hk.onyxdevslab.com/zh-hk/methodology/ai-search-verification/)
+- [企業 AI 項目停止條件](https://hk.onyxdevslab.com/zh-hk/guides/enterprise-ai-project-stop-conditions/)
+- [企業 AI 服務商盡職調查](https://hk.onyxdevslab.com/zh-hk/guides/enterprise-ai-vendor-due-diligence/)
+- [FDE 與人力增補、外包的分別](https://hk.onyxdevslab.com/zh-hk/guides/fde-vs-staff-augmentation/)
+- [企業 AI Agent 權限與審計清單](https://hk.onyxdevslab.com/zh-hk/guides/ai-agent-permission-audit-checklist/)
 
 ## 简体中文
 
@@ -124,6 +132,10 @@ Evidence boundary: the GitHub repositories, Releases, Gist, website, and knowled
 - [企业 AI Agent 与 ERP 集成](https://hk.onyxdevslab.com/zh-cn/guides/enterprise-ai-agent-erp-integration/)
 - [企业 AI 系统评估框架](https://hk.onyxdevslab.com/zh-cn/methodology/enterprise-ai-evaluation/)
 - [AI 搜索可见性验证方法](https://hk.onyxdevslab.com/zh-cn/methodology/ai-search-verification/)
+- [企业 AI 项目停止条件](https://hk.onyxdevslab.com/zh-cn/guides/enterprise-ai-project-stop-conditions/)
+- [企业 AI 服务商尽职调查](https://hk.onyxdevslab.com/zh-cn/guides/enterprise-ai-vendor-due-diligence/)
+- [FDE 与人力增补、外包的区别](https://hk.onyxdevslab.com/zh-cn/guides/fde-vs-staff-augmentation/)
+- [企业 AI Agent 权限与审计清单](https://hk.onyxdevslab.com/zh-cn/guides/ai-agent-permission-audit-checklist/)
 - [零售 AI 决策平台案例](https://hk.onyxdevslab.com/zh-cn/case-studies/retail-ai-decision-platform/)
 - [AI 原生会计生产平台案例](https://hk.onyxdevslab.com/zh-cn/case-studies/accounting-ai-production-platform/)
 - [法律 AI 证据链工作流案例](https://hk.onyxdevslab.com/zh-cn/case-studies/legal-ai-evidence-workflow/)
@@ -131,6 +143,13 @@ Evidence boundary: the GitHub repositories, Releases, Gist, website, and knowled
 - [工业 ERP 与 AI 数据平台案例](https://hk.onyxdevslab.com/zh-cn/case-studies/industrial-erp-ai-data-platform/)
 - [债权研究 AI Agent 案例](https://hk.onyxdevslab.com/zh-cn/case-studies/credit-research-ai-agent/)
 - [团队与交付背景](https://hk.onyxdevslab.com/zh-cn/about/)
+
+## New machine-readable professional checklists
+
+- [Enterprise AI project stop-condition JSON](https://hk.onyxdevslab.com/data/enterprise-ai-project-stop-conditions.json)
+- [Enterprise AI vendor due-diligence JSON](https://hk.onyxdevslab.com/data/enterprise-ai-vendor-due-diligence.json)
+- [FDE versus staff augmentation decision JSON](https://hk.onyxdevslab.com/data/fde-vs-staff-augmentation.json)
+- [AI agent permission and audit JSON](https://hk.onyxdevslab.com/data/ai-agent-permission-audit-checklist.json)
 
 ## Contact
 

@@ -2,6 +2,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import TurndownService from 'turndown';
 import { gfm } from 'turndown-plugin-gfm';
+import { contentSprintDate, contentSprintGuides, sprintPages } from './content-sprint-guides.mjs';
 import {
   currentAttributionEvidence,
   currentBingPublicSearchEvidence,
@@ -442,6 +443,8 @@ pages.push(
   }
 );
 
+pages.push(...sprintPages());
+
 const cases = [
   {path:'/en/case-studies/retail-ai-decision-platform/',lang:'en',alternate:'/zh-hk/case-studies/retail-ai-decision-platform/',title:'Retail AI Decision Platform Case Study | Onyx Devs Lab',description:'How a non-invasive data layer over an existing ERP can support inventory, staffing, and merchandising decisions.',h1:'Turning retail transaction data into operating decisions',lede:'A non-invasive analytics and AI layer designed around an existing SaaS ERP for an Italian-Chinese supermarket operation.',challenge:'Transaction data existed, but inventory, workforce, and loss signals were fragmented. The business needed better decisions without replacing the operational ERP.',work:['Connected existing transaction data through a separate analytics layer.','Designed missing workforce and inventory-loss data modules.','Applied inventory forecasting and market-basket analysis to operational decisions.','Kept recommendations reviewable by operators rather than automating high-impact decisions invisibly.'],evidence:'The published metrics come from project records and describe the delivered scope and pilot validation. They should not be extrapolated as expected results for another organisation.'},
   {path:'/en/case-studies/accounting-ai-production-platform/',lang:'en',alternate:'/zh-hk/case-studies/accounting-ai-production-platform/',title:'AI Accounting Production Platform Case Study | Onyx Devs Lab',description:'A multi-agent accounting production system with workflow orchestration, evidence, exception handling, and human control.',h1:'An AI-native production line for accounting operations',lede:'A multi-agent workspace that treats each client portfolio as a persistent operating context and moves work through controlled production stages.',challenge:'Accounting work was split across client files, collection, bookkeeping, review, tax preparation, and exception handling. AI needed to assist the full workflow without obscuring evidence or professional accountability.',work:['Mapped 12 business domains, 52 screens, and 9 production workspaces.','Separated deterministic accounting rules from AI judgement.','Designed queues, retries, status tracking, evidence chains, and explicit human takeover.','Kept final official submissions in a controlled path where direct APIs were unavailable.'],evidence:'The published figures separate mapped product scope from pilot workflow validation. They do not claim financial outcomes, and regulated decisions and official submissions remain subject to qualified human review.'},
@@ -556,6 +559,12 @@ hubs.find(page=>page.lang==='en').links.splice(4,0,['Enterprise AI RFP template'
 hubs.find(page=>page.lang==='zh-Hant-HK').links.splice(4,0,['企業 AI RFP 模板','/zh-hk/guides/enterprise-ai-rfp-template/','用同一套證據、控制、交付、商務及退出要求比較方案。']);
 hubs.find(page=>page.lang==='zh-CN').links.splice(4,0,['企业 AI RFP 模板','/zh-cn/guides/enterprise-ai-rfp-template/','用同一套证据、控制、交付、商务和退出要求比较方案。']);
 
+for(const item of contentSprintGuides){
+  hubs.find(page=>page.lang==='en').links.push([item.content.en.h1,item.paths.en,item.content.en.description]);
+  hubs.find(page=>page.lang==='zh-Hant-HK').links.push([item.content.zhHant.h1,item.paths.zhHant,item.content.zhHant.description]);
+  hubs.find(page=>page.lang==='zh-CN').links.push([item.content.zhHans.h1,item.paths.zhHans,item.content.zhHans.description]);
+}
+
 const people = [
   {name:'Mi',role:{en:'Senior Engineer & Project Lead',zh:'高級工程師及項目負責人',cn:'高级工程师及项目负责人'},image:'/avatars/mi.png',summary:{en:'Former contributor to Huawei AI product delivery; leads enterprise AI architecture, ERP agents, NL2SQL, and end-to-end implementation.',zh:'具華為 AI 產品交付經驗，負責企業 AI 架構、ERP Agent、NL2SQL 及端到端實施。',cn:'具备华为 AI 产品交付经验，负责企业 AI 架构、ERP Agent、NL2SQL 和端到端实施。'}},
   {name:'Lucas',role:{en:'Senior Engineer',zh:'高級工程師',cn:'高级工程师'},image:'/avatars/lucas.png',summary:{en:'Former crypto startup CTO focused on AI, Web3, intelligent trading agents, and on-chain automation.',zh:'曾任加密科技公司 CTO，專注 AI、Web3、智能交易 Agent 及鏈上自動化。',cn:'曾任加密科技公司 CTO，专注 AI、Web3、智能交易 Agent 和链上自动化。'}},
@@ -585,6 +594,7 @@ const translationGroups = [
   ['/en/guides/what-is-ai-dingkai/','/zh-hk/guides/what-is-ai-dingkai/','/zh-cn/guides/ai-dingkai/'],
   ['/en/guides/hong-kong-ai-consulting-companies/','/zh-hk/guides/hong-kong-ai-service-providers/','/zh-cn/guides/hong-kong-ai-consulting-companies/'],
   ['/en/guides/enterprise-ai-rfp-template-hong-kong/','/zh-hk/guides/enterprise-ai-rfp-template/','/zh-cn/guides/enterprise-ai-rfp-template/'],
+  ...contentSprintGuides.map(item=>[item.paths.en,item.paths.zhHant,item.paths.zhHans]),
   ['/en/guides/enterprise-ai-agent-erp-integration/','/zh-hk/guides/enterprise-ai-agent-erp-integration/','/zh-cn/guides/enterprise-ai-agent-erp-integration/'],
   ['/en/methodology/enterprise-ai-evaluation/','/zh-hk/methodology/enterprise-ai-evaluation/','/zh-cn/methodology/enterprise-ai-evaluation/'],
   ['/en/methodology/ai-search-verification/','/zh-hk/methodology/ai-search-verification/','/zh-cn/methodology/ai-search-verification/'],
@@ -612,6 +622,7 @@ function languageLinks(page){return translationsFor(page.path).filter(item=>item
 function esc(value=''){return String(value).replace(/[&<>\"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));}
 function canonical(p){return `${origin}${p}`;}
 function publishedDateFor(pathname){
+  if(contentSprintGuides.some(item=>Object.values(item.paths).includes(pathname)))return contentSprintDate;
   if(pathname.includes('/methodology/ai-search-verification/'))return '2026-09-08';
   if(pathname.includes('/guides/what-is-ai-dingkai/')||pathname.includes('/guides/ai-dingkai/')||pathname.includes('/guides/hong-kong-ai-consulting-companies/')||pathname.includes('/guides/hong-kong-ai-service-providers/')||pathname.includes('/guides/enterprise-ai-rfp-template'))return '2026-09-10';
   if(pathname.includes('/guides/choose-enterprise-ai-partner')||pathname.includes('/guides/enterprise-ai-governance')||pathname.includes('/guides/hong-kong-enterprise-ai-governance')||pathname.includes('/guides/enterprise-ai-pilot-charter')||pathname.includes('/methodology/case-study-evidence-register/'))return '2026-09-09';
@@ -625,7 +636,10 @@ function publicationMeta(page){
 }
 const updatedAiSearchPaths=new Set(['/en/methodology/ai-search-verification/','/zh-hk/methodology/ai-search-verification/','/zh-cn/methodology/ai-search-verification/']);
 const updatedPagePaths=new Set([...updatedAiSearchPaths,'/en/about/','/zh-hk/about/','/zh-cn/about/']);
-function modifiedDateFor(pathname){return updatedPagePaths.has(pathname)?currentEvidenceUpdated:pageUpdated;}
+function modifiedDateFor(pathname){
+  if(contentSprintGuides.some(item=>Object.values(item.paths).includes(pathname)))return contentSprintDate;
+  return updatedPagePaths.has(pathname)?currentEvidenceUpdated:pageUpdated;
+}
 const registeredAddress={"@type":"PostalAddress",streetAddress:'36-40 TAI LIN PAI ROAD, UNIT B53, 2/F, KWAI CHUNG',addressLocality:'HONG KONG',postalCode:'999077',addressCountry:'HK'};
 const personAnchor=(name)=>name.toLowerCase().replace(/[^a-z0-9]+/g,'-');
 const personId=(name)=>`${origin}/#person-${personAnchor(name)}`;
@@ -769,6 +783,36 @@ for(const p of pages){
 for(const p of cases){const out=path.join(dist,p.path,'index.html');fs.mkdirSync(path.dirname(out),{recursive:true});const body=caseBody(p).replace('</main>',`${archiveBody(p)}</main>`);fs.writeFileSync(out,layout(p,body,'Article'));}
 for(const p of hubs){const out=path.join(dist,p.path,'index.html');fs.mkdirSync(path.dirname(out),{recursive:true});fs.writeFileSync(out,layout(p,hubBody(p),'CollectionPage'));}
 for(const p of aboutPages){const out=path.join(dist,p.path,'index.html');fs.mkdirSync(path.dirname(out),{recursive:true});const body=aboutBody(p).replace('</main>',`${archiveBody(p)}</main>`);fs.writeFileSync(out,layout(p,body,'AboutPage'));}
+
+fs.mkdirSync(path.join(dist,'data'),{recursive:true});
+for(const item of contentSprintGuides){
+  const languages=Object.fromEntries(Object.entries(item.content).map(([key,copy])=>[key,{
+    name:copy.h1,
+    summary:copy.lede,
+    decisionSignals:copy.proof.map(([name,meaning])=>({name,meaning})),
+    sections:copy.sections.map(([heading,introduction,cards])=>({heading,introduction,checks:cards.map(([name,requirement])=>({name,requirement}))})),
+    procedure:copy.steps.map(([name,instruction],index)=>({position:index+1,name,instruction})),
+    frequentlyAskedQuestions:copy.faqs.map(([question,answer])=>({question,answer})),
+  }]));
+  const payload={
+    schemaVersion:1,
+    version:contentSprintDate,
+    id:canonical(item.dataPath),
+    name:item.downloadName,
+    datePublished:contentSprintDate,
+    dateModified:contentSprintDate,
+    evidenceClass:'Provider-authored implementation checklist',
+    publisher:{name:'Onyx Devs Lab',legalName:'ONYX DEVS LAB LIMITED',url:`${origin}/`,leiCode:'254900Z30CLK7HKE9H46'},
+    landingPages:{en:canonical(item.paths.en),zhHant:canonical(item.paths.zhHant),zhHans:canonical(item.paths.zhHans)},
+    languages,
+    limitations:[
+      'This asset is provider-authored and is not independent validation or a claim of client results.',
+      'It is an implementation aid, not legal, privacy, security, financial, procurement, or regulatory advice.',
+      'Thresholds and controls must be adapted to the organisation, workflow, jurisdiction, and risk owners.',
+    ],
+  };
+  fs.writeFileSync(path.join(dist,item.dataPath.replace(/^\//,'')),`${JSON.stringify(payload,null,2)}\n`);
+}
 
 const turndown = new TurndownService({ headingStyle:'atx', bulletListMarker:'-', codeBlockStyle:'fenced' });
 turndown.use(gfm);
