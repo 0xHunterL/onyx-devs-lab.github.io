@@ -1579,6 +1579,57 @@ if (statusV77 && (
   || statusV77.testProtocol?.doubaoPromptsSent !== false
 )) failures.push('Versioned GEO monitor revision 77 public status: search presentation, crawler, or AI boundary is incomplete');
 
+const monitorEvidenceV78Base = 'https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-monitor-evidence-2026-09-15-78';
+const monitorEvidenceV78Assets = [
+  {file:'2026-09-11-monitor-evidence.json',sha256:'3dc9a76ec9ede61add7d1f9d360916019e97633ac86e8774150c271422e3b75e'},
+  {file:'ai-search-evidence-status.json',sha256:'3fb1424d012f46af4d94f5950025972b01d0b4dbf9e31d4c46720703a228ce60'},
+  {file:'prompt-matrix.json',sha256:'ed5305c7c1221689dd5c522cf305ea7ff73344ef37f016a3e148d5f598351b6f'},
+  {file:'ai-search-prompt-evidence-map.json',sha256:'3a64cd61533c0fd35272f96c7995d9048e359e7413221cce164c5d7e6a13bf8c'},
+  {file:'2026-09-11-prompt-crawl-coverage.json',sha256:'c98fac72ff186a919622cbc0d445593551ea29baa1b7c43dd1cdfadabbbde9dc'},
+];
+const monitorEvidenceV78Json = {};
+for (const asset of monitorEvidenceV78Assets) {
+  const raw = await get(`Versioned GEO monitor revision 78 ${asset.file}`, `${monitorEvidenceV78Base}/${asset.file}`, 'application/');
+  const digest = createHash('sha256').update(raw).digest('hex');
+  if (digest !== asset.sha256) failures.push(`Versioned GEO monitor revision 78 ${asset.file}: SHA-256 mismatch, got ${digest}`);
+  try { monitorEvidenceV78Json[asset.file] = JSON.parse(raw); } catch { failures.push(`Versioned GEO monitor revision 78 ${asset.file}: invalid JSON`); }
+}
+const monitorV78 = monitorEvidenceV78Json['2026-09-11-monitor-evidence.json'];
+if (monitorV78 && (
+  monitorV78.publicStatusVersion !== '2026.09.15.78'
+  || monitorV78.generatedAt !== '2026-09-15T07:41:02.395Z'
+  || monitorV78.latestEvidenceObservedAt !== '2026-09-15T06:19:25Z'
+  || monitorV78.providerVerifiedCrawlerEvidence?.gptBotContentRequests !== 55
+  || monitorV78.providerVerifiedCrawlerEvidence?.oaiSearchBotContentRequests !== 0
+  || monitorV78.providerVerifiedCrawlerEvidence?.ahrefsbotDiscoveryFileRequests !== 131
+  || monitorV78.providerVerifiedCrawlerEvidence?.distinctVerifiedContentPaths !== 55
+  || monitorV78.fixedPromptCoverage?.verifiedCrawledEvidencePages !== 21
+  || monitorV78.fixedPromptCoverage?.searchRelatedCrawledEvidencePages !== 16
+  || monitorV78.attributionEvidence?.visitorTypeUnverifiedRequests !== 17
+  || monitorV78.attributionEvidence?.aiReferrerAttributedRequests !== 0
+  || monitorV78.attributionEvidence?.latestVisitorTypeUnverifiedAttributions?.[0]?.referrerHost !== 'coze.cn'
+  || !monitorV78.attributionEvidence?.latestAttributionBoundaryObservation?.meaning?.includes('not evidence of a person, Doubao')
+  || monitorV78.distributionEvidence?.publishedItems !== 24
+  || monitorV78.distributionEvidence?.expectedAfterCurrentCheckpointPublication?.publishedItems !== 25
+  || monitorV78.doubaoTestStatus !== 'not-run'
+)) failures.push('Versioned GEO monitor revision 78: crawler, prompt coverage, attribution, distribution, or evidence boundary is incomplete');
+const statusV78 = monitorEvidenceV78Json['ai-search-evidence-status.json'];
+if (statusV78 && (
+  statusV78.version !== '2026.09.15.78'
+  || statusV78.observedAt !== '2026-09-15T07:41:02.395Z'
+  || statusV78.latestEvidenceObservedAt !== '2026-09-15T06:19:25Z'
+  || statusV78.versionHistory?.[0]?.version !== '2026.09.15.78'
+  || statusV78.evidenceLevels?.[1]?.evidence?.verifiedGptBotContentCrawls !== 55
+  || statusV78.evidenceLevels?.[1]?.evidence?.verifiedOaiSearchBotContentCrawls !== 0
+  || statusV78.evidenceLevels?.[1]?.evidence?.verifiedAhrefsBotDiscoveryFileCrawls !== 131
+  || statusV78.evidenceLevels?.[1]?.evidence?.fixedPromptCoverage?.verifiedCrawledEvidencePages !== 21
+  || statusV78.evidenceLevels?.[3]?.evidence?.humanUnverifiedTrackedRequests !== 17
+  || statusV78.evidenceLevels?.[3]?.evidence?.realAiReferralVisitsObserved !== 0
+  || statusV78.evidenceLevels?.[2]?.status !== 'not-verified'
+  || statusV78.evidenceLevels?.[3]?.status !== 'not-tested'
+  || statusV78.testProtocol?.doubaoPromptsSent !== false
+)) failures.push('Versioned GEO monitor revision 78 public status: crawler, prompt coverage, attribution, or AI boundary is incomplete');
+
 const crawlerEvidenceReleaseUrl = 'https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-crawler-evidence-2026-09-10';
 const crawlerEvidenceRelease = await get('GitHub verified crawler-evidence checkpoint', crawlerEvidenceReleaseUrl, 'text/html');
 requireText('GitHub verified crawler-evidence checkpoint', crawlerEvidenceRelease, [
