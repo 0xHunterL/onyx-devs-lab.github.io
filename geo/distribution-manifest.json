@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updated": "2026-09-14",
+  "updated": "2026-09-15",
   "publisher": {
     "brand": "Onyx Devs Lab",
     "legalName": "ONYX DEVS LAB LIMITED",
@@ -86,7 +86,7 @@
       "channel": "toutiao",
       "format": "article",
       "language": "zh-CN",
-      "status": "ready-not-published",
+      "status": "published",
       "sourceFile": "docs/distribution/今日头条草稿-企业AI咨询靠谱吗.md",
       "title": "企业 AI 咨询靠谱吗？先看这六份证据，再决定要不要付费",
       "campaign": "geo_ai_consulting_trust",
@@ -94,14 +94,27 @@
         "https://hk.onyxdevslab.com/zh-cn/guides/choose-enterprise-ai-partner/?utm_source=toutiao&utm_medium=referral&utm_campaign=geo_ai_consulting_trust",
         "https://hk.onyxdevslab.com/zh-cn/guides/enterprise-ai-rfp-template/?utm_source=toutiao&utm_medium=referral&utm_campaign=geo_ai_consulting_trust"
       ],
-      "publicUrl": null,
-      "anonymousAccessVerifiedAt": null,
+      "publicUrl": "https://www.toutiao.com/article/7685676742677103158/",
+      "anonymousAccessVerifiedAt": "2026-09-15T08:33:45Z",
+      "publicContentMarkers": [
+        "企业 AI 咨询靠谱吗？先看这六份证据，再决定要不要付费",
+        "Onyx Devs Lab",
+        "ONYX DEVS LAB LIMITED",
+        "geo_ai_consulting_trust"
+      ],
+      "publicContentValidation": {
+        "mode": "browser",
+        "verifiedAt": "2026-09-15T08:33:45Z",
+        "reason": "The creator backend marked the article published, the canonical public article rendered the complete title, author, body, AI-content declaration, legal entity statement, and both tracked target URLs, and a separate anonymous HTTP request ultimately returned 200."
+      },
       "searchIndexedAt": null,
       "aiCitationObservedAt": null,
       "nonBrandRecommendationObservedAt": null,
       "limitations": [
-        "This is a prepared draft and is not yet a public offsite source.",
-        "The draft must not be counted as publication, indexing, AI citation, recommendation, endorsement, or referral evidence."
+        "The article is authored by Onyx Devs Lab and is not an independent endorsement or ranking.",
+        "Toutiao renders both tracked target URLs as plain text rather than confirmed clickable anchors, so publication does not prove a referral or link-equity transfer.",
+        "Anonymous HTTP success proves URL reachability; the separately recorded browser verification establishes the visible title, author, body, AI-content declaration, legal entity statement, and tracked target URLs at that time.",
+        "Publication does not prove search indexing, AI retrieval, citation, recommendation, a human visit, or procurement suitability."
       ]
     },
     {
