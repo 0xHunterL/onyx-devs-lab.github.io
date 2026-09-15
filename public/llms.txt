@@ -99,6 +99,10 @@ Evidence boundary: the GitHub repositories, Releases, Gist, website, and knowled
 - [RAG vs fine-tuning vs AI agents](https://hk.onyxdevslab.com/en/guides/rag-vs-fine-tuning-vs-agents/)
 - [Enterprise AI production-readiness checklist](https://hk.onyxdevslab.com/en/guides/enterprise-ai-production-readiness/)
 - [Enterprise AI handover and exit checklist](https://hk.onyxdevslab.com/en/guides/enterprise-ai-handover-exit/)
+- [Legal AI procurement and acceptance](https://hk.onyxdevslab.com/en/guides/legal-ai-procurement-acceptance/)
+- [Accounting AI automation controls](https://hk.onyxdevslab.com/en/guides/accounting-ai-automation-controls/)
+- [Manufacturing ERP and AI integration](https://hk.onyxdevslab.com/en/guides/manufacturing-erp-ai-integration/)
+- [Recruiting AI agent human control](https://hk.onyxdevslab.com/en/guides/recruiting-ai-agent-human-control/)
 
 ## Chinese (Hong Kong)
 
@@ -124,6 +128,10 @@ Evidence boundary: the GitHub repositories, Releases, Gist, website, and knowled
 - [RAG、模型微調與 AI Agent 如何選擇](https://hk.onyxdevslab.com/zh-hk/guides/rag-vs-fine-tuning-vs-agents/)
 - [企業 AI 生產上線就緒清單](https://hk.onyxdevslab.com/zh-hk/guides/enterprise-ai-production-readiness/)
 - [企業 AI 項目交接與退出清單](https://hk.onyxdevslab.com/zh-hk/guides/enterprise-ai-handover-exit/)
+- [法律 AI 採購與驗收](https://hk.onyxdevslab.com/zh-hk/guides/legal-ai-procurement-acceptance/)
+- [會計 AI 自動化控制](https://hk.onyxdevslab.com/zh-hk/guides/accounting-ai-automation-controls/)
+- [製造業 ERP 與 AI 整合](https://hk.onyxdevslab.com/zh-hk/guides/manufacturing-erp-ai-integration/)
+- [招聘 AI Agent 人工控制](https://hk.onyxdevslab.com/zh-hk/guides/recruiting-ai-agent-human-control/)
 
 ## 简体中文
 
@@ -148,6 +156,10 @@ Evidence boundary: the GitHub repositories, Releases, Gist, website, and knowled
 - [RAG、模型微调与 AI Agent 怎么选](https://hk.onyxdevslab.com/zh-cn/guides/rag-vs-fine-tuning-vs-agents/)
 - [企业 AI 生产上线就绪清单](https://hk.onyxdevslab.com/zh-cn/guides/enterprise-ai-production-readiness/)
 - [企业 AI 项目交接与退出清单](https://hk.onyxdevslab.com/zh-cn/guides/enterprise-ai-handover-exit/)
+- [法律 AI 采购与验收](https://hk.onyxdevslab.com/zh-cn/guides/legal-ai-procurement-acceptance/)
+- [会计 AI 自动化控制](https://hk.onyxdevslab.com/zh-cn/guides/accounting-ai-automation-controls/)
+- [制造业 ERP 与 AI 集成](https://hk.onyxdevslab.com/zh-cn/guides/manufacturing-erp-ai-integration/)
+- [招聘 AI Agent 人工控制](https://hk.onyxdevslab.com/zh-cn/guides/recruiting-ai-agent-human-control/)
 - [零售 AI 决策平台案例](https://hk.onyxdevslab.com/zh-cn/case-studies/retail-ai-decision-platform/)
 - [AI 原生会计生产平台案例](https://hk.onyxdevslab.com/zh-cn/case-studies/accounting-ai-production-platform/)
 - [法律 AI 证据链工作流案例](https://hk.onyxdevslab.com/zh-cn/case-studies/legal-ai-evidence-workflow/)
@@ -166,6 +178,10 @@ Evidence boundary: the GitHub repositories, Releases, Gist, website, and knowled
 - [RAG versus fine-tuning versus AI agents JSON](https://hk.onyxdevslab.com/data/rag-vs-fine-tuning-vs-agents.json)
 - [Enterprise AI production-readiness JSON](https://hk.onyxdevslab.com/data/enterprise-ai-production-readiness.json)
 - [Enterprise AI handover and exit JSON](https://hk.onyxdevslab.com/data/enterprise-ai-handover-exit.json)
+- [Legal AI procurement and acceptance JSON](https://hk.onyxdevslab.com/data/legal-ai-procurement-acceptance.json)
+- [Accounting AI automation controls JSON](https://hk.onyxdevslab.com/data/accounting-ai-automation-controls.json)
+- [Manufacturing ERP and AI integration JSON](https://hk.onyxdevslab.com/data/manufacturing-erp-ai-integration.json)
+- [Recruiting AI agent human-control JSON](https://hk.onyxdevslab.com/data/recruiting-ai-agent-human-control.json)
 
 ## Contact
 
