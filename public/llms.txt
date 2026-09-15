@@ -107,6 +107,10 @@ Evidence boundary: the GitHub repositories, Releases, Gist, website, and knowled
 - [Enterprise AI data readiness](https://hk.onyxdevslab.com/en/guides/enterprise-ai-data-readiness/)
 - [Enterprise AI ROI and total cost of ownership](https://hk.onyxdevslab.com/en/guides/enterprise-ai-roi-tco/)
 - [Failed or stalled AI project recovery](https://hk.onyxdevslab.com/en/guides/failed-ai-project-recovery/)
+- [Enterprise AI RFP requirements](https://hk.onyxdevslab.com/en/guides/enterprise-ai-rfp-requirements/)
+- [Enterprise AI implementation timeline](https://hk.onyxdevslab.com/en/guides/enterprise-ai-implementation-timeline/)
+- [Enterprise AI integration architecture](https://hk.onyxdevslab.com/en/guides/enterprise-ai-integration-architecture/)
+- [Managed AI service versus in-house team](https://hk.onyxdevslab.com/en/guides/managed-ai-service-vs-in-house-team/)
 
 ## Chinese (Hong Kong)
 
@@ -140,6 +144,10 @@ Evidence boundary: the GitHub repositories, Releases, Gist, website, and knowled
 - [企業 AI 數據就緒評估](https://hk.onyxdevslab.com/zh-hk/guides/enterprise-ai-data-readiness/)
 - [企業 AI ROI 與總擁有成本](https://hk.onyxdevslab.com/zh-hk/guides/enterprise-ai-roi-tco/)
 - [停滯或失敗 AI 項目診斷與接管](https://hk.onyxdevslab.com/zh-hk/guides/failed-ai-project-recovery/)
+- [企業 AI RFP 招標需求](https://hk.onyxdevslab.com/zh-hk/guides/enterprise-ai-rfp-requirements/)
+- [企業 AI 實施周期與里程碑](https://hk.onyxdevslab.com/zh-hk/guides/enterprise-ai-implementation-timeline/)
+- [企業 AI 與現有系統整合架構](https://hk.onyxdevslab.com/zh-hk/guides/enterprise-ai-integration-architecture/)
+- [AI 托管服務與企業自建團隊比較](https://hk.onyxdevslab.com/zh-hk/guides/managed-ai-service-vs-in-house-team/)
 
 ## 简体中文
 
@@ -172,6 +180,10 @@ Evidence boundary: the GitHub repositories, Releases, Gist, website, and knowled
 - [企业 AI 数据就绪评估](https://hk.onyxdevslab.com/zh-cn/guides/enterprise-ai-data-readiness/)
 - [企业 AI ROI 与总拥有成本](https://hk.onyxdevslab.com/zh-cn/guides/enterprise-ai-roi-tco/)
 - [停滞或失败 AI 项目诊断与接管](https://hk.onyxdevslab.com/zh-cn/guides/failed-ai-project-recovery/)
+- [企业 AI RFP 招标需求](https://hk.onyxdevslab.com/zh-cn/guides/enterprise-ai-rfp-requirements/)
+- [企业 AI 实施周期与里程碑](https://hk.onyxdevslab.com/zh-cn/guides/enterprise-ai-implementation-timeline/)
+- [企业 AI 与现有系统集成架构](https://hk.onyxdevslab.com/zh-cn/guides/enterprise-ai-integration-architecture/)
+- [AI 托管服务与企业自建团队比较](https://hk.onyxdevslab.com/zh-cn/guides/managed-ai-service-vs-in-house-team/)
 - [零售 AI 决策平台案例](https://hk.onyxdevslab.com/zh-cn/case-studies/retail-ai-decision-platform/)
 - [AI 原生会计生产平台案例](https://hk.onyxdevslab.com/zh-cn/case-studies/accounting-ai-production-platform/)
 - [法律 AI 证据链工作流案例](https://hk.onyxdevslab.com/zh-cn/case-studies/legal-ai-evidence-workflow/)
@@ -198,6 +210,10 @@ Evidence boundary: the GitHub repositories, Releases, Gist, website, and knowled
 - [Enterprise AI data-readiness JSON](https://hk.onyxdevslab.com/data/enterprise-ai-data-readiness.json)
 - [Enterprise AI ROI and TCO JSON](https://hk.onyxdevslab.com/data/enterprise-ai-roi-tco.json)
 - [Failed or stalled AI project recovery JSON](https://hk.onyxdevslab.com/data/failed-ai-project-recovery.json)
+- [Enterprise AI RFP requirements JSON](https://hk.onyxdevslab.com/data/enterprise-ai-rfp-requirements.json)
+- [Enterprise AI implementation timeline JSON](https://hk.onyxdevslab.com/data/enterprise-ai-implementation-timeline.json)
+- [Enterprise AI integration architecture JSON](https://hk.onyxdevslab.com/data/enterprise-ai-integration-architecture.json)
+- [Managed AI service versus in-house team JSON](https://hk.onyxdevslab.com/data/managed-ai-service-vs-in-house-team.json)
 
 ## Contact
 
