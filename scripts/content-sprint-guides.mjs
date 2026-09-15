@@ -1,3 +1,5 @@
+import { contentSprintBGuides } from './content-sprint-b-guides.mjs';
+
 const guide = ({ id, slug, dataPath, downloadName, en, zhHant, zhHans }) => ({
   id,
   dataPath,
@@ -12,7 +14,7 @@ const guide = ({ id, slug, dataPath, downloadName, en, zhHant, zhHans }) => ({
 
 export const contentSprintDate = '2026-09-15';
 
-export const contentSprintGuides = [
+const contentSprintAGuides = [
   guide({
     id: 'enterprise-ai-project-stop-conditions',
     slug: 'enterprise-ai-project-stop-conditions',
@@ -198,6 +200,8 @@ export const contentSprintGuides = [
     },
   }),
 ];
+
+export const contentSprintGuides = [...contentSprintAGuides, ...contentSprintBGuides];
 
 export function sprintPages() {
   const variants = [

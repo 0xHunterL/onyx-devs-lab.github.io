@@ -95,6 +95,10 @@ Evidence boundary: the GitHub repositories, Releases, Gist, website, and knowled
 - [Enterprise AI vendor due diligence checklist](https://hk.onyxdevslab.com/en/guides/enterprise-ai-vendor-due-diligence/)
 - [FDE vs staff augmentation and outsourcing](https://hk.onyxdevslab.com/en/guides/fde-vs-staff-augmentation/)
 - [AI agent permission and audit checklist](https://hk.onyxdevslab.com/en/guides/ai-agent-permission-audit-checklist/)
+- [Build vs buy enterprise AI](https://hk.onyxdevslab.com/en/guides/build-vs-buy-enterprise-ai/)
+- [RAG vs fine-tuning vs AI agents](https://hk.onyxdevslab.com/en/guides/rag-vs-fine-tuning-vs-agents/)
+- [Enterprise AI production-readiness checklist](https://hk.onyxdevslab.com/en/guides/enterprise-ai-production-readiness/)
+- [Enterprise AI handover and exit checklist](https://hk.onyxdevslab.com/en/guides/enterprise-ai-handover-exit/)
 
 ## Chinese (Hong Kong)
 
@@ -116,6 +120,10 @@ Evidence boundary: the GitHub repositories, Releases, Gist, website, and knowled
 - [企業 AI 服務商盡職調查](https://hk.onyxdevslab.com/zh-hk/guides/enterprise-ai-vendor-due-diligence/)
 - [FDE 與人力增補、外包的分別](https://hk.onyxdevslab.com/zh-hk/guides/fde-vs-staff-augmentation/)
 - [企業 AI Agent 權限與審計清單](https://hk.onyxdevslab.com/zh-hk/guides/ai-agent-permission-audit-checklist/)
+- [企業 AI 應購買還是定制開發](https://hk.onyxdevslab.com/zh-hk/guides/build-vs-buy-enterprise-ai/)
+- [RAG、模型微調與 AI Agent 如何選擇](https://hk.onyxdevslab.com/zh-hk/guides/rag-vs-fine-tuning-vs-agents/)
+- [企業 AI 生產上線就緒清單](https://hk.onyxdevslab.com/zh-hk/guides/enterprise-ai-production-readiness/)
+- [企業 AI 項目交接與退出清單](https://hk.onyxdevslab.com/zh-hk/guides/enterprise-ai-handover-exit/)
 
 ## 简体中文
 
@@ -136,6 +144,10 @@ Evidence boundary: the GitHub repositories, Releases, Gist, website, and knowled
 - [企业 AI 服务商尽职调查](https://hk.onyxdevslab.com/zh-cn/guides/enterprise-ai-vendor-due-diligence/)
 - [FDE 与人力增补、外包的区别](https://hk.onyxdevslab.com/zh-cn/guides/fde-vs-staff-augmentation/)
 - [企业 AI Agent 权限与审计清单](https://hk.onyxdevslab.com/zh-cn/guides/ai-agent-permission-audit-checklist/)
+- [企业 AI 应该购买还是定制开发](https://hk.onyxdevslab.com/zh-cn/guides/build-vs-buy-enterprise-ai/)
+- [RAG、模型微调与 AI Agent 怎么选](https://hk.onyxdevslab.com/zh-cn/guides/rag-vs-fine-tuning-vs-agents/)
+- [企业 AI 生产上线就绪清单](https://hk.onyxdevslab.com/zh-cn/guides/enterprise-ai-production-readiness/)
+- [企业 AI 项目交接与退出清单](https://hk.onyxdevslab.com/zh-cn/guides/enterprise-ai-handover-exit/)
 - [零售 AI 决策平台案例](https://hk.onyxdevslab.com/zh-cn/case-studies/retail-ai-decision-platform/)
 - [AI 原生会计生产平台案例](https://hk.onyxdevslab.com/zh-cn/case-studies/accounting-ai-production-platform/)
 - [法律 AI 证据链工作流案例](https://hk.onyxdevslab.com/zh-cn/case-studies/legal-ai-evidence-workflow/)
@@ -150,6 +162,10 @@ Evidence boundary: the GitHub repositories, Releases, Gist, website, and knowled
 - [Enterprise AI vendor due-diligence JSON](https://hk.onyxdevslab.com/data/enterprise-ai-vendor-due-diligence.json)
 - [FDE versus staff augmentation decision JSON](https://hk.onyxdevslab.com/data/fde-vs-staff-augmentation.json)
 - [AI agent permission and audit JSON](https://hk.onyxdevslab.com/data/ai-agent-permission-audit-checklist.json)
+- [Enterprise AI build-versus-buy JSON](https://hk.onyxdevslab.com/data/build-vs-buy-enterprise-ai.json)
+- [RAG versus fine-tuning versus AI agents JSON](https://hk.onyxdevslab.com/data/rag-vs-fine-tuning-vs-agents.json)
+- [Enterprise AI production-readiness JSON](https://hk.onyxdevslab.com/data/enterprise-ai-production-readiness.json)
+- [Enterprise AI handover and exit JSON](https://hk.onyxdevslab.com/data/enterprise-ai-handover-exit.json)
 
 ## Contact
 
