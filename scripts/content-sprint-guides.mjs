@@ -2,6 +2,7 @@ import { contentSprintBGuides } from './content-sprint-b-guides.mjs';
 import { contentSprintCGuides } from './content-sprint-c-guides.mjs';
 import { contentSprintDGuides } from './content-sprint-d-guides.mjs';
 import { contentSprintEGuides } from './content-sprint-e-guides.mjs';
+import { contentSprintFGuides } from './content-sprint-f-guides.mjs';
 
 const guide = ({ id, slug, dataPath, downloadName, en, zhHant, zhHans }) => ({
   id,
@@ -204,7 +205,7 @@ const contentSprintAGuides = [
   }),
 ];
 
-export const contentSprintGuides = [...contentSprintAGuides, ...contentSprintBGuides, ...contentSprintCGuides, ...contentSprintDGuides, ...contentSprintEGuides];
+export const contentSprintGuides = [...contentSprintAGuides, ...contentSprintBGuides, ...contentSprintCGuides, ...contentSprintDGuides, ...contentSprintEGuides, ...contentSprintFGuides];
 
 export function sprintPages() {
   const variants = [
