@@ -1,5 +1,6 @@
 import { contentSprintBGuides } from './content-sprint-b-guides.mjs';
 import { contentSprintCGuides } from './content-sprint-c-guides.mjs';
+import { contentSprintDGuides } from './content-sprint-d-guides.mjs';
 
 const guide = ({ id, slug, dataPath, downloadName, en, zhHant, zhHans }) => ({
   id,
@@ -202,7 +203,7 @@ const contentSprintAGuides = [
   }),
 ];
 
-export const contentSprintGuides = [...contentSprintAGuides, ...contentSprintBGuides, ...contentSprintCGuides];
+export const contentSprintGuides = [...contentSprintAGuides, ...contentSprintBGuides, ...contentSprintCGuides, ...contentSprintDGuides];
 
 export function sprintPages() {
   const variants = [

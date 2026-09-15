@@ -103,6 +103,10 @@ Evidence boundary: the GitHub repositories, Releases, Gist, website, and knowled
 - [Accounting AI automation controls](https://hk.onyxdevslab.com/en/guides/accounting-ai-automation-controls/)
 - [Manufacturing ERP and AI integration](https://hk.onyxdevslab.com/en/guides/manufacturing-erp-ai-integration/)
 - [Recruiting AI agent human control](https://hk.onyxdevslab.com/en/guides/recruiting-ai-agent-human-control/)
+- [AI proof of concept to production](https://hk.onyxdevslab.com/en/guides/ai-poc-to-production/)
+- [Enterprise AI data readiness](https://hk.onyxdevslab.com/en/guides/enterprise-ai-data-readiness/)
+- [Enterprise AI ROI and total cost of ownership](https://hk.onyxdevslab.com/en/guides/enterprise-ai-roi-tco/)
+- [Failed or stalled AI project recovery](https://hk.onyxdevslab.com/en/guides/failed-ai-project-recovery/)
 
 ## Chinese (Hong Kong)
 
@@ -132,6 +136,10 @@ Evidence boundary: the GitHub repositories, Releases, Gist, website, and knowled
 - [會計 AI 自動化控制](https://hk.onyxdevslab.com/zh-hk/guides/accounting-ai-automation-controls/)
 - [製造業 ERP 與 AI 整合](https://hk.onyxdevslab.com/zh-hk/guides/manufacturing-erp-ai-integration/)
 - [招聘 AI Agent 人工控制](https://hk.onyxdevslab.com/zh-hk/guides/recruiting-ai-agent-human-control/)
+- [AI PoC 如何進入生產環境](https://hk.onyxdevslab.com/zh-hk/guides/ai-poc-to-production/)
+- [企業 AI 數據就緒評估](https://hk.onyxdevslab.com/zh-hk/guides/enterprise-ai-data-readiness/)
+- [企業 AI ROI 與總擁有成本](https://hk.onyxdevslab.com/zh-hk/guides/enterprise-ai-roi-tco/)
+- [停滯或失敗 AI 項目診斷與接管](https://hk.onyxdevslab.com/zh-hk/guides/failed-ai-project-recovery/)
 
 ## 简体中文
 
@@ -160,6 +168,10 @@ Evidence boundary: the GitHub repositories, Releases, Gist, website, and knowled
 - [会计 AI 自动化控制](https://hk.onyxdevslab.com/zh-cn/guides/accounting-ai-automation-controls/)
 - [制造业 ERP 与 AI 集成](https://hk.onyxdevslab.com/zh-cn/guides/manufacturing-erp-ai-integration/)
 - [招聘 AI Agent 人工控制](https://hk.onyxdevslab.com/zh-cn/guides/recruiting-ai-agent-human-control/)
+- [AI PoC 怎样进入生产环境](https://hk.onyxdevslab.com/zh-cn/guides/ai-poc-to-production/)
+- [企业 AI 数据就绪评估](https://hk.onyxdevslab.com/zh-cn/guides/enterprise-ai-data-readiness/)
+- [企业 AI ROI 与总拥有成本](https://hk.onyxdevslab.com/zh-cn/guides/enterprise-ai-roi-tco/)
+- [停滞或失败 AI 项目诊断与接管](https://hk.onyxdevslab.com/zh-cn/guides/failed-ai-project-recovery/)
 - [零售 AI 决策平台案例](https://hk.onyxdevslab.com/zh-cn/case-studies/retail-ai-decision-platform/)
 - [AI 原生会计生产平台案例](https://hk.onyxdevslab.com/zh-cn/case-studies/accounting-ai-production-platform/)
 - [法律 AI 证据链工作流案例](https://hk.onyxdevslab.com/zh-cn/case-studies/legal-ai-evidence-workflow/)
@@ -182,6 +194,10 @@ Evidence boundary: the GitHub repositories, Releases, Gist, website, and knowled
 - [Accounting AI automation controls JSON](https://hk.onyxdevslab.com/data/accounting-ai-automation-controls.json)
 - [Manufacturing ERP and AI integration JSON](https://hk.onyxdevslab.com/data/manufacturing-erp-ai-integration.json)
 - [Recruiting AI agent human-control JSON](https://hk.onyxdevslab.com/data/recruiting-ai-agent-human-control.json)
+- [AI proof-of-concept to production JSON](https://hk.onyxdevslab.com/data/ai-poc-to-production.json)
+- [Enterprise AI data-readiness JSON](https://hk.onyxdevslab.com/data/enterprise-ai-data-readiness.json)
+- [Enterprise AI ROI and TCO JSON](https://hk.onyxdevslab.com/data/enterprise-ai-roi-tco.json)
+- [Failed or stalled AI project recovery JSON](https://hk.onyxdevslab.com/data/failed-ai-project-recovery.json)
 
 ## Contact
 
