@@ -192,7 +192,7 @@ retentionAdjustmentCleared.retentionAdjustments = [];
 assert.equal(buildPublicationDrift(baseline, retentionAdjustmentCleared).status, 'synchronized');
 
 const retainedLogExpansion = structuredClone(summary);
-retainedLogExpansion.sourceLogs.unshift('/var/log/nginx/hk.onyxdevslab.com.geo.log.5.gz');
+retainedLogExpansion.sourceLogs.unshift('/var/log/nginx/hk.onyxdevslab.com.geo.log.7.gz');
 assert.equal(buildPublicationDrift(baseline, retainedLogExpansion).mismatches.length, 0);
 
 const retainedLogSetDrift = structuredClone(summary);

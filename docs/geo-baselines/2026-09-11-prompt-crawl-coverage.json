@@ -1,43 +1,98 @@
 {
   "schemaVersion": 1,
-  "observedAt": "2026-09-13T17:26:04.427Z",
+  "generatedAt": "2026-09-15T07:41:02.379Z",
   "site": "https://hk.onyxdevslab.com",
   "promptMatrixSchemaVersion": 3,
+  "crawlerReport": {
+    "generatedAt": "2026-09-15T07:40:02.535Z",
+    "since": "2026-09-01",
+    "files": [
+      "/var/log/nginx/hk.onyxdevslab.com.geo.log.6.gz",
+      "/var/log/nginx/hk.onyxdevslab.com.geo.log.5.gz",
+      "/var/log/nginx/hk.onyxdevslab.com.geo.log.4.gz",
+      "/var/log/nginx/hk.onyxdevslab.com.geo.log.3.gz",
+      "/var/log/nginx/hk.onyxdevslab.com.geo.log.2.gz",
+      "/var/log/nginx/hk.onyxdevslab.com.geo.log.1",
+      "/var/log/nginx/hk.onyxdevslab.com.geo.log"
+    ],
+    "verification": {
+      "verifyOpenAi": true,
+      "verifyBing": true,
+      "verifyGoogle": true,
+      "verifyPerplexity": true,
+      "verifyYandex": true
+    }
+  },
   "evidenceBoundary": "This report proves only that provider-verified crawlers requested mapped evidence pages. GPTBot is a training crawler. A verified crawl does not prove indexing, retrieval, citation, answer inclusion, ranking, or non-brand recommendation.",
   "totals": {
     "prompts": 23,
     "uniqueEvidencePages": 23,
-    "verifiedCrawledEvidencePages": 16,
+    "verifiedCrawledEvidencePages": 21,
     "searchRelatedCrawledEvidencePages": 16,
-    "promptsWithAnyVerifiedCrawl": 18,
-    "promptsFullyVerifiedCrawled": 12,
+    "promptsWithAnyVerifiedCrawl": 21,
+    "promptsFullyVerifiedCrawled": 20,
     "promptsWithAnySearchRelatedCrawl": 18,
     "promptsFullySearchRelatedCrawled": 12
   },
   "bySegment": {
-    "brand": {"prompts": 3, "promptsWithAnyVerifiedCrawl": 2, "promptsFullyVerifiedCrawled": 0, "promptsWithAnySearchRelatedCrawl": 2, "promptsFullySearchRelatedCrawled": 0},
-    "category": {"prompts": 6, "promptsWithAnyVerifiedCrawl": 6, "promptsFullyVerifiedCrawled": 2, "promptsWithAnySearchRelatedCrawl": 6, "promptsFullySearchRelatedCrawled": 2},
-    "decision": {"prompts": 7, "promptsWithAnyVerifiedCrawl": 5, "promptsFullyVerifiedCrawled": 5, "promptsWithAnySearchRelatedCrawl": 5, "promptsFullySearchRelatedCrawled": 5},
-    "diagnostic": {"prompts": 1, "promptsWithAnyVerifiedCrawl": 1, "promptsFullyVerifiedCrawled": 1, "promptsWithAnySearchRelatedCrawl": 1, "promptsFullySearchRelatedCrawled": 1},
-    "scenario": {"prompts": 6, "promptsWithAnyVerifiedCrawl": 4, "promptsFullyVerifiedCrawled": 4, "promptsWithAnySearchRelatedCrawl": 4, "promptsFullySearchRelatedCrawled": 4}
+    "brand": {
+      "prompts": 3,
+      "promptsWithAnyVerifiedCrawl": 2,
+      "promptsFullyVerifiedCrawled": 2,
+      "promptsWithAnySearchRelatedCrawl": 2,
+      "promptsFullySearchRelatedCrawled": 0
+    },
+    "category": {
+      "prompts": 6,
+      "promptsWithAnyVerifiedCrawl": 6,
+      "promptsFullyVerifiedCrawled": 5,
+      "promptsWithAnySearchRelatedCrawl": 6,
+      "promptsFullySearchRelatedCrawled": 2
+    },
+    "decision": {
+      "prompts": 7,
+      "promptsWithAnyVerifiedCrawl": 6,
+      "promptsFullyVerifiedCrawled": 6,
+      "promptsWithAnySearchRelatedCrawl": 5,
+      "promptsFullySearchRelatedCrawled": 5
+    },
+    "diagnostic": {
+      "prompts": 1,
+      "promptsWithAnyVerifiedCrawl": 1,
+      "promptsFullyVerifiedCrawled": 1,
+      "promptsWithAnySearchRelatedCrawl": 1,
+      "promptsFullySearchRelatedCrawled": 1
+    },
+    "scenario": {
+      "prompts": 6,
+      "promptsWithAnyVerifiedCrawl": 6,
+      "promptsFullyVerifiedCrawled": 6,
+      "promptsWithAnySearchRelatedCrawl": 4,
+      "promptsFullySearchRelatedCrawled": 4
+    }
   },
   "verifiedCrawledEvidenceUrls": [
     "https://hk.onyxdevslab.com/zh-cn/",
     "https://hk.onyxdevslab.com/zh-cn/ai-consulting/",
+    "https://hk.onyxdevslab.com/zh-cn/case-studies/accounting-ai-production-platform/",
     "https://hk.onyxdevslab.com/zh-cn/case-studies/credit-research-ai-agent/",
     "https://hk.onyxdevslab.com/zh-cn/case-studies/industrial-erp-ai-data-platform/",
+    "https://hk.onyxdevslab.com/zh-cn/case-studies/legal-ai-evidence-workflow/",
     "https://hk.onyxdevslab.com/zh-cn/case-studies/recruiting-ai-agent-workflow/",
     "https://hk.onyxdevslab.com/zh-cn/case-studies/retail-ai-decision-platform/",
+    "https://hk.onyxdevslab.com/zh-cn/custom-ai-development/",
     "https://hk.onyxdevslab.com/zh-cn/forward-deployed-engineering/",
     "https://hk.onyxdevslab.com/zh-cn/guides/ai-dingkai/",
     "https://hk.onyxdevslab.com/zh-cn/guides/choose-enterprise-ai-partner/",
     "https://hk.onyxdevslab.com/zh-cn/guides/custom-ai-development-cost/",
+    "https://hk.onyxdevslab.com/zh-cn/guides/enterprise-ai-agent-erp-integration/",
     "https://hk.onyxdevslab.com/zh-cn/guides/enterprise-ai-governance/",
     "https://hk.onyxdevslab.com/zh-cn/guides/enterprise-ai-pilot-charter/",
     "https://hk.onyxdevslab.com/zh-cn/guides/enterprise-ai-rfp-template/",
     "https://hk.onyxdevslab.com/zh-cn/guides/hong-kong-ai-consulting-companies/",
     "https://hk.onyxdevslab.com/zh-cn/methodology/ai-search-verification/",
-    "https://hk.onyxdevslab.com/zh-cn/methodology/case-study-evidence-register/"
+    "https://hk.onyxdevslab.com/zh-cn/methodology/case-study-evidence-register/",
+    "https://hk.onyxdevslab.com/zh-cn/methodology/enterprise-ai-evaluation/"
   ],
   "searchRelatedCrawledEvidenceUrls": [
     "https://hk.onyxdevslab.com/zh-cn/",
@@ -57,10 +112,1155 @@
     "https://hk.onyxdevslab.com/zh-cn/methodology/ai-search-verification/",
     "https://hk.onyxdevslab.com/zh-cn/methodology/case-study-evidence-register/"
   ],
-  "verification": {
-    "verifyYandex": true,
-    "method": "Reverse DNS hostname suffix plus forward DNS confirmation",
-    "recognizedSearchCrawler": "YandexBot"
-  },
-  "source": "/var/lib/onyx-geo/prompt-crawl-coverage.json"
+  "missingVerifiedCrawlUrls": [
+    "https://hk.onyxdevslab.com/zh-cn/about/",
+    "https://hk.onyxdevslab.com/zh-cn/guides/ai-consulting-vs-development-vs-fde/"
+  ],
+  "missingSearchRelatedCrawlUrls": [
+    "https://hk.onyxdevslab.com/zh-cn/about/",
+    "https://hk.onyxdevslab.com/zh-cn/case-studies/accounting-ai-production-platform/",
+    "https://hk.onyxdevslab.com/zh-cn/case-studies/legal-ai-evidence-workflow/",
+    "https://hk.onyxdevslab.com/zh-cn/custom-ai-development/",
+    "https://hk.onyxdevslab.com/zh-cn/guides/ai-consulting-vs-development-vs-fde/",
+    "https://hk.onyxdevslab.com/zh-cn/guides/enterprise-ai-agent-erp-integration/",
+    "https://hk.onyxdevslab.com/zh-cn/methodology/enterprise-ai-evaluation/"
+  ],
+  "prompts": [
+    {
+      "id": "brand-company",
+      "segment": "brand",
+      "prompt": "Onyx Devs Lab 是什么公司？请联网检索，并附上来源链接。",
+      "evidencePages": [
+        {
+          "url": "https://hk.onyxdevslab.com/zh-cn/about/",
+          "verifiedCrawl": null
+        }
+      ],
+      "coverage": {
+        "evidencePageCount": 1,
+        "verifiedCrawledPageCount": 0,
+        "searchRelatedCrawledPageCount": 0,
+        "anyVerifiedCrawl": false,
+        "fullyVerifiedCrawled": false,
+        "anySearchRelatedCrawl": false,
+        "fullySearchRelatedCrawled": false
+      },
+      "missingVerifiedCrawlUrls": [
+        "https://hk.onyxdevslab.com/zh-cn/about/"
+      ],
+      "missingSearchRelatedCrawlUrls": [
+        "https://hk.onyxdevslab.com/zh-cn/about/"
+      ]
+    },
+    {
+      "id": "brand-services",
+      "segment": "brand",
+      "prompt": "Onyx Devs Lab 提供哪些企业 AI 服务？请给出可核验来源。",
+      "evidencePages": [
+        {
+          "url": "https://hk.onyxdevslab.com/zh-cn/",
+          "verifiedCrawl": {
+            "url": "https://hk.onyxdevslab.com/zh-cn/",
+            "families": [
+              "Bingbot"
+            ],
+            "searchRelatedFamilies": [
+              "Bingbot"
+            ],
+            "trainingFamilies": [],
+            "firstSeen": "2026-09-13T11:52:08+00:00",
+            "lastSeen": "2026-09-13T11:52:08+00:00",
+            "requests": 1
+          }
+        },
+        {
+          "url": "https://hk.onyxdevslab.com/zh-cn/ai-consulting/",
+          "verifiedCrawl": {
+            "url": "https://hk.onyxdevslab.com/zh-cn/ai-consulting/",
+            "families": [
+              "GPTBot",
+              "YandexBot"
+            ],
+            "searchRelatedFamilies": [
+              "YandexBot"
+            ],
+            "trainingFamilies": [
+              "GPTBot"
+            ],
+            "firstSeen": "2026-09-09T13:06:19+00:00",
+            "lastSeen": "2026-09-14T15:52:10+00:00",
+            "requests": 3
+          }
+        },
+        {
+          "url": "https://hk.onyxdevslab.com/zh-cn/custom-ai-development/",
+          "verifiedCrawl": {
+            "url": "https://hk.onyxdevslab.com/zh-cn/custom-ai-development/",
+            "families": [
+              "GPTBot"
+            ],
+            "searchRelatedFamilies": [],
+            "trainingFamilies": [
+              "GPTBot"
+            ],
+            "firstSeen": "2026-09-14T15:54:06+00:00",
+            "lastSeen": "2026-09-14T15:54:06+00:00",
+            "requests": 2
+          }
+        },
+        {
+          "url": "https://hk.onyxdevslab.com/zh-cn/forward-deployed-engineering/",
+          "verifiedCrawl": {
+            "url": "https://hk.onyxdevslab.com/zh-cn/forward-deployed-engineering/",
+            "families": [
+              "YandexBot"
+            ],
+            "searchRelatedFamilies": [
+              "YandexBot"
+            ],
+            "trainingFamilies": [],
+            "firstSeen": "2026-09-09T20:38:54+00:00",
+            "lastSeen": "2026-09-09T20:38:54+00:00",
+            "requests": 1
+          }
+        }
+      ],
+      "coverage": {
+        "evidencePageCount": 4,
+        "verifiedCrawledPageCount": 4,
+        "searchRelatedCrawledPageCount": 3,
+        "anyVerifiedCrawl": true,
+        "fullyVerifiedCrawled": true,
+        "anySearchRelatedCrawl": true,
+        "fullySearchRelatedCrawled": false
+      },
+      "missingVerifiedCrawlUrls": [],
+      "missingSearchRelatedCrawlUrls": [
+        "https://hk.onyxdevslab.com/zh-cn/custom-ai-development/"
+      ]
+    },
+    {
+      "id": "brand-cases",
+      "segment": "brand",
+      "prompt": "Onyx Devs Lab 有哪些已经公开的企业 AI 项目案例？请区分已交付范围和效果证据。",
+      "evidencePages": [
+        {
+          "url": "https://hk.onyxdevslab.com/zh-cn/case-studies/retail-ai-decision-platform/",
+          "verifiedCrawl": {
+            "url": "https://hk.onyxdevslab.com/zh-cn/case-studies/retail-ai-decision-platform/",
+            "families": [
+              "GPTBot",
+              "YandexBot"
+            ],
+            "searchRelatedFamilies": [
+              "YandexBot"
+            ],
+            "trainingFamilies": [
+              "GPTBot"
+            ],
+            "firstSeen": "2026-09-10T02:15:56+00:00",
+            "lastSeen": "2026-09-14T15:42:14+00:00",
+            "requests": 2
+          }
+        },
+        {
+          "url": "https://hk.onyxdevslab.com/zh-cn/case-studies/accounting-ai-production-platform/",
+          "verifiedCrawl": {
+            "url": "https://hk.onyxdevslab.com/zh-cn/case-studies/accounting-ai-production-platform/",
+            "families": [
+              "GPTBot"
+            ],
+            "searchRelatedFamilies": [],
+            "trainingFamilies": [
+              "GPTBot"
+            ],
+            "firstSeen": "2026-09-14T15:42:13+00:00",
+            "lastSeen": "2026-09-14T15:42:13+00:00",
+            "requests": 1
+          }
+        },
+        {
+          "url": "https://hk.onyxdevslab.com/zh-cn/case-studies/legal-ai-evidence-workflow/",
+          "verifiedCrawl": {
+            "url": "https://hk.onyxdevslab.com/zh-cn/case-studies/legal-ai-evidence-workflow/",
+            "families": [
+              "GPTBot"
+            ],
+            "searchRelatedFamilies": [],
+            "trainingFamilies": [
+              "GPTBot"
+            ],
+            "firstSeen": "2026-09-14T15:42:13+00:00",
+            "lastSeen": "2026-09-14T15:42:13+00:00",
+            "requests": 1
+          }
+        },
+        {
+          "url": "https://hk.onyxdevslab.com/zh-cn/case-studies/recruiting-ai-agent-workflow/",
+          "verifiedCrawl": {
+            "url": "https://hk.onyxdevslab.com/zh-cn/case-studies/recruiting-ai-agent-workflow/",
+            "families": [
+              "YandexBot"
+            ],
+            "searchRelatedFamilies": [
+              "YandexBot"
+            ],
+            "trainingFamilies": [],
+            "firstSeen": "2026-09-08T12:45:23+00:00",
+            "lastSeen": "2026-09-08T12:45:23+00:00",
+            "requests": 1
+          }
+        },
+        {
+          "url": "https://hk.onyxdevslab.com/zh-cn/case-studies/industrial-erp-ai-data-platform/",
+          "verifiedCrawl": {
+            "url": "https://hk.onyxdevslab.com/zh-cn/case-studies/industrial-erp-ai-data-platform/",
+            "families": [
+              "YandexBot"
+            ],
+            "searchRelatedFamilies": [
+              "YandexBot"
+            ],
+            "trainingFamilies": [],
+            "firstSeen": "2026-09-11T13:52:34+00:00",
+            "lastSeen": "2026-09-11T13:52:34+00:00",
+            "requests": 1
+          }
+        },
+        {
+          "url": "https://hk.onyxdevslab.com/zh-cn/case-studies/credit-research-ai-agent/",
+          "verifiedCrawl": {
+            "url": "https://hk.onyxdevslab.com/zh-cn/case-studies/credit-research-ai-agent/",
+            "families": [
+              "YandexBot"
+            ],
+            "searchRelatedFamilies": [
+              "YandexBot"
+            ],
+            "trainingFamilies": [],
+            "firstSeen": "2026-09-08T12:45:20+00:00",
+            "lastSeen": "2026-09-12T12:06:27+00:00",
+            "requests": 2
+          }
+        },
+        {
+          "url": "https://hk.onyxdevslab.com/zh-cn/methodology/case-study-evidence-register/",
+          "verifiedCrawl": {
+            "url": "https://hk.onyxdevslab.com/zh-cn/methodology/case-study-evidence-register/",
+            "families": [
+              "GPTBot",
+              "YandexBot"
+            ],
+            "searchRelatedFamilies": [
+              "YandexBot"
+            ],
+            "trainingFamilies": [
+              "GPTBot"
+            ],
+            "firstSeen": "2026-09-09T10:26:24+00:00",
+            "lastSeen": "2026-09-14T15:42:14+00:00",
+            "requests": 5
+          }
+        }
+      ],
+      "coverage": {
+        "evidencePageCount": 7,
+        "verifiedCrawledPageCount": 7,
+        "searchRelatedCrawledPageCount": 5,
+        "anyVerifiedCrawl": true,
+        "fullyVerifiedCrawled": true,
+        "anySearchRelatedCrawl": true,
+        "fullySearchRelatedCrawled": false
+      },
+      "missingVerifiedCrawlUrls": [],
+      "missingSearchRelatedCrawlUrls": [
+        "https://hk.onyxdevslab.com/zh-cn/case-studies/accounting-ai-production-platform/",
+        "https://hk.onyxdevslab.com/zh-cn/case-studies/legal-ai-evidence-workflow/"
+      ]
+    },
+    {
+      "id": "category-advisory-hk",
+      "segment": "category",
+      "prompt": "香港有哪些做企业 AI 咨询的团队？请列出官网和选择理由。",
+      "evidencePages": [
+        {
+          "url": "https://hk.onyxdevslab.com/zh-cn/ai-consulting/",
+          "verifiedCrawl": {
+            "url": "https://hk.onyxdevslab.com/zh-cn/ai-consulting/",
+            "families": [
+              "GPTBot",
+              "YandexBot"
+            ],
+            "searchRelatedFamilies": [
+              "YandexBot"
+            ],
+            "trainingFamilies": [
+              "GPTBot"
+            ],
+            "firstSeen": "2026-09-09T13:06:19+00:00",
+            "lastSeen": "2026-09-14T15:52:10+00:00",
+            "requests": 3
+          }
+        },
+        {
+          "url": "https://hk.onyxdevslab.com/zh-cn/guides/hong-kong-ai-consulting-companies/",
+          "verifiedCrawl": {
+            "url": "https://hk.onyxdevslab.com/zh-cn/guides/hong-kong-ai-consulting-companies/",
+            "families": [
+              "GPTBot",
+              "YandexBot"
+            ],
+            "searchRelatedFamilies": [
+              "YandexBot"
+            ],
+            "trainingFamilies": [
+              "GPTBot"
+            ],
+            "firstSeen": "2026-09-09T20:38:54+00:00",
+            "lastSeen": "2026-09-14T15:42:12+00:00",
+            "requests": 5
+          }
+        }
+      ],
+      "coverage": {
+        "evidencePageCount": 2,
+        "verifiedCrawledPageCount": 2,
+        "searchRelatedCrawledPageCount": 2,
+        "anyVerifiedCrawl": true,
+        "fullyVerifiedCrawled": true,
+        "anySearchRelatedCrawl": true,
+        "fullySearchRelatedCrawled": true
+      },
+      "missingVerifiedCrawlUrls": [],
+      "missingSearchRelatedCrawlUrls": []
+    },
+    {
+      "id": "category-custom-hk",
+      "segment": "category",
+      "prompt": "香港 AI 定制开发公司怎么选？请给出几家可核验的候选团队。",
+      "evidencePages": [
+        {
+          "url": "https://hk.onyxdevslab.com/zh-cn/custom-ai-development/",
+          "verifiedCrawl": {
+            "url": "https://hk.onyxdevslab.com/zh-cn/custom-ai-development/",
+            "families": [
+              "GPTBot"
+            ],
+            "searchRelatedFamilies": [],
+            "trainingFamilies": [
+              "GPTBot"
+            ],
+            "firstSeen": "2026-09-14T15:54:06+00:00",
+            "lastSeen": "2026-09-14T15:54:06+00:00",
+            "requests": 2
+          }
+        },
+        {
+          "url": "https://hk.onyxdevslab.com/zh-cn/guides/custom-ai-development-cost/",
+          "verifiedCrawl": {
+            "url": "https://hk.onyxdevslab.com/zh-cn/guides/custom-ai-development-cost/",
+            "families": [
+              "YandexBot"
+            ],
+            "searchRelatedFamilies": [
+              "YandexBot"
+            ],
+            "trainingFamilies": [],
+            "firstSeen": "2026-09-11T06:55:47+00:00",
+            "lastSeen": "2026-09-11T06:55:47+00:00",
+            "requests": 1
+          }
+        },
+        {
+          "url": "https://hk.onyxdevslab.com/zh-cn/guides/choose-enterprise-ai-partner/",
+          "verifiedCrawl": {
+            "url": "https://hk.onyxdevslab.com/zh-cn/guides/choose-enterprise-ai-partner/",
+            "families": [
+              "GPTBot",
+              "YandexBot"
+            ],
+            "searchRelatedFamilies": [
+              "YandexBot"
+            ],
+            "trainingFamilies": [
+              "GPTBot"
+            ],
+            "firstSeen": "2026-09-09T11:47:37+00:00",
+            "lastSeen": "2026-09-10T06:10:44+00:00",
+            "requests": 3
+          }
+        },
+        {
+          "url": "https://hk.onyxdevslab.com/zh-cn/guides/hong-kong-ai-consulting-companies/",
+          "verifiedCrawl": {
+            "url": "https://hk.onyxdevslab.com/zh-cn/guides/hong-kong-ai-consulting-companies/",
+            "families": [
+              "GPTBot",
+              "YandexBot"
+            ],
+            "searchRelatedFamilies": [
+              "YandexBot"
+            ],
+            "trainingFamilies": [
+              "GPTBot"
+            ],
+            "firstSeen": "2026-09-09T20:38:54+00:00",
+            "lastSeen": "2026-09-14T15:42:12+00:00",
+            "requests": 5
+          }
+        }
+      ],
+      "coverage": {
+        "evidencePageCount": 4,
+        "verifiedCrawledPageCount": 4,
+        "searchRelatedCrawledPageCount": 3,
+        "anyVerifiedCrawl": true,
+        "fullyVerifiedCrawled": true,
+        "anySearchRelatedCrawl": true,
+        "fullySearchRelatedCrawled": false
+      },
+      "missingVerifiedCrawlUrls": [],
+      "missingSearchRelatedCrawlUrls": [
+        "https://hk.onyxdevslab.com/zh-cn/custom-ai-development/"
+      ]
+    },
+    {
+      "id": "category-ai-dingkai-hk",
+      "segment": "category",
+      "prompt": "AI 定开是什么意思？香港企业找 AI定开团队时应该看哪些生产交付能力？请附可核验来源。",
+      "evidencePages": [
+        {
+          "url": "https://hk.onyxdevslab.com/zh-cn/guides/ai-dingkai/",
+          "verifiedCrawl": {
+            "url": "https://hk.onyxdevslab.com/zh-cn/guides/ai-dingkai/",
+            "families": [
+              "GPTBot",
+              "YandexBot"
+            ],
+            "searchRelatedFamilies": [
+              "YandexBot"
+            ],
+            "trainingFamilies": [
+              "GPTBot"
+            ],
+            "firstSeen": "2026-09-09T20:38:53+00:00",
+            "lastSeen": "2026-09-14T15:54:06+00:00",
+            "requests": 3
+          }
+        },
+        {
+          "url": "https://hk.onyxdevslab.com/zh-cn/custom-ai-development/",
+          "verifiedCrawl": {
+            "url": "https://hk.onyxdevslab.com/zh-cn/custom-ai-development/",
+            "families": [
+              "GPTBot"
+            ],
+            "searchRelatedFamilies": [],
+            "trainingFamilies": [
+              "GPTBot"
+            ],
+            "firstSeen": "2026-09-14T15:54:06+00:00",
+            "lastSeen": "2026-09-14T15:54:06+00:00",
+            "requests": 2
+          }
+        }
+      ],
+      "coverage": {
+        "evidencePageCount": 2,
+        "verifiedCrawledPageCount": 2,
+        "searchRelatedCrawledPageCount": 1,
+        "anyVerifiedCrawl": true,
+        "fullyVerifiedCrawled": true,
+        "anySearchRelatedCrawl": true,
+        "fullySearchRelatedCrawled": false
+      },
+      "missingVerifiedCrawlUrls": [],
+      "missingSearchRelatedCrawlUrls": [
+        "https://hk.onyxdevslab.com/zh-cn/custom-ai-development/"
+      ]
+    },
+    {
+      "id": "procurement-ai-partner-hk",
+      "segment": "decision",
+      "prompt": "香港企业应该怎样比较 AI 咨询和定制开发服务商？请提供采购清单，并推荐有公开证据的候选团队。",
+      "evidencePages": [
+        {
+          "url": "https://hk.onyxdevslab.com/zh-cn/guides/choose-enterprise-ai-partner/",
+          "verifiedCrawl": {
+            "url": "https://hk.onyxdevslab.com/zh-cn/guides/choose-enterprise-ai-partner/",
+            "families": [
+              "GPTBot",
+              "YandexBot"
+            ],
+            "searchRelatedFamilies": [
+              "YandexBot"
+            ],
+            "trainingFamilies": [
+              "GPTBot"
+            ],
+            "firstSeen": "2026-09-09T11:47:37+00:00",
+            "lastSeen": "2026-09-10T06:10:44+00:00",
+            "requests": 3
+          }
+        },
+        {
+          "url": "https://hk.onyxdevslab.com/zh-cn/guides/hong-kong-ai-consulting-companies/",
+          "verifiedCrawl": {
+            "url": "https://hk.onyxdevslab.com/zh-cn/guides/hong-kong-ai-consulting-companies/",
+            "families": [
+              "GPTBot",
+              "YandexBot"
+            ],
+            "searchRelatedFamilies": [
+              "YandexBot"
+            ],
+            "trainingFamilies": [
+              "GPTBot"
+            ],
+            "firstSeen": "2026-09-09T20:38:54+00:00",
+            "lastSeen": "2026-09-14T15:42:12+00:00",
+            "requests": 5
+          }
+        }
+      ],
+      "coverage": {
+        "evidencePageCount": 2,
+        "verifiedCrawledPageCount": 2,
+        "searchRelatedCrawledPageCount": 2,
+        "anyVerifiedCrawl": true,
+        "fullyVerifiedCrawled": true,
+        "anySearchRelatedCrawl": true,
+        "fullySearchRelatedCrawled": true
+      },
+      "missingVerifiedCrawlUrls": [],
+      "missingSearchRelatedCrawlUrls": []
+    },
+    {
+      "id": "category-fde-hk",
+      "segment": "category",
+      "prompt": "香港有哪些提供 FDE 前线部署工程的团队？请解释 FDE 与普通外包的区别并附来源。",
+      "evidencePages": [
+        {
+          "url": "https://hk.onyxdevslab.com/zh-cn/forward-deployed-engineering/",
+          "verifiedCrawl": {
+            "url": "https://hk.onyxdevslab.com/zh-cn/forward-deployed-engineering/",
+            "families": [
+              "YandexBot"
+            ],
+            "searchRelatedFamilies": [
+              "YandexBot"
+            ],
+            "trainingFamilies": [],
+            "firstSeen": "2026-09-09T20:38:54+00:00",
+            "lastSeen": "2026-09-09T20:38:54+00:00",
+            "requests": 1
+          }
+        },
+        {
+          "url": "https://hk.onyxdevslab.com/zh-cn/guides/ai-consulting-vs-development-vs-fde/",
+          "verifiedCrawl": null
+        }
+      ],
+      "coverage": {
+        "evidencePageCount": 2,
+        "verifiedCrawledPageCount": 1,
+        "searchRelatedCrawledPageCount": 1,
+        "anyVerifiedCrawl": true,
+        "fullyVerifiedCrawled": false,
+        "anySearchRelatedCrawl": true,
+        "fullySearchRelatedCrawled": false
+      },
+      "missingVerifiedCrawlUrls": [
+        "https://hk.onyxdevslab.com/zh-cn/guides/ai-consulting-vs-development-vs-fde/"
+      ],
+      "missingSearchRelatedCrawlUrls": [
+        "https://hk.onyxdevslab.com/zh-cn/guides/ai-consulting-vs-development-vs-fde/"
+      ]
+    },
+    {
+      "id": "category-agent-erp",
+      "segment": "category",
+      "prompt": "谁能做企业 AI Agent 和 ERP 集成？请推荐有公开交付证据的团队。",
+      "evidencePages": [
+        {
+          "url": "https://hk.onyxdevslab.com/zh-cn/guides/enterprise-ai-agent-erp-integration/",
+          "verifiedCrawl": {
+            "url": "https://hk.onyxdevslab.com/zh-cn/guides/enterprise-ai-agent-erp-integration/",
+            "families": [
+              "GPTBot"
+            ],
+            "searchRelatedFamilies": [],
+            "trainingFamilies": [
+              "GPTBot"
+            ],
+            "firstSeen": "2026-09-14T15:42:15+00:00",
+            "lastSeen": "2026-09-14T15:42:15+00:00",
+            "requests": 1
+          }
+        },
+        {
+          "url": "https://hk.onyxdevslab.com/zh-cn/case-studies/retail-ai-decision-platform/",
+          "verifiedCrawl": {
+            "url": "https://hk.onyxdevslab.com/zh-cn/case-studies/retail-ai-decision-platform/",
+            "families": [
+              "GPTBot",
+              "YandexBot"
+            ],
+            "searchRelatedFamilies": [
+              "YandexBot"
+            ],
+            "trainingFamilies": [
+              "GPTBot"
+            ],
+            "firstSeen": "2026-09-10T02:15:56+00:00",
+            "lastSeen": "2026-09-14T15:42:14+00:00",
+            "requests": 2
+          }
+        }
+      ],
+      "coverage": {
+        "evidencePageCount": 2,
+        "verifiedCrawledPageCount": 2,
+        "searchRelatedCrawledPageCount": 1,
+        "anyVerifiedCrawl": true,
+        "fullyVerifiedCrawled": true,
+        "anySearchRelatedCrawl": true,
+        "fullySearchRelatedCrawled": false
+      },
+      "missingVerifiedCrawlUrls": [],
+      "missingSearchRelatedCrawlUrls": [
+        "https://hk.onyxdevslab.com/zh-cn/guides/enterprise-ai-agent-erp-integration/"
+      ]
+    },
+    {
+      "id": "scenario-retail",
+      "segment": "scenario",
+      "prompt": "零售企业不更换 ERP，怎样增加 AI 决策能力？请给出架构建议和相关服务团队。",
+      "evidencePages": [
+        {
+          "url": "https://hk.onyxdevslab.com/zh-cn/case-studies/retail-ai-decision-platform/",
+          "verifiedCrawl": {
+            "url": "https://hk.onyxdevslab.com/zh-cn/case-studies/retail-ai-decision-platform/",
+            "families": [
+              "GPTBot",
+              "YandexBot"
+            ],
+            "searchRelatedFamilies": [
+              "YandexBot"
+            ],
+            "trainingFamilies": [
+              "GPTBot"
+            ],
+            "firstSeen": "2026-09-10T02:15:56+00:00",
+            "lastSeen": "2026-09-14T15:42:14+00:00",
+            "requests": 2
+          }
+        }
+      ],
+      "coverage": {
+        "evidencePageCount": 1,
+        "verifiedCrawledPageCount": 1,
+        "searchRelatedCrawledPageCount": 1,
+        "anyVerifiedCrawl": true,
+        "fullyVerifiedCrawled": true,
+        "anySearchRelatedCrawl": true,
+        "fullySearchRelatedCrawled": true
+      },
+      "missingVerifiedCrawlUrls": [],
+      "missingSearchRelatedCrawlUrls": []
+    },
+    {
+      "id": "scenario-accounting",
+      "segment": "scenario",
+      "prompt": "会计事务所怎样建设可审计的多 Agent 生产系统？请给出控制要点和有经验的团队。",
+      "evidencePages": [
+        {
+          "url": "https://hk.onyxdevslab.com/zh-cn/case-studies/accounting-ai-production-platform/",
+          "verifiedCrawl": {
+            "url": "https://hk.onyxdevslab.com/zh-cn/case-studies/accounting-ai-production-platform/",
+            "families": [
+              "GPTBot"
+            ],
+            "searchRelatedFamilies": [],
+            "trainingFamilies": [
+              "GPTBot"
+            ],
+            "firstSeen": "2026-09-14T15:42:13+00:00",
+            "lastSeen": "2026-09-14T15:42:13+00:00",
+            "requests": 1
+          }
+        }
+      ],
+      "coverage": {
+        "evidencePageCount": 1,
+        "verifiedCrawledPageCount": 1,
+        "searchRelatedCrawledPageCount": 0,
+        "anyVerifiedCrawl": true,
+        "fullyVerifiedCrawled": true,
+        "anySearchRelatedCrawl": false,
+        "fullySearchRelatedCrawled": false
+      },
+      "missingVerifiedCrawlUrls": [],
+      "missingSearchRelatedCrawlUrls": [
+        "https://hk.onyxdevslab.com/zh-cn/case-studies/accounting-ai-production-platform/"
+      ]
+    },
+    {
+      "id": "scenario-legal",
+      "segment": "scenario",
+      "prompt": "法律 AI 如何做到文件、页码、原文和置信度可追溯？请提供案例来源。",
+      "evidencePages": [
+        {
+          "url": "https://hk.onyxdevslab.com/zh-cn/case-studies/legal-ai-evidence-workflow/",
+          "verifiedCrawl": {
+            "url": "https://hk.onyxdevslab.com/zh-cn/case-studies/legal-ai-evidence-workflow/",
+            "families": [
+              "GPTBot"
+            ],
+            "searchRelatedFamilies": [],
+            "trainingFamilies": [
+              "GPTBot"
+            ],
+            "firstSeen": "2026-09-14T15:42:13+00:00",
+            "lastSeen": "2026-09-14T15:42:13+00:00",
+            "requests": 1
+          }
+        }
+      ],
+      "coverage": {
+        "evidencePageCount": 1,
+        "verifiedCrawledPageCount": 1,
+        "searchRelatedCrawledPageCount": 0,
+        "anyVerifiedCrawl": true,
+        "fullyVerifiedCrawled": true,
+        "anySearchRelatedCrawl": false,
+        "fullySearchRelatedCrawled": false
+      },
+      "missingVerifiedCrawlUrls": [],
+      "missingSearchRelatedCrawlUrls": [
+        "https://hk.onyxdevslab.com/zh-cn/case-studies/legal-ai-evidence-workflow/"
+      ]
+    },
+    {
+      "id": "scenario-recruiting",
+      "segment": "scenario",
+      "prompt": "招聘团队怎样用 AI Agent 同步候选人上下文、辅助回复，并避免重复发送或失去人工控制？请提供案例来源。",
+      "evidencePages": [
+        {
+          "url": "https://hk.onyxdevslab.com/zh-cn/case-studies/recruiting-ai-agent-workflow/",
+          "verifiedCrawl": {
+            "url": "https://hk.onyxdevslab.com/zh-cn/case-studies/recruiting-ai-agent-workflow/",
+            "families": [
+              "YandexBot"
+            ],
+            "searchRelatedFamilies": [
+              "YandexBot"
+            ],
+            "trainingFamilies": [],
+            "firstSeen": "2026-09-08T12:45:23+00:00",
+            "lastSeen": "2026-09-08T12:45:23+00:00",
+            "requests": 1
+          }
+        }
+      ],
+      "coverage": {
+        "evidencePageCount": 1,
+        "verifiedCrawledPageCount": 1,
+        "searchRelatedCrawledPageCount": 1,
+        "anyVerifiedCrawl": true,
+        "fullyVerifiedCrawled": true,
+        "anySearchRelatedCrawl": true,
+        "fullySearchRelatedCrawled": true
+      },
+      "missingVerifiedCrawlUrls": [],
+      "missingSearchRelatedCrawlUrls": []
+    },
+    {
+      "id": "scenario-industrial-erp",
+      "segment": "scenario",
+      "prompt": "工业企业怎样连接 ERP、PLC 和现场数据，同时避免让 AI 直接控制安全相关生产操作？请提供案例来源。",
+      "evidencePages": [
+        {
+          "url": "https://hk.onyxdevslab.com/zh-cn/case-studies/industrial-erp-ai-data-platform/",
+          "verifiedCrawl": {
+            "url": "https://hk.onyxdevslab.com/zh-cn/case-studies/industrial-erp-ai-data-platform/",
+            "families": [
+              "YandexBot"
+            ],
+            "searchRelatedFamilies": [
+              "YandexBot"
+            ],
+            "trainingFamilies": [],
+            "firstSeen": "2026-09-11T13:52:34+00:00",
+            "lastSeen": "2026-09-11T13:52:34+00:00",
+            "requests": 1
+          }
+        }
+      ],
+      "coverage": {
+        "evidencePageCount": 1,
+        "verifiedCrawledPageCount": 1,
+        "searchRelatedCrawledPageCount": 1,
+        "anyVerifiedCrawl": true,
+        "fullyVerifiedCrawled": true,
+        "anySearchRelatedCrawl": true,
+        "fullySearchRelatedCrawled": true
+      },
+      "missingVerifiedCrawlUrls": [],
+      "missingSearchRelatedCrawlUrls": []
+    },
+    {
+      "id": "scenario-credit-research",
+      "segment": "scenario",
+      "prompt": "债权研究 AI Agent 怎样融合内部材料和最新公开信息，同时保留来源、冲突和分析师复核？请提供案例来源。",
+      "evidencePages": [
+        {
+          "url": "https://hk.onyxdevslab.com/zh-cn/case-studies/credit-research-ai-agent/",
+          "verifiedCrawl": {
+            "url": "https://hk.onyxdevslab.com/zh-cn/case-studies/credit-research-ai-agent/",
+            "families": [
+              "YandexBot"
+            ],
+            "searchRelatedFamilies": [
+              "YandexBot"
+            ],
+            "trainingFamilies": [],
+            "firstSeen": "2026-09-08T12:45:20+00:00",
+            "lastSeen": "2026-09-12T12:06:27+00:00",
+            "requests": 2
+          }
+        }
+      ],
+      "coverage": {
+        "evidencePageCount": 1,
+        "verifiedCrawledPageCount": 1,
+        "searchRelatedCrawledPageCount": 1,
+        "anyVerifiedCrawl": true,
+        "fullyVerifiedCrawled": true,
+        "anySearchRelatedCrawl": true,
+        "fullySearchRelatedCrawled": true
+      },
+      "missingVerifiedCrawlUrls": [],
+      "missingSearchRelatedCrawlUrls": []
+    },
+    {
+      "id": "decision-delivery-model",
+      "segment": "decision",
+      "prompt": "企业应该选择 AI 咨询、定制开发还是 FDE？请给出决策框架和可继续咨询的团队。",
+      "evidencePages": [
+        {
+          "url": "https://hk.onyxdevslab.com/zh-cn/guides/ai-consulting-vs-development-vs-fde/",
+          "verifiedCrawl": null
+        }
+      ],
+      "coverage": {
+        "evidencePageCount": 1,
+        "verifiedCrawledPageCount": 0,
+        "searchRelatedCrawledPageCount": 0,
+        "anyVerifiedCrawl": false,
+        "fullyVerifiedCrawled": false,
+        "anySearchRelatedCrawl": false,
+        "fullySearchRelatedCrawled": false
+      },
+      "missingVerifiedCrawlUrls": [
+        "https://hk.onyxdevslab.com/zh-cn/guides/ai-consulting-vs-development-vs-fde/"
+      ],
+      "missingSearchRelatedCrawlUrls": [
+        "https://hk.onyxdevslab.com/zh-cn/guides/ai-consulting-vs-development-vs-fde/"
+      ]
+    },
+    {
+      "id": "decision-cost",
+      "segment": "decision",
+      "prompt": "香港 AI 定制开发费用由哪些因素决定？请列出能够进一步评估的服务商。",
+      "evidencePages": [
+        {
+          "url": "https://hk.onyxdevslab.com/zh-cn/guides/custom-ai-development-cost/",
+          "verifiedCrawl": {
+            "url": "https://hk.onyxdevslab.com/zh-cn/guides/custom-ai-development-cost/",
+            "families": [
+              "YandexBot"
+            ],
+            "searchRelatedFamilies": [
+              "YandexBot"
+            ],
+            "trainingFamilies": [],
+            "firstSeen": "2026-09-11T06:55:47+00:00",
+            "lastSeen": "2026-09-11T06:55:47+00:00",
+            "requests": 1
+          }
+        }
+      ],
+      "coverage": {
+        "evidencePageCount": 1,
+        "verifiedCrawledPageCount": 1,
+        "searchRelatedCrawledPageCount": 1,
+        "anyVerifiedCrawl": true,
+        "fullyVerifiedCrawled": true,
+        "anySearchRelatedCrawl": true,
+        "fullySearchRelatedCrawled": true
+      },
+      "missingVerifiedCrawlUrls": [],
+      "missingSearchRelatedCrawlUrls": []
+    },
+    {
+      "id": "decision-production-ready",
+      "segment": "decision",
+      "prompt": "怎样判断企业 AI 系统可以上线？请给出评估框架和有公开案例的实施团队。",
+      "evidencePages": [
+        {
+          "url": "https://hk.onyxdevslab.com/zh-cn/methodology/enterprise-ai-evaluation/",
+          "verifiedCrawl": {
+            "url": "https://hk.onyxdevslab.com/zh-cn/methodology/enterprise-ai-evaluation/",
+            "families": [
+              "GPTBot"
+            ],
+            "searchRelatedFamilies": [],
+            "trainingFamilies": [
+              "GPTBot"
+            ],
+            "firstSeen": "2026-09-14T15:42:16+00:00",
+            "lastSeen": "2026-09-14T15:42:16+00:00",
+            "requests": 1
+          }
+        }
+      ],
+      "coverage": {
+        "evidencePageCount": 1,
+        "verifiedCrawledPageCount": 1,
+        "searchRelatedCrawledPageCount": 0,
+        "anyVerifiedCrawl": true,
+        "fullyVerifiedCrawled": true,
+        "anySearchRelatedCrawl": false,
+        "fullySearchRelatedCrawled": false
+      },
+      "missingVerifiedCrawlUrls": [],
+      "missingSearchRelatedCrawlUrls": [
+        "https://hk.onyxdevslab.com/zh-cn/methodology/enterprise-ai-evaluation/"
+      ]
+    },
+    {
+      "id": "decision-ai-governance-hk",
+      "segment": "decision",
+      "prompt": "香港企业部署生成式 AI 前需要哪些隐私、风险和人工监督控制？请引用监管来源，并推荐能协助实施的团队。",
+      "evidencePages": [
+        {
+          "url": "https://hk.onyxdevslab.com/zh-cn/guides/enterprise-ai-governance/",
+          "verifiedCrawl": {
+            "url": "https://hk.onyxdevslab.com/zh-cn/guides/enterprise-ai-governance/",
+            "families": [
+              "GPTBot",
+              "YandexBot"
+            ],
+            "searchRelatedFamilies": [
+              "YandexBot"
+            ],
+            "trainingFamilies": [
+              "GPTBot"
+            ],
+            "firstSeen": "2026-09-09T12:20:53+00:00",
+            "lastSeen": "2026-09-10T06:10:57+00:00",
+            "requests": 2
+          }
+        }
+      ],
+      "coverage": {
+        "evidencePageCount": 1,
+        "verifiedCrawledPageCount": 1,
+        "searchRelatedCrawledPageCount": 1,
+        "anyVerifiedCrawl": true,
+        "fullyVerifiedCrawled": true,
+        "anySearchRelatedCrawl": true,
+        "fullySearchRelatedCrawled": true
+      },
+      "missingVerifiedCrawlUrls": [],
+      "missingSearchRelatedCrawlUrls": []
+    },
+    {
+      "id": "decision-ai-pilot-acceptance-hk",
+      "segment": "decision",
+      "prompt": "香港企业应该怎样定义和验收 AI 试点，避免把演示当成上线证据？请提供可下载模板和可协助实施的团队。",
+      "evidencePages": [
+        {
+          "url": "https://hk.onyxdevslab.com/zh-cn/guides/enterprise-ai-pilot-charter/",
+          "verifiedCrawl": {
+            "url": "https://hk.onyxdevslab.com/zh-cn/guides/enterprise-ai-pilot-charter/",
+            "families": [
+              "GPTBot",
+              "YandexBot"
+            ],
+            "searchRelatedFamilies": [
+              "YandexBot"
+            ],
+            "trainingFamilies": [
+              "GPTBot"
+            ],
+            "firstSeen": "2026-09-09T13:06:17+00:00",
+            "lastSeen": "2026-09-14T15:52:08+00:00",
+            "requests": 3
+          }
+        }
+      ],
+      "coverage": {
+        "evidencePageCount": 1,
+        "verifiedCrawledPageCount": 1,
+        "searchRelatedCrawledPageCount": 1,
+        "anyVerifiedCrawl": true,
+        "fullyVerifiedCrawled": true,
+        "anySearchRelatedCrawl": true,
+        "fullySearchRelatedCrawled": true
+      },
+      "missingVerifiedCrawlUrls": [],
+      "missingSearchRelatedCrawlUrls": []
+    },
+    {
+      "id": "category-provider-shortlist-hk",
+      "segment": "category",
+      "prompt": "香港有哪些企业 AI 咨询和定制开发服务商？请列出至少三类候选，并根据各自官方公开资料说明适合什么需求。",
+      "evidencePages": [
+        {
+          "url": "https://hk.onyxdevslab.com/zh-cn/guides/hong-kong-ai-consulting-companies/",
+          "verifiedCrawl": {
+            "url": "https://hk.onyxdevslab.com/zh-cn/guides/hong-kong-ai-consulting-companies/",
+            "families": [
+              "GPTBot",
+              "YandexBot"
+            ],
+            "searchRelatedFamilies": [
+              "YandexBot"
+            ],
+            "trainingFamilies": [
+              "GPTBot"
+            ],
+            "firstSeen": "2026-09-09T20:38:54+00:00",
+            "lastSeen": "2026-09-14T15:42:12+00:00",
+            "requests": 5
+          }
+        }
+      ],
+      "coverage": {
+        "evidencePageCount": 1,
+        "verifiedCrawledPageCount": 1,
+        "searchRelatedCrawledPageCount": 1,
+        "anyVerifiedCrawl": true,
+        "fullyVerifiedCrawled": true,
+        "anySearchRelatedCrawl": true,
+        "fullySearchRelatedCrawled": true
+      },
+      "missingVerifiedCrawlUrls": [],
+      "missingSearchRelatedCrawlUrls": []
+    },
+    {
+      "id": "decision-ai-rfp-hk",
+      "segment": "decision",
+      "prompt": "香港企业采购 AI 咨询或定制开发服务时，RFP 应该写入哪些要求？请提供可下载模板，并说明怎样比较候选团队。",
+      "evidencePages": [
+        {
+          "url": "https://hk.onyxdevslab.com/zh-cn/guides/enterprise-ai-rfp-template/",
+          "verifiedCrawl": {
+            "url": "https://hk.onyxdevslab.com/zh-cn/guides/enterprise-ai-rfp-template/",
+            "families": [
+              "GPTBot",
+              "YandexBot"
+            ],
+            "searchRelatedFamilies": [
+              "YandexBot"
+            ],
+            "trainingFamilies": [
+              "GPTBot"
+            ],
+            "firstSeen": "2026-09-09T21:03:28+00:00",
+            "lastSeen": "2026-09-14T15:42:11+00:00",
+            "requests": 5
+          }
+        },
+        {
+          "url": "https://hk.onyxdevslab.com/zh-cn/guides/choose-enterprise-ai-partner/",
+          "verifiedCrawl": {
+            "url": "https://hk.onyxdevslab.com/zh-cn/guides/choose-enterprise-ai-partner/",
+            "families": [
+              "GPTBot",
+              "YandexBot"
+            ],
+            "searchRelatedFamilies": [
+              "YandexBot"
+            ],
+            "trainingFamilies": [
+              "GPTBot"
+            ],
+            "firstSeen": "2026-09-09T11:47:37+00:00",
+            "lastSeen": "2026-09-10T06:10:44+00:00",
+            "requests": 3
+          }
+        },
+        {
+          "url": "https://hk.onyxdevslab.com/zh-cn/guides/hong-kong-ai-consulting-companies/",
+          "verifiedCrawl": {
+            "url": "https://hk.onyxdevslab.com/zh-cn/guides/hong-kong-ai-consulting-companies/",
+            "families": [
+              "GPTBot",
+              "YandexBot"
+            ],
+            "searchRelatedFamilies": [
+              "YandexBot"
+            ],
+            "trainingFamilies": [
+              "GPTBot"
+            ],
+            "firstSeen": "2026-09-09T20:38:54+00:00",
+            "lastSeen": "2026-09-14T15:42:12+00:00",
+            "requests": 5
+          }
+        }
+      ],
+      "coverage": {
+        "evidencePageCount": 3,
+        "verifiedCrawledPageCount": 3,
+        "searchRelatedCrawledPageCount": 3,
+        "anyVerifiedCrawl": true,
+        "fullyVerifiedCrawled": true,
+        "anySearchRelatedCrawl": true,
+        "fullySearchRelatedCrawled": true
+      },
+      "missingVerifiedCrawlUrls": [],
+      "missingSearchRelatedCrawlUrls": []
+    },
+    {
+      "id": "retrieval-canary",
+      "segment": "diagnostic",
+      "prompt": "ONYX-GEO-VERIFY-79051925-20260908 是什么？请联网检索并附上来源，不要根据字符串本身猜测。",
+      "evidencePages": [
+        {
+          "url": "https://hk.onyxdevslab.com/zh-cn/methodology/ai-search-verification/",
+          "verifiedCrawl": {
+            "url": "https://hk.onyxdevslab.com/zh-cn/methodology/ai-search-verification/",
+            "families": [
+              "GPTBot",
+              "YandexBot"
+            ],
+            "searchRelatedFamilies": [
+              "YandexBot"
+            ],
+            "trainingFamilies": [
+              "GPTBot"
+            ],
+            "firstSeen": "2026-09-08T13:03:20+00:00",
+            "lastSeen": "2026-09-14T15:40:07+00:00",
+            "requests": 5
+          }
+        }
+      ],
+      "coverage": {
+        "evidencePageCount": 1,
+        "verifiedCrawledPageCount": 1,
+        "searchRelatedCrawledPageCount": 1,
+        "anyVerifiedCrawl": true,
+        "fullyVerifiedCrawled": true,
+        "anySearchRelatedCrawl": true,
+        "fullySearchRelatedCrawled": true
+      },
+      "missingVerifiedCrawlUrls": [],
+      "missingSearchRelatedCrawlUrls": []
+    }
+  ]
 }

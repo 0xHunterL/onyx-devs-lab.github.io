@@ -1,11 +1,13 @@
 {
   "schemaVersion": 1,
-  "publicStatusVersion": "2026.09.14.77",
-  "generatedAt": "2026-09-13T20:43:20.577Z",
-  "latestEvidenceObservedAt": "2026-09-13T20:41:00Z",
+  "publicStatusVersion": "2026.09.15.78",
+  "generatedAt": "2026-09-15T07:41:02.395Z",
+  "latestEvidenceObservedAt": "2026-09-15T06:19:25Z",
   "windowStart": "2026-09-01",
   "site": "https://hk.onyxdevslab.com/",
   "sourceLogs": [
+    "/var/log/nginx/hk.onyxdevslab.com.geo.log.6.gz",
+    "/var/log/nginx/hk.onyxdevslab.com.geo.log.5.gz",
     "/var/log/nginx/hk.onyxdevslab.com.geo.log.4.gz",
     "/var/log/nginx/hk.onyxdevslab.com.geo.log.3.gz",
     "/var/log/nginx/hk.onyxdevslab.com.geo.log.2.gz",
@@ -13,11 +15,11 @@
     "/var/log/nginx/hk.onyxdevslab.com.geo.log"
   ],
   "providerVerifiedCrawlerEvidence": {
-    "gptBotContentRequests": 28,
-    "gptBotDiscoveryFileRequests": 15,
+    "gptBotContentRequests": 55,
+    "gptBotDiscoveryFileRequests": 19,
     "oaiSearchBotContentRequests": 0,
-    "oaiSearchBotDiscoveryFileRequests": 13,
-    "bingbotContentRequests": 8,
+    "oaiSearchBotDiscoveryFileRequests": 18,
+    "bingbotContentRequests": 10,
     "bingbotDiscoveryFileRequests": 2,
     "baiduspiderContentRequests": 0,
     "baiduspiderDiscoveryFileRequests": 0,
@@ -32,22 +34,22 @@
     "yandexbotContentRequests": 78,
     "yandexbotDiscoveryFileRequests": 73,
     "ahrefsbotContentRequests": 0,
-    "ahrefsbotDiscoveryFileRequests": 114,
-    "distinctVerifiedContentPaths": 46,
+    "ahrefsbotDiscoveryFileRequests": 131,
+    "distinctVerifiedContentPaths": 55,
     "latestOpenAiDiscoveryRequests": [
       {
-        "time": "2026-09-13T06:16:57Z",
+        "time": "2026-09-15T06:19:25Z",
         "family": "GPTBot",
         "path": "/sitemap.xml",
         "status": 200,
-        "fingerprint": "eb69eab4c93121e0d3100704bcc5a29ce336cbe839ef4f6f45a99495671a2f3d"
+        "fingerprint": "ea46bf20d391958b1606097e28b0873f2c966a37a0e28f4bb4d9a739db932d87"
       },
       {
-        "time": "2026-09-13T07:59:58Z",
+        "time": "2026-09-15T06:19:25Z",
         "family": "OAI-SearchBot",
         "path": "/robots.txt",
         "status": 304,
-        "fingerprint": "ce39e4cac47e6da061bd923217c39083b26ab397e61b0cd7fc4aee5128088ecc"
+        "fingerprint": "e5f5d725da15d128cbc1407aa8727eb27701593a30d464e7b66723e0b605ae83"
       }
     ],
     "latestBingVerifiedRequests": [
@@ -95,33 +97,45 @@
     },
     "ahrefsHistoricalRecognition": {
       "firstSeen": "2026-09-08T13:53:09Z",
-      "lastSeen": "2026-09-13T19:00:06Z",
-      "robotsTxtRequests": 29,
-      "sitemapRequests": 85,
-      "distinctClientAddresses": 102,
+      "lastSeen": "2026-09-14T14:25:15Z",
+      "robotsTxtRequests": 33,
+      "sitemapRequests": 98,
       "verificationSource": "https://api.ahrefs.com/v3/public/crawler-ip-ranges",
       "latestVerifiedDiscoveryRequests": [
         {
-          "time": "2026-09-13T17:19:46Z",
+          "time": "2026-09-14T13:02:29Z",
           "path": "/sitemap.xml",
           "status": 200,
-          "fingerprint": "1187466dcddf456079914c39242aeee5328f09403e4229041ab5ed1d9b55edb9"
+          "fingerprint": "e0fa62c5a7ea9581e3a721c47e67c60808710928927854fac83a1df104bb3fbd"
         },
         {
-          "time": "2026-09-13T19:00:06Z",
+          "time": "2026-09-14T14:25:15Z",
           "path": "/sitemap.xml",
           "status": 200,
-          "fingerprint": "00bfe20a91c4f190516dc2066fd60834a417407b682c3c91f4dcca517f6b4b5a"
+          "fingerprint": "f394ee862785cc6fd7e30a62b40222a44e5430a87c09da13d7d93efb6c0f08b6"
         }
       ],
-      "meaning": "All 114 discovery-file requests matched the official Ahrefs crawler IP ranges. The latest request fetched sitemap.xml but no content page. AhrefsBot serves both the Ahrefs database and Yep, so these requests prove external crawler discovery only; they do not prove Yep indexing, ranking, retrieval, citation, or AI recommendation."
+      "meaning": "All 131 discovery-file requests matched the official Ahrefs crawler IP ranges: 33 robots.txt requests and 98 sitemap.xml requests. The latest request fetched sitemap.xml but no content page. The previously published checkpoint had independently verified at least 102 distinct client addresses; the current redacted fingerprint ledger does not republish an exact newer address count. AhrefsBot serves both the Ahrefs database and Yep, so these requests prove external crawler discovery only; they do not prove Yep indexing, ranking, retrieval, citation, or AI recommendation.",
+      "distinctClientAddressesPreviouslyVerified": 102
+    },
+    "latestOpenAiMeaning": "The latest provider-verified OpenAI-family requests fetched sitemap.xml with GPTBot and robots.txt with OAI-SearchBot. GPTBot content access is counted separately; OAI-SearchBot content requests remain zero. These requests prove crawler access only, not ChatGPT Search indexing, retrieval, citation, ranking, endorsement, or recommendation.",
+    "latestGptBotContentGrowthObservation": {
+      "observedAt": "2026-09-14T16:13:46Z",
+      "contentRequestsAdded": 27,
+      "distinctVerifiedContentPathsAdded": 9,
+      "fixedPromptEvidencePagesAdded": 5,
+      "verifiedCrawledEvidencePages": 21,
+      "searchRelatedCrawledEvidencePages": 16,
+      "meaning": "Provider-verified GPTBot requests raised cumulative content requests from 28 to 55 and distinct verified content paths from 46 to 55. Five additional fixed-prompt evidence pages now have crawler access evidence, but search-related crawler coverage remains 16 pages because GPTBot is not classified as search/retrieval-related. Redirect aliases and malformed HTML-escaped UTM query strings are retained as observed requests without being treated as separate canonical evidence pages. This proves GPTBot access only, not ChatGPT Search indexing, retrieval, citation, ranking, endorsement, or recommendation."
     }
   },
   "crawlerEvidenceAccounting": {
     "mode": "append-only-provider-verified-fingerprint-cumulative",
     "deduplicationKey": "SHA-256 fingerprint of the verified request observation",
-    "currentRetainedLogFiles": 5,
+    "currentRetainedLogFiles": 7,
     "currentRetainedLogPaths": [
+      "/var/log/nginx/hk.onyxdevslab.com.geo.log.6.gz",
+      "/var/log/nginx/hk.onyxdevslab.com.geo.log.5.gz",
       "/var/log/nginx/hk.onyxdevslab.com.geo.log.4.gz",
       "/var/log/nginx/hk.onyxdevslab.com.geo.log.3.gz",
       "/var/log/nginx/hk.onyxdevslab.com.geo.log.2.gz",
@@ -134,47 +148,39 @@
       "meaning": "The drift gate requires the active log followed by a gap-free numbered rotation lineage in oldest-to-newest order. Natural addition or expiry of a numbered rotation is accepted; an unexpected path, missing generation, duplicate, or absent active log remains a monitoring-integrity failure."
     },
     "retentionAdjustmentField": "retentionAdjustments",
-    "latestRetentionAdjustments": [
-      {
-        "metric": "verifiedYandexPageCrawls",
-        "retainedLogCount": 77,
-        "cumulativeCount": 78,
-        "newlyObserved": 0,
-        "reason": "Previously verified evidence is retained after its source log rotates out of the current file set."
-      }
-    ],
+    "latestRetentionAdjustments": [],
     "contentPathCoverage": {
       "mode": "append-only-provider-verified-fingerprint-cumulative",
-      "verifiedPageObservations": 114,
-      "distinctPaths": 46,
+      "verifiedPageObservations": 143,
+      "distinctPaths": 55,
       "migrationSource": "Sanitized verified crawler observations recovered from the versioned event history and persisted in seen-evidence.json",
       "meaning": "Content-path and fixed-prompt coverage are rebuilt from the append-only verified-observation ledger. Query strings are normalized away, and log rotation cannot erase previously verified path coverage."
     },
-    "meaning": "Provider-verified crawler request counts are cumulative over the append-only fingerprint ledger. If a verified request rotates out of the four currently retained log files, its cumulative count is preserved and the difference is exposed in retentionAdjustments; an explicit evidence correction still requires a reviewed baseline revision. This rule does not apply to user-agent-only candidates, referrals, Common Crawl results, or Wayback results."
+    "meaning": "Provider-verified crawler request counts are cumulative over the append-only fingerprint ledger. If a verified request rotates out of the currently retained continuous log lineage, its cumulative count is preserved and the difference is exposed in retentionAdjustments; an explicit evidence correction still requires a reviewed baseline revision. This rule does not apply to user-agent-only candidates, referrals, Common Crawl results, or Wayback results."
   },
   "identityUnverifiedCrawlerEvidence": {
     "bytespiderContentRequestCandidates": 0,
     "bytespiderDiscoveryFileRequestCandidates": 0,
-    "syntheticCrawlerReleaseChecksExcludedMinimum": 4583,
+    "syntheticCrawlerReleaseChecksExcludedMinimum": 4882,
     "identityStatus": "user-agent-only-unverified",
     "meaning": "No non-synthetic Bytespider request was observed. At least 4,583 internally marked or individually audited synthetic crawler checks were excluded across all crawler families; this monotonic minimum is operational audit context, not external visibility evidence. Future Bytespider candidates are tracked separately by self-declared User-Agent and do not prove Doubao or ByteDance access."
   },
   "fixedPromptCoverage": {
     "prompts": 23,
     "uniqueEvidencePages": 23,
-    "verifiedCrawledEvidencePages": 16,
+    "verifiedCrawledEvidencePages": 21,
     "searchRelatedCrawledEvidencePages": 16,
-    "promptsWithAnyVerifiedCrawl": 18,
-    "promptsFullyVerifiedCrawled": 12,
+    "promptsWithAnyVerifiedCrawl": 21,
+    "promptsFullyVerifiedCrawled": 20,
     "promptsWithAnySearchRelatedCrawl": 18,
     "promptsFullySearchRelatedCrawled": 12,
-    "scenarioPromptsWithAnyVerifiedCrawl": 4
+    "scenarioPromptsWithAnyVerifiedCrawl": 6
   },
   "attributionEvidence": {
-    "trackedRequests": 93,
+    "trackedRequests": 95,
     "suspectedAutomatedRequests": 78,
     "periodicRotatingClientRequests": 10,
-    "visitorTypeUnverifiedRequests": 15,
+    "visitorTypeUnverifiedRequests": 17,
     "knownLinkScannerRequests": 21,
     "knownLinkScannerUserAgentRequests": 12,
     "knownLinkScannerNetworkRequests": 9,
@@ -188,54 +194,78 @@
       "geo_buyers_guide_scenarios": 8,
       "geo_buyers_guide_geo": 2,
       "geo_buyers_guide_fde": 2,
-      "geo_buyers_guide": 1
+      "geo_buyers_guide": 1,
+      "geo_toutiao_field_notes": 1,
+      "geo_machine_resources": 1
     },
     "latestVerifiedOffsiteReferral": {
-      "time": "2026-09-10T10:30:49Z",
-      "source": "github_pages",
-      "referrerHost": "mixuechu.github.io",
-      "campaign": "geo_buyers_guide",
-      "landingPage": "/zh-cn/guides/enterprise-ai-rfp-template/",
+      "time": "2026-09-15T06:00:01Z",
+      "source": "github_gist",
+      "referrerHost": "gist.github.com",
+      "campaign": "geo_machine_resources",
+      "landingPage": "/llms-full.txt",
       "status": 200
     },
     "latestVisitorTypeUnverifiedAttributions": [
       {
-        "time": "2026-09-13T00:32:30Z",
-        "source": "github_discussions",
-        "campaign": "geo_engagement_model_qa",
-        "landingPage": "/zh-cn/guides/ai-consulting-vs-development-vs-fde/",
-        "referrerHost": ""
+        "time": "2026-09-14T08:41:33Z",
+        "source": "toutiao",
+        "referrerHost": "coze.cn",
+        "campaign": "geo_toutiao_field_notes",
+        "landingPage": "/zh-cn/guides/ai-consulting-vs-development-vs-fde/"
       },
       {
-        "time": "2026-09-13T08:03:46Z",
-        "source": "github_discussions",
-        "campaign": "geo_engagement_model_qa",
-        "landingPage": "/zh-cn/guides/enterprise-ai-pilot-charter/",
-        "referrerHost": ""
+        "time": "2026-09-15T06:00:01Z",
+        "source": "github_gist",
+        "referrerHost": "gist.github.com",
+        "campaign": "geo_machine_resources",
+        "landingPage": "/llms-full.txt"
       }
     ],
     "internalAuditTrafficCorrection": {
       "correctedAt": "2026-09-13T01:22:10.953Z",
       "userAgent": "Onyx-GEO-Manifest-Audit/1.0",
       "requestsExcluded": 6,
-      "affectedCampaigns": ["geo_chinese_field_notes", "geo_governance_guide"],
+      "affectedCampaigns": [
+        "geo_chinese_field_notes",
+        "geo_governance_guide"
+      ],
       "classifierRule": "All internal Onyx-GEO-* user agents are synthetic verification traffic.",
       "meaning": "Six manifest-audit requests briefly appeared in the 01:19:32 internal event before the synthetic-user-agent classifier was corrected. The 01:22:10 production collection excludes them and restores the prior 86 tracked requests and 14 visitor-type-unverified requests. These requests are not human, search, AI-referral, citation, or recommendation evidence."
+    },
+    "latestAttributionBoundaryObservation": {
+      "observedAt": "2026-09-15T06:00:01Z",
+      "cozeReferrer": {
+        "time": "2026-09-14T08:41:33Z",
+        "utmSource": "toutiao",
+        "referrerHost": "coze.cn",
+        "landingPage": "/zh-cn/guides/ai-consulting-vs-development-vs-fde/"
+      },
+      "gistReferrer": {
+        "time": "2026-09-15T06:00:01Z",
+        "utmSource": "github_gist",
+        "referrerHost": "gist.github.com",
+        "landingPage": "/llms-full.txt"
+      },
+      "meaning": "Both requests expose an external referrer host, but visitor identity remains unverified. The coze.cn referrer combined with a Toutiao UTM source is a source-visible request only; it is not evidence of a person, Doubao, ByteDance crawler access, AI retrieval, citation, ranking, endorsement, or recommendation. The later gist.github.com request has the same visitor-type-unverified boundary."
     }
   },
   "commonCrawlEvidence": {
-    "checkedAt": "2026-09-13T03:55:35.260Z",
+    "checkedAt": "2026-09-15T07:40:23.706Z",
     "status": "available",
     "capturesObservedInAvailableIndexes": 0,
-    "availableIndexes": ["CC-MAIN-2026-34", "CC-MAIN-2026-30"],
+    "availableIndexes": [
+      "CC-MAIN-2026-34",
+      "CC-MAIN-2026-30"
+    ],
     "unavailableIndexes": [],
     "meaning": "Both selected Common Crawl indexes returned usable zero-capture responses. This complete result covers only the two selected indexes and cannot be interpreted as absence from all Common Crawl history, public search, or AI systems; availability changes remain event-recorded but do not independently block unrelated verified evidence publication."
   },
   "softwareHeritageEvidence": {
-    "checkedAt": "2026-09-13T19:36:48.365Z",
+    "checkedAt": "2026-09-15T07:41:00.415Z",
     "status": "available",
     "archiveCoverageStatus": "lagging",
-    "repositoryHead": "24ba8a4084cf5ccfcddc6ae9633421297ea2c6d8",
+    "repositoryHead": "b12d078a09460da5f84e8bbb9c348e36c99f84a7",
     "latestCompleteVisitAt": "2026-09-13T06:09:12.547000+00:00",
     "latestAttemptAt": "2026-09-13T06:09:12.547000+00:00",
     "latestAttemptStatus": "full",
@@ -251,11 +281,11 @@
       "snapshotSwhid": "swh:1:snp:beec7f09ab04a666d11d120abddf542620d09e97",
       "nextRun": "2026-09-13T06:09:09.000202Z"
     },
-    "eventFile": "events/2026-09-13T19-35-57.050Z-evidence-change.json",
-    "meaning": "GitHub, the Software Heritage visit history, save-request endpoint and latest complete snapshot were all queryable. Request 2473685 remains succeeded/full and snapshot beec7f09 still independently preserves revision d7d6ee3; mutable GitHub main has advanced to 24ba8a4, so archive coverage remains accurately reported as lagging. The immutable snapshot remains valid preservation evidence for its named revision. Neither current nor lagging archive coverage proves website search indexing, AI retrieval, citation, ranking, endorsement, or recommendation."
+    "eventFile": "events/2026-09-15T07-41-02.395Z-evidence-change.json",
+    "meaning": "GitHub, the Software Heritage visit history, save-request endpoint and latest complete snapshot were all queryable. Request 2473685 remains succeeded/full and snapshot beec7f09 still independently preserves revision d7d6ee3; mutable GitHub main was at b12d078 when collected, so archive coverage remains accurately reported as lagging. The immutable snapshot remains valid preservation evidence for its named revision. Neither current nor lagging archive coverage proves website search indexing, AI retrieval, citation, ranking, endorsement, or recommendation."
   },
   "waybackEvidence": {
-    "checkedAt": "2026-09-13T17:25:57.676Z",
+    "checkedAt": "2026-09-15T07:40:55.460Z",
     "status": "available",
     "captures": 98,
     "distinctUrls": 46,
@@ -322,7 +352,7 @@
       "meaning": "The public CDX query newly re-exposed one previously known AI dingkai capture fingerprint while the distinct-URL and fixed-prompt archive-coverage counts remained unchanged. This is public-index visibility change, not proof of a newly created snapshot, current accessibility, search indexing, AI retrieval, citation, ranking, endorsement, or recommendation."
     },
     "lastCompleteObservation": {
-      "observedAt": "2026-09-13T17:25:57.676Z",
+      "observedAt": "2026-09-15T07:40:55.460Z",
       "captures": 98,
       "distinctUrls": 46
     },
@@ -378,26 +408,27 @@
     "meaning": "All three fixed GitHub Repository Search API queries were available. Brand and legal-entity queries return both first-party repositories; the exact category query returns the same two repositories after the recorded README changes. This proves GitHub platform-search visibility only, not public-web indexing, AI retrieval, citation, ranking, independent endorsement, or non-brand recommendation."
   },
   "distributionEvidence": {
-    "manifestItems": 23,
-    "publishedItems": 23,
-    "readyNotPublishedItems": 0,
-    "checkedAt": "2026-09-13T20:43:20.577Z",
-    "publicUrlsChecked": 23,
-    "trackedTargetsChecked": 39,
-    "availableSources": 62,
+    "manifestItems": 25,
+    "publishedItems": 24,
+    "readyNotPublishedItems": 1,
+    "checkedAt": "2026-09-15T07:40:57.038Z",
+    "publicUrlsChecked": 24,
+    "trackedTargetsChecked": 40,
+    "availableSources": 64,
     "unavailableSources": 0,
     "availabilityStatus": "available",
-    "eventFile": "events/2026-09-13T19-35-57.050Z-evidence-change.json",
+    "eventFile": "events/2026-09-15T07-41-02.395Z-evidence-change.json",
     "expectedAfterCurrentCheckpointPublication": {
-      "manifestItems": 24,
-      "publishedItems": 24,
-      "trackedTargetsChecked": 40,
-      "availableSources": 64,
+      "manifestItems": 26,
+      "publishedItems": 25,
+      "readyNotPublishedItems": 1,
+      "trackedTargetsChecked": 41,
+      "availableSources": 66,
       "unavailableSources": 0,
       "availabilityStatus": "available",
       "meaning": "The current immutable checkpoint is published after its source snapshot is created. These values are the explicitly declared post-publication state used by the drift gate; they must be confirmed by a subsequent production collection before synchronization is reported."
     },
-    "meaning": "The 2026-09-13T19:36:49.423Z production collection confirmed revision 76's self-publication state. A subsequent 2026-09-13T20:43:20.577Z manifest-driven public check verified the second Toutiao article plus both tracked targets, bringing the pre-checkpoint state to 23 published URLs, 39 tracked targets, and 62 available sources. Revision 77 separately declares its expected self-publication delta instead of backdating its own Release into the snapshot. This checkpoint adds a Bing public-search presentation retest, one Ahrefs discovery-file request, and one verified provider-authored Toutiao publication; none proves AI retrieval, citation, endorsement, link equity, a human referral, or recommendation."
+    "meaning": "The 2026-09-15T07:40:57.038Z production collection verified 24 published URLs, 40 tracked targets, and 64 available sources. The manifest also contains one ready-not-published Toutiao draft, which is not counted as a public source. Revision 78 separately declares its expected two-source self-publication delta instead of backdating its own Release into the snapshot. The new crawler and referrer observations do not prove indexing, AI retrieval, citation, endorsement, a human visit, or recommendation."
   },
   "servicesHkReadinessEvidence": {
     "checkedAt": "2026-09-13T03:55:47.596Z",
@@ -406,9 +437,24 @@
     "availableTargets": 0,
     "unavailableTargets": 3,
     "targets": [
-      {"id": "ai-consulting", "status": "unavailable", "httpStatus": 200, "reason": "application-error-marker"},
-      {"id": "cyber-security", "status": "unavailable", "httpStatus": 200, "reason": "application-error-marker"},
-      {"id": "erp-implementation", "status": "unavailable", "httpStatus": 200, "reason": "application-error-marker"}
+      {
+        "id": "ai-consulting",
+        "status": "unavailable",
+        "httpStatus": 200,
+        "reason": "application-error-marker"
+      },
+      {
+        "id": "cyber-security",
+        "status": "unavailable",
+        "httpStatus": 200,
+        "reason": "application-error-marker"
+      },
+      {
+        "id": "erp-implementation",
+        "status": "unavailable",
+        "httpStatus": 200,
+        "reason": "application-error-marker"
+      }
     ],
     "eventFile": "events/2026-09-12T09-36-32.522Z-evidence-and-availability-change.json",
     "meaning": "All three sampled services.hk detail pages return HTTP 200 but contain the known PHP application failure and omit the required title, service-description, and contact markers. This blocks submission readiness; it does not prove that Onyx is listed, reviewed, endorsed, indexed, cited, or recommended. Submission still requires current user confirmation after all three targets recover."
@@ -423,16 +469,115 @@
     "noncompliantTargets": 4,
     "unavailableTargets": 0,
     "targets": [
-      {"id": "http-apex", "startUrl": "http://onyxdevslab.com/", "finalUrl": "http://onyxdevslab.com/", "status": "mitigated-noncompliant", "reasons": ["http-serves-content-without-redirect", "final-url-is-not-https", "final-url-is-not-canonical-origin"], "mitigation": {"status": "applied", "mechanism": "noindex-canonical-meta-refresh", "limitation": "Client-side suppression and navigation do not replace an HTTP 301 or 308 redirect."}},
-      {"id": "https-apex", "startUrl": "https://onyxdevslab.com/", "finalUrl": "https://onyxdevslab.com/", "status": "mitigated-noncompliant", "reasons": ["final-url-is-not-canonical-origin"], "mitigation": {"status": "applied", "mechanism": "noindex-canonical-meta-refresh", "limitation": "Client-side suppression and navigation do not replace an HTTP 301 or 308 redirect."}},
-      {"id": "http-www", "startUrl": "http://www.onyxdevslab.com/", "finalUrl": "http://onyxdevslab.com/", "status": "mitigated-noncompliant", "reasons": ["redirect-target-uses-http", "final-url-is-not-https", "final-url-is-not-canonical-origin"], "mitigation": {"status": "applied", "mechanism": "noindex-canonical-meta-refresh", "limitation": "Client-side suppression and navigation do not replace an HTTP 301 or 308 redirect."}},
-      {"id": "https-www", "startUrl": "https://www.onyxdevslab.com/", "finalUrl": "http://onyxdevslab.com/", "status": "mitigated-noncompliant", "reasons": ["redirect-target-uses-http", "https-downgrade-observed", "final-url-is-not-https", "final-url-is-not-canonical-origin"], "mitigation": {"status": "applied", "mechanism": "noindex-canonical-meta-refresh", "limitation": "Client-side suppression and navigation do not replace an HTTP 301 or 308 redirect."}},
-      {"id": "http-hk", "startUrl": "http://hk.onyxdevslab.com/", "finalUrl": "https://hk.onyxdevslab.com/", "status": "compliant", "reasons": [], "mitigation": {"status": "absent", "mechanism": null, "limitation": null}},
-      {"id": "https-hk", "startUrl": "https://hk.onyxdevslab.com/", "finalUrl": "https://hk.onyxdevslab.com/", "status": "compliant", "reasons": [], "mitigation": {"status": "absent", "mechanism": null, "limitation": null}}
+      {
+        "id": "http-apex",
+        "startUrl": "http://onyxdevslab.com/",
+        "finalUrl": "http://onyxdevslab.com/",
+        "status": "mitigated-noncompliant",
+        "reasons": [
+          "http-serves-content-without-redirect",
+          "final-url-is-not-https",
+          "final-url-is-not-canonical-origin"
+        ],
+        "mitigation": {
+          "status": "applied",
+          "mechanism": "noindex-canonical-meta-refresh",
+          "limitation": "Client-side suppression and navigation do not replace an HTTP 301 or 308 redirect."
+        }
+      },
+      {
+        "id": "https-apex",
+        "startUrl": "https://onyxdevslab.com/",
+        "finalUrl": "https://onyxdevslab.com/",
+        "status": "mitigated-noncompliant",
+        "reasons": [
+          "final-url-is-not-canonical-origin"
+        ],
+        "mitigation": {
+          "status": "applied",
+          "mechanism": "noindex-canonical-meta-refresh",
+          "limitation": "Client-side suppression and navigation do not replace an HTTP 301 or 308 redirect."
+        }
+      },
+      {
+        "id": "http-www",
+        "startUrl": "http://www.onyxdevslab.com/",
+        "finalUrl": "http://onyxdevslab.com/",
+        "status": "mitigated-noncompliant",
+        "reasons": [
+          "redirect-target-uses-http",
+          "final-url-is-not-https",
+          "final-url-is-not-canonical-origin"
+        ],
+        "mitigation": {
+          "status": "applied",
+          "mechanism": "noindex-canonical-meta-refresh",
+          "limitation": "Client-side suppression and navigation do not replace an HTTP 301 or 308 redirect."
+        }
+      },
+      {
+        "id": "https-www",
+        "startUrl": "https://www.onyxdevslab.com/",
+        "finalUrl": "http://onyxdevslab.com/",
+        "status": "mitigated-noncompliant",
+        "reasons": [
+          "redirect-target-uses-http",
+          "https-downgrade-observed",
+          "final-url-is-not-https",
+          "final-url-is-not-canonical-origin"
+        ],
+        "mitigation": {
+          "status": "applied",
+          "mechanism": "noindex-canonical-meta-refresh",
+          "limitation": "Client-side suppression and navigation do not replace an HTTP 301 or 308 redirect."
+        }
+      },
+      {
+        "id": "http-hk",
+        "startUrl": "http://hk.onyxdevslab.com/",
+        "finalUrl": "https://hk.onyxdevslab.com/",
+        "status": "compliant",
+        "reasons": [],
+        "mitigation": {
+          "status": "absent",
+          "mechanism": null,
+          "limitation": null
+        }
+      },
+      {
+        "id": "https-hk",
+        "startUrl": "https://hk.onyxdevslab.com/",
+        "finalUrl": "https://hk.onyxdevslab.com/",
+        "status": "compliant",
+        "reasons": [],
+        "mitigation": {
+          "status": "absent",
+          "mechanism": null,
+          "limitation": null
+        }
+      }
     ],
-    "githubPagesSetting": {"checkedAt": "2026-09-12T23:07:00Z", "httpsEnforced": false, "source": "GitHub Pages API via authenticated collaborator access", "mutationAuthorized": false},
-    "authorityObservation": {"status": "available", "domain": "onyxdevslab.com", "nameServers": ["piper.ns.cloudflare.com", "trey.ns.cloudflare.com"], "cloudflareNameservers": true},
-    "edgeObservation": {"targetsChecked": 6, "cloudflareSignaledTargets": 6, "allTargetsCloudflareSignaled": true, "signal": "HTTP Server header equals cloudflare and CF-Ray is present on at least one hop"},
+    "githubPagesSetting": {
+      "checkedAt": "2026-09-12T23:07:00Z",
+      "httpsEnforced": false,
+      "source": "GitHub Pages API via authenticated collaborator access",
+      "mutationAuthorized": false
+    },
+    "authorityObservation": {
+      "status": "available",
+      "domain": "onyxdevslab.com",
+      "nameServers": [
+        "piper.ns.cloudflare.com",
+        "trey.ns.cloudflare.com"
+      ],
+      "cloudflareNameservers": true
+    },
+    "edgeObservation": {
+      "targetsChecked": 6,
+      "cloudflareSignaledTargets": 6,
+      "allTargetsCloudflareSignaled": true,
+      "signal": "HTTP Server header equals cloudflare and CF-Ray is present on at least one hop"
+    },
     "eventFile": "events/2026-09-13T17-26-04.446Z-evidence-and-availability-change.json",
     "meaning": "The Hong Kong host redirects HTTP to HTTPS and exposes the expected self-canonical URL. GitHub Pages previously served the full site on the apex; revision c244dcb replaced that duplicate output with 72 path-preserving redirect shells plus a dynamic 404, each using noindex, canonical and meta refresh, while preserving the domain-verification file. Live checks confirm the apex and www entry points now expose this client-side mitigation, but they still fail to arrive at the canonical origin by HTTP redirect: the apex returns 200, www leads to the HTTP apex, and HTTPS www downgrades to HTTP. Only 2 of 6 entry points are fully compliant; 4 are mitigated but remain noncompliant until Cloudflare returns a server-side 301 or 308 to https://hk.onyxdevslab.com/. GitHub Pages still reports https_enforced=false. Cloudflare configuration was not changed, and this mitigation does not prove search reprocessing, ranking improvement, AI citation, or recommendation."
   },
@@ -492,10 +637,10 @@
         "visibleOfficialResults": [
           {
             "positionInVisibleResults": 1,
-          "title": "Onyx Devs Lab — AI Advisory, Custom Development & FDE",
-          "url": "http://onyxdevslab.com/",
-          "visibleSnippet": "Onyx Devs Lab is a senior AI advisory and engineering team delivering consulting, custom development, and FDE transformation …",
-          "qualityCaveat": "The result still uses the legacy HTTP apex, but its visible snippet has reprocessed from the previously stale personal-profile text to a current Onyx enterprise-AI description. This is improved search presentation, not clean canonicalization or a stable ranking claim."
+            "title": "Onyx Devs Lab — AI Advisory, Custom Development & FDE",
+            "url": "http://onyxdevslab.com/",
+            "visibleSnippet": "Onyx Devs Lab is a senior AI advisory and engineering team delivering consulting, custom development, and FDE transformation …",
+            "qualityCaveat": "The result still uses the legacy HTTP apex, but its visible snippet has reprocessed from the previously stale personal-profile text to a current Onyx enterprise-AI description. This is improved search presentation, not clean canonicalization or a stable ranking claim."
           },
           {
             "positionInVisibleResults": 2,
@@ -542,15 +687,15 @@
         "url": "https://www.bing.com/search?q=%22Hong+Kong+AI+consulting%22",
         "result": "official-Onyx-result-not-observed-in-visible-first-page",
         "officialSiteObserved": false,
-      "reportedApproximateResultCount": 64000,
+        "reportedApproximateResultCount": 64000,
         "otherVisibleResults": [
           "softmind.tech",
           "aikm.ai",
-        "alphamatch.ai",
-        "ensun.io",
-        "stepone.agency",
-        "YCP Group",
-        "Sortlist"
+          "alphamatch.ai",
+          "ensun.io",
+          "stepone.agency",
+          "YCP Group",
+          "Sortlist"
         ],
         "visibleResultScope": "The first visible page contained other Hong Kong AI-consulting providers and directories; no Onyx result was visible. This is a first-page observation, not an exhaustive absence claim."
       }
@@ -618,8 +763,14 @@
         "url": "https://www.shuididp.cn/yp-1fc4411b06407fe9179c5109ae9d7e02.html",
         "query": "\"Onyx Devs Lab\"",
         "lastObservedAt": "2026-09-12T11:00:31Z",
-        "matchingFields": ["legal name", "incorporation date", "Hong Kong jurisdiction"],
-        "conflictingFields": ["industry is listed as chemical raw materials and chemical products manufacturing"],
+        "matchingFields": [
+          "legal name",
+          "incorporation date",
+          "Hong Kong jurisdiction"
+        ],
+        "conflictingFields": [
+          "industry is listed as chemical raw materials and chemical products manufacturing"
+        ],
         "treatment": "Search-result evidence only. The page is unclaimed, says its data comes from the internet without guarantee, omits the registration number and address, and contains a conflicting industry classification; it is not accepted as an authoritative entity source or linked with sameAs."
       }
     ],
@@ -724,5 +875,5 @@
     "newPublicDiscussionObserved": false
   },
   "doubaoTestStatus": "not-run",
-  "evidenceBoundary": "Provider-verified requests prove only access by the named crawler. Bytespider candidates are separately labeled user-agent-only and identity-unverified; they do not prove Doubao or ByteDance access. Discovery-file access is not content ingestion. Wayback CDX records prove public historical captures only. Attributed requests do not prove a human visitor. Coordinated multi-profile bursts and internally inconsistent browser identities are classified as suspected automation. Public-search non-results are observations for the stated queries and time. None of this proves indexing, retrieval, citation, ranking, endorsement, or non-brand recommendation. No prompt was sent to Doubao."
+  "evidenceBoundary": "Provider-verified requests prove only access by the named crawler. GPTBot is not ChatGPT Search evidence, and OAI-SearchBot content requests remain zero. Bytespider candidates remain user-agent-only and identity-unverified; they do not prove Doubao or ByteDance access. The coze.cn and gist.github.com referrer requests expose source hosts but not visitor identity, AI retrieval, citation, or recommendation. Discovery-file access is not content ingestion. Wayback CDX records prove public historical captures only. Public-search observations apply only to the named query, provider, time and visible scope. None of this proves indexing, retrieval, citation, ranking, endorsement, a human visit, or non-brand recommendation. No prompt was sent to Doubao."
 }
