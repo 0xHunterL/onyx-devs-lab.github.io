@@ -122,3 +122,38 @@ To restore into an empty database:
 sudo -u postgres pg_restore --clean --if-exists --dbname=assistant_gateway \
   /var/backups/assistant-gateway/assistant-gateway-YYYYMMDDTHHMMSSZ.dump
 ```
+
+## Onyx WeCom customer reception
+
+`onyx-wecom` is a channel-only assistant. It shares the public website facts and
+PostgreSQL record system, but has its own reception policy. Generate its corpus
+with `node scripts/sync-onyx-reception-knowledge.mjs` after building the current
+public pages. The source manifest records the website commit and file hashes.
+
+The private `POST /_channels/wecom/reply` endpoint requires a server-only bearer
+from `WECOM_CHANNEL_TOKEN_FILE` and an exact gateway/account-to-assistant mapping
+in `WECOM_CHANNEL_ROUTES_JSON`. Keep it off public Nginx routes. A per-customer
+PostgreSQL advisory lock and source-message unique keys serialize delivery and
+return the same durable reply on retries. The model has no tools or executor.
+
+Conversations, attachment metadata, evidence-backed customer facts, open
+questions and follow-up drafts are persisted. The model only proposes a draft;
+the server displays it and accepts only a subsequent standalone `确认登记` within
+30 minutes. Confirmation creates the lead, consent event and reply in one
+transaction. Modified, cancelled or expired drafts cannot be confirmed. Sending
+`不要联系我` closes existing follow-up records for that channel identity. Prices,
+appointments and human response times remain unconfirmed.
+
+Channel leads do not enqueue staff notifications in this release. They can be
+read through the existing authenticated lead/workbench APIs; a channel
+conversation dashboard and staff interaction are later work. Attachment bytes
+remain in the private transport cache; the reception model only receives names,
+types and SHA256, and must ask for text rather than claiming to read them.
+
+`tests/test_wecom_channel.py` includes unit rules and PostgreSQL tests enabled
+only with a dedicated `TEST_DATABASE_URL` containing `test_onyx_reception`.
+`tests/manual/onyx_model_smoke.py` runs real-model reception checks against a
+synthetic channel identity and a temporary database, never WeChat send APIs.
+Migration `005_wecom_reception.sql` adds the channel record tables; its rollback
+is under `migrations/down/`. Back up the database before a rollback, which removes
+those channel-specific records.

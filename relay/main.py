@@ -345,6 +345,13 @@ async def _save_assistant_response(
         logger.exception("Failed to persist assistant response")
 
 
+def _public_assistant(assistant_id: str):
+    assistant = registry.get(assistant_id)
+    if assistant is None or not assistant.public_chat:
+        raise HTTPException(status_code=404, detail="Unknown assistant")
+    return assistant
+
+
 @app.get("/health")
 async def health():
     return {
@@ -357,8 +364,7 @@ async def health():
 
 @app.get("/v1/assistants/{assistant_id}/sessions")
 async def list_sessions(assistant_id: str, x_visitor_id: str = Header(alias="X-Visitor-ID")):
-    if registry.get(assistant_id) is None:
-        raise HTTPException(status_code=404, detail="Unknown assistant")
+    _public_assistant(assistant_id)
     return {"sessions": await database.list_sessions(assistant_id, x_visitor_id)}
 
 
@@ -368,6 +374,7 @@ async def get_session(
     session_id: str,
     x_visitor_id: str = Header(alias="X-Visitor-ID"),
 ):
+    _public_assistant(assistant_id)
     try:
         messages = await database.get_messages(assistant_id, session_id, x_visitor_id)
     except SessionOwnershipError as error:
@@ -381,14 +388,14 @@ async def delete_session(
     session_id: str,
     x_visitor_id: str = Header(alias="X-Visitor-ID"),
 ):
+    _public_assistant(assistant_id)
     deleted = await database.delete_session(assistant_id, session_id, x_visitor_id)
     return {"deleted": deleted}
 
 
 @app.post("/v1/assistants/{assistant_id}/leads", status_code=201)
 async def create_lead(assistant_id: str, payload: LeadRequest, request: Request):
-    if registry.get(assistant_id) is None:
-        raise HTTPException(status_code=404, detail="Unknown assistant")
+    _public_assistant(assistant_id)
     if not payload.consent:
         raise HTTPException(status_code=400, detail="Explicit consent is required")
 
@@ -521,9 +528,7 @@ async def admin_update_lead(
 
 @app.post("/v1/assistants/{assistant_id}/chat")
 async def chat(assistant_id: str, payload: ChatRequest, request: Request):
-    assistant = registry.get(assistant_id)
-    if assistant is None:
-        raise HTTPException(status_code=404, detail="Unknown assistant")
+    assistant = _public_assistant(assistant_id)
 
     total_chars = sum(len(message.content) for message in payload.messages)
     if total_chars > settings.MAX_TOTAL_INPUT_CHARS:
@@ -637,3 +642,6 @@ async def chat(assistant_id: str, payload: ChatRequest, request: Request):
 
 workbench_dir = Path(__file__).parent / "workbench"
 app.mount("/workbench", StaticFiles(directory=workbench_dir, html=True), name="workbench")
+
+from wecom_channel import register_wecom
+register_wecom(app, settings, registry, database, client, _check_limits)

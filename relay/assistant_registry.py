@@ -13,6 +13,7 @@ class AssistantDefinition:
     max_tokens: int | None
     system_prompt: str
     knowledge_chunks: tuple[KnowledgeChunk, ...]
+    public_chat: bool = True
 
 
 class AssistantRegistry:
@@ -43,6 +44,7 @@ class AssistantRegistry:
                 max_tokens=data.get("max_tokens"),
                 system_prompt=prompt_path.read_text(encoding="utf-8"),
                 knowledge_chunks=tuple(knowledge_chunks),
+                public_chat=data.get("public_chat", True) is True,
             )
         return assistants
 
@@ -51,4 +53,4 @@ class AssistantRegistry:
 
     @property
     def ids(self) -> list[str]:
-        return sorted(self._assistants)
+        return sorted(key for key, assistant in self._assistants.items() if assistant.public_chat)

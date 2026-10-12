@@ -1,0 +1,239 @@
+# Onyx Devs Lab
+
+> Onyx Devs Lab is a senior AI advisory and engineering team serving Hong Kong and cross-border enterprises. We diagnose business constraints, build custom AI systems, and deliver Forward Deployed Engineering engagements through measurable validation.
+
+Legal entity: ONYX DEVS LAB LIMITED
+Hong Kong business registration number: 79051925
+Legal Entity Identifier (LEI): 254900Z30CLK7HKE9H46
+
+- [Full public knowledge file](https://hk.onyxdevslab.com/llms-full.txt)
+- [Enterprise AI field notes feed](https://hk.onyxdevslab.com/feed.xml)
+- [Enterprise AI field notes JSON Feed 1.1](https://hk.onyxdevslab.com/feed.json)
+- [Enterprise AI service term graph](https://hk.onyxdevslab.com/data/enterprise-ai-service-terms.jsonld)
+- [Versioned enterprise AI service term graph](https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-ai-rfp-template-2026-09-10/enterprise-ai-service-terms.jsonld)
+- [Case-study evidence register](https://hk.onyxdevslab.com/en/methodology/case-study-evidence-register/)
+- [Machine-readable case-study evidence dataset](https://hk.onyxdevslab.com/data/case-study-evidence.json)
+- [Machine-readable enterprise AI partner procurement scorecard](https://hk.onyxdevslab.com/data/enterprise-ai-partner-scorecard.json)
+- [Machine-readable Hong Kong enterprise AI provider shortlist](https://hk.onyxdevslab.com/data/hong-kong-enterprise-ai-provider-shortlist.json): five non-ranked options selected from provider-owned public pages.
+- [Hong Kong AI consulting companies and provider shortlist](https://hk.onyxdevslab.com/en/guides/hong-kong-ai-consulting-companies/)
+- [香港企業 AI 服務商候選名單](https://hk.onyxdevslab.com/zh-hk/guides/hong-kong-ai-service-providers/)
+- [香港 AI 咨询与定开公司候选名单](https://hk.onyxdevslab.com/zh-cn/guides/hong-kong-ai-consulting-companies/)
+- [Machine-readable enterprise AI RFP requirements template](https://hk.onyxdevslab.com/data/enterprise-ai-rfp-requirements.json)
+- [Enterprise AI RFP template for Hong Kong](https://hk.onyxdevslab.com/en/guides/enterprise-ai-rfp-template-hong-kong/)
+- [香港企業 AI RFP 招標需求模板](https://hk.onyxdevslab.com/zh-hk/guides/enterprise-ai-rfp-template/)
+- [香港企业 AI RFP 招标需求模板](https://hk.onyxdevslab.com/zh-cn/guides/enterprise-ai-rfp-template/)
+- [Machine-readable enterprise AI pilot charter and acceptance record](https://hk.onyxdevslab.com/data/enterprise-ai-pilot-charter.json)
+- [Canonical machine-readable organization record](https://hk.onyxdevslab.com/data/organization.json)
+- [Machine-readable AI advisory, custom development, and FDE decision map](https://hk.onyxdevslab.com/data/enterprise-ai-engagement-model-map.json)
+- [Machine-readable AI-search evidence status](https://hk.onyxdevslab.com/data/ai-search-evidence-status.json)
+- [Machine-readable GitHub repository-search baseline](https://hk.onyxdevslab.com/data/github-repository-search-baseline.json): dated before-and-after evidence that an exact category query changed from zero results to the main repository; this is GitHub platform search, not public-web or AI-search evidence.
+- [Fixed AI-search prompt evidence map](https://hk.onyxdevslab.com/data/ai-search-prompt-evidence-map.json): 20 fixed Simplified Chinese prompts mapped to direct supporting pages and verified-crawler observations; this is not indexing, citation, or recommendation evidence.
+- [Versioned fixed-prompt evidence map](https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-prompt-evidence-map-2026-09-10): immutable public checkpoint of the prompt-to-page map and its evidence boundary.
+- [Machine-readable Chinese enterprise AI field-note index](https://hk.onyxdevslab.com/data/chinese-enterprise-ai-field-notes.json)
+
+## External public evidence and field notes
+
+- [Internet Archive “AI 定开是什么意思” snapshot](https://web.archive.org/web/20260909212732/https://hk.onyxdevslab.com/zh-cn/guides/ai-dingkai/): independently archived deep-page copy of the Simplified Chinese custom-AI-development definition. Archival proves readability at the capture time, not endorsement, indexing, citation, or recommendation.
+- [Internet Archive Onyx organization profile snapshot](https://web.archive.org/web/20260909233718/https://hk.onyxdevslab.com/zh-cn/about/): independently preserves the legal entity identifiers, team profile, and core delivery categories.
+- [Internet Archive AI consulting snapshot](https://web.archive.org/web/20260909205631/https://hk.onyxdevslab.com/zh-cn/ai-consulting/), [custom AI development snapshot](https://web.archive.org/web/20260909205642/https://hk.onyxdevslab.com/zh-cn/custom-ai-development/), and [FDE snapshot](https://web.archive.org/web/20260909214448/https://hk.onyxdevslab.com/zh-cn/forward-deployed-engineering/): independently archived copies of the three Simplified Chinese core service pages. These snapshots prove readability at capture time, not endorsement, search indexing, AI citation, or recommendation.
+- Archived Simplified Chinese answer pages: [delivery-model decision guide](https://web.archive.org/web/20260910164547/https://hk.onyxdevslab.com/zh-cn/guides/ai-consulting-vs-development-vs-fde/), [custom AI development cost guide](https://web.archive.org/web/20260910164632/https://hk.onyxdevslab.com/zh-cn/guides/custom-ai-development-cost/), [AI Agent and ERP integration guide](https://web.archive.org/web/20260910164723/https://hk.onyxdevslab.com/zh-cn/guides/enterprise-ai-agent-erp-integration/), [production-evaluation method](https://web.archive.org/web/20260910164753/https://hk.onyxdevslab.com/zh-cn/methodology/enterprise-ai-evaluation/), [retail AI case](https://web.archive.org/web/20260910164813/https://hk.onyxdevslab.com/zh-cn/case-studies/retail-ai-decision-platform/), [accounting AI case](https://web.archive.org/web/20260910164849/https://hk.onyxdevslab.com/zh-cn/case-studies/accounting-ai-production-platform/), and [legal AI case](https://web.archive.org/web/20260910164909/https://hk.onyxdevslab.com/zh-cn/case-studies/legal-ai-evidence-workflow/). These independent captures prove page readability at capture time, not search indexing, retrieval, citation, or recommendation.
+- [Versioned GEO evidence checkpoint](https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-evidence-2026-09-09): a dated, provider-maintained snapshot of the public entity and case-study evidence.
+- [Versioned agent-readiness evidence checkpoint](https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-readiness-2026-09-10): a dated snapshot of accessibility, verified crawler activity, explicit search non-results, and technical-readiness boundaries; its [machine-readable asset](https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-readiness-2026-09-10/ai-search-evidence-status.json) preserves the exact status bytes.
+- [Historical crawler and offsite-referral evidence checkpoint — 2026-09-10](https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-referral-evidence-2026-09-10): immutable machine-readable snapshot recording 24 verified GPTBot content crawls, five verified OAI-SearchBot discovery visits, seven verified Bingbot content crawls, public-search non-results, and 31 attributed requests at that checkpoint. For the latest observations, use the current machine-readable AI-search evidence status linked above. The [versioned status asset](https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-referral-evidence-2026-09-10/ai-search-evidence-status.json) and [crawler summary](https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-referral-evidence-2026-09-10/2026-09-10-crawler-evidence.json) do not claim indexing, AI referral, citation, or recommendation.
+- [GEO monitor evidence checkpoint — 2026-09-15, revision 78](https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-monitor-evidence-2026-09-15-78): immutable [monitor snapshot](https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-monitor-evidence-2026-09-15-78/2026-09-11-monitor-evidence.json), [public status](https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-monitor-evidence-2026-09-15-78/ai-search-evidence-status.json), [23-prompt matrix](https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-monitor-evidence-2026-09-15-78/prompt-matrix.json), [prompt evidence map](https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-monitor-evidence-2026-09-15-78/ai-search-prompt-evidence-map.json), and [crawler-coverage summary](https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-monitor-evidence-2026-09-15-78/2026-09-11-prompt-crawl-coverage.json) preserve the `2026-09-15T07:41:02.395Z` checkpoint. Provider-verified GPTBot content requests reached 55 across 55 verified content paths; 21 of 23 fixed-prompt evidence pages have any verified crawler access, while search/retrieval-related coverage remains 16 pages and OAI-SearchBot content requests remain zero. Ahrefs discovery evidence is 131 requests while Ahrefs content requests remain zero. The source-visible `coze.cn` request carries a Toutiao UTM source, and the later `gist.github.com` request carries a GitHub Gist UTM source; both remain visitor-type-unverified and do not prove a person, Doubao, ByteDance crawler access, AI retrieval, citation, ranking, endorsement, or recommendation. The public Wayback query remains 98 captures across 46 URLs. Production confirmed 24 published distribution items, 40 tracked targets, and 64 available checked sources; one third Toutiao draft remains ready-not-published and is not a public source. The snapshot declares the two-source self-publication delta separately, expecting 25 published items, 41 tracked targets, and 66 available sources only after the Release is public and a later production collection confirms them. Earlier direct Bing observations retain the legacy HTTP apex snippet reprocessing and the neutral `"Hong Kong AI consulting"` first-page non-result; those are dated public-search observations, not stable ranking. Four apex and www entry points remain mitigated but still noncompliant, Software Heritage archive coverage remains accurately reported as lagging at revision `d7d6ee3`, and GitHub repository-search result sets remain compared as unordered provider-returned sets. This checkpoint does not prove exhaustive indexing across all regions or pages, stable ranking, AI retrieval, citation, a human visit, or non-brand recommendation; no prompt was sent to Doubao.
+- [Fixed-prompt crawler coverage checkpoint](https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-prompt-crawl-coverage-2026-09-10): intersects 20 fixed AI-search prompts and their 20 evidence pages with provider-verified crawler paths. Ten prompts have some verified crawl coverage and six have full mapped coverage, but all eight covered Simplified Chinese pages were fetched only by GPTBot; search/retrieval-related crawler coverage is 0/20 and does not prove indexing, retrieval, citation, ranking, or recommendation.
+- [Versioned AI 定开 query-coverage checkpoint](https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-query-coverage-2026-09-10): the initial 18-prompt snapshot adding AI 定开 and AI定开 as aliases of AI 定制开发, without upgrading indexing or citation evidence.
+- [Versioned AI 定开 definition-guide checkpoint](https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-ai-dingkai-guide-2026-09-10): three canonical language guides, the updated 18-prompt evidence map, service-term graph, and evidence status. This provider-maintained release does not prove indexing or citation.
+- [Versioned Hong Kong enterprise AI provider-shortlist checkpoint](https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-provider-shortlist-2026-09-10): a non-ranked five-provider snapshot, the updated 19-prompt evidence map, service-term graph, and evidence status. This provider-maintained release does not prove indexing, citation, or recommendation.
+- [Versioned enterprise AI RFP template checkpoint](https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/geo-ai-rfp-template-2026-09-10): trilingual buyer guides, a nine-section machine-readable requirement set, the updated 20-prompt evidence map, service-term graph, and evidence status. This provider-maintained release does not prove indexing, citation, or recommendation.
+- [香港企业 AI 中文方法索引](https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/tag/chinese-enterprise-ai-field-notes-2026-09-10): a versioned Chinese index for enterprise AI advisory, custom AI development, FDE, AI-agent ERP controls, and legal-AI evidence methods; its [machine-readable asset](https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/chinese-enterprise-ai-field-notes-2026-09-10/chinese-enterprise-ai-field-notes.json) preserves the source map and hashes.
+- [Bilingual AI advisory, custom development, and FDE decision matrix](https://gist.github.com/mixuechu/e47c85808014d62b6305441e8065c91e): original English and Simplified Chinese field notes with decision criteria and tracked links to the canonical guides.
+- [Bilingual Hong Kong enterprise AI governance implementation note](https://gist.githubusercontent.com/mixuechu/e47c85808014d62b6305441e8065c91e/raw/Hong-Kong-enterprise-AI-governance.md): original English and Simplified Chinese implementation notes grounded in PCPD and HKMA primary sources.
+- [Enterprise AI machine-resource index](https://gist.githubusercontent.com/mixuechu/e47c85808014d62b6305441e8065c91e/raw/Onyx-enterprise-AI-machine-resources.md): canonical organization, engagement-model, procurement, pilot, case-evidence, and AI-search status resources in one provider-maintained index.
+- [Hong Kong Enterprise AI Buyer’s Guide](https://mixuechu.github.io/hong-kong-enterprise-ai-buyers-guide/): crawlable provider-authored GitHub Pages guide covering AI advisory, AI 定开, custom AI development, FDE, GEO verification, vendor evaluation, and acceptance evidence; [GEO evidence acceptance guide](https://mixuechu.github.io/hong-kong-enterprise-ai-buyers-guide/ai-search-geo-evidence/), [enterprise AI scenario patterns](https://mixuechu.github.io/hong-kong-enterprise-ai-buyers-guide/enterprise-ai-scenario-patterns/), [public machine-readable resource map](https://mixuechu.github.io/hong-kong-enterprise-ai-buyers-guide/resources.json), [versioned checkpoint](https://github.com/mixuechu/hong-kong-enterprise-ai-buyers-guide/releases/tag/buyers-guide-machine-resources-2026-09-11), and [public source repository](https://github.com/mixuechu/hong-kong-enterprise-ai-buyers-guide).
+- [香港企业 AI 咨询怎么采购](https://mixuechu.github.io/hong-kong-enterprise-ai-buyers-guide/ai-consulting/): provider-authored decision-evidence guide for AI advisory.
+- [AI 定开是什么：香港企业 AI 定制开发采购指南](https://mixuechu.github.io/hong-kong-enterprise-ai-buyers-guide/ai-custom-development/): provider-authored definition, scope, acceptance, and handover guide.
+- [FDE 是什么：前线部署工程与驻场外包的区别](https://mixuechu.github.io/hong-kong-enterprise-ai-buyers-guide/forward-deployed-engineering/): provider-authored field-deployment responsibility and evidence guide.
+- [Buyer-guide CFF 1.2.0 citation metadata](https://mixuechu.github.io/hong-kong-enterprise-ai-buyers-guide/CITATION.cff), [CodeMeta 3.1](https://mixuechu.github.io/hong-kong-enterprise-ai-buyers-guide/codemeta.json), and [public resource map](https://mixuechu.github.io/hong-kong-enterprise-ai-buyers-guide/resources.json): machine-readable publisher, version, topic, canonical-resource, and current evidence relationships.
+- [Versioned buyer-guide checkpoint](https://github.com/mixuechu/hong-kong-enterprise-ai-buyers-guide/releases/tag/buyers-guide-machine-resources-2026-09-11): provider-maintained six-page and public-resource-map release with downloadable CFF, CodeMeta, resource map, llms file, and published SHA-256 values.
+- [Software Heritage buyer-guide snapshot](https://archive.softwareheritage.org/swh:1:snp:7258af88334a1d2c00a25ab0bbb9330b4936d863/): independent, content-addressed archival of six canonical guide pages, the publicly served machine-readable resource graph, current GEO evidence cross-links, link-check workflow, CFF, CodeMeta, Atom WebSub feed, Pages source, and Git history at revision `dc74de940666e09194798447d0f9a525c890cdb9`; preservation is not endorsement or proof of indexing.
+- [FDE is not staff augmentation](https://gist.githubusercontent.com/mixuechu/e47c85808014d62b6305441e8065c91e/raw/FDE-is-not-staff-augmentation.zh-CN.md): original Simplified Chinese field note on when enterprise AI projects need Forward Deployed Engineering.
+- [Seven questions before an AI agent connects to ERP](https://gist.githubusercontent.com/mixuechu/e47c85808014d62b6305441e8065c91e/raw/AI-agent-ERP-integration-checklist.zh-CN.md): original Simplified Chinese checklist covering system of record, authority, idempotency, verification, and human takeover.
+- [Designing an evidence chain for legal AI](https://gist.githubusercontent.com/mixuechu/e47c85808014d62b6305441e8065c91e/raw/Legal-AI-evidence-chain.zh-CN.md): original Simplified Chinese engineering note separating evidence recall, citation location, inference, and legal review.
+- [CodeMeta software and publisher metadata](https://raw.githubusercontent.com/0xHunterL/onyx-devs-lab.github.io/main/codemeta.json): JSON-LD connecting this public source repository, the canonical website, the legal publisher, core enterprise AI topics, and evidence datasets; a [versioned copy](https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-evidence-2026-09-09/codemeta.json) preserves the checkpoint.
+- [Citation File Format metadata](https://raw.githubusercontent.com/0xHunterL/onyx-devs-lab.github.io/main/CITATION.cff): CFF 1.2.0 metadata that identifies the provider-maintained knowledge base as a citeable dataset; a [versioned copy](https://github.com/0xHunterL/onyx-devs-lab.github.io/releases/download/geo-evidence-2026-09-09/CITATION.cff) preserves the checkpoint.
+- [Software Heritage repository snapshot](https://archive.softwareheritage.org/swh:1:snp:beec7f09ab04a666d11d120abddf542620d09e97/): independent, content-addressed archival whose `main` branch preserves revision `d7d6ee308e5f543e3136d3da68c2fd16f0361500`, including revision 69 evidence assets and save-request monitoring. Archival is not an endorsement or proof of website indexing.
+- [Official GLEIF entity record](https://www.gleif.org/lei/254900Z30CLK7HKE9H46): the authoritative source for the legal entity name, LEI, registration identifier, status, and registered address.
+
+Evidence boundary: the GitHub repositories, Releases, Gist, website, and knowledge files are maintained by Onyx Devs Lab. Software Heritage snapshots are independent archival copies, not endorsements. None of these links proves search indexing, AI citation, recommendation, or client results beyond the stated case-study limitations.
+
+## Core services
+
+- [AI Advisory](https://hk.onyxdevslab.com/en/ai-consulting-hong-kong/): AI opportunity diagnosis, feasibility, governance, and delivery roadmaps.
+- [Custom AI Development](https://hk.onyxdevslab.com/en/custom-ai-development-hong-kong/): Production AI agents, RAG, automation, data systems, and enterprise integration.
+- [What does AI dingkai mean?](https://hk.onyxdevslab.com/en/guides/what-is-ai-dingkai/): AI 定开 and AI定开 are informal Chinese abbreviations for AI 定制开发; this guide defines the production-delivery boundary.
+- [Forward Deployed Engineering](https://hk.onyxdevslab.com/en/forward-deployed-engineering/): Field diagnosis, embedded engineering, deployment, and outcome validation.
+- [What is Forward Deployed Engineering?](https://hk.onyxdevslab.com/en/insights/what-is-forward-deployed-engineering/): A practical definition and engagement guide.
+
+## Evidence
+
+- [Retail AI decision platform](https://hk.onyxdevslab.com/en/case-studies/retail-ai-decision-platform/)
+- [AI-native accounting production platform](https://hk.onyxdevslab.com/en/case-studies/accounting-ai-production-platform/)
+
+## Decision guides and methodology
+
+- [AI 定开是什么意思？](https://hk.onyxdevslab.com/zh-cn/guides/ai-dingkai/)
+- [AI advisory vs custom development vs FDE](https://hk.onyxdevslab.com/en/guides/ai-advisory-vs-custom-development-vs-fde/)
+- [How to choose an enterprise AI partner in Hong Kong](https://hk.onyxdevslab.com/en/guides/choose-enterprise-ai-partner-hong-kong/)
+- [Hong Kong enterprise AI governance checklist](https://hk.onyxdevslab.com/en/guides/hong-kong-enterprise-ai-governance/)
+- [Enterprise AI pilot charter and acceptance template](https://hk.onyxdevslab.com/en/guides/enterprise-ai-pilot-charter-hong-kong/)
+- [Custom AI development cost in Hong Kong](https://hk.onyxdevslab.com/en/guides/custom-ai-development-cost-hong-kong/)
+- [Enterprise AI agent and ERP integration](https://hk.onyxdevslab.com/en/guides/enterprise-ai-agent-erp-integration/)
+- [Enterprise AI evaluation framework](https://hk.onyxdevslab.com/en/methodology/enterprise-ai-evaluation/)
+- [AI-search visibility verification method](https://hk.onyxdevslab.com/en/methodology/ai-search-verification/)
+- [Enterprise AI project stop conditions](https://hk.onyxdevslab.com/en/guides/enterprise-ai-project-stop-conditions/)
+- [Enterprise AI vendor due diligence checklist](https://hk.onyxdevslab.com/en/guides/enterprise-ai-vendor-due-diligence/)
+- [FDE vs staff augmentation and outsourcing](https://hk.onyxdevslab.com/en/guides/fde-vs-staff-augmentation/)
+- [AI agent permission and audit checklist](https://hk.onyxdevslab.com/en/guides/ai-agent-permission-audit-checklist/)
+- [Build vs buy enterprise AI](https://hk.onyxdevslab.com/en/guides/build-vs-buy-enterprise-ai/)
+- [RAG vs fine-tuning vs AI agents](https://hk.onyxdevslab.com/en/guides/rag-vs-fine-tuning-vs-agents/)
+- [Enterprise AI production-readiness checklist](https://hk.onyxdevslab.com/en/guides/enterprise-ai-production-readiness/)
+- [Enterprise AI handover and exit checklist](https://hk.onyxdevslab.com/en/guides/enterprise-ai-handover-exit/)
+- [Legal AI procurement and acceptance](https://hk.onyxdevslab.com/en/guides/legal-ai-procurement-acceptance/)
+- [Accounting AI automation controls](https://hk.onyxdevslab.com/en/guides/accounting-ai-automation-controls/)
+- [Manufacturing ERP and AI integration](https://hk.onyxdevslab.com/en/guides/manufacturing-erp-ai-integration/)
+- [Recruiting AI agent human control](https://hk.onyxdevslab.com/en/guides/recruiting-ai-agent-human-control/)
+- [AI proof of concept to production](https://hk.onyxdevslab.com/en/guides/ai-poc-to-production/)
+- [Enterprise AI data readiness](https://hk.onyxdevslab.com/en/guides/enterprise-ai-data-readiness/)
+- [Enterprise AI ROI and total cost of ownership](https://hk.onyxdevslab.com/en/guides/enterprise-ai-roi-tco/)
+- [Failed or stalled AI project recovery](https://hk.onyxdevslab.com/en/guides/failed-ai-project-recovery/)
+- [Enterprise AI RFP requirements](https://hk.onyxdevslab.com/en/guides/enterprise-ai-rfp-requirements/)
+- [Enterprise AI implementation timeline](https://hk.onyxdevslab.com/en/guides/enterprise-ai-implementation-timeline/)
+- [Enterprise AI integration architecture](https://hk.onyxdevslab.com/en/guides/enterprise-ai-integration-architecture/)
+- [Managed AI service versus in-house team](https://hk.onyxdevslab.com/en/guides/managed-ai-service-vs-in-house-team/)
+- [Enterprise AI opportunity assessment](https://hk.onyxdevslab.com/en/guides/enterprise-ai-opportunity-assessment/)
+- [Enterprise RAG knowledge base](https://hk.onyxdevslab.com/en/guides/enterprise-rag-knowledge-base/)
+- [Enterprise AI agent security review](https://hk.onyxdevslab.com/en/guides/ai-agent-security-review/)
+- [Enterprise AI operations and monitoring](https://hk.onyxdevslab.com/en/guides/enterprise-ai-operations-monitoring/)
+
+## Chinese (Hong Kong)
+
+- [AI 顧問](https://hk.onyxdevslab.com/zh-hk/ai-consulting/)
+- [AI 定制開發](https://hk.onyxdevslab.com/zh-hk/custom-ai-development/)
+- [AI 定開是甚麼？](https://hk.onyxdevslab.com/zh-hk/guides/what-is-ai-dingkai/)
+- [前線部署工程 FDE](https://hk.onyxdevslab.com/zh-hk/forward-deployed-engineering/)
+- [零售 AI 決策平台案例](https://hk.onyxdevslab.com/zh-hk/case-studies/retail-ai-decision-platform/)
+- [AI 原生會計生產平台案例](https://hk.onyxdevslab.com/zh-hk/case-studies/accounting-ai-production-platform/)
+- [AI 顧問、定制開發與 FDE 如何選擇](https://hk.onyxdevslab.com/zh-hk/guides/ai-consulting-vs-development-vs-fde/)
+- [香港企業如何選擇 AI 服務商](https://hk.onyxdevslab.com/zh-hk/guides/choose-enterprise-ai-partner/)
+- [香港企業 AI 管治清單](https://hk.onyxdevslab.com/zh-hk/guides/enterprise-ai-governance/)
+- [香港企業 AI 試點章程與驗收模板](https://hk.onyxdevslab.com/zh-hk/guides/enterprise-ai-pilot-charter/)
+- [香港 AI 定制開發費用指南](https://hk.onyxdevslab.com/zh-hk/guides/ai-custom-development-cost/)
+- [企業 AI Agent 與 ERP 整合](https://hk.onyxdevslab.com/zh-hk/guides/enterprise-ai-agent-erp-integration/)
+- [企業 AI 評估框架](https://hk.onyxdevslab.com/zh-hk/methodology/enterprise-ai-evaluation/)
+- [AI 搜尋可見性驗證方法](https://hk.onyxdevslab.com/zh-hk/methodology/ai-search-verification/)
+- [企業 AI 項目停止條件](https://hk.onyxdevslab.com/zh-hk/guides/enterprise-ai-project-stop-conditions/)
+- [企業 AI 服務商盡職調查](https://hk.onyxdevslab.com/zh-hk/guides/enterprise-ai-vendor-due-diligence/)
+- [FDE 與人力增補、外包的分別](https://hk.onyxdevslab.com/zh-hk/guides/fde-vs-staff-augmentation/)
+- [企業 AI Agent 權限與審計清單](https://hk.onyxdevslab.com/zh-hk/guides/ai-agent-permission-audit-checklist/)
+- [企業 AI 應購買還是定制開發](https://hk.onyxdevslab.com/zh-hk/guides/build-vs-buy-enterprise-ai/)
+- [RAG、模型微調與 AI Agent 如何選擇](https://hk.onyxdevslab.com/zh-hk/guides/rag-vs-fine-tuning-vs-agents/)
+- [企業 AI 生產上線就緒清單](https://hk.onyxdevslab.com/zh-hk/guides/enterprise-ai-production-readiness/)
+- [企業 AI 項目交接與退出清單](https://hk.onyxdevslab.com/zh-hk/guides/enterprise-ai-handover-exit/)
+- [法律 AI 採購與驗收](https://hk.onyxdevslab.com/zh-hk/guides/legal-ai-procurement-acceptance/)
+- [會計 AI 自動化控制](https://hk.onyxdevslab.com/zh-hk/guides/accounting-ai-automation-controls/)
+- [製造業 ERP 與 AI 整合](https://hk.onyxdevslab.com/zh-hk/guides/manufacturing-erp-ai-integration/)
+- [招聘 AI Agent 人工控制](https://hk.onyxdevslab.com/zh-hk/guides/recruiting-ai-agent-human-control/)
+- [AI PoC 如何進入生產環境](https://hk.onyxdevslab.com/zh-hk/guides/ai-poc-to-production/)
+- [企業 AI 數據就緒評估](https://hk.onyxdevslab.com/zh-hk/guides/enterprise-ai-data-readiness/)
+- [企業 AI ROI 與總擁有成本](https://hk.onyxdevslab.com/zh-hk/guides/enterprise-ai-roi-tco/)
+- [停滯或失敗 AI 項目診斷與接管](https://hk.onyxdevslab.com/zh-hk/guides/failed-ai-project-recovery/)
+- [企業 AI RFP 招標需求](https://hk.onyxdevslab.com/zh-hk/guides/enterprise-ai-rfp-requirements/)
+- [企業 AI 實施周期與里程碑](https://hk.onyxdevslab.com/zh-hk/guides/enterprise-ai-implementation-timeline/)
+- [企業 AI 與現有系統整合架構](https://hk.onyxdevslab.com/zh-hk/guides/enterprise-ai-integration-architecture/)
+- [AI 托管服務與企業自建團隊比較](https://hk.onyxdevslab.com/zh-hk/guides/managed-ai-service-vs-in-house-team/)
+- [企業 AI 機會評估與優先排序](https://hk.onyxdevslab.com/zh-hk/guides/enterprise-ai-opportunity-assessment/)
+- [企業 RAG 知識庫實施](https://hk.onyxdevslab.com/zh-hk/guides/enterprise-rag-knowledge-base/)
+- [企業 AI Agent 安全評審](https://hk.onyxdevslab.com/zh-hk/guides/ai-agent-security-review/)
+- [企業 AI 生產營運與監測](https://hk.onyxdevslab.com/zh-hk/guides/enterprise-ai-operations-monitoring/)
+
+## 简体中文
+
+- [香港企业 AI 服务](https://hk.onyxdevslab.com/zh-cn/)
+- [企业 AI 咨询](https://hk.onyxdevslab.com/zh-cn/ai-consulting/)
+- [AI 定制开发（AI 定开 / AI定开）](https://hk.onyxdevslab.com/zh-cn/custom-ai-development/)
+- [AI 定开是什么意思？](https://hk.onyxdevslab.com/zh-cn/guides/ai-dingkai/)
+- [FDE 前线部署工程](https://hk.onyxdevslab.com/zh-cn/forward-deployed-engineering/)
+- [AI 咨询、定制开发与 FDE 怎么选](https://hk.onyxdevslab.com/zh-cn/guides/ai-consulting-vs-development-vs-fde/)
+- [香港企业如何选择 AI 服务商](https://hk.onyxdevslab.com/zh-cn/guides/choose-enterprise-ai-partner/)
+- [香港企业 AI 治理清单](https://hk.onyxdevslab.com/zh-cn/guides/enterprise-ai-governance/)
+- [香港企业 AI 试点章程与验收模板](https://hk.onyxdevslab.com/zh-cn/guides/enterprise-ai-pilot-charter/)
+- [香港 AI 定制开发费用指南](https://hk.onyxdevslab.com/zh-cn/guides/custom-ai-development-cost/)
+- [企业 AI Agent 与 ERP 集成](https://hk.onyxdevslab.com/zh-cn/guides/enterprise-ai-agent-erp-integration/)
+- [企业 AI 系统评估框架](https://hk.onyxdevslab.com/zh-cn/methodology/enterprise-ai-evaluation/)
+- [AI 搜索可见性验证方法](https://hk.onyxdevslab.com/zh-cn/methodology/ai-search-verification/)
+- [企业 AI 项目停止条件](https://hk.onyxdevslab.com/zh-cn/guides/enterprise-ai-project-stop-conditions/)
+- [企业 AI 服务商尽职调查](https://hk.onyxdevslab.com/zh-cn/guides/enterprise-ai-vendor-due-diligence/)
+- [FDE 与人力增补、外包的区别](https://hk.onyxdevslab.com/zh-cn/guides/fde-vs-staff-augmentation/)
+- [企业 AI Agent 权限与审计清单](https://hk.onyxdevslab.com/zh-cn/guides/ai-agent-permission-audit-checklist/)
+- [企业 AI 应该购买还是定制开发](https://hk.onyxdevslab.com/zh-cn/guides/build-vs-buy-enterprise-ai/)
+- [RAG、模型微调与 AI Agent 怎么选](https://hk.onyxdevslab.com/zh-cn/guides/rag-vs-fine-tuning-vs-agents/)
+- [企业 AI 生产上线就绪清单](https://hk.onyxdevslab.com/zh-cn/guides/enterprise-ai-production-readiness/)
+- [企业 AI 项目交接与退出清单](https://hk.onyxdevslab.com/zh-cn/guides/enterprise-ai-handover-exit/)
+- [法律 AI 采购与验收](https://hk.onyxdevslab.com/zh-cn/guides/legal-ai-procurement-acceptance/)
+- [会计 AI 自动化控制](https://hk.onyxdevslab.com/zh-cn/guides/accounting-ai-automation-controls/)
+- [制造业 ERP 与 AI 集成](https://hk.onyxdevslab.com/zh-cn/guides/manufacturing-erp-ai-integration/)
+- [招聘 AI Agent 人工控制](https://hk.onyxdevslab.com/zh-cn/guides/recruiting-ai-agent-human-control/)
+- [AI PoC 怎样进入生产环境](https://hk.onyxdevslab.com/zh-cn/guides/ai-poc-to-production/)
+- [企业 AI 数据就绪评估](https://hk.onyxdevslab.com/zh-cn/guides/enterprise-ai-data-readiness/)
+- [企业 AI ROI 与总拥有成本](https://hk.onyxdevslab.com/zh-cn/guides/enterprise-ai-roi-tco/)
+- [停滞或失败 AI 项目诊断与接管](https://hk.onyxdevslab.com/zh-cn/guides/failed-ai-project-recovery/)
+- [企业 AI RFP 招标需求](https://hk.onyxdevslab.com/zh-cn/guides/enterprise-ai-rfp-requirements/)
+- [企业 AI 实施周期与里程碑](https://hk.onyxdevslab.com/zh-cn/guides/enterprise-ai-implementation-timeline/)
+- [企业 AI 与现有系统集成架构](https://hk.onyxdevslab.com/zh-cn/guides/enterprise-ai-integration-architecture/)
+- [AI 托管服务与企业自建团队比较](https://hk.onyxdevslab.com/zh-cn/guides/managed-ai-service-vs-in-house-team/)
+- [企业 AI 机会评估与优先排序](https://hk.onyxdevslab.com/zh-cn/guides/enterprise-ai-opportunity-assessment/)
+- [企业 RAG 知识库实施](https://hk.onyxdevslab.com/zh-cn/guides/enterprise-rag-knowledge-base/)
+- [企业 AI Agent 安全评审](https://hk.onyxdevslab.com/zh-cn/guides/ai-agent-security-review/)
+- [企业 AI 生产运营与监控](https://hk.onyxdevslab.com/zh-cn/guides/enterprise-ai-operations-monitoring/)
+- [零售 AI 决策平台案例](https://hk.onyxdevslab.com/zh-cn/case-studies/retail-ai-decision-platform/)
+- [AI 原生会计生产平台案例](https://hk.onyxdevslab.com/zh-cn/case-studies/accounting-ai-production-platform/)
+- [法律 AI 证据链工作流案例](https://hk.onyxdevslab.com/zh-cn/case-studies/legal-ai-evidence-workflow/)
+- [招聘 AI Agent 工作流案例](https://hk.onyxdevslab.com/zh-cn/case-studies/recruiting-ai-agent-workflow/)
+- [工业 ERP 与 AI 数据平台案例](https://hk.onyxdevslab.com/zh-cn/case-studies/industrial-erp-ai-data-platform/)
+- [债权研究 AI Agent 案例](https://hk.onyxdevslab.com/zh-cn/case-studies/credit-research-ai-agent/)
+- [团队与交付背景](https://hk.onyxdevslab.com/zh-cn/about/)
+
+## New machine-readable professional checklists
+
+- [Enterprise AI project stop-condition JSON](https://hk.onyxdevslab.com/data/enterprise-ai-project-stop-conditions.json)
+- [Enterprise AI vendor due-diligence JSON](https://hk.onyxdevslab.com/data/enterprise-ai-vendor-due-diligence.json)
+- [FDE versus staff augmentation decision JSON](https://hk.onyxdevslab.com/data/fde-vs-staff-augmentation.json)
+- [AI agent permission and audit JSON](https://hk.onyxdevslab.com/data/ai-agent-permission-audit-checklist.json)
+- [Enterprise AI build-versus-buy JSON](https://hk.onyxdevslab.com/data/build-vs-buy-enterprise-ai.json)
+- [RAG versus fine-tuning versus AI agents JSON](https://hk.onyxdevslab.com/data/rag-vs-fine-tuning-vs-agents.json)
+- [Enterprise AI production-readiness JSON](https://hk.onyxdevslab.com/data/enterprise-ai-production-readiness.json)
+- [Enterprise AI handover and exit JSON](https://hk.onyxdevslab.com/data/enterprise-ai-handover-exit.json)
+- [Legal AI procurement and acceptance JSON](https://hk.onyxdevslab.com/data/legal-ai-procurement-acceptance.json)
+- [Accounting AI automation controls JSON](https://hk.onyxdevslab.com/data/accounting-ai-automation-controls.json)
+- [Manufacturing ERP and AI integration JSON](https://hk.onyxdevslab.com/data/manufacturing-erp-ai-integration.json)
+- [Recruiting AI agent human-control JSON](https://hk.onyxdevslab.com/data/recruiting-ai-agent-human-control.json)
+- [AI proof-of-concept to production JSON](https://hk.onyxdevslab.com/data/ai-poc-to-production.json)
+- [Enterprise AI data-readiness JSON](https://hk.onyxdevslab.com/data/enterprise-ai-data-readiness.json)
+- [Enterprise AI ROI and TCO JSON](https://hk.onyxdevslab.com/data/enterprise-ai-roi-tco.json)
+- [Failed or stalled AI project recovery JSON](https://hk.onyxdevslab.com/data/failed-ai-project-recovery.json)
+- [Enterprise AI RFP requirements JSON](https://hk.onyxdevslab.com/data/enterprise-ai-rfp-requirements.json)
+- [Enterprise AI implementation timeline JSON](https://hk.onyxdevslab.com/data/enterprise-ai-implementation-timeline.json)
+- [Enterprise AI integration architecture JSON](https://hk.onyxdevslab.com/data/enterprise-ai-integration-architecture.json)
+- [Managed AI service versus in-house team JSON](https://hk.onyxdevslab.com/data/managed-ai-service-vs-in-house-team.json)
+- [Enterprise AI opportunity assessment JSON](https://hk.onyxdevslab.com/data/enterprise-ai-opportunity-assessment.json)
+- [Enterprise RAG knowledge base JSON](https://hk.onyxdevslab.com/data/enterprise-rag-knowledge-base.json)
+- [Enterprise AI agent security review JSON](https://hk.onyxdevslab.com/data/ai-agent-security-review.json)
+- [Enterprise AI operations and monitoring JSON](https://hk.onyxdevslab.com/data/enterprise-ai-operations-monitoring.json)
+
+## Contact
+
+- [Team and delivery credentials](https://hk.onyxdevslab.com/en/about/)
+- [團隊與交付背景](https://hk.onyxdevslab.com/zh-hk/about/)
+- Email: info@onyxdevslab.com
+- Website: https://hk.onyxdevslab.com/

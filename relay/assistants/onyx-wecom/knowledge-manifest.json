@@ -1,0 +1,46 @@
+{
+  "schema": 1,
+  "generated_at": "2026-10-12T09:15:50.699Z",
+  "source_commit": "10d3b49b0c6c0d1e4fcf4b868f5e2a9ffbe69540",
+  "public_origin": "https://hk.onyxdevslab.com",
+  "project_count": 13,
+  "source_files": [
+    {
+      "file": "src/App.jsx",
+      "sha256": "ca33835b5ac86aef29211bdaee8dcfc39cc4f7d49c5cb904fe9acb8ef221b521"
+    },
+    {
+      "file": "src/components/products/DevelopmentPartner.jsx",
+      "sha256": "5b480d1737b0bedca7c56a5c3c890cd317ddc3624cda2750ee447766f9a1facc"
+    },
+    {
+      "file": "src/data/caseNarratives.js",
+      "sha256": "ca42e8103a39676741be7dd7f00e9eb8e436f582d69edce4c39285e276c3df53"
+    },
+    {
+      "file": "src/data/caseAnalysis.js",
+      "sha256": "2129906c398e230e373c233668f14441ab0bf788bdc2736ca0aa83b8b5619d01"
+    },
+    {
+      "file": "src/data/caseOutcomes.js",
+      "sha256": "b8db5f9d4bc54aa1f5e19f585eb4475413563e78268dcbfd1ff58c106bfa3174"
+    },
+    {
+      "file": "src/data/caseMetrics.js",
+      "sha256": "cf04b3c7f47927782a30592b05b7197bb48c413244e59af0c00abbc65e058aa5"
+    },
+    {
+      "file": "dist/llms-full.txt",
+      "sha256": "747124ea76e35623e84888ae2a5429b48cf508e8707416896ed6e5d0ac54395e"
+    },
+    {
+      "file": "public/llms.txt",
+      "sha256": "fbea6e3f1a97c18cef18578cfa010493ff7c83fe5b95cae97d621e8c7f2d678e"
+    }
+  ],
+  "knowledge_files": [
+    "homepage-and-cases.md",
+    "public-pages.md",
+    "site-index.md"
+  ]
+}
