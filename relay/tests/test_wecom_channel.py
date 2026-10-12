@@ -189,3 +189,34 @@ class CodexProviderTests(unittest.IsolatedAsyncioTestCase):
         settings = SimpleNamespace(WECOM_CODEX_URL='http://127.0.0.1:19090/jobs')
         with self.assertRaises(HTTPException):
             await model_answer(None,settings,None,'rules',[],'current','Chinese',False,'a'*64)
+
+
+class PersonalReceptionTests(unittest.IsolatedAsyncioTestCase):
+    def test_personal_notices_and_consent_use_mimi_identity(self):
+        from wecom_channel import first_notice, draft_preview
+        for language in ('Chinese','English','Italian'):
+            self.assertNotIn('Onyx', first_notice(language, True))
+        draft={'requirement_summary':'希望讨论ERP集成','contact':'当前微信会话'}
+        preview=draft_preview(draft, '米米')
+        self.assertIn('供 米米跟进',preview)
+        self.assertNotIn('Onyx',preview)
+
+    async def test_personal_provider_is_separate_and_cannot_use_onyx_runner(self):
+        import tempfile
+        with tempfile.TemporaryDirectory() as directory:
+            token=Path(directory)/'token';token.write_text('fixture-token')
+            assistant=SimpleNamespace(assistant_id='mimi-wecom')
+            route={'url':'http://127.0.0.1:19097/reply','token_file':str(token)}
+            settings=SimpleNamespace(WECOM_CODEX_ROUTES_JSON=json.dumps({'mimi-wecom':route}))
+            calls=[]
+            class Client:
+                async def post(self,url,**kwargs):
+                    calls.append(url)
+                    return SimpleNamespace(status_code=200,json=lambda:{'text':json.dumps({'reply':'我是米米 AI','facts':{},'evidence':{},'lead_draft':None})})
+            await model_answer(Client(),settings,assistant,'rules',[],'你好','Chinese',False,'a'*64)
+            self.assertEqual(calls,['http://127.0.0.1:19097/reply'])
+            route['url']='http://127.0.0.1:19096/reply'
+            settings.WECOM_CODEX_ROUTES_JSON=json.dumps({'mimi-wecom':route})
+            with self.assertRaises(HTTPException):
+                await model_answer(Client(),settings,assistant,'rules',[],'你好','Chinese',False,'a'*64)
+            self.assertEqual(len(calls),1)

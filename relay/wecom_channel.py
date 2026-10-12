@@ -83,10 +83,10 @@ def parse_answer(raw):
     return bounded_reply(data['reply'], 1000 if draft else 1600), facts, evidence, draft
 
 
-def draft_preview(draft):
+def draft_preview(draft, recipient="Onyx 团队"):
     return ('以下为待登记内容，尚未提交团队跟进：\n需求：' + draft['requirement_summary'][:220] +
             '\n联系：' + draft['contact'][:120] + '\n偏好时间：' + (draft.get('preferred_time') or '待协商')[:100] +
-            '\n若同意将这些信息保存供 Onyx 团队跟进，请单独回复“确认登记”；也可修改内容或回复“取消登记”。预约时间需团队另行确认。')
+            f'\n若同意将这些信息保存供 {recipient}跟进，请单独回复“确认登记”；也可修改内容或回复“取消登记”。预约时间需团队另行确认。')
 
 
 def consent_decision(text, draft):
@@ -106,7 +106,9 @@ def response_language(text):
     return 'English'
 
 
-def first_notice(language):
+def first_notice(language, personal=False):
+    if personal:
+        return {"Chinese":"我是米米 AI 助手；对话会保存，跟进登记需你确认。\n\n", "English":"I am Mimi’s AI assistant. Conversations are saved; follow-up registration requires your confirmation.\n\n", "Italian":"Sono l’assistente AI di Mimi. Le conversazioni vengono salvate; la registrazione per il follow-up richiede la tua conferma.\n\n"}[language]
     return {'Chinese':'我是 Onyx AI 助手；对话会保存，跟进登记需你确认。\n\n',
             'English':"I'm Onyx's AI assistant. Conversations are saved; team follow-up requires your confirmation.\n\n",
             'Italian':'Sono l’assistente AI di Onyx. Le conversazioni vengono salvate; il follow-up richiede la tua conferma.\n\n'}[language]
@@ -118,12 +120,14 @@ async def model_answer(client, settings, assistant, prompt, history, provider_in
         tail += '客户要全部项目：必须列全13个，每项仅用短项目名称和一句极短用途，总回复不超过430个汉字；别用长介绍挤占列表。'
     messages=[{'role':'system','content':prompt+tail},*history,{'role':'user','content':provider_input}]
     for attempt in range(2):
-        codex_url = getattr(settings, 'WECOM_CODEX_URL', '')
+        route = json.loads(getattr(settings, 'WECOM_CODEX_ROUTES_JSON', '{}')).get(assistant.assistant_id if assistant else '')
+        codex_url = route['url'] if route else getattr(settings, 'WECOM_CODEX_URL', '')
         if codex_url:
             # Only a private scoped Codex runner, never the development task runner.
-            if codex_url != 'http://127.0.0.1:19096/reply' or not customer:
+            expected_url = 'http://127.0.0.1:19097/reply' if assistant and assistant.assistant_id == 'mimi-wecom' else 'http://127.0.0.1:19096/reply'
+            if codex_url != expected_url or not customer:
                 raise HTTPException(503, 'Invalid Codex reception configuration')
-            token = Path(settings.WECOM_CODEX_TOKEN_FILE).read_text().strip()
+            token = Path(route['token_file'] if route else settings.WECOM_CODEX_TOKEN_FILE).read_text().strip()
             response = await client.post(codex_url, timeout=125.0,
                 headers={'Authorization': 'Bearer '+token},
                 json={'customer': customer, 'messages': messages})
@@ -211,7 +215,7 @@ async def handle_turn(payload, peer_hash, assistant, database, client, settings,
                 history.pop(0)
             decision = consent_decision(payload.text,draft)
             language=response_language(payload.text)
-            notice=first_notice(language) if not history else ''
+            notice=first_notice(language, payload.assistant_id == 'mimi-wecom') if not history else ''
             known_lead=await connection.fetchrow('''SELECT id,status,requirement_summary FROM assistant_leads
                 WHERE assistant_id=$1 AND session_id=$2 ORDER BY created_at DESC LIMIT 1''',payload.assistant_id,session_id)
             lead_id = None
@@ -240,7 +244,8 @@ async def handle_turn(payload, peer_hash, assistant, database, client, settings,
                     '客户在查看待登记内容后单独回复“确认登记”；确认消息批次：'+payload.batch_id,settings.LEAD_RETENTION_DAYS)
                 await connection.execute('''INSERT INTO assistant_lead_events(lead_id,event_type,actor,detail)
                     VALUES($1,'lead.created','wecom-visitor',$2::jsonb)''',lead_id,json.dumps({'consent_recorded':True,'batch_id':payload.batch_id,'channel':'wecom'}))
-                text = '已登记给 Onyx 团队跟进，编号 '+str(lead_id)[:8]+'。这表示需求已保存；具体联系时间、报价和预约仍需团队确认。'
+                recipient = '米米' if payload.assistant_id == 'mimi-wecom' else 'Onyx 团队'
+                text = '已登记供 '+recipient+'跟进，编号 '+str(lead_id)[:8]+'。这表示需求已保存；具体联系时间、报价和预约仍需团队确认。'
                 draft = None
             else:
                 chunks = retrieve(payload.text + '\n' + json.dumps(facts,ensure_ascii=False),assistant.knowledge_chunks,12)
@@ -267,7 +272,7 @@ async def handle_turn(payload, peer_hash, assistant, database, client, settings,
                     contact = (facts.get('contact',{}).get('value') or '通过当前微信客服会话联系')[:100]
                     preferred_time = (facts.get('preferred_time',{}).get('value') or '')[:80] or None
                     draft = {**proposed,'contact':contact,'preferred_time':preferred_time}
-                    preview = draft_preview(draft)
+                    preview = draft_preview(draft, '米米' if payload.assistant_id == 'mimi-wecom' else 'Onyx 团队')
                     text = bounded_reply(text,max(150,1780-len(preview.encode())-len(notice.encode())-2))+'\n\n'+preview
                 else:
                     # A model cannot invent registration success. Registration only occurs above.
