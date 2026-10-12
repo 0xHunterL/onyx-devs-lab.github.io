@@ -1,4 +1,4 @@
-"""Private, non-executing WeCom reception with transactional conversation records."""
+"""Private WeCom reception with a scoped provider and transactional records."""
 import hashlib
 import hmac
 import json
@@ -112,19 +112,29 @@ def first_notice(language):
             'Italian':'Sono l’assistente AI di Onyx. Le conversazioni vengono salvate; il follow-up richiede la tua conferma.\n\n'}[language]
 
 
-async def model_answer(client, settings, assistant, prompt, history, provider_input, language, all_projects):
+async def model_answer(client, settings, assistant, prompt, history, provider_input, language, all_projects, customer=None):
     tail = '\n\n本轮输出约束：reply 必须用 '+language+'。仅返回一个 JSON 对象，不能在对象外加任何文字。reply 通常不超过350个汉字或180个英文单词；facts和evidence每项简短，不必输出未提供字段。'
     if all_projects:
         tail += '客户要全部项目：必须列全13个，每项仅用短项目名称和一句极短用途，总回复不超过430个汉字；别用长介绍挤占列表。'
     messages=[{'role':'system','content':prompt+tail},*history,{'role':'user','content':provider_input}]
     for attempt in range(2):
-        response = await client.post(settings.DEEPSEEK_BASE_URL.rstrip('/')+'/chat/completions',
-            headers={'Authorization':'Bearer '+settings.DEEPSEEK_API_KEY},
-            json={'model':assistant.model or settings.DEEPSEEK_MODEL,'messages':messages,
-                  'max_tokens':3500,'temperature':0.1,'thinking':{'type':'disabled'},'response_format':{'type':'json_object'},'stream':False})
+        codex_url = getattr(settings, 'WECOM_CODEX_URL', '')
+        if codex_url:
+            # Only a private scoped Codex runner, never the development task runner.
+            if codex_url != 'http://127.0.0.1:19096/reply' or not customer:
+                raise HTTPException(503, 'Invalid Codex reception configuration')
+            token = Path(settings.WECOM_CODEX_TOKEN_FILE).read_text().strip()
+            response = await client.post(codex_url, timeout=125.0,
+                headers={'Authorization': 'Bearer '+token},
+                json={'customer': customer, 'messages': messages})
+        else:
+            response = await client.post(settings.DEEPSEEK_BASE_URL.rstrip('/')+'/chat/completions',
+                headers={'Authorization':'Bearer '+settings.DEEPSEEK_API_KEY},
+                json={'model':assistant.model or settings.DEEPSEEK_MODEL,'messages':messages,
+                      'max_tokens':3500,'temperature':0.1,'thinking':{'type':'disabled'},'response_format':{'type':'json_object'},'stream':False})
         if response.status_code >= 400:
             raise HTTPException(503,'Assistant provider unavailable; message retained by channel')
-        raw=response.json()['choices'][0]['message']['content']
+        raw=response.json()['text'] if codex_url else response.json()['choices'][0]['message']['content']
         try:
             parsed=json.loads(raw)
             # Regenerate instead of truncating a complete project list or accepting broken JSON.
@@ -245,7 +255,7 @@ async def handle_turn(payload, peer_hash, assistant, database, client, settings,
                 if payload.attachments:
                     provider_input += '\n\n通道记录的附件元信息（只有类型、文件名和摘要；本轮没有解析附件内容）：'+json.dumps([a.model_dump() for a in payload.attachments],ensure_ascii=False)
                 all_projects=bool(re.search(r'(?:所有|全部).{0,5}(?:项目|案例)|all.{0,10}projects',payload.text,re.I))
-                text, additions, evidence, proposed = await model_answer(client,settings,assistant,prompt,history,provider_input,language,all_projects)
+                text, additions, evidence, proposed = await model_answer(client,settings,assistant,prompt,history,provider_input,language,all_projects,hashlib.sha256(str(session_id).encode()).hexdigest())
                 visitor_text = '\n'.join(m['content'] for m in history if m['role']=='user')+'\n'+payload.text
                 for key,value in additions.items():
                     quote = evidence.get(key)

@@ -29,6 +29,8 @@ class RelaySettings(BaseSettings):
     ANONYMOUS_ABSOLUTE_RETENTION_DAYS: int = 90
     LEAD_RETENTION_DAYS: int = 365
     ASSISTANTS_DIR: str = "assistants"
+    WECOM_CODEX_URL: str = ""
+    WECOM_CODEX_TOKEN_FILE: str = ""
     WECOM_CHANNEL_TOKEN_FILE: str = ""
     WECOM_CHANNEL_ROUTES_JSON: str = "{}"
     model_config = {"env_file": ".env", "extra": "ignore"}

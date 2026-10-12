@@ -6,7 +6,7 @@ import unittest
 from pathlib import Path
 from types import SimpleNamespace
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]))
-from wecom_channel import ChannelRequest, bounded_reply, consent_decision, handle_turn, parse_answer, validate_route
+from wecom_channel import ChannelRequest, bounded_reply, consent_decision, handle_turn, model_answer, parse_answer, validate_route
 from assistant_registry import AssistantRegistry
 from storage import Database
 from fastapi import HTTPException
@@ -164,3 +164,28 @@ class PrivateEndpointTests(unittest.IsolatedAsyncioTestCase):
             self.assertEqual(response.status_code,404)
             response=await client.get('/v1/assistants/onyx-wecom/sessions',headers={'X-Visitor-ID':'fixture-visitor'})
             self.assertEqual(response.status_code,404)
+
+
+class CodexProviderTests(unittest.IsolatedAsyncioTestCase):
+    async def test_scoped_codex_receives_history_and_customer_without_deepseek_fallback(self):
+        import tempfile
+        with tempfile.TemporaryDirectory() as directory:
+            token = Path(directory)/'token'; token.write_text('test-private-token')
+            settings = SimpleNamespace(WECOM_CODEX_URL='http://127.0.0.1:19096/reply', WECOM_CODEX_TOKEN_FILE=str(token))
+            calls = []
+            class Client:
+                async def post(self, url, **kwargs):
+                    calls.append((url,kwargs))
+                    return SimpleNamespace(status_code=200,json=lambda:{'text':json.dumps({'reply':'您好','facts':{},'evidence':{},'lead_draft':None})})
+            result = await model_answer(Client(),settings,None,'rules',[{'role':'user','content':'previous'}],'current','Chinese',False,'a'*64)
+            self.assertEqual(result[0],'您好')
+            self.assertEqual(calls[0][1]['json']['customer'],'a'*64)
+            self.assertEqual(calls[0][1]['json']['messages'][1]['content'],'previous')
+            class Failed:
+                async def post(self,*args,**kwargs): return SimpleNamespace(status_code=503)
+            with self.assertRaises(HTTPException):
+                await model_answer(Failed(),settings,None,'rules',[],'current','Chinese',False,'a'*64)
+    async def test_development_runner_cannot_be_configured_as_reception_provider(self):
+        settings = SimpleNamespace(WECOM_CODEX_URL='http://127.0.0.1:19090/jobs')
+        with self.assertRaises(HTTPException):
+            await model_answer(None,settings,None,'rules',[],'current','Chinese',False,'a'*64)

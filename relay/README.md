@@ -134,7 +134,7 @@ The private `POST /_channels/wecom/reply` endpoint requires a server-only bearer
 from `WECOM_CHANNEL_TOKEN_FILE` and an exact gateway/account-to-assistant mapping
 in `WECOM_CHANNEL_ROUTES_JSON`. Keep it off public Nginx routes. A per-customer
 PostgreSQL advisory lock and source-message unique keys serialize delivery and
-return the same durable reply on retries. The model has no tools or executor.
+return the same durable reply on retries. The WeCom provider can use a scoped Codex app-server with read-only public knowledge search. Browser chat keeps its existing provider. Set `WECOM_CODEX_URL=http://127.0.0.1:19096/reply` and `WECOM_CODEX_TOKEN_FILE=/etc/onyx-reception/codex.token` to enable it. Public-account access to the separate development task runner remains denied. With this setting, failures do not fall back to DeepSeek. Provider security refusals produce a bounded refusal with no business action.
 
 Conversations, attachment metadata, evidence-backed customer facts, open
 questions and follow-up drafts are persisted. The model only proposes a draft;
