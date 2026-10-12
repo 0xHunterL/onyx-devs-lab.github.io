@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import React, { useState, useEffect, useRef, useCallback } from 'react';
-import { ArrowRight, ChevronDown, ChevronLeft, ChevronRight, Globe, Menu, X, Compass, Code2, Workflow, Target, Users, Sparkles, MessageCircle, CheckCircle2, ScanSearch, Database, Gauge, ShieldCheck } from 'lucide-react';
+import { ArrowRight, ChevronDown, ChevronLeft, ChevronRight, Globe, Menu, X, Compass, Code2, Workflow, Target, Users, Sparkles, CheckCircle2, ScanSearch, Database, Gauge, ShieldCheck } from 'lucide-react';
 import MethodologySection from './components/cases/MethodologySection';
 import CaseDetail from './components/cases/CaseDetail';
 import { caseAnalysisZh, localizeMethodName } from './data/caseAnalysis';
@@ -9,6 +9,7 @@ import { caseOutcomesZh } from './data/caseOutcomes';
 import { caseMetricsZh } from './data/caseMetrics';
 import MetricPanel from './components/cases/MetricPanel';
 import DevelopmentPartner from './components/products/DevelopmentPartner';
+import ContactChannels from './components/ContactChannels';
 import './developmentPartner.css';
 
 const ChatWidget = React.lazy(() => import('./components/chat/ChatWidget'));
@@ -1821,7 +1822,7 @@ const LandingPage = () => {
         <div className="absolute top-1/2 left-1/4 w-64 h-64 bg-blue-500/10 rounded-full blur-[100px] animate-float" />
         <div className="absolute top-1/2 right-1/4 w-48 h-48 bg-purple-500/10 rounded-full blur-[80px] animate-float-delayed" />
         <div className="container mx-auto px-6 relative">
-          <div className="section-reveal mx-auto max-w-3xl rounded-3xl p-7 text-center glass md:p-16">
+          <div className="section-reveal mx-auto max-w-4xl rounded-3xl p-7 text-center glass md:p-12">
             {lang === 'zh' ? (
               <>
                 <h2 className="text-3xl md:text-5xl font-bold mb-6">
@@ -1831,16 +1832,7 @@ const LandingPage = () => {
                   </span>
                 </h2>
                 <p className="text-lg text-gray-400 mb-8 max-w-xl mx-auto">{t.cta.subtitle}</p>
-                <div className="flex flex-col items-center gap-3 mb-8">
-                  <div className="w-40 h-40 rounded-2xl overflow-hidden bg-white p-2 flex items-center justify-center">
-                    <img src="/wechat-qr.png" alt={t.cta.wechatNote} loading="lazy" decoding="async" className="w-full h-full object-contain" />
-                  </div>
-                  <p className="text-white font-medium flex items-center gap-2">
-                    <MessageCircle size={16} className="text-green-400" />
-                    {t.cta.wechatNote}
-                  </p>
-                  <p className="text-sm text-gray-400">{t.cta.wechatIdLabel}：{t.cta.wechatId}</p>
-                </div>
+                <ContactChannels lang={lang} />
                 <p className="text-sm text-gray-500">
                   {t.cta.secondaryLabel}：<a className="transition-colors hover:text-white" href="mailto:info@onyxdevslab.com">info@onyxdevslab.com</a> · <a className="transition-colors hover:text-white" href="tel:+8618923743756">+86 18923743756</a>
                 </p>
@@ -1855,6 +1847,7 @@ const LandingPage = () => {
                   ?
                 </h2>
                 <p className="text-lg text-gray-400 mb-6 max-w-xl mx-auto">{t.cta.subtitle}</p>
+                <ContactChannels lang={lang} />
                 <p className="text-base text-gray-300 font-medium tracking-wide"><a className="hover:text-white" href="mailto:info@onyxdevslab.com">info@onyxdevslab.com</a> · <a className="hover:text-white" href="tel:+14165655366">+1 (416) 565-5366</a></p>
               </>
             )}
