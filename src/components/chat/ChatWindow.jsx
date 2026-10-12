@@ -94,8 +94,6 @@ const ChatWindow = ({ chatApiUrl, sessionOps, onClose }) => {
       {/* Messages */}
       <MessageList
         messages={messages}
-        chatApiUrl={chatApiUrl}
-        visitorId={sessionOps.visitorId}
         welcomeMessage={isChinese
           ? '你好，我是 Onyx AI。可以问我项目经验、合作方式，或直接描述你想解决的业务问题。'
           : 'Hi, I’m Onyx AI. Ask about our work, engagement models, or describe the business problem you want to solve.'}

@@ -35,8 +35,6 @@ ToolStatusIndicator.propTypes = {
 
 const MessageList = ({
   messages,
-  chatApiUrl,
-  visitorId,
   welcomeMessage = "Hi! I'm Onyx AI. Ask me anything about our services.",
 }) => {
   const endRef = useRef(null)
@@ -108,9 +106,6 @@ const MessageList = ({
                   <ContactActionCard
                     key={`${msg.id}-action-${index}`}
                     action={action}
-                    chatApiUrl={chatApiUrl}
-                    sessionId={msg.sessionId || ''}
-                    visitorId={visitorId}
                   />
                 ) : null
               ))}
@@ -132,8 +127,6 @@ MessageList.propTypes = {
     actions: PropTypes.arrayOf(PropTypes.object),
     sessionId: PropTypes.string,
   })).isRequired,
-  chatApiUrl: PropTypes.string.isRequired,
-  visitorId: PropTypes.string.isRequired,
   welcomeMessage: PropTypes.string,
 }
 
