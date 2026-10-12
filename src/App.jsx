@@ -8,6 +8,8 @@ import { caseNarrativesZh } from './data/caseNarratives';
 import { caseOutcomesZh } from './data/caseOutcomes';
 import { caseMetricsZh } from './data/caseMetrics';
 import MetricPanel from './components/cases/MetricPanel';
+import DevelopmentPartner from './components/products/DevelopmentPartner';
+import './developmentPartner.css';
 
 const ChatWidget = React.lazy(() => import('./components/chat/ChatWidget'));
 
@@ -1646,6 +1648,11 @@ const LandingPage = () => {
                 {experience.secondaryCta}
               </a>
             </div>
+            <a href="#featured" className="mt-7 inline-flex items-center gap-3 text-sm leading-6 text-cyan-200 hover:text-white transition-colors">
+              <span className="rounded-full border border-cyan-300/25 bg-cyan-300/10 px-2 py-0.5 text-[10px] font-semibold">{lang === 'zh' ? '新产品' : lang === 'it' ? 'NOVITÀ' : 'NEW'}</span>
+              {lang === 'zh' ? '微信开发搭档：微信里说需求，项目里见改动' : lang === 'it' ? 'WeChat Dev Partner: dalla conversazione al codice' : 'WeChat Dev Partner: from conversation to code'}
+              <ArrowRight size={16} className="shrink-0" />
+            </a>
             </div>
             <div className="hidden xl:block">
               <EvidenceLoop copy={experience} />
@@ -1673,6 +1680,8 @@ const LandingPage = () => {
           </div>
         </div>
       </section>
+
+      <DevelopmentPartner lang={lang} />
 
       <ProblemFitSection copy={experience} onSelect={openProject} />
 
