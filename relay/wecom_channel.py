@@ -86,7 +86,7 @@ def parse_answer(raw):
 def draft_preview(draft, recipient="Onyx 团队"):
     return ('以下为待登记内容，尚未提交团队跟进：\n需求：' + draft['requirement_summary'][:220] +
             '\n联系：' + draft['contact'][:120] + '\n偏好时间：' + (draft.get('preferred_time') or '待协商')[:100] +
-            f'\n若同意将这些信息保存供 {recipient}跟进，请单独回复“确认登记”；也可修改内容或回复“取消登记”。预约时间需团队另行确认。')
+            f'\n若同意将这些信息保存供{recipient}跟进，请单独回复“确认登记”；也可修改内容或回复“取消登记”。预约时间需团队另行确认。')
 
 
 def consent_decision(text, draft):
@@ -245,7 +245,7 @@ async def handle_turn(payload, peer_hash, assistant, database, client, settings,
                 await connection.execute('''INSERT INTO assistant_lead_events(lead_id,event_type,actor,detail)
                     VALUES($1,'lead.created','wecom-visitor',$2::jsonb)''',lead_id,json.dumps({'consent_recorded':True,'batch_id':payload.batch_id,'channel':'wecom'}))
                 recipient = '米米' if payload.assistant_id == 'mimi-wecom' else 'Onyx 团队'
-                text = '已登记供 '+recipient+'跟进，编号 '+str(lead_id)[:8]+'。这表示需求已保存；具体联系时间、报价和预约仍需团队确认。'
+                text = '已登记供'+recipient+'跟进，编号 '+str(lead_id)[:8]+'。这表示需求已保存；具体联系时间、报价和预约仍需团队确认。'
                 draft = None
             else:
                 chunks = retrieve(payload.text + '\n' + json.dumps(facts,ensure_ascii=False),assistant.knowledge_chunks,12)
@@ -273,6 +273,7 @@ async def handle_turn(payload, peer_hash, assistant, database, client, settings,
                     preferred_time = (facts.get('preferred_time',{}).get('value') or '')[:80] or None
                     draft = {**proposed,'contact':contact,'preferred_time':preferred_time}
                     preview = draft_preview(draft, '米米' if payload.assistant_id == 'mimi-wecom' else 'Onyx 团队')
+                    if payload.assistant_id == 'mimi-wecom': preview = preview.replace('团队','米米')
                     text = bounded_reply(text,max(150,1780-len(preview.encode())-len(notice.encode())-2))+'\n\n'+preview
                 else:
                     # A model cannot invent registration success. Registration only occurs above.
@@ -280,6 +281,7 @@ async def handle_turn(payload, peer_hash, assistant, database, client, settings,
                     false_commitment=re.search(r'已[^\n。；]{0,8}(?:安排|预约|通知团队|通知了)|预约成功|预约.{0,5}已确认',text)
                     if false_registration or false_commitment:
                         text = '我可以先帮你整理需求，并在你核对和确认后保存给团队跟进。你希望我们重点解决什么问题？'
+            if decision != 'chat' and payload.assistant_id == 'mimi-wecom': text = text.replace('团队','米米')
             text = notice+bounded_reply(text,1780-len(notice.encode()))
             result = {'text':text,'session_id':session_id,'lead_id':str(lead_id) if lead_id else None}
             metadata = {'channel':'wecom','source_ids':payload.ids,'attachments':[a.model_dump() for a in payload.attachments]}

@@ -198,7 +198,7 @@ class PersonalReceptionTests(unittest.IsolatedAsyncioTestCase):
             self.assertNotIn('Onyx', first_notice(language, True))
         draft={'requirement_summary':'希望讨论ERP集成','contact':'当前微信会话'}
         preview=draft_preview(draft, '米米')
-        self.assertIn('供 米米跟进',preview)
+        self.assertIn('供米米跟进',preview)
         self.assertNotIn('Onyx',preview)
 
     async def test_personal_provider_is_separate_and_cannot_use_onyx_runner(self):
