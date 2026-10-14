@@ -171,7 +171,25 @@
         <section id="settings-view" hidden aria-label="客服配置与运行"><p id="settings-state" role="status"></p><div id="reception-settings" class="reception-settings"></div></section>
       </section>
     </main>
+    <dialog id="configuration-dialog" aria-labelledby="config-title">
+      <div class="detail-head"><div><p class="eyebrow">RECEPTION CONFIGURATION</p><h2 id="config-title">编辑客服配置</h2></div><button id="config-close" class="icon-button" type="button" aria-label="关闭配置编辑">×</button></div>
+      <p id="config-version" class="muted"></p>
+      <p id="config-state" role="status" aria-live="polite"></p>
+      <form id="config-form">
+        <label for="config-policy">人设与接待指令</label>
+        <textarea id="config-policy" rows="15" maxlength="24576" spellcheck="false"></textarea>
+        <div class="config-input-info"><span>仅填写公开接待指令，不放入凭据或客户私密资料。</span><span id="config-bytes"></span></div>
+        <fieldset><legend>可读资料 · /knowledge</legend><div id="config-files" class="config-files"></div></fieldset>
+        <label class="config-check"><input id="config-shell" type="checkbox" /><span>启用只读检索工具</span></label>
+        <p class="muted">网络访问保持禁用，客户登记和其他业务写入由后台处理。</p>
+        <div class="config-actions"><button id="config-save" class="primary" type="submit">保存草稿</button><button id="config-validate" class="ghost" type="button">校验草稿</button><button id="config-publish" class="ghost" type="button">发布此草稿</button><button id="config-reload" class="ghost" type="button">重新加载</button></div>
+      </form>
+      <section id="config-review" class="config-review" hidden><h3 id="review-title"></h3><dl id="review-details" class="detail-meta"></dl><p>新请求会使用此版本，现有客户记录保留。</p><div class="config-actions"><button id="config-confirm" class="primary" type="button">确认发布</button><button id="config-cancel" class="ghost" type="button">取消</button></div></section>
+      <section class="config-history"><div class="section-title"><h3>发布与回滚记录</h3><span id="config-history-count"></span></div><div id="config-history"></div></section>
+      <section id="config-preview" hidden><h3 id="config-preview-title"></h3><dl id="preview-details" class="detail-meta"></dl><pre id="preview-policy"></pre><button id="config-rollback" class="ghost" type="button">回滚到此版本</button></section>
+    </dialog>
     <script src="/workbench/app.js" defer></script>
     <script src="/workbench/reception.js" defer></script>
+    <script src="/workbench/configuration.js" defer></script>
   </body>
 </html>

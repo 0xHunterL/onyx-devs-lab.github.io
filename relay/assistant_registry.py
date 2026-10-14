@@ -36,7 +36,7 @@ class AssistantRegistry:
             knowledge_dir = config_path.parent / data.get("knowledge", "knowledge")
             if knowledge_dir.exists():
                 for knowledge_path in sorted(knowledge_dir.glob("*.md")):
-                    knowledge_chunks.extend(split_markdown(knowledge_path.read_text(encoding="utf-8")))
+                    knowledge_chunks.extend(KnowledgeChunk(c.title,c.content,knowledge_path.name) for c in split_markdown(knowledge_path.read_text(encoding="utf-8")))
             assistants[assistant_id] = AssistantDefinition(
                 assistant_id=assistant_id,
                 name=data.get("name", assistant_id),

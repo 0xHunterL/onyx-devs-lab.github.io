@@ -16,7 +16,8 @@ import httpx
 from fastapi import FastAPI, Header, HTTPException, Request, Response
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
-from pydantic import BaseModel, Field
+from fastapi.responses import JSONResponse
+from pydantic import BaseModel, Field, StrictBool
 from sse_starlette.sse import EventSourceResponse
 
 from admin_auth import new_admin_session, valid_admin_session
@@ -96,6 +97,9 @@ app.add_middleware(
 
 @app.middleware("http")
 async def secure_operator_routes(request: Request, call_next):
+    if request.url.path.startswith('/v1/admin/reception/'):
+        try:_require_admin(request,request.headers.get('Authorization'))
+        except HTTPException as error:return JSONResponse({'detail':error.detail},status_code=error.status_code,headers={'Cache-Control':'no-store'})
     response = await call_next(request)
     if request.url.path.startswith(("/workbench", "/v1/admin")):
         response.headers["Cache-Control"] = "no-store"
@@ -142,6 +146,33 @@ class LeadStatusRequest(BaseModel):
     assigned_to: str | None = Field(default=None, max_length=100)
     internal_notes: str | None = Field(default=None, max_length=4000)
 
+
+class ReceptionConfig(BaseModel):
+    schema_version: Literal[1] = Field(alias="schema")
+    policy: str = Field(min_length=20,max_length=24576)
+    knowledgeFiles: list[str] = Field(max_length=100)
+    shellEnabled: StrictBool
+    model_config={"extra":"forbid"}
+
+class ConfigDraftRequest(BaseModel):
+    config: ReceptionConfig
+    expectedActiveRevision: str = Field(pattern="^[a-f0-9]{64}$")
+    expectedDraftRevision: str | None = Field(default=None,pattern="^[a-f0-9]{64}$")
+    model_config={"extra":"forbid"}
+
+class ConfigValidateRequest(BaseModel):
+    draftRevision: str = Field(pattern="^[a-f0-9]{64}$")
+    model_config={"extra":"forbid"}
+
+class ConfigPublishRequest(ConfigValidateRequest):
+    expectedActiveRevision: str = Field(pattern="^[a-f0-9]{64}$")
+    operationId: uuid.UUID
+
+class ConfigRollbackRequest(BaseModel):
+    expectedActiveRevision: str = Field(pattern="^[a-f0-9]{64}$")
+    operationId: uuid.UUID
+    version: str = Field(pattern="^[a-f0-9]{64}$")
+    model_config={"extra":"forbid"}
 
 class AdminLoginRequest(BaseModel):
     token: str = Field(min_length=1, max_length=512)
@@ -508,6 +539,44 @@ async def admin_reception(request: Request, authorization: str | None = Header(d
     _require_admin(request,authorization)
     from reception_admin import reception_status
     return await reception_status(client,settings)
+
+
+@app.get("/v1/admin/reception/{assistant_id}/configuration")
+async def get_reception_configuration(assistant_id: Literal['onyx-wecom','mimi-wecom'],request: Request,authorization: str | None = Header(default=None)):
+    _require_admin(request,authorization)
+    from reception_admin import native_configuration
+    return await native_configuration(client,settings,assistant_id)
+
+@app.get("/v1/admin/reception/{assistant_id}/configuration/version/{version}")
+async def get_reception_version(assistant_id: Literal['onyx-wecom','mimi-wecom'],version: str,request: Request,authorization: str | None = Header(default=None)):
+    _require_admin(request,authorization)
+    if not re.fullmatch('[a-f0-9]{64}',version):raise HTTPException(422,'版本编号无效')
+    from reception_admin import native_configuration
+    return await native_configuration(client,settings,assistant_id,'version/'+version)
+
+@app.put("/v1/admin/reception/{assistant_id}/configuration/draft")
+async def save_reception_draft(assistant_id: Literal['onyx-wecom','mimi-wecom'],payload: ConfigDraftRequest,request: Request,authorization: str | None = Header(default=None)):
+    _require_admin(request,authorization)
+    from reception_admin import native_configuration
+    return await native_configuration(client,settings,assistant_id,'draft',payload.model_dump(mode='json',by_alias=True))
+
+@app.post("/v1/admin/reception/{assistant_id}/configuration/validate")
+async def validate_reception_draft(assistant_id: Literal['onyx-wecom','mimi-wecom'],payload: ConfigValidateRequest,request: Request,authorization: str | None = Header(default=None)):
+    _require_admin(request,authorization)
+    from reception_admin import native_configuration
+    return await native_configuration(client,settings,assistant_id,'validate',payload.model_dump(mode='json'))
+
+@app.post("/v1/admin/reception/{assistant_id}/configuration/publish")
+async def publish_reception_draft(assistant_id: Literal['onyx-wecom','mimi-wecom'],payload: ConfigPublishRequest,request: Request,authorization: str | None = Header(default=None)):
+    _require_admin(request,authorization)
+    from reception_admin import native_configuration
+    return await native_configuration(client,settings,assistant_id,'publish',payload.model_dump(mode='json'))
+
+@app.post("/v1/admin/reception/{assistant_id}/configuration/rollback")
+async def rollback_reception_configuration(assistant_id: Literal['onyx-wecom','mimi-wecom'],payload: ConfigRollbackRequest,request: Request,authorization: str | None = Header(default=None)):
+    _require_admin(request,authorization)
+    from reception_admin import native_configuration
+    return await native_configuration(client,settings,assistant_id,'rollback',payload.model_dump(mode='json'))
 
 
 @app.get("/v1/admin/leads")

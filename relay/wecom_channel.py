@@ -114,7 +114,7 @@ def first_notice(language, personal=False):
             'Italian':'Sono l’assistente AI di Onyx. Le conversazioni vengono salvate; il follow-up richiede la tua conferma.\n\n'}[language]
 
 
-async def model_answer(client, settings, assistant, prompt, history, provider_input, language, all_projects, customer=None):
+async def model_answer(client, settings, assistant, prompt, history, provider_input, language, all_projects, customer=None, runtime_config=None):
     tail = '\n\n本轮输出约束：reply 必须用 '+language+'。仅返回一个 JSON 对象，不能在对象外加任何文字。reply 通常不超过350个汉字或180个英文单词；facts和evidence每项简短，不必输出未提供字段。'
     if all_projects:
         tail += '客户要全部项目：必须列全13个，每项仅用短项目名称和一句极短用途，总回复不超过430个汉字；别用长介绍挤占列表。'
@@ -130,7 +130,7 @@ async def model_answer(client, settings, assistant, prompt, history, provider_in
             token = Path(route['token_file'] if route else settings.WECOM_CODEX_TOKEN_FILE).read_text().strip()
             response = await client.post(codex_url, timeout=125.0,
                 headers={'Authorization': 'Bearer '+token},
-                json={'customer': customer, 'messages': messages})
+                json={'customer': customer, 'messages': messages,**({'expectedConfigVersion':runtime_config['runtimeVersion']} if runtime_config else {})})
         else:
             response = await client.post(settings.DEEPSEEK_BASE_URL.rstrip('/')+'/chat/completions',
                 headers={'Authorization':'Bearer '+settings.DEEPSEEK_API_KEY},
@@ -248,7 +248,12 @@ async def handle_turn(payload, peer_hash, assistant, database, client, settings,
                 text = '已登记供'+recipient+'跟进，编号 '+str(lead_id)[:8]+'。这表示需求已保存；具体联系时间、报价和预约仍需团队确认。'
                 draft = None
             else:
-                chunks = retrieve(payload.text + '\n' + json.dumps(facts,ensure_ascii=False),assistant.knowledge_chunks,12)
+                runtime_config=None
+                if getattr(settings,'WECOM_CODEX_URL','') or json.loads(getattr(settings,'WECOM_CODEX_ROUTES_JSON','{}')).get(payload.assistant_id):
+                    from reception_admin import runtime_configuration
+                    runtime_config=await runtime_configuration(client,settings,payload.assistant_id)
+                available_chunks=assistant.knowledge_chunks if runtime_config is None else tuple(c for c in assistant.knowledge_chunks if c.source in runtime_config['knowledgeFiles'])
+                chunks = retrieve(payload.text + '\n' + json.dumps(facts,ensure_ascii=False),available_chunks,12)
                 context = '\n\n'.join('## '+chunk.title+'\n'+chunk.content for chunk in chunks)
                 prompt = assistant.system_prompt + '\n\n当前客户已记录信息（客户自述，不代表已核验）：\n'+json.dumps(facts,ensure_ascii=False)
                 if known_lead:
@@ -260,7 +265,7 @@ async def handle_turn(payload, peer_hash, assistant, database, client, settings,
                 if payload.attachments:
                     provider_input += '\n\n通道记录的附件元信息（只有类型、文件名和摘要；本轮没有解析附件内容）：'+json.dumps([a.model_dump() for a in payload.attachments],ensure_ascii=False)
                 all_projects=bool(re.search(r'(?:所有|全部).{0,5}(?:项目|案例)|all.{0,10}projects',payload.text,re.I))
-                text, additions, evidence, proposed = await model_answer(client,settings,assistant,prompt,history,provider_input,language,all_projects,hashlib.sha256(str(session_id).encode()).hexdigest())
+                text, additions, evidence, proposed = await model_answer(client,settings,assistant,prompt,history,provider_input,language,all_projects and (runtime_config is None or bool(runtime_config['knowledgeFiles'])),hashlib.sha256(str(session_id).encode()).hexdigest(),runtime_config)
                 visitor_text = '\n'.join(m['content'] for m in history if m['role']=='user')+'\n'+payload.text
                 for key,value in additions.items():
                     quote = evidence.get(key)

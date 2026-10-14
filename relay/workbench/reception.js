@@ -1,6 +1,7 @@
 const assistantNames={'onyx-wecom':'Onyx 小助手','mimi-wecom':'米米助手',onyx:'Onyx 网页助手',mimi:'米米网页助手'}
 const factNames={name:'姓名',company:'公司',role:'角色',industry:'行业',objective:'目标',current_workflow:'现有流程',systems:'现有系统',constraints:'约束',budget:'预算',timeline:'时间',decision_owner:'负责人',contact:'联系方式',preferred_time:'沟通时间',open_questions:'待确认',next_step:'下一步'}
 function assistantName(id){return assistantNames[id]||id||'—'}
+function factValue(value){return value&&typeof value==='object'&&'value' in value?String(value.value):String(value??'')}
 function asObject(value){if(typeof value==='string'){try{return JSON.parse(value)}catch{return {}}}return value||{}}
 let sessionLoad=0,sessionDetailLoad=0,settingsLoad=0,searchTimer
 async function refreshView(silent=false){if(state.view==='sessions')return loadSessions(silent);if(state.view==='settings')return loadSettings();return loadLeads(silent)}
@@ -26,7 +27,7 @@ function renderSessions(){
  $('previous-page').disabled=state.offset===0;$('next-page').disabled=state.offset+50>=state.sessionTotal
  $('session-rows').replaceChildren(...state.sessions.map(session=>{
   const facts=asObject(session.facts),row=document.createElement('tr');row.tabIndex=0
-  const title=facts.name||facts.company||(session.assistant_id.endsWith('-wecom')?'微信访客 ':'网页访客 ')+session.session_id.slice(-6)
+  const title=factValue(facts.name)||factValue(facts.company)||(session.assistant_id.endsWith('-wecom')?'微信访客 ':'网页访客 ')+session.session_id.slice(-6)
   row.setAttribute('aria-label','查看 '+title+' 的会话')
   row.classList.toggle('selected',state.selectedSession===session.assistant_id+'/'+session.session_id)
   const open=()=>openSession(session.assistant_id,session.session_id)
@@ -47,9 +48,9 @@ async function openSession(assistant,id){
   const context=await api('/v1/admin/sessions/'+encodeURIComponent(assistant)+'/'+encodeURIComponent(id))
   if(load!==sessionDetailLoad||!state.authenticated)return
   const session=context.session,facts=asObject(session.facts),draft=asObject(session.draft)
-  $('session-title').textContent=facts.name||facts.company||(assistant.endsWith('-wecom')?'微信访客 ':'网页访客 ')+id.slice(-6)
+  $('session-title').textContent=factValue(facts.name)||factValue(facts.company)||(assistant.endsWith('-wecom')?'微信访客 ':'网页访客 ')+id.slice(-6)
   $('session-meta').replaceChildren(metaItem('客服',assistantName(assistant)),metaItem('首次联系',formatDate(session.created_at)),metaItem('最近联系',formatDate(session.last_active_at)),metaItem('会话保留至',formatDate(session.expires_at)))
-  $('session-facts').replaceChildren(...(Object.keys(facts).length?Object.entries(facts).map(([k,v])=>metaItem(factNames[k]||k,String(v))):[metaItem('需求','尚未提取到客户明确自述的信息')]))
+  $('session-facts').replaceChildren(...(Object.keys(facts).length?Object.entries(facts).map(([k,v])=>metaItem(factNames[k]||k,factValue(v))):[metaItem('需求','尚未提取到客户明确自述的信息')]))
   $('draft-section').hidden=!draft.requirement_summary;$('session-draft').textContent=draft.requirement_summary||''
   $('session-lead-count').textContent=context.leads.length+' 条'
   $('session-leads').replaceChildren(...(context.leads.length?context.leads.map(lead=>{const button=text('button',(lead.contact_withdrawn?'已撤回联系':statusLabels[lead.status]||lead.status)+' · '+lead.requirement_summary,'ghost');button.type='button';button.addEventListener('click',()=>{setView('leads');openLead(lead.id)});return button}):[text('p','尚无客户确认的需求记录','muted')]))
@@ -69,6 +70,7 @@ async function loadSettings(){
     metaItem('已完成请求',String(metrics.completedRequests)),metaItem('平均耗时',hasSamples?(metrics.averageMs/1000).toFixed(1)+' 秒':'尚无统计'),metaItem('P95 耗时',hasSamples?(metrics.p95Ms/1000).toFixed(1)+' 秒':'尚无统计'),metaItem('资料查询',hasSamples?String(metrics.tools):'尚无统计'),metaItem('推理调用',hasSamples?String(metrics.providerCalls):'尚无统计'),metaItem('输入 / 输出 token',hasSamples?metrics.inputTokens.toLocaleString()+' / '+metrics.outputTokens.toLocaleString():'尚无统计'),metaItem('可访问目录',assistant.permissions.directories.join('、')),metaItem('知识目录',assistant.permissions.knowledge),metaItem('外部网络',assistant.permissions.network?'允许':'禁用'),metaItem('业务写入',assistant.permissions.businessWrites?'允许':'由后台处理'))
    panel.append(dl)
    const files=text('p',assistant.knowledgeFiles.join(' · '),'muted');panel.append(files)
+   const edit=text('button','编辑配置','primary');edit.type='button';edit.addEventListener('click',()=>openConfiguration(assistant.assistant_id));panel.append(edit)
    const details=document.createElement('details');details.append(text('summary','查看当前人设'),text('pre',assistant.policy||'原提示模式'));panel.append(details)
    return panel
   }))

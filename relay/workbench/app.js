@@ -63,6 +63,7 @@ function showDesk() {
 
 function showLogin(message = '') {
   state.authenticated = false
+  $('configuration-dialog')?.close()
   clearInterval(state.pollTimer)
   state.detailLoad++;state.leads=[];state.sessions=[];state.selectedId=null;state.selectedSession=null;state.detailVersion=null
   $('lead-rows').replaceChildren();$('session-rows').replaceChildren();$('conversation').replaceChildren();$('session-messages').replaceChildren();$('reception-settings').replaceChildren()
@@ -228,7 +229,7 @@ async function openLead(id) {
     const memory = $('memory-block')
     memory.hidden = !context.memory
     const recalled=asObject(context.memory?.summary)
-    memory.textContent=context.memory?(recalled.customer_facts?'已记录客户自述\n'+Object.entries(recalled.customer_facts).map(([k,v])=>(factNames[k]||k)+'：'+v).join('\n'):`较早对话摘要\n${context.memory.summary}`):''
+    memory.textContent=context.memory?(recalled.customer_facts?'已记录客户自述\n'+Object.entries(recalled.customer_facts).map(([k,v])=>(factNames[k]||k)+'：'+factValue(v)).join('\n'):`较早对话摘要\n${context.memory.summary}`):''
     const events = context.events || []
     $('event-count').textContent = `${events.length} 条记录`
     $('activity').replaceChildren(...events.map((event) => {

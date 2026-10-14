@@ -69,3 +69,27 @@ class ReceptionApiTests(unittest.IsolatedAsyncioTestCase):
   self.assertEqual(response.status_code,403)
   response=await self.client.get('/workbench/')
   self.assertEqual(response.headers['cache-control'],'no-store');self.assertEqual(response.headers['x-frame-options'],'DENY')
+
+@unittest.skipUnless(os.getenv('TEST_DATABASE_URL'),'Requires isolated test database')
+class ConfigurationApiTests(unittest.IsolatedAsyncioTestCase):
+ async def asyncSetUp(self):
+  import httpx
+  os.environ['DATABASE_URL']=os.environ['TEST_DATABASE_URL'];os.environ['VISITOR_HASH_SECRET']='fixture-secret-'*4;os.environ['ADMIN_API_TOKEN']='fixture-admin-'*4
+  import main
+  self.main=main;self.client=httpx.AsyncClient(transport=httpx.ASGITransport(app=main.app),base_url='https://chat.mimimiai.com');self.auth={'Authorization':'Bearer '+main.settings.ADMIN_API_TOKEN}
+ async def asyncTearDown(self):await self.client.aclose()
+ async def test_configuration_auth_runs_before_payload_validation(self):
+  for action,method in [('','GET'),('/draft','PUT'),('/validate','POST'),('/publish','POST'),('/rollback','POST')]:
+   response=await self.client.request(method,'/v1/admin/reception/mimi-wecom/configuration'+action,json={} if method!='GET' else None)
+   self.assertEqual(response.status_code,401)
+ async def test_configuration_schema_rejects_arbitrary_permissions_and_paths(self):
+  body={'config':{'schema':1,'policy':'公开客服的人设说明，必须保留客户隔离及后台登记规则。','knowledgeFiles':['homepage-and-cases.md'],'shellEnabled':True,'network':True},'expectedActiveRevision':'a'*64,'expectedDraftRevision':None}
+  response=await self.client.put('/v1/admin/reception/mimi-wecom/configuration/draft',headers=self.auth,json=body)
+  self.assertEqual(response.status_code,422)
+  response=await self.client.get('/v1/admin/reception/mimi-wecom/configuration/version/not-a-version',headers=self.auth)
+  self.assertEqual(response.status_code,422)
+ async def test_configuration_cookie_put_requires_origin(self):
+  from admin_auth import new_admin_session
+  cookie,_=new_admin_session(self.main.settings.ADMIN_API_TOKEN,12);self.client.cookies.set(self.main.ADMIN_COOKIE,cookie)
+  response=await self.client.put('/v1/admin/reception/mimi-wecom/configuration/draft',json={},headers={'Origin':'https://evil.example'})
+  self.assertEqual(response.status_code,403)

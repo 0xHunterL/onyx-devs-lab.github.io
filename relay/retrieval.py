@@ -7,6 +7,7 @@ from dataclasses import dataclass
 class KnowledgeChunk:
     title: str
     content: str
+    source: str = ""
 
 
 def split_markdown(text: str) -> list[KnowledgeChunk]:
