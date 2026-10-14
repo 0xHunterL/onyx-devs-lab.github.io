@@ -8,7 +8,7 @@ import time
 import uuid
 from collections import defaultdict
 from contextlib import asynccontextmanager
-from datetime import date
+from datetime import date, datetime
 from pathlib import Path
 from typing import Literal
 
@@ -24,7 +24,7 @@ from assistant_registry import AssistantRegistry
 from config import RelaySettings
 from notifier import deliver_notifications
 from retrieval import retrieve
-from storage import Database, SessionOwnershipError
+from storage import Database, SessionOwnershipError, LeadConflict
 
 settings = RelaySettings()
 logger = logging.getLogger("assistant-gateway")
@@ -137,6 +137,7 @@ class LeadRequest(BaseModel):
 
 
 class LeadStatusRequest(BaseModel):
+    expected_updated_at: datetime | None = None
     status: Literal["new", "contacted", "qualified", "closed", "spam"]
     assigned_to: str | None = Field(default=None, max_length=100)
     internal_notes: str | None = Field(default=None, max_length=4000)
@@ -484,14 +485,42 @@ async def admin_logout(response: Response):
     return {"authenticated": False}
 
 
+@app.get("/v1/admin/sessions")
+async def admin_list_sessions(request: Request, authorization: str | None = Header(default=None),
+                              assistant_id: str | None = None, q: str = "", limit: int = 50, offset: int = 0):
+    _require_admin(request,authorization)
+    if assistant_id is not None and registry.get(assistant_id) is None:
+        raise HTTPException(status_code=404,detail="Unknown assistant")
+    return await database.admin_sessions(assistant_id,q[:200],min(max(limit,1),100),max(offset,0))
+
+
+@app.get("/v1/admin/sessions/{assistant_id}/{session_id}")
+async def admin_session_detail(assistant_id: str, session_id: str, request: Request,
+                               authorization: str | None = Header(default=None)):
+    _require_admin(request,authorization)
+    context=await database.admin_session_context(assistant_id,session_id)
+    if not context:raise HTTPException(status_code=404,detail="会话不存在或已过期")
+    return context
+
+
+@app.get("/v1/admin/reception")
+async def admin_reception(request: Request, authorization: str | None = Header(default=None)):
+    _require_admin(request,authorization)
+    from reception_admin import reception_status
+    return await reception_status(client,settings)
+
+
 @app.get("/v1/admin/leads")
 async def admin_list_leads(
     request: Request,
     authorization: str | None = Header(default=None, alias="Authorization"),
     limit: int = 100,
+    assistant_id: str | None = None,
 ):
     _require_admin(request, authorization)
-    return {"leads": await database.list_leads(min(max(limit, 1), 500))}
+    if assistant_id is not None and registry.get(assistant_id) is None:
+        raise HTTPException(status_code=404,detail="Unknown assistant")
+    return {"leads": await database.list_leads(min(max(limit, 1), 500),assistant_id)}
 
 
 @app.get("/v1/admin/leads/{lead_id}")
@@ -515,12 +544,15 @@ async def admin_update_lead(
     authorization: str | None = Header(default=None, alias="Authorization"),
 ):
     _require_admin(request, authorization)
-    updated = await database.update_lead(
-        lead_id,
-        payload.status,
-        payload.assigned_to.strip() if payload.assigned_to is not None else None,
-        payload.internal_notes.strip() if payload.internal_notes is not None else None,
-    )
+    try:
+        updated = await database.update_lead(
+            lead_id, payload.status,
+            payload.assigned_to.strip() if payload.assigned_to is not None else None,
+            payload.internal_notes.strip() if payload.internal_notes is not None else None,
+            payload.expected_updated_at,
+        )
+    except LeadConflict as error:
+        raise HTTPException(status_code=409,detail=str(error)) from error
     if not updated:
         raise HTTPException(status_code=404, detail="Unknown lead")
     return {"updated": True, "status": payload.status}

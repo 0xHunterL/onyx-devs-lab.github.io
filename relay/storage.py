@@ -8,6 +8,10 @@ from datetime import datetime, timezone
 import asyncpg
 
 
+class LeadConflict(Exception):
+    pass
+
+
 class SessionOwnershipError(Exception):
     pass
 
@@ -308,6 +312,7 @@ class Database:
             SELECT client_message_id AS id, role, content, metadata, created_at
             FROM assistant_messages
             WHERE assistant_id = $1 AND session_id = $2
+              AND EXISTS(SELECT 1 FROM assistant_sessions s WHERE s.assistant_id=$1 AND s.session_id=$2 AND s.expires_at>now() AND s.absolute_expires_at>now())
             ORDER BY created_at, id
             """,
             assistant_id,
@@ -358,7 +363,41 @@ class Database:
                     )
                 return rows
 
-    async def list_leads(self, limit: int = 100) -> list[dict]:
+    async def admin_sessions(self, assistant_id: str | None, query: str, limit: int, offset: int) -> dict:
+        assert self.pool
+        # Search is parameterized; customer text never becomes SQL or markup.
+        where = """s.expires_at > now() AND s.absolute_expires_at > now()
+            AND ($1::text IS NULL OR s.assistant_id=$1)
+            AND ($2='' OR s.session_id ILIKE '%'||$2||'%'
+                OR EXISTS(SELECT 1 FROM assistant_messages m WHERE m.assistant_id=s.assistant_id
+                    AND m.session_id=s.session_id AND m.content ILIKE '%'||$2||'%')
+                OR c.facts::text ILIKE '%'||$2||'%')"""
+        total = await self.pool.fetchval('SELECT count(*) FROM assistant_sessions s LEFT JOIN assistant_channel_state c USING(assistant_id,session_id) WHERE '+where, assistant_id,query)
+        rows = await self.pool.fetch("""SELECT s.assistant_id,s.session_id,s.created_at,s.last_active_at,
+            c.facts,c.draft,c.draft_at,
+            (SELECT count(*) FROM assistant_messages m WHERE m.assistant_id=s.assistant_id AND m.session_id=s.session_id) AS message_count,
+            (SELECT m.content FROM assistant_messages m WHERE m.assistant_id=s.assistant_id AND m.session_id=s.session_id ORDER BY m.created_at DESC,m.id DESC LIMIT 1) AS last_message,
+            (SELECT count(*) FROM assistant_leads l WHERE l.assistant_id=s.assistant_id AND l.session_id=s.session_id AND l.expires_at>now()) AS lead_count,
+            (SELECT EXISTS(SELECT 1 FROM assistant_lead_events e WHERE e.lead_id=l.id AND e.event_type='lead.contact_withdrawn') FROM assistant_leads l WHERE l.assistant_id=s.assistant_id AND l.session_id=s.session_id AND l.expires_at>now() ORDER BY l.created_at DESC LIMIT 1) AS contact_withdrawn
+            FROM assistant_sessions s LEFT JOIN assistant_channel_state c USING(assistant_id,session_id)
+            WHERE """+where+" ORDER BY s.last_active_at DESC,s.session_id LIMIT $3 OFFSET $4",assistant_id,query,limit,offset)
+        return {"sessions":[dict(row) for row in rows],"total":total,"limit":limit,"offset":offset}
+
+    async def admin_session_context(self, assistant_id: str, session_id: str) -> dict | None:
+        assert self.pool
+        session=await self.pool.fetchrow("""SELECT s.assistant_id,s.session_id,s.created_at,s.last_active_at,
+            s.expires_at,s.absolute_expires_at,c.facts,c.draft,c.draft_at
+            FROM assistant_sessions s LEFT JOIN assistant_channel_state c USING(assistant_id,session_id)
+            WHERE s.assistant_id=$1 AND s.session_id=$2 AND s.expires_at>now() AND s.absolute_expires_at>now()""",assistant_id,session_id)
+        if not session:return None
+        messages=await self.pool.fetch("""SELECT role,content,created_at,metadata FROM assistant_messages
+            WHERE assistant_id=$1 AND session_id=$2 ORDER BY created_at,id""",assistant_id,session_id)
+        leads=await self.pool.fetch("""SELECT l.id,l.contact,l.status,l.requirement_summary,l.created_at,
+            EXISTS(SELECT 1 FROM assistant_lead_events e WHERE e.lead_id=l.id AND e.event_type='lead.contact_withdrawn') AS contact_withdrawn
+            FROM assistant_leads l WHERE assistant_id=$1 AND session_id=$2 AND expires_at>now() ORDER BY created_at DESC""",assistant_id,session_id)
+        return {"session":dict(session),"messages":[dict(m) for m in messages],"leads":[dict(l) for l in leads]}
+
+    async def list_leads(self, limit: int = 100, assistant_id: str | None = None) -> list[dict]:
         assert self.pool
         rows = await self.pool.fetch(
             """
@@ -367,17 +406,19 @@ class Database:
                    l.timezone, l.status, l.assigned_to, l.internal_notes,
                    l.source_origin, l.created_at, l.updated_at, l.notified_at,
                    COALESCE(o.status, 'not_queued') AS notification_status,
-                   COALESCE(o.attempts, 0) AS notification_attempts
+                   COALESCE(o.attempts, 0) AS notification_attempts,
+                   EXISTS(SELECT 1 FROM assistant_lead_events e WHERE e.lead_id=l.id AND e.event_type='lead.contact_withdrawn') AS contact_withdrawn
             FROM assistant_leads l
             LEFT JOIN LATERAL (
                 SELECT status, attempts FROM assistant_notification_outbox
                 WHERE aggregate_id = l.id::text
                 ORDER BY id DESC LIMIT 1
             ) o ON TRUE
+            WHERE l.expires_at>now() AND ($2::text IS NULL OR l.assistant_id=$2)
             ORDER BY l.created_at DESC
             LIMIT $1
             """,
-            limit,
+            limit, assistant_id,
         )
         return [dict(row) for row in rows]
 
@@ -389,7 +430,7 @@ class Database:
                    requirement_summary, appointment_requested, preferred_time,
                    timezone, status, assigned_to, internal_notes, source_origin,
                    consent_at, created_at, updated_at, notified_at, expires_at
-            FROM assistant_leads WHERE id = $1
+            FROM assistant_leads WHERE id = $1 AND expires_at>now()
             """,
             lead_id,
         )
@@ -400,6 +441,7 @@ class Database:
             SELECT client_message_id AS id, role, content, metadata, created_at
             FROM assistant_messages
             WHERE assistant_id = $1 AND session_id = $2
+              AND EXISTS(SELECT 1 FROM assistant_sessions s WHERE s.assistant_id=$1 AND s.session_id=$2 AND s.expires_at>now() AND s.absolute_expires_at>now())
             ORDER BY created_at, id
             """,
             lead["assistant_id"],
@@ -424,7 +466,7 @@ class Database:
             lead_id,
         )
         return {
-            "lead": dict(lead),
+            "lead": {**dict(lead),"contact_withdrawn":any(e["event_type"]=="lead.contact_withdrawn" for e in events)},
             "messages": [dict(message) for message in messages],
             "memory": dict(memory) if memory else None,
             "events": [dict(event) for event in events],
@@ -436,16 +478,22 @@ class Database:
         status: str,
         assigned_to: str | None,
         internal_notes: str | None,
+        expected_updated_at: datetime | None = None,
     ) -> bool:
         assert self.pool
         async with self.pool.acquire() as connection:
             async with connection.transaction():
                 previous = await connection.fetchrow(
-                    "SELECT status, assigned_to, internal_notes FROM assistant_leads WHERE id = $1 FOR UPDATE",
+                    "SELECT status, assigned_to, internal_notes, updated_at FROM assistant_leads WHERE id = $1 AND expires_at>now() FOR UPDATE",
                     lead_id,
                 )
                 if not previous:
                     return False
+                if expected_updated_at is not None and previous["updated_at"] != expected_updated_at:
+                    raise LeadConflict("记录已被更新，请刷新后重试")
+                withdrawn=await connection.fetchval("SELECT EXISTS(SELECT 1 FROM assistant_lead_events WHERE lead_id=$1 AND event_type='lead.contact_withdrawn')",lead_id)
+                if withdrawn and status != 'closed':
+                    raise LeadConflict("客户已撤回联系授权，不能重新开启跟进")
                 next_assignee = previous["assigned_to"] if assigned_to is None else assigned_to
                 next_notes = previous["internal_notes"] if internal_notes is None else internal_notes
                 await connection.execute(

@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="robots" content="noindex, nofollow" />
-    <title>Onyx Lead Desk</title>
+    <title>客服工作台</title>
     <link rel="stylesheet" href="/workbench/styles.css" />
   </head>
   <body>
@@ -17,8 +17,8 @@
         <div class="login-card">
           <div class="brand-mark">O</div>
           <p class="eyebrow">ONYX · INTERNAL</p>
-          <h1>客户线索工作台</h1>
-          <p class="muted">输入服务器管理令牌后查看官网访客提交的合作需求。验证成功后，本设备保持登录 12 小时。</p>
+          <h1>客服工作台</h1>
+          <p class="muted">使用现有管理令牌登录，本设备保持登录 12 小时。</p>
           <form id="login-form">
             <label for="token">管理令牌</label>
             <input id="token" name="token" type="password" autocomplete="current-password" required />
@@ -31,10 +31,11 @@
       <section id="desk-view" class="desk" hidden>
         <header class="topbar">
           <div>
-            <p class="eyebrow">ONYX · LEAD DESK</p>
-            <h1>客户线索</h1>
+            <p class="eyebrow">ONYX / MIMI · RECEPTION</p>
+            <h1>客服工作台</h1>
           </div>
           <div class="top-actions">
+            <a class="ghost task-link" href="/codex/">开发任务</a>
             <span id="sync-state" class="sync-state">准备同步</span>
             <button id="notification-button" class="ghost" type="button" hidden>开启新线索提醒</button>
             <button id="refresh-button" class="ghost" type="button">立即刷新</button>
@@ -42,9 +43,17 @@
           </div>
         </header>
 
+        <nav class="desk-nav" aria-label="工作台视图">
+          <div class="view-tabs">
+            <button type="button" data-view="leads" aria-pressed="true">需求跟进</button>
+            <button type="button" data-view="sessions" aria-pressed="false">客服会话</button>
+            <button type="button" data-view="settings" aria-pressed="false">配置与运行</button>
+          </div>
+          <label class="assistant-select"><span>客服</span><select id="assistant-filter"><option value="">全部客服</option><option value="onyx-wecom">Onyx 小助手</option><option value="mimi-wecom">米米助手</option><option value="onyx">Onyx 网页助手</option><option value="mimi">米米网页助手</option></select></label>
+        </nav>
         <section id="metrics" class="metrics" aria-label="线索概览"></section>
 
-        <section class="workspace">
+        <section id="leads-view" class="workspace">
           <div class="list-panel">
             <div class="toolbar">
               <label class="search-label">
@@ -55,10 +64,10 @@
                 <span class="sr-only">按状态筛选</span>
                 <select id="status-filter">
                   <option value="all">全部状态</option>
-                  <option value="new">待处理</option>
+                  <option value="new">待跟进</option>
                   <option value="contacted">已联系</option>
                   <option value="qualified">已确认</option>
-                  <option value="closed">已关闭</option>
+                  <option value="closed">已完成</option>
                   <option value="spam">无效</option>
                 </select>
               </label>
@@ -99,13 +108,15 @@
                 <span>需求摘要</span>
                 <p id="detail-summary"></p>
               </div>
+              <p id="withdrawal-notice" class="error" hidden>客户已撤回联系授权，请勿继续联系。</p>
+              <button id="reload-detail" class="ghost" type="button">刷新详情</button>
               <form id="lead-form" class="followup-form">
                 <label for="lead-status">跟进状态</label>
                 <select id="lead-status">
-                  <option value="new">待处理</option>
+                  <option value="new">待跟进</option>
                   <option value="contacted">已联系</option>
                   <option value="qualified">已确认</option>
-                  <option value="closed">已关闭</option>
+                  <option value="closed">已完成</option>
                   <option value="spam">无效</option>
                 </select>
                 <label for="assigned-to">负责人</label>
@@ -133,8 +144,34 @@
             </div>
           </aside>
         </section>
+        <section id="sessions-view" class="workspace" hidden>
+          <div class="list-panel">
+            <div class="toolbar session-toolbar">
+              <label><span class="sr-only">搜索会话</span><input id="session-search" type="search" placeholder="搜索客户自述、需求或对话内容" /></label>
+              <span id="session-total" class="subtle" role="status"></span>
+            </div>
+            <div class="table-scroll">
+              <table><thead><tr><th>客户 / 客服</th><th>最近对话</th><th>登记</th><th>最近联系</th></tr></thead><tbody id="session-rows"></tbody></table>
+              <div id="session-empty" class="empty" hidden>还没有符合条件的客服会话</div>
+            </div>
+            <div class="pagination"><button id="previous-page" type="button" class="ghost">上一页</button><span id="page-label"></span><button id="next-page" type="button" class="ghost">下一页</button></div>
+          </div>
+          <aside id="session-panel" class="detail-panel" aria-label="会话详情">
+            <div id="session-placeholder" class="detail-placeholder"><p>选择一个会话查看客户需求和聊天记录</p></div>
+            <div id="session-content" hidden>
+              <div class="detail-head"><div><p class="eyebrow">CONVERSATION</p><h2 id="session-title"></h2></div><button id="close-session" class="icon-button" type="button" aria-label="关闭会话详情">×</button></div>
+              <dl id="session-meta" class="detail-meta"></dl>
+              <section><h3>客户自述</h3><dl id="session-facts" class="detail-meta"></dl></section>
+              <section id="draft-section" class="summary-block" hidden><span>待客户确认 · 尚未登记</span><p id="session-draft"></p></section>
+              <section><div class="section-title"><h3>已登记需求</h3><span id="session-lead-count"></span></div><div id="session-leads" class="session-leads"></div></section>
+              <section><div class="section-title"><h3>完整对话</h3><span id="session-message-count"></span></div><div id="session-messages" class="conversation"></div></section>
+            </div>
+          </aside>
+        </section>
+        <section id="settings-view" hidden aria-label="客服配置与运行"><p id="settings-state" role="status"></p><div id="reception-settings" class="reception-settings"></div></section>
       </section>
     </main>
     <script src="/workbench/app.js" defer></script>
+    <script src="/workbench/reception.js" defer></script>
   </body>
 </html>

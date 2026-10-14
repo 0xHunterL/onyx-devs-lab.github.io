@@ -1,14 +1,15 @@
 const POLL_INTERVAL = 15000
 const statusLabels = {
-  new: '待处理',
+  new: '待跟进',
   contacted: '已联系',
   qualified: '已确认',
-  closed: '已关闭',
+  closed: '已完成',
   spam: '无效',
 }
 
 const state = {
   authenticated: false,
+  view:'leads', sessions:[],sessionTotal:0,offset:0,selectedSession:null,detailVersion:null,detailLoad:0,leadLoad:0,
   leads: [],
   selectedId: null,
   pollTimer: null,
@@ -21,23 +22,33 @@ const bootView = $('boot-view')
 const loginView = $('login-view')
 const deskView = $('desk-view')
 
+const consoleMode=location.pathname.startsWith('/codex/reception/')
+let consoleSession
+async function getConsoleSession(){
+ if(!consoleSession)consoleSession=fetch('/codex/api/session',{credentials:'same-origin',cache:'no-store'}).then(async response=>{if(!response.ok){location.assign('/codex/login');throw new Error('Unauthorized')}return response.json()})
+ return consoleSession
+}
 async function api(path, options = {}) {
+  let consoleHeaders={}
+  if(consoleMode){const session=await getConsoleSession();path='/codex/api/reception/'+path.replace('/v1/admin/','');consoleHeaders={'X-CSRF-Token':session.csrf}}
   const response = await fetch(path, {
     ...options,
     cache: 'no-store',
     credentials: 'same-origin',
     headers: {
       'Content-Type': 'application/json',
+      ...consoleHeaders,
       ...(options.headers || {}),
     },
   })
   if (response.status === 401) {
+    if(consoleMode)location.assign('/codex/login')
     showLogin('登录已过期，请重新输入管理令牌。')
     throw new Error('Unauthorized')
   }
   if (!response.ok) {
     const body = await response.json().catch(() => ({}))
-    throw new Error(body.detail || `HTTP ${response.status}`)
+    throw new Error(body.detail || body.error || `HTTP ${response.status}`)
   }
   return response.json()
 }
@@ -53,6 +64,8 @@ function showDesk() {
 function showLogin(message = '') {
   state.authenticated = false
   clearInterval(state.pollTimer)
+  state.detailLoad++;state.leads=[];state.sessions=[];state.selectedId=null;state.selectedSession=null;state.detailVersion=null
+  $('lead-rows').replaceChildren();$('session-rows').replaceChildren();$('conversation').replaceChildren();$('session-messages').replaceChildren();$('reception-settings').replaceChildren()
   bootView.hidden = true
   deskView.hidden = true
   loginView.hidden = false
@@ -63,7 +76,7 @@ function showLogin(message = '') {
 function formatDate(value) {
   if (!value) return '—'
   return new Intl.DateTimeFormat('zh-CN', {
-    month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit',
+    year:'numeric',month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit',timeZone:'Asia/Shanghai',
   }).format(new Date(value))
 }
 
@@ -88,9 +101,9 @@ function text(tag, value, className) {
 function renderMetrics() {
   const today = new Date().toDateString()
   const values = [
-    ['待处理', state.leads.filter((lead) => lead.status === 'new').length, true],
+    ['待跟进', state.leads.filter((lead) => lead.status === 'new').length, true],
     ['超 24 小时', state.leads.filter((lead) => lead.status === 'new' && ageInHours(lead.created_at) >= 24).length, false],
-    ['预约意向', state.leads.filter((lead) => lead.appointment_requested).length, false],
+    ['预约意向', state.leads.filter((lead) => lead.appointment_requested&&!lead.contact_withdrawn&&!['closed','spam'].includes(lead.status)).length, false],
     ['今日新增', state.leads.filter((lead) => new Date(lead.created_at).toDateString() === today).length, false],
     ['全部线索', state.leads.length, false],
   ]
@@ -108,7 +121,7 @@ function filteredLeads() {
   const rank = { new: 0, contacted: 1, qualified: 2, closed: 3, spam: 4 }
   return state.leads.filter((lead) => {
     const matchesStatus = status === 'all' || lead.status === status
-    const haystack = [lead.contact, lead.requirement_summary, lead.assigned_to].join(' ').toLowerCase()
+    const haystack = [lead.contact, lead.requirement_summary, lead.assigned_to, assistantName(lead.assistant_id)].join(' ').toLowerCase()
     return matchesStatus && (!query || haystack.includes(query))
   }).sort((a, b) => {
     const statusDifference = (rank[a.status] ?? 9) - (rank[b.status] ?? 9)
@@ -140,11 +153,11 @@ function renderTable() {
       if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); open() }
     })
     row.append(
-      makeCell(text('span', lead.contact, 'contact'), text('span', lead.contact_type || 'other', 'subtle')),
+      makeCell(text('span', lead.contact, 'contact'), text('span', assistantName(lead.assistant_id), 'subtle')),
       makeCell(text('span', lead.requirement_summary, 'requirement')),
       makeCell(text('span', lead.appointment_requested ? '需要沟通' : '—', lead.appointment_requested ? 'appointment' : 'subtle'), text('span', lead.preferred_time || '', 'subtle')),
       makeCell(text('span', lead.assigned_to || '未分配', lead.assigned_to ? '' : 'subtle')),
-      makeCell(text('span', statusLabels[lead.status] || lead.status, `badge ${lead.status}`)),
+      makeCell(text('span', lead.contact_withdrawn?'已撤回联系':statusLabels[lead.status] || lead.status, `badge ${lead.contact_withdrawn?'withdrawn':lead.status}`)),
       makeCell(text('span', relativeAge(lead.created_at)), text('span', formatDate(lead.created_at), 'subtle')),
     )
     return row
@@ -161,7 +174,8 @@ function metaItem(label, value) {
 
 function eventDescription(event) {
   if (event.event_type === 'lead.created') return '访客授权提交了合作线索'
-  const changes = event.detail?.changes || {}
+  if(event.event_type==='lead.contact_withdrawn')return '客户撤回了联系授权'
+  const changes = asObject(event.detail).changes || {}
   const labels = []
   if (changes.status) labels.push(`状态改为“${statusLabels[changes.status.to] || changes.status.to}”`)
   if (changes.assigned_to) labels.push(`负责人改为“${changes.assigned_to.to || '未分配'}”`)
@@ -170,8 +184,13 @@ function eventDescription(event) {
 }
 
 async function openLead(id) {
-  document.title = 'Onyx Lead Desk'
+  document.title = '客服工作台'
+  const load=++state.detailLoad
   state.selectedId = id
+  state.detailVersion=null
+  $('lead-form').hidden=true
+  $('detail-summary').textContent=''
+  $('conversation').replaceChildren();$('activity').replaceChildren();$('detail-meta').replaceChildren()
   renderTable()
   $('detail-panel').classList.add('open')
   $('detail-placeholder').hidden = true
@@ -179,7 +198,13 @@ async function openLead(id) {
   $('detail-contact').textContent = '加载中…'
   try {
     const context = await api(`/v1/admin/leads/${encodeURIComponent(id)}`)
+    if(load!==state.detailLoad)return
     const lead = context.lead
+    state.detailVersion=lead.updated_at
+    $('lead-form').hidden=false
+    $('withdrawal-notice').hidden=!lead.contact_withdrawn
+    $('lead-status').disabled=Boolean(lead.contact_withdrawn)
+    $('save-state').textContent=''
     $('detail-contact').textContent = lead.contact
     $('detail-summary').textContent = lead.requirement_summary
     $('lead-status').value = lead.status
@@ -189,7 +214,7 @@ async function openLead(id) {
       metaItem('预约意向', lead.appointment_requested ? '是' : '否'),
       metaItem('期望时间', lead.preferred_time),
       metaItem('访客时区', lead.timezone),
-      metaItem('来源', lead.source_origin),
+      metaItem('客服', assistantName(lead.assistant_id)),metaItem('来源', lead.source_origin),
       metaItem('提交时间', formatDate(lead.created_at)),
       metaItem('数据保留至', formatDate(lead.expires_at)),
     )
@@ -202,7 +227,8 @@ async function openLead(id) {
     }))
     const memory = $('memory-block')
     memory.hidden = !context.memory
-    memory.textContent = context.memory ? `较早对话摘要\n${context.memory.summary}` : ''
+    const recalled=asObject(context.memory?.summary)
+    memory.textContent=context.memory?(recalled.customer_facts?'已记录客户自述\n'+Object.entries(recalled.customer_facts).map(([k,v])=>(factNames[k]||k)+'：'+v).join('\n'):`较早对话摘要\n${context.memory.summary}`):''
     const events = context.events || []
     $('event-count').textContent = `${events.length} 条记录`
     $('activity').replaceChildren(...events.map((event) => {
@@ -217,15 +243,18 @@ async function openLead(id) {
       return item
     }))
   } catch (error) {
+    if(load!==state.detailLoad)return
     $('detail-contact').textContent = '加载失败'
     $('save-state').textContent = error.message
   }
 }
 
 async function loadLeads(silent = false, throwOnError = false) {
+  const load=++state.leadLoad
   if (!silent) $('sync-state').textContent = '正在同步…'
   try {
-    const data = await api('/v1/admin/leads?limit=500')
+    const data = await api('/v1/admin/leads?limit=500'+($('assistant-filter').value?'&assistant_id='+encodeURIComponent($('assistant-filter').value):''))
+    if(load!==state.leadLoad)return
     const incoming = data.leads || []
     const newLeads = state.initialized
       ? incoming.filter((lead) => lead.status === 'new' && !state.knownLeadIds.has(lead.id))
@@ -254,7 +283,7 @@ function updateNotificationButton() {
 }
 
 function announceNewLeads(leads) {
-  document.title = `(${leads.length}) Onyx Lead Desk`
+  document.title = `(${leads.length}) 客服工作台`
   if ('Notification' in window && Notification.permission === 'granted' && document.hidden) {
     const first = leads[0]
     new Notification(`收到 ${leads.length} 条新线索`, {
@@ -267,12 +296,13 @@ function announceNewLeads(leads) {
 function schedulePolling() {
   clearInterval(state.pollTimer)
   state.pollTimer = setInterval(() => {
-    if (document.visibilityState === 'visible') loadLeads(true)
+    if (document.visibilityState === 'visible') refreshView(true)
   }, POLL_INTERVAL)
 }
 
 function closeDetail() {
   state.selectedId = null
+  state.detailLoad++
   $('detail-panel').classList.remove('open')
   $('detail-placeholder').hidden = false
   $('detail-content').hidden = true
@@ -293,7 +323,7 @@ $('login-form').addEventListener('submit', async (event) => {
     })
     if (!response.ok) {
       const body = await response.json().catch(() => ({}))
-      throw new Error(body.detail || `HTTP ${response.status}`)
+      throw new Error(body.detail || body.error || `HTTP ${response.status}`)
     }
     await loadLeads(false, true)
     showDesk()
@@ -304,22 +334,28 @@ $('login-form').addEventListener('submit', async (event) => {
 
 $('lead-form').addEventListener('submit', async (event) => {
   event.preventDefault()
-  if (!state.selectedId) return
+  if (!state.selectedId || !state.detailVersion) return
+  const savedId=state.selectedId
   const button = event.submitter || event.currentTarget.querySelector('button[type="submit"]')
   button.disabled = true
   $('save-state').textContent = '正在保存…'
   try {
-    await api(`/v1/admin/leads/${encodeURIComponent(state.selectedId)}`, {
+    await api(`/v1/admin/leads/${encodeURIComponent(savedId)}`, {
       method: 'PATCH',
       body: JSON.stringify({
+        expected_updated_at:state.detailVersion,
         status: $('lead-status').value,
         assigned_to: $('assigned-to').value.trim(),
         internal_notes: $('internal-notes').value.trim(),
       }),
     })
+    if(state.selectedId!==savedId)return
     $('save-state').textContent = '已保存'
+    const updated=await api(`/v1/admin/leads/${encodeURIComponent(savedId)}`)
+    state.detailVersion=updated.lead.updated_at
     await loadLeads(true)
   } catch (error) {
+    if(state.selectedId!==savedId)return
     $('save-state').textContent = `保存失败：${error.message}`
   } finally {
     button.disabled = false
@@ -328,21 +364,22 @@ $('lead-form').addEventListener('submit', async (event) => {
 
 $('search').addEventListener('input', renderTable)
 $('status-filter').addEventListener('change', renderTable)
-$('refresh-button').addEventListener('click', () => loadLeads())
+$('refresh-button').addEventListener('click', () => refreshView())
 $('notification-button').addEventListener('click', async () => {
   if (!('Notification' in window) || Notification.permission === 'denied') return
   await Notification.requestPermission()
   updateNotificationButton()
 })
 $('logout-button').addEventListener('click', async () => {
+  if(consoleMode){const session=await getConsoleSession();await fetch('/codex/api/logout',{method:'POST',credentials:'same-origin',headers:{'X-CSRF-Token':session.csrf}});location.assign('/codex/login');return}
   await fetch('/v1/admin/logout', { method: 'POST', credentials: 'same-origin' }).catch(() => {})
   showLogin()
 })
 $('close-detail').addEventListener('click', closeDetail)
 document.addEventListener('visibilitychange', () => {
   if (document.visibilityState === 'visible') {
-    document.title = 'Onyx Lead Desk'
-    if (state.authenticated) loadLeads(true)
+    document.title = '客服工作台'
+    if (state.authenticated) refreshView(true)
   }
 })
 
